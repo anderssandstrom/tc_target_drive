@@ -1,0 +1,16 @@
+_Boot/
+_CompileInfo/
+_Libraries/
+tools/linux/ADS/
+tools/linux/getADSState/getADSState.bin
+logs.0*
+.epics.*
+*.bak
+*.~u
+*.pyc
+*.tpy
+*.suo
+*~
+.#*
+\#*#
+
