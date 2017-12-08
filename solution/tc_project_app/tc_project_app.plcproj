@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <FileVersion>1.0.0.0</FileVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{fb261665-fd20-4bf2-97f8-2854c82b752d}</ProjectGuid>
+    <SubObjectsSortedByName>True</SubObjectsSortedByName>
+    <Name>tc_project_app</Name>
+    <ProgramVersion>3.1.4022.1</ProgramVersion>
+    <Application>{047dee04-c246-47b2-8ccc-a15e36987c43}</Application>
+    <TypeSystem>{ae4eb5ee-6030-47a6-bf35-5a6afd9efeeb}</TypeSystem>
+    <Implicit_Task_Info>{5ef19bd0-aca2-493f-b2a1-89e363647697}</Implicit_Task_Info>
+    <Implicit_KindOfTask>{f52f0efe-1be1-4600-94a9-9aa59fdf8e4e}</Implicit_KindOfTask>
+    <Implicit_Jitter_Distribution>{26d08e27-a705-49a9-95de-a3a0b6ea049c}</Implicit_Jitter_Distribution>
+    <LibraryReferences>{577f21c4-8eb2-4f2c-a24e-4c3f62ca96d2}</LibraryReferences>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="PlcTask.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\MAIN.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DUTs" />
+    <Folder Include="GVLs" />
+    <Folder Include="VISUs" />
+    <Folder Include="POUs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PlaceholderReference Include="Tc2_Standard">
+      <DefaultResolution>Tc2_Standard, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_Standard</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc2_System">
+      <DefaultResolution>Tc2_System, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_System</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc3_Module">
+      <DefaultResolution>Tc3_Module, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc3_Module</Namespace>
+    </PlaceholderReference>
+  </ItemGroup>
+</Project>
