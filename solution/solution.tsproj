@@ -9,9 +9,9 @@
 			</Tasks>
 		</System>
 		<Plc>
-			<Project GUID="{F935F1DE-0753-4702-B418-1DC0ED040A4D}" Name="EpicsComModule" PrjFilePath="tc_epicscommodule\EpicsComModule.plcProj" TmcFilePath="tc_epicscommodule\EpicsComModule.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
+			<Project GUID="{F935F1DE-0753-4702-B418-1DC0ED040A4D}" Name="tc_epicscommodule" PrjFilePath="tc_epicscommodule\tc_epicscommodule.plcproj" TmcFilePath="tc_epicscommodule\tc_epicscommodule.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
 				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2">
-					<Name>EpicsComModule Instance</Name>
+					<Name>tc_epicscommodule Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 				</Instance>
 			</Project>
