@@ -1,3 +1,6 @@
 [submodule "solution/tc_epicscommodule"]
 	path = solution/tc_epicscommodule
 	url = https://bitbucket.org/europeanspallationsource/tc_epicscommodule.git
+[submodule "solution/tc_project_app/tc_mca_std_lib"]
+	path = solution/tc_project_app/tc_mca_std_lib
+	url = https://bitbucket.org/europeanspallationsource/tc_mca_std_lib.git
