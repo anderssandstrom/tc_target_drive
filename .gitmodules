@@ -1,0 +1,3 @@
+[submodule "solution/tc_epicscommodule"]
+	path = solution/tc_epicscommodule
+	url = https://bitbucket.org/europeanspallationsource/tc_epicscommodule.git
