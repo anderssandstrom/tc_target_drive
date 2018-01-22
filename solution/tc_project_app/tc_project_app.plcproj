@@ -34,6 +34,9 @@
     <Compile Include="tc_mca_std_lib\POUs\ChangeConfig\FB_ReadParameterInNc_v1_00.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="tc_mca_std_lib\POUs\ChangeConfig\FB_WriteFloatParameter.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="tc_mca_std_lib\POUs\ChangeConfig\FB_WriteParameterInNc_v1_00.TcPOU">
       <SubType>Code</SubType>
     </Compile>
