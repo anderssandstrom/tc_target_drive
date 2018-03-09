@@ -182,7 +182,7 @@ END_VAR
                           <v n="LValue">false</v>
                           <v n="Boolean">false</v>
                           <v n="IsInstance">true</v>
-                          <v n="Id">9L</v>
+                          <v n="Id">67L</v>
                         </o>
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
@@ -347,6 +347,38 @@ END_VAR
                               <v n="IsInstance">false</v>
                               <v n="Id">20L</v>
                             </o>
+                            <o>
+                              <v n="Operand">""</v>
+                              <n n="Type" />
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">true</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">69L</v>
+                            </o>
+                            <o>
+                              <v n="Operand">""</v>
+                              <n n="Type" />
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">true</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">70L</v>
+                            </o>
                           </l2>
                         </o>
                         <o n="Flags" t="Flags">
@@ -354,123 +386,7 @@ END_VAR
                           <v n="Fixed">true</v>
                           <v n="Extensible">false</v>
                         </o>
-                        <l2 n="InputFlags" cet="Flags">
-                          <o>
-                            <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                          <o>
-                            <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                          <o>
-                            <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                          <o>
-                            <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                          <o>
-                            <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                          <o>
-                            <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                          <o>
-                            <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                          <o>
-                            <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                          <o>
-                            <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                          <o>
-                            <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                          <o>
-                            <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                          <o>
-                            <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                          <o>
-                            <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                          <o>
-                            <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                          <o>
-                            <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                          <o>
-                            <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                          <o>
-                            <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                          <o>
-                            <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                          <o>
-                            <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                          <o>
-                            <v n="Flags">0</v>
-                            <v n="Fixed">true</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                          <o>
-                            <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                          <o>
-                            <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                          <o>
-                            <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                        </l2>
+                        <n n="InputFlags" />
                         <l2 n="InputItems" cet="BoxTreeOperand">
                           <o>
                             <o n="Operand" t="Operand">
@@ -759,8 +675,8 @@ END_VAR
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
+                              <v n="Operand">"bHomeSensor"</v>
+                              <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -835,8 +751,8 @@ END_VAR
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"bHomeSensor"</v>
-                              <v n="Type">"BOOL"</v>
+                              <v n="Operand">"M1Link.Axis"</v>
+                              <v n="Type">"AXIS_REF"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"%I*"</v>
@@ -851,63 +767,6 @@ END_VAR
                               <v n="Id">60L</v>
                             </o>
                             <v n="Id">59L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">62L</v>
-                            </o>
-                            <v n="Id">61L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">64L</v>
-                            </o>
-                            <v n="Id">63L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">"M1Link.axis"</v>
-                              <v n="Type">"AXIS_REF"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">66L</v>
-                            </o>
-                            <v n="Id">65L</v>
                           </o>
                         </l2>
                         <o n="InputParam" t="ParamList">
@@ -926,14 +785,11 @@ END_VAR
                             <v>bJogBwd</v>
                             <v>bLimitFwd</v>
                             <v>bLimitBwd</v>
-                            <v>bEnableSoftLimitFwd</v>
-                            <v>bEnableSoftLimitBwd</v>
-                            <v>fSoftLimitFwd</v>
-                            <v>fSoftLimitBwd</v>
                             <v>fOverride</v>
                             <v>bHomeSensor</v>
+                            <v>fHomePosition</v>
+                            <v>nHomeRevOffset</v>
                             <v>MasterAxis</v>
-                            <v>nMotionAxisID</v>
                             <v>Axis</v>
                           </l2>
                           <l2 n="Types" cet="String">
@@ -951,14 +807,11 @@ END_VAR
                             <v>BOOL</v>
                             <v>BOOL</v>
                             <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>LREAL</v>
-                            <v>LREAL</v>
                             <v>LREAL</v>
                             <v>BOOL</v>
+                            <v>LREAL</v>
+                            <v>UINT</v>
                             <v>AXIS_REF</v>
-                            <v>UDINT</v>
                             <v>AXIS_REF[REF]</v>
                           </l2>
                         </o>
@@ -971,10 +824,12 @@ END_VAR
                             <v>bError</v>
                             <v>bHomed</v>
                             <v>nErrorId</v>
+                            <v>nMotionAxisID</v>
                             <v>Status</v>
                             <v>fActVelocity</v>
                             <v>fActPosition</v>
                             <v>fActDiff</v>
+                            <v>sErrorMessage</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>BOOL</v>
@@ -984,10 +839,12 @@ END_VAR
                             <v>BOOL</v>
                             <v>BOOL</v>
                             <v>UDINT</v>
+                            <v>UDINT</v>
                             <v>ST_AxisStatus</v>
                             <v>LREAL</v>
                             <v>LREAL</v>
                             <v>LREAL</v>
+                            <v>STRING</v>
                           </l2>
                         </o>
                         <v n="CallType" t="Operator">FunctionBlock</v>
@@ -996,7 +853,7 @@ END_VAR
                         <n n="STSnippet" />
                         <v n="ContainsExtensibleInputs">false</v>
                         <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">10L</v>
+                        <v n="Id">68L</v>
                       </o>
                     </l2>
                     <l2 n="Connectors" />
