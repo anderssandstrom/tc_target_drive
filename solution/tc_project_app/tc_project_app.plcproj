@@ -40,6 +40,33 @@
     <Compile Include="tc_mca_std_lib\POUs\ChangeConfig\FB_WriteParameterInNc_v1_00.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="tc_mca_std_lib\POUs\ErrorHandling\DUT_ErrorState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs\ErrorHandling\DUT_TerminalError.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs\ErrorHandling\FB_ErrorList.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs\ErrorHandling\FB_TerminalError.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs\ErrorHandling\GVL_ErrorSystem.TcGVL">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs\ErrorHandling\ST_ErrorSystem.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Analog_Inputs\EL3174_0002.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Analog_Inputs\EL3214.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Analog_Inputs\EL3255.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Analog_Inputs\FB_CalculateFrequency_3702_v0_01.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -52,112 +79,97 @@
     <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Analog_Inputs\FB_EL3773_v1_00.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1002_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1002.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1004_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1004.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1008_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1008.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1012_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1012.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1014_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1014.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1018_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1018.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1024_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1024.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1034_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1034.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1084_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1084.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1088_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1088.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1094_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1094.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1098_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1098.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1104_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1104.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1114_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1114.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1124_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1124.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1134_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1134.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1144_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1144.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1202_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1202.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1252_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1252.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1258_v0_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1702.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1259_v0_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1712.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1262_v0_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1722.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1502_v0_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1804.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1512_v0_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1808.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1702_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1809.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1712_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1814.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1722_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1819.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1804_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1859.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1808_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1862.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1809_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1872.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1814_v1_00.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1819_v1_00.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1859_v1_00.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1862_v1_00.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1872_v1_00.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1889_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1889.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\FB_EL1008_v1_00.TcPOU">
@@ -169,73 +181,58 @@
     <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\FB_EL1252ASM_v1_00.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\FB_EL1252_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2002.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2002_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2004.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2004_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2008.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2008_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2014.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2022_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2022.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2024_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2024.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2032_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2032.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2034_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2034.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2042_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2042.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2084_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2084.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2088_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2088.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2124_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2124.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2202_v0_00.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2212_v0_00.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2252_v0_00.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2258_v0_00.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2262_v0_00.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2502_v0_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2252.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2521_v1_00.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2535_v0_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2808.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2819.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\External_Types\dutEL2521_Ctrl.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\External_Types\dutEL2521_Status.TcDUT">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\FB_EL2008_v1_00.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\Safety_Terminals\EL1904_v0_00.TcPOU">
@@ -268,13 +265,28 @@
     <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\Safety_Terminals\FB_EL6900_v1_00.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Measuring_Terminals\EL5002.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Measuring_Terminals\EL5021.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Measuring_Terminals\EL5042.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Measuring_Terminals\EL5101.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Motion\EL7211_v1_00.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Motion\EL9576_v1_00.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\System\EL9505_V1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\System\EL9410.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\System\EL9505.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="tc_mca_std_lib\POUs\Hardware\Other\EK1200.TcPOU">
@@ -331,18 +343,20 @@
     <Folder Include="tc_mca_std_lib\POUs" />
     <Folder Include="tc_mca_std_lib\POUs\ChangeConfig" />
     <Folder Include="tc_mca_std_lib\POUs\Hardware" />
+    <Folder Include="tc_mca_std_lib\POUs\Hardware" />
     <Folder Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals" />
     <Folder Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Analog_Inputs" />
     <Folder Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs" />
     <Folder Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs" />
     <Folder Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\External_Types" />
     <Folder Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\Safety_Terminals" />
+    <Folder Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Measuring_Terminals" />
     <Folder Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Motion" />
     <Folder Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\System" />
     <Folder Include="tc_mca_std_lib\POUs\Hardware\Other" />
-    <Folder Include="tc_mca_std_lib\POUs\Hardware" />
-    <Folder Include="tc_mca_std_lib\POUs\Hardware" />
     <Folder Include="tc_mca_std_lib\POUs\Motion" />
+    <Folder Include="tc_mca_std_lib\POUs\Hardware" />
+    <Folder Include="tc_mca_std_lib\POUs\ErrorHandling" />
     <Folder Include="tc_mca_std_lib\VISUs" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
@@ -423,6 +437,24 @@
           <o xml:space="preserve" t="OptionKey">
       <v n="Name">"&lt;ProjectRoot&gt;"</v>
       <d n="SubKeys" t="Hashtable" ckt="String" cvt="OptionKey">
+        <v>{192FAD59-8248-4824-A8DE-9177C94C195A}</v>
+        <o>
+          <v n="Name">"{192FAD59-8248-4824-A8DE-9177C94C195A}"</v>
+          <d n="SubKeys" t="Hashtable" />
+          <d n="Values" t="Hashtable" />
+        </o>
+        <v>{246001F4-279D-43AC-B241-948EB31120E1}</v>
+        <o>
+          <v n="Name">"{246001F4-279D-43AC-B241-948EB31120E1}"</v>
+          <d n="SubKeys" t="Hashtable" />
+          <d n="Values" t="Hashtable" />
+        </o>
+        <v>{8F99A816-E488-41E4-9FA3-846536012284}</v>
+        <o>
+          <v n="Name">"{8F99A816-E488-41E4-9FA3-846536012284}"</v>
+          <d n="SubKeys" t="Hashtable" />
+          <d n="Values" t="Hashtable" />
+        </o>
         <v>{40450F57-0AA3-4216-96F3-5444ECB29763}</v>
         <o>
           <v n="Name">"{40450F57-0AA3-4216-96F3-5444ECB29763}"</v>
@@ -431,14 +463,8 @@
             <v>ActiveVisuExtensionsLength</v>
             <v>0</v>
             <v>ActiveVisuProfile</v>
-            <v>"IR0whWr8bwfwBwAA4nmM6gAAAABVAgAAmXe8kwAAAAABAAAAAAAAAAEaUwB5AHMAdABlAG0ALgBTAHQAcgBpAG4AZwACTHsAZgA5ADUAYgBiADQAMgA2AC0ANQA1ADIANAAtADQAYgA0ADUALQA5ADQAMAAwAC0AZgBiADAAZgAyAGUANwA3AGUANQAxAGIAfQADCE4AYQBtAGUABDBUAHcAaQBuAEMAQQBUACAAMwAuADEAIABCAHUAaQBsAGQAIAA0ADAAMgAyAC4AMAAFFlAAcgBvAGYAaQBsAGUARABhAHQAYQAGTHsAMQA2AGUANQA1AGIANgAwAC0ANwAwADQAMwAtADQAYQA2ADMALQBiADYANQBiAC0ANgAxADQANwAxADMAOAA3ADgAZAA0ADIAfQAHEkwAaQBiAHIAYQByAGkAZQBzAAhMewAzAGIAZgBkADUANAA1ADkALQBiADAANwBmAC0ANABkADYAZQAtAGEAZQAxAGEALQBhADgAMwAzADUANgBhADUANQAxADQAMgB9AAlMewA5AGMAOQA1ADgAOQA2ADgALQAyAGMAOAA1AC0ANAAxAGIAYgAtADgAOAA3ADEALQA4ADkANQBmAGYAMQBmAGUAZABlADEAYQB9AAoOVgBlAHIAcwBpAG8AbgALBmkAbgB0AAwKVQBzAGEAZwBlAA0KVABpAHQAbABlAA4aVgBpAHMAdQBFAGwAZQBtAE0AZQB0AGUAcgAPDkMAbwBtAHAAYQBuAHkAEAxTAHkAcwB0AGUAbQARElYAaQBzAHUARQBsAGUAbQBzABIwVgBpAHMAdQBFAGwAZQBtAHMAUwBwAGUAYwBpAGEAbABDAG8AbgB0AHIAbwBsAHMAEyhWAGkAcwB1AEUAbABlAG0AcwBXAGkAbgBDAG8AbgB0AHIAbwBsAHMAFCRWAGkAcwB1AEUAbABlAG0AVABlAHgAdABFAGQAaQB0AG8AcgAVIlYAaQBzAHUATgBhAHQAaQB2AGUAQwBvAG4AdAByAG8AbAAWFHYAaQBzAHUAaQBuAHAAdQB0AHMAFwxzAHkAcwB0AGUAbQAYGFYAaQBzAHUARQBsAGUAbQBCAGEAcwBlABkmRABlAHYAUABsAGEAYwBlAGgAbwBsAGQAZQByAHMAVQBzAGUAZAAaCGIAbwBvAGwAGyJQAGwAdQBnAGkAbgBDAG8AbgBzAHQAcgBhAGkAbgB0AHMAHEx7ADQAMwBkADUAMgBiAGMAZQAtADkANAAyAGMALQA0ADQAZAA3AC0AOQBlADkANAAtADEAYgBmAGQAZgAzADEAMABlADYAMwBjAH0AHRxBAHQATABlAGEAcwB0AFYAZQByAHMAaQBvAG4AHhRQAGwAdQBnAGkAbgBHAHUAaQBkAB8WUwB5AHMAdABlAG0ALgBHAHUAaQBkACBIYQBmAGMAZAA1ADQANAA2AC0ANAA5ADEANAAtADQAZgBlADcALQBiAGIANwA4AC0AOQBiAGYAZgBlAGIANwAwAGYAZAAxADcAIRRVAHAAZABhAHQAZQBJAG4AZgBvACJMewBiADAAMwAzADYANgBhADgALQBiADUAYwAwAC0ANABiADkAYQAtAGEAMAAwAGUALQBlAGIAOAA2ADAAMQAxADEAMAA0AGMAMwB9ACMOVQBwAGQAYQB0AGUAcwAkTHsAMQA4ADYAOABmAGYAYwA5AC0AZQA0AGYAYwAtADQANQAzADIALQBhAGMAMAA2AC0AMQBlADMAOQBiAGIANQA1ADcAYgA2ADkAfQAlTHsAYQA1AGIAZAA0ADgAYwAzAC0AMABkADEANwAtADQAMQBiADUALQBiADEANgA0AC0ANQBmAGMANgBhAGQAMgBiADkANgBiADcAfQAmFk8AYgBqAGUAYwB0AHMAVAB5AHAAZQAnVFUAcABkAGEAdABlAEwAYQBuAGcAdQBhAGcAZQBNAG8AZABlAGwARgBvAHIAQwBvAG4AdgBlAHIAdABpAGIAbABlAEwAaQBiAHIAYQByAGkAZQBzACgQTABpAGIAVABpAHQAbABlACkUTABpAGIAQwBvAG0AcABhAG4AeQAqHlUAcABkAGEAdABlAFAAcgBvAHYAaQBkAGUAcgBzACs4UwB5AHMAdABlAG0ALgBDAG8AbABsAGUAYwB0AGkAbwBuAHMALgBIAGEAcwBoAHQAYQBiAGwAZQAsEnYAaQBzAHUAZQBsAGUAbQBzAC1INgBjAGIAMQBjAGQAZQAxAC0AZAA1AGQAYwAtADQAYQAzAGIALQA5ADAANQA0AC0AMgAxAGYAYQA3ADUANgBhADMAZgBhADQALihJAG4AdABlAHIAZgBhAGMAZQBWAGUAcgBzAGkAbwBuAEkAbgBmAG8AL0x7AGMANgAxADEAZQA0ADAAMAAtADcAZgBiADkALQA0AGMAMwA1AC0AYgA5AGEAYwAtADQAZQAzADEANABiADUAOQA5ADYANAAzAH0AMBhNAGEAagBvAHIAVgBlAHIAcwBpAG8AbgAxGE0AaQBuAG8AcgBWAGUAcgBzAGkAbwBuADIMTABlAGcAYQBjAHkAMzBMAGEAbgBnAHUAYQBnAGUATQBvAGQAZQBsAFYAZQByAHMAaQBvAG4ASQBuAGYAbwA0MEwAbwBhAGQATABpAGIAcgBhAHIAaQBlAHMASQBuAHQAbwBQAHIAbwBqAGUAYwB0ADUaQwBvAG0AcABhAHQAaQBiAGkAbABpAHQAeQDQAAIaA9ADAS0E0AUGGgfQBwgaAUUHCQjQAAkaBEUKCwQDAAAABQAAAAoAAAAAAAAA0AwLrQIAAADQDQEtDtAPAS0Q0AAJGgRFCgsEAwAAAAUAAAAKAAAAFAAAANAMC60BAAAA0A0BLRHQDwEtENAACRoERQoLBAMAAAAFAAAACgAAAAAAAADQDAutAgAAANANAS0S0A8BLRDQAAkaBEUKCwQDAAAABQAAAAoAAAAUAAAA0AwLrQIAAADQDQEtE9APAS0Q0AAJGgRFCgsEAwAAAAUAAAAKAAAACgAAANAMC60CAAAA0A0BLRTQDwEtENAACRoERQoLBAMAAAAFAAAACgAAAAAAAADQDAutAgAAANANAS0V0A8BLRDQAAkaBEUKCwQDAAAABQAAAAoAAAAAAAAA0AwLrQIAAADQDQEtFtAPAS0X0AAJGgRFCgsEAwAAAAUAAAAKAAAAFAAAANAMC60EAAAA0A0BLRjQDwEtENAZGq0BRRscAdAAHBoCRR0LBAMAAAAFAAAACgAAAAAAAADQHh8tINAhIhoCRSMkAtAAJRoFRQoLBAMAAAADAAAAAAAAAAoAAADQJgutAAAAANADAS0n0CgBLRHQKQEtENAAJRoFRQoLBAMAAAADAAAAAAAAAAoAAADQJgutAQAAANADAS0n0CgBLRHQKQEtEJoqKwFFAAEC0AABLSzQAAEtF9AAHy0t0C4vGgPQMAutAQAAANAxC60TAAAA0DIarQDQMy8aA9AwC60CAAAA0DELrQMAAADQMhqtANA0Gq0A0DUarQA="</v>
+            <v>"IR0whWr8bwfyBwAAHf+pawAAAABVAgAADnffSgAAAAABAAAAAAAAAAEaUwB5AHMAdABlAG0ALgBTAHQAcgBpAG4AZwACTHsAZgA5ADUAYgBiADQAMgA2AC0ANQA1ADIANAAtADQAYgA0ADUALQA5ADQAMAAwAC0AZgBiADAAZgAyAGUANwA3AGUANQAxAGIAfQADCE4AYQBtAGUABDJUAHcAaQBuAEMAQQBUACAAMwAuADEAIABCAHUAaQBsAGQAIAA0ADAAMgAyAC4AMQAwAAUWUAByAG8AZgBpAGwAZQBEAGEAdABhAAZMewAxADYAZQA1ADUAYgA2ADAALQA3ADAANAAzAC0ANABhADYAMwAtAGIANgA1AGIALQA2ADEANAA3ADEAMwA4ADcAOABkADQAMgB9AAcSTABpAGIAcgBhAHIAaQBlAHMACEx7ADMAYgBmAGQANQA0ADUAOQAtAGIAMAA3AGYALQA0AGQANgBlAC0AYQBlADEAYQAtAGEAOAAzADMANQA2AGEANQA1ADEANAAyAH0ACUx7ADkAYwA5ADUAOAA5ADYAOAAtADIAYwA4ADUALQA0ADEAYgBiAC0AOAA4ADcAMQAtADgAOQA1AGYAZgAxAGYAZQBkAGUAMQBhAH0ACg5WAGUAcgBzAGkAbwBuAAsGaQBuAHQADApVAHMAYQBnAGUADQpUAGkAdABsAGUADhpWAGkAcwB1AEUAbABlAG0ATQBlAHQAZQByAA8OQwBvAG0AcABhAG4AeQAQDFMAeQBzAHQAZQBtABESVgBpAHMAdQBFAGwAZQBtAHMAEjBWAGkAcwB1AEUAbABlAG0AcwBTAHAAZQBjAGkAYQBsAEMAbwBuAHQAcgBvAGwAcwATKFYAaQBzAHUARQBsAGUAbQBzAFcAaQBuAEMAbwBuAHQAcgBvAGwAcwAUJFYAaQBzAHUARQBsAGUAbQBUAGUAeAB0AEUAZABpAHQAbwByABUiVgBpAHMAdQBOAGEAdABpAHYAZQBDAG8AbgB0AHIAbwBsABYUdgBpAHMAdQBpAG4AcAB1AHQAcwAXDHMAeQBzAHQAZQBtABgYVgBpAHMAdQBFAGwAZQBtAEIAYQBzAGUAGSZEAGUAdgBQAGwAYQBjAGUAaABvAGwAZABlAHIAcwBVAHMAZQBkABoIYgBvAG8AbAAbIlAAbAB1AGcAaQBuAEMAbwBuAHMAdAByAGEAaQBuAHQAcwAcTHsANAAzAGQANQAyAGIAYwBlAC0AOQA0ADIAYwAtADQANABkADcALQA5AGUAOQA0AC0AMQBiAGYAZABmADMAMQAwAGUANgAzAGMAfQAdHEEAdABMAGUAYQBzAHQAVgBlAHIAcwBpAG8AbgAeFFAAbAB1AGcAaQBuAEcAdQBpAGQAHxZTAHkAcwB0AGUAbQAuAEcAdQBpAGQAIEhhAGYAYwBkADUANAA0ADYALQA0ADkAMQA0AC0ANABmAGUANwAtAGIAYgA3ADgALQA5AGIAZgBmAGUAYgA3ADAAZgBkADEANwAhFFUAcABkAGEAdABlAEkAbgBmAG8AIkx7AGIAMAAzADMANgA2AGEAOAAtAGIANQBjADAALQA0AGIAOQBhAC0AYQAwADAAZQAtAGUAYgA4ADYAMAAxADEAMQAwADQAYwAzAH0AIw5VAHAAZABhAHQAZQBzACRMewAxADgANgA4AGYAZgBjADkALQBlADQAZgBjAC0ANAA1ADMAMgAtAGEAYwAwADYALQAxAGUAMwA5AGIAYgA1ADUANwBiADYAOQB9ACVMewBhADUAYgBkADQAOABjADMALQAwAGQAMQA3AC0ANAAxAGIANQAtAGIAMQA2ADQALQA1AGYAYwA2AGEAZAAyAGIAOQA2AGIANwB9ACYWTwBiAGoAZQBjAHQAcwBUAHkAcABlACdUVQBwAGQAYQB0AGUATABhAG4AZwB1AGEAZwBlAE0AbwBkAGUAbABGAG8AcgBDAG8AbgB2AGUAcgB0AGkAYgBsAGUATABpAGIAcgBhAHIAaQBlAHMAKBBMAGkAYgBUAGkAdABsAGUAKRRMAGkAYgBDAG8AbQBwAGEAbgB5ACoeVQBwAGQAYQB0AGUAUAByAG8AdgBpAGQAZQByAHMAKzhTAHkAcwB0AGUAbQAuAEMAbwBsAGwAZQBjAHQAaQBvAG4AcwAuAEgAYQBzAGgAdABhAGIAbABlACwSdgBpAHMAdQBlAGwAZQBtAHMALUg2AGMAYgAxAGMAZABlADEALQBkADUAZABjAC0ANABhADMAYgAtADkAMAA1ADQALQAyADEAZgBhADcANQA2AGEAMwBmAGEANAAuKEkAbgB0AGUAcgBmAGEAYwBlAFYAZQByAHMAaQBvAG4ASQBuAGYAbwAvTHsAYwA2ADEAMQBlADQAMAAwAC0ANwBmAGIAOQAtADQAYwAzADUALQBiADkAYQBjAC0ANABlADMAMQA0AGIANQA5ADkANgA0ADMAfQAwGE0AYQBqAG8AcgBWAGUAcgBzAGkAbwBuADEYTQBpAG4AbwByAFYAZQByAHMAaQBvAG4AMgxMAGUAZwBhAGMAeQAzMEwAYQBuAGcAdQBhAGcAZQBNAG8AZABlAGwAVgBlAHIAcwBpAG8AbgBJAG4AZgBvADQwTABvAGEAZABMAGkAYgByAGEAcgBpAGUAcwBJAG4AdABvAFAAcgBvAGoAZQBjAHQANRpDAG8AbQBwAGEAdABpAGIAaQBsAGkAdAB5ANAAAhoD0AMBLQTQBQYaB9AHCBoBRQcJCNAACRoERQoLBAMAAAAFAAAACgAAAAAAAADQDAutAgAAANANAS0O0A8BLRDQAAkaBEUKCwQDAAAABQAAAAoAAAAoAAAA0AwLrQEAAADQDQEtEdAPAS0Q0AAJGgRFCgsEAwAAAAUAAAAKAAAAAAAAANAMC60CAAAA0A0BLRLQDwEtENAACRoERQoLBAMAAAAFAAAACgAAACgAAADQDAutAgAAANANAS0T0A8BLRDQAAkaBEUKCwQDAAAABQAAAAoAAAAKAAAA0AwLrQIAAADQDQEtFNAPAS0Q0AAJGgRFCgsEAwAAAAUAAAAKAAAAKAAAANAMC60CAAAA0A0BLRXQDwEtENAACRoERQoLBAMAAAAFAAAACgAAAAAAAADQDAutAgAAANANAS0W0A8BLRfQAAkaBEUKCwQDAAAABQAAAAoAAAAoAAAA0AwLrQQAAADQDQEtGNAPAS0Q0BkarQFFGxwB0AAcGgJFHQsEAwAAAAUAAAAKAAAAAAAAANAeHy0g0CEiGgJFIyQC0AAlGgVFCgsEAwAAAAMAAAAAAAAACgAAANAmC60AAAAA0AMBLSfQKAEtEdApAS0Q0AAlGgVFCgsEAwAAAAMAAAAAAAAACgAAANAmC60BAAAA0AMBLSfQKAEtEdApAS0QmiorAUUAAQLQAAEtLNAAAS0X0AAfLS3QLi8aA9AwC60BAAAA0DELrRMAAADQMhqtANAzLxoD0DALrQIAAADQMQutAwAAANAyGq0A0DQarQDQNRqtAA=="</v>
           </d>
-        </o>
-        <v>{192FAD59-8248-4824-A8DE-9177C94C195A}</v>
-        <o>
-          <v n="Name">"{192FAD59-8248-4824-A8DE-9177C94C195A}"</v>
-          <d n="SubKeys" t="Hashtable" />
-          <d n="Values" t="Hashtable" />
         </o>
       </d>
       <d n="Values" t="Hashtable" />
