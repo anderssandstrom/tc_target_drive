@@ -1147,7 +1147,7 @@ External Setpoint Generation:
 					<Vars VarGrpType="2">
 						<Name>PlcTask Outputs</Name>
 						<Var>
-							<Name>MAIN.bPowerOutput1</Name>
+							<Name>MAIN.bOutput1</Name>
 							<Comment>
 								<![CDATA[bLimitFwd3 AT %I*: BOOL;
 bLimitBwd3 AT %I*: BOOL;
@@ -1167,16 +1167,16 @@ bHomeSensor7 AT %I*: BOOL;
 bLimitFwd8 AT %I*: BOOL;
 bLimitBwd8 AT %I*: BOOL;
 bHomeSensor8 AT %I*: BOOL;
-*****Outputs: Power Limit switches and Home Sensors (every 4th output)*******]]>
+*****Outputs: Power for Limit switches and Home Sensors (every 4th output)*******]]>
 							</Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.bPowerOutput5</Name>
+							<Name>MAIN.bOutput5</Name>
 							<Comment>
-								<![CDATA[bGPOutput2 AT %Q*: BOOL:= TRUE;
-bGPOutput3 AT %Q*: BOOL:= TRUE;
-bGPOutput4 AT %Q*: BOOL:= TRUE;]]>
+								<![CDATA[bOutput2 AT %Q*: BOOL:= TRUE;
+bOutput3 AT %Q*: BOOL:= TRUE;
+bOutput4 AT %Q*: BOOL:= TRUE;]]>
 							</Comment>
 							<Type>BOOL</Type>
 						</Var>
