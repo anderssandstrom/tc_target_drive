@@ -70,12 +70,12 @@ VAR
 	
 (******Error Handling********)
 	fbErrorList: FB_ErrorList;
-	//	fbEL3214: EL3214;
-	//fbEL1808: EL1808;
+	//fbEL3214: EL3214;
+	fbEL1808: EL1808;
 	//fbEL2819: EL2819;
 	//fbEL9410: EL9410;
 	
-(*******New and specific related variables*********)
+(*******New and specific application variables*********)
 
 END_VAR
 
@@ -1787,12 +1787,45 @@ ERROR();]]></ST>
     </Action>
     <Action Name="ERROR" Id="{35f2cf38-f81e-4aa3-9534-be5fb417817d}">
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[//
+(****FB containting the log of the errors****)
+//
+fbErrorList(
+	En:= TRUE, 
+	bReset:= , 
+	lErrorID:= , 
+	bACK:= , 
+	EnO=> , 
+	nNoError=> , 
+	nNoOverflow=> , 
+	pErrorSystem=> );
+	
+(*call all the necessary instance (input assistance F2 or right click) according to the terminals that you have in your hardware and
+ add "TRUE" in the input En, the corresponding number of termianl to the iTerminal_ID and 
+the variable "fbErrorList.pErrorSystem" to the input ErrorSystem in each FB E. g. : 
+fbEL1808(
+	En:= TRUE, 
+	iTerminal_ID:= 1, 
+	ErrorSystem:= fbErrorList.pErrorSystem, 
+	EnO=> , 
+	bDi_1=> , 
+	bDi_2=> , 
+	bDi_3=> , 
+	bDi_4=> , 
+	bDi_5=> , 
+	bDi_6=> , 
+	bDi_7=> , 
+	bDi_8=> , 
+	bError=> );      *)
+//
+]]></ST>
       </Implementation>
     </Action>
     <Action Name="PROG" Id="{5d03ebbb-2a47-4890-ad6d-e82daf72dc51}">
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[//
+(* Program any sequence, safety or feature (if necessary) application specific in thsi section*)
+//]]></ST>
       </Implementation>
     </Action>
     <LineIds Name="MAIN">
@@ -1800,10 +1833,20 @@ ERROR();]]></ST>
       <LineId Id="81" Count="1" />
     </LineIds>
     <LineIds Name="MAIN.ERROR">
+      <LineId Id="31" Count="0" />
+      <LineId Id="10" Count="1" />
+      <LineId Id="2" Count="7" />
       <LineId Id="1" Count="0" />
+      <LineId Id="12" Count="1" />
+      <LineId Id="29" Count="1" />
+      <LineId Id="16" Count="12" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="32" Count="1" />
     </LineIds>
     <LineIds Name="MAIN.PROG">
+      <LineId Id="2" Count="0" />
       <LineId Id="1" Count="0" />
+      <LineId Id="3" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
