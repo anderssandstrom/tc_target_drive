@@ -81,9 +81,11 @@ END_VAR
 
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[ACT();]]></ST>
+      <ST><![CDATA[PROG();
+AXES();
+ERROR();]]></ST>
     </Implementation>
-    <Action Name="ACT" Id="{240e8099-f921-46d2-bfb2-289ee76e4611}">
+    <Action Name="AXES" Id="{240e8099-f921-46d2-bfb2-289ee76e4611}">
       <Implementation>
         <NWL>
           <XmlArchive>
@@ -1783,8 +1785,25 @@ END_VAR
         </NWL>
       </Implementation>
     </Action>
+    <Action Name="ERROR" Id="{35f2cf38-f81e-4aa3-9534-be5fb417817d}">
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="PROG" Id="{5d03ebbb-2a47-4890-ad6d-e82daf72dc51}">
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Action>
     <LineIds Name="MAIN">
       <LineId Id="2" Count="0" />
+      <LineId Id="81" Count="1" />
+    </LineIds>
+    <LineIds Name="MAIN.ERROR">
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="MAIN.PROG">
+      <LineId Id="1" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
