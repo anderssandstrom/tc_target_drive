@@ -70,82 +70,7 @@
     <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Analog_Inputs\FB_CalculateFrequency_3702_v0_01.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Analog_Inputs\FB_EL3702_v0_00.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Analog_Inputs\FB_EL3773_v0_00.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Analog_Inputs\FB_EL3773_v1_00.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1002.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1004.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1008.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1012.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1014.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1018.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1024.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1034.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1084.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1088.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1094.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1098.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1104.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1114.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1124.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1134.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1144.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1202.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1252.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1702.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1712.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1722.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1804.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1808.TcPOU">
@@ -154,73 +79,16 @@
     <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1809.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1814.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1819.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1859.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1862.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1872.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1889.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\FB_EL1008_v1_00.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\FB_EL1202_v1_00.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\FB_EL1252ASM_v1_00.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2002.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2004.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2008.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2014.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2022.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2024.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2032.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2034.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2042.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2084.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2088.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2124.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2252.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2521_v1_00.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2808.TcPOU">
@@ -233,36 +101,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\External_Types\dutEL2521_Status.TcDUT">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\Safety_Terminals\EL1904_v0_00.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\Safety_Terminals\EL1908_v0_00.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\Safety_Terminals\EL2901_v0_00.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\Safety_Terminals\EL2902_v0_00.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\Safety_Terminals\EL2904_v0_00.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\Safety_Terminals\EL2964_v0_00.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\Safety_Terminals\EL6900_v0_00.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\Safety_Terminals\FB_EL1904_v1_00.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\Safety_Terminals\FB_EL2904_v1_00.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\Safety_Terminals\FB_EL6900_v1_00.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Measuring_Terminals\EL5002.TcPOU">
@@ -349,7 +187,6 @@
     <Folder Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs" />
     <Folder Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs" />
     <Folder Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\External_Types" />
-    <Folder Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\Safety_Terminals" />
     <Folder Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Measuring_Terminals" />
     <Folder Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Motion" />
     <Folder Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\System" />
