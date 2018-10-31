@@ -71,7 +71,7 @@ VAR
 (******Error Handling********)
 	fbErrorList: FB_ErrorList;
 	//fbEL3214: EL3214;
-	fbEL1808: EL1808;
+	//fbEL1808: EL1808;
 	//fbEL2819: EL2819;
 	//fbEL9410: EL9410;
 	
