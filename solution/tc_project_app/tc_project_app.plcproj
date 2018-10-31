@@ -73,6 +73,9 @@
     <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1008.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1018.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1808.TcPOU">
       <SubType>Code</SubType>
     </Compile>
