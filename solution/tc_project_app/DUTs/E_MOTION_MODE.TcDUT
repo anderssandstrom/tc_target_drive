@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.3">
+  <DUT Name="E_MOTION_MODE" Id="{7f7bdea7-44fc-4f6c-9e29-87d2e58c0397}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_MOTION_MODE :
+(
+	eStop 			:= 0, 
+	eJogPositive	:= 1, 
+	eJogNegative	:= 2, 
+	ePositioning 	:= 3 
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

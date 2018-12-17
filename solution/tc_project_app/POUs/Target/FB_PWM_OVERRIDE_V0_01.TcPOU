@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.25">
+  <POU Name="FB_PWM_OVERRIDE_V0_01" Id="{329fc295-5889-41aa-b7e1-38a034502569}">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_PWM_OVERRIDE_V0_01
+VAR_INPUT
+	En: BOOL;
+	bEnable: BOOL;
+	iBlockSampleTimeMicroS: DINT;
+	iOverrideSampleTimeMicroS: DINT;
+	iDecimalPoint: INT;
+	fOverrideInput: LREAL;
+END_VAR
+VAR_OUTPUT
+	EnO: BOOL;
+	fOverrideOutput: LREAL;
+END_VAR
+VAR
+	iNumCycles: DINT;
+	iOverrideBase: DINT;
+	fOverrideDecimals: LREAL;
+	i: INT;
+	iDecimalGain: DINT;
+	fOverrideOutputHigh: LREAL;
+	iHighCycles: DINT;
+	iLowCycles: DINT;
+	fOverideOutputLow: LREAL;
+	iCycleCounter: DINT;
+	iLowCounter: INT;
+	iHighCounter: INT;
+	fActualPWM: LREAL;
+	fSetpointPWM: LREAL;
+	fOverrideOld: LREAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//Get correct decimal of overrride
+IF bEnable THEN
+	iNumCycles:=iOverrideSampleTimeMicroS/iBlockSampleTimeMicroS; //71 if 71ms and 1ms
+	iDecimalGain:=1;
+	FOR i:=1 TO iDecimalPoint DO
+		iDecimalGain:=iDecimalGain*10; //10000 if iDecimalpoint is 4
+	END_FOR
+	iOverrideBase:=TRUNC(fOverrideInput*iDecimalGain); //=900004 if fOverride=90.00045
+	fOverrideDecimals:=fOverrideInput*iDecimalGain-iOverrideBase; //=0.5 if fOverride=90.00045
+	iHighCycles:=LREAL_TO_INT(iNumCycles*fOverrideDecimals);
+	iLowCycles:=iNumCycles-iHighCycles;
+	fOverideOutputLow:=DINT_TO_LREAL(iOverrideBase)/iDecimalGain; //90.0004
+	fOverrideOutputHigh:=DINT_TO_LREAL(iOverrideBase+1)/iDecimalGain; //90.0005
+	IF ABS(fOverrideInput-fOverrideOld)>0 THEN 
+		iCycleCounter:=0;
+		iLowCounter:=0;
+		iHighCounter:=0;	
+		fOverrideOld:=fOverrideInput;
+	END_IF
+
+	//IF iCycleCounter> iNumCycles THEN
+	//	iCycleCounter:=0;
+	//	iLowCounter:=0;
+	//	iHighCounter:=0;	
+	//END_IF
+	iCycleCounter:=iCycleCounter+1;
+
+	IF iLowCycles>0 THEN
+		IF iHighCycles>0 THEN
+			//Both high and low should be output during the period
+			IF iLowCounter=0 THEN
+				fOverrideOutput:=fOverideOutputLow;
+				iLowCounter:=iLowCounter+1;
+			ELSE
+				IF iHighCounter=0 THEN
+					fOverrideOutput:=fOverrideOutputHigh;
+					iHighCounter:=iHighCounter+1;
+				ELSE //both counters is atleast 1
+					fActualPWM:= DINT_TO_LREAL(iHighCounter)/DINT_TO_LREAL(iLowCounter);
+					fSetpointPWM:=DINT_TO_LREAL(iHighCycles)/DINT_TO_LREAL(iLowCycles);
+					IF fActualPWM>fSetpointPWM THEN
+						fOverrideOutput:=fOverideOutputLow;
+						iLowCounter:=iLowCounter+1;
+					ELSE
+						fOverrideOutput:=fOverrideOutputHigh;
+						iHighCounter:=iHighCounter+1;
+					END_IF				
+				END_IF				
+			END_IF
+		ELSE		
+			fOverrideOutput:=fOverideOutputLow;
+			iLowCounter:=iLowCounter+1;
+		END_IF
+	ELSE
+		fOverrideOutput:=fOverrideOutputHigh;
+		iHighCounter:=iHighCounter+1;
+	END_IF
+ELSE	
+	fOverrideOutput:=fOverrideInput;	
+END_IF
+	
+
+]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

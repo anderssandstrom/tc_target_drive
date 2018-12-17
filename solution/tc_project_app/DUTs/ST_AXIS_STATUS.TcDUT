@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.3">
+  <DUT Name="ST_AXIS_STATUS" Id="{e254610f-185a-469f-a884-c83c971223f1}">
+    <Declaration><![CDATA[TYPE ST_AXIS_STATUS :
+STRUCT
+
+	bDriveInParameterMode		: BOOL;		// FALSE (S424): Drive is in Operating mode
+											// TRUE (S424): The drive is in parameter mode (parameterization level 1 is active)
+	eActualOperationModeNo		: E_OPERATION_MODE_NO	:= E_OPERATION_MODE_NO.ePrimaryOpMode;	// (S134.0-2) Defines the Operation mode to use (the different operation modes are configured in the drive) 
+	bDCBusPresent				: BOOL;		// FALSE: DC-bus is not present (drive status bb)
+											// TRUE (S135.1&0 TRUE&FALSE): DC-bus present (drive state Ab)
+	bAxisEnabled				: BOOL; 	// TRUE (S135.1&0 TRUE&TRUE): Axis is operational with torque (drive state AF)
+	bAxisHomedStatus			: BOOL; 	// TRUE (S403.0): Axis absolute position is established 
+	bAxisStandStillStatus		: BOOL;		// TRUE (S331): Axis is standing still (velocity below configured threshold) 
+	bAxisInTargetPosition		: BOOL;		// TRUE (S437.2): Axis command position is reached
+	bAxisConstantVelocityStatus	: BOOL;		// TRUE (S437.4): Axis in constant velocity
+	bAxisAccelerationStatus		: BOOL;		// TRUE (S437.5): Axis in acceleration
+	bAxisDecelerationStatus		: BOOL;		// TRUE (S437.6): Axis in deceleration
+	bAxisJogStatus				: BOOL;		// TRUE (S437.12): Axis in jog mode
+	fActualPosition				: LREAL;	// The actual position of the axis
+	fActualVelocity				: LREAL;	// The actual velocity of the axis
+	fActualTorque				: LREAL;	// The actual torque of the axis
+	fPositionError				: LREAL;	// The position error of the axis, i.e. the deviation between the Axis Set position and Actual position
+	bCommandChange				: BOOL;		// (S135.5): Bit that toggle every time a new command has been recognised by the drive 
+	bCommandValueProcessing		: BOOL;		// FALSE (S115.3): Drive ignores (external) command value input (S47, S258, S282 etc) 
+											// TRUE (S115.3): Drive follows (external) command value input (S47, S258, S282 etc) 
+	bLimitsDisabled				: BOOL;		// TRUE (S159-C1300): 	Monitoring of Position error, Position command error, Velocity error and Acceleration limit is disabled
+											// FALSE (S159-C1300): 	Monitoring of Position error, Position command error, Velocity error and Acceleration limit is enabled 
+	bDiagMessage				: BOOL;		// TRUE (S135.11): There is a Diagnostic message on the drive 
+	bWarning					: BOOL;		// TRUE (S135.12): There is a warning present on the drive 
+	bError 						: BOOL;		// TRUE (S135.13): There is an error present on the drive 
+	nDiagMessage				: DWORD;	// (S390) Displays the actual diagnostic message on the drive 
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

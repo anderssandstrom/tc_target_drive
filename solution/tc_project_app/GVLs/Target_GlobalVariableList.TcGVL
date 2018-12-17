@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.10">
+  <GVL Name="Target_GlobalVariableList" Id="{c7b465dd-090c-4ea5-b2d2-91bf4a0ef82f}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	fSpeedToleranceRpm: LREAL := 0.05;
+	
+END_VAR
+
+VAR_GLOBAL CONSTANT
+	nSectors: LREAL :=36;
+    nPulseFreqHz:LREAL:=14;
+	fNominalSpeedRpm: LREAL := Target_GlobalVariableList.nPulseFreqHz/Target_GlobalVariableList.nSectors*60;
+    fMaximumSPeedRpm: LREAL := Target_GlobalVariableList.fNominalSpeedRpm*1.1;
+	nMaxMotorTemperature: INT:= 50;
+	
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

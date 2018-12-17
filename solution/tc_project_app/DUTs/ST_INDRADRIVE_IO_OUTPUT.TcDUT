@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.3">
+  <DUT Name="ST_INDRADRIVE_IO_OUTPUT" Id="{5825c642-ed5e-4e12-a668-145576d2d6e9}">
+    <Declaration><![CDATA[TYPE ST_INDRADRIVE_IO_OUTPUT :	// Contains the data that is sent to the drive
+STRUCT
+	stS134_MasterControlWord			AT %Q*	: ST_S134_MASTERCONTROLWORD; 	
+	nS47_PositionCommandValue			AT %Q*	: DINT; 
+	nS258_TargetPosition				AT %Q*	: DINT; 
+	nS282_PositioningCommandValue		AT %Q*	: DINT; 
+	nS259_PositioningVelocity			AT %Q*	: UDINT; 
+	nS260_PositioningAcceleration		AT %Q*	: UDINT; 
+	nS359_PositioningDeceleration		AT %Q*	: UDINT; 
+	nS108_FeedrateOverride				AT %Q*	: UINT; 
+	stS145_SignalControlWord			AT %Q*	: ST_S145_SIGNALCONTROLWORD;
+	nS92_BiPolarTorqueLimit				AT %Q*	: INT; 
+	nS40_VelocityCommandValue			AT %Q*	: DINT; 
+
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

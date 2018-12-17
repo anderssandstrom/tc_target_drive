@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.6">
+  <POU Name="OLD_MAIN" Id="{40828a63-f1c1-40a3-a7c5-8a47be350a36}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM OLD_MAIN
+VAR
+	fb_IndraDrive	: fbIndraDrive;
+	stAmsNetId	AT %I*	: AMSNETID;
+	nPort	AT %I* : WORD;
+	stCommands: ST_AXIS_COMMAND;
+	stStatus: ST_AXIS_STATUS;
+	nMasterAxisPosition AT %I* : DINT;
+	nAdditivePositionSetpoiunt AT %Q* : DINT;
+	fMasterAxisPosition : LREAL;
+	fAdditivePositionSetpoint : LREAL;
+	fDiffPosition :LREAL;
+	dLatchedPosition AT %I*:DINT;
+	eTargetState: TARGET_STATE_MACHINE;
+	bExecute: BOOL := FALSE;
+	bEnable:BOOL:=FALSE;
+	bEnabled:BOOL:=FALSE;
+	bReset:BOOL:=FALSE;
+    fbModePhase:FB_ModePhasing;	
+	fAccelerationDefault:LREAL:=0.005;
+	fSetVelToDriveRaw:LREAL;
+	bBrakeFreewheelOn AT %Q*: BOOL;
+	bBrakeLockedOn AT %Q*: BOOL;
+    inputDummy AT %I*: BOOL;
+	inputDigSens1 AT %I*: BOOL;
+	inputDigSens2 AT %I*: BOOL;
+	nMaxMotorTemperature: INT:= 50;
+	fbBrakeTorque: FB_BrakeTorque;
+	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[stCommands.bEnableAxis :=bEnable;
+stCommands.bHaltAxis :=bEnable;
+bEnabled:=stStatus.bAxisEnabled;
+stCommands.bCmd_ErrorReset:=bReset;
+
+//MotorTemperatureMonitoring
+IF Global_IO.iiAnalogueIn_1/10 >= nMaxMotorTemperature THEN
+	bEnable:= FALSE;
+	bExecute:= FALSE;
+	
+END_IF
+			
+CASE eTargetState OF 
+	TARGET_STATE_MACHINE.CONSTANT_VELOCITY:
+		stCommands.eMotionMode :=e_Motion_mode.eJogPositive;
+		stCommands.eOperationMode:=e_Operation_mode_no.eSecondaryOpMode2;
+		stCommands.fVelocityCommandValue:=0;		
+	TARGET_STATE_MACHINE.POSITIONING:
+		stCommands.eMotionMode :=e_Motion_mode.ePositioning;
+		stCommands.eOperationMode:=e_Operation_mode_no.eSecondaryOpMode1;
+	TARGET_STATE_MACHINE.PHASING:
+   		fbModePhase(
+			bExecute:=bExecute,
+			stStatus:=	stStatus,
+			dLatchedPosition:=dLatchedPosition,	
+			stCommands:=stCommands);
+END_CASE
+
+IF NOT bExecute THEN
+	stCommands.fVelocityCommandValue:=0;
+END_IF	
+
+IF stStatus.fActualVelocity/10 > Target_GlobalVariableList.fNominalSpeedRpm * 0.995  THEN
+	stCommands.fCommandAcceleration:= fAccelerationDefault;
+	stCommands.fCommandDeceleration:=fAccelerationDefault;	
+ELSIF stStatus.fActualVelocity/10 > Target_GlobalVariableList.fNominalSpeedRpm * 0.9  THEN
+	
+	stCommands.fCommandAcceleration:= fAccelerationDefault*0.2;
+	stCommands.fCommandDeceleration:=fAccelerationDefault*0.2;	
+ELSIF stStatus.fActualVelocity/10 > Target_GlobalVariableList.fNominalSpeedRpm * 0.80 THEN
+ 	stCommands.fCommandAcceleration:= fAccelerationDefault*0.35;
+	stCommands.fCommandDeceleration:=fAccelerationDefault*0.35;	
+ELSIF stStatus.fActualVelocity/10 > Target_GlobalVariableList.fNominalSpeedRpm * 0.70 THEN
+ 	stCommands.fCommandAcceleration:= fAccelerationDefault*0.5;
+	stCommands.fCommandDeceleration:=fAccelerationDefault*0.5;	
+ELSE
+ 	stCommands.fCommandAcceleration:= fAccelerationDefault;
+	stCommands.fCommandDeceleration:=fAccelerationDefault;
+END_IF
+IF NOT bexecute THEN
+	stCommands.fCommandAcceleration:= fAccelerationDefault*4;
+	stCommands.fCommandDeceleration:=fAccelerationDefault*4;
+END_IF
+
+
+
+fb_IndraDrive(
+	AmsNetId:= stAmsNetId, 
+	AdsAddr_Port:= nPort, 
+	stAxisCommands:= stCommands, 
+	stDriveStatus:= , 
+	stAxisStatus=> stStatus, 
+	stDriveCommands=> );
+	
+	stCommands.bCmd_ActivateParameterMode;//True puts the drive in parameter mode
+	stCommands.bCmd_DisableLimits;// True disables monitoring of errors
+	stCommands.bCmd_DriveControlledHoming;// True starts homing procedure defined in the drive
+	stCommands.bCmd_ErrorReset;
+	stCommands.bCmd_ExitParameterMode;
+	stCommands.bCmd_RunVirtualMater;// Jog command to the virtual master
+	stCommands.bCmd_SetAbsolutePosition;
+	stCommands.bCommandPositionChange;// Drive moves to the current target position, when bCommandVAlueAccept toggled, drive moves to the new target position
+	stCommands.bCommandValueAccept;// Used in "Drive positioning Mode" to update the target position when toggled
+	stCommands.bEnableAxis;
+	stCommands.bHaltAxis;// Performs halt on the drive, bEnableaxis has to be TRUE
+	stCommands.bPositionCommandValue;//0=Absolute;1=Relative
+	stCommands.eMotionMode;
+	stCommands.eOperationMode;
+	stCommands.fCommandAcceleration;// Acceleration used for positioning and jogging
+	stCommands.fCommandDeceleration;// Deceleration used for positioning and jogging
+	stCommands.fCommandPosition;
+	stCommands.fCommandVelocity;// Velocity used for positioning and jogging
+	stCommands.fFeedrateOverride;// Parameter used for adjustment of the velocity (0,100)%
+	stCommands.fTorqueLimit;
+	stCommands.fVelocityCommandValue;// S40, velocity used for positining and jogging (in velocity mode)
+	fSetVelToDriveRaw:= DINT_TO_LREAL(MAIN.fb_IndraDrive.stDriveCommands.nS40_VelocityCommandValue)/10000;
+	
+	
+  ]]></ST>
+    </Implementation>
+    <LineIds Name="OLD_MAIN">
+      <LineId Id="454" Count="0" />
+      <LineId Id="453" Count="0" />
+      <LineId Id="457" Count="0" />
+      <LineId Id="172" Count="0" />
+      <LineId Id="617" Count="0" />
+      <LineId Id="616" Count="0" />
+      <LineId Id="624" Count="0" />
+      <LineId Id="628" Count="0" />
+      <LineId Id="630" Count="1" />
+      <LineId Id="629" Count="0" />
+      <LineId Id="474" Count="0" />
+      <LineId Id="129" Count="0" />
+      <LineId Id="150" Count="0" />
+      <LineId Id="167" Count="1" />
+      <LineId Id="219" Count="0" />
+      <LineId Id="285" Count="0" />
+      <LineId Id="216" Count="1" />
+      <LineId Id="243" Count="0" />
+      <LineId Id="439" Count="0" />
+      <LineId Id="446" Count="0" />
+      <LineId Id="443" Count="0" />
+      <LineId Id="447" Count="0" />
+      <LineId Id="472" Count="0" />
+      <LineId Id="126" Count="0" />
+      <LineId Id="468" Count="2" />
+      <LineId Id="123" Count="0" />
+      <LineId Id="517" Count="1" />
+      <LineId Id="520" Count="1" />
+      <LineId Id="495" Count="0" />
+      <LineId Id="516" Count="0" />
+      <LineId Id="496" Count="0" />
+      <LineId Id="499" Count="0" />
+      <LineId Id="506" Count="0" />
+      <LineId Id="505" Count="0" />
+      <LineId Id="507" Count="0" />
+      <LineId Id="509" Count="2" />
+      <LineId Id="513" Count="2" />
+      <LineId Id="497" Count="0" />
+      <LineId Id="522" Count="2" />
+      <LineId Id="471" Count="0" />
+      <LineId Id="581" Count="0" />
+      <LineId Id="580" Count="0" />
+      <LineId Id="588" Count="0" />
+      <LineId Id="8" Count="5" />
+      <LineId Id="22" Count="1" />
+      <LineId Id="25" Count="0" />
+      <LineId Id="28" Count="14" />
+      <LineId Id="44" Count="2" />
+      <LineId Id="62" Count="1" />
+      <LineId Id="277" Count="0" />
+      <LineId Id="579" Count="0" />
+      <LineId Id="573" Count="0" />
+      <LineId Id="275" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

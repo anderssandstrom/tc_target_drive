@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.3">
+  <DUT Name="ST_S145_SIGNALCONTROLWORD" Id="{b58711c2-b06c-4ce4-937b-60126394b60e}">
+    <Declaration><![CDATA[TYPE ST_S145_SIGNALCONTROLWORD :
+STRUCT
+	bS346_0_PosCtrlWord_CmdValueAccept		: BIT	:= FALSE; 	// Toggle to execute Slave Axis command
+	bP12_C300_SetAbsolutePosition			: BIT	:= FALSE;	// Sets the Absolute position (defined in S52) of the drive
+	bS148_C600_DriveControlledHoming		: BIT	:= FALSE; 	// Initiates the homing procedure defined in the drive
+	bS346_3_PosCtrlWord_Abs_Rel				: BIT	:= FALSE;	// FALSE: Absolute 
+																// TRUE: Relative									
+	bS346_5_PosCtrlWord_ImmBlockChange		: BIT	:= FALSE;	// FALSE: Drive moves to current target position, before positioning at new target position
+																// TRUE: Immediate block change, i.e., drive immediately moves to new target position
+	bS99_DriveErrorReset					: BIT	:= FALSE;	
+	bS346_1_PosCtrlWord_PosActivation		: BIT	:= FALSE;	// (bS346_2 | bS346_1) 00:	Positioning active, started by toggling of bit 0
+																// (bS346_2 | bS346_1) 01: 	Infinite travel in positive direction (jog+) (Positioning will be aborted)
+																// (bS346_2 | bS346_1) 10: 	Infinite travel in negative direction (jog-) (Positioning will be aborted)
+																// (bS346_2 | bS346_1) 11: 	Stopping the axis (positioning stop) (Positioning will be aborted)
+	bS346_2_PosCtrlWord_PosActivation		: BIT	:= FALSE;	// (bS346_2 | bS346_1) 00:	Positioning active, started by toggling of bit 0
+																// (bS346_2 | bS346_1) 01: 	Infinite travel in positive direction (jog+) (Positioning will be aborted)
+																// (bS346_2 | bS346_1) 10: 	Infinite travel in negative direction (jog-) (Positioning will be aborted)
+																// (bS346_2 | bS346_1) 11: 	Stopping the axis (positioning stop) (Positioning will be aborted)
+	                 	
+	bS159_C1300_Disable_Monitoring			: BIT	:= FALSE;	// TRUE: 	Monitoring of Position error, Position command error, Velocity error and Acceleration limit is disabled
+																// FALSE: 	Monitoring of Position error, Position command error, Velocity error and Acceleration limit is enabled 
+	                  	
+	bS405_0_Probe1_Enabled					: BIT	:= TRUE;
+	bS420_C0400_Activate_ParameterMode		: BIT	:= FALSE;	// Brings the drive into parameter mode
+	bS422_C0200_Exit_ParameterMode			: BIT	:= FALSE;	// Brings the drive into parameter mode
+	bP760_VM_PosCtrlWord_CmdValueAccept		: BIT	:= FALSE;	// Toggle to execute Virtual Master command
+	bP760_VM_PosCtrlWord_1_PosActivation	: BIT	:= FALSE;	// (bP760_2 | bP760_1) 00:	Positioning active, started by toggling of bit 0
+																// (bP760_2 | bP760_1) 01: 	Infinite travel in positive direction (jog+) (Positioning will be aborted)
+																// (bP760_2 | bP760_1) 10: 	Infinite travel in negative direction (jog-) (Positioning will be aborted)
+																// (bP760_2 | bP760_1) 11: 	Stopping the axis (positioning stop) (Positioning will be aborted)
+	bP760_VM_PosCtrlWord_2_PosActivation	: BIT	:= FALSE;	// (bP760_2 | bP760_1) 00:	Positioning active, started by toggling of bit 0
+																// (bP760_2 | bP760_1) 01: 	Infinite travel in positive direction (jog+) (Positioning will be aborted), started by toggling of bit 0
+																// (bP760_2 | bP760_1) 10: 	Infinite travel in negative direction (jog-) (Positioning will be aborted), started by toggling of bit 0
+																// (bP760_2 | bP760_1) 11: 	Stopping the axis (positioning stop) (Positioning will be aborted)
+	{attribute 'hide'}
+	bS145_15_NotDefined						: BIT	:= FALSE;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

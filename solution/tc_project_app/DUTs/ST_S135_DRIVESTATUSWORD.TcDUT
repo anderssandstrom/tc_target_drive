@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.3">
+  <DUT Name="ST_S135_DRIVESTATUSWORD" Id="{1728767e-b922-48af-a57d-9a7819bc0a38}">
+    <Declaration><![CDATA[TYPE ST_S135_DRIVESTATUSWORD :
+STRUCT
+	{attribute 'hide'}
+	bS135_0_CtrlInfo_ServiceCh				: BIT;	// 	Control information for service channel
+	{attribute 'hide'}
+	bS135_1_CtrlInfo_ServiceCh				: BIT;	// 	Control information for service channel
+	{attribute 'hide'}
+	bS135_2_CtrlInfo_ServiceCh				: BIT;	// 	Control information for service channel
+	{attribute 'hide'}
+	bS135_3_CmdValProcessingStatus			: BIT;	// 	Status of command value processing
+	{attribute 'hide'}
+	bS135_4_Reserved						: BIT;	// 	Reserved
+	bS135_CommandChange 					: BIT;	// 	Toggling bit to acknowledge that the Command status has changed 
+	{attribute 'hide'}
+	bS135_6_RealTime_Bit1					: BIT;	// 	Real time bit1
+	{attribute 'hide'}
+	bS135_7_RealTime_Bit2					: BIT;	// 	Real time bit2
+	bS135_ActualOperationMode_Bit0			: BIT;	// 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)
+													//	000: Primary operation mode active
+													// 	001: Secondary operation mode 1 active
+													// 	010: Secondary operation mode 2 active, etc
+	bS135_ActualOperationMode_Bit1			: BIT;	// 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)
+													//	000: Primary operation mode active
+													// 	001: Secondary operation mode 1 active
+													// 	010: Secondary operation mode 2 active, etc
+	bS135_ActualOperationMode_Bit2			: BIT;	// 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)
+													//	000: Primary operation mode active
+													// 	001: Secondary operation mode 1 active
+													// 	010: Secondary operation mode 2 active, etc
+	bS135_Class3_Diag_Mess					: BIT;	// 	TRUE: There is a Class 3 Diagnostic message present in the drive
+	bS135_Class2_Diag_Warn					: BIT;	// 	TRUE: There is a Warning present in the drive
+	bS135_Class1_Diag_Err					: BIT;	// 	TRUE: There is a Error present in the drive
+	bS135_ReadyForOperation_Bit0			: BIT;	// 	(bS135_ReadyForOp_B1 | bS135_ReadyForOp_B0)
+													//	00: Not ready for power on (e.g. drive in "P2")
+													//	01: Ready for power on ("bb") (A0013)
+													//	10: Control section and power section ready for op. ("Ab") (A0012)
+													//	11: In operation, with torque (e.g. "AF")
+	bS135_ReadyForOperation_Bit1			: BIT;	// 	(bS135_ReadyForOp_B1 | bS135_ReadyForOp_B0)
+													//	00: Not ready for power on (e.g. drive in "P2")
+													//	01: Ready for power on ("bb") (A0013)
+													//	10: Control section and power section ready for op. ("Ab") (A0012)
+													//	11: In operation, with torque (e.g. "AF")
+
+	
+
+
+	
+
+
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>
