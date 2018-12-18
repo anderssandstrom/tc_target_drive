@@ -29,23 +29,28 @@ VAR
 	inputDigSens2 AT %I*: BOOL;
 	nMaxMotorTemperature: INT:= 50;
 	fbBrakeTorque: FB_BrakeTorque;
-	iBrakeSpNm:LREAL:=0;
+	fBrakeSpNm:LREAL:=0;
 	iBrakeSpRaw AT %Q* :INT:=0;
+	
+	//Temperature input from EL3214 Channel1
+	iRotMotorTempRaw AT %I*: INT:=0;
+	fRotMotorTempDegC:LREAL:=0;
 	
 	
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[stCommands.bEnableAxis :=bEnable;
+      <ST><![CDATA[fRotMotorTempDegC:=iRotMotorTempRaw/10.0;
+
+stCommands.bEnableAxis :=bEnable;
 stCommands.bHaltAxis :=bEnable;
 bEnabled:=stStatus.bAxisEnabled;
 stCommands.bCmd_ErrorReset:=bReset;
 
 //MotorTemperatureMonitoring
-IF Global_IO.iiAnalogueIn_1/10 >= nMaxMotorTemperature THEN
+IF fRotMotorTempDegC >= nMaxMotorTemperature THEN
 	bEnable:= FALSE;
-	bExecute:= FALSE;
-	
+	bExecute:= FALSE;	
 END_IF
 			
 CASE eTargetState OF 
@@ -66,8 +71,9 @@ END_CASE
 
 IF NOT bExecute THEN
 	stCommands.fVelocityCommandValue:=0;
-END_IF	
+END_IF
 
+//Reduce over shoot by lowering acc when closing in on setpoint 
 IF stStatus.fActualVelocity/10 > Target_GlobalVariableList.fNominalSpeedRpm * 0.995  THEN
 	stCommands.fCommandAcceleration:= fAccelerationDefault;
 	stCommands.fCommandDeceleration:=fAccelerationDefault;	
@@ -133,14 +139,15 @@ ACT_Brake();
     </Implementation>
     <Action Name="ACT_Brake" Id="{a8ef5cdf-33a2-41f9-b34e-1a95819e04c4}">
       <Implementation>
-        <ST><![CDATA[bBrakeFreewheelOn:=iBrakeSpNm=0;
+        <ST><![CDATA[bBrakeFreewheelOn:=fBrakeSpNm=0;
 bBrakeLockedOn:=FALSE;
 
-fbBrakeTorque(iTorqueValueinNm:=iBrakeSpNm);
+fbBrakeTorque(iTorqueValueinNm:=fBrakeSpNm);
 iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       </Implementation>
     </Action>
     <LineIds Name="MAIN">
+      <LineId Id="681" Count="1" />
       <LineId Id="454" Count="0" />
       <LineId Id="453" Count="0" />
       <LineId Id="457" Count="0" />
@@ -149,7 +156,7 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       <LineId Id="616" Count="0" />
       <LineId Id="624" Count="0" />
       <LineId Id="628" Count="0" />
-      <LineId Id="630" Count="1" />
+      <LineId Id="630" Count="0" />
       <LineId Id="629" Count="0" />
       <LineId Id="474" Count="0" />
       <LineId Id="129" Count="0" />
@@ -167,7 +174,9 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       <LineId Id="126" Count="0" />
       <LineId Id="468" Count="2" />
       <LineId Id="123" Count="0" />
-      <LineId Id="517" Count="1" />
+      <LineId Id="672" Count="0" />
+      <LineId Id="671" Count="0" />
+      <LineId Id="518" Count="0" />
       <LineId Id="520" Count="1" />
       <LineId Id="495" Count="0" />
       <LineId Id="516" Count="0" />

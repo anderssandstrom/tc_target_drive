@@ -531,13 +531,6 @@
 					<Vars VarGrpType="1">
 						<Name>PlcTask Inputs</Name>
 						<Var>
-							<Name>Global_IO.iiAnalogueIn_1</Name>
-							<Comment>
-								<![CDATA[Temperature input from EL3214 Channel1]]>
-							</Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
 							<Name>MAIN.fb_IndraDrive.stDriveStatus.nS135_DriveStatusWord</Name>
 							<Type GUID="{E8EE2899-4679-469C-BAC5-7318F329907D}">ST_S135_DRIVESTATUSWORD</Type>
 							<SubVar>
@@ -711,20 +704,16 @@
 							<Name>MAIN.inputDigSens2</Name>
 							<Type>BOOL</Type>
 						</Var>
-					</Vars>
-					<Vars VarGrpType="2">
-						<Name>PlcTask Outputs</Name>
 						<Var>
-							<Name>Global_IO.iqAnalogueOut_1</Name>
+							<Name>MAIN.iRotMotorTempRaw</Name>
 							<Comment>
-								<![CDATA[Analogue outputs EL4002]]>
+								<![CDATA[Temperature input from EL3214 Channel1]]>
 							</Comment>
 							<Type>INT</Type>
 						</Var>
-						<Var>
-							<Name>Global_IO.iqAnalogueOut_2</Name>
-							<Type>INT</Type>
-						</Var>
+					</Vars>
+					<Vars VarGrpType="2">
+						<Name>PlcTask Outputs</Name>
 						<Var>
 							<Name>MAIN.fb_IndraDrive.stDriveCommands.stS134_MasterControlWord</Name>
 							<Type GUID="{4CCFD5CA-E676-474E-B42D-6A96C42819C9}">ST_S134_MASTERCONTROLWORD</Type>
@@ -1494,6 +1483,7 @@
 							<Fmmu>0000000000000000801100010100000002000000000000000000000000000000</Fmmu>
 							<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
 							<BootStrapData>0010f400f410f400</BootStrapData>
+							<MBoxUserCmdData>020003000a0000000b000000030000000000000000000000000000000000000020008019020000001a0052544420656c656d656e7400</MBoxUserCmdData>
 							<Pdo Name="RTD Inputs Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="3">
 								<Entry Name="Status__Underrange" Index="#x6000" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
@@ -1731,7 +1721,7 @@
 				<Link VarA="PlcTask Outputs^MAIN.iBrakeSpRaw" VarB="AO Outputs Channel 1^Analog output"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 10 (EK1200)^Term 20 (EL3214)">
-				<Link VarA="PlcTask Inputs^Global_IO.iiAnalogueIn_1" VarB="RTD Inputs Channel 1^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.iRotMotorTempRaw" VarB="RTD Inputs Channel 1^Value"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 4 (EtherCAT)^Drive 10 (IndraDrive MPB18/19)">
 				<Link VarA="PlcTask Inputs^MAIN.dLatchedPosition" VarB="AT^Probe value 1 positive edge"/>
