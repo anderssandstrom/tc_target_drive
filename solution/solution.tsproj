@@ -524,15 +524,6 @@
 			</Tasks>
 		</System>
 		<Plc>
-			<Project GUID="{F935F1DE-0753-4702-B418-1DC0ED040A4D}" Name="tc_epicscommodule" PrjFilePath="tc_epicscommodule\tc_epicscommodule.plcproj" TmcFilePath="tc_epicscommodule\tc_epicscommodule.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="tc_epicscommodule\tc_epicscommodule.tmc">
-					<Name>tc_epicscommodule Instance</Name>
-					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
-					<TaskPouOids>
-						<TaskPouOid Prio="26" OTCID="#x08502001"/>
-					</TaskPouOids>
-				</Instance>
-			</Project>
 			<Project GUID="{FB261665-FD20-4BF2-97F8-2854C82B752D}" Name="tc_project_app" PrjFilePath="tc_project_app\tc_project_app.plcproj" TmcFilePath="tc_project_app\tc_project_app.tmc" ReloadTmc="true" AmsPort="852" FileArchiveSettings="#x000e" SymbolicMapping="true">
 				<Instance Id="#x08502040" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="tc_project_app\tc_project_app.tmc">
 					<Name>tc_project_app Instance</Name>
@@ -921,6 +912,10 @@
 						<Var>
 							<Name>MAIN.bBrakeLockedOn</Name>
 							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.iBrakeSpRaw</Name>
+							<Type>INT</Type>
 						</Var>
 					</Vars>
 					<TaskPouOids>
@@ -1731,6 +1726,9 @@
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 10 (EK1200)^Term 14 (EL1252-0050)">
 				<Link VarA="PlcTask Inputs^MAIN.inputDigSens1" VarB="Channel 1^Input"/>
 				<Link VarA="PlcTask Inputs^MAIN.inputDigSens2" VarB="Channel 2^Input"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 10 (EK1200)^Term 19 (EL4002)">
+				<Link VarA="PlcTask Outputs^MAIN.iBrakeSpRaw" VarB="AO Outputs Channel 1^Analog output"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 10 (EK1200)^Term 20 (EL3214)">
 				<Link VarA="PlcTask Inputs^Global_IO.iiAnalogueIn_1" VarB="RTD Inputs Channel 1^Value"/>

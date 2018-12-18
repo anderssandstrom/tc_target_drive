@@ -29,6 +29,9 @@ VAR
 	inputDigSens2 AT %I*: BOOL;
 	nMaxMotorTemperature: INT:= 50;
 	fbBrakeTorque: FB_BrakeTorque;
+	iBrakeSpNm:LREAL:=0;
+	iBrakeSpRaw AT %Q* :INT:=0;
+	
 	
 END_VAR
 ]]></Declaration>
@@ -120,9 +123,18 @@ fb_IndraDrive(
 	stCommands.fVelocityCommandValue;// S40, velocity used for positining and jogging (in velocity mode)
 	fSetVelToDriveRaw:= DINT_TO_LREAL(MAIN.fb_IndraDrive.stDriveCommands.nS40_VelocityCommandValue)/10000;
 	
-	
+ACT_Brake();
   ]]></ST>
     </Implementation>
+    <Action Name="ACT_Brake" Id="{a8ef5cdf-33a2-41f9-b34e-1a95819e04c4}">
+      <Implementation>
+        <ST><![CDATA[bBrakeFreewheelOn:=iBrakeSpNm=0;
+bBrakeLockedOn:=NOT bBrakeFreewheelOn;
+
+fbBrakeTorque(iTorqueValueinNm:=iBrakeSpNm);
+iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
+      </Implementation>
+    </Action>
     <LineIds Name="MAIN">
       <LineId Id="454" Count="0" />
       <LineId Id="453" Count="0" />
@@ -177,6 +189,12 @@ fb_IndraDrive(
       <LineId Id="579" Count="0" />
       <LineId Id="573" Count="0" />
       <LineId Id="275" Count="0" />
+    </LineIds>
+    <LineIds Name="MAIN.ACT_Brake">
+      <LineId Id="3" Count="0" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="4" Count="0" />
+      <LineId Id="1" Count="1" />
     </LineIds>
   </POU>
 </TcPlcObject>
