@@ -123,13 +123,18 @@ fb_IndraDrive(
 	stCommands.fVelocityCommandValue;// S40, velocity used for positining and jogging (in velocity mode)
 	fSetVelToDriveRaw:= DINT_TO_LREAL(MAIN.fb_IndraDrive.stDriveCommands.nS40_VelocityCommandValue)/10000;
 	
+	stStatus.fActualPosition;
+	stStatus.fActualTorque;
+	stStatus.fActualVelocity;
+	stStatus.bAxisEnabled;
+	
 ACT_Brake();
   ]]></ST>
     </Implementation>
     <Action Name="ACT_Brake" Id="{a8ef5cdf-33a2-41f9-b34e-1a95819e04c4}">
       <Implementation>
         <ST><![CDATA[bBrakeFreewheelOn:=iBrakeSpNm=0;
-bBrakeLockedOn:=NOT bBrakeFreewheelOn;
+bBrakeLockedOn:=FALSE;
 
 fbBrakeTorque(iTorqueValueinNm:=iBrakeSpNm);
 iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
@@ -186,6 +191,7 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       <LineId Id="44" Count="2" />
       <LineId Id="62" Count="1" />
       <LineId Id="277" Count="0" />
+      <LineId Id="665" Count="4" />
       <LineId Id="579" Count="0" />
       <LineId Id="573" Count="0" />
       <LineId Id="275" Count="0" />
