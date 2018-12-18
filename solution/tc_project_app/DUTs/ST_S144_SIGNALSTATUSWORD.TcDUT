@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.3">
+  <DUT Name="ST_S144_SIGNALSTATUSWORD" Id="{d674754d-2026-442b-8ab7-a2070219a63a}">
+    <Declaration><![CDATA[TYPE ST_S144_SIGNALSTATUSWORD :
+STRUCT
+	bS424_DriveMode						: BIT; 	// FALSE: Operating mode
+												// TRUE: Parameter mode
+	{attribute 'hide'}
+	bS144_1_NotDefined					: BIT;
+	bS403_0_AxisHomedStatus				: BIT; 	// FALSE: Axis is NOT homed 
+												// TRUE: Axis is homed
+	bS331_StandStillStatus				: BIT; 	// FALSE: Axis is moving
+												// TRUE: Axis is standing still 
+	bS437_2_CommandPositionReached		: BIT; 	// FALSE: Axis is NOT not within command position
+												// TRUE: Axis has reached command position
+	{attribute 'hide'}
+	bS144_5_NotDefined					: BIT;
+	{attribute 'hide'}
+	bS144_6_NotDefined					: BIT;
+	bP115_3_StatusOfCmdValueProcessing	: BIT; 	// FALSE: Drive ignores external command value input 
+												// TRUE: Drive follows external command value input
+	{attribute 'hide'}
+	bS144_8_NotDefined					: BIT;
+	{attribute 'hide'}
+	bS144_9_NotDefined					: BIT;
+	bS419_0_PositioningCmdAck			: BIT; 	// Toggled as soon as the new Position Command value is accepted and effective
+	bS437_4_ConstantVelocity			: BIT; 	// TRUE: Axis in constant velocity
+	bS437_5_Acceleration				: BIT; 	// TRUE: Axis in acceleration
+	bS437_6_Deceleration				: BIT; 	// TRUE: Axis in deceleration
+	bS437_12_JogMode					: BIT; 	// TRUE: Axis in Axis in jog mode
+	{attribute 'hide'}
+	bS144_15_NotDefined					: BIT;	
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

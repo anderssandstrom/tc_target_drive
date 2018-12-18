@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.10">
+  <POU Name="FB_TargetSuperImpose" Id="{15eb4c9f-4200-4cfb-8447-041bc6a9a901}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_TargetSuperImpose
+VAR_INPUT
+  En: BOOL;
+  bExecute: BOOL;
+  iSampleRateMs:INT;
+  fNominalVelocityRpm: LREAL;
+  fDeltaVelocityRpm: LREAL;
+  fPhasePositionDeg: LREAL;	
+END_VAR
+VAR_OUTPUT
+	fVelocitySetpointRpm: LREAL;
+	bBusy: BOOL;
+END_VAR
+VAR
+	fbRtrig: R_TRIG;
+	iCyclesToOutput: INT;
+	iCycleCounter: INT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+IF NOT bExecute THEN
+	bBusy:=FALSE;
+	iCycleCounter:=0;
+	iCyclesToOutput:=0;
+END_IF
+
+fbRtrig(clk:=bExecute);
+IF fbRtrig.Q THEN
+ iCyclesToOutput:=LREAL_TO_INT(ABS(fPhasePositionDeg)/(ABS(fDeltaVelocityRpm)/60*360)*1000/iSampleRateMs);
+END_IF
+
+IF iCycleCounter<iCyclesToOutput*2/3 AND bExecute  THEN
+	if fPhasePositionDeg>=0 then
+	  fVelocitySetpointRpm:=fNominalVelocityRpm + fDeltaVelocityRpm;
+   ELSE 
+	  fVelocitySetpointRpm:=fNominalVelocityRpm - fDeltaVelocityRpm;
+   END_IF
+  bBusy:=TRUE;
+
+ELSE
+	fVelocitySetpointRpm:=fNominalVelocityRpm;
+END_IF
+IF iCycleCounter<iCyclesToOutput THEN
+  iCycleCounter:=iCycleCounter+1;
+  ELSE
+	  bBusy:=FALSE;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="FB_TargetSuperImpose">
+      <LineId Id="26" Count="0" />
+      <LineId Id="25" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="47" Count="0" />
+      <LineId Id="59" Count="0" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="58" Count="0" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="50" Count="0" />
+      <LineId Id="35" Count="0" />
+      <LineId Id="62" Count="0" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="63" Count="0" />
+      <LineId Id="66" Count="0" />
+      <LineId Id="65" Count="0" />
+      <LineId Id="60" Count="0" />
+      <LineId Id="68" Count="0" />
+      <LineId Id="53" Count="1" />
+      <LineId Id="36" Count="0" />
+      <LineId Id="67" Count="0" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="70" Count="1" />
+      <LineId Id="69" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

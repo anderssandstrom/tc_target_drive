@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.3">
+  <DUT Name="ST_S134_MASTERCONTROLWORD" Id="{3dd0b9be-8772-45b1-b37c-670fa678aff3}">
+    <Declaration><![CDATA[TYPE ST_S134_MASTERCONTROLWORD :
+STRUCT
+	{attribute 'hide'}
+	bS134_0_CtrlInfo_ServiceCh				: BIT;	// 	Control information for service channel
+	{attribute 'hide'}
+	bS134_1_CtrlInfo_ServiceCh				: BIT;	// 	Control information for service channel
+	{attribute 'hide'}
+	bS134_2_CtrlInfo_ServiceCh				: BIT;	// 	Control information for service channel
+	{attribute 'hide'}
+	bS134_3_CtrlInfo_ServiceCh				: BIT;	// 	Control information for service channel
+	{attribute 'hide'}
+	bS134_4_CtrlInfo_ServiceCh				: BIT;	// 	Control information for service channel
+	{attribute 'hide'}
+	bS134_5_CtrlInfo_ServiceCh				: BIT;	// 	Control information for service channel
+	{attribute 'hide'}
+	bS134_6_RealTime_Bit1					: BIT;	// 	Real time bit1
+	{attribute 'hide'}
+	bS134_7_RealTime_Bit2					: BIT;	// 	Real time bit2
+	bS134_CmdOperationMode_Bit0				: BIT;	// 	(bS134_CmdOpMode_B2 | bS134_CmdOpMode_B2 | bS134_CmdOpMode_B0)
+													//	000: Primary mode of operation
+													// 	001: Secondary operation mode 1
+													// 	010: Secondary operation mode 2, etc
+	bS134_CmdOperationMode_Bit1				: BIT;	// 	(bS134_CmdOpMode_B2 | bS134_CmdOpMode_B2 | bS134_CmdOpMode_B0)
+													//	000: Primary mode of operation
+													// 	001: Secondary operation mode 1
+													// 	010: Secondary operation mode 2, etc
+	bS134_IPOSYNC							: BIT;	// 	Interpolator clock, toggles when new command values are to be transmitted 
+	bS134_CmdOperationMode_Bit2				: BIT;	// 	(bS134_CmdOpMode_B2 | bS134_CmdOpMode_B2 | bS134_CmdOpMode_B0)
+													//	000: Primary mode of operation
+													// 	001: Secondary operation mode 1
+													// 	010: Secondary operation mode 2, etc
+	{attribute 'hide'}
+	bS134_12_Reserved						: BIT;	// 	Reserved
+	bS134_DriveHalt							: BIT;	// 	1-0 change: deceleration of drive while maintaining the max. acceleration (S-0-0138) 
+													//	(only possible when bit bS134_DriveEnable and bS134_DriveOn = TRUE)
+	bS134_DriveEnable						: BIT;	// 	TRUE -> FALSE transition: torque disable without delay (independent of bit bS134_DriveOn or bS134_DriveHalt)
+	bS134_DriveOn							: BIT;	// 	TRUE -> FALSE transition: best possible deceleration (only possible if bit bS134_DriveEnable = TRUE)
+
+
+	
+
+	
+
+
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

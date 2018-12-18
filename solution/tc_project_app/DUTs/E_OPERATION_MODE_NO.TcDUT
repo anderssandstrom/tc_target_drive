@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.3">
+  <DUT Name="E_OPERATION_MODE_NO" Id="{33ed3a30-3ae6-42b7-8291-c479994925d7}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_OPERATION_MODE_NO :
+(
+	ePrimaryOpMode 		:= 0, 
+	eSecondaryOpMode1 	:= 1, 
+	eSecondaryOpMode2 	:= 2, 
+	eSecondaryOpMode3 	:= 3, 
+	eSecondaryOpMode4 	:= 4, 
+	eSecondaryOpMode5 	:= 5, 
+	eSecondaryOpMode6 	:= 6, 
+	eSecondaryOpMode7 	:= 7	
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

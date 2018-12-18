@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.10">
+  <DUT Name="ST_AXIS_COMMAND" Id="{1f17bf9a-e1c8-4812-a12d-020cbadfb6be}">
+    <Declaration><![CDATA[TYPE ST_AXIS_COMMAND :
+STRUCT
+	eOperationMode				: E_OPERATION_MODE_NO	:= E_OPERATION_MODE_NO.ePrimaryOpMode;	// (S134.0-2) Defines the Operation mode to use (the different operation modes are configured in the drive) 
+	bEnableAxis					: BOOL	:= FALSE; 	// FALSE (S134.13-15): Disable drive 
+													// TRUE (S134.13-15): Enable drive (torque on the motor) 
+	bHaltAxis					: BOOL	:= FALSE;	// FALSE (S134.13-15): Drive performs a HALT operation (Deceleration of drive while maintaining the max. acceleration (S-0-0138). Requires bEnableAxis to be TRUE) 
+													// TRUE (S134.13-15): Drive is not halted
+	eMotionMode					: E_MOTION_MODE		:= E_MOTION_MODE.eStop;	// Defines the type of motion that shall be performed. This is not functional in Operation Mode Drive internal interpolation! 
+	//bPositioningMode			: BOOL;				// (S346.2&1 FALSE&FALSE): Activates positioning mode according to current Operation mode 
+	//bJogPositive				: BOOL;				// (S346.2&1 FALSE&TRUE): Activates jogging in positive direction  
+	//bJogNeagtive				: BOOL;				// (S346.2&1 TRUE&FALSE): Activates jogging in negative direction
+	//bStopAxis					: BOOL;				// (S346.2&1 TRUE&TRUE): Stops the axis 
+	bCommandPositionChange		: BOOL	:= FALSE;	// (S346.5) FALSE: Drive moves to current target position, before positioning to new target position (when bCommandValueAccept is toggled) 
+													// (S346.5) TRUE: Immediate of target position, i.e., drive immediately acknowledges the new target position (when bCommandValueAccept is toggled) 
+	fCommandPosition			: LREAL	:= 0.0;		// (S47, S258 or S282 according to OperationMode)
+	fCommandVelocity			: LREAL	:= 0.0; 	// (S259): The velocity used for Positioning and Jogging
+	fCommandAcceleration		: LREAL	:= 0.0;		// (S260): The acceleration used for Positioning and Jogging 
+	fCommandDeceleration		: LREAL	:= 0.0;		// (S359): The deceleration used for Positioning and Jogging 
+	fFeedrateOverride			: LREAL	:= 100.0; 	// (S108):  Parameter used for variable adjustment of the velocity [0..100%] 
+	fTorqueLimit				: LREAL	:= 100.0;	// (S92):  Parameter used for limiting the torque [0..drive/motor limit%] 
+	bPositionCommandValue		: BOOL	:= FALSE;	// (S346.3): FALSE: Command position is absolute 
+													// (S346.3): TRUE: Command position is relative
+	bCommandValueAccept			: BOOL	:= FALSE; 	// (S346.0) Toggle bit (FALSE->TRUE or TRUE->FALSE) to start a positioning command in Operation mode "Drive controlled Positioning"
+	bCmd_ErrorReset				: BOOL	:= FALSE;	// (S99): Reset the error of the drive 
+	bCmd_SetAbsolutePosition	: BOOL	:= FALSE;	// (P12, C0300): Sets the Absolute position of the drive according to drive configuration 
+	bCmd_DriveControlledHoming	: BOOL	:= FALSE;	// (S148, C0600): Starts the homing procedure configured in the drive. NOTE that this does not set the absolute position 
+	bCmd_DisableLimits			: BOOL	:= FALSE;	// (bS159, C1300): Disables Monitoring of Position error, Position command error, Velocity error and Acceleration limit
+	bCmd_ActivateParameterMode	: BOOL	:= FALSE;	//  (S420, C0400): TRUE: Brings the drive to parameter mode 
+	bCmd_ExitParameterMode		: BOOL	:= FALSE;	//  (S422, C0200): TRUE: Brings the drive from parameter mode 
+	bCmd_RunVirtualMater		: BOOL	:= FALSE;	//  Jog command to the virtual Master
+	fVelocityCommandValue		: LREAL	:= 0.0; 	// (S40): The velocity used for Positioning and Jogging
+
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

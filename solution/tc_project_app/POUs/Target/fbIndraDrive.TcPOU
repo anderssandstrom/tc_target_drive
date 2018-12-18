@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.3">
+  <POU Name="fbIndraDrive" Id="{c552eacd-cc63-42de-838c-771e92ee46fa}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK fbIndraDrive
+VAR_INPUT 
+	AmsNetId			: AMSNETID;		// AMS Net Id of the EtherCAT Master
+	AdsAddr_Port		: WORD; 		// EtherCAT address of the Drive
+	stAxisCommands		: ST_AXIS_COMMAND; 
+	stDriveStatus		: ST_INDRADRIVE_IO_INPUT; 
+END_VAR
+VAR_OUTPUT
+	stAxisStatus		: ST_AXIS_STATUS; 
+	stDriveCommands		: ST_INDRADRIVE_IO_OUTPUT; 
+END_VAR
+VAR
+	sAmsNetId						: T_AmsNetId;
+	fbReadParameter					: FB_EcSoERead;
+	nS149_DataStatus				: UDINT	:= 0;
+	bDummy: BOOL;
+	ii: INT;
+END_VAR
+
+VAR CONSTANT
+	cC1300_LimitsEnabled			: UDINT := 0;
+	cC1300_LimitsDisableActivated	: UDINT := 7;
+	cC1300_LimitsDisabled			: UDINT := 3;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//==================================================================================================
+//====== FunctionBlock to manage IndraDrive status and command =====================================
+//==================================================================================================
+
+// Create the T_AmsNetId 
+sAmsNetId := F_CreateAmsNetId(AmsNetId); 
+
+(*==================================================================================================================================================
+=============    STATUS FROM THE DRIVE    ==========================================================================================================
+==================================================================================================================================================*)
+	// Display Drive status
+		// Drive parameter mode  
+		stAxisStatus.bDriveInParameterMode			:= stDriveStatus.stS144_SignalStatusWord.bS424_DriveMode; 
+
+		// Drive Operation mode number
+		IF (NOT stDriveStatus.nS135_DriveStatusWord.bS135_ActualOperationMode_Bit2) AND (NOT stDriveStatus.nS135_DriveStatusWord.bS135_ActualOperationMode_Bit1) AND (NOT stDriveStatus.nS135_DriveStatusWord.bS135_ActualOperationMode_Bit0) THEN 
+			stAxisStatus.eActualOperationModeNo	:= E_OPERATION_MODE_NO.ePrimaryOpMode; 
+		ELSIF (NOT stDriveStatus.nS135_DriveStatusWord.bS135_ActualOperationMode_Bit2) AND (NOT stDriveStatus.nS135_DriveStatusWord.bS135_ActualOperationMode_Bit1) AND stDriveStatus.nS135_DriveStatusWord.bS135_ActualOperationMode_Bit0 THEN 
+			stAxisStatus.eActualOperationModeNo	:= E_OPERATION_MODE_NO.eSecondaryOpMode1; 
+		ELSIF (NOT stDriveStatus.nS135_DriveStatusWord.bS135_ActualOperationMode_Bit2) AND stDriveStatus.nS135_DriveStatusWord.bS135_ActualOperationMode_Bit1 AND (NOT stDriveStatus.nS135_DriveStatusWord.bS135_ActualOperationMode_Bit0) THEN 
+			stAxisStatus.eActualOperationModeNo	:= E_OPERATION_MODE_NO.eSecondaryOpMode2; 
+		ELSIF (NOT stDriveStatus.nS135_DriveStatusWord.bS135_ActualOperationMode_Bit2) AND stDriveStatus.nS135_DriveStatusWord.bS135_ActualOperationMode_Bit1 AND stDriveStatus.nS135_DriveStatusWord.bS135_ActualOperationMode_Bit0 THEN 
+			stAxisStatus.eActualOperationModeNo	:= E_OPERATION_MODE_NO.eSecondaryOpMode3; 
+		ELSIF stDriveStatus.nS135_DriveStatusWord.bS135_ActualOperationMode_Bit2 AND (NOT stDriveStatus.nS135_DriveStatusWord.bS135_ActualOperationMode_Bit1) AND (NOT stDriveStatus.nS135_DriveStatusWord.bS135_ActualOperationMode_Bit0) THEN 
+			stAxisStatus.eActualOperationModeNo	:= E_OPERATION_MODE_NO.eSecondaryOpMode4; 
+		ELSIF stDriveStatus.nS135_DriveStatusWord.bS135_ActualOperationMode_Bit2 AND (NOT stDriveStatus.nS135_DriveStatusWord.bS135_ActualOperationMode_Bit1) AND stDriveStatus.nS135_DriveStatusWord.bS135_ActualOperationMode_Bit0 THEN 
+			stAxisStatus.eActualOperationModeNo	:= E_OPERATION_MODE_NO.eSecondaryOpMode5; 
+		ELSIF stDriveStatus.nS135_DriveStatusWord.bS135_ActualOperationMode_Bit2 AND stDriveStatus.nS135_DriveStatusWord.bS135_ActualOperationMode_Bit1 AND (NOT stDriveStatus.nS135_DriveStatusWord.bS135_ActualOperationMode_Bit0) THEN 
+			stAxisStatus.eActualOperationModeNo	:= E_OPERATION_MODE_NO.eSecondaryOpMode6; 
+		ELSIF stDriveStatus.nS135_DriveStatusWord.bS135_ActualOperationMode_Bit2 AND stDriveStatus.nS135_DriveStatusWord.bS135_ActualOperationMode_Bit1 AND stDriveStatus.nS135_DriveStatusWord.bS135_ActualOperationMode_Bit0 THEN 
+			stAxisStatus.eActualOperationModeNo	:= E_OPERATION_MODE_NO.eSecondaryOpMode7; 
+		END_IF
+		// DC Bus
+		stAxisStatus.bDCBusPresent					:= (*(NOT stDriveStatus.nS135_DriveStatusWord.bS135_ReadyForOperation_Bit0) AND *) stDriveStatus.nS135_DriveStatusWord.bS135_ReadyForOperation_Bit1; 
+		// Axis enabled 
+		stAxisStatus.bAxisEnabled					:= stDriveStatus.nS135_DriveStatusWord.bS135_ReadyForOperation_Bit0 AND stDriveStatus.nS135_DriveStatusWord.bS135_ReadyForOperation_Bit1; 
+		// Absolute position status
+		stAxisStatus.bAxisHomedStatus				:= stDriveStatus.stS144_SignalStatusWord.bS403_0_AxisHomedStatus; 
+		// Axis standstill status 
+		stAxisStatus.bAxisStandStillStatus			:= stDriveStatus.stS144_SignalStatusWord.bS331_StandStillStatus; 
+		// Axis in target position
+		stAxisStatus.bAxisInTargetPosition			:= stDriveStatus.stS144_SignalStatusWord.bS437_2_CommandPositionReached;
+ 		// Axis in constant velocity
+		stAxisStatus.bAxisConstantVelocityStatus	:= (NOT stDriveStatus.stS144_SignalStatusWord.bS331_StandStillStatus) AND (NOT stDriveStatus.stS144_SignalStatusWord.bS437_5_Acceleration) AND (NOT stDriveStatus.stS144_SignalStatusWord.bS437_6_Deceleration);
+ 		// Axis in Acceleration
+		stAxisStatus.bAxisAccelerationStatus		:= stDriveStatus.stS144_SignalStatusWord.bS437_5_Acceleration;
+ 		// Axis in Deceleration
+		stAxisStatus.bAxisDecelerationStatus		:= stDriveStatus.stS144_SignalStatusWord.bS437_6_Deceleration;
+ 		// Axis in Jog
+		stAxisStatus.bAxisJogStatus					:= stDriveStatus.stS144_SignalStatusWord.bS437_12_JogMode;
+		// Drive command change 
+		stAxisStatus.bCommandChange					:= stDriveStatus.nS135_DriveStatusWord.bS135_CommandChange; 
+		// Drive command value processing  
+		stAxisStatus.bCommandValueProcessing		:= stDriveStatus.stS144_SignalStatusWord.bP115_3_StatusOfCmdValueProcessing; 
+		
+		// Disable monitoring  
+		IF 	(stAxisCommands.bCmd_DisableLimits AND (NOT stAxisStatus.bLimitsDisabled)) OR 
+			((NOT stAxisCommands.bCmd_DisableLimits) AND stAxisStatus.bLimitsDisabled) THEN
+				fbReadParameter(
+					sNetId:= sAmsNetId, 
+					nSlaveAddr:= AdsAddr_Port, 
+					nIdn:= 149, 
+					nElement:= 16#01, 
+					nDriveNo:= 0, 
+					bCommand:= FALSE, 
+					pDstBuf:= ADR(nS149_DataStatus), 
+					cbBufLen:= SIZEOF(nS149_DataStatus), 
+					bExecute:= TRUE, 
+					tTimeout:= , 
+					bBusy=> , 
+					bError=> , 
+					nErrId=> ); 
+				
+				IF (NOT fbReadParameter.bBusy) AND (NOT fbReadParameter.bError) THEN 
+					IF (nS149_DataStatus = cC1300_LimitsDisableActivated) OR (nS149_DataStatus = cC1300_LimitsDisabled) THEN 
+						stAxisStatus.bLimitsDisabled	:= TRUE;
+					ELSIF (nS149_DataStatus = cC1300_LimitsEnabled) THEN 
+						stAxisStatus.bLimitsDisabled	:= FALSE;
+					END_IF
+					// Execute with FALSE
+					fbReadParameter(bExecute:= FALSE);
+				END_IF
+				
+				IF fbReadParameter.bError THEN 
+					// Execute with FALSE
+					fbReadParameter(bExecute:= FALSE);
+				END_IF
+		END_IF
+		
+		// Diagnostic message present 
+		stAxisStatus.bDiagMessage					:= stDriveStatus.nS135_DriveStatusWord.bS135_Class3_Diag_Mess;  
+		// Warning message present 
+		stAxisStatus.bWarning						:= stDriveStatus.nS135_DriveStatusWord.bS135_Class2_Diag_Warn;  
+		// Error message present 
+		stAxisStatus.bError							:= stDriveStatus.nS135_DriveStatusWord.bS135_Class1_Diag_Err;  
+		// Diagnostic message number 
+		{attribute 'displaymode':='hexadecimal'} 
+		stAxisStatus.nDiagMessage					:= stDriveStatus.nS390_DiagnosticMessageNumber;
+		
+		// Display motion actual values 
+		// Actual position (scale by 10000) 
+		stAxisStatus.fActualPosition		:= DINT_TO_LREAL(stDriveStatus.nS386_ActivePositionFeedbackValue) / 10000.0; 
+		// Actual velocity (scale by 1000) 
+		stAxisStatus.fActualVelocity		:= DINT_TO_LREAL(stDriveStatus.nS40_VelocityFeedbackValue) / 1000.0; 
+		// Actual Torque (scale by 10) 
+		stAxisStatus.fActualTorque			:= INT_TO_LREAL(stDriveStatus.nS84_TorqueFeedback) / 10.0; 
+		// Actual position error (scale by 10000) 
+		stAxisStatus.fPositionError		:= DINT_TO_LREAL(stDriveStatus.nS189_PositionError) / 10000.0; 
+
+(*==================================================================================================================================================
+=============    COMMANDS TO THE DRIVE    ==========================================================================================================
+==================================================================================================================================================*)
+ 	// Transfer and possibly scale command to the drive 
+		// Operation mode 	
+ 		IF stAxisCommands.eOperationMode = E_OPERATION_MODE_NO.ePrimaryOpMode THEN 
+			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit0 := FALSE;
+			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit1 := FALSE;
+			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit2 := FALSE;
+		ELSIF stAxisCommands.eOperationMode = E_OPERATION_MODE_NO.eSecondaryOpMode1 THEN 
+			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit0 := TRUE;
+			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit1 := FALSE;
+			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit2 := FALSE;
+		ELSIF stAxisCommands.eOperationMode = E_OPERATION_MODE_NO.eSecondaryOpMode2 THEN 
+			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit0 := FALSE;
+			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit1 := TRUE;
+			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit2 := FALSE;
+		ELSIF stAxisCommands.eOperationMode = E_OPERATION_MODE_NO.eSecondaryOpMode3 THEN 
+			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit0 := TRUE;
+			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit1 := TRUE;
+			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit2 := FALSE;
+		ELSIF stAxisCommands.eOperationMode = E_OPERATION_MODE_NO.eSecondaryOpMode4 THEN 
+			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit0 := FALSE;
+			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit1 := FALSE;
+			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit2 := TRUE;
+		ELSIF stAxisCommands.eOperationMode = E_OPERATION_MODE_NO.eSecondaryOpMode5 THEN 
+			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit0 := TRUE;
+			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit1 := FALSE;
+			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit2 := TRUE;
+		ELSIF stAxisCommands.eOperationMode = E_OPERATION_MODE_NO.eSecondaryOpMode6 THEN 
+			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit0 := FALSE;
+			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit1 := TRUE;
+			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit2 := TRUE;
+		ELSIF stAxisCommands.eOperationMode = E_OPERATION_MODE_NO.eSecondaryOpMode4 THEN 
+			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit0 := TRUE;
+			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit1 := TRUE;
+			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit2 := TRUE;
+		END_IF
+		
+		// Enabling of the Axis 
+		IF (NOT stAxisCommands.bEnableAxis) THEN 
+			stDriveCommands.stS134_MasterControlWord.bS134_DriveEnable	:= TRUE; 
+			stDriveCommands.stS134_MasterControlWord.bS134_DriveOn		:= FALSE; 
+			stDriveCommands.stS134_MasterControlWord.bS134_DriveHalt	:= FALSE; 
+		ELSIF stAxisCommands.bEnableAxis AND (NOT stAxisCommands.bHaltAxis) THEN 
+			stDriveCommands.stS134_MasterControlWord.bS134_DriveEnable	:= TRUE; 
+			stDriveCommands.stS134_MasterControlWord.bS134_DriveOn		:= TRUE; 
+			stDriveCommands.stS134_MasterControlWord.bS134_DriveHalt	:= FALSE; 
+		ELSIF stAxisCommands.bEnableAxis AND stAxisCommands.bHaltAxis THEN 
+			stDriveCommands.stS134_MasterControlWord.bS134_DriveEnable	:= TRUE; 
+			stDriveCommands.stS134_MasterControlWord.bS134_DriveOn		:= TRUE; 
+			stDriveCommands.stS134_MasterControlWord.bS134_DriveHalt	:= TRUE; 
+		END_IF
+		
+		// Positioning, Jog or stop the axis 
+		CASE stAxisCommands.eMotionMode OF 
+			E_MOTION_MODE.eStop: 
+				stDriveCommands.stS145_SignalControlWord.bS346_1_PosCtrlWord_PosActivation	:= TRUE; 
+				stDriveCommands.stS145_SignalControlWord.bS346_2_PosCtrlWord_PosActivation	:= TRUE; 				
+			E_MOTION_MODE.eJogPositive: 
+				stDriveCommands.stS145_SignalControlWord.bS346_1_PosCtrlWord_PosActivation	:= TRUE; 
+				stDriveCommands.stS145_SignalControlWord.bS346_2_PosCtrlWord_PosActivation	:= FALSE; 				
+			E_MOTION_MODE.eJogNegative: 
+				stDriveCommands.stS145_SignalControlWord.bS346_1_PosCtrlWord_PosActivation	:= FALSE; 
+				stDriveCommands.stS145_SignalControlWord.bS346_2_PosCtrlWord_PosActivation	:= TRUE; 				
+			E_MOTION_MODE.ePositioning: 
+				stDriveCommands.stS145_SignalControlWord.bS346_1_PosCtrlWord_PosActivation	:= FALSE; 
+				stDriveCommands.stS145_SignalControlWord.bS346_2_PosCtrlWord_PosActivation	:= FALSE; 	
+ii:=ii-1;			
+		END_CASE
+		
+		// Position command change 
+		stDriveCommands.stS145_SignalControlWord.bS346_5_PosCtrlWord_ImmBlockChange	:= stAxisCommands.bCommandPositionChange; 
+
+		// Command position depending on Operation mode 
+		IF stAxisStatus.nDiagMessage >= 16#C00A0102 AND stAxisStatus.nDiagMessage <= 16#C00A0105 THEN 
+			stDriveCommands.nS47_PositionCommandValue 	:= LREAL_TO_DINT(10000.0 * stAxisCommands.fCommandPosition);
+			stDriveCommands.nS282_PositioningCommandValue 	:= stDriveStatus.nS386_ActivePositionFeedbackValue;
+			stDriveCommands.nS258_TargetPosition 		:= stDriveStatus.nS386_ActivePositionFeedbackValue;
+		ELSIF (stAxisStatus.nDiagMessage >= 16#C00A0150 AND stAxisStatus.nDiagMessage <= 16#C00A0153) OR stAxisStatus.nDiagMessage = 16#C00A0161 THEN 
+			stDriveCommands.nS282_PositioningCommandValue := LREAL_TO_DINT(10000.0 * stAxisCommands.fCommandPosition);
+			stDriveCommands.nS47_PositionCommandValue 	:= stDriveStatus.nS386_ActivePositionFeedbackValue;
+			stDriveCommands.nS258_TargetPosition 		:= stDriveStatus.nS386_ActivePositionFeedbackValue;
+		ELSIF (stAxisStatus.nDiagMessage >= 16#C00A0106 AND stAxisStatus.nDiagMessage <= 16#C00A0109) THEN 
+			stDriveCommands.nS258_TargetPosition := LREAL_TO_DINT(10000.0 * stAxisCommands.fCommandPosition);
+			stDriveCommands.nS47_PositionCommandValue 	:= stDriveStatus.nS386_ActivePositionFeedbackValue;
+			stDriveCommands.nS282_PositioningCommandValue 	:= stDriveStatus.nS386_ActivePositionFeedbackValue;
+		END_IF
+		
+		// Target velocity 
+		stDriveCommands.nS259_PositioningVelocity := LREAL_TO_UDINT(10000.0 * stAxisCommands.fCommandVelocity);
+		
+		// Target acceleration 
+		stDriveCommands.nS260_PositioningAcceleration := LREAL_TO_UDINT(1000.0 * stAxisCommands.fCommandAcceleration);
+		
+		// Target deceleration 
+		stDriveCommands.nS359_PositioningDeceleration := LREAL_TO_UDINT(1000.0 * stAxisCommands.fCommandDeceleration);
+
+		// Feedrate override
+		stDriveCommands.nS108_FeedrateOverride := LREAL_TO_UINT(100.0 * stAxisCommands.fFeedrateOverride);
+		
+		// Torque limit
+		stDriveCommands.nS92_BiPolarTorqueLimit := LREAL_TO_INT(10.0 * stAxisCommands.fTorqueLimit);
+		
+		// Absolute or Relative target position values 
+		stDriveCommands.stS145_SignalControlWord.bS346_3_PosCtrlWord_Abs_Rel := stAxisCommands.bPositionCommandValue;
+		
+		// Error reset 
+		stDriveCommands.stS145_SignalControlWord.bS99_DriveErrorReset := stAxisCommands.bCmd_ErrorReset;
+		
+		// Set Absolute position 
+		stDriveCommands.stS145_SignalControlWord.bP12_C300_SetAbsolutePosition := stAxisCommands.bCmd_SetAbsolutePosition;
+		
+		// Drive controlled homing
+		stDriveCommands.stS145_SignalControlWord.bS148_C600_DriveControlledHoming := stAxisCommands.bCmd_DriveControlledHoming;
+
+		// C1300 Disable monitoring command (in documentation called Positive Stop Drive Procedure) 
+		stDriveCommands.stS145_SignalControlWord.bS159_C1300_Disable_Monitoring	:= stAxisCommands.bCmd_DisableLimits;
+
+		// Activate parameter mode
+		stDriveCommands.stS145_SignalControlWord.bS420_C0400_Activate_ParameterMode := stAxisCommands.bCmd_ActivateParameterMode;
+		
+		// Exit parameter mode
+		stDriveCommands.stS145_SignalControlWord.bS422_C0200_Exit_ParameterMode := stAxisCommands.bCmd_ExitParameterMode;
+
+		// Command value accept
+		stDriveCommands.stS145_SignalControlWord.bS346_0_PosCtrlWord_CmdValueAccept := stAxisCommands.bCommandValueAccept; 
+		
+		stDriveCommands.nS40_VelocityCommandValue := LREAL_TO_UDINT(10000.0 * stAxisCommands.fVelocityCommandValue);
+
+		// Run the Virtual Master
+		IF stAxisCommands.bCmd_RunVirtualMater THEN 
+			stDriveCommands.stS145_SignalControlWord.bP760_VM_PosCtrlWord_1_PosActivation	:= TRUE;
+			stDriveCommands.stS145_SignalControlWord.bP760_VM_PosCtrlWord_2_PosActivation	:= FALSE;
+			stDriveCommands.stS145_SignalControlWord.bP760_VM_PosCtrlWord_CmdValueAccept	:= TRUE;
+		ELSE
+			stDriveCommands.stS145_SignalControlWord.bP760_VM_PosCtrlWord_1_PosActivation	:= TRUE;
+			stDriveCommands.stS145_SignalControlWord.bP760_VM_PosCtrlWord_2_PosActivation	:= TRUE;
+			stDriveCommands.stS145_SignalControlWord.bP760_VM_PosCtrlWord_CmdValueAccept	:= FALSE;
+		END_IF
+		
+]]></ST>
+    </Implementation>
+    <LineIds Name="fbIndraDrive">
+      <LineId Id="3" Count="176" />
+      <LineId Id="296" Count="0" />
+      <LineId Id="180" Count="58" />
+      <LineId Id="272" Count="1" />
+      <LineId Id="239" Count="10" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

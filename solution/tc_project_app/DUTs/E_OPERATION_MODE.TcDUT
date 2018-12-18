@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.3">
+  <DUT Name="E_OPERATION_MODE" Id="{f7471553-c519-4bea-a5fa-775d66b25ad7}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_OPERATION_MODE :
+(
+	eTorqueControl										:= 16#0001,
+	eVelocityControl									:= 16#0002,
+	ePositionControl_Enc1								:= 16#0003,
+	ePositionControl_Enc2								:= 16#0004,
+	ePositionControl_Lagless_Enc1						:= 16#000B,
+	ePositionControl_Lagless_Enc2						:= 16#000C,
+	ePositionControl_DriveControlled_Enc1				:= 16#0103,
+	ePositionControl_DriveControlled_Enc2				:= 16#0104,
+	ePositionControl_Lagless_Enc1_DriveControlled		:= 16#010B,
+	ePositionControl_Lagless_Enc2_DriveControlled		:= 16#010C,
+	ePositionControl_DriveControlled_w_AxisControlWord	:= 16#0305,
+	ePositionControl_w_AxisControlWord					:= 16#0205,
+	eDriveInternal_Interpolation_Enc1					:= 16#0113,
+	eDriveInternal_Interpolation_Enc2					:= 16#0114,
+	eDriveInternal_Interpolation_Lagless_Enc1			:= 16#011B,
+	eDriveInternal_Interpolation_Lagless_Enc2			:= 16#011C,
+	eDriveInternal_Interpolation_w_AxisControlWord		:= 16#0315,
+	eDriveControlled_Positioning_Enc1					:= 16#0123,
+	eDriveControlled_Positioning_Enc2					:= 16#0124,
+	eDriveControlled_Positioning_Enc1_Lagless			:= 16#012B,
+	eDriveControlled_Positioning_Enc2_Lagless			:= 16#012C,
+	eDriveControlled_Positioning_w_AxisControlWord		:= 16#0325,
+	ePositioning_BlockModeEnc1							:= 16#0133,
+	ePositioning_BlockModeEnc2							:= 16#0134,
+	ePositioning_BlockModeLagless_Enc1					:= 16#013B,
+	ePositioning_BlockModeLagless_Enc2					:= 16#013C,
+	ePositioning_BlockMode_w_AxisControlWord			:= 16#0335,
+	eCam_Enc1_VirtualMasterAxis							:= 16#8803,
+	eCam_Enc2_VirtualMasterAxis							:= 16#8804,
+	eCam_Lagless_Enc1_VirtualMaster_Axis				:= 16#880B,
+	eCam_Lagless_Enc2_VirtualMaster_Axis				:= 16#880C,
+	eCam_Enc1_RealMasterAxis							:= 16#8813,
+	eCam_Enc2_RealMasterAxis							:= 16#8814,
+	eCam_Lagless_Enc1_RealMasterAxis					:= 16#881B,
+	eCam_Lagless_Enc2_RealMasterAxis					:= 16#881C,
+	ePhaseSynch_Enc1_VirtualMasterAxis					:= 16#9003,
+	ePhaseSynch_Enc2_VirtualMasterAxis					:= 16#9004,
+	ePhaseSynch_Lagless_Enc1_VirtualMasterAxis			:= 16#900B,
+	ePhaseSynch_Lagless_Enc2_VirtualMasterAxis			:= 16#900C,
+	ePhaseSynch_Enc1_RealMasterAxis						:= 16#9013,
+	ePhaseSynch_Enc2_RealMasterAxis						:= 16#9014,
+	ePhaseSynch_Lagless_Enc1_RealMasterAxis				:= 16#901B,
+	ePhaseSynch_Lagless_Enc2_RealMasterAxis				:= 16#901C,
+	eVelocitySynch_VirtualMasterAxis					:= 16#A002,
+	eVelocitySynch_RealMasterAxis						:= 16#A012,
+	eMotionProfileEnc1_VirtualMasterAxis				:= 16#9803,
+	eMotionProfileEnc2_VirtualMasterAxis				:= 16#9804,
+	eMotionProfile_Lagless_Enc1_VirtualMasterAxis		:= 16#980B,
+	eMotionProfile_Lagless_Enc2_VirtualMasterAxis		:= 16#980C,
+	eMotionProfileEnc1_RealMasterAxis					:= 16#9813,
+	eMotionProfileEnc2_RealMasterAxis					:= 16#9814,
+	eMotionProfile_Lagless_Enc1_RealMasterAxis			:= 16#981B,
+	eMotionProfile_Lagless_Enc2_RealMasterAxis			:= 16#981C,
+	eVelocity_Synch										:= 16#0142,	
+	ePosition_Synch										:= 16#0345
+) UINT;
+END_TYPE
+
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

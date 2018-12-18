@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.3">
+  <DUT Name="E_POSITIONING_STATE_MACHINE" Id="{02f89ad0-7a4c-4407-a0ad-e3f36fd6897e}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_POSITIONING_STATE_MACHINE :
+(
+	POWER_OFF := 0,
+	POWER_ON := 1,
+	POSITION := 2
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

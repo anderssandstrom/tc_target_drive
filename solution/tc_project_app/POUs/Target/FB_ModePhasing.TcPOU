@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.6">
+  <POU Name="FB_ModePhasing" Id="{d2a3a91d-9b2d-4e1e-8e68-2aba1e8abe60}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_ModePhasing
+VAR_INPUT
+	bExecute:BOOL;
+	bReset: BOOL;
+	stStatus: ST_AXIS_STATUS;
+    dLatchedPosition: DINT;
+	fPhaseOffsetDeg: LREAL;
+    fPhaseControlKp: LREAL := 0.00001;
+	///Ti
+	fPhaseControlTn: LREAL := 0;
+	///Td
+	fPhaseControlTv: LREAL := 0;
+	///derviative damping
+	fPhaseControlTd: LREAL := 0;
+	bPhaseControlReset: BOOL := FALSE;
+END_VAR
+VAR_OUTPUT
+	bError: BOOL;
+	nErrorId: UDINT;
+	bPhasing:BOOL;
+	fSpeedSetpoint: LREAL;
+	fCtrlOutput:LREAL;
+END_VAR
+VAR_IN_OUT
+	stCommands: ST_AXIS_COMMAND;
+END_VAR
+VAR
+	fLatchedPositionOld: LREAL;
+	fDistancePerPulse: LREAL;
+	fLastSectorVelocity: LREAL;
+	fVelocityFromDriveScaled: LREAL;
+	fClosestSectorId: LREAL;
+	nClosestSectorId: INT;
+	fLatchedPosition:LREAL;
+	fbPhasePID: Tc2_Utilities.FB_BasicPID;
+	fb_PhaseControl: INT;
+	fPhaseError: LREAL;
+	fPhaseErrorFiltered:LREAL;
+	fPhaseErrorMM: LREAL:=0;
+	dLatchedPositionOld:DINT;
+	fPhaseErrorAcc:LREAL;
+	ii: INT;
+	bTestReset: BOOL;
+	fArrayFiltVelo: ARRAY[ 0 ..35] OF LREAL;
+	fArrayPhaseErrorFilt: ARRAY[ 0 ..9] OF LREAL;
+	iFiltVeloArrayIndex:INT:=0;
+	fLastSectorVelocityOld:LREAL:=0;
+	i:INT:=0;
+	fMaxValue:LREAL:=0;
+	fMinValue:LREAL:=0;
+	fRange:LREAL:=0;
+	iRangeOKCounter:INT:=0;
+	iRangeOKCounterOld:INT:=0;
+	nChoosenSector:INT:=0;
+	bPhaseAlgTrigg: BOOL;
+	fbPWM: FB_PWM_OVERRIDE_V0_01;
+	fbSuperImpose:FB_TargetSuperImpose;
+	bExecuteSuperImpose: BOOL;
+	fPhaseErrorSlope: LREAL;
+	iNominalVelCounter:INT:=0;
+	fDeltaVelo: LREAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+fLatchedPositionOld:=fLatchedPosition;
+fLatchedPosition:=DINT_TO_LREAL(dLatchedPosition)/10000.0;
+IF (fLatchedPosition-fLatchedPositionOld)<>0 THEN
+  	IF(fLatchedPositionOld>fLatchedPosition) THEN
+		fDistancePerPulse:=(360-fLatchedPositionOld)+fLatchedPosition;
+    ELSE
+		fDistancePerPulse:=fLatchedPosition-fLatchedPositionOld;
+	END_IF
+	fLastSectorVelocity:=fDistancePerPulse*Target_GlobalVariableList.nPulseFreqHz*60/360;		
+END_IF
+fVelocityFromDriveScaled:=stStatus.fActualVelocity/10;
+nClosestSectorId:= LREAL_TO_INT(fLatchedPosition/10);
+//fPhaseError:=nClosestSectorId*10-fLatchedPosition;	
+stCommands.eMotionMode :=e_Motion_mode.eJogPositive;
+stCommands.eOperationMode:=e_Operation_mode_no.eSecondaryOpMode2;
+
+bPhasing:=FALSE;
+IF  NOT bExecute  OR bTestReset OR bPhaseControlReset THEN
+ fSpeedSetpoint:=0;
+ fbPhasePID(bReset:=TRUE);
+ bPhaseAlgTrigg:=FALSE;
+END_IF
+IF fLastSectorVelocityOld <> fLastSectorVelocity THEN
+	iRangeOKCounterOld:=iRangeOKCounter;
+	fArrayFiltVelo[iFiltVeloArrayIndex]:=fLastSectorVelocity;
+	iFiltVeloArrayIndex:=iFiltVeloArrayIndex+1;
+	IF iFiltVeloArrayIndex>35 THEN
+		iFiltVeloArrayIndex:=0;
+	END_IF
+	fLastSectorVelocityOld:=fLastSectorVelocity;
+	fMaxValue:=fArrayFiltVelo[0];
+  fMinValue:=fArrayFiltVelo[0];
+  FOR i:=1 TO 35 BY 1 DO
+     IF fArrayFiltVelo[i]> fMaxValue THEN
+	   fMaxValue:=fArrayFiltVelo[i];  
+     END_IF
+     IF fArrayFiltVelo[i]< fMinValue THEN
+	   fMinValue:=fArrayFiltVelo[i];  
+     END_IF
+  END_FOR;
+  fRange:=fMaxValue-fMinValue;
+  IF fRange < 0.04 AND iRangeOKCounter < 1000 THEN 
+    iRangeOKCounter:=iRangeOKCounter+1;
+  END_IF
+  IF fRange >= 0.04 THEN
+    iRangeOKCounter:=0; 
+  END_IF
+END_IF
+
+IF NOT bPhaseAlgTrigg THEN
+	fPhaseError:=nClosestSectorId*10-fLatchedPosition;
+END_IF
+
+ IF iRangeOKCounter>360 AND iRangeOKCounterOld<=360  AND NOT bPhaseAlgTrigg THEN
+    nChoosenSector:=nClosestSectorId-1;
+	bPhaseAlgTrigg:=TRUE;
+	MEMSET(destAddr:=ADR(fArrayPhaseErrorFilt[0]),0,SIZEOF(fArrayPhaseErrorFilt));
+	fPhaseErrorFiltered:=0;
+ END_IF  
+	
+IF fLatchedPosition<>fLatchedPositionOld THEN
+    nChoosenSector:=nChoosenSector+1;
+	IF nChoosenSector >35 THEN
+         nChoosenSector:=0;
+    END_IF	
+END_IF
+
+fPhaseError:=nChoosenSector*10-fLatchedPosition;
+IF fPhaseError >=180 THEN
+	fPhaseError:=360-fPhaseError;
+ELSIF fPhaseError<-180 THEN
+	fPhaseError:=fPhaseError+360;		
+END_IF
+
+
+fPhaseErrorMM:=fPhaseError*Target_GlobalVariableList.fWheelDiameter*pi/360.0; 
+	  
+IF  bPhaseAlgTrigg (*AND ABS(fSpeedSetpoint-fLastSectorVelocity) < Target_GlobalVariableList.fSpeedToleranceRpm *) THEN
+    //fPhaseError:=nChoosenSector*10-fLatchedPosition;	
+    IF fLatchedPosition<>fLatchedPositionOld (*AND  dLatchedPositionOld>dLatchedPosition*) THEN	
+	 iNominalVelCounter:=iNominalVelCounter+1;
+	 IF iNominalVelCounter >=5 THEN
+		 iNominalVelCounter:=0;
+	 END_IF
+	 IF iNominalVelCounter=0 THEN
+       (*IF  iRangeOKCounter>360 THEN
+         IF ABS(fPhaseErrorFiltered)>2 THEN
+		   fPhaseControlKp:=0.003;
+           fPhaseControlTn:=200;
+ 	      ELSIF ABS(fPhaseErrorFiltered)>1 THEN
+		    fPhaseControlKp:=0.005;
+            fPhaseControlTn:=200;
+	      ELSIF ABS(fPhaseErrorFiltered)>0.1 THEN
+	        fPhaseControlKp:=0.012;
+            fPhaseControlTn:=100;
+		  ELSIF ABS(fPhaseErrorFiltered)>0.05 THEN
+	        fPhaseControlKp:=0.03;
+            fPhaseControlTn:=100;
+          ELSE 
+            fPhaseControlKp:=0.05;
+            fPhaseControlTn:=40;
+	      END_IF 
+        ELSE*)
+	      fPhaseControlKp:=0.003;
+          fPhaseControlTn:=50;
+	    //END_IF
+		//IF ABS(fPhaseErrorFiltered)<0.1 THEN 
+	      //fbPhasePID(fSetpointValue:=fPhaseOffsetDeg, fActualValue:= fPhaseErrorSlope,fCtrlCycleTime:=5*71E-3,fKp:=fPhaseControlKp,fTn:=fPhaseControlTn,fTv:=fPhaseControlTv,fTd:=fPhaseControlTd,bReset:=bPhaseControlReset); 
+      END_IF   
+	END_IF
+//	fSpeedSetpoint:=Target_GlobalVariableList.fNominalSpeedRpm-fbPhasePID.fCtrlOutput;
+  	bPhasing:=TRUE;
+//ELSE
+//  	fSpeedSetpoint:=Target_GlobalVariableList.fNominalSpeedRpm;
+END_IF
+fSpeedSetpoint:=Target_GlobalVariableList.fNominalSpeedRpm-fbPhasePID.fCtrlOutput;
+
+IF fSpeedSetpoint>Target_GlobalVariableList.fMaximumSPeedRpm THEN
+  fSpeedSetpoint:=Target_GlobalVariableList.fMaximumSPeedRpm; 
+END_IF
+
+IF NOT bExecute THEN
+	fSpeedSetpoint:=0;	
+END_IF
+
+fCtrlOutput:=fbPhasePID.fCtrlOutput;
+
+
+IF (fLatchedPosition-fLatchedPositionOld)<>0 THEN
+	IF dLatchedPositionOld>dLatchedPosition  (*OR fLatchedPosition>=180 AND fLatchedPositionOld<180*) THEN
+		fPhaseErrorAcc:=fPhaseErrorAcc+fPhaseError;
+		fPhaseErrorFiltered:=fPhaseErrorAcc/36;
+		MEMMOVE(destAddr:=ADR(fArrayPhaseErrorFilt[1]),srcAddr:=ADR(fArrayPhaseErrorFilt[0]),SIZEOF(LREAL)*9);
+		fArrayPhaseErrorFilt[0]:=fPhaseErrorFiltered;
+		fPhaseErrorSlope:=fArrayPhaseErrorFilt[0]-fArrayPhaseErrorFilt[4];
+		fPhaseErrorAcc:=0;
+		ii:=0;
+	ELSE 
+		ii:=ii+1;
+		fPhaseErrorAcc:=fPhaseErrorAcc+fPhaseError;
+	END_IF
+END_IF
+
+IF NOT fbSuperImpose.bBusy  THEN
+  bExecuteSuperImpose:= NOT bExecuteSuperImpose;
+END_IF
+IF ABS(fPhaseErrorFiltered)>0.5 THEN
+   fDeltaVelo:= 0.02;
+ELSIF ABS(fPhaseErrorFiltered)>0.1 THEN
+   fDeltaVelo:= 0.007;
+ELSIF ABS(fPhaseErrorFiltered)>0.05 THEN
+   fDeltaVelo:= 0.004;
+ELSIF ABS(fPhaseErrorFiltered)>0.03 THEN
+   fDeltaVelo:= 0.002;
+ELSE
+	fDeltaVelo:= 0.002;
+END_IF
+
+fbSuperImpose(bExecute:=bExecuteSuperImpose AND bPhaseAlgTrigg,
+      iSampleRateMs:=10,
+      fNominalVelocityRpm:=fSpeedSetpoint,
+      fDeltaVelocityRpm:=fDeltaVelo,
+      fPhasePositionDeg:=fPhaseErrorFiltered);  
+  
+fbPWM(
+       En:=TRUE,
+       bEnable:=TRUE,
+       iBlockSampleTimeMicroS:=1000,
+       iOverrideSampleTimeMicroS:=7100,
+       iDecimalPoint:=3,
+       fOverrideInput:=fbSuperImpose.fVelocitySetpointRpm);
+	   
+stCommands.fVelocityCommandValue:=fbPWM.fOverrideOutput;	   
+//stCommands.fVelocityCommandValue:=fbSuperImpose.fVelocitySetpointRpm;	   
+
+dLatchedPositionOld:=dLatchedPosition;
+ //fSpeedSetpoint:=Target_GlobalVariableList.fNominalSpeedRpm;]]></ST>
+    </Implementation>
+    <LineIds Name="FB_ModePhasing">
+      <LineId Id="626" Count="0" />
+      <LineId Id="53" Count="8" />
+      <LineId Id="63" Count="1" />
+      <LineId Id="72" Count="1" />
+      <LineId Id="48" Count="0" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="121" Count="4" />
+      <LineId Id="415" Count="0" />
+      <LineId Id="127" Count="0" />
+      <LineId Id="224" Count="0" />
+      <LineId Id="285" Count="0" />
+      <LineId Id="226" Count="0" />
+      <LineId Id="228" Count="4" />
+      <LineId Id="261" Count="15" />
+      <LineId Id="260" Count="0" />
+      <LineId Id="227" Count="0" />
+      <LineId Id="287" Count="0" />
+      <LineId Id="411" Count="2" />
+      <LineId Id="322" Count="2" />
+      <LineId Id="356" Count="0" />
+      <LineId Id="563" Count="1" />
+      <LineId Id="336" Count="7" />
+      <LineId Id="347" Count="0" />
+      <LineId Id="346" Count="0" />
+      <LineId Id="348" Count="1" />
+      <LineId Id="354" Count="1" />
+      <LineId Id="350" Count="1" />
+      <LineId Id="329" Count="0" />
+      <LineId Id="345" Count="0" />
+      <LineId Id="320" Count="0" />
+      <LineId Id="129" Count="0" />
+      <LineId Id="308" Count="0" />
+      <LineId Id="292" Count="0" />
+      <LineId Id="541" Count="0" />
+      <LineId Id="543" Count="3" />
+      <LineId Id="130" Count="0" />
+      <LineId Id="499" Count="0" />
+      <LineId Id="490" Count="1" />
+      <LineId Id="480" Count="0" />
+      <LineId Id="488" Count="1" />
+      <LineId Id="481" Count="0" />
+      <LineId Id="486" Count="1" />
+      <LineId Id="508" Count="1" />
+      <LineId Id="507" Count="0" />
+      <LineId Id="482" Count="0" />
+      <LineId Id="484" Count="1" />
+      <LineId Id="483" Count="0" />
+      <LineId Id="503" Count="3" />
+      <LineId Id="547" Count="0" />
+      <LineId Id="479" Count="0" />
+      <LineId Id="311" Count="0" />
+      <LineId Id="528" Count="0" />
+      <LineId Id="150" Count="0" />
+      <LineId Id="132" Count="3" />
+      <LineId Id="259" Count="0" />
+      <LineId Id="146" Count="0" />
+      <LineId Id="145" Count="0" />
+      <LineId Id="147" Count="1" />
+      <LineId Id="138" Count="1" />
+      <LineId Id="153" Count="0" />
+      <LineId Id="152" Count="0" />
+      <LineId Id="155" Count="0" />
+      <LineId Id="140" Count="0" />
+      <LineId Id="118" Count="0" />
+      <LineId Id="88" Count="0" />
+      <LineId Id="157" Count="0" />
+      <LineId Id="86" Count="0" />
+      <LineId Id="173" Count="0" />
+      <LineId Id="159" Count="0" />
+      <LineId Id="521" Count="1" />
+      <LineId Id="524" Count="0" />
+      <LineId Id="167" Count="0" />
+      <LineId Id="171" Count="0" />
+      <LineId Id="163" Count="0" />
+      <LineId Id="169" Count="0" />
+      <LineId Id="164" Count="0" />
+      <LineId Id="172" Count="0" />
+      <LineId Id="165" Count="0" />
+      <LineId Id="533" Count="0" />
+      <LineId Id="532" Count="0" />
+      <LineId Id="529" Count="0" />
+      <LineId Id="537" Count="0" />
+      <LineId Id="548" Count="0" />
+      <LineId Id="531" Count="0" />
+      <LineId Id="555" Count="1" />
+      <LineId Id="559" Count="0" />
+      <LineId Id="558" Count="0" />
+      <LineId Id="561" Count="1" />
+      <LineId Id="560" Count="0" />
+      <LineId Id="553" Count="0" />
+      <LineId Id="552" Count="0" />
+      <LineId Id="551" Count="0" />
+      <LineId Id="514" Count="0" />
+      <LineId Id="516" Count="3" />
+      <LineId Id="526" Count="0" />
+      <LineId Id="470" Count="5" />
+      <LineId Id="166" Count="0" />
+      <LineId Id="478" Count="0" />
+      <LineId Id="476" Count="0" />
+      <LineId Id="512" Count="0" />
+      <LineId Id="511" Count="0" />
+      <LineId Id="161" Count="0" />
+      <LineId Id="160" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.6">
+  <POU Name="FB_BrakeTorque" Id="{ac54a68e-0c0d-4c2e-a105-bba2ce4e7751}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_BrakeTorque
+VAR_INPUT
+	
+	iTorqueValueinNm: LREAL;
+END_VAR
+
+VAR_OUTPUT
+	iTorqueScaled: INT; //Scaled torque value 
+    
+END_VAR
+	
+VAR
+	iTorqueMin:LREAL := 2; // Min brake torque in Nm
+	iTorqueMax:LREAL := 200; // Max brake torque in Nm
+	iVoltageDecMin:INT := 0; // 0V in decimal representation
+	iVoltageDecMax:INT := 32767; //10V in decimal representation
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF iTorqueValueinNm >=2 THEN
+	
+  iTorqueScaled := LREAL_TO_INT(((iTorqueValueinNm-iTorqueMin)/(iTorqueMax-iTorqueMin))*(iVoltageDecMax-iVoltageDecMin) + iVoltageDecMin);
+ELSE
+  iTorqueScaled:=0;
+END_IF
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="FB_BrakeTorque">
+      <LineId Id="44" Count="0" />
+      <LineId Id="72" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="52" Count="0" />
+      <LineId Id="71" Count="0" />
+      <LineId Id="49" Count="1" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
