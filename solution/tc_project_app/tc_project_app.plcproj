@@ -70,10 +70,10 @@
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\MAIN.TcPOU">
+    <Compile Include="POUs\MAIN_NORMAL_MOTION.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\OLD_MAIN.TcPOU">
+    <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Target\fbIndraDrive.TcPOU">

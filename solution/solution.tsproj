@@ -2,6 +2,454 @@
 <TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4022.2">
 	<DataTypes>
 		<DataType>
+			<Name GUID="{E8EE2899-4679-469C-BAC5-7318F329907D}" AutoDeleteType="true">ST_S135_DRIVESTATUSWORD</Name>
+			<BitSize>16</BitSize>
+			<SubItem>
+				<Name>bS135_CommandChange</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ 	Toggling bit to acknowledge that the Command status has changed ]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>5</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS135_ActualOperationMode_Bit0</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS135_ActualOperationMode_Bit1</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>9</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS135_ActualOperationMode_Bit2</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>10</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS135_Class3_Diag_Mess</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ 	TRUE: There is a Class 3 Diagnostic message present in the drive]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>11</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS135_Class2_Diag_Warn</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ 	TRUE: There is a Warning present in the drive]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>12</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS135_Class1_Diag_Err</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ 	TRUE: There is a Error present in the drive]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>13</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS135_ReadyForOperation_Bit0</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ 	(bS135_ReadyForOp_B1 | bS135_ReadyForOp_B0)]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>14</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS135_ReadyForOperation_Bit1</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ 	(bS135_ReadyForOp_B1 | bS135_ReadyForOp_B0)]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>15</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{50590704-8C4D-4FD8-9670-11E39DA38DD8}" AutoDeleteType="true">ST_S144_SIGNALSTATUSWORD</Name>
+			<BitSize>16</BitSize>
+			<SubItem>
+				<Name>bS424_DriveMode</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ FALSE: Operating mode]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS403_0_AxisHomedStatus</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ FALSE: Axis is NOT homed ]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>2</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS331_StandStillStatus</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ FALSE: Axis is moving]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>3</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS437_2_CommandPositionReached</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ FALSE: Axis is NOT not within command position]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>4</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bP115_3_StatusOfCmdValueProcessing</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ FALSE: Drive ignores external command value input ]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>7</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS419_0_PositioningCmdAck</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ Toggled as soon as the new Position Command value is accepted and effective]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>10</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS437_4_ConstantVelocity</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ TRUE: Axis in constant velocity]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>11</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS437_5_Acceleration</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ TRUE: Axis in acceleration]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>12</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS437_6_Deceleration</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ TRUE: Axis in deceleration]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>13</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS437_12_JogMode</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ TRUE: Axis in Axis in jog mode]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>14</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-000000000041}" TcBaseType="true" HideSubItems="true" CName="AmsNetId">AMSNETID</Name>
+			<BitSize>48</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>6</Elements>
+			</ArrayInfo>
+			<Format>
+				<Printf>%d.%d.%d.%d.%d.%d</Printf>
+				<Parameter>[0]</Parameter>
+				<Parameter>[1]</Parameter>
+				<Parameter>[2]</Parameter>
+				<Parameter>[3]</Parameter>
+				<Parameter>[4]</Parameter>
+				<Parameter>[5]</Parameter>
+			</Format>
+		</DataType>
+		<DataType>
+			<Name GUID="{4CCFD5CA-E676-474E-B42D-6A96C42819C9}" AutoDeleteType="true">ST_S134_MASTERCONTROLWORD</Name>
+			<BitSize>16</BitSize>
+			<SubItem>
+				<Name>bS134_CmdOperationMode_Bit0</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ 	(bS134_CmdOpMode_B2 | bS134_CmdOpMode_B2 | bS134_CmdOpMode_B0)]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS134_CmdOperationMode_Bit1</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ 	(bS134_CmdOpMode_B2 | bS134_CmdOpMode_B2 | bS134_CmdOpMode_B0)]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>9</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS134_IPOSYNC</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ 	Interpolator clock, toggles when new command values are to be transmitted ]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>10</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS134_CmdOperationMode_Bit2</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ 	(bS134_CmdOpMode_B2 | bS134_CmdOpMode_B2 | bS134_CmdOpMode_B0)]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>11</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS134_DriveHalt</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ 	1-0 change: deceleration of drive while maintaining the max. acceleration (S-0-0138) ]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>13</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS134_DriveEnable</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ 	TRUE -> FALSE transition: torque disable without delay (independent of bit bS134_DriveOn or bS134_DriveHalt)]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>14</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS134_DriveOn</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ 	TRUE -> FALSE transition: best possible deceleration (only possible if bit bS134_DriveEnable = TRUE)]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>15</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{356849DC-7175-4AB3-A9EB-61AF708DF42F}" AutoDeleteType="true">ST_S145_SIGNALCONTROLWORD</Name>
+			<BitSize>16</BitSize>
+			<SubItem>
+				<Name>bS346_0_PosCtrlWord_CmdValueAccept</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ Toggle to execute Slave Axis command]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>0</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bP12_C300_SetAbsolutePosition</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ Sets the Absolute position (defined in S52) of the drive]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>1</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bS148_C600_DriveControlledHoming</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ Initiates the homing procedure defined in the drive]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>2</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bS346_3_PosCtrlWord_Abs_Rel</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ FALSE: Absolute ]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>3</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bS346_5_PosCtrlWord_ImmBlockChange</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ FALSE: Drive moves to current target position, before positioning at new target position]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>4</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bS99_DriveErrorReset</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ TRUE: Immediate block change, i.e., drive immediately moves to new target position]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>5</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bS346_1_PosCtrlWord_PosActivation</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ (bS346_2 | bS346_1) 00:	Positioning active, started by toggling of bit 0]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>6</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bS346_2_PosCtrlWord_PosActivation</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ (bS346_2 | bS346_1) 00:	Positioning active, started by toggling of bit 0]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>7</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bS159_C1300_Disable_Monitoring</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ TRUE: 	Monitoring of Position error, Position command error, Velocity error and Acceleration limit is disabled]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>8</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bS405_0_Probe1_Enabled</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ FALSE: 	Monitoring of Position error, Position command error, Velocity error and Acceleration limit is enabled ]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>9</BitOffs>
+				<Default>
+					<Value>1</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bS420_C0400_Activate_ParameterMode</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ Brings the drive into parameter mode]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>10</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bS422_C0200_Exit_ParameterMode</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ Brings the drive into parameter mode]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>11</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bP760_VM_PosCtrlWord_CmdValueAccept</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ Toggle to execute Virtual Master command]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>12</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bP760_VM_PosCtrlWord_1_PosActivation</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ (bP760_2 | bP760_1) 00:	Positioning active, started by toggling of bit 0]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>13</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bP760_VM_PosCtrlWord_2_PosActivation</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[ (bP760_2 | bP760_1) 00:	Positioning active, started by toggling of bit 0]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>14</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+		</DataType>
+		<DataType>
 			<Name GUID="{18071995-0000-0000-0000-002000000006}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..5] OF BIT</Name>
 			<BitSize>6</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
@@ -64,13 +512,13 @@
 		<ImageData Id="1004">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ff808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000ffffc0c0c000ffff808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0ff0000c0c0c0ff0000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00c0c0c00000ffc0c0c00000ff808080ff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00c0c0c0008000c0c0c0008000808080ff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff</ImageData>
 		<ImageData Id="1005">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ff808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ff00bfffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c080808000bfff00bfff00bfff00bfff00bfffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ff00bfffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff</ImageData>
 	</ImageDatas>
-	<Project ProjectGUID="{9CF97348-B9D3-4938-B1F2-5F0B0B6AA66A}" Target64Bit="true" ShowHideConfigurations="#x106">
+	<Project ProjectGUID="{9CF97348-B9D3-4938-B1F2-5F0B0B6AA66A}" TargetNetId="5.46.8.38.1.1" Target64Bit="true" ShowHideConfigurations="#x106">
 		<System>
 			<Tasks>
-				<Task Id="2" Priority="26" CycleTime="10000" AmsPort="350" AdtTasks="true">
+				<Task Id="2" Priority="26" CycleTime="100000" AmsPort="350" AdtTasks="true">
 					<Name>PlcTaskCom</Name>
 				</Task>
-				<Task Id="4" Priority="20" CycleTime="10000" AmsPort="351" AdtTasks="true">
+				<Task Id="4" Priority="20" CycleTime="100000" AmsPort="351" AdtTasks="true">
 					<Name>PlcTask</Name>
 				</Task>
 			</Tasks>
@@ -89,6 +537,392 @@
 				<Instance Id="#x08502040" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="tc_project_app\tc_project_app.tmc">
 					<Name>tc_project_app Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+					<Vars VarGrpType="1">
+						<Name>PlcTask Inputs</Name>
+						<Var>
+							<Name>Global_IO.iiAnalogueIn_1</Name>
+							<Comment>
+								<![CDATA[Temperature input from EL3214 Channel1]]>
+							</Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_IndraDrive.stDriveStatus.nS135_DriveStatusWord</Name>
+							<Type GUID="{E8EE2899-4679-469C-BAC5-7318F329907D}">ST_S135_DRIVESTATUSWORD</Type>
+							<SubVar>
+								<Name>bS135_CommandChange</Name>
+								<Comment>
+									<![CDATA[ 	Toggling bit to acknowledge that the Command status has changed ]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS135_ActualOperationMode_Bit0</Name>
+								<Comment>
+									<![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS135_ActualOperationMode_Bit1</Name>
+								<Comment>
+									<![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS135_ActualOperationMode_Bit2</Name>
+								<Comment>
+									<![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS135_Class3_Diag_Mess</Name>
+								<Comment>
+									<![CDATA[ 	TRUE: There is a Class 3 Diagnostic message present in the drive]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS135_Class2_Diag_Warn</Name>
+								<Comment>
+									<![CDATA[ 	TRUE: There is a Warning present in the drive]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS135_Class1_Diag_Err</Name>
+								<Comment>
+									<![CDATA[ 	TRUE: There is a Error present in the drive]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS135_ReadyForOperation_Bit0</Name>
+								<Comment>
+									<![CDATA[ 	(bS135_ReadyForOp_B1 | bS135_ReadyForOp_B0)]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS135_ReadyForOperation_Bit1</Name>
+								<Comment>
+									<![CDATA[ 	(bS135_ReadyForOp_B1 | bS135_ReadyForOp_B0)]]>
+								</Comment>
+							</SubVar>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_IndraDrive.stDriveStatus.nS51_PositionFeedbackValue</Name>
+							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_IndraDrive.stDriveStatus.nS386_ActivePositionFeedbackValue</Name>
+							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_IndraDrive.stDriveStatus.nS40_VelocityFeedbackValue</Name>
+							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_IndraDrive.stDriveStatus.nS390_DiagnosticMessageNumber</Name>
+							<Type>DWORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_IndraDrive.stDriveStatus.stS144_SignalStatusWord</Name>
+							<Type GUID="{50590704-8C4D-4FD8-9670-11E39DA38DD8}">ST_S144_SIGNALSTATUSWORD</Type>
+							<SubVar>
+								<Name>bS424_DriveMode</Name>
+								<Comment>
+									<![CDATA[ FALSE: Operating mode]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS403_0_AxisHomedStatus</Name>
+								<Comment>
+									<![CDATA[ FALSE: Axis is NOT homed ]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS331_StandStillStatus</Name>
+								<Comment>
+									<![CDATA[ FALSE: Axis is moving]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS437_2_CommandPositionReached</Name>
+								<Comment>
+									<![CDATA[ FALSE: Axis is NOT not within command position]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bP115_3_StatusOfCmdValueProcessing</Name>
+								<Comment>
+									<![CDATA[ FALSE: Drive ignores external command value input ]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS419_0_PositioningCmdAck</Name>
+								<Comment>
+									<![CDATA[ Toggled as soon as the new Position Command value is accepted and effective]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS437_4_ConstantVelocity</Name>
+								<Comment>
+									<![CDATA[ TRUE: Axis in constant velocity]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS437_5_Acceleration</Name>
+								<Comment>
+									<![CDATA[ TRUE: Axis in acceleration]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS437_6_Deceleration</Name>
+								<Comment>
+									<![CDATA[ TRUE: Axis in deceleration]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS437_12_JogMode</Name>
+								<Comment>
+									<![CDATA[ TRUE: Axis in Axis in jog mode]]>
+								</Comment>
+							</SubVar>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_IndraDrive.stDriveStatus.nS84_TorqueFeedback</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_IndraDrive.stDriveStatus.nS189_PositionError</Name>
+							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.stAmsNetId</Name>
+							<Type GUID="{18071995-0000-0000-0000-000000000041}">AMSNETID</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.nPort</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.nMasterAxisPosition</Name>
+							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.dLatchedPosition</Name>
+							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.inputDummy</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.inputDigSens1</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.inputDigSens2</Name>
+							<Type>BOOL</Type>
+						</Var>
+					</Vars>
+					<Vars VarGrpType="2">
+						<Name>PlcTask Outputs</Name>
+						<Var>
+							<Name>Global_IO.iqAnalogueOut_1</Name>
+							<Comment>
+								<![CDATA[Analogue outputs EL4002]]>
+							</Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>Global_IO.iqAnalogueOut_2</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_IndraDrive.stDriveCommands.stS134_MasterControlWord</Name>
+							<Type GUID="{4CCFD5CA-E676-474E-B42D-6A96C42819C9}">ST_S134_MASTERCONTROLWORD</Type>
+							<SubVar>
+								<Name>bS134_CmdOperationMode_Bit0</Name>
+								<Comment>
+									<![CDATA[ 	(bS134_CmdOpMode_B2 | bS134_CmdOpMode_B2 | bS134_CmdOpMode_B0)]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS134_CmdOperationMode_Bit1</Name>
+								<Comment>
+									<![CDATA[ 	(bS134_CmdOpMode_B2 | bS134_CmdOpMode_B2 | bS134_CmdOpMode_B0)]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS134_IPOSYNC</Name>
+								<Comment>
+									<![CDATA[ 	Interpolator clock, toggles when new command values are to be transmitted ]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS134_CmdOperationMode_Bit2</Name>
+								<Comment>
+									<![CDATA[ 	(bS134_CmdOpMode_B2 | bS134_CmdOpMode_B2 | bS134_CmdOpMode_B0)]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS134_DriveHalt</Name>
+								<Comment>
+									<![CDATA[ 	1-0 change: deceleration of drive while maintaining the max. acceleration (S-0-0138) ]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS134_DriveEnable</Name>
+								<Comment>
+									<![CDATA[ 	TRUE -> FALSE transition: torque disable without delay (independent of bit bS134_DriveOn or bS134_DriveHalt)]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS134_DriveOn</Name>
+								<Comment>
+									<![CDATA[ 	TRUE -> FALSE transition: best possible deceleration (only possible if bit bS134_DriveEnable = TRUE)]]>
+								</Comment>
+							</SubVar>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_IndraDrive.stDriveCommands.nS47_PositionCommandValue</Name>
+							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_IndraDrive.stDriveCommands.nS258_TargetPosition</Name>
+							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_IndraDrive.stDriveCommands.nS282_PositioningCommandValue</Name>
+							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_IndraDrive.stDriveCommands.nS259_PositioningVelocity</Name>
+							<Type>UDINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_IndraDrive.stDriveCommands.nS260_PositioningAcceleration</Name>
+							<Type>UDINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_IndraDrive.stDriveCommands.nS359_PositioningDeceleration</Name>
+							<Type>UDINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_IndraDrive.stDriveCommands.nS108_FeedrateOverride</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_IndraDrive.stDriveCommands.stS145_SignalControlWord</Name>
+							<Type GUID="{356849DC-7175-4AB3-A9EB-61AF708DF42F}">ST_S145_SIGNALCONTROLWORD</Type>
+							<SubVar>
+								<Name>bS346_0_PosCtrlWord_CmdValueAccept</Name>
+								<Comment>
+									<![CDATA[ Toggle to execute Slave Axis command]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bP12_C300_SetAbsolutePosition</Name>
+								<Comment>
+									<![CDATA[ Sets the Absolute position (defined in S52) of the drive]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS148_C600_DriveControlledHoming</Name>
+								<Comment>
+									<![CDATA[ Initiates the homing procedure defined in the drive]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS346_3_PosCtrlWord_Abs_Rel</Name>
+								<Comment>
+									<![CDATA[ FALSE: Absolute ]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS346_5_PosCtrlWord_ImmBlockChange</Name>
+								<Comment>
+									<![CDATA[ FALSE: Drive moves to current target position, before positioning at new target position]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS99_DriveErrorReset</Name>
+								<Comment>
+									<![CDATA[ TRUE: Immediate block change, i.e., drive immediately moves to new target position]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS346_1_PosCtrlWord_PosActivation</Name>
+								<Comment>
+									<![CDATA[ (bS346_2 | bS346_1) 00:	Positioning active, started by toggling of bit 0]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS346_2_PosCtrlWord_PosActivation</Name>
+								<Comment>
+									<![CDATA[ (bS346_2 | bS346_1) 00:	Positioning active, started by toggling of bit 0]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS159_C1300_Disable_Monitoring</Name>
+								<Comment>
+									<![CDATA[ TRUE: 	Monitoring of Position error, Position command error, Velocity error and Acceleration limit is disabled]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS405_0_Probe1_Enabled</Name>
+								<Comment>
+									<![CDATA[ FALSE: 	Monitoring of Position error, Position command error, Velocity error and Acceleration limit is enabled ]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS420_C0400_Activate_ParameterMode</Name>
+								<Comment>
+									<![CDATA[ Brings the drive into parameter mode]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS422_C0200_Exit_ParameterMode</Name>
+								<Comment>
+									<![CDATA[ Brings the drive into parameter mode]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bP760_VM_PosCtrlWord_CmdValueAccept</Name>
+								<Comment>
+									<![CDATA[ Toggle to execute Virtual Master command]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bP760_VM_PosCtrlWord_1_PosActivation</Name>
+								<Comment>
+									<![CDATA[ (bP760_2 | bP760_1) 00:	Positioning active, started by toggling of bit 0]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bP760_VM_PosCtrlWord_2_PosActivation</Name>
+								<Comment>
+									<![CDATA[ (bP760_2 | bP760_1) 00:	Positioning active, started by toggling of bit 0]]>
+								</Comment>
+							</SubVar>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_IndraDrive.stDriveCommands.nS92_BiPolarTorqueLimit</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_IndraDrive.stDriveCommands.nS40_VelocityCommandValue</Name>
+							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.nAdditivePositionSetpoiunt</Name>
+							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.bBrakeFreewheelOn</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.bBrakeLockedOn</Name>
+							<Type>BOOL</Type>
+						</Var>
+					</Vars>
 					<TaskPouOids>
 						<TaskPouOid Prio="20" OTCID="#x08502041"/>
 					</TaskPouOids>
@@ -812,7 +1646,7 @@
 						<DcMode>446353796e633235307573000000000044432d53796e6368726f6e202853796e633053686966742032353075732900000000000090d0030000000000000000050100000000000000000000000000000000000000000000000000000000000000</DcMode>
 						<DcMode>446353796e633130303075730000000044432d53796e6368726f6e202853796e633053686966742031303030757329000000000040420f0000000000000000050100000000000000000000000000000000000000000000000000000000000000</DcMode>
 						<DcMode>4672656552756e000000000000000000467265652052756e20286e6f2073796e6368726f6e697a6174696f6e29000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000</DcMode>
-						<MBoxUserCmdData>020005000a0000000d00000003000000000000000000000000000000000000000340010000000000a00f4e43206379636c652074696d6500</MBoxUserCmdData>
+						<MBoxUserCmdData>020005000a0000000d0000000300000000000000000000000000000000000000034001000000000010274e43206379636c652074696d6500</MBoxUserCmdData>
 						<MBoxUserCmdData>020005000a0000000e000000030000000000000000000000000000000000000003402000000000000b004f7065726174696f6e206d6f646500</MBoxUserCmdData>
 						<Pdo Name="AT" Index="#x0010" Flags="#x0001" SyncMan="3">
 							<Entry Name="Drive status word" Index="#x0087" Flags="#x00000800">
@@ -890,4 +1724,41 @@
 			</Device>
 		</Io>
 	</Project>
+	<Mappings>
+		<MappingInfo Identifier="{00000000-2041-0850-4420-500810000403}" Id="#x02030010"/>
+		<MappingInfo Identifier="{00000000-2041-0850-4420-500842000403}" Id="#x02030020"/>
+		<OwnerA Name="TIPC^tc_project_app^tc_project_app Instance">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 10 (EK1200)^Term 14 (EL1252-0050)">
+				<Link VarA="PlcTask Inputs^MAIN.inputDigSens1" VarB="Channel 1^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.inputDigSens2" VarB="Channel 2^Input"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 10 (EK1200)^Term 20 (EL3214)">
+				<Link VarA="PlcTask Inputs^Global_IO.iiAnalogueIn_1" VarB="RTD Inputs Channel 1^Value"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 4 (EtherCAT)^Drive 10 (IndraDrive MPB18/19)">
+				<Link VarA="PlcTask Inputs^MAIN.dLatchedPosition" VarB="AT^Probe value 1 positive edge"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_IndraDrive.stDriveStatus.nS135_DriveStatusWord" VarB="AT^Drive status word"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_IndraDrive.stDriveStatus.nS189_PositionError" VarB="AT^Following distance"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_IndraDrive.stDriveStatus.nS386_ActivePositionFeedbackValue" VarB="AT^Active position feedback value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_IndraDrive.stDriveStatus.nS390_DiagnosticMessageNumber" VarB="AT^Diagnostic message number"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_IndraDrive.stDriveStatus.nS40_VelocityFeedbackValue" VarB="AT^Velocity feedback value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_IndraDrive.stDriveStatus.nS51_PositionFeedbackValue" VarB="AT^Position feedback value 1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_IndraDrive.stDriveStatus.nS84_TorqueFeedback" VarB="AT^Torque/force feedback value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_IndraDrive.stDriveStatus.stS144_SignalStatusWord" VarB="AT^Signal status word"/>
+				<Link VarA="PlcTask Inputs^MAIN.nMasterAxisPosition" VarB="AT^Virtual master axis, actual position value"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_IndraDrive.stDriveCommands.nS108_FeedrateOverride" VarB="MDT^Feedrate override"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_IndraDrive.stDriveCommands.nS258_TargetPosition" VarB="MDT^Target position"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_IndraDrive.stDriveCommands.nS259_PositioningVelocity" VarB="MDT^Positioning velocity"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_IndraDrive.stDriveCommands.nS260_PositioningAcceleration" VarB="MDT^Ramp 1 pitch"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_IndraDrive.stDriveCommands.nS282_PositioningCommandValue" VarB="MDT^Positioning command value"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_IndraDrive.stDriveCommands.nS359_PositioningDeceleration" VarB="MDT^Deceleration ramp 1"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_IndraDrive.stDriveCommands.nS40_VelocityCommandValue" VarB="MDT^Velocity command value"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_IndraDrive.stDriveCommands.nS47_PositionCommandValue" VarB="MDT^Position command value"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_IndraDrive.stDriveCommands.nS92_BiPolarTorqueLimit" VarB="MDT^Bipolar torque/force limit value"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_IndraDrive.stDriveCommands.stS134_MasterControlWord" VarB="MDT^Master control word"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_IndraDrive.stDriveCommands.stS145_SignalControlWord" VarB="MDT^Signal control word"/>
+				<Link VarA="PlcTask Outputs^MAIN.nAdditivePositionSetpoiunt" VarB="MDT^Additive positon command value"/>
+			</OwnerB>
+		</OwnerA>
+	</Mappings>
 </TcSmProject>
