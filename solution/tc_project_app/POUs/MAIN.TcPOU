@@ -140,7 +140,7 @@ ACT_Brake();
     <Action Name="ACT_Brake" Id="{a8ef5cdf-33a2-41f9-b34e-1a95819e04c4}">
       <Implementation>
         <ST><![CDATA[bBrakeFreewheelOn:=fBrakeSpNm=0;
-bBrakeLockedOn;
+bBrakeLockedOn:=FALSE;
 
 fbBrakeTorque(iTorqueValueinNm:=fBrakeSpNm);
 iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
