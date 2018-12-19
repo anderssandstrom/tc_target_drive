@@ -1713,6 +1713,10 @@
 		<MappingInfo Identifier="{00000000-2041-0850-4420-500810000403}" Id="#x02030010"/>
 		<MappingInfo Identifier="{00000000-2041-0850-4420-500842000403}" Id="#x02030020"/>
 		<OwnerA Name="TIPC^tc_project_app^tc_project_app Instance">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 10 (EK1200)^Term 12 (EL2808)">
+				<Link VarA="PlcTask Outputs^MAIN.bBrakeFreewheelOn" VarB="Channel 2^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.bBrakeLockedOn" VarB="Channel 3^Output"/>
+			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 10 (EK1200)^Term 14 (EL1252-0050)">
 				<Link VarA="PlcTask Inputs^MAIN.inputDigSens1" VarB="Channel 1^Input"/>
 				<Link VarA="PlcTask Inputs^MAIN.inputDigSens2" VarB="Channel 2^Input"/>
