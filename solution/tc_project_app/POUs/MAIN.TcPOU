@@ -20,7 +20,7 @@ VAR
 	bEnabled:BOOL:=FALSE;
 	bReset:BOOL:=FALSE;
     fbModePhase:FB_ModePhasing;	
-	fAccelerationDefault:LREAL:=0.005;
+	fAccelerationDefault:LREAL:=0.003;
 	fSetVelToDriveRaw:LREAL;
 	bBrakeFreewheelOn AT %Q*: BOOL;
 	bBrakeLockedOn AT %Q*: BOOL;
@@ -140,7 +140,7 @@ ACT_Brake();
     <Action Name="ACT_Brake" Id="{a8ef5cdf-33a2-41f9-b34e-1a95819e04c4}">
       <Implementation>
         <ST><![CDATA[bBrakeFreewheelOn:=fBrakeSpNm=0;
-bBrakeLockedOn:=FALSE;
+bBrakeLockedOn;
 
 fbBrakeTorque(iTorqueValueinNm:=fBrakeSpNm);
 iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
