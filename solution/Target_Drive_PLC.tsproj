@@ -1741,6 +1741,9 @@
 				<Link VarA="PlcTask Outputs^MAIN.bBrakeFreewheelOn" VarB="Channel 2^Output"/>
 				<Link VarA="PlcTask Outputs^MAIN.bBrakeLockedOn" VarB="Channel 3^Output"/>
 			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 10 (EK1200)^Term 14 (EL1252-0050)">
+				<Link VarA="PlcTask Inputs^MAIN.inputDummy" VarB="Channel 2^Input"/>
+			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 10 (EK1200)^Term 19 (EL4002)">
 				<Link VarA="PlcTask Outputs^MAIN.iBrakeSpRaw" VarB="AO Outputs Channel 1^Analog output"/>
 			</OwnerB>
