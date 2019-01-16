@@ -521,6 +521,9 @@
 				<Task Id="4" Priority="20" CycleTime="100000" AmsPort="351" AdtTasks="true">
 					<Name>PlcTask</Name>
 				</Task>
+				<Task Id="5" Priority="1" CycleTime="10000" AmsPort="352" AdtTasks="true">
+					<Name>Task faster</Name>
+				</Task>
 			</Tasks>
 		</System>
 		<Plc>
@@ -909,6 +912,26 @@
 					</Vars>
 					<TaskPouOids>
 						<TaskPouOid Prio="20" OTCID="#x08502041"/>
+					</TaskPouOids>
+				</Instance>
+			</Project>
+			<Project GUID="{87E6730D-AA5D-4877-938D-9367D6DB8F89}" Name="tc_project_app_faster" PrjFilePath="tc_project_app_faster\tc_project_app_faster.plcproj" TmcFilePath="tc_project_app_faster\tc_project_app_faster.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2">
+					<Name>tc_project_app_faster Instance</Name>
+					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+					<Vars VarGrpType="1">
+						<Name>PlcTask Inputs</Name>
+						<Var>
+							<Name>MAIN.inputDigSens1</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.inputDigSens2</Name>
+							<Type>BOOL</Type>
+						</Var>
+					</Vars>
+					<TaskPouOids>
+						<TaskPouOid Prio="20" OTCID="#x08502001"/>
 					</TaskPouOids>
 				</Instance>
 			</Project>
@@ -1710,16 +1733,13 @@
 		</Io>
 	</Project>
 	<Mappings>
-		<MappingInfo Identifier="{00000000-2041-0850-4420-500810000403}" Id="#x02030010"/>
-		<MappingInfo Identifier="{00000000-2041-0850-4420-500842000403}" Id="#x02030020"/>
+		<MappingInfo Identifier="{00000000-2041-0850-4520-500810000403}" Id="#x02030010"/>
+		<MappingInfo Identifier="{00000000-2001-0850-0420-500810000403}" Id="#x02030030"/>
+		<MappingInfo Identifier="{00000000-2041-0850-4520-500842000403}" Id="#x02030020"/>
 		<OwnerA Name="TIPC^tc_project_app^tc_project_app Instance">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 10 (EK1200)^Term 12 (EL2808)">
 				<Link VarA="PlcTask Outputs^MAIN.bBrakeFreewheelOn" VarB="Channel 2^Output"/>
 				<Link VarA="PlcTask Outputs^MAIN.bBrakeLockedOn" VarB="Channel 3^Output"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 10 (EK1200)^Term 14 (EL1252-0050)">
-				<Link VarA="PlcTask Inputs^MAIN.inputDigSens1" VarB="Channel 1^Input"/>
-				<Link VarA="PlcTask Inputs^MAIN.inputDigSens2" VarB="Channel 2^Input"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 10 (EK1200)^Term 19 (EL4002)">
 				<Link VarA="PlcTask Outputs^MAIN.iBrakeSpRaw" VarB="AO Outputs Channel 1^Analog output"/>
@@ -1750,6 +1770,12 @@
 				<Link VarA="PlcTask Outputs^MAIN.fb_IndraDrive.stDriveCommands.stS134_MasterControlWord" VarB="MDT^Master control word"/>
 				<Link VarA="PlcTask Outputs^MAIN.fb_IndraDrive.stDriveCommands.stS145_SignalControlWord" VarB="MDT^Signal control word"/>
 				<Link VarA="PlcTask Outputs^MAIN.nAdditivePositionSetpoiunt" VarB="MDT^Additive positon command value"/>
+			</OwnerB>
+		</OwnerA>
+		<OwnerA Name="TIPC^tc_project_app_faster^tc_project_app_faster Instance">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 10 (EK1200)^Term 16 (EL1252)">
+				<Link VarA="PlcTask Inputs^MAIN.inputDigSens1" VarB="Channel 1^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.inputDigSens2" VarB="Channel 2^Input"/>
 			</OwnerB>
 		</OwnerA>
 	</Mappings>
