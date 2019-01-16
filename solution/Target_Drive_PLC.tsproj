@@ -916,7 +916,7 @@
 				</Instance>
 			</Project>
 			<Project GUID="{87E6730D-AA5D-4877-938D-9367D6DB8F89}" Name="tc_project_app_faster" PrjFilePath="tc_project_app_faster\tc_project_app_faster.plcproj" TmcFilePath="tc_project_app_faster\tc_project_app_faster.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="tc_project_app_faster\tc_project_app_faster.tmc">
 					<Name>tc_project_app_faster Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
