@@ -16,5 +16,8 @@
     <Content Include="MotorBrake.tcscope">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Digital.tcscope">
+      <SubType>Content</SubType>
+    </Content>
   </ItemGroup>
 </Project>

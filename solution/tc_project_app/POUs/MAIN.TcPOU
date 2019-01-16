@@ -20,7 +20,7 @@ VAR
 	bEnabled:BOOL:=FALSE;
 	bReset:BOOL:=FALSE;
     fbModePhase:FB_ModePhasing;	
-	fAccelerationDefault:LREAL:=0.003;
+	fAccelerationDefault:LREAL:=0.005;
 	fSetVelToDriveRaw:LREAL;
 	bBrakeFreewheelOn AT %Q*: BOOL;
 	bBrakeLockedOn AT %Q*: BOOL;
@@ -36,7 +36,11 @@ VAR
 	iRotMotorTempRaw AT %I*: INT:=0;
 	fRotMotorTempDegC:LREAL:=0;
 	
-	
+	bBrakeLockOnCmd:BOOL:=FALSE;
+	bFreeWheelOnOnCmd:BOOL:=TRUE;
+	fActualTorque:LREAL:=0;
+	fActualPosition:LREAL:=0;
+	fActualVelocity:LREAL:=0;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -51,6 +55,10 @@ stCommands.bCmd_ErrorReset:=bReset;
 IF fRotMotorTempDegC >= nMaxMotorTemperature THEN
 	bEnable:= FALSE;
 	bExecute:= FALSE;	
+END_IF
+
+IF NOT bEnable THEN
+  bExecute:=FALSE;
 END_IF
 			
 CASE eTargetState OF 
@@ -129,18 +137,19 @@ fb_IndraDrive(
 	stCommands.fVelocityCommandValue;// S40, velocity used for positining and jogging (in velocity mode)
 	fSetVelToDriveRaw:= DINT_TO_LREAL(MAIN.fb_IndraDrive.stDriveCommands.nS40_VelocityCommandValue)/10000;
 	
-	stStatus.fActualPosition;
-	stStatus.fActualTorque;
-	stStatus.fActualVelocity;
+	fActualPosition:=stStatus.fActualPosition;
+	fActualTorque:=stStatus.fActualTorque;
+	fActualVelocity:=stStatus.fActualVelocity;
 	stStatus.bAxisEnabled;
-	
+
 ACT_Brake();
   ]]></ST>
     </Implementation>
     <Action Name="ACT_Brake" Id="{a8ef5cdf-33a2-41f9-b34e-1a95819e04c4}">
       <Implementation>
-        <ST><![CDATA[bBrakeFreewheelOn:=fBrakeSpNm=0;
-bBrakeLockedOn:=FALSE;
+        <ST><![CDATA[//bBrakeFreewheelOn:=fBrakeSpNm=0;
+bBrakeFreewheelOn:=bFreeWheelOnOnCmd;
+bBrakeLockedOn:=bBrakeLockOnCmd;
 
 fbBrakeTorque(iTorqueValueinNm:=fBrakeSpNm);
 iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
@@ -158,6 +167,9 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       <LineId Id="628" Count="0" />
       <LineId Id="630" Count="0" />
       <LineId Id="629" Count="0" />
+      <LineId Id="723" Count="0" />
+      <LineId Id="722" Count="0" />
+      <LineId Id="724" Count="1" />
       <LineId Id="474" Count="0" />
       <LineId Id="129" Count="0" />
       <LineId Id="150" Count="0" />
@@ -201,12 +213,13 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       <LineId Id="62" Count="1" />
       <LineId Id="277" Count="0" />
       <LineId Id="665" Count="4" />
-      <LineId Id="579" Count="0" />
+      <LineId Id="768" Count="0" />
       <LineId Id="573" Count="0" />
       <LineId Id="275" Count="0" />
     </LineIds>
     <LineIds Name="MAIN.ACT_Brake">
       <LineId Id="3" Count="0" />
+      <LineId Id="7" Count="0" />
       <LineId Id="5" Count="0" />
       <LineId Id="4" Count="0" />
       <LineId Id="1" Count="1" />

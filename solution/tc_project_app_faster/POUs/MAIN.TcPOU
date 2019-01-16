@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.6">
+  <POU Name="MAIN" Id="{e3706b08-6154-42eb-8c8a-7893886a10c9}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	inputDigSens1 AT %I*: BOOL;
+	inputDigSens2 AT %I*: BOOL;
+	nichtGutBit:BOOL:=FALSE;
+	allesGutBit:BOOL;
+	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// the two optical sensors can never be zero at the same time because Pilz overspeed will trip
+IF NOT inputDigSens1 AND NOT inputDigSens2 THEN
+	nichtGutBit:=TRUE;
+END_IF
+allesGutBit:=NOT nichtGutBit;
+]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="15" Count="0" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="10" Count="1" />
+      <LineId Id="13" Count="1" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
