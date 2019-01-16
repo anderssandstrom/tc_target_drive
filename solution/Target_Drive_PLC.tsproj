@@ -916,7 +916,7 @@
 				</Instance>
 			</Project>
 			<Project GUID="{87E6730D-AA5D-4877-938D-9367D6DB8F89}" Name="tc_project_app_faster" PrjFilePath="tc_project_app_faster\tc_project_app_faster.plcproj" TmcFilePath="tc_project_app_faster\tc_project_app_faster.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="tc_project_app_faster\tc_project_app_faster.tmc">
 					<Name>tc_project_app_faster Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
@@ -1740,6 +1740,9 @@
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 10 (EK1200)^Term 12 (EL2808)">
 				<Link VarA="PlcTask Outputs^MAIN.bBrakeFreewheelOn" VarB="Channel 2^Output"/>
 				<Link VarA="PlcTask Outputs^MAIN.bBrakeLockedOn" VarB="Channel 3^Output"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 10 (EK1200)^Term 14 (EL1252-0050)">
+				<Link VarA="PlcTask Inputs^MAIN.inputDummy" VarB="Channel 2^Input"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 10 (EK1200)^Term 19 (EL4002)">
 				<Link VarA="PlcTask Outputs^MAIN.iBrakeSpRaw" VarB="AO Outputs Channel 1^Analog output"/>
