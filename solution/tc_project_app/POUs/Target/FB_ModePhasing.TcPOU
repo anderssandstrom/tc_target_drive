@@ -62,6 +62,7 @@ VAR
 	fPhaseErrorSlope: LREAL;
 	iNominalVelCounter:INT:=0;
 	fDeltaVelo: LREAL;
+	bVeloStable:BOOL:=FALSE;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -139,7 +140,7 @@ IF fPhaseError >=180 THEN
 ELSIF fPhaseError<-180 THEN
 	fPhaseError:=fPhaseError+360;		
 END_IF
-
+bVeloStable:=iRangeOKCounter > 360;
 
 fPhaseErrorMM:=fPhaseError*Target_GlobalVariableList.fWheelDiameter*pi/360.0; 
 	  

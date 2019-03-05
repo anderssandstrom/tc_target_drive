@@ -139,7 +139,7 @@ fb_IndraDrive(
 	
 	fActualPosition:=stStatus.fActualPosition;
 	fActualTorque:=stStatus.fActualTorque;
-	fActualVelocity:=stStatus.fActualVelocity;
+	fActualVelocity:=stStatus.fActualVelocity/10;
 	stStatus.bAxisEnabled;
 
 ACT_Brake();
