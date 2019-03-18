@@ -12,8 +12,10 @@ VAR_GLOBAL CONSTANT
     nPulseFreqHz:LREAL:=14;
 	fNominalSpeedRpm: LREAL := Target_GlobalVariableList.nPulseFreqHz/Target_GlobalVariableList.nSectors*60;
     fMaximumSPeedRpm: LREAL := Target_GlobalVariableList.fNominalSpeedRpm*1.1;
-	nMaxMotorTemperature: INT:= 50;
+	nMaxMotorTemperature: INT:= 80;
 	fWheelDiameter:LREAL:=2500;
+	//ErrorCodes
+	nErrorIdNoLatch:INT:=1000;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

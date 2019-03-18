@@ -27,7 +27,7 @@ VAR
     inputDummy AT %I*: BOOL;
 	inputDigSens1 AT %I*: BOOL;
 	inputDigSens2 AT %I*: BOOL;
-	nMaxMotorTemperature: INT:= 50;
+
 	fbBrakeTorque: FB_BrakeTorque;
 	fBrakeSpNm:LREAL:=0;
 	iBrakeSpRaw AT %Q* :INT:=0;
@@ -41,26 +41,25 @@ VAR
 	fActualTorque:LREAL:=0;
 	fActualPosition:LREAL:=0;
 	fActualVelocity:LREAL:=0;
+	bError: BOOL:=FALSE;
+	nErrorId:UDINT:=0;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fRotMotorTempDegC:=iRotMotorTempRaw/10.0;
-
+      <ST><![CDATA[
+// Enable Axis independet of state
 stCommands.bEnableAxis :=bEnable;
 stCommands.bHaltAxis :=bEnable;
 bEnabled:=stStatus.bAxisEnabled;
 stCommands.bCmd_ErrorReset:=bReset;
 
-//MotorTemperatureMonitoring
-IF fRotMotorTempDegC >= nMaxMotorTemperature THEN
-	bEnable:= FALSE;
-	bExecute:= FALSE;	
-END_IF
-
 IF NOT bEnable THEN
   bExecute:=FALSE;
 END_IF
-			
+
+stCommands.fCommandAcceleration:= fAccelerationDefault;
+stCommands.fCommandDeceleration:=fAccelerationDefault;	
+
 CASE eTargetState OF 
 	TARGET_STATE_MACHINE.CONSTANT_VELOCITY:
 		stCommands.eMotionMode :=e_Motion_mode.eJogPositive;
@@ -72,39 +71,36 @@ CASE eTargetState OF
 	TARGET_STATE_MACHINE.PHASING:
    		fbModePhase(
 			bExecute:=bExecute,
+            bReset:=bReset,
 			stStatus:=	stStatus,
 			dLatchedPosition:=dLatchedPosition,	
 			stCommands:=stCommands);
+        //Reduce overshoot by lowering acc when closing in on setpoint 
+        IF stStatus.fActualVelocity/10 > Target_GlobalVariableList.fNominalSpeedRpm * 0.995  THEN
+	        stCommands.fCommandAcceleration:= fAccelerationDefault;
+			stCommands.fCommandDeceleration:=fAccelerationDefault;	
+		ELSIF stStatus.fActualVelocity/10 > Target_GlobalVariableList.fNominalSpeedRpm * 0.9  THEN	
+			stCommands.fCommandAcceleration:= fAccelerationDefault*0.2;
+			stCommands.fCommandDeceleration:=fAccelerationDefault*0.2;	
+ 	 	ELSIF stStatus.fActualVelocity/10 > Target_GlobalVariableList.fNominalSpeedRpm * 0.80 THEN
+ 			stCommands.fCommandAcceleration:= fAccelerationDefault*0.35;
+			stCommands.fCommandDeceleration:=fAccelerationDefault*0.35;	
+  		ELSIF stStatus.fActualVelocity/10 > Target_GlobalVariableList.fNominalSpeedRpm * 0.70 THEN
+ 			stCommands.fCommandAcceleration:= fAccelerationDefault*0.5;
+			stCommands.fCommandDeceleration:=fAccelerationDefault*0.5;	
+		ELSE
+ 			stCommands.fCommandAcceleration:= fAccelerationDefault;
+			stCommands.fCommandDeceleration:=fAccelerationDefault;
+ 		END_IF
+   		IF NOT bexecute THEN
+			stCommands.fCommandAcceleration:= fAccelerationDefault*4;
+			stCommands.fCommandDeceleration:=fAccelerationDefault*4;
+		END_IF
 END_CASE
 
 IF NOT bExecute THEN
 	stCommands.fVelocityCommandValue:=0;
 END_IF
-
-//Reduce over shoot by lowering acc when closing in on setpoint 
-IF stStatus.fActualVelocity/10 > Target_GlobalVariableList.fNominalSpeedRpm * 0.995  THEN
-	stCommands.fCommandAcceleration:= fAccelerationDefault;
-	stCommands.fCommandDeceleration:=fAccelerationDefault;	
-ELSIF stStatus.fActualVelocity/10 > Target_GlobalVariableList.fNominalSpeedRpm * 0.9  THEN
-	
-	stCommands.fCommandAcceleration:= fAccelerationDefault*0.2;
-	stCommands.fCommandDeceleration:=fAccelerationDefault*0.2;	
-ELSIF stStatus.fActualVelocity/10 > Target_GlobalVariableList.fNominalSpeedRpm * 0.80 THEN
- 	stCommands.fCommandAcceleration:= fAccelerationDefault*0.35;
-	stCommands.fCommandDeceleration:=fAccelerationDefault*0.35;	
-ELSIF stStatus.fActualVelocity/10 > Target_GlobalVariableList.fNominalSpeedRpm * 0.70 THEN
- 	stCommands.fCommandAcceleration:= fAccelerationDefault*0.5;
-	stCommands.fCommandDeceleration:=fAccelerationDefault*0.5;	
-ELSE
- 	stCommands.fCommandAcceleration:= fAccelerationDefault;
-	stCommands.fCommandDeceleration:=fAccelerationDefault;
-END_IF
-IF NOT bexecute THEN
-	stCommands.fCommandAcceleration:= fAccelerationDefault*4;
-	stCommands.fCommandDeceleration:=fAccelerationDefault*4;
-END_IF
-
-
 
 fb_IndraDrive(
 	AmsNetId:= stAmsNetId, 
@@ -113,7 +109,8 @@ fb_IndraDrive(
 	stDriveStatus:= , 
 	stAxisStatus=> stStatus, 
 	stDriveCommands=> );
-	
+
+// Some parameters just for debugging	
 	stCommands.bCmd_ActivateParameterMode;//True puts the drive in parameter mode
 	stCommands.bCmd_DisableLimits;// True disables monitoring of errors
 	stCommands.bCmd_DriveControlledHoming;// True starts homing procedure defined in the drive
@@ -135,14 +132,37 @@ fb_IndraDrive(
 	stCommands.fFeedrateOverride;// Parameter used for adjustment of the velocity (0,100)%
 	stCommands.fTorqueLimit;
 	stCommands.fVelocityCommandValue;// S40, velocity used for positining and jogging (in velocity mode)
-	fSetVelToDriveRaw:= DINT_TO_LREAL(MAIN.fb_IndraDrive.stDriveCommands.nS40_VelocityCommandValue)/10000;
-	
-	fActualPosition:=stStatus.fActualPosition;
-	fActualTorque:=stStatus.fActualTorque;
-	fActualVelocity:=stStatus.fActualVelocity/10;
 	stStatus.bAxisEnabled;
+	
 
+//Calculate values for show in EPICS
+fSetVelToDriveRaw:= DINT_TO_LREAL(MAIN.fb_IndraDrive.stDriveCommands.nS40_VelocityCommandValue)/10000;	
+fActualPosition:=stStatus.fActualPosition;
+fActualTorque:=stStatus.fActualTorque;
+fActualVelocity:=stStatus.fActualVelocity/10;
+fRotMotorTempDegC:=iRotMotorTempRaw/10.0;
+
+//Motor Temperature Monitoring
+IF fRotMotorTempDegC >= Target_GlobalVariableList.nMaxMotorTemperature THEN
+	bEnable:= FALSE;
+	bExecute:= FALSE;	
+END_IF
+	
+// Control brake
 ACT_Brake();
+
+//Error Handling
+IF eTargetState = TARGET_STATE_MACHINE.PHASING THEN
+  IF fbModePhase.bError AND NOT bError THEN
+	  bError:=fbModePhase.bError;
+	  nErrorId:=fbModePhase.nErrorId;
+  END_IF
+END_IF
+
+IF bReset THEN
+	bError:=FALSE;
+	nErrorId:=0;
+END_IF
   ]]></ST>
     </Implementation>
     <Action Name="ACT_Brake" Id="{a8ef5cdf-33a2-41f9-b34e-1a95819e04c4}">
@@ -156,21 +176,19 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       </Implementation>
     </Action>
     <LineIds Name="MAIN">
-      <LineId Id="681" Count="1" />
+      <LineId Id="856" Count="0" />
+      <LineId Id="682" Count="0" />
       <LineId Id="454" Count="0" />
       <LineId Id="453" Count="0" />
       <LineId Id="457" Count="0" />
       <LineId Id="172" Count="0" />
-      <LineId Id="617" Count="0" />
-      <LineId Id="616" Count="0" />
-      <LineId Id="624" Count="0" />
-      <LineId Id="628" Count="0" />
-      <LineId Id="630" Count="0" />
-      <LineId Id="629" Count="0" />
       <LineId Id="723" Count="0" />
       <LineId Id="722" Count="0" />
       <LineId Id="724" Count="1" />
+      <LineId Id="835" Count="0" />
       <LineId Id="474" Count="0" />
+      <LineId Id="837" Count="0" />
+      <LineId Id="836" Count="0" />
       <LineId Id="129" Count="0" />
       <LineId Id="150" Count="0" />
       <LineId Id="167" Count="1" />
@@ -180,41 +198,46 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       <LineId Id="243" Count="0" />
       <LineId Id="439" Count="0" />
       <LineId Id="446" Count="0" />
+      <LineId Id="810" Count="0" />
       <LineId Id="443" Count="0" />
       <LineId Id="447" Count="0" />
       <LineId Id="472" Count="0" />
+      <LineId Id="813" Count="4" />
+      <LineId Id="819" Count="15" />
       <LineId Id="126" Count="0" />
       <LineId Id="468" Count="2" />
       <LineId Id="123" Count="0" />
-      <LineId Id="672" Count="0" />
-      <LineId Id="671" Count="0" />
-      <LineId Id="518" Count="0" />
-      <LineId Id="520" Count="1" />
-      <LineId Id="495" Count="0" />
-      <LineId Id="516" Count="0" />
-      <LineId Id="496" Count="0" />
-      <LineId Id="499" Count="0" />
-      <LineId Id="506" Count="0" />
-      <LineId Id="505" Count="0" />
-      <LineId Id="507" Count="0" />
-      <LineId Id="509" Count="2" />
-      <LineId Id="513" Count="2" />
-      <LineId Id="497" Count="0" />
-      <LineId Id="522" Count="2" />
-      <LineId Id="471" Count="0" />
-      <LineId Id="581" Count="0" />
-      <LineId Id="580" Count="0" />
       <LineId Id="588" Count="0" />
       <LineId Id="8" Count="5" />
-      <LineId Id="22" Count="1" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="858" Count="0" />
+      <LineId Id="23" Count="0" />
       <LineId Id="25" Count="0" />
       <LineId Id="28" Count="14" />
       <LineId Id="44" Count="2" />
       <LineId Id="62" Count="1" />
+      <LineId Id="859" Count="1" />
+      <LineId Id="862" Count="0" />
+      <LineId Id="861" Count="0" />
       <LineId Id="277" Count="0" />
-      <LineId Id="665" Count="4" />
+      <LineId Id="666" Count="2" />
+      <LineId Id="864" Count="0" />
+      <LineId Id="867" Count="4" />
+      <LineId Id="866" Count="0" />
+      <LineId Id="669" Count="0" />
       <LineId Id="768" Count="0" />
       <LineId Id="573" Count="0" />
+      <LineId Id="839" Count="0" />
+      <LineId Id="838" Count="0" />
+      <LineId Id="841" Count="0" />
+      <LineId Id="845" Count="1" />
+      <LineId Id="848" Count="0" />
+      <LineId Id="847" Count="0" />
+      <LineId Id="844" Count="0" />
+      <LineId Id="851" Count="0" />
+      <LineId Id="840" Count="0" />
+      <LineId Id="854" Count="1" />
+      <LineId Id="853" Count="0" />
       <LineId Id="275" Count="0" />
     </LineIds>
     <LineIds Name="MAIN.ACT_Brake">

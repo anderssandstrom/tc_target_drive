@@ -63,11 +63,14 @@ VAR
 	iNominalVelCounter:INT:=0;
 	fDeltaVelo: LREAL;
 	bVeloStable:BOOL:=FALSE;
+	timerCheckLatchFreq:TON;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[
+
 fLatchedPositionOld:=fLatchedPosition;
+
 fLatchedPosition:=DINT_TO_LREAL(dLatchedPosition)/10000.0;
 IF (fLatchedPosition-fLatchedPositionOld)<>0 THEN
   	IF(fLatchedPositionOld>fLatchedPosition) THEN
@@ -77,6 +80,11 @@ IF (fLatchedPosition-fLatchedPositionOld)<>0 THEN
 	END_IF
 	fLastSectorVelocity:=fDistancePerPulse*Target_GlobalVariableList.nPulseFreqHz*60/360;		
 END_IF
+
+//Ensure that pulses arrive from timing system when velocity is above certain limit
+timerCheckLatchFreq(IN:=fLatchedPosition = fLatchedPositionOld AND ABS(stStatus.fActualVelocity)>0,PT:=LREAL_TO_TIME(1000/Target_globalVariableList.nPulseFreqHz*2));
+
+
 fVelocityFromDriveScaled:=stStatus.fActualVelocity/10;
 nClosestSectorId:= LREAL_TO_INT(fLatchedPosition/10);
 //fPhaseError:=nClosestSectorId*10-fLatchedPosition;	
@@ -243,12 +251,35 @@ stCommands.fVelocityCommandValue:=fbPWM.fOverrideOutput;
 //stCommands.fVelocityCommandValue:=fbSuperImpose.fVelocitySetpointRpm;	   
 
 dLatchedPositionOld:=dLatchedPosition;
- //fSpeedSetpoint:=Target_GlobalVariableList.fNominalSpeedRpm;]]></ST>
+ //fSpeedSetpoint:=Target_GlobalVariableList.fNominalSpeedRpm;
+ 
+ 
+//*********Errorhandling
+
+// Latched pulses missing
+IF timerCheckLatchFreq.Q THEN
+	bError:=TRUE;
+	nErrorId:=Target_GlobalVariableList.nErrorIdNoLatch;
+END_IF
+
+IF bReset THEN
+	bError:=FALSE;
+	nErrorId:=0;
+END_IF]]></ST>
     </Implementation>
     <LineIds Name="FB_ModePhasing">
+      <LineId Id="691" Count="0" />
       <LineId Id="626" Count="0" />
-      <LineId Id="53" Count="8" />
-      <LineId Id="63" Count="1" />
+      <LineId Id="53" Count="0" />
+      <LineId Id="692" Count="0" />
+      <LineId Id="54" Count="7" />
+      <LineId Id="63" Count="0" />
+      <LineId Id="698" Count="0" />
+      <LineId Id="694" Count="0" />
+      <LineId Id="693" Count="0" />
+      <LineId Id="697" Count="0" />
+      <LineId Id="696" Count="0" />
+      <LineId Id="64" Count="0" />
       <LineId Id="72" Count="1" />
       <LineId Id="48" Count="0" />
       <LineId Id="11" Count="0" />
@@ -349,6 +380,17 @@ dLatchedPositionOld:=dLatchedPosition;
       <LineId Id="511" Count="0" />
       <LineId Id="161" Count="0" />
       <LineId Id="160" Count="0" />
+      <LineId Id="710" Count="2" />
+      <LineId Id="714" Count="0" />
+      <LineId Id="713" Count="0" />
+      <LineId Id="700" Count="1" />
+      <LineId Id="703" Count="0" />
+      <LineId Id="702" Count="0" />
+      <LineId Id="706" Count="0" />
+      <LineId Id="704" Count="0" />
+      <LineId Id="707" Count="0" />
+      <LineId Id="709" Count="0" />
+      <LineId Id="708" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
