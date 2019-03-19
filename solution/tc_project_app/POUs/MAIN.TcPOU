@@ -3,7 +3,7 @@
   <POU Name="MAIN" Id="{40828a63-f1c1-40a3-a7c5-8a47be350a36}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	fb_IndraDrive	: fbIndraDrive;
+	fbIndraDrive	: fbIndraDrive;
 	stAmsNetId	AT %I*	: AMSNETID;
 	nPort	AT %I* : WORD;
 	stCommands: ST_AXIS_COMMAND;
@@ -43,11 +43,12 @@ VAR
 	fActualVelocity:LREAL:=0;
 	bError: BOOL:=FALSE;
 	nErrorId:UDINT:=0;
+	sErrorStr:STRING:='NO ERROR';
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[
-// Enable Axis independet of state
+// Enable Axis independent of state
 stCommands.bEnableAxis :=bEnable;
 stCommands.bHaltAxis :=bEnable;
 bEnabled:=stStatus.bAxisEnabled;
@@ -57,7 +58,7 @@ IF NOT bEnable THEN
   bExecute:=FALSE;
 END_IF
 
-stCommands.fCommandAcceleration:= fAccelerationDefault;
+stCommands.fCommandAcceleration:=fAccelerationDefault;
 stCommands.fCommandDeceleration:=fAccelerationDefault;	
 
 CASE eTargetState OF 
@@ -76,16 +77,16 @@ CASE eTargetState OF
 			dLatchedPosition:=dLatchedPosition,	
 			stCommands:=stCommands);
         //Reduce overshoot by lowering acc when closing in on setpoint 
-        IF stStatus.fActualVelocity/10 > Target_GlobalVariableList.fNominalSpeedRpm * 0.995  THEN
+        IF stStatus.fActualVelocity/10 > GVL_Parameters.fNominalSpeedRpm * 0.995  THEN
 	        stCommands.fCommandAcceleration:= fAccelerationDefault;
 			stCommands.fCommandDeceleration:=fAccelerationDefault;	
-		ELSIF stStatus.fActualVelocity/10 > Target_GlobalVariableList.fNominalSpeedRpm * 0.9  THEN	
+		ELSIF stStatus.fActualVelocity/10 > GVL_Parameters.fNominalSpeedRpm * 0.9  THEN	
 			stCommands.fCommandAcceleration:= fAccelerationDefault*0.2;
 			stCommands.fCommandDeceleration:=fAccelerationDefault*0.2;	
- 	 	ELSIF stStatus.fActualVelocity/10 > Target_GlobalVariableList.fNominalSpeedRpm * 0.80 THEN
+ 	 	ELSIF stStatus.fActualVelocity/10 > GVL_Parameters.fNominalSpeedRpm * 0.80 THEN
  			stCommands.fCommandAcceleration:= fAccelerationDefault*0.35;
 			stCommands.fCommandDeceleration:=fAccelerationDefault*0.35;	
-  		ELSIF stStatus.fActualVelocity/10 > Target_GlobalVariableList.fNominalSpeedRpm * 0.70 THEN
+  		ELSIF stStatus.fActualVelocity/10 > GVL_Parameters.fNominalSpeedRpm * 0.70 THEN
  			stCommands.fCommandAcceleration:= fAccelerationDefault*0.5;
 			stCommands.fCommandDeceleration:=fAccelerationDefault*0.5;	
 		ELSE
@@ -102,13 +103,47 @@ IF NOT bExecute THEN
 	stCommands.fVelocityCommandValue:=0;
 END_IF
 
-fb_IndraDrive(
+// Rexroth FB
+fbIndraDrive(
 	AmsNetId:= stAmsNetId, 
 	AdsAddr_Port:= nPort, 
 	stAxisCommands:= stCommands, 
 	stDriveStatus:= , 
 	stAxisStatus=> stStatus, 
 	stDriveCommands=> );
+	
+
+// Calculate values for show in EPICS
+fSetVelToDriveRaw:= DINT_TO_LREAL(MAIN.fbIndraDrive.stDriveCommands.nS40_VelocityCommandValue)/10000;	
+fActualPosition:=stStatus.fActualPosition;
+fActualTorque:=stStatus.fActualTorque;
+fActualVelocity:=stStatus.fActualVelocity/10;
+fRotMotorTempDegC:=iRotMotorTempRaw/10.0;
+
+// Motor Temperature Monitoring
+IF fRotMotorTempDegC >= GVL_Parameters.nMaxMotorTemperature THEN
+	bEnable:= FALSE;
+	bExecute:= FALSE;	
+END_IF
+	
+// Control brake
+ACT_Brake();
+
+// Error Handling
+IF eTargetState = TARGET_STATE_MACHINE.PHASING THEN
+  IF fbModePhase.bError AND NOT bError THEN
+	  bError:=fbModePhase.bError;
+	  nErrorId:=fbModePhase.nErrorId;
+	  sErrorStr:=fbModePhase.sErrorStr;
+  END_IF
+END_IF
+
+IF bReset THEN
+	bError:=FALSE;
+	nErrorId:=GVL_ErrorCodes.nErrorCodeOKId;
+	sErrorStr:=GVL_ErrorCodes.nErrorCodeOKStr;
+END_IF
+
 
 // Some parameters just for debugging	
 	stCommands.bCmd_ActivateParameterMode;//True puts the drive in parameter mode
@@ -132,38 +167,7 @@ fb_IndraDrive(
 	stCommands.fFeedrateOverride;// Parameter used for adjustment of the velocity (0,100)%
 	stCommands.fTorqueLimit;
 	stCommands.fVelocityCommandValue;// S40, velocity used for positining and jogging (in velocity mode)
-	stStatus.bAxisEnabled;
-	
-
-//Calculate values for show in EPICS
-fSetVelToDriveRaw:= DINT_TO_LREAL(MAIN.fb_IndraDrive.stDriveCommands.nS40_VelocityCommandValue)/10000;	
-fActualPosition:=stStatus.fActualPosition;
-fActualTorque:=stStatus.fActualTorque;
-fActualVelocity:=stStatus.fActualVelocity/10;
-fRotMotorTempDegC:=iRotMotorTempRaw/10.0;
-
-//Motor Temperature Monitoring
-IF fRotMotorTempDegC >= Target_GlobalVariableList.nMaxMotorTemperature THEN
-	bEnable:= FALSE;
-	bExecute:= FALSE;	
-END_IF
-	
-// Control brake
-ACT_Brake();
-
-//Error Handling
-IF eTargetState = TARGET_STATE_MACHINE.PHASING THEN
-  IF fbModePhase.bError AND NOT bError THEN
-	  bError:=fbModePhase.bError;
-	  nErrorId:=fbModePhase.nErrorId;
-  END_IF
-END_IF
-
-IF bReset THEN
-	bError:=FALSE;
-	nErrorId:=0;
-END_IF
-  ]]></ST>
+	stStatus.bAxisEnabled;]]></ST>
     </Implementation>
     <Action Name="ACT_Brake" Id="{a8ef5cdf-33a2-41f9-b34e-1a95819e04c4}">
       <Implementation>
@@ -207,16 +211,11 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       <LineId Id="126" Count="0" />
       <LineId Id="468" Count="2" />
       <LineId Id="123" Count="0" />
+      <LineId Id="942" Count="0" />
       <LineId Id="588" Count="0" />
       <LineId Id="8" Count="5" />
       <LineId Id="22" Count="0" />
-      <LineId Id="858" Count="0" />
-      <LineId Id="23" Count="0" />
-      <LineId Id="25" Count="0" />
-      <LineId Id="28" Count="14" />
-      <LineId Id="44" Count="2" />
-      <LineId Id="62" Count="1" />
-      <LineId Id="859" Count="1" />
+      <LineId Id="860" Count="0" />
       <LineId Id="862" Count="0" />
       <LineId Id="861" Count="0" />
       <LineId Id="277" Count="0" />
@@ -232,12 +231,16 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       <LineId Id="841" Count="0" />
       <LineId Id="845" Count="1" />
       <LineId Id="848" Count="0" />
+      <LineId Id="917" Count="0" />
       <LineId Id="847" Count="0" />
       <LineId Id="844" Count="0" />
       <LineId Id="851" Count="0" />
       <LineId Id="840" Count="0" />
       <LineId Id="854" Count="1" />
+      <LineId Id="916" Count="0" />
       <LineId Id="853" Count="0" />
+      <LineId Id="941" Count="0" />
+      <LineId Id="918" Count="22" />
       <LineId Id="275" Count="0" />
     </LineIds>
     <LineIds Name="MAIN.ACT_Brake">

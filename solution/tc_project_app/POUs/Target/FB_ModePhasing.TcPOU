@@ -20,6 +20,7 @@ END_VAR
 VAR_OUTPUT
 	bError: BOOL;
 	nErrorId: UDINT;
+	sErrorStr: STRING:=GVL_ErrorCodes.nErrorCodeOKStr;
 	bPhasing:BOOL;
 	fSpeedSetpoint: LREAL;
 	fCtrlOutput:LREAL;
@@ -36,7 +37,6 @@ VAR
 	nClosestSectorId: INT;
 	fLatchedPosition:LREAL;
 	fbPhasePID: Tc2_Utilities.FB_BasicPID;
-	fb_PhaseControl: INT;
 	fPhaseError: LREAL;
 	fPhaseErrorFiltered:LREAL;
 	fPhaseErrorMM: LREAL:=0;
@@ -78,11 +78,11 @@ IF (fLatchedPosition-fLatchedPositionOld)<>0 THEN
     ELSE
 		fDistancePerPulse:=fLatchedPosition-fLatchedPositionOld;
 	END_IF
-	fLastSectorVelocity:=fDistancePerPulse*Target_GlobalVariableList.nPulseFreqHz*60/360;		
+	fLastSectorVelocity:=fDistancePerPulse*GVL_Parameters.nPulseFreqHz*60/360;		
 END_IF
 
 //Ensure that pulses arrive from timing system when velocity is above certain limit
-timerCheckLatchFreq(IN:=fLatchedPosition = fLatchedPositionOld AND ABS(stStatus.fActualVelocity)>0,PT:=LREAL_TO_TIME(1000/Target_globalVariableList.nPulseFreqHz*2));
+timerCheckLatchFreq(IN:=fLatchedPosition = fLatchedPositionOld AND ABS(stStatus.fActualVelocity)>0,PT:=LREAL_TO_TIME(1000/GVL_Parameters.nPulseFreqHz*2));
 
 
 fVelocityFromDriveScaled:=stStatus.fActualVelocity/10;
@@ -150,7 +150,7 @@ ELSIF fPhaseError<-180 THEN
 END_IF
 bVeloStable:=iRangeOKCounter > 360;
 
-fPhaseErrorMM:=fPhaseError*Target_GlobalVariableList.fWheelDiameter*pi/360.0; 
+fPhaseErrorMM:=fPhaseError*GVL_Parameters.fWheelDiameter*pi/360.0; 
 	  
 IF  bPhaseAlgTrigg (*AND ABS(fSpeedSetpoint-fLastSectorVelocity) < Target_GlobalVariableList.fSpeedToleranceRpm *) THEN
     //fPhaseError:=nChoosenSector*10-fLatchedPosition;	
@@ -190,10 +190,10 @@ IF  bPhaseAlgTrigg (*AND ABS(fSpeedSetpoint-fLastSectorVelocity) < Target_Global
 //ELSE
 //  	fSpeedSetpoint:=Target_GlobalVariableList.fNominalSpeedRpm;
 END_IF
-fSpeedSetpoint:=Target_GlobalVariableList.fNominalSpeedRpm-fbPhasePID.fCtrlOutput;
+fSpeedSetpoint:=GVL_Parameters.fNominalSpeedRpm-fbPhasePID.fCtrlOutput;
 
-IF fSpeedSetpoint>Target_GlobalVariableList.fMaximumSPeedRpm THEN
-  fSpeedSetpoint:=Target_GlobalVariableList.fMaximumSPeedRpm; 
+IF fSpeedSetpoint>GVL_Parameters.fMaximumSPeedRpm THEN
+  fSpeedSetpoint:=GVL_Parameters.fMaximumSPeedRpm; 
 END_IF
 
 IF NOT bExecute THEN
@@ -259,7 +259,8 @@ dLatchedPositionOld:=dLatchedPosition;
 // Latched pulses missing
 IF timerCheckLatchFreq.Q THEN
 	bError:=TRUE;
-	nErrorId:=Target_GlobalVariableList.nErrorIdNoLatch;
+	nErrorId:=GVL_ErrorCodes.nErrorNoLatchId;
+	sErrorStr:=GVL_ErrorCodes.sErrorNoLatchStr;
 END_IF
 
 IF bReset THEN
@@ -385,6 +386,7 @@ END_IF]]></ST>
       <LineId Id="713" Count="0" />
       <LineId Id="700" Count="1" />
       <LineId Id="703" Count="0" />
+      <LineId Id="782" Count="0" />
       <LineId Id="702" Count="0" />
       <LineId Id="706" Count="0" />
       <LineId Id="704" Count="0" />
