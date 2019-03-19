@@ -112,7 +112,6 @@ fbIndraDrive(
 	stAxisStatus=> stStatus, 
 	stDriveCommands=> );
 	
-
 // Calculate values for show in EPICS
 fSetVelToDriveRaw:= DINT_TO_LREAL(MAIN.fbIndraDrive.stDriveCommands.nS40_VelocityCommandValue)/10000;	
 fActualPosition:=stStatus.fActualPosition;
@@ -215,9 +214,7 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       <LineId Id="588" Count="0" />
       <LineId Id="8" Count="5" />
       <LineId Id="22" Count="0" />
-      <LineId Id="860" Count="0" />
-      <LineId Id="862" Count="0" />
-      <LineId Id="861" Count="0" />
+      <LineId Id="860" Count="1" />
       <LineId Id="277" Count="0" />
       <LineId Id="666" Count="2" />
       <LineId Id="864" Count="0" />

@@ -202,7 +202,6 @@ END_IF
 
 fCtrlOutput:=fbPhasePID.fCtrlOutput;
 
-
 IF (fLatchedPosition-fLatchedPositionOld)<>0 THEN
 	IF dLatchedPositionOld>dLatchedPosition  (*OR fLatchedPosition>=180 AND fLatchedPositionOld<180*) THEN
 		fPhaseErrorAcc:=fPhaseErrorAcc+fPhaseError;
@@ -242,8 +241,8 @@ fbSuperImpose(bExecute:=bExecuteSuperImpose AND bPhaseAlgTrigg,
 fbPWM(
        En:=TRUE,
        bEnable:=TRUE,
-       iBlockSampleTimeMicroS:=1000,
-       iOverrideSampleTimeMicroS:=7100,
+       iBlockSampleTimeMicroS:=10000,
+       iOverrideSampleTimeMicroS:=71000,
        iDecimalPoint:=3,
        fOverrideInput:=fbSuperImpose.fVelocitySetpointRpm);
 	   
@@ -341,7 +340,6 @@ END_IF]]></ST>
       <LineId Id="152" Count="0" />
       <LineId Id="155" Count="0" />
       <LineId Id="140" Count="0" />
-      <LineId Id="118" Count="0" />
       <LineId Id="88" Count="0" />
       <LineId Id="157" Count="0" />
       <LineId Id="86" Count="0" />
