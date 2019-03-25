@@ -563,9 +563,6 @@
 						</Var>
 						<Var>
 							<Name>MAIN.iRotMotorTempRaw</Name>
-							<Comment>
-								<![CDATA[Temperature input from EL3214 Channel1]]>
-							</Comment>
 							<Type>INT</Type>
 						</Var>
 						<Var>

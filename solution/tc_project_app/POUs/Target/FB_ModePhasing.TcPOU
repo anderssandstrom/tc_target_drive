@@ -67,7 +67,23 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
+      <ST><![CDATA[//Reduce overshoot by lowering acc when closing in on setpoint 
+IF stStatus.fActualVelocity/10 > GVL_Parameters.fNominalSpeedRpm * 0.995  THEN
+  stCommands.fCommandAcceleration:= GVL_Parameters.fAccDefault;
+  stCommands.fCommandDeceleration:=GVL_Parameters.fAccDefault;	
+ELSIF stStatus.fActualVelocity/10 > GVL_Parameters.fNominalSpeedRpm * 0.9  THEN	
+  stCommands.fCommandAcceleration:= GVL_Parameters.fAccDefault*0.2;
+  stCommands.fCommandDeceleration:=GVL_Parameters.fAccDefault*0.2;	
+ELSIF stStatus.fActualVelocity/10 > GVL_Parameters.fNominalSpeedRpm * 0.80 THEN
+  stCommands.fCommandAcceleration:= GVL_Parameters.fAccDefault*0.35;
+  stCommands.fCommandDeceleration:=GVL_Parameters.fAccDefault*0.35;	
+ELSIF stStatus.fActualVelocity/10 > GVL_Parameters.fNominalSpeedRpm * 0.70 THEN
+  stCommands.fCommandAcceleration:= GVL_Parameters.fAccDefault*0.5;
+  stCommands.fCommandDeceleration:=GVL_Parameters.fAccDefault*0.5;	
+ELSE
+  stCommands.fCommandAcceleration:= GVL_Parameters.fAccDefault;
+  stCommands.fCommandDeceleration:=GVL_Parameters.fAccDefault;
+END_IF
 
 fLatchedPositionOld:=fLatchedPosition;
 
@@ -268,7 +284,7 @@ IF bReset THEN
 END_IF]]></ST>
     </Implementation>
     <LineIds Name="FB_ModePhasing">
-      <LineId Id="691" Count="0" />
+      <LineId Id="847" Count="16" />
       <LineId Id="626" Count="0" />
       <LineId Id="53" Count="0" />
       <LineId Id="692" Count="0" />

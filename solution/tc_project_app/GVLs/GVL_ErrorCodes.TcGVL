@@ -3,10 +3,10 @@
   <GVL Name="GVL_ErrorCodes" Id="{2a5675cd-f9a5-4b29-8d57-a071f0a61152}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
-	nErrorCodeOKId:INT:=0;
-	nErrorCodeOKStr:STRING:='NO ERROR\n';
-	nErrorNoLatchId:INT:=1000;
-	sErrorNoLatchStr:STRING:='NO LATCH FROM DRIVE\n';
+	nErrorCodeOKId:UDINT:=0;
+	nErrorCodeOKStr:STRING:='NO ERROR';
+	nErrorNoLatchId:UDINT:=1000;
+	sErrorNoLatchStr:STRING:='NO LATCH FROM DRIVE';
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

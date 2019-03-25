@@ -10,96 +10,91 @@ VAR
 	stStatus: ST_AXIS_STATUS;
 	nMasterAxisPosition AT %I* : DINT;
 	nAdditivePositionSetpoiunt AT %Q* : DINT;
-	fMasterAxisPosition : LREAL;
-	fAdditivePositionSetpoint : LREAL;
-	fDiffPosition :LREAL;
 	dLatchedPosition AT %I*:DINT;
-	eTargetState: TARGET_STATE_MACHINE;
-	bExecute: BOOL := FALSE;
-	bEnable:BOOL:=FALSE;
-	bEnabled:BOOL:=FALSE;
-	bReset:BOOL:=FALSE;
+	eTargetStateOld: TARGET_STATE_MACHINE;
     fbModePhase:FB_ModePhasing;	
-	fAccelerationDefault:LREAL:=0.005;
-	fSetVelToDriveRaw:LREAL;
+	fbModeVelo:FB_ModeVelo;
+	fbModePos:FB_ModePos;
+	fbModeHome:FB_ModePos;
+	
 	bBrakeFreewheelOn AT %Q*: BOOL;
 	bBrakeLockedOn AT %Q*: BOOL;
     inputDummy AT %I*: BOOL;
 	inputDigSens1 AT %I*: BOOL;
 	inputDigSens2 AT %I*: BOOL;
-
 	fbBrakeTorque: FB_BrakeTorque;
-	fBrakeSpNm:LREAL:=0;
 	iBrakeSpRaw AT %Q* :INT:=0;
-	
-	//Temperature input from EL3214 Channel1
 	iRotMotorTempRaw AT %I*: INT:=0;
-	fRotMotorTempDegC:LREAL:=0;
-	
-	bBrakeLockOnCmd:BOOL:=FALSE;
-	bFreeWheelOnOnCmd:BOOL:=TRUE;
-	fActualTorque:LREAL:=0;
-	fActualPosition:LREAL:=0;
-	fActualVelocity:LREAL:=0;
-	bError: BOOL:=FALSE;
-	nErrorId:UDINT:=0;
-	sErrorStr:STRING:='NO ERROR';
+	stStatEpics:ST_STAT_EPICS;
+	stCmdEpics:ST_CMD_EPICS;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[
 // Enable Axis independent of state
-stCommands.bEnableAxis :=bEnable;
-stCommands.bHaltAxis :=bEnable;
-bEnabled:=stStatus.bAxisEnabled;
-stCommands.bCmd_ErrorReset:=bReset;
+stCommands.bEnableAxis :=stCmdEpics.bEnable;
+stCommands.bHaltAxis :=stCmdEpics.bEnable;
+stStatEpics.bEnabled:=stStatus.bAxisEnabled;
+stCommands.bCmd_ErrorReset:=stCmdEpics.bReset;
 
-IF NOT bEnable THEN
-  bExecute:=FALSE;
+IF NOT stCmdEpics.bEnable THEN
+  stCmdEpics.bExecute:=FALSE;
 END_IF
 
-stCommands.fCommandAcceleration:=fAccelerationDefault;
-stCommands.fCommandDeceleration:=fAccelerationDefault;	
+stCommands.fCommandAcceleration:=GVL_Parameters.fAccDefault;
+stCommands.fCommandDeceleration:=GVL_Parameters.fAccDefault;
+stCommands.bCmd_DriveControlledHoming:=FALSE;
 
-CASE eTargetState OF 
+// Only allow state change if execute is low
+IF stCmdEpics.eTargetStateCmd <> stStatEpics.eTargetState AND NOT stCmdEpics.bexecute THEN
+	stStatEpics.eTargetState:=stCmdEpics.eTargetStateCmd;
+END_IF
+
+CASE stStatEpics.eTargetState OF 
 	TARGET_STATE_MACHINE.CONSTANT_VELOCITY:
-		stCommands.eMotionMode :=e_Motion_mode.eJogPositive;
-		stCommands.eOperationMode:=e_Operation_mode_no.eSecondaryOpMode2;
-		//stCommands.fVelocityCommandValue:=0;		
+		fbModeVelo(
+            bExecute:=stCmdEpics.bExecute,
+            bReset:=stCmdEpics.bReset,
+			fVelSet:=stCmdEpics.fVelSet,
+			stStatus:=	stStatus,	
+			stCommands:=stCommands);
+			
 	TARGET_STATE_MACHINE.POSITIONING:
-		stCommands.eMotionMode :=e_Motion_mode.ePositioning;
-		stCommands.eOperationMode:=e_Operation_mode_no.eSecondaryOpMode1;
+		fbModePos(
+            bExecute:=stCmdEpics.bExecute,
+            bReset:=stCmdEpics.bReset,
+			fVelSet:=stCmdEpics.fVelSet,
+			fPosSet:=stCmdEpics.fPosSet,
+			stStatus:=	stStatus,	
+			stCommands:=stCommands);
+		
 	TARGET_STATE_MACHINE.PHASING:
    		fbModePhase(
-			bExecute:=bExecute,
-            bReset:=bReset,
+			bExecute:=stCmdEpics.bExecute,
+            bReset:=stCmdEpics.bReset,
 			stStatus:=	stStatus,
 			dLatchedPosition:=dLatchedPosition,	
 			stCommands:=stCommands);
-        //Reduce overshoot by lowering acc when closing in on setpoint 
-        IF stStatus.fActualVelocity/10 > GVL_Parameters.fNominalSpeedRpm * 0.995  THEN
-	        stCommands.fCommandAcceleration:= fAccelerationDefault;
-			stCommands.fCommandDeceleration:=fAccelerationDefault;	
-		ELSIF stStatus.fActualVelocity/10 > GVL_Parameters.fNominalSpeedRpm * 0.9  THEN	
-			stCommands.fCommandAcceleration:= fAccelerationDefault*0.2;
-			stCommands.fCommandDeceleration:=fAccelerationDefault*0.2;	
- 	 	ELSIF stStatus.fActualVelocity/10 > GVL_Parameters.fNominalSpeedRpm * 0.80 THEN
- 			stCommands.fCommandAcceleration:= fAccelerationDefault*0.35;
-			stCommands.fCommandDeceleration:=fAccelerationDefault*0.35;	
-  		ELSIF stStatus.fActualVelocity/10 > GVL_Parameters.fNominalSpeedRpm * 0.70 THEN
- 			stCommands.fCommandAcceleration:= fAccelerationDefault*0.5;
-			stCommands.fCommandDeceleration:=fAccelerationDefault*0.5;	
-		ELSE
- 			stCommands.fCommandAcceleration:= fAccelerationDefault;
-			stCommands.fCommandDeceleration:=fAccelerationDefault;
- 		END_IF
-   		IF NOT bexecute THEN
-			stCommands.fCommandAcceleration:= fAccelerationDefault*4;
-			stCommands.fCommandDeceleration:=fAccelerationDefault*4;
-		END_IF
+			
+	TARGET_STATE_MACHINE.HOMING:
+        fbModeHome( 
+            bExecute:=stCmdEpics.bExecute,
+            bReset:=stCmdEpics.bReset,
+			fVelSet:=stCmdEpics.fVelSet,
+			fPosSet:=stCmdEpics.fPosSet,
+			stStatus:=	stStatus,	
+			stCommands:=stCommands);
+		
+	  ELSE  // No valid state
+		  
+		stCmdEpics.bExecute:=FALSE;
+        stCmdEpics.bEnable:=FALSE;
+		stCommands.fVelocityCommandValue:=0;
+		stCommands.fCommandVelocity:=0;
+		
 END_CASE
 
-IF NOT bExecute THEN
+IF NOT stCmdEpics.bExecute THEN
 	stCommands.fVelocityCommandValue:=0;
 END_IF
 
@@ -112,37 +107,61 @@ fbIndraDrive(
 	stAxisStatus=> stStatus, 
 	stDriveCommands=> );
 	
-// Calculate values for show in EPICS
-fSetVelToDriveRaw:= DINT_TO_LREAL(MAIN.fbIndraDrive.stDriveCommands.nS40_VelocityCommandValue)/10000;	
-fActualPosition:=stStatus.fActualPosition;
-fActualTorque:=stStatus.fActualTorque;
-fActualVelocity:=stStatus.fActualVelocity/10;
-fRotMotorTempDegC:=iRotMotorTempRaw/10.0;
+// Calculate values for status in EPICS
+stStatEpics.fSetVelRaw:= DINT_TO_LREAL(MAIN.fbIndraDrive.stDriveCommands.nS40_VelocityCommandValue)/10000;	
+stStatEpics.fActPos:=stStatus.fActualPosition;
+stStatEpics.fActTorque:=stStatus.fActualTorque;
+stStatEpics.fActVel:=stStatus.fActualVelocity/10;
+stStatEpics.fActTemp:=iRotMotorTempRaw/10.0;
 
 // Motor Temperature Monitoring
-IF fRotMotorTempDegC >= GVL_Parameters.nMaxMotorTemperature THEN
-	bEnable:= FALSE;
-	bExecute:= FALSE;	
+IF stStatEpics.fActTemp >= GVL_Parameters.nMaxMotorTemperature THEN
+	stCmdEpics.bEnable:= FALSE;
+	stCmdEpics.bExecute:= FALSE;	
 END_IF
 	
 // Control brake
 ACT_Brake();
 
 // Error Handling
-IF eTargetState = TARGET_STATE_MACHINE.PHASING THEN
-  IF fbModePhase.bError AND NOT bError THEN
-	  bError:=fbModePhase.bError;
-	  nErrorId:=fbModePhase.nErrorId;
-	  sErrorStr:=fbModePhase.sErrorStr;
+IF stStatEpics.eTargetState = TARGET_STATE_MACHINE.PHASING THEN
+  IF fbModePhase.bError AND NOT stStatEpics.bError THEN
+	  stStatEpics.bError:=fbModePhase.bError;
+	  stStatEpics.nErrorId:=fbModePhase.nErrorId;
+	  stStatEpics.sErrorStr:=fbModePhase.sErrorStr;
   END_IF
+  
+ELSIF stStatEpics.eTargetState = TARGET_STATE_MACHINE.CONSTANT_VELOCITY THEN
+   IF fbModeVelo.bError AND NOT stStatEpics.bError THEN
+	  stStatEpics.bError:=fbModeVelo.bError;
+	  stStatEpics.nErrorId:=fbModeVelo.nErrorId;
+	  stStatEpics.sErrorStr:=fbModeVelo.sErrorStr;
+  END_IF
+  
+ELSIF stStatEpics.eTargetState = TARGET_STATE_MACHINE.POSITIONING THEN
+  IF fbModePos.bError AND NOT stStatEpics.bError THEN
+	  stStatEpics.bError:=fbModePos.bError;
+	  stStatEpics.nErrorId:=fbModePos.nErrorId;
+	  stStatEpics.sErrorStr:=fbModePos.sErrorStr;
+  END_IF
+  
+ELSIF stStatEpics.eTargetState = TARGET_STATE_MACHINE.HOMING THEN
+  IF fbModeHome.bError AND NOT stStatEpics.bError THEN
+	  stStatEpics.bError:=fbModeHome.bError;
+	  stStatEpics.nErrorId:=fbModeHome.nErrorId;
+	  stStatEpics.sErrorStr:=fbModeHome.sErrorStr;
+  END_IF
+  
 END_IF
 
-IF bReset THEN
-	bError:=FALSE;
-	nErrorId:=GVL_ErrorCodes.nErrorCodeOKId;
-	sErrorStr:=GVL_ErrorCodes.nErrorCodeOKStr;
+
+IF stcmdEpics.bReset THEN
+	stStatEpics.bError:=FALSE;
+	stStatEpics.nErrorId:=GVL_ErrorCodes.nErrorCodeOKId;
+	stStatEpics.sErrorStr:=GVL_ErrorCodes.nErrorCodeOKStr;
 END_IF
 
+eTargetStateOld:=stStatEpics.eTargetState;
 
 // Some parameters just for debugging	
 	stCommands.bCmd_ActivateParameterMode;//True puts the drive in parameter mode
@@ -166,15 +185,16 @@ END_IF
 	stCommands.fFeedrateOverride;// Parameter used for adjustment of the velocity (0,100)%
 	stCommands.fTorqueLimit;
 	stCommands.fVelocityCommandValue;// S40, velocity used for positining and jogging (in velocity mode)
-	stStatus.bAxisEnabled;]]></ST>
+	stStatus.bAxisEnabled;
+	]]></ST>
     </Implementation>
     <Action Name="ACT_Brake" Id="{a8ef5cdf-33a2-41f9-b34e-1a95819e04c4}">
       <Implementation>
         <ST><![CDATA[//bBrakeFreewheelOn:=fBrakeSpNm=0;
-bBrakeFreewheelOn:=bFreeWheelOnOnCmd;
-bBrakeLockedOn:=bBrakeLockOnCmd;
+bBrakeFreewheelOn:=stCmdEpics.bFreeWheelOnOnCmd;
+bBrakeLockedOn:=stCmdEpics.bBrakeLockOnCmd;
 
-fbBrakeTorque(iTorqueValueinNm:=fBrakeSpNm);
+fbBrakeTorque(iTorqueValueinNm:=stCmdEpics.fBrakeSpNm);
 iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       </Implementation>
     </Action>
@@ -190,14 +210,27 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       <LineId Id="724" Count="1" />
       <LineId Id="835" Count="0" />
       <LineId Id="474" Count="0" />
-      <LineId Id="837" Count="0" />
+      <LineId Id="993" Count="0" />
+      <LineId Id="995" Count="0" />
+      <LineId Id="1006" Count="0" />
+      <LineId Id="1005" Count="0" />
+      <LineId Id="996" Count="0" />
+      <LineId Id="1002" Count="1" />
       <LineId Id="836" Count="0" />
       <LineId Id="129" Count="0" />
       <LineId Id="150" Count="0" />
-      <LineId Id="167" Count="1" />
-      <LineId Id="219" Count="0" />
+      <LineId Id="1040" Count="0" />
+      <LineId Id="1044" Count="0" />
+      <LineId Id="1041" Count="0" />
+      <LineId Id="1046" Count="0" />
+      <LineId Id="1042" Count="0" />
+      <LineId Id="1021" Count="0" />
+      <LineId Id="1045" Count="0" />
       <LineId Id="285" Count="0" />
-      <LineId Id="216" Count="1" />
+      <LineId Id="1064" Count="3" />
+      <LineId Id="1070" Count="0" />
+      <LineId Id="1068" Count="1" />
+      <LineId Id="1047" Count="0" />
       <LineId Id="243" Count="0" />
       <LineId Id="439" Count="0" />
       <LineId Id="446" Count="0" />
@@ -205,8 +238,22 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       <LineId Id="443" Count="0" />
       <LineId Id="447" Count="0" />
       <LineId Id="472" Count="0" />
-      <LineId Id="813" Count="4" />
-      <LineId Id="819" Count="15" />
+      <LineId Id="1048" Count="0" />
+      <LineId Id="987" Count="0" />
+      <LineId Id="1098" Count="0" />
+      <LineId Id="1102" Count="0" />
+      <LineId Id="1099" Count="1" />
+      <LineId Id="1103" Count="0" />
+      <LineId Id="1101" Count="0" />
+      <LineId Id="1009" Count="0" />
+      <LineId Id="1049" Count="0" />
+      <LineId Id="1027" Count="0" />
+      <LineId Id="1035" Count="0" />
+      <LineId Id="1028" Count="0" />
+      <LineId Id="1030" Count="0" />
+      <LineId Id="1033" Count="0" />
+      <LineId Id="1032" Count="0" />
+      <LineId Id="1031" Count="0" />
       <LineId Id="126" Count="0" />
       <LineId Id="468" Count="2" />
       <LineId Id="123" Count="0" />
@@ -230,15 +277,28 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       <LineId Id="848" Count="0" />
       <LineId Id="917" Count="0" />
       <LineId Id="847" Count="0" />
+      <LineId Id="1088" Count="0" />
+      <LineId Id="1077" Count="0" />
+      <LineId Id="1079" Count="4" />
+      <LineId Id="1090" Count="0" />
+      <LineId Id="1089" Count="0" />
+      <LineId Id="1084" Count="3" />
+      <LineId Id="1078" Count="0" />
+      <LineId Id="1091" Count="0" />
+      <LineId Id="1105" Count="5" />
+      <LineId Id="1104" Count="0" />
       <LineId Id="844" Count="0" />
+      <LineId Id="1076" Count="0" />
       <LineId Id="851" Count="0" />
       <LineId Id="840" Count="0" />
       <LineId Id="854" Count="1" />
       <LineId Id="916" Count="0" />
       <LineId Id="853" Count="0" />
+      <LineId Id="1001" Count="0" />
       <LineId Id="941" Count="0" />
       <LineId Id="918" Count="22" />
       <LineId Id="275" Count="0" />
+      <LineId Id="999" Count="0" />
     </LineIds>
     <LineIds Name="MAIN.ACT_Brake">
       <LineId Id="3" Count="0" />

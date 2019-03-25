@@ -40,6 +40,12 @@
     <Compile Include="DUTs\ST_AXIS_STATUS.TcDUT">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DUTs\ST_CMD_EPICS.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\ST_STAT_EPICS.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DUTs\ST_INDRADRIVE_IO_INPUT.TcDUT">
       <SubType>Code</SubType>
     </Compile>
@@ -83,6 +89,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Target\FB_ModePhasing.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Target\FB_ModeVelo.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Target\FB_ModePos.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Target\FB_ModeHome.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Target\FB_PWM_OVERRIDE_V0_01.TcPOU">
