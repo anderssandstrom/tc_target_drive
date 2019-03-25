@@ -550,6 +550,10 @@
 							<Type>DINT</Type>
 						</Var>
 						<Var>
+							<Name>MAIN.iRotMotorTempRaw</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
 							<Name>MAIN.inputDummy</Name>
 							<Type>BOOL</Type>
 						</Var>
@@ -560,10 +564,6 @@
 						<Var>
 							<Name>MAIN.inputDigSens2</Name>
 							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.iRotMotorTempRaw</Name>
-							<Type>INT</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.fbIndraDrive.stDriveStatus.nS135_DriveStatusWord</Name>
@@ -719,16 +719,16 @@
 							<Type>DINT</Type>
 						</Var>
 						<Var>
+							<Name>MAIN.iBrakeSpRaw</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
 							<Name>MAIN.bBrakeFreewheelOn</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.bBrakeLockedOn</Name>
 							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.iBrakeSpRaw</Name>
-							<Type>INT</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.fbIndraDrive.stDriveCommands.stS134_MasterControlWord</Name>
@@ -1640,8 +1640,8 @@
 					<EtherCAT SlaveType="2" MboxDataLinkLayer="true" StateMBoxPolling="true" CfgModeSafeOp="true" DownloadPdoCfg="true" CycleMBoxPollingTime="0" EoeType="3" SoeChannels="1" VendorId="#x00000024" ProductCode="#x00242804" RevisionNo="#x00000002" InfoDataAddr="true" InfoDataSoeDS401="true" InfoDataDcTimes="true" EnableWdDivider0400="true" EnableWdTime0420="true" TimeoutStateChange1="5000" TimeoutStateChange2="25000" TimeoutStateChange4="500" PortPhys="17" IdentificationAdo="18" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="IndraDrive MPB18/19" Desc="IndraDrive MPB18/19" PortABoxInfo="#x00ffffff">
 						<SyncMan>0018ea002600010001000000ea00ea00ea00001826010000</SyncMan>
 						<SyncMan>001aea002200010002000000ea00ea00ea00001a22010000</SyncMan>
-						<SyncMan>001028006400010003000000000000000000001064010000</SyncMan>
-						<SyncMan>001122006200010004000000000000000000001162010000</SyncMan>
+						<SyncMan>001024006400010003000000000000000000001064010000</SyncMan>
+						<SyncMan>00111e006200010004000000000000000000001162010000</SyncMan>
 						<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
 						<Fmmu>0000000000000000001000020100000001000000000000000000000000000000</Fmmu>
 						<Fmmu>0000000000000000001100010100000002000000000000000000000000000000</Fmmu>
@@ -1681,9 +1681,6 @@
 							<Entry Name="Following distance" Index="#x00bd">
 								<Type>DINT</Type>
 							</Entry>
-							<Entry Name="Virtual master axis, actual position value" Index="#x82f6">
-								<Type>DINT</Type>
-							</Entry>
 						</Pdo>
 						<Pdo Name="MDT" Index="#x0018" InOut="1" Flags="#x0001" SyncMan="2">
 							<Entry Name="Master control word" Index="#x0086" Flags="#x00000800">
@@ -1699,9 +1696,6 @@
 								<Type>DINT</Type>
 							</Entry>
 							<Entry Name="Positioning command value" Index="#x011a">
-								<Type>DINT</Type>
-							</Entry>
-							<Entry Name="Additive positon command value" Index="#x0030">
 								<Type>DINT</Type>
 							</Entry>
 							<Entry Name="Signal control word" Index="#x0091">
@@ -1757,7 +1751,6 @@
 				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nS51_PositionFeedbackValue" VarB="AT^Position feedback value 1"/>
 				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nS84_TorqueFeedback" VarB="AT^Torque/force feedback value"/>
 				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.stS144_SignalStatusWord" VarB="AT^Signal status word"/>
-				<Link VarA="PlcTask Inputs^MAIN.nMasterAxisPosition" VarB="AT^Virtual master axis, actual position value"/>
 				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS108_FeedrateOverride" VarB="MDT^Feedrate override"/>
 				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS258_TargetPosition" VarB="MDT^Target position"/>
 				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS259_PositioningVelocity" VarB="MDT^Positioning velocity"/>
@@ -1769,7 +1762,6 @@
 				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS92_BiPolarTorqueLimit" VarB="MDT^Bipolar torque/force limit value"/>
 				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.stS134_MasterControlWord" VarB="MDT^Master control word"/>
 				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.stS145_SignalControlWord" VarB="MDT^Signal control word"/>
-				<Link VarA="PlcTask Outputs^MAIN.nAdditivePositionSetpoiunt" VarB="MDT^Additive positon command value"/>
 			</OwnerB>
 		</OwnerA>
 		<OwnerA Name="TIPC^tc_project_app_faster^tc_project_app_faster Instance">

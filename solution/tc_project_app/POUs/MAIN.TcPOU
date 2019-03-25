@@ -3,32 +3,30 @@
   <POU Name="MAIN" Id="{40828a63-f1c1-40a3-a7c5-8a47be350a36}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	fbIndraDrive	: fbIndraDrive;
-	stAmsNetId	AT %I*	: AMSNETID;
-	nPort	AT %I* : WORD;
-	stCommands: ST_AXIS_COMMAND;
-	stStatus: ST_AXIS_STATUS;
-	nMasterAxisPosition AT %I* : DINT;
+	stAmsNetId	AT %I*	              : AMSNETID;
+	nPort	AT %I*                    : WORD;
+	nMasterAxisPosition AT %I*        : DINT;
 	nAdditivePositionSetpoiunt AT %Q* : DINT;
-	dLatchedPosition AT %I*:DINT;
-	eTargetStateOld: TARGET_STATE_MACHINE;
-    fbModePhase:FB_ModePhasing;	
-	fbModeVelo:FB_ModeVelo;
-	fbModePos:FB_ModePos;
-	fbModeHome:FB_ModePos;
-	
-	bBrakeFreewheelOn AT %Q*: BOOL;
-	bBrakeLockedOn AT %Q*: BOOL;
-    inputDummy AT %I*: BOOL;
-	inputDigSens1 AT %I*: BOOL;
-	inputDigSens2 AT %I*: BOOL;
-	fbBrakeTorque: FB_BrakeTorque;
-	iBrakeSpRaw AT %Q* :INT:=0;
-	iRotMotorTempRaw AT %I*: INT:=0;
-	stStatEpics:ST_STAT_EPICS;
-	stCmdEpics:ST_CMD_EPICS;
-END_VAR
-]]></Declaration>
+	dLatchedPosition AT %I*           : DINT;
+	iBrakeSpRaw AT %Q*                : INT := 0;
+	iRotMotorTempRaw AT %I*           : INT := 0;
+	bBrakeFreewheelOn AT %Q*          : BOOL;
+	bBrakeLockedOn AT %Q*             : BOOL;
+    inputDummy AT %I*                 : BOOL;
+	inputDigSens1 AT %I*              : BOOL;
+	inputDigSens2 AT %I*              : BOOL;
+	fbBrakeTorque                     : FB_BrakeTorque;  // Control brake
+	fbModePhase                       : FB_ModePhasing;	 // Phasing Mode
+	fbModeVelo                        : FB_ModeVelo;     // Velocity Mode
+	fbModePos                         : FB_ModePos;      // Positioning Mode
+	fbModeHome                        : FB_ModeHome;     // Homing Mode
+	fbIndraDrive                      : fbIndraDrive;    // Control of drive
+	stStatEpics                       : ST_STAT_EPICS;   // Status to EPICS
+	stCmdEpics                        : ST_CMD_EPICS;    // Control to EPICS 
+	stCommands                        : ST_AXIS_COMMAND; // Control to drive
+	stStatus                          : ST_AXIS_STATUS;  // Status from drive
+	eTargetStateOld                   : TARGET_STATE_MACHINE;
+END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[
 // Enable Axis independent of state
@@ -53,37 +51,37 @@ END_IF
 CASE stStatEpics.eTargetState OF 
 	TARGET_STATE_MACHINE.CONSTANT_VELOCITY:
 		fbModeVelo(
-            bExecute:=stCmdEpics.bExecute,
-            bReset:=stCmdEpics.bReset,
-			fVelSet:=stCmdEpics.fVelSet,
-			stStatus:=	stStatus,	
-			stCommands:=stCommands);
+            bExecute:=         stCmdEpics.bExecute,
+            bReset:=           stCmdEpics.bReset,
+			fVelSet:=          stCmdEpics.fVelSet,
+			stStatus:=	       stStatus,	
+			stCommands:=       stCommands);
 			
 	TARGET_STATE_MACHINE.POSITIONING:
 		fbModePos(
-            bExecute:=stCmdEpics.bExecute,
-            bReset:=stCmdEpics.bReset,
-			fVelSet:=stCmdEpics.fVelSet,
-			fPosSet:=stCmdEpics.fPosSet,
-			stStatus:=	stStatus,	
-			stCommands:=stCommands);
+            bExecute:=         stCmdEpics.bExecute,
+            bReset:=           stCmdEpics.bReset,
+			fVelSet:=          stCmdEpics.fVelSet,
+			fPosSet:=          stCmdEpics.fPosSet,
+			stStatus:=         stStatus,	
+			stCommands:=       stCommands);
 		
 	TARGET_STATE_MACHINE.PHASING:
    		fbModePhase(
-			bExecute:=stCmdEpics.bExecute,
-            bReset:=stCmdEpics.bReset,
-			stStatus:=	stStatus,
-			dLatchedPosition:=dLatchedPosition,	
-			stCommands:=stCommands);
+			bExecute:=         stCmdEpics.bExecute,
+            bReset:=           stCmdEpics.bReset,
+			stStatus:=	       stStatus,
+			dLatchedPosition:= dLatchedPosition,	
+			stCommands:=       stCommands);
 			
 	TARGET_STATE_MACHINE.HOMING:
         fbModeHome( 
-            bExecute:=stCmdEpics.bExecute,
-            bReset:=stCmdEpics.bReset,
-			fVelSet:=stCmdEpics.fVelSet,
-			fPosSet:=stCmdEpics.fPosSet,
-			stStatus:=	stStatus,	
-			stCommands:=stCommands);
+            bExecute:=         stCmdEpics.bExecute,
+            bReset:=           stCmdEpics.bReset,
+			fVelSet:=          stCmdEpics.fVelSet,
+			fPosSet:=          stCmdEpics.fPosSet,
+			stStatus:=	       stStatus,	
+			stCommands:=       stCommands);
 		
 	  ELSE  // No valid state
 		  
