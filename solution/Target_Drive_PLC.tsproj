@@ -2,6 +2,24 @@
 <TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4022.2">
 	<DataTypes>
 		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-000000000041}" TcBaseType="true" HideSubItems="true" CName="AmsNetId">AMSNETID</Name>
+			<BitSize>48</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>6</Elements>
+			</ArrayInfo>
+			<Format>
+				<Printf>%d.%d.%d.%d.%d.%d</Printf>
+				<Parameter>[0]</Parameter>
+				<Parameter>[1]</Parameter>
+				<Parameter>[2]</Parameter>
+				<Parameter>[3]</Parameter>
+				<Parameter>[4]</Parameter>
+				<Parameter>[5]</Parameter>
+			</Format>
+		</DataType>
+		<DataType>
 			<Name GUID="{E8EE2899-4679-469C-BAC5-7318F329907D}" AutoDeleteType="true">ST_S135_DRIVESTATUSWORD</Name>
 			<BitSize>16</BitSize>
 			<SubItem>
@@ -179,24 +197,6 @@
 				<BitSize>1</BitSize>
 				<BitOffs>14</BitOffs>
 			</SubItem>
-		</DataType>
-		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-000000000041}" TcBaseType="true" HideSubItems="true" CName="AmsNetId">AMSNETID</Name>
-			<BitSize>48</BitSize>
-			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
-			<ArrayInfo>
-				<LBound>0</LBound>
-				<Elements>6</Elements>
-			</ArrayInfo>
-			<Format>
-				<Printf>%d.%d.%d.%d.%d.%d</Printf>
-				<Parameter>[0]</Parameter>
-				<Parameter>[1]</Parameter>
-				<Parameter>[2]</Parameter>
-				<Parameter>[3]</Parameter>
-				<Parameter>[4]</Parameter>
-				<Parameter>[5]</Parameter>
-			</Format>
 		</DataType>
 		<DataType>
 			<Name GUID="{4CCFD5CA-E676-474E-B42D-6A96C42819C9}" AutoDeleteType="true">ST_S134_MASTERCONTROLWORD</Name>
@@ -534,7 +534,39 @@
 					<Vars VarGrpType="1">
 						<Name>PlcTask Inputs</Name>
 						<Var>
-							<Name>MAIN.fb_IndraDrive.stDriveStatus.nS135_DriveStatusWord</Name>
+							<Name>MAIN.stAmsNetId</Name>
+							<Type GUID="{18071995-0000-0000-0000-000000000041}">AMSNETID</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.nPort</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.nMasterAxisPosition</Name>
+							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.dLatchedPosition</Name>
+							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.inputDummy</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.inputDigSens1</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.inputDigSens2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.iRotMotorTempRaw</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbIndraDrive.stDriveStatus.nS135_DriveStatusWord</Name>
 							<Type GUID="{E8EE2899-4679-469C-BAC5-7318F329907D}">ST_S135_DRIVESTATUSWORD</Type>
 							<SubVar>
 								<Name>bS135_CommandChange</Name>
@@ -592,23 +624,23 @@
 							</SubVar>
 						</Var>
 						<Var>
-							<Name>MAIN.fb_IndraDrive.stDriveStatus.nS51_PositionFeedbackValue</Name>
+							<Name>MAIN.fbIndraDrive.stDriveStatus.nS51_PositionFeedbackValue</Name>
 							<Type>DINT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.fb_IndraDrive.stDriveStatus.nS386_ActivePositionFeedbackValue</Name>
+							<Name>MAIN.fbIndraDrive.stDriveStatus.nS386_ActivePositionFeedbackValue</Name>
 							<Type>DINT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.fb_IndraDrive.stDriveStatus.nS40_VelocityFeedbackValue</Name>
+							<Name>MAIN.fbIndraDrive.stDriveStatus.nS40_VelocityFeedbackValue</Name>
 							<Type>DINT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.fb_IndraDrive.stDriveStatus.nS390_DiagnosticMessageNumber</Name>
+							<Name>MAIN.fbIndraDrive.stDriveStatus.nS390_DiagnosticMessageNumber</Name>
 							<Type>DWORD</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.fb_IndraDrive.stDriveStatus.stS144_SignalStatusWord</Name>
+							<Name>MAIN.fbIndraDrive.stDriveStatus.stS144_SignalStatusWord</Name>
 							<Type GUID="{50590704-8C4D-4FD8-9670-11E39DA38DD8}">ST_S144_SIGNALSTATUSWORD</Type>
 							<SubVar>
 								<Name>bS424_DriveMode</Name>
@@ -672,53 +704,34 @@
 							</SubVar>
 						</Var>
 						<Var>
-							<Name>MAIN.fb_IndraDrive.stDriveStatus.nS84_TorqueFeedback</Name>
+							<Name>MAIN.fbIndraDrive.stDriveStatus.nS84_TorqueFeedback</Name>
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.fb_IndraDrive.stDriveStatus.nS189_PositionError</Name>
+							<Name>MAIN.fbIndraDrive.stDriveStatus.nS189_PositionError</Name>
 							<Type>DINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.stAmsNetId</Name>
-							<Type GUID="{18071995-0000-0000-0000-000000000041}">AMSNETID</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.nPort</Name>
-							<Type>WORD</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.nMasterAxisPosition</Name>
-							<Type>DINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.dLatchedPosition</Name>
-							<Type>DINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.inputDummy</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.inputDigSens1</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.inputDigSens2</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.iRotMotorTempRaw</Name>
-							<Comment>
-								<![CDATA[Temperature input from EL3214 Channel1]]>
-							</Comment>
-							<Type>INT</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="2">
 						<Name>PlcTask Outputs</Name>
 						<Var>
-							<Name>MAIN.fb_IndraDrive.stDriveCommands.stS134_MasterControlWord</Name>
+							<Name>MAIN.nAdditivePositionSetpoiunt</Name>
+							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.bBrakeFreewheelOn</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.bBrakeLockedOn</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.iBrakeSpRaw</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbIndraDrive.stDriveCommands.stS134_MasterControlWord</Name>
 							<Type GUID="{4CCFD5CA-E676-474E-B42D-6A96C42819C9}">ST_S134_MASTERCONTROLWORD</Type>
 							<SubVar>
 								<Name>bS134_CmdOperationMode_Bit0</Name>
@@ -764,35 +777,35 @@
 							</SubVar>
 						</Var>
 						<Var>
-							<Name>MAIN.fb_IndraDrive.stDriveCommands.nS47_PositionCommandValue</Name>
+							<Name>MAIN.fbIndraDrive.stDriveCommands.nS47_PositionCommandValue</Name>
 							<Type>DINT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.fb_IndraDrive.stDriveCommands.nS258_TargetPosition</Name>
+							<Name>MAIN.fbIndraDrive.stDriveCommands.nS258_TargetPosition</Name>
 							<Type>DINT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.fb_IndraDrive.stDriveCommands.nS282_PositioningCommandValue</Name>
+							<Name>MAIN.fbIndraDrive.stDriveCommands.nS282_PositioningCommandValue</Name>
 							<Type>DINT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.fb_IndraDrive.stDriveCommands.nS259_PositioningVelocity</Name>
+							<Name>MAIN.fbIndraDrive.stDriveCommands.nS259_PositioningVelocity</Name>
 							<Type>UDINT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.fb_IndraDrive.stDriveCommands.nS260_PositioningAcceleration</Name>
+							<Name>MAIN.fbIndraDrive.stDriveCommands.nS260_PositioningAcceleration</Name>
 							<Type>UDINT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.fb_IndraDrive.stDriveCommands.nS359_PositioningDeceleration</Name>
+							<Name>MAIN.fbIndraDrive.stDriveCommands.nS359_PositioningDeceleration</Name>
 							<Type>UDINT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.fb_IndraDrive.stDriveCommands.nS108_FeedrateOverride</Name>
+							<Name>MAIN.fbIndraDrive.stDriveCommands.nS108_FeedrateOverride</Name>
 							<Type>UINT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.fb_IndraDrive.stDriveCommands.stS145_SignalControlWord</Name>
+							<Name>MAIN.fbIndraDrive.stDriveCommands.stS145_SignalControlWord</Name>
 							<Type GUID="{356849DC-7175-4AB3-A9EB-61AF708DF42F}">ST_S145_SIGNALCONTROLWORD</Type>
 							<SubVar>
 								<Name>bS346_0_PosCtrlWord_CmdValueAccept</Name>
@@ -886,28 +899,12 @@
 							</SubVar>
 						</Var>
 						<Var>
-							<Name>MAIN.fb_IndraDrive.stDriveCommands.nS92_BiPolarTorqueLimit</Name>
+							<Name>MAIN.fbIndraDrive.stDriveCommands.nS92_BiPolarTorqueLimit</Name>
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.fb_IndraDrive.stDriveCommands.nS40_VelocityCommandValue</Name>
+							<Name>MAIN.fbIndraDrive.stDriveCommands.nS40_VelocityCommandValue</Name>
 							<Type>DINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.nAdditivePositionSetpoiunt</Name>
-							<Type>DINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.bBrakeFreewheelOn</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.bBrakeLockedOn</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.iBrakeSpRaw</Name>
-							<Type>INT</Type>
 						</Var>
 					</Vars>
 					<TaskPouOids>
@@ -1752,26 +1749,26 @@
 			</OwnerB>
 			<OwnerB Name="TIID^Device 4 (EtherCAT)^Drive 10 (IndraDrive MPB18/19)">
 				<Link VarA="PlcTask Inputs^MAIN.dLatchedPosition" VarB="AT^Probe value 1 positive edge"/>
-				<Link VarA="PlcTask Inputs^MAIN.fb_IndraDrive.stDriveStatus.nS135_DriveStatusWord" VarB="AT^Drive status word"/>
-				<Link VarA="PlcTask Inputs^MAIN.fb_IndraDrive.stDriveStatus.nS189_PositionError" VarB="AT^Following distance"/>
-				<Link VarA="PlcTask Inputs^MAIN.fb_IndraDrive.stDriveStatus.nS386_ActivePositionFeedbackValue" VarB="AT^Active position feedback value"/>
-				<Link VarA="PlcTask Inputs^MAIN.fb_IndraDrive.stDriveStatus.nS390_DiagnosticMessageNumber" VarB="AT^Diagnostic message number"/>
-				<Link VarA="PlcTask Inputs^MAIN.fb_IndraDrive.stDriveStatus.nS40_VelocityFeedbackValue" VarB="AT^Velocity feedback value"/>
-				<Link VarA="PlcTask Inputs^MAIN.fb_IndraDrive.stDriveStatus.nS51_PositionFeedbackValue" VarB="AT^Position feedback value 1"/>
-				<Link VarA="PlcTask Inputs^MAIN.fb_IndraDrive.stDriveStatus.nS84_TorqueFeedback" VarB="AT^Torque/force feedback value"/>
-				<Link VarA="PlcTask Inputs^MAIN.fb_IndraDrive.stDriveStatus.stS144_SignalStatusWord" VarB="AT^Signal status word"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nS135_DriveStatusWord" VarB="AT^Drive status word"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nS189_PositionError" VarB="AT^Following distance"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nS386_ActivePositionFeedbackValue" VarB="AT^Active position feedback value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nS390_DiagnosticMessageNumber" VarB="AT^Diagnostic message number"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nS40_VelocityFeedbackValue" VarB="AT^Velocity feedback value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nS51_PositionFeedbackValue" VarB="AT^Position feedback value 1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nS84_TorqueFeedback" VarB="AT^Torque/force feedback value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.stS144_SignalStatusWord" VarB="AT^Signal status word"/>
 				<Link VarA="PlcTask Inputs^MAIN.nMasterAxisPosition" VarB="AT^Virtual master axis, actual position value"/>
-				<Link VarA="PlcTask Outputs^MAIN.fb_IndraDrive.stDriveCommands.nS108_FeedrateOverride" VarB="MDT^Feedrate override"/>
-				<Link VarA="PlcTask Outputs^MAIN.fb_IndraDrive.stDriveCommands.nS258_TargetPosition" VarB="MDT^Target position"/>
-				<Link VarA="PlcTask Outputs^MAIN.fb_IndraDrive.stDriveCommands.nS259_PositioningVelocity" VarB="MDT^Positioning velocity"/>
-				<Link VarA="PlcTask Outputs^MAIN.fb_IndraDrive.stDriveCommands.nS260_PositioningAcceleration" VarB="MDT^Ramp 1 pitch"/>
-				<Link VarA="PlcTask Outputs^MAIN.fb_IndraDrive.stDriveCommands.nS282_PositioningCommandValue" VarB="MDT^Positioning command value"/>
-				<Link VarA="PlcTask Outputs^MAIN.fb_IndraDrive.stDriveCommands.nS359_PositioningDeceleration" VarB="MDT^Deceleration ramp 1"/>
-				<Link VarA="PlcTask Outputs^MAIN.fb_IndraDrive.stDriveCommands.nS40_VelocityCommandValue" VarB="MDT^Velocity command value"/>
-				<Link VarA="PlcTask Outputs^MAIN.fb_IndraDrive.stDriveCommands.nS47_PositionCommandValue" VarB="MDT^Position command value"/>
-				<Link VarA="PlcTask Outputs^MAIN.fb_IndraDrive.stDriveCommands.nS92_BiPolarTorqueLimit" VarB="MDT^Bipolar torque/force limit value"/>
-				<Link VarA="PlcTask Outputs^MAIN.fb_IndraDrive.stDriveCommands.stS134_MasterControlWord" VarB="MDT^Master control word"/>
-				<Link VarA="PlcTask Outputs^MAIN.fb_IndraDrive.stDriveCommands.stS145_SignalControlWord" VarB="MDT^Signal control word"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS108_FeedrateOverride" VarB="MDT^Feedrate override"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS258_TargetPosition" VarB="MDT^Target position"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS259_PositioningVelocity" VarB="MDT^Positioning velocity"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS260_PositioningAcceleration" VarB="MDT^Ramp 1 pitch"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS282_PositioningCommandValue" VarB="MDT^Positioning command value"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS359_PositioningDeceleration" VarB="MDT^Deceleration ramp 1"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS40_VelocityCommandValue" VarB="MDT^Velocity command value"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS47_PositionCommandValue" VarB="MDT^Position command value"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS92_BiPolarTorqueLimit" VarB="MDT^Bipolar torque/force limit value"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.stS134_MasterControlWord" VarB="MDT^Master control word"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.stS145_SignalControlWord" VarB="MDT^Signal control word"/>
 				<Link VarA="PlcTask Outputs^MAIN.nAdditivePositionSetpoiunt" VarB="MDT^Additive positon command value"/>
 			</OwnerB>
 		</OwnerA>

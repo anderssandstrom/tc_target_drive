@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.6">
+  <POU Name="FB_ModeVelo" Id="{c95731c8-4fe5-4d11-ab47-46b5e16e76f1}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_ModeVelo
+VAR_INPUT
+	bExecute:BOOL;
+	bReset: BOOL;
+	fVelSet:LREAL:=0;
+	stStatus: ST_AXIS_STATUS;
+END_VAR
+VAR_OUTPUT
+	bError: BOOL;
+	nErrorId: UDINT;
+	sErrorStr: STRING:=GVL_ErrorCodes.nErrorCodeOKStr;
+END_VAR
+VAR_IN_OUT
+	stCommands: ST_AXIS_COMMAND;
+END_VAR
+VAR
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+// Actually not neccesarry to use FB here but nice to keep structure
+stCommands.eMotionMode :=e_Motion_mode.eJogPositive;
+stCommands.eOperationMode:=e_Operation_mode_no.eSecondaryOpMode2;
+IF bExecute THEN
+	stCommands.fVelocityCommandValue:=fVelSet;
+ELSE
+	stCommands.fVelocityCommandValue:=0;
+END_IF
+stCommands.fCommandVelocity:=0;]]></ST>
+    </Implementation>
+    <LineIds Name="FB_ModeVelo">
+      <LineId Id="886" Count="1" />
+      <LineId Id="877" Count="0" />
+      <LineId Id="885" Count="0" />
+      <LineId Id="879" Count="4" />
+      <LineId Id="708" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

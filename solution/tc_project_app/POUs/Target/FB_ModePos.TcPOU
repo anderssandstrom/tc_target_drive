@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.6">
+  <POU Name="FB_ModePos" Id="{6ecfe6fb-3b6b-4228-bef4-e3d81387d91d}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_ModePos
+VAR_INPUT
+	bExecute:BOOL;
+	bReset: BOOL;
+	fVelSet:LREAL:=0;
+	fPosSet:LREAL:=0;
+	stStatus: ST_AXIS_STATUS;
+END_VAR
+VAR_OUTPUT
+	bError: BOOL;
+	nErrorId: UDINT;
+	sErrorStr: STRING:=GVL_ErrorCodes.nErrorCodeOKStr;
+END_VAR
+VAR_IN_OUT
+	stCommands: ST_AXIS_COMMAND;
+END_VAR
+VAR
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Actually not neccesarry to use FB here but nice to keep structure
+stCommands.eMotionMode :=e_Motion_mode.ePositioning;
+stCommands.eOperationMode:=e_Operation_mode_no.eSecondaryOpMode1;
+IF bExecute THEN
+  stCommands.fVelocityCommandValue:=fVelSet;
+ELSE
+  stCommands.fVelocityCommandValue:=0;
+END_IF
+stCommands.fCommandVelocity:=0;
+stCommands.fCommandPosition:=fPosSet;]]></ST>
+    </Implementation>
+    <LineIds Name="FB_ModePos">
+      <LineId Id="895" Count="0" />
+      <LineId Id="886" Count="0" />
+      <LineId Id="893" Count="0" />
+      <LineId Id="888" Count="4" />
+      <LineId Id="708" Count="0" />
+      <LineId Id="896" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -868,7 +868,7 @@
         <HexValues>false</HexValues>
       </CursorModule>
       <Operating>
-        <DisplayWidth>100000000</DisplayWidth>
+        <DisplayWidth>120000000</DisplayWidth>
       </Operating>
       <ChartType>XT</ChartType>
       <SortPriority>-1</SortPriority>
