@@ -550,10 +550,6 @@
 							<Type>DINT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.iRotMotorTempRaw</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
 							<Name>MAIN.inputDummy</Name>
 							<Type>BOOL</Type>
 						</Var>
@@ -710,6 +706,52 @@
 						<Var>
 							<Name>MAIN.fbIndraDrive.stDriveStatus.nS189_PositionError</Name>
 							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbTemp.AI_RTD_Ch_1_Status</Name>
+							<Comment>
+								<![CDATA[Channels]]>
+							</Comment>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbTemp.AI_RTD_Ch_1_Value</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbTemp.AI_RTD_Ch_2_Status</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbTemp.AI_RTD_Ch_2_Value</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbTemp.AI_RTD_Ch_3_Status</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbTemp.AI_RTD_Ch_3_Value</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbTemp.AI_RTD_Ch_4_Status</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbTemp.AI_RTD_Ch_4_Value</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbTemp.WcState_WcState</Name>
+							<Comment>
+								<![CDATA[Terminal status]]>
+							</Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbTemp.InfoData_State</Name>
+							<Type>UINT</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="2">
@@ -1520,7 +1562,7 @@
 								<Entry Name="Status__">
 									<Type GUID="{18071995-0000-0000-0000-002000000007}">ARRAY [0..6] OF BIT</Type>
 								</Entry>
-								<Entry Name="Status__TxPDO State" Index="#x6000" Sub="#x0f">
+								<Entry Name="Status__TxPDO State" Index="#x6000" Sub="#x0f" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Status__TxPDO Toggle" Index="#x6000" Sub="#x10">
@@ -1531,7 +1573,7 @@
 								</Entry>
 							</Pdo>
 							<Pdo Name="RTD Inputs Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="3">
-								<Entry Name="Status__Underrange" Index="#x6010" Sub="#x01">
+								<Entry Name="Status__Underrange" Index="#x6010" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Status__Overrange" Index="#x6010" Sub="#x02">
@@ -1726,6 +1768,7 @@
 	<Mappings>
 		<MappingInfo Identifier="{00000000-2041-0850-4520-500810000403}" Id="#x02030010"/>
 		<MappingInfo Identifier="{00000000-2001-0850-0420-500810000403}" Id="#x02030030"/>
+		<MappingInfo Identifier="{00000000-2041-0850-4520-500821000403}" Id="#x02030040"/>
 		<MappingInfo Identifier="{00000000-2041-0850-4520-500842000403}" Id="#x02030020"/>
 		<OwnerA Name="TIPC^tc_project_app^tc_project_app Instance">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 10 (EK1200)^Term 12 (EL2808)">
@@ -1739,7 +1782,14 @@
 				<Link VarA="PlcTask Outputs^MAIN.iBrakeSpRaw" VarB="AO Outputs Channel 1^Analog output"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 10 (EK1200)^Term 20 (EL3214)">
-				<Link VarA="PlcTask Inputs^MAIN.iRotMotorTempRaw" VarB="RTD Inputs Channel 1^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTemp.AI_RTD_Ch_1_Status" VarB="RTD Inputs Channel 1^Status"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTemp.AI_RTD_Ch_1_Value" VarB="RTD Inputs Channel 1^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTemp.AI_RTD_Ch_2_Status" VarB="RTD Inputs Channel 2^Status"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTemp.AI_RTD_Ch_2_Value" VarB="RTD Inputs Channel 2^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTemp.AI_RTD_Ch_3_Status" VarB="RTD Inputs Channel 3^Status"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTemp.AI_RTD_Ch_3_Value" VarB="RTD Inputs Channel 3^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTemp.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTemp.WcState_WcState" VarB="WcState^WcState"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 4 (EtherCAT)^Drive 10 (IndraDrive MPB18/19)">
 				<Link VarA="PlcTask Inputs^MAIN.dLatchedPosition" VarB="AT^Probe value 1 positive edge"/>

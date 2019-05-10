@@ -14,6 +14,10 @@ STRUCT
 	fActVel:LREAL:=0;	
 	fActTemp:LREAL:=0;
 	fSetVelRaw:LREAL;
+	fBrakeActTemp1:LREAL;
+	fBrakeActTemp2:LREAL;
+	bBrake1TempAlarm:BOOL;
+	bBrake2TempAlarm:BOOL;
 END_STRUCT
 END_TYPE
 ]]></Declaration>

@@ -13,6 +13,7 @@ VAR_GLOBAL CONSTANT
 	fHomeSpeedRpm: LREAL := 1;
     fMaximumSPeedRpm: LREAL := GVL_Parameters.fNominalSpeedRpm*1.1;
 	nMaxMotorTemperature: INT:= 80;
+	nMaxBrakeTemperature: INT:= 100;
 	fWheelDiameter:LREAL:=2500;
 	fAccDefault:LREAL:=0.005;
 END_VAR]]></Declaration>

@@ -9,7 +9,8 @@ VAR
 	nAdditivePositionSetpoiunt AT %Q* : DINT;
 	dLatchedPosition AT %I*           : DINT;
 	iBrakeSpRaw AT %Q*                : INT := 0;
-	iRotMotorTempRaw AT %I*           : INT := 0;
+	//iRotMotorTempRaw AT %I*           : INT := 0;
+    fbTemp                            : EL3214;
 	bBrakeFreewheelOn AT %Q*          : BOOL;
 	bBrakeLockedOn AT %Q*             : BOOL;
     inputDummy AT %I*                 : BOOL;
@@ -28,7 +29,36 @@ VAR
 	eTargetStateOld                   : TARGET_STATE_MACHINE;
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
+      <ST><![CDATA[fbTemp(En:=TRUE);
+
+IF fbTemp.bError THEN
+	stCmdEpics.bExecute:=0;
+	stCmdEpics.bEnable:=0;
+END_IF
+
+stStatEpics.fActTemp:=fbTemp.iAi_Ch1_Value/10.0;
+stStatEpics.fBrakeActTemp1:=fbTemp.iAi_Ch2_Value/10.0;
+stStatEpics.fBrakeActTemp2:=fbTemp.iAi_Ch3_Value/10.0;
+
+// Motor Temperature Monitoring Interlock
+IF (stStatEpics.fActTemp >= GVL_Parameters.nMaxMotorTemperature)  OR fbTemp.iAi_Ch1_Stat >0 THEN
+	stCmdEpics.bEnable:= FALSE;
+	stCmdEpics.bExecute:= FALSE;	
+END_IF
+
+//Brake temperature monitoring Interlock 1
+IF (stStatEpics.fBrakeActTemp1 >= GVL_Parameters.nMaxBrakeTemperature) OR fbTemp.iAi_Ch2_Stat >0 OR stStatEpics.bBrake1TempAlarm THEN
+	stCmdEpics.bEnable:= FALSE;
+	stCmdEpics.bExecute:= FALSE;		
+    stStatEpics.bBrake1TempAlarm:=TRUE; 
+END_IF
+//Brake temperature monitoring Interlock 2
+IF (stStatEpics.fBrakeActTemp2 >= GVL_Parameters.nMaxBrakeTemperature) OR fbTemp.iAi_Ch3_Stat >0 OR stStatEpics.bBrake2TempAlarm THEN
+	stCmdEpics.bEnable:= FALSE;
+	stCmdEpics.bExecute:= FALSE;		
+    stStatEpics.bBrake2TempAlarm:=TRUE; 
+END_IF
+
 // Enable Axis independent of state
 stCommands.bEnableAxis :=stCmdEpics.bEnable;
 stCommands.bHaltAxis :=stCmdEpics.bEnable;
@@ -110,13 +140,6 @@ stStatEpics.fSetVelRaw:= DINT_TO_LREAL(MAIN.fbIndraDrive.stDriveCommands.nS40_Ve
 stStatEpics.fActPos:=stStatus.fActualPosition;
 stStatEpics.fActTorque:=stStatus.fActualTorque;
 stStatEpics.fActVel:=stStatus.fActualVelocity/10;
-stStatEpics.fActTemp:=iRotMotorTempRaw/10.0;
-
-// Motor Temperature Monitoring
-IF stStatEpics.fActTemp >= GVL_Parameters.nMaxMotorTemperature THEN
-	stCmdEpics.bEnable:= FALSE;
-	stCmdEpics.bExecute:= FALSE;	
-END_IF
 	
 // Control brake
 ACT_Brake();
@@ -157,6 +180,8 @@ IF stcmdEpics.bReset THEN
 	stStatEpics.bError:=FALSE;
 	stStatEpics.nErrorId:=GVL_ErrorCodes.nErrorCodeOKId;
 	stStatEpics.sErrorStr:=GVL_ErrorCodes.nErrorCodeOKStr;
+	stStatEpics.bBrake1TempAlarm:=FALSE;
+	stStatEpics.bBrake2TempAlarm:=FALSE;
 END_IF
 
 eTargetStateOld:=stStatEpics.eTargetState;
@@ -198,6 +223,23 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
     </Action>
     <LineIds Name="MAIN">
       <LineId Id="856" Count="0" />
+      <LineId Id="1146" Count="0" />
+      <LineId Id="1145" Count="0" />
+      <LineId Id="1147" Count="0" />
+      <LineId Id="1149" Count="0" />
+      <LineId Id="1148" Count="0" />
+      <LineId Id="1168" Count="0" />
+      <LineId Id="1158" Count="2" />
+      <LineId Id="1169" Count="0" />
+      <LineId Id="1163" Count="4" />
+      <LineId Id="1189" Count="0" />
+      <LineId Id="1171" Count="0" />
+      <LineId Id="1170" Count="0" />
+      <LineId Id="1175" Count="1" />
+      <LineId Id="1174" Count="0" />
+      <LineId Id="1173" Count="0" />
+      <LineId Id="1183" Count="5" />
+      <LineId Id="1156" Count="0" />
       <LineId Id="682" Count="0" />
       <LineId Id="454" Count="0" />
       <LineId Id="453" Count="0" />
@@ -261,11 +303,7 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       <LineId Id="22" Count="0" />
       <LineId Id="860" Count="1" />
       <LineId Id="277" Count="0" />
-      <LineId Id="666" Count="2" />
-      <LineId Id="864" Count="0" />
-      <LineId Id="867" Count="4" />
-      <LineId Id="866" Count="0" />
-      <LineId Id="669" Count="0" />
+      <LineId Id="666" Count="3" />
       <LineId Id="768" Count="0" />
       <LineId Id="573" Count="0" />
       <LineId Id="839" Count="0" />
@@ -291,6 +329,7 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       <LineId Id="840" Count="0" />
       <LineId Id="854" Count="1" />
       <LineId Id="916" Count="0" />
+      <LineId Id="1190" Count="1" />
       <LineId Id="853" Count="0" />
       <LineId Id="1001" Count="0" />
       <LineId Id="941" Count="0" />

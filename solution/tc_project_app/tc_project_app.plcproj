@@ -82,6 +82,9 @@
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Target\EL3214.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\Target\fbIndraDrive.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -143,9 +146,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Analog_Inputs\EL3174_0002.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Analog_Inputs\EL3214.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Analog_Inputs\EL3255.TcPOU">
