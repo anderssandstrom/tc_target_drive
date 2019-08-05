@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.6">
   <POU Name="fbIndraDrive" Id="{c552eacd-cc63-42de-838c-771e92ee46fa}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK fbIndraDrive
 VAR_INPUT 
@@ -168,7 +168,7 @@ sAmsNetId := F_CreateAmsNetId(AmsNetId);
 			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit0 := FALSE;
 			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit1 := TRUE;
 			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit2 := TRUE;
-		ELSIF stAxisCommands.eOperationMode = E_OPERATION_MODE_NO.eSecondaryOpMode4 THEN 
+		ELSIF stAxisCommands.eOperationMode = E_OPERATION_MODE_NO.eSecondaryOpMode7 THEN 
 			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit0 := TRUE;
 			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit1 := TRUE;
 			stDriveCommands.stS134_MasterControlWord.bS134_CmdOperationMode_Bit2 := TRUE;

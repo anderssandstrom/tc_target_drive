@@ -7,6 +7,7 @@ VAR
 	nPort	AT %I*                    : WORD;
 	nMasterAxisPosition AT %I*        : DINT;
 	nAdditivePositionSetpoiunt AT %Q* : DINT;
+	nAdditiveTorqueSetpoint    AT %Q* : INT;   // Unit 0.1%  (10=1%)
 	dLatchedPosition AT %I*           : DINT;
 	iBrakeSpRaw AT %Q*                : INT := 0;
 	//iRotMotorTempRaw AT %I*           : INT := 0;
@@ -27,6 +28,8 @@ VAR
 	stCommands                        : ST_AXIS_COMMAND; // Control to drive
 	stStatus                          : ST_AXIS_STATUS;  // Status from drive
 	eTargetStateOld                   : TARGET_STATE_MACHINE;
+	addStartupTorqueTrigger           : BOOL:=FALSE;
+	iTorqueCommandValue  AT %Q*       : INT := 0;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[fbTemp(En:=TRUE);
@@ -78,6 +81,11 @@ IF stCmdEpics.eTargetStateCmd <> stStatEpics.eTargetState AND NOT stCmdEpics.bex
 	stStatEpics.eTargetState:=stCmdEpics.eTargetStateCmd;
 END_IF
 
+//nAdditiveTorqueSetpoint:=0;
+//IF NOT  stCmdEpics.bExecute THEN
+//	addStartupTorqueTrigger:=TRUE;
+//END_IF
+
 CASE stStatEpics.eTargetState OF 
 	TARGET_STATE_MACHINE.CONSTANT_VELOCITY:
 		fbModeVelo(
@@ -86,6 +94,16 @@ CASE stStatEpics.eTargetState OF
 			fVelSet:=          stCmdEpics.fVelSet,
 			stStatus:=	       stStatus,	
 			stCommands:=       stCommands);
+			
+// add extra torque att startup TEST
+			IF stStatus.bAxisEnabled AND stCmdEpics.bExecute AND stCmdEpics.fVelSet > 0 THEN
+				IF stStatus.fActualVelocity/10< stCmdEpics.fVelSet/2 THEN
+			        nAdditiveTorqueSetpoint:=100;  //Add 10% when under x rpm
+				ELSIF stStatus.fActualVelocity/10 > stCmdEpics.fVelSet/2 THEN
+					nAdditiveTorqueSetpoint:=40;
+				END_IF
+			END_IF
+
 			
 	TARGET_STATE_MACHINE.POSITIONING:
 		fbModePos(
@@ -112,7 +130,11 @@ CASE stStatEpics.eTargetState OF
 			fPosSet:=          stCmdEpics.fPosSet,
 			stStatus:=	       stStatus,	
 			stCommands:=       stCommands);
-		
+	TARGET_STATE_MACHINE.TORQUE:
+		stCommands.eOperationMode:=E_OPERATION_MODE_NO.eSecondaryOpMode7;
+	    stCommands.eMotionMode :=e_Motion_mode.eJogPositive;
+	
+	
 	  ELSE  // No valid state
 		  
 		stCmdEpics.bExecute:=FALSE;
@@ -126,6 +148,7 @@ IF NOT stCmdEpics.bExecute THEN
 	stCommands.fVelocityCommandValue:=0;
 END_IF
 
+
 // Rexroth FB
 fbIndraDrive(
 	AmsNetId:= stAmsNetId, 
@@ -134,6 +157,7 @@ fbIndraDrive(
 	stDriveStatus:= , 
 	stAxisStatus=> stStatus, 
 	stDriveCommands=> );
+
 	
 // Calculate values for status in EPICS
 stStatEpics.fSetVelRaw:= DINT_TO_LREAL(MAIN.fbIndraDrive.stDriveCommands.nS40_VelocityCommandValue)/10000;	
@@ -256,7 +280,10 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       <LineId Id="1005" Count="0" />
       <LineId Id="996" Count="0" />
       <LineId Id="1002" Count="1" />
-      <LineId Id="836" Count="0" />
+      <LineId Id="1244" Count="0" />
+      <LineId Id="1243" Count="0" />
+      <LineId Id="1246" Count="2" />
+      <LineId Id="1250" Count="0" />
       <LineId Id="129" Count="0" />
       <LineId Id="150" Count="0" />
       <LineId Id="1040" Count="0" />
@@ -265,6 +292,14 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       <LineId Id="1046" Count="0" />
       <LineId Id="1042" Count="0" />
       <LineId Id="1021" Count="0" />
+      <LineId Id="1236" Count="0" />
+      <LineId Id="1254" Count="0" />
+      <LineId Id="1237" Count="2" />
+      <LineId Id="1252" Count="0" />
+      <LineId Id="1256" Count="0" />
+      <LineId Id="1240" Count="0" />
+      <LineId Id="1242" Count="0" />
+      <LineId Id="1235" Count="0" />
       <LineId Id="1045" Count="0" />
       <LineId Id="285" Count="0" />
       <LineId Id="1064" Count="3" />
@@ -287,6 +322,7 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       <LineId Id="1101" Count="0" />
       <LineId Id="1009" Count="0" />
       <LineId Id="1049" Count="0" />
+      <LineId Id="1257" Count="3" />
       <LineId Id="1027" Count="0" />
       <LineId Id="1035" Count="0" />
       <LineId Id="1028" Count="0" />
@@ -297,10 +333,12 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       <LineId Id="126" Count="0" />
       <LineId Id="468" Count="2" />
       <LineId Id="123" Count="0" />
-      <LineId Id="942" Count="0" />
+      <LineId Id="1263" Count="0" />
+      <LineId Id="1223" Count="0" />
       <LineId Id="588" Count="0" />
       <LineId Id="8" Count="5" />
       <LineId Id="22" Count="0" />
+      <LineId Id="1219" Count="0" />
       <LineId Id="860" Count="1" />
       <LineId Id="277" Count="0" />
       <LineId Id="666" Count="3" />

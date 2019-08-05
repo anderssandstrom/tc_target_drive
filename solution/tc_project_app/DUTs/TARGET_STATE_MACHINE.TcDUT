@@ -10,10 +10,8 @@ TYPE TARGET_STATE_MACHINE :
 	CONSTANT_VELOCITY :=2,
 	POSITIONING :=3,
 	PHASING :=4,
-	HOMING := 5
-	
-	
-	
+	HOMING := 5,
+	TORQUE := 6	
 );
 END_TYPE
 ]]></Declaration>
