@@ -64,7 +64,7 @@ END_IF
 
 // Enable Axis independent of state
 stCommands.bEnableAxis :=stCmdEpics.bEnable;
-stCommands.bHaltAxis :=stCmdEpics.bEnable;
+stCommands.bHaltAxis:=stCmdEpics.bExecute;
 stStatEpics.bEnabled:=stStatus.bAxisEnabled;
 stCommands.bCmd_ErrorReset:=stCmdEpics.bReset;
 
@@ -147,6 +147,7 @@ END_CASE
 IF NOT stCmdEpics.bExecute THEN
 	stCommands.fVelocityCommandValue:=0;
 END_IF
+
 
 
 // Rexroth FB
@@ -334,6 +335,7 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       <LineId Id="468" Count="2" />
       <LineId Id="123" Count="0" />
       <LineId Id="1263" Count="0" />
+      <LineId Id="1293" Count="0" />
       <LineId Id="1223" Count="0" />
       <LineId Id="588" Count="0" />
       <LineId Id="8" Count="5" />
