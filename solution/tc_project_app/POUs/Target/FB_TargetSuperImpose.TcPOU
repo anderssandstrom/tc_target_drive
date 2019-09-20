@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.10">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.6">
   <POU Name="FB_TargetSuperImpose" Id="{15eb4c9f-4200-4cfb-8447-041bc6a9a901}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_TargetSuperImpose
 VAR_INPUT
@@ -18,6 +18,7 @@ VAR
 	fbRtrig: R_TRIG;
 	iCyclesToOutput: INT;
 	iCycleCounter: INT;
+	maxCyclesToOutput: INT := 100; //(max 1.5s)
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -31,9 +32,13 @@ END_IF
 fbRtrig(clk:=bExecute);
 IF fbRtrig.Q THEN
  iCyclesToOutput:=LREAL_TO_INT(ABS(fPhasePositionDeg)/(ABS(fDeltaVelocityRpm)/60*360)*1000/iSampleRateMs);
+ IF(iCyclesToOutput>maxCyclesToOutput) THEN
+	 iCyclesToOutput:=maxCyclesToOutput;
+ END_IF
+ 
 END_IF
 
-IF iCycleCounter<iCyclesToOutput*2/3 AND bExecute  THEN
+IF iCycleCounter<iCyclesToOutput*0.5 AND bExecute  THEN
 	if fPhasePositionDeg>=0 then
 	  fVelocitySetpointRpm:=fNominalVelocityRpm + fDeltaVelocityRpm;
    ELSE 
@@ -61,6 +66,9 @@ END_IF]]></ST>
       <LineId Id="9" Count="0" />
       <LineId Id="33" Count="0" />
       <LineId Id="58" Count="0" />
+      <LineId Id="91" Count="0" />
+      <LineId Id="94" Count="1" />
+      <LineId Id="92" Count="0" />
       <LineId Id="40" Count="0" />
       <LineId Id="50" Count="0" />
       <LineId Id="35" Count="0" />

@@ -15,7 +15,7 @@ VAR_GLOBAL CONSTANT
 	nMaxMotorTemperature: INT:= 80;
 	nMaxBrakeTemperature: INT:= 100;
 	fWheelDiameter:LREAL:=2500;
-	fAccDefault:LREAL:=0.005;
+	fAccDefault:LREAL:=0.001;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

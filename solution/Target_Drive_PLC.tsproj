@@ -1772,7 +1772,7 @@
 							<Entry Name="Velocity command value" Index="#x0024">
 								<Type>DINT</Type>
 							</Entry>
-							<Entry Name="Additive torque/force command value " Index="#x0051">
+							<Entry Name="Additive torque/force command value" Index="#x0051">
 								<Type>INT</Type>
 							</Entry>
 							<Entry Name="Torque/force command value" Index="#x0050">
@@ -1833,7 +1833,7 @@
 				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.stS134_MasterControlWord" VarB="MDT^Master control word"/>
 				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.stS145_SignalControlWord" VarB="MDT^Signal control word"/>
 				<Link VarA="PlcTask Outputs^MAIN.iTorqueCommandValue" VarB="MDT^Torque/force command value"/>
-				<Link VarA="PlcTask Outputs^MAIN.nAdditiveTorqueSetpoint" VarB="MDT^Additive torque/force command value "/>
+				<Link VarA="PlcTask Outputs^MAIN.nAdditiveTorqueSetpoint" VarB="MDT^Additive torque/force command value"/>
 			</OwnerB>
 		</OwnerA>
 		<OwnerA Name="TIPC^tc_project_app_faster^tc_project_app_faster Instance">
