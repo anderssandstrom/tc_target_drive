@@ -10,12 +10,17 @@ VAR_GLOBAL CONSTANT
 	nSectors: LREAL :=36;
     nPulseFreqHz:LREAL:=14;
 	fNominalSpeedRpm: LREAL := GVL_Parameters.nPulseFreqHz/GVL_Parameters.nSectors*60;
+	fNominalSpeedAdjust: LREAL:=-0.0002;  //Timing system vs drive clock tuning. Automize later!
 	fHomeSpeedRpm: LREAL := 1;
     fMaximumSPeedRpm: LREAL := GVL_Parameters.fNominalSpeedRpm*1.1;
 	nMaxMotorTemperature: INT:= 80;
 	nMaxBrakeTemperature: INT:= 100;
 	fWheelDiameter:LREAL:=2500;
 	fAccDefault:LREAL:=0.001;
+	nPhaseErrorFilterSize:INT:=72;  //Two revs
+	nVeloInRangeCount:INT:=100;
+	nSuperPosMaxCyclesToOutput:INT:=300;
+	fSuperPosDutyCycle:LREAL:=2.0/3.0;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
