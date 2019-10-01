@@ -17,7 +17,7 @@ VAR_GLOBAL CONSTANT
 	nMaxBrakeTemperature: INT:= 100;
 	fWheelDiameter:LREAL:=2500;
 	fAccDefault:LREAL:=0.001;
-	nPhaseErrorFilterSize:INT:=72;  //Two revs
+	nPhaseErrorFilterSize:INT:=36;  //Two revs
 	nVeloInRangeCount:INT:=100;
 	nSuperPosMaxCyclesToOutput:INT:=300;
 	fSuperPosDutyCycle:LREAL:=2.0/3.0;

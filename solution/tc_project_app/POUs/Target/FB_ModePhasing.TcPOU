@@ -204,19 +204,19 @@ END_IF
 
 //Drops very fast from positive to negative error. So, Adjust more gently when phase error is positive
 IF(fPhaseErrorFiltered > 0) THEN  //Pos error
-  IF ABS(fPhaseErrorFiltered)>5 THEN
+  IF ABS(fPhaseErrorFiltered)>10 THEN
     fDeltaVelo:= 0.01;
   ELSIF ABS(fPhaseErrorFiltered)>4 THEN
-    fDeltaVelo:= 0.0025;
+    fDeltaVelo:= 0.002;
   ELSIF ABS(fPhaseErrorFiltered)>1 THEN
     fDeltaVelo:= 0.002;
   ELSIF ABS(fPhaseErrorFiltered)>0.5 THEN
-    fDeltaVelo:= 0.001;
+    fDeltaVelo:= 0.002;
   ELSE
 	fDeltaVelo:= 0.001;
   END_IF
 ELSE // neg error
-  IF ABS(fPhaseErrorFiltered)>5 THEN  
+  IF ABS(fPhaseErrorFiltered)>10 THEN  
     fDeltaVelo:= 0.01;
   ELSIF ABS(fPhaseErrorFiltered)>4 THEN
     fDeltaVelo:= 0.004;
