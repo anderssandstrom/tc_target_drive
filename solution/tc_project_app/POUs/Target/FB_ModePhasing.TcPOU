@@ -36,7 +36,7 @@ VAR
 	fClosestSectorId: LREAL;
 	nClosestSectorId: INT;
 	fLatchedPosition:LREAL;
-	fbPhasePID: Tc2_Utilities.FB_BasicPID;
+	//fbPhasePID: Tc2_Utilities.FB_BasicPID;
 	fPhaseError: LREAL;
 	fPhaseErrorFiltered:LREAL;
 	fPhaseErrorMM: LREAL:=0;
@@ -45,7 +45,8 @@ VAR
 	ii: INT;
 	bTestReset: BOOL;
 	fArrayFiltVelo: ARRAY[ 0 ..35] OF LREAL;
-	fArrayPhaseErrorFilt: ARRAY[ 0 ..9] OF LREAL;
+	fArrayPhaseErrorFilt: ARRAY[ 0 ..99] OF LREAL;
+	fArrayPhaseErrorLongTime: ARRAY[ 0 ..99] OF LREAL;
 	iFiltVeloArrayIndex:INT:=0;
 	fLastSectorVelocityOld:LREAL:=0;
 	i:INT:=0;
@@ -64,11 +65,12 @@ VAR
 	fDeltaVelo: LREAL;
 	bVeloStable:BOOL:=FALSE;
 	timerCheckLatchFreq:TON;
+	fSpeedAdjust: LREAL := 0;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[//Reduce overshoot by lowering acc when closing in on setpoint 
-IF stStatus.fActualVelocity/10 > GVL_Parameters.fNominalSpeedRpm * 0.995  THEN
+(*IF stStatus.fActualVelocity/10 > GVL_Parameters.fNominalSpeedRpm * 0.995  THEN
   stCommands.fCommandAcceleration:= GVL_Parameters.fAccDefault;
   stCommands.fCommandDeceleration:=GVL_Parameters.fAccDefault;	
 ELSIF stStatus.fActualVelocity/10 > GVL_Parameters.fNominalSpeedRpm * 0.9  THEN	
@@ -83,7 +85,10 @@ ELSIF stStatus.fActualVelocity/10 > GVL_Parameters.fNominalSpeedRpm * 0.70 THEN
 ELSE
   stCommands.fCommandAcceleration:= GVL_Parameters.fAccDefault;
   stCommands.fCommandDeceleration:=GVL_Parameters.fAccDefault;
-END_IF
+END_IF*)
+
+stCommands.fCommandDeceleration:=GVL_Parameters.fAccDefault;	
+stCommands.fCommandAcceleration:= GVL_Parameters.fAccDefault;
 
 fLatchedPositionOld:=fLatchedPosition;
 
@@ -102,15 +107,14 @@ timerCheckLatchFreq(IN:=fLatchedPosition = fLatchedPositionOld AND ABS(stStatus.
 
 
 fVelocityFromDriveScaled:=stStatus.fActualVelocity/10;
-nClosestSectorId:= LREAL_TO_INT(fLatchedPosition/10);
-//fPhaseError:=nClosestSectorId*10-fLatchedPosition;	
+nClosestSectorId:= LREAL_TO_INT(fLatchedPosition/10);	
 stCommands.eMotionMode :=e_Motion_mode.eJogPositive;
 stCommands.eOperationMode:=e_Operation_mode_no.eSecondaryOpMode2;
 
 bPhasing:=FALSE;
 IF  NOT bExecute  OR bTestReset OR bPhaseControlReset THEN
  fSpeedSetpoint:=0;
- fbPhasePID(bReset:=TRUE);
+ //fbPhasePID(bReset:=TRUE);
  bPhaseAlgTrigg:=FALSE;
 END_IF
 IF fLastSectorVelocityOld <> fLastSectorVelocity THEN
@@ -144,7 +148,7 @@ IF NOT bPhaseAlgTrigg THEN
 	fPhaseError:=nClosestSectorId*10-fLatchedPosition;
 END_IF
 
- IF iRangeOKCounter>360 AND iRangeOKCounterOld<=360  AND NOT bPhaseAlgTrigg THEN
+ IF iRangeOKCounter>GVL_Parameters.nVeloInRangeCount AND GVL_Parameters.nVeloInRangeCount <=100  AND NOT bPhaseAlgTrigg THEN
     nChoosenSector:=nClosestSectorId-1;
 	bPhaseAlgTrigg:=TRUE;
 	MEMSET(destAddr:=ADR(fArrayPhaseErrorFilt[0]),0,SIZEOF(fArrayPhaseErrorFilt));
@@ -167,46 +171,13 @@ END_IF
 bVeloStable:=iRangeOKCounter > 360;
 
 fPhaseErrorMM:=fPhaseError*GVL_Parameters.fWheelDiameter*pi/360.0; 
-	  
-IF  bPhaseAlgTrigg (*AND ABS(fSpeedSetpoint-fLastSectorVelocity) < Target_GlobalVariableList.fSpeedToleranceRpm *) THEN
-    //fPhaseError:=nChoosenSector*10-fLatchedPosition;	
-    IF fLatchedPosition<>fLatchedPositionOld (*AND  dLatchedPositionOld>dLatchedPosition*) THEN	
-	 iNominalVelCounter:=iNominalVelCounter+1;
-	 IF iNominalVelCounter >=5 THEN
-		 iNominalVelCounter:=0;
-	 END_IF
-	 IF iNominalVelCounter=0 THEN
-       (*IF  iRangeOKCounter>360 THEN
-         IF ABS(fPhaseErrorFiltered)>2 THEN
-		   fPhaseControlKp:=0.003;
-           fPhaseControlTn:=200;
- 	      ELSIF ABS(fPhaseErrorFiltered)>1 THEN
-		    fPhaseControlKp:=0.005;
-            fPhaseControlTn:=200;
-	      ELSIF ABS(fPhaseErrorFiltered)>0.1 THEN
-	        fPhaseControlKp:=0.012;
-            fPhaseControlTn:=100;
-		  ELSIF ABS(fPhaseErrorFiltered)>0.05 THEN
-	        fPhaseControlKp:=0.03;
-            fPhaseControlTn:=100;
-          ELSE 
-            fPhaseControlKp:=0.05;
-            fPhaseControlTn:=40;
-	      END_IF 
-        ELSE*)
-	      fPhaseControlKp:=0.003;
-          fPhaseControlTn:=50;
-	    //END_IF
-		//IF ABS(fPhaseErrorFiltered)<0.1 THEN 
-	      //fbPhasePID(fSetpointValue:=fPhaseOffsetDeg, fActualValue:= fPhaseErrorSlope,fCtrlCycleTime:=5*71E-3,fKp:=fPhaseControlKp,fTn:=fPhaseControlTn,fTv:=fPhaseControlTv,fTd:=fPhaseControlTd,bReset:=bPhaseControlReset); 
-      END_IF   
-	END_IF
-//	fSpeedSetpoint:=Target_GlobalVariableList.fNominalSpeedRpm-fbPhasePID.fCtrlOutput;
+
+IF  bPhaseAlgTrigg THEN
   	bPhasing:=TRUE;
-//ELSE
-//  	fSpeedSetpoint:=Target_GlobalVariableList.fNominalSpeedRpm;
 END_IF
-fSpeedSetpoint:=GVL_Parameters.fNominalSpeedRpm-fbPhasePID.fCtrlOutput;
+
+//Adjust nominal speed (this function should be automated (adaptive))
+fSpeedSetpoint:=GVL_Parameters.fNominalSpeedRpm+ GVL_Parameters.fNominalSpeedAdjust;
 
 IF fSpeedSetpoint>GVL_Parameters.fMaximumSPeedRpm THEN
   fSpeedSetpoint:=GVL_Parameters.fMaximumSPeedRpm; 
@@ -216,43 +187,53 @@ IF NOT bExecute THEN
 	fSpeedSetpoint:=0;	
 END_IF
 
-fCtrlOutput:=fbPhasePID.fCtrlOutput;
-
+//Filter phase error
 IF (fLatchedPosition-fLatchedPositionOld)<>0 THEN
-	IF dLatchedPositionOld>dLatchedPosition  (*OR fLatchedPosition>=180 AND fLatchedPositionOld<180*) THEN
-		fPhaseErrorAcc:=fPhaseErrorAcc+fPhaseError;
-		fPhaseErrorFiltered:=fPhaseErrorAcc/36;
-		MEMMOVE(destAddr:=ADR(fArrayPhaseErrorFilt[1]),srcAddr:=ADR(fArrayPhaseErrorFilt[0]),SIZEOF(LREAL)*9);
-		fArrayPhaseErrorFilt[0]:=fPhaseErrorFiltered;
-		fPhaseErrorSlope:=fArrayPhaseErrorFilt[0]-fArrayPhaseErrorFilt[4];
-		fPhaseErrorAcc:=0;
-		ii:=0;
-	ELSE 
-		ii:=ii+1;
-		fPhaseErrorAcc:=fPhaseErrorAcc+fPhaseError;
-	END_IF
+	MEMMOVE(destAddr:=ADR(fArrayPhaseErrorFilt[1]),srcAddr:=ADR(fArrayPhaseErrorFilt[0]),SIZEOF(LREAL)*(GVL_Parameters.nPhaseErrorFilterSize-1));
+	fArrayPhaseErrorFilt[0]:=fPhaseErrorMM;
+	fPhaseErrorFiltered:=0;
+	FOR ii := 0 TO (GVL_Parameters.nPhaseErrorFilterSize-1) DO
+		fPhaseErrorFiltered:=fPhaseErrorFiltered+fArrayPhaseErrorFilt[ii];
+	END_FOR
+	fPhaseErrorFiltered:=fPhaseErrorFiltered/GVL_Parameters.nPhaseErrorFilterSize;
 END_IF
 
 IF NOT fbSuperImpose.bBusy  THEN
   bExecuteSuperImpose:= NOT bExecuteSuperImpose;
 END_IF
-IF ABS(fPhaseErrorFiltered)>0.5 THEN
-   fDeltaVelo:= 0.02;
-ELSIF ABS(fPhaseErrorFiltered)>0.1 THEN
-   fDeltaVelo:= 0.007;
-ELSIF ABS(fPhaseErrorFiltered)>0.05 THEN
-   fDeltaVelo:= 0.004;
-ELSIF ABS(fPhaseErrorFiltered)>0.03 THEN
-   fDeltaVelo:= 0.002;
-ELSE
-	fDeltaVelo:= 0.002;
+
+//Drops very fast from positive to negative error. So, Adjust more gently when phase error is positive
+IF(fPhaseErrorFiltered > 0) THEN  //Pos error
+  IF ABS(fPhaseErrorFiltered)>10 THEN
+    fDeltaVelo:= 0.01;
+  ELSIF ABS(fPhaseErrorFiltered)>4 THEN
+    fDeltaVelo:= 0.002;
+  ELSIF ABS(fPhaseErrorFiltered)>1 THEN
+    fDeltaVelo:= 0.002;
+  ELSIF ABS(fPhaseErrorFiltered)>0.5 THEN
+    fDeltaVelo:= 0.002;
+  ELSE
+	fDeltaVelo:= 0.001;
+  END_IF
+ELSE // neg error
+  IF ABS(fPhaseErrorFiltered)>10 THEN  
+    fDeltaVelo:= 0.01;
+  ELSIF ABS(fPhaseErrorFiltered)>4 THEN
+    fDeltaVelo:= 0.004;
+  ELSIF ABS(fPhaseErrorFiltered)>1 THEN
+    fDeltaVelo:= 0.0025;
+  ELSIF ABS(fPhaseErrorFiltered)>0.5 THEN
+    fDeltaVelo:= 0.002;
+  ELSE
+	fDeltaVelo:= 0.001;
+  END_IF	
 END_IF
 
 fbSuperImpose(bExecute:=bExecuteSuperImpose AND bPhaseAlgTrigg,
       iSampleRateMs:=10,
       fNominalVelocityRpm:=fSpeedSetpoint,
       fDeltaVelocityRpm:=fDeltaVelo,
-      fPhasePositionDeg:=fPhaseErrorFiltered);  
+      fPhasePositionDeg:=fPhaseErrorFiltered/(GVL_Parameters.fWheelDiameter*pi)*360);  
   
 fbPWM(
        En:=TRUE,
@@ -263,11 +244,7 @@ fbPWM(
        fOverrideInput:=fbSuperImpose.fVelocitySetpointRpm);
 	   
 stCommands.fVelocityCommandValue:=fbPWM.fOverrideOutput;	   
-//stCommands.fVelocityCommandValue:=fbSuperImpose.fVelocitySetpointRpm;	   
-
 dLatchedPositionOld:=dLatchedPosition;
- //fSpeedSetpoint:=Target_GlobalVariableList.fNominalSpeedRpm;
- 
  
 //*********Errorhandling
 
@@ -285,7 +262,9 @@ END_IF]]></ST>
     </Implementation>
     <LineIds Name="FB_ModePhasing">
       <LineId Id="847" Count="16" />
+      <LineId Id="948" Count="0" />
       <LineId Id="626" Count="0" />
+      <LineId Id="949" Count="1" />
       <LineId Id="53" Count="0" />
       <LineId Id="692" Count="0" />
       <LineId Id="54" Count="7" />
@@ -296,7 +275,7 @@ END_IF]]></ST>
       <LineId Id="697" Count="0" />
       <LineId Id="696" Count="0" />
       <LineId Id="64" Count="0" />
-      <LineId Id="72" Count="1" />
+      <LineId Id="72" Count="0" />
       <LineId Id="48" Count="0" />
       <LineId Id="11" Count="0" />
       <LineId Id="121" Count="4" />
@@ -322,31 +301,12 @@ END_IF]]></ST>
       <LineId Id="350" Count="1" />
       <LineId Id="329" Count="0" />
       <LineId Id="345" Count="0" />
-      <LineId Id="320" Count="0" />
+      <LineId Id="933" Count="0" />
       <LineId Id="129" Count="0" />
-      <LineId Id="308" Count="0" />
-      <LineId Id="292" Count="0" />
-      <LineId Id="541" Count="0" />
-      <LineId Id="543" Count="3" />
-      <LineId Id="130" Count="0" />
-      <LineId Id="499" Count="0" />
-      <LineId Id="490" Count="1" />
-      <LineId Id="480" Count="0" />
-      <LineId Id="488" Count="1" />
-      <LineId Id="481" Count="0" />
-      <LineId Id="486" Count="1" />
-      <LineId Id="508" Count="1" />
-      <LineId Id="507" Count="0" />
-      <LineId Id="482" Count="0" />
-      <LineId Id="484" Count="1" />
-      <LineId Id="483" Count="0" />
-      <LineId Id="503" Count="3" />
-      <LineId Id="547" Count="0" />
-      <LineId Id="479" Count="0" />
-      <LineId Id="311" Count="0" />
-      <LineId Id="528" Count="0" />
-      <LineId Id="150" Count="0" />
-      <LineId Id="132" Count="3" />
+      <LineId Id="132" Count="0" />
+      <LineId Id="135" Count="0" />
+      <LineId Id="958" Count="0" />
+      <LineId Id="951" Count="0" />
       <LineId Id="259" Count="0" />
       <LineId Id="146" Count="0" />
       <LineId Id="145" Count="0" />
@@ -354,35 +314,35 @@ END_IF]]></ST>
       <LineId Id="138" Count="1" />
       <LineId Id="153" Count="0" />
       <LineId Id="152" Count="0" />
-      <LineId Id="155" Count="0" />
-      <LineId Id="140" Count="0" />
+      <LineId Id="944" Count="0" />
       <LineId Id="88" Count="0" />
       <LineId Id="157" Count="0" />
-      <LineId Id="86" Count="0" />
-      <LineId Id="173" Count="0" />
-      <LineId Id="159" Count="0" />
       <LineId Id="521" Count="1" />
-      <LineId Id="524" Count="0" />
-      <LineId Id="167" Count="0" />
-      <LineId Id="171" Count="0" />
-      <LineId Id="163" Count="0" />
-      <LineId Id="169" Count="0" />
-      <LineId Id="164" Count="0" />
-      <LineId Id="172" Count="0" />
+      <LineId Id="942" Count="0" />
+      <LineId Id="938" Count="0" />
+      <LineId Id="940" Count="0" />
+      <LineId Id="937" Count="0" />
+      <LineId Id="943" Count="0" />
       <LineId Id="165" Count="0" />
       <LineId Id="533" Count="0" />
       <LineId Id="532" Count="0" />
       <LineId Id="529" Count="0" />
       <LineId Id="537" Count="0" />
+      <LineId Id="976" Count="0" />
+      <LineId Id="960" Count="0" />
+      <LineId Id="959" Count="0" />
+      <LineId Id="931" Count="1" />
+      <LineId Id="929" Count="0" />
+      <LineId Id="928" Count="0" />
+      <LineId Id="946" Count="1" />
       <LineId Id="548" Count="0" />
       <LineId Id="531" Count="0" />
-      <LineId Id="555" Count="1" />
-      <LineId Id="559" Count="0" />
-      <LineId Id="558" Count="0" />
-      <LineId Id="561" Count="1" />
       <LineId Id="560" Count="0" />
       <LineId Id="553" Count="0" />
       <LineId Id="552" Count="0" />
+      <LineId Id="961" Count="0" />
+      <LineId Id="964" Count="10" />
+      <LineId Id="963" Count="0" />
       <LineId Id="551" Count="0" />
       <LineId Id="514" Count="0" />
       <LineId Id="516" Count="3" />
@@ -391,11 +351,9 @@ END_IF]]></ST>
       <LineId Id="166" Count="0" />
       <LineId Id="478" Count="0" />
       <LineId Id="476" Count="0" />
-      <LineId Id="512" Count="0" />
-      <LineId Id="511" Count="0" />
       <LineId Id="161" Count="0" />
       <LineId Id="160" Count="0" />
-      <LineId Id="710" Count="2" />
+      <LineId Id="712" Count="0" />
       <LineId Id="714" Count="0" />
       <LineId Id="713" Count="0" />
       <LineId Id="700" Count="1" />

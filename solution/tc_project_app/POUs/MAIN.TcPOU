@@ -3,37 +3,68 @@
   <POU Name="MAIN" Id="{40828a63-f1c1-40a3-a7c5-8a47be350a36}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	fbIndraDrive	: fbIndraDrive;
-	stAmsNetId	AT %I*	: AMSNETID;
-	nPort	AT %I* : WORD;
-	stCommands: ST_AXIS_COMMAND;
-	stStatus: ST_AXIS_STATUS;
-	nMasterAxisPosition AT %I* : DINT;
+	stAmsNetId	AT %I*	              : AMSNETID;
+	nPort	AT %I*                    : WORD;
+	nMasterAxisPosition AT %I*        : DINT;
 	nAdditivePositionSetpoiunt AT %Q* : DINT;
-	dLatchedPosition AT %I*:DINT;
-	eTargetStateOld: TARGET_STATE_MACHINE;
-    fbModePhase:FB_ModePhasing;	
-	fbModeVelo:FB_ModeVelo;
-	fbModePos:FB_ModePos;
-	fbModeHome:FB_ModePos;
-	
-	bBrakeFreewheelOn AT %Q*: BOOL;
-	bBrakeLockedOn AT %Q*: BOOL;
-    inputDummy AT %I*: BOOL;
-	inputDigSens1 AT %I*: BOOL;
-	inputDigSens2 AT %I*: BOOL;
-	fbBrakeTorque: FB_BrakeTorque;
-	iBrakeSpRaw AT %Q* :INT:=0;
-	iRotMotorTempRaw AT %I*: INT:=0;
-	stStatEpics:ST_STAT_EPICS;
-	stCmdEpics:ST_CMD_EPICS;
-END_VAR
-]]></Declaration>
+	nAdditiveTorqueSetpoint    AT %Q* : INT;   // Unit 0.1%  (10=1%)
+	dLatchedPosition AT %I*           : DINT;
+	iBrakeSpRaw AT %Q*                : INT := 0;
+	//iRotMotorTempRaw AT %I*           : INT := 0;
+    fbTemp                            : EL3214;
+	bBrakeFreewheelOn AT %Q*          : BOOL;
+	bBrakeLockedOn AT %Q*             : BOOL;
+    inputDummy AT %I*                 : BOOL;
+	inputDigSens1 AT %I*              : BOOL;
+	inputDigSens2 AT %I*              : BOOL;
+	fbBrakeTorque                     : FB_BrakeTorque;  // Control brake
+	fbModePhase                       : FB_ModePhasing;	 // Phasing Mode
+	fbModeVelo                        : FB_ModeVelo;     // Velocity Mode
+	fbModePos                         : FB_ModePos;      // Positioning Mode
+	fbModeHome                        : FB_ModeHome;     // Homing Mode
+	fbIndraDrive                      : fbIndraDrive;    // Control of drive
+	stStatEpics                       : ST_STAT_EPICS;   // Status to EPICS
+	stCmdEpics                        : ST_CMD_EPICS;    // Control to EPICS 
+	stCommands                        : ST_AXIS_COMMAND; // Control to drive
+	stStatus                          : ST_AXIS_STATUS;  // Status from drive
+	eTargetStateOld                   : TARGET_STATE_MACHINE;
+	addStartupTorqueTrigger           : BOOL:=FALSE;
+	iTorqueCommandValue  AT %Q*       : INT := 0;
+END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
+      <ST><![CDATA[fbTemp(En:=TRUE);
+
+IF fbTemp.bError THEN
+	stCmdEpics.bExecute:=0;
+	stCmdEpics.bEnable:=0;
+END_IF
+
+stStatEpics.fActTemp:=fbTemp.iAi_Ch1_Value/10.0;
+stStatEpics.fBrakeActTemp1:=fbTemp.iAi_Ch2_Value/10.0;
+stStatEpics.fBrakeActTemp2:=fbTemp.iAi_Ch3_Value/10.0;
+
+// Motor Temperature Monitoring Interlock
+IF (stStatEpics.fActTemp >= GVL_Parameters.nMaxMotorTemperature)  OR fbTemp.iAi_Ch1_Stat >0 THEN
+	stCmdEpics.bEnable:= FALSE;
+	stCmdEpics.bExecute:= FALSE;	
+END_IF
+
+//Brake temperature monitoring Interlock 1
+IF (stStatEpics.fBrakeActTemp1 >= GVL_Parameters.nMaxBrakeTemperature) OR fbTemp.iAi_Ch2_Stat >0 OR stStatEpics.bBrake1TempAlarm THEN
+	stCmdEpics.bEnable:= FALSE;
+	stCmdEpics.bExecute:= FALSE;		
+    stStatEpics.bBrake1TempAlarm:=TRUE; 
+END_IF
+//Brake temperature monitoring Interlock 2
+IF (stStatEpics.fBrakeActTemp2 >= GVL_Parameters.nMaxBrakeTemperature) OR fbTemp.iAi_Ch3_Stat >0 OR stStatEpics.bBrake2TempAlarm THEN
+	stCmdEpics.bEnable:= FALSE;
+	stCmdEpics.bExecute:= FALSE;		
+    stStatEpics.bBrake2TempAlarm:=TRUE; 
+END_IF
+
 // Enable Axis independent of state
 stCommands.bEnableAxis :=stCmdEpics.bEnable;
-stCommands.bHaltAxis :=stCmdEpics.bEnable;
+stCommands.bHaltAxis:=stCmdEpics.bExecute;
 stStatEpics.bEnabled:=stStatus.bAxisEnabled;
 stCommands.bCmd_ErrorReset:=stCmdEpics.bReset;
 
@@ -50,41 +81,60 @@ IF stCmdEpics.eTargetStateCmd <> stStatEpics.eTargetState AND NOT stCmdEpics.bex
 	stStatEpics.eTargetState:=stCmdEpics.eTargetStateCmd;
 END_IF
 
+//nAdditiveTorqueSetpoint:=0;
+//IF NOT  stCmdEpics.bExecute THEN
+//	addStartupTorqueTrigger:=TRUE;
+//END_IF
+
 CASE stStatEpics.eTargetState OF 
 	TARGET_STATE_MACHINE.CONSTANT_VELOCITY:
 		fbModeVelo(
-            bExecute:=stCmdEpics.bExecute,
-            bReset:=stCmdEpics.bReset,
-			fVelSet:=stCmdEpics.fVelSet,
-			stStatus:=	stStatus,	
-			stCommands:=stCommands);
+            bExecute:=         stCmdEpics.bExecute,
+            bReset:=           stCmdEpics.bReset,
+			fVelSet:=          stCmdEpics.fVelSet,
+			stStatus:=	       stStatus,	
+			stCommands:=       stCommands);
+			
+// add extra torque att startup TEST
+			IF stStatus.bAxisEnabled AND stCmdEpics.bExecute AND stCmdEpics.fVelSet > 0 THEN
+				IF stStatus.fActualVelocity/10< stCmdEpics.fVelSet/2 THEN
+			        nAdditiveTorqueSetpoint:=100;  //Add 10% when under x rpm
+				ELSIF stStatus.fActualVelocity/10 > stCmdEpics.fVelSet/2 THEN
+					nAdditiveTorqueSetpoint:=40;
+				END_IF
+			END_IF
+
 			
 	TARGET_STATE_MACHINE.POSITIONING:
 		fbModePos(
-            bExecute:=stCmdEpics.bExecute,
-            bReset:=stCmdEpics.bReset,
-			fVelSet:=stCmdEpics.fVelSet,
-			fPosSet:=stCmdEpics.fPosSet,
-			stStatus:=	stStatus,	
-			stCommands:=stCommands);
+            bExecute:=         stCmdEpics.bExecute,
+            bReset:=           stCmdEpics.bReset,
+			fVelSet:=          stCmdEpics.fVelSet,
+			fPosSet:=          stCmdEpics.fPosSet,
+			stStatus:=         stStatus,	
+			stCommands:=       stCommands);
 		
 	TARGET_STATE_MACHINE.PHASING:
    		fbModePhase(
-			bExecute:=stCmdEpics.bExecute,
-            bReset:=stCmdEpics.bReset,
-			stStatus:=	stStatus,
-			dLatchedPosition:=dLatchedPosition,	
-			stCommands:=stCommands);
+			bExecute:=         stCmdEpics.bExecute,
+            bReset:=           stCmdEpics.bReset,
+			stStatus:=	       stStatus,
+			dLatchedPosition:= dLatchedPosition,	
+			stCommands:=       stCommands);
 			
 	TARGET_STATE_MACHINE.HOMING:
         fbModeHome( 
-            bExecute:=stCmdEpics.bExecute,
-            bReset:=stCmdEpics.bReset,
-			fVelSet:=stCmdEpics.fVelSet,
-			fPosSet:=stCmdEpics.fPosSet,
-			stStatus:=	stStatus,	
-			stCommands:=stCommands);
-		
+            bExecute:=         stCmdEpics.bExecute,
+            bReset:=           stCmdEpics.bReset,
+			fVelSet:=          stCmdEpics.fVelSet,
+			fPosSet:=          stCmdEpics.fPosSet,
+			stStatus:=	       stStatus,	
+			stCommands:=       stCommands);
+	TARGET_STATE_MACHINE.TORQUE:
+		stCommands.eOperationMode:=E_OPERATION_MODE_NO.eSecondaryOpMode7;
+	    stCommands.eMotionMode :=e_Motion_mode.eJogPositive;
+	
+	
 	  ELSE  // No valid state
 		  
 		stCmdEpics.bExecute:=FALSE;
@@ -98,6 +148,8 @@ IF NOT stCmdEpics.bExecute THEN
 	stCommands.fVelocityCommandValue:=0;
 END_IF
 
+
+
 // Rexroth FB
 fbIndraDrive(
 	AmsNetId:= stAmsNetId, 
@@ -106,19 +158,13 @@ fbIndraDrive(
 	stDriveStatus:= , 
 	stAxisStatus=> stStatus, 
 	stDriveCommands=> );
+
 	
 // Calculate values for status in EPICS
 stStatEpics.fSetVelRaw:= DINT_TO_LREAL(MAIN.fbIndraDrive.stDriveCommands.nS40_VelocityCommandValue)/10000;	
 stStatEpics.fActPos:=stStatus.fActualPosition;
 stStatEpics.fActTorque:=stStatus.fActualTorque;
 stStatEpics.fActVel:=stStatus.fActualVelocity/10;
-stStatEpics.fActTemp:=iRotMotorTempRaw/10.0;
-
-// Motor Temperature Monitoring
-IF stStatEpics.fActTemp >= GVL_Parameters.nMaxMotorTemperature THEN
-	stCmdEpics.bEnable:= FALSE;
-	stCmdEpics.bExecute:= FALSE;	
-END_IF
 	
 // Control brake
 ACT_Brake();
@@ -159,6 +205,8 @@ IF stcmdEpics.bReset THEN
 	stStatEpics.bError:=FALSE;
 	stStatEpics.nErrorId:=GVL_ErrorCodes.nErrorCodeOKId;
 	stStatEpics.sErrorStr:=GVL_ErrorCodes.nErrorCodeOKStr;
+	stStatEpics.bBrake1TempAlarm:=FALSE;
+	stStatEpics.bBrake2TempAlarm:=FALSE;
 END_IF
 
 eTargetStateOld:=stStatEpics.eTargetState;
@@ -200,6 +248,23 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
     </Action>
     <LineIds Name="MAIN">
       <LineId Id="856" Count="0" />
+      <LineId Id="1146" Count="0" />
+      <LineId Id="1145" Count="0" />
+      <LineId Id="1147" Count="0" />
+      <LineId Id="1149" Count="0" />
+      <LineId Id="1148" Count="0" />
+      <LineId Id="1168" Count="0" />
+      <LineId Id="1158" Count="2" />
+      <LineId Id="1169" Count="0" />
+      <LineId Id="1163" Count="4" />
+      <LineId Id="1189" Count="0" />
+      <LineId Id="1171" Count="0" />
+      <LineId Id="1170" Count="0" />
+      <LineId Id="1175" Count="1" />
+      <LineId Id="1174" Count="0" />
+      <LineId Id="1173" Count="0" />
+      <LineId Id="1183" Count="5" />
+      <LineId Id="1156" Count="0" />
       <LineId Id="682" Count="0" />
       <LineId Id="454" Count="0" />
       <LineId Id="453" Count="0" />
@@ -216,7 +281,10 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       <LineId Id="1005" Count="0" />
       <LineId Id="996" Count="0" />
       <LineId Id="1002" Count="1" />
-      <LineId Id="836" Count="0" />
+      <LineId Id="1244" Count="0" />
+      <LineId Id="1243" Count="0" />
+      <LineId Id="1246" Count="2" />
+      <LineId Id="1250" Count="0" />
       <LineId Id="129" Count="0" />
       <LineId Id="150" Count="0" />
       <LineId Id="1040" Count="0" />
@@ -225,6 +293,14 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       <LineId Id="1046" Count="0" />
       <LineId Id="1042" Count="0" />
       <LineId Id="1021" Count="0" />
+      <LineId Id="1236" Count="0" />
+      <LineId Id="1254" Count="0" />
+      <LineId Id="1237" Count="2" />
+      <LineId Id="1252" Count="0" />
+      <LineId Id="1256" Count="0" />
+      <LineId Id="1240" Count="0" />
+      <LineId Id="1242" Count="0" />
+      <LineId Id="1235" Count="0" />
       <LineId Id="1045" Count="0" />
       <LineId Id="285" Count="0" />
       <LineId Id="1064" Count="3" />
@@ -247,6 +323,7 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       <LineId Id="1101" Count="0" />
       <LineId Id="1009" Count="0" />
       <LineId Id="1049" Count="0" />
+      <LineId Id="1257" Count="3" />
       <LineId Id="1027" Count="0" />
       <LineId Id="1035" Count="0" />
       <LineId Id="1028" Count="0" />
@@ -257,17 +334,16 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       <LineId Id="126" Count="0" />
       <LineId Id="468" Count="2" />
       <LineId Id="123" Count="0" />
-      <LineId Id="942" Count="0" />
+      <LineId Id="1263" Count="0" />
+      <LineId Id="1293" Count="0" />
+      <LineId Id="1223" Count="0" />
       <LineId Id="588" Count="0" />
       <LineId Id="8" Count="5" />
       <LineId Id="22" Count="0" />
+      <LineId Id="1219" Count="0" />
       <LineId Id="860" Count="1" />
       <LineId Id="277" Count="0" />
-      <LineId Id="666" Count="2" />
-      <LineId Id="864" Count="0" />
-      <LineId Id="867" Count="4" />
-      <LineId Id="866" Count="0" />
-      <LineId Id="669" Count="0" />
+      <LineId Id="666" Count="3" />
       <LineId Id="768" Count="0" />
       <LineId Id="573" Count="0" />
       <LineId Id="839" Count="0" />
@@ -293,6 +369,7 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       <LineId Id="840" Count="0" />
       <LineId Id="854" Count="1" />
       <LineId Id="916" Count="0" />
+      <LineId Id="1190" Count="1" />
       <LineId Id="853" Count="0" />
       <LineId Id="1001" Count="0" />
       <LineId Id="941" Count="0" />

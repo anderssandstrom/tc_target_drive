@@ -562,10 +562,6 @@
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.iRotMotorTempRaw</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
 							<Name>MAIN.fbIndraDrive.stDriveStatus.nS135_DriveStatusWord</Name>
 							<Type GUID="{E8EE2899-4679-469C-BAC5-7318F329907D}">ST_S135_DRIVESTATUSWORD</Type>
 							<SubVar>
@@ -711,6 +707,52 @@
 							<Name>MAIN.fbIndraDrive.stDriveStatus.nS189_PositionError</Name>
 							<Type>DINT</Type>
 						</Var>
+						<Var>
+							<Name>MAIN.fbTemp.AI_RTD_Ch_1_Status</Name>
+							<Comment>
+								<![CDATA[Channels]]>
+							</Comment>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbTemp.AI_RTD_Ch_1_Value</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbTemp.AI_RTD_Ch_2_Status</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbTemp.AI_RTD_Ch_2_Value</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbTemp.AI_RTD_Ch_3_Status</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbTemp.AI_RTD_Ch_3_Value</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbTemp.AI_RTD_Ch_4_Status</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbTemp.AI_RTD_Ch_4_Value</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbTemp.WcState_WcState</Name>
+							<Comment>
+								<![CDATA[Terminal status]]>
+							</Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbTemp.InfoData_State</Name>
+							<Type>UINT</Type>
+						</Var>
 					</Vars>
 					<Vars VarGrpType="2">
 						<Name>PlcTask Outputs</Name>
@@ -719,16 +761,23 @@
 							<Type>DINT</Type>
 						</Var>
 						<Var>
+							<Name>MAIN.iBrakeSpRaw</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.nAdditiveTorqueSetpoint</Name>
+							<Comment>
+								<![CDATA[ Unit 0.1%  (10=1%)]]>
+							</Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
 							<Name>MAIN.bBrakeFreewheelOn</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.bBrakeLockedOn</Name>
 							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.iBrakeSpRaw</Name>
-							<Type>INT</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.fbIndraDrive.stDriveCommands.stS134_MasterControlWord</Name>
@@ -905,6 +954,10 @@
 						<Var>
 							<Name>MAIN.fbIndraDrive.stDriveCommands.nS40_VelocityCommandValue</Name>
 							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.iTorqueCommandValue</Name>
+							<Type>INT</Type>
 						</Var>
 					</Vars>
 					<TaskPouOids>
@@ -1504,6 +1557,9 @@
 							<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
 							<BootStrapData>0010f400f410f400</BootStrapData>
 							<MBoxUserCmdData>020003000a0000000b000000030000000000000000000000000000000000000020008019020000001a0052544420656c656d656e7400</MBoxUserCmdData>
+							<MBoxUserCmdData>020003000a0000001500000003000000000000000000000000000000000000002000801a020000000000436f6e6e656374696f6e20746563686e6f6c6f677900</MBoxUserCmdData>
+							<MBoxUserCmdData>020003000a0000001500000003000000000000000000000000000000000000002010801a020000000000436f6e6e656374696f6e20746563686e6f6c6f677900</MBoxUserCmdData>
+							<MBoxUserCmdData>020003000a0000001500000003000000000000000000000000000000000000002020801a020000000000436f6e6e656374696f6e20746563686e6f6c6f677900</MBoxUserCmdData>
 							<Pdo Name="RTD Inputs Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="3">
 								<Entry Name="Status__Underrange" Index="#x6000" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
@@ -1520,7 +1576,7 @@
 								<Entry Name="Status__">
 									<Type GUID="{18071995-0000-0000-0000-002000000007}">ARRAY [0..6] OF BIT</Type>
 								</Entry>
-								<Entry Name="Status__TxPDO State" Index="#x6000" Sub="#x0f">
+								<Entry Name="Status__TxPDO State" Index="#x6000" Sub="#x0f" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Status__TxPDO Toggle" Index="#x6000" Sub="#x10">
@@ -1531,7 +1587,7 @@
 								</Entry>
 							</Pdo>
 							<Pdo Name="RTD Inputs Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="3">
-								<Entry Name="Status__Underrange" Index="#x6010" Sub="#x01">
+								<Entry Name="Status__Underrange" Index="#x6010" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Status__Overrange" Index="#x6010" Sub="#x02">
@@ -1641,7 +1697,7 @@
 						<SyncMan>0018ea002600010001000000ea00ea00ea00001826010000</SyncMan>
 						<SyncMan>001aea002200010002000000ea00ea00ea00001a22010000</SyncMan>
 						<SyncMan>001028006400010003000000000000000000001064010000</SyncMan>
-						<SyncMan>001122006200010004000000000000000000001162010000</SyncMan>
+						<SyncMan>00111e006200010004000000000000000000001162010000</SyncMan>
 						<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
 						<Fmmu>0000000000000000001000020100000001000000000000000000000000000000</Fmmu>
 						<Fmmu>0000000000000000001100010100000002000000000000000000000000000000</Fmmu>
@@ -1681,9 +1737,6 @@
 							<Entry Name="Following distance" Index="#x00bd">
 								<Type>DINT</Type>
 							</Entry>
-							<Entry Name="Virtual master axis, actual position value" Index="#x82f6">
-								<Type>DINT</Type>
-							</Entry>
 						</Pdo>
 						<Pdo Name="MDT" Index="#x0018" InOut="1" Flags="#x0001" SyncMan="2">
 							<Entry Name="Master control word" Index="#x0086" Flags="#x00000800">
@@ -1699,9 +1752,6 @@
 								<Type>DINT</Type>
 							</Entry>
 							<Entry Name="Positioning command value" Index="#x011a">
-								<Type>DINT</Type>
-							</Entry>
-							<Entry Name="Additive positon command value" Index="#x0030">
 								<Type>DINT</Type>
 							</Entry>
 							<Entry Name="Signal control word" Index="#x0091">
@@ -1722,6 +1772,12 @@
 							<Entry Name="Velocity command value" Index="#x0024">
 								<Type>DINT</Type>
 							</Entry>
+							<Entry Name="Additive torque/force command value" Index="#x0051">
+								<Type>INT</Type>
+							</Entry>
+							<Entry Name="Torque/force command value" Index="#x0050">
+								<Type>INT</Type>
+							</Entry>
 						</Pdo>
 					</EtherCAT>
 				</Box>
@@ -1732,6 +1788,7 @@
 	<Mappings>
 		<MappingInfo Identifier="{00000000-2041-0850-4520-500810000403}" Id="#x02030010"/>
 		<MappingInfo Identifier="{00000000-2001-0850-0420-500810000403}" Id="#x02030030"/>
+		<MappingInfo Identifier="{00000000-2041-0850-4520-500821000403}" Id="#x02030040"/>
 		<MappingInfo Identifier="{00000000-2041-0850-4520-500842000403}" Id="#x02030020"/>
 		<OwnerA Name="TIPC^tc_project_app^tc_project_app Instance">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 10 (EK1200)^Term 12 (EL2808)">
@@ -1745,7 +1802,14 @@
 				<Link VarA="PlcTask Outputs^MAIN.iBrakeSpRaw" VarB="AO Outputs Channel 1^Analog output"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 10 (EK1200)^Term 20 (EL3214)">
-				<Link VarA="PlcTask Inputs^MAIN.iRotMotorTempRaw" VarB="RTD Inputs Channel 1^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTemp.AI_RTD_Ch_1_Status" VarB="RTD Inputs Channel 1^Status"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTemp.AI_RTD_Ch_1_Value" VarB="RTD Inputs Channel 1^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTemp.AI_RTD_Ch_2_Status" VarB="RTD Inputs Channel 2^Status"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTemp.AI_RTD_Ch_2_Value" VarB="RTD Inputs Channel 2^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTemp.AI_RTD_Ch_3_Status" VarB="RTD Inputs Channel 3^Status"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTemp.AI_RTD_Ch_3_Value" VarB="RTD Inputs Channel 3^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTemp.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTemp.WcState_WcState" VarB="WcState^WcState"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 4 (EtherCAT)^Drive 10 (IndraDrive MPB18/19)">
 				<Link VarA="PlcTask Inputs^MAIN.dLatchedPosition" VarB="AT^Probe value 1 positive edge"/>
@@ -1757,7 +1821,6 @@
 				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nS51_PositionFeedbackValue" VarB="AT^Position feedback value 1"/>
 				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nS84_TorqueFeedback" VarB="AT^Torque/force feedback value"/>
 				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.stS144_SignalStatusWord" VarB="AT^Signal status word"/>
-				<Link VarA="PlcTask Inputs^MAIN.nMasterAxisPosition" VarB="AT^Virtual master axis, actual position value"/>
 				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS108_FeedrateOverride" VarB="MDT^Feedrate override"/>
 				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS258_TargetPosition" VarB="MDT^Target position"/>
 				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS259_PositioningVelocity" VarB="MDT^Positioning velocity"/>
@@ -1769,7 +1832,8 @@
 				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS92_BiPolarTorqueLimit" VarB="MDT^Bipolar torque/force limit value"/>
 				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.stS134_MasterControlWord" VarB="MDT^Master control word"/>
 				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.stS145_SignalControlWord" VarB="MDT^Signal control word"/>
-				<Link VarA="PlcTask Outputs^MAIN.nAdditivePositionSetpoiunt" VarB="MDT^Additive positon command value"/>
+				<Link VarA="PlcTask Outputs^MAIN.iTorqueCommandValue" VarB="MDT^Torque/force command value"/>
+				<Link VarA="PlcTask Outputs^MAIN.nAdditiveTorqueSetpoint" VarB="MDT^Additive torque/force command value"/>
 			</OwnerB>
 		</OwnerA>
 		<OwnerA Name="TIPC^tc_project_app_faster^tc_project_app_faster Instance">
