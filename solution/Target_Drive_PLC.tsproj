@@ -562,6 +562,52 @@
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
+							<Name>MAIN.fbTemp.AI_RTD_Ch_1_Status</Name>
+							<Comment>
+								<![CDATA[Channels]]>
+							</Comment>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbTemp.AI_RTD_Ch_1_Value</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbTemp.AI_RTD_Ch_2_Status</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbTemp.AI_RTD_Ch_2_Value</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbTemp.AI_RTD_Ch_3_Status</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbTemp.AI_RTD_Ch_3_Value</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbTemp.AI_RTD_Ch_4_Status</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbTemp.AI_RTD_Ch_4_Value</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbTemp.WcState_WcState</Name>
+							<Comment>
+								<![CDATA[Terminal status]]>
+							</Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbTemp.InfoData_State</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
 							<Name>MAIN.fbIndraDrive.stDriveStatus.nS135_DriveStatusWord</Name>
 							<Type GUID="{E8EE2899-4679-469C-BAC5-7318F329907D}">ST_S135_DRIVESTATUSWORD</Type>
 							<SubVar>
@@ -707,52 +753,6 @@
 							<Name>MAIN.fbIndraDrive.stDriveStatus.nS189_PositionError</Name>
 							<Type>DINT</Type>
 						</Var>
-						<Var>
-							<Name>MAIN.fbTemp.AI_RTD_Ch_1_Status</Name>
-							<Comment>
-								<![CDATA[Channels]]>
-							</Comment>
-							<Type>WORD</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fbTemp.AI_RTD_Ch_1_Value</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fbTemp.AI_RTD_Ch_2_Status</Name>
-							<Type>WORD</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fbTemp.AI_RTD_Ch_2_Value</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fbTemp.AI_RTD_Ch_3_Status</Name>
-							<Type>WORD</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fbTemp.AI_RTD_Ch_3_Value</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fbTemp.AI_RTD_Ch_4_Status</Name>
-							<Type>WORD</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fbTemp.AI_RTD_Ch_4_Value</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fbTemp.WcState_WcState</Name>
-							<Comment>
-								<![CDATA[Terminal status]]>
-							</Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fbTemp.InfoData_State</Name>
-							<Type>UINT</Type>
-						</Var>
 					</Vars>
 					<Vars VarGrpType="2">
 						<Name>PlcTask Outputs</Name>
@@ -778,6 +778,10 @@
 						<Var>
 							<Name>MAIN.bBrakeLockedOn</Name>
 							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.iTorqueCommandValue</Name>
+							<Type>INT</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.fbIndraDrive.stDriveCommands.stS134_MasterControlWord</Name>
@@ -954,10 +958,6 @@
 						<Var>
 							<Name>MAIN.fbIndraDrive.stDriveCommands.nS40_VelocityCommandValue</Name>
 							<Type>DINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.iTorqueCommandValue</Name>
-							<Type>INT</Type>
 						</Var>
 					</Vars>
 					<TaskPouOids>

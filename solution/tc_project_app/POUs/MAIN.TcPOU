@@ -149,7 +149,7 @@ IF NOT stCmdEpics.bExecute THEN
 END_IF
 
 
-
+stCommands.eMotionMode:=E_MOTION_MODE.eStop;
 // Rexroth FB
 fbIndraDrive(
 	AmsNetId:= stAmsNetId, 
