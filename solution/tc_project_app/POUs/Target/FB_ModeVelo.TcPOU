@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.6">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
   <POU Name="FB_ModeVelo" Id="{c95731c8-4fe5-4d11-ab47-46b5e16e76f1}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_ModeVelo
 VAR_INPUT
@@ -9,6 +9,7 @@ VAR_INPUT
 	stStatus: ST_AXIS_STATUS;
 END_VAR
 VAR_OUTPUT
+	fSpeedSetpoint:LREAL:=0;
 	bError: BOOL;
 	nErrorId: UDINT;
 	sErrorStr: STRING:=GVL_ErrorCodes.nErrorCodeOKStr;
@@ -26,11 +27,11 @@ END_VAR
 stCommands.eMotionMode :=e_Motion_mode.eJogPositive;
 stCommands.eOperationMode:=e_Operation_mode_no.eSecondaryOpMode2;
 IF bExecute THEN
-	stCommands.fVelocityCommandValue:=fVelSet;
+	fSpeedSetpoint:=fVelSet;
 ELSE
-	stCommands.fVelocityCommandValue:=0;
+	fSpeedSetpoint:=0;
 END_IF
-stCommands.fCommandVelocity:=0;]]></ST>
+stCommands.fCommandVelocity:=0; // Other mode]]></ST>
     </Implementation>
     <LineIds Name="FB_ModeVelo">
       <LineId Id="886" Count="1" />

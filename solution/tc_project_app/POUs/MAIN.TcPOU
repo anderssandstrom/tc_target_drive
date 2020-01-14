@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.6">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
   <POU Name="MAIN" Id="{40828a63-f1c1-40a3-a7c5-8a47be350a36}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
@@ -19,6 +19,7 @@ VAR
 	inputDigSens2 AT %I*              : BOOL;
 	fbBrakeTorque                     : FB_BrakeTorque;  // Control brake
 	fbModePhase                       : FB_ModePhasing;	 // Phasing Mode
+	fbRampVelo                        : FB_RampVelo;
 	fbModeVelo                        : FB_ModeVelo;     // Velocity Mode
 	fbModePos                         : FB_ModePos;      // Positioning Mode
 	fbModeHome                        : FB_ModeHome;     // Homing Mode
@@ -95,14 +96,20 @@ CASE stStatEpics.eTargetState OF
 			stStatus:=	       stStatus,	
 			stCommands:=       stCommands);
 			
+			//ramp velocity with selected acceleration
+			fbRampVelo(bExecute:=stCmdEpics.bExecute,
+              fVelSetIn:=fbModeVelo.fSpeedSetpoint,
+              iBlockSampleTimeMicroS:=10000,
+              fVelSetOut:=stCommands.fVelocityCommandValue);
+			  
 // add extra torque att startup TEST
-			IF stStatus.bAxisEnabled AND stCmdEpics.bExecute AND stCmdEpics.fVelSet > 0 THEN
-				IF stStatus.fActualVelocity/10< stCmdEpics.fVelSet/2 THEN
-			        nAdditiveTorqueSetpoint:=100;  //Add 10% when under x rpm
-				ELSIF stStatus.fActualVelocity/10 > stCmdEpics.fVelSet/2 THEN
-					nAdditiveTorqueSetpoint:=40;
-				END_IF
-			END_IF
+		//	IF stStatus.bAxisEnabled AND stCmdEpics.bExecute AND stCmdEpics.fVelSet > 0 THEN
+		//		IF stStatus.fActualVelocity/10< stCmdEpics.fVelSet/2 THEN
+		//	        nAdditiveTorqueSetpoint:=100;  //Add 10% when under x rpm
+		//		ELSIF stStatus.fActualVelocity/10 > stCmdEpics.fVelSet/2 THEN
+		//			nAdditiveTorqueSetpoint:=40;
+		//		END_IF
+		//	END_IF
 
 			
 	TARGET_STATE_MACHINE.POSITIONING:
@@ -121,6 +128,14 @@ CASE stStatEpics.eTargetState OF
 			stStatus:=	       stStatus,
 			dLatchedPosition:= dLatchedPosition,	
 			stCommands:=       stCommands);
+			
+			//ramp velocity with selected acceleration
+			fbRampVelo(bExecute:=stCmdEpics.bExecute,
+              fVelSetIn:=fbModePhase.fSpeedSetpoint,
+              iBlockSampleTimeMicroS:=10000,
+              fVelSetOut:=stCommands.fVelocityCommandValue);
+				
+			//stCommands.fVelocityCommandValue:=fbModePhase.fSpeedSetpoint;
 			
 	TARGET_STATE_MACHINE.HOMING:
         fbModeHome( 
@@ -294,6 +309,9 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       <LineId Id="1042" Count="0" />
       <LineId Id="1021" Count="0" />
       <LineId Id="1236" Count="0" />
+      <LineId Id="1338" Count="3" />
+      <LineId Id="1337" Count="0" />
+      <LineId Id="1342" Count="0" />
       <LineId Id="1254" Count="0" />
       <LineId Id="1237" Count="2" />
       <LineId Id="1252" Count="0" />
@@ -314,7 +332,11 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       <LineId Id="443" Count="0" />
       <LineId Id="447" Count="0" />
       <LineId Id="472" Count="0" />
-      <LineId Id="1048" Count="0" />
+      <LineId Id="1328" Count="1" />
+      <LineId Id="1331" Count="0" />
+      <LineId Id="1334" Count="2" />
+      <LineId Id="1333" Count="0" />
+      <LineId Id="1326" Count="1" />
       <LineId Id="987" Count="0" />
       <LineId Id="1098" Count="0" />
       <LineId Id="1102" Count="0" />

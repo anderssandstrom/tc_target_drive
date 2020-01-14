@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4022.2">
+<?xml version="1.0"?>
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4023.119">
 	<DataTypes>
 		<DataType>
 			<Name GUID="{18071995-0000-0000-0000-000000000041}" TcBaseType="true" HideSubItems="true" CName="AmsNetId">AMSNETID</Name>
@@ -25,81 +25,63 @@
 			<SubItem>
 				<Name>bS135_CommandChange</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ 	Toggling bit to acknowledge that the Command status has changed ]]>
-				</Comment>
+				<Comment><![CDATA[ 	Toggling bit to acknowledge that the Command status has changed ]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>5</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>bS135_ActualOperationMode_Bit0</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]>
-				</Comment>
+				<Comment><![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>8</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>bS135_ActualOperationMode_Bit1</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]>
-				</Comment>
+				<Comment><![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>9</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>bS135_ActualOperationMode_Bit2</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]>
-				</Comment>
+				<Comment><![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>10</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>bS135_Class3_Diag_Mess</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ 	TRUE: There is a Class 3 Diagnostic message present in the drive]]>
-				</Comment>
+				<Comment><![CDATA[ 	TRUE: There is a Class 3 Diagnostic message present in the drive]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>11</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>bS135_Class2_Diag_Warn</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ 	TRUE: There is a Warning present in the drive]]>
-				</Comment>
+				<Comment><![CDATA[ 	TRUE: There is a Warning present in the drive]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>12</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>bS135_Class1_Diag_Err</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ 	TRUE: There is a Error present in the drive]]>
-				</Comment>
+				<Comment><![CDATA[ 	TRUE: There is a Error present in the drive]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>13</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>bS135_ReadyForOperation_Bit0</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ 	(bS135_ReadyForOp_B1 | bS135_ReadyForOp_B0)]]>
-				</Comment>
+				<Comment><![CDATA[ 	(bS135_ReadyForOp_B1 | bS135_ReadyForOp_B0)]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>14</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>bS135_ReadyForOperation_Bit1</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ 	(bS135_ReadyForOp_B1 | bS135_ReadyForOp_B0)]]>
-				</Comment>
+				<Comment><![CDATA[ 	(bS135_ReadyForOp_B1 | bS135_ReadyForOp_B0)]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>15</BitOffs>
 			</SubItem>
@@ -110,90 +92,70 @@
 			<SubItem>
 				<Name>bS424_DriveMode</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ FALSE: Operating mode]]>
-				</Comment>
+				<Comment><![CDATA[ FALSE: Operating mode]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>0</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>bS403_0_AxisHomedStatus</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ FALSE: Axis is NOT homed ]]>
-				</Comment>
+				<Comment><![CDATA[ FALSE: Axis is NOT homed ]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>2</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>bS331_StandStillStatus</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ FALSE: Axis is moving]]>
-				</Comment>
+				<Comment><![CDATA[ FALSE: Axis is moving]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>3</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>bS437_2_CommandPositionReached</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ FALSE: Axis is NOT not within command position]]>
-				</Comment>
+				<Comment><![CDATA[ FALSE: Axis is NOT not within command position]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>4</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>bP115_3_StatusOfCmdValueProcessing</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ FALSE: Drive ignores external command value input ]]>
-				</Comment>
+				<Comment><![CDATA[ FALSE: Drive ignores external command value input ]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>7</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>bS419_0_PositioningCmdAck</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ Toggled as soon as the new Position Command value is accepted and effective]]>
-				</Comment>
+				<Comment><![CDATA[ Toggled as soon as the new Position Command value is accepted and effective]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>10</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>bS437_4_ConstantVelocity</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ TRUE: Axis in constant velocity]]>
-				</Comment>
+				<Comment><![CDATA[ TRUE: Axis in constant velocity]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>11</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>bS437_5_Acceleration</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ TRUE: Axis in acceleration]]>
-				</Comment>
+				<Comment><![CDATA[ TRUE: Axis in acceleration]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>12</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>bS437_6_Deceleration</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ TRUE: Axis in deceleration]]>
-				</Comment>
+				<Comment><![CDATA[ TRUE: Axis in deceleration]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>13</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>bS437_12_JogMode</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ TRUE: Axis in Axis in jog mode]]>
-				</Comment>
+				<Comment><![CDATA[ TRUE: Axis in Axis in jog mode]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>14</BitOffs>
 			</SubItem>
@@ -204,63 +166,49 @@
 			<SubItem>
 				<Name>bS134_CmdOperationMode_Bit0</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ 	(bS134_CmdOpMode_B2 | bS134_CmdOpMode_B2 | bS134_CmdOpMode_B0)]]>
-				</Comment>
+				<Comment><![CDATA[ 	(bS134_CmdOpMode_B2 | bS134_CmdOpMode_B2 | bS134_CmdOpMode_B0)]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>8</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>bS134_CmdOperationMode_Bit1</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ 	(bS134_CmdOpMode_B2 | bS134_CmdOpMode_B2 | bS134_CmdOpMode_B0)]]>
-				</Comment>
+				<Comment><![CDATA[ 	(bS134_CmdOpMode_B2 | bS134_CmdOpMode_B2 | bS134_CmdOpMode_B0)]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>9</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>bS134_IPOSYNC</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ 	Interpolator clock, toggles when new command values are to be transmitted ]]>
-				</Comment>
+				<Comment><![CDATA[ 	Interpolator clock, toggles when new command values are to be transmitted ]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>10</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>bS134_CmdOperationMode_Bit2</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ 	(bS134_CmdOpMode_B2 | bS134_CmdOpMode_B2 | bS134_CmdOpMode_B0)]]>
-				</Comment>
+				<Comment><![CDATA[ 	(bS134_CmdOpMode_B2 | bS134_CmdOpMode_B2 | bS134_CmdOpMode_B0)]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>11</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>bS134_DriveHalt</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ 	1-0 change: deceleration of drive while maintaining the max. acceleration (S-0-0138) ]]>
-				</Comment>
+				<Comment><![CDATA[ 	1-0 change: deceleration of drive while maintaining the max. acceleration (S-0-0138) ]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>13</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>bS134_DriveEnable</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ 	TRUE -> FALSE transition: torque disable without delay (independent of bit bS134_DriveOn or bS134_DriveHalt)]]>
-				</Comment>
+				<Comment><![CDATA[ 	TRUE -> FALSE transition: torque disable without delay (independent of bit bS134_DriveOn or bS134_DriveHalt)]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>14</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>bS134_DriveOn</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ 	TRUE -> FALSE transition: best possible deceleration (only possible if bit bS134_DriveEnable = TRUE)]]>
-				</Comment>
+				<Comment><![CDATA[ 	TRUE -> FALSE transition: best possible deceleration (only possible if bit bS134_DriveEnable = TRUE)]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>15</BitOffs>
 			</SubItem>
@@ -271,9 +219,7 @@
 			<SubItem>
 				<Name>bS346_0_PosCtrlWord_CmdValueAccept</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ Toggle to execute Slave Axis command]]>
-				</Comment>
+				<Comment><![CDATA[ Toggle to execute Slave Axis command]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>0</BitOffs>
 				<Default>
@@ -283,9 +229,7 @@
 			<SubItem>
 				<Name>bP12_C300_SetAbsolutePosition</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ Sets the Absolute position (defined in S52) of the drive]]>
-				</Comment>
+				<Comment><![CDATA[ Sets the Absolute position (defined in S52) of the drive]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>1</BitOffs>
 				<Default>
@@ -295,9 +239,7 @@
 			<SubItem>
 				<Name>bS148_C600_DriveControlledHoming</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ Initiates the homing procedure defined in the drive]]>
-				</Comment>
+				<Comment><![CDATA[ Initiates the homing procedure defined in the drive]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>2</BitOffs>
 				<Default>
@@ -307,9 +249,7 @@
 			<SubItem>
 				<Name>bS346_3_PosCtrlWord_Abs_Rel</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ FALSE: Absolute ]]>
-				</Comment>
+				<Comment><![CDATA[ FALSE: Absolute ]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>3</BitOffs>
 				<Default>
@@ -319,9 +259,7 @@
 			<SubItem>
 				<Name>bS346_5_PosCtrlWord_ImmBlockChange</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ FALSE: Drive moves to current target position, before positioning at new target position]]>
-				</Comment>
+				<Comment><![CDATA[ FALSE: Drive moves to current target position, before positioning at new target position]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>4</BitOffs>
 				<Default>
@@ -331,9 +269,7 @@
 			<SubItem>
 				<Name>bS99_DriveErrorReset</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ TRUE: Immediate block change, i.e., drive immediately moves to new target position]]>
-				</Comment>
+				<Comment><![CDATA[ TRUE: Immediate block change, i.e., drive immediately moves to new target position]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>5</BitOffs>
 				<Default>
@@ -343,9 +279,7 @@
 			<SubItem>
 				<Name>bS346_1_PosCtrlWord_PosActivation</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ (bS346_2 | bS346_1) 00:	Positioning active, started by toggling of bit 0]]>
-				</Comment>
+				<Comment><![CDATA[ (bS346_2 | bS346_1) 00:	Positioning active, started by toggling of bit 0]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>6</BitOffs>
 				<Default>
@@ -355,9 +289,7 @@
 			<SubItem>
 				<Name>bS346_2_PosCtrlWord_PosActivation</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ (bS346_2 | bS346_1) 00:	Positioning active, started by toggling of bit 0]]>
-				</Comment>
+				<Comment><![CDATA[ (bS346_2 | bS346_1) 00:	Positioning active, started by toggling of bit 0]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>7</BitOffs>
 				<Default>
@@ -367,9 +299,7 @@
 			<SubItem>
 				<Name>bS159_C1300_Disable_Monitoring</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ TRUE: 	Monitoring of Position error, Position command error, Velocity error and Acceleration limit is disabled]]>
-				</Comment>
+				<Comment><![CDATA[ TRUE: 	Monitoring of Position error, Position command error, Velocity error and Acceleration limit is disabled]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>8</BitOffs>
 				<Default>
@@ -379,9 +309,7 @@
 			<SubItem>
 				<Name>bS405_0_Probe1_Enabled</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ FALSE: 	Monitoring of Position error, Position command error, Velocity error and Acceleration limit is enabled ]]>
-				</Comment>
+				<Comment><![CDATA[ FALSE: 	Monitoring of Position error, Position command error, Velocity error and Acceleration limit is enabled ]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>9</BitOffs>
 				<Default>
@@ -391,9 +319,7 @@
 			<SubItem>
 				<Name>bS420_C0400_Activate_ParameterMode</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ Brings the drive into parameter mode]]>
-				</Comment>
+				<Comment><![CDATA[ Brings the drive into parameter mode]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>10</BitOffs>
 				<Default>
@@ -403,9 +329,7 @@
 			<SubItem>
 				<Name>bS422_C0200_Exit_ParameterMode</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ Brings the drive into parameter mode]]>
-				</Comment>
+				<Comment><![CDATA[ Brings the drive into parameter mode]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>11</BitOffs>
 				<Default>
@@ -415,9 +339,7 @@
 			<SubItem>
 				<Name>bP760_VM_PosCtrlWord_CmdValueAccept</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ Toggle to execute Virtual Master command]]>
-				</Comment>
+				<Comment><![CDATA[ Toggle to execute Virtual Master command]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>12</BitOffs>
 				<Default>
@@ -427,9 +349,7 @@
 			<SubItem>
 				<Name>bP760_VM_PosCtrlWord_1_PosActivation</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ (bP760_2 | bP760_1) 00:	Positioning active, started by toggling of bit 0]]>
-				</Comment>
+				<Comment><![CDATA[ (bP760_2 | bP760_1) 00:	Positioning active, started by toggling of bit 0]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>13</BitOffs>
 				<Default>
@@ -439,9 +359,7 @@
 			<SubItem>
 				<Name>bP760_VM_PosCtrlWord_2_PosActivation</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment>
-					<![CDATA[ (bP760_2 | bP760_1) 00:	Positioning active, started by toggling of bit 0]]>
-				</Comment>
+				<Comment><![CDATA[ (bP760_2 | bP760_1) 00:	Positioning active, started by toggling of bit 0]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>14</BitOffs>
 				<Default>
@@ -534,12 +452,12 @@
 					<Vars VarGrpType="1">
 						<Name>PlcTask Inputs</Name>
 						<Var>
-							<Name>MAIN.stAmsNetId</Name>
-							<Type GUID="{18071995-0000-0000-0000-000000000041}">AMSNETID</Type>
-						</Var>
-						<Var>
 							<Name>MAIN.nPort</Name>
 							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.stAmsNetId</Name>
+							<Type GUID="{18071995-0000-0000-0000-000000000041}">AMSNETID</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.nMasterAxisPosition</Name>
@@ -554,18 +472,8 @@
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.inputDigSens1</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.inputDigSens2</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
 							<Name>MAIN.fbTemp.AI_RTD_Ch_1_Status</Name>
-							<Comment>
-								<![CDATA[Channels]]>
-							</Comment>
+							<Comment><![CDATA[Channels]]></Comment>
 							<Type>WORD</Type>
 						</Var>
 						<Var>
@@ -598,9 +506,7 @@
 						</Var>
 						<Var>
 							<Name>MAIN.fbTemp.WcState_WcState</Name>
-							<Comment>
-								<![CDATA[Terminal status]]>
-							</Comment>
+							<Comment><![CDATA[Terminal status]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -608,61 +514,51 @@
 							<Type>UINT</Type>
 						</Var>
 						<Var>
+							<Name>MAIN.inputDigSens1</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.inputDigSens2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
 							<Name>MAIN.fbIndraDrive.stDriveStatus.nS135_DriveStatusWord</Name>
 							<Type GUID="{E8EE2899-4679-469C-BAC5-7318F329907D}">ST_S135_DRIVESTATUSWORD</Type>
 							<SubVar>
 								<Name>bS135_CommandChange</Name>
-								<Comment>
-									<![CDATA[ 	Toggling bit to acknowledge that the Command status has changed ]]>
-								</Comment>
+								<Comment><![CDATA[ 	Toggling bit to acknowledge that the Command status has changed ]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS135_ActualOperationMode_Bit0</Name>
-								<Comment>
-									<![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]>
-								</Comment>
+								<Comment><![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS135_ActualOperationMode_Bit1</Name>
-								<Comment>
-									<![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]>
-								</Comment>
+								<Comment><![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS135_ActualOperationMode_Bit2</Name>
-								<Comment>
-									<![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]>
-								</Comment>
+								<Comment><![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS135_Class3_Diag_Mess</Name>
-								<Comment>
-									<![CDATA[ 	TRUE: There is a Class 3 Diagnostic message present in the drive]]>
-								</Comment>
+								<Comment><![CDATA[ 	TRUE: There is a Class 3 Diagnostic message present in the drive]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS135_Class2_Diag_Warn</Name>
-								<Comment>
-									<![CDATA[ 	TRUE: There is a Warning present in the drive]]>
-								</Comment>
+								<Comment><![CDATA[ 	TRUE: There is a Warning present in the drive]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS135_Class1_Diag_Err</Name>
-								<Comment>
-									<![CDATA[ 	TRUE: There is a Error present in the drive]]>
-								</Comment>
+								<Comment><![CDATA[ 	TRUE: There is a Error present in the drive]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS135_ReadyForOperation_Bit0</Name>
-								<Comment>
-									<![CDATA[ 	(bS135_ReadyForOp_B1 | bS135_ReadyForOp_B0)]]>
-								</Comment>
+								<Comment><![CDATA[ 	(bS135_ReadyForOp_B1 | bS135_ReadyForOp_B0)]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS135_ReadyForOperation_Bit1</Name>
-								<Comment>
-									<![CDATA[ 	(bS135_ReadyForOp_B1 | bS135_ReadyForOp_B0)]]>
-								</Comment>
+								<Comment><![CDATA[ 	(bS135_ReadyForOp_B1 | bS135_ReadyForOp_B0)]]></Comment>
 							</SubVar>
 						</Var>
 						<Var>
@@ -686,63 +582,43 @@
 							<Type GUID="{50590704-8C4D-4FD8-9670-11E39DA38DD8}">ST_S144_SIGNALSTATUSWORD</Type>
 							<SubVar>
 								<Name>bS424_DriveMode</Name>
-								<Comment>
-									<![CDATA[ FALSE: Operating mode]]>
-								</Comment>
+								<Comment><![CDATA[ FALSE: Operating mode]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS403_0_AxisHomedStatus</Name>
-								<Comment>
-									<![CDATA[ FALSE: Axis is NOT homed ]]>
-								</Comment>
+								<Comment><![CDATA[ FALSE: Axis is NOT homed ]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS331_StandStillStatus</Name>
-								<Comment>
-									<![CDATA[ FALSE: Axis is moving]]>
-								</Comment>
+								<Comment><![CDATA[ FALSE: Axis is moving]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS437_2_CommandPositionReached</Name>
-								<Comment>
-									<![CDATA[ FALSE: Axis is NOT not within command position]]>
-								</Comment>
+								<Comment><![CDATA[ FALSE: Axis is NOT not within command position]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bP115_3_StatusOfCmdValueProcessing</Name>
-								<Comment>
-									<![CDATA[ FALSE: Drive ignores external command value input ]]>
-								</Comment>
+								<Comment><![CDATA[ FALSE: Drive ignores external command value input ]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS419_0_PositioningCmdAck</Name>
-								<Comment>
-									<![CDATA[ Toggled as soon as the new Position Command value is accepted and effective]]>
-								</Comment>
+								<Comment><![CDATA[ Toggled as soon as the new Position Command value is accepted and effective]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS437_4_ConstantVelocity</Name>
-								<Comment>
-									<![CDATA[ TRUE: Axis in constant velocity]]>
-								</Comment>
+								<Comment><![CDATA[ TRUE: Axis in constant velocity]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS437_5_Acceleration</Name>
-								<Comment>
-									<![CDATA[ TRUE: Axis in acceleration]]>
-								</Comment>
+								<Comment><![CDATA[ TRUE: Axis in acceleration]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS437_6_Deceleration</Name>
-								<Comment>
-									<![CDATA[ TRUE: Axis in deceleration]]>
-								</Comment>
+								<Comment><![CDATA[ TRUE: Axis in deceleration]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS437_12_JogMode</Name>
-								<Comment>
-									<![CDATA[ TRUE: Axis in Axis in jog mode]]>
-								</Comment>
+								<Comment><![CDATA[ TRUE: Axis in Axis in jog mode]]></Comment>
 							</SubVar>
 						</Var>
 						<Var>
@@ -757,23 +633,21 @@
 					<Vars VarGrpType="2">
 						<Name>PlcTask Outputs</Name>
 						<Var>
+							<Name>MAIN.bBrakeFreewheelOn</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.nAdditiveTorqueSetpoint</Name>
+							<Comment><![CDATA[ Unit 0.1%  (10=1%)]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
 							<Name>MAIN.nAdditivePositionSetpoiunt</Name>
 							<Type>DINT</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.iBrakeSpRaw</Name>
 							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.nAdditiveTorqueSetpoint</Name>
-							<Comment>
-								<![CDATA[ Unit 0.1%  (10=1%)]]>
-							</Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.bBrakeFreewheelOn</Name>
-							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.bBrakeLockedOn</Name>
@@ -788,45 +662,31 @@
 							<Type GUID="{4CCFD5CA-E676-474E-B42D-6A96C42819C9}">ST_S134_MASTERCONTROLWORD</Type>
 							<SubVar>
 								<Name>bS134_CmdOperationMode_Bit0</Name>
-								<Comment>
-									<![CDATA[ 	(bS134_CmdOpMode_B2 | bS134_CmdOpMode_B2 | bS134_CmdOpMode_B0)]]>
-								</Comment>
+								<Comment><![CDATA[ 	(bS134_CmdOpMode_B2 | bS134_CmdOpMode_B2 | bS134_CmdOpMode_B0)]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS134_CmdOperationMode_Bit1</Name>
-								<Comment>
-									<![CDATA[ 	(bS134_CmdOpMode_B2 | bS134_CmdOpMode_B2 | bS134_CmdOpMode_B0)]]>
-								</Comment>
+								<Comment><![CDATA[ 	(bS134_CmdOpMode_B2 | bS134_CmdOpMode_B2 | bS134_CmdOpMode_B0)]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS134_IPOSYNC</Name>
-								<Comment>
-									<![CDATA[ 	Interpolator clock, toggles when new command values are to be transmitted ]]>
-								</Comment>
+								<Comment><![CDATA[ 	Interpolator clock, toggles when new command values are to be transmitted ]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS134_CmdOperationMode_Bit2</Name>
-								<Comment>
-									<![CDATA[ 	(bS134_CmdOpMode_B2 | bS134_CmdOpMode_B2 | bS134_CmdOpMode_B0)]]>
-								</Comment>
+								<Comment><![CDATA[ 	(bS134_CmdOpMode_B2 | bS134_CmdOpMode_B2 | bS134_CmdOpMode_B0)]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS134_DriveHalt</Name>
-								<Comment>
-									<![CDATA[ 	1-0 change: deceleration of drive while maintaining the max. acceleration (S-0-0138) ]]>
-								</Comment>
+								<Comment><![CDATA[ 	1-0 change: deceleration of drive while maintaining the max. acceleration (S-0-0138) ]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS134_DriveEnable</Name>
-								<Comment>
-									<![CDATA[ 	TRUE -> FALSE transition: torque disable without delay (independent of bit bS134_DriveOn or bS134_DriveHalt)]]>
-								</Comment>
+								<Comment><![CDATA[ 	TRUE -> FALSE transition: torque disable without delay (independent of bit bS134_DriveOn or bS134_DriveHalt)]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS134_DriveOn</Name>
-								<Comment>
-									<![CDATA[ 	TRUE -> FALSE transition: best possible deceleration (only possible if bit bS134_DriveEnable = TRUE)]]>
-								</Comment>
+								<Comment><![CDATA[ 	TRUE -> FALSE transition: best possible deceleration (only possible if bit bS134_DriveEnable = TRUE)]]></Comment>
 							</SubVar>
 						</Var>
 						<Var>
@@ -862,93 +722,63 @@
 							<Type GUID="{356849DC-7175-4AB3-A9EB-61AF708DF42F}">ST_S145_SIGNALCONTROLWORD</Type>
 							<SubVar>
 								<Name>bS346_0_PosCtrlWord_CmdValueAccept</Name>
-								<Comment>
-									<![CDATA[ Toggle to execute Slave Axis command]]>
-								</Comment>
+								<Comment><![CDATA[ Toggle to execute Slave Axis command]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bP12_C300_SetAbsolutePosition</Name>
-								<Comment>
-									<![CDATA[ Sets the Absolute position (defined in S52) of the drive]]>
-								</Comment>
+								<Comment><![CDATA[ Sets the Absolute position (defined in S52) of the drive]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS148_C600_DriveControlledHoming</Name>
-								<Comment>
-									<![CDATA[ Initiates the homing procedure defined in the drive]]>
-								</Comment>
+								<Comment><![CDATA[ Initiates the homing procedure defined in the drive]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS346_3_PosCtrlWord_Abs_Rel</Name>
-								<Comment>
-									<![CDATA[ FALSE: Absolute ]]>
-								</Comment>
+								<Comment><![CDATA[ FALSE: Absolute ]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS346_5_PosCtrlWord_ImmBlockChange</Name>
-								<Comment>
-									<![CDATA[ FALSE: Drive moves to current target position, before positioning at new target position]]>
-								</Comment>
+								<Comment><![CDATA[ FALSE: Drive moves to current target position, before positioning at new target position]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS99_DriveErrorReset</Name>
-								<Comment>
-									<![CDATA[ TRUE: Immediate block change, i.e., drive immediately moves to new target position]]>
-								</Comment>
+								<Comment><![CDATA[ TRUE: Immediate block change, i.e., drive immediately moves to new target position]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS346_1_PosCtrlWord_PosActivation</Name>
-								<Comment>
-									<![CDATA[ (bS346_2 | bS346_1) 00:	Positioning active, started by toggling of bit 0]]>
-								</Comment>
+								<Comment><![CDATA[ (bS346_2 | bS346_1) 00:	Positioning active, started by toggling of bit 0]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS346_2_PosCtrlWord_PosActivation</Name>
-								<Comment>
-									<![CDATA[ (bS346_2 | bS346_1) 00:	Positioning active, started by toggling of bit 0]]>
-								</Comment>
+								<Comment><![CDATA[ (bS346_2 | bS346_1) 00:	Positioning active, started by toggling of bit 0]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS159_C1300_Disable_Monitoring</Name>
-								<Comment>
-									<![CDATA[ TRUE: 	Monitoring of Position error, Position command error, Velocity error and Acceleration limit is disabled]]>
-								</Comment>
+								<Comment><![CDATA[ TRUE: 	Monitoring of Position error, Position command error, Velocity error and Acceleration limit is disabled]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS405_0_Probe1_Enabled</Name>
-								<Comment>
-									<![CDATA[ FALSE: 	Monitoring of Position error, Position command error, Velocity error and Acceleration limit is enabled ]]>
-								</Comment>
+								<Comment><![CDATA[ FALSE: 	Monitoring of Position error, Position command error, Velocity error and Acceleration limit is enabled ]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS420_C0400_Activate_ParameterMode</Name>
-								<Comment>
-									<![CDATA[ Brings the drive into parameter mode]]>
-								</Comment>
+								<Comment><![CDATA[ Brings the drive into parameter mode]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS422_C0200_Exit_ParameterMode</Name>
-								<Comment>
-									<![CDATA[ Brings the drive into parameter mode]]>
-								</Comment>
+								<Comment><![CDATA[ Brings the drive into parameter mode]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bP760_VM_PosCtrlWord_CmdValueAccept</Name>
-								<Comment>
-									<![CDATA[ Toggle to execute Virtual Master command]]>
-								</Comment>
+								<Comment><![CDATA[ Toggle to execute Virtual Master command]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bP760_VM_PosCtrlWord_1_PosActivation</Name>
-								<Comment>
-									<![CDATA[ (bP760_2 | bP760_1) 00:	Positioning active, started by toggling of bit 0]]>
-								</Comment>
+								<Comment><![CDATA[ (bP760_2 | bP760_1) 00:	Positioning active, started by toggling of bit 0]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bP760_VM_PosCtrlWord_2_PosActivation</Name>
-								<Comment>
-									<![CDATA[ (bP760_2 | bP760_1) 00:	Positioning active, started by toggling of bit 0]]>
-								</Comment>
+								<Comment><![CDATA[ (bP760_2 | bP760_1) 00:	Positioning active, started by toggling of bit 0]]></Comment>
 							</SubVar>
 						</Var>
 						<Var>
@@ -987,7 +817,7 @@
 			</Project>
 		</Plc>
 		<Io>
-			<Device DevType="111" DevFlags="#x0003" AmsPort="28673" AmsNetId="5.46.8.38.2.1" RemoteName="Device 1 (EtherCAT)" Id="1">
+			<Device Id="1" DevType="111" DevFlags="#x0003" AmsPort="28673" AmsNetId="5.46.8.38.2.1" RemoteName="Device 1 (EtherCAT)">
 				<Name>Device 1 (EtherCAT)</Name>
 				<AddressInfo>
 					<Ccat>
@@ -1017,11 +847,11 @@
 				<Image Id="1" AddrType="9" ImageType="3">
 					<Name>Image</Name>
 				</Image>
-				<Box BoxType="9099" Id="8">
+				<Box Id="8" BoxType="9099">
 					<Name>Term 10 (EK1200)</Name>
 					<ImageId>1000</ImageId>
 					<EtherCAT PdiType="#x0100" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x04b02c52" RevisionNo="#x00001388" InfoDataState="false" PortPhys="49" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EK1200-5000 EtherCAT Power supply (2A E-Bus)" Desc="EK1200" PortABoxInfo="#x00ffffff"/>
-					<Box BoxType="9099" Id="11">
+					<Box Id="11" BoxType="9099">
 						<Name>Term 11 (EL1018)</Name>
 						<ImageId>7</ImageId>
 						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x03fa3052" RevisionNo="#x00120000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL1018 8Ch. Dig. Input 24V, 10µs" Desc="EL1018" PortABoxInfo="#x01000008">
@@ -1069,7 +899,7 @@
 							</Pdo>
 						</EtherCAT>
 					</Box>
-					<Box BoxType="9099" Id="12">
+					<Box Id="12" BoxType="9099">
 						<Name>Term 12 (EL2808)</Name>
 						<ImageId>1001</ImageId>
 						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x0af83052" RevisionNo="#x00120000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL2808 8Ch. Dig. Output 24V, 0.5A" Desc="EL2808" PortABoxInfo="#x0100000b">
@@ -1117,7 +947,7 @@
 							</Pdo>
 						</EtherCAT>
 					</Box>
-					<Box BoxType="9099" Id="13">
+					<Box Id="13" BoxType="9099">
 						<Name>Term 13 (EL9505)</Name>
 						<ImageId>1002</ImageId>
 						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x25213052" RevisionNo="#x00110000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL9505 Power supply terminal 5V" Desc="EL9505" PortABoxInfo="#x0100000c">
@@ -1133,7 +963,7 @@
 							</Pdo>
 						</EtherCAT>
 					</Box>
-					<Box BoxType="9099" Id="14">
+					<Box Id="14" BoxType="9099">
 						<Name>Term 14 (EL1252-0050)</Name>
 						<ImageId>7</ImageId>
 						<EtherCAT SlaveType="1" PdiType="#x0d04" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x04e43052" RevisionNo="#x00120032" InfoDataDcTimes="true" CheckRevisionNoType="3" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL1252-0050 2Ch. Fast Dig. Input 5V, 1µs, DC Latch" Desc="EL1252-0050" PortABoxInfo="#x0100000d">
@@ -1265,7 +1095,7 @@
 							<CoeProfile ProfileNo="8197001"/>
 						</EtherCAT>
 					</Box>
-					<Box BoxType="9099" Id="15">
+					<Box Id="15" BoxType="9099">
 						<Name>Term 15 (EL9410)</Name>
 						<ImageId>1002</ImageId>
 						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x24c23052" RevisionNo="#x00110000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL9410 E-Bus Power Supplier  (Diagnostics)" Desc="EL9410" PortABoxInfo="#x0100000e">
@@ -1283,7 +1113,7 @@
 							</Pdo>
 						</EtherCAT>
 					</Box>
-					<Box BoxType="9099" Id="16">
+					<Box Id="16" BoxType="9099">
 						<Name>Term 16 (EL1252)</Name>
 						<ImageId>7</ImageId>
 						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x04e43052" RevisionNo="#x00160000" InfoDataDcTimes="true" CheckRevisionNoType="3" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL1252 2Ch. Fast Dig. Input 24V, 1µs, DC Latch" Desc="EL1252" PortABoxInfo="#x0100000f">
@@ -1468,7 +1298,7 @@
 							<CoeProfile ProfileNo="8197001"/>
 						</EtherCAT>
 					</Box>
-					<Box BoxType="9099" Id="18">
+					<Box Id="18" BoxType="9099">
 						<Name>Term 18 (EL2034)</Name>
 						<ImageId>1001</ImageId>
 						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x07f23052" RevisionNo="#x00120000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL2034 4Ch. Dig. Output 24V, 2A, Diagnostic" Desc="EL2034" PortABoxInfo="#x01000010">
@@ -1518,7 +1348,7 @@
 							</Pdo>
 						</EtherCAT>
 					</Box>
-					<Box BoxType="9099" Id="19">
+					<Box Id="19" BoxType="9099">
 						<Name>Term 19 (EL4002)</Name>
 						<ImageId>1003</ImageId>
 						<EtherCAT SlaveType="2" PdiType="#x0405" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="3" FoeType="1" VendorId="#x00000002" ProductCode="#x0fa23052" RevisionNo="#x00140000" InfoDataAddr="true" TimeoutMailbox2="2000" CheckRevisionNoType="3" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL4002 2Ch. Ana. Output 0-10V, 12bit" Desc="EL4002" PortABoxInfo="#x01000012">
@@ -1545,7 +1375,7 @@
 							<CoeProfile ProfileNo="26219401"/>
 						</EtherCAT>
 					</Box>
-					<Box BoxType="9099" Id="20">
+					<Box Id="20" BoxType="9099">
 						<Name>Term 20 (EL3214)</Name>
 						<ImageId>1004</ImageId>
 						<EtherCAT SlaveType="2" PdiType="#x0005" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="3" FoeType="1" VendorId="#x00000002" ProductCode="#x0c8e3052" RevisionNo="#x00110000" InfoDataAddr="true" RepeatSupport="true" TimeoutMailbox2="2000" CheckRevisionNoType="3" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL3214 4Ch. Ana. Input PT100 (RTD)" Desc="EL3214" PortABoxInfo="#x01000013">
@@ -1670,7 +1500,7 @@
 							<CoeProfile ProfileNo="20976521"/>
 						</EtherCAT>
 					</Box>
-					<Box BoxType="9099" Id="21">
+					<Box Id="21" BoxType="9099">
 						<Name>Term 21 (EK1110)</Name>
 						<ImageId>1005</ImageId>
 						<EtherCAT SlaveType="1" PdiType="#x0100" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x04562c52" RevisionNo="#x00110000" PortPhys="19" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EK1110 EtherCAT extension" Desc="EK1110" PortABoxInfo="#x01000014"/>
@@ -1678,7 +1508,7 @@
 				</Box>
 				<EtherCAT DcSyncMode="3"/>
 			</Device>
-			<Device DevType="111" DevFlags="#x0003" AmsPort="28676" AmsNetId="5.46.8.38.5.1" RemoteName="Device 4 (EtherCAT)" Id="4">
+			<Device Id="4" DevType="111" DevFlags="#x0003" AmsPort="28676" AmsNetId="5.46.8.38.5.1" RemoteName="Device 4 (EtherCAT)">
 				<Name>Device 4 (EtherCAT)</Name>
 				<AddressInfo>
 					<Pnp>
@@ -1690,7 +1520,7 @@
 				<Image Id="4" AddrType="9" ImageType="3">
 					<Name>Image</Name>
 				</Image>
-				<Box BoxType="9099" BoxFlags="#x00000020" Id="10">
+				<Box Id="10" BoxType="9099" BoxFlags="#x00000020">
 					<Name>Drive 10 (IndraDrive MPB18/19)</Name>
 					<ImageId>38</ImageId>
 					<EtherCAT SlaveType="2" MboxDataLinkLayer="true" StateMBoxPolling="true" CfgModeSafeOp="true" DownloadPdoCfg="true" CycleMBoxPollingTime="0" EoeType="3" SoeChannels="1" VendorId="#x00000024" ProductCode="#x00242804" RevisionNo="#x00000002" InfoDataAddr="true" InfoDataSoeDS401="true" InfoDataDcTimes="true" EnableWdDivider0400="true" EnableWdTime0420="true" TimeoutStateChange1="5000" TimeoutStateChange2="25000" TimeoutStateChange4="500" PortPhys="17" IdentificationAdo="18" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="IndraDrive MPB18/19" Desc="IndraDrive MPB18/19" PortABoxInfo="#x00ffffff">
@@ -1781,15 +1611,75 @@
 						</Pdo>
 					</EtherCAT>
 				</Box>
-				<EtherCAT DeviceDesc="Local Area Connection 2 (TwinCAT-Intel PCI Ethernet" EpMacAddr="020105400000" DcSyncMode="2" EpIpAddr="-1442951938" EpMaxCon="16" EpFirstConAddr="57344" EnableVirtualSwitch="true" MaxSwitchPorts="3" MaxSwitchFrames="140" MaxSwitchMACs="100"/>
+				<Box Id="1" Disabled="true" BoxType="9099" BoxFlags="#x00000020">
+					<Name>Box 1 (IndraDrive MPB20 CoE)</Name>
+					<ImageId>38</ImageId>
+					<EtherCAT SlaveType="2" PdiType="#x0006" MboxDataLinkLayer="true" StateMBoxPolling="true" CfgModeSafeOp="true" CycleMBoxPollingTime="0" CoeType="9" EoeType="3" FoeType="1" VendorId="#x00000024" ProductCode="#x00242c04" RevisionNo="#x00000003" SerialNo="#x00000001" InfoDataAddr="true" InfoDataSoeDS401="true" InfoDataDcTimes="true" EnableWdDivider0400="true" EnableWdTime0420="true" TimeoutStateChange1="5000" TimeoutStateChange2="25000" TimeoutStateChange4="500" TimeoutMailbox2="6000" PortPhys="17" IdentificationAdo="18" Type="IndraDrive MPB20 CoE" Desc="IndraDrive MPB20 CoE" PortABoxInfo="#x0100000a">
+						<SyncMan>0018ea002600010001000000ea00ea00ea00001826010000</SyncMan>
+						<SyncMan>001aea002200010002000000ea00ea00ea00001a22010000</SyncMan>
+						<SyncMan>001006006400010003000000000000000000001064010000</SyncMan>
+						<SyncMan>00110a002000010004000000000000000000001120010000</SyncMan>
+						<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
+						<Fmmu>0000000000000000001000020100000001000000000000000000000000000000</Fmmu>
+						<Fmmu>0000000000000000001100010100000002000000000000000000000000000000</Fmmu>
+						<SwitchPortData>01000000e903fea90000ffffc14cfea900000000426f785f315f5f496e6472614472690000000000000000000000000000000000000000000000000000000000</SwitchPortData>
+						<BootStrapData>0018ea00001aea00</BootStrapData>
+						<DcData>002500000000000000000000b0710b0001000000000000000000000000000000</DcData>
+						<DcMode>44432d53796e633120326d730000000044432d53796e6331204379636c65203e3d20326d7300000000000000000000000000000000000000b0710b00000000250100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<DcMode>44432d53796e633120316d732053740044432d53796e6331204379636c653d316d73205374616e6461726420502e0000000000000000000020a10700000000250100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<DcMode>44432d53796e633120316d732041640044432d53796e6331204379636c653d316d7320416476616e63656420502e00000000000000000000801a0600000000250100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<DcMode>44432d53796e6331203530307573200044432d53796e6331204379636c653d3530307573205374616e64617264205000000000000000000000000000000000250100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<DcMode>44432d53796e6331203530307573200044432d53796e6331204379636c653d353030757320416476616e636564205000000000000000000090d00300000000250100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<DcMode>44432d53796e6331203235307573200044432d53796e6331204379636c653d323530757320416476616e636564205000000000000000000000000000000000250100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<DcMode>4672656552756e000000000000000000467265652052756e20286e6f2073796e6368726f6e697a6174696f6e29000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<MBoxUserCmdData>02000300090000001900000003000000010009030000000000000000000000002060600001000000094379636c69632073796e632076656c6f63697479206d6f646500</MBoxUserCmdData>
+						<Pdo Name="Transmit PDO Mapping Parameter" Index="#x1a00" Flags="#x0080" SyncMan="3">
+							<Entry Name="CiA402: Statusword" Index="#x6041">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="CiA402: Velocity actual value" Index="#x606c">
+								<Type>DINT</Type>
+							</Entry>
+							<Entry Name="CiA402: Position actual value" Index="#x6064">
+								<Type>DINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Receive PDO Mapping Parameter" Index="#x1600" InOut="1" Flags="#x0080" SyncMan="2">
+							<Entry Name="CiA402: Controlword" Index="#x6040">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="CiA402: Target velocity" Index="#x60ff">
+								<Type>DINT</Type>
+							</Entry>
+						</Pdo>
+						<CoeProfile ProfileNo="402"/>
+						<Slot Name="Axis 1">
+							<SlotData>0000010001000000000000000000000000000000000000000000000000000000</SlotData>
+							<ModuleIdent>256</ModuleIdent>
+							<ModuleIdent>257</ModuleIdent>
+							<ModuleIdent>258</ModuleIdent>
+							<ModuleIdent>259</ModuleIdent>
+							<ModuleIdent>260</ModuleIdent>
+							<ModuleIdent>261</ModuleIdent>
+							<Module Id="#x03090001" Type="Cyclic sync velocity mode" Class="">
+								<Name>Module 1 (Cyclic sync velocity mode)</Name>
+								<ImageId>38</ImageId>
+								<ModuleData>2400000001010000000004000000000000000000000000000000000000000000</ModuleData>
+								<PdoIndex>6656</PdoIndex>
+								<PdoIndex>5632</PdoIndex>
+								<CoeProfile ProfileNo="#x00000192"/>
+							</Module>
+						</Slot>
+					</EtherCAT>
+				</Box>
+				<EtherCAT EpMacAddr="020105400000" DcSyncMode="2" EpIpAddr="-1442951938" EpMaxCon="16" EpFirstConAddr="57344" EnableVirtualSwitch="true" MaxSwitchPorts="3" MaxSwitchFrames="140" MaxSwitchMACs="100"/>
 			</Device>
 		</Io>
 	</Project>
 	<Mappings>
-		<MappingInfo Identifier="{00000000-2041-0850-4520-500810000403}" Id="#x02030010"/>
-		<MappingInfo Identifier="{00000000-2001-0850-0420-500810000403}" Id="#x02030030"/>
-		<MappingInfo Identifier="{00000000-2041-0850-4520-500821000403}" Id="#x02030040"/>
-		<MappingInfo Identifier="{00000000-2041-0850-4520-500842000403}" Id="#x02030020"/>
+		<MappingInfo Identifier="{00000000-2041-0850-4020-500821000403}" Id="#x02030030"/>
+		<MappingInfo Identifier="{00000000-2041-0850-4020-500810000403}" Id="#x02030020"/>
+		<MappingInfo Identifier="{00000000-2001-0850-0020-500810000403}" Id="#x02030010"/>
 		<OwnerA Name="TIPC^tc_project_app^tc_project_app Instance">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 10 (EK1200)^Term 12 (EL2808)">
 				<Link VarA="PlcTask Outputs^MAIN.bBrakeFreewheelOn" VarB="Channel 2^Output"/>
