@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.25">
-  <POU Name="FB_PWM_OVERRIDE_V0_01" Id="{329fc295-5889-41aa-b7e1-38a034502569}">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
+  <POU Name="FB_PWM_OVERRIDE_V0_01" Id="{329fc295-5889-41aa-b7e1-38a034502569}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_PWM_OVERRIDE_V0_01
 VAR_INPUT
 	En: BOOL;
@@ -40,7 +40,7 @@ IF bEnable THEN
 	FOR i:=1 TO iDecimalPoint DO
 		iDecimalGain:=iDecimalGain*10; //10000 if iDecimalpoint is 4
 	END_FOR
-	iOverrideBase:=TRUNC(fOverrideInput*iDecimalGain); //=900004 if fOverride=90.00045
+	iOverrideBase:=LREAL_TO_DINT(fOverrideInput*iDecimalGain); //=900004 if fOverride=90.00045
 	fOverrideDecimals:=fOverrideInput*iDecimalGain-iOverrideBase; //=0.5 if fOverride=90.00045
 	iHighCycles:=LREAL_TO_INT(iNumCycles*fOverrideDecimals);
 	iLowCycles:=iNumCycles-iHighCycles;
@@ -53,11 +53,11 @@ IF bEnable THEN
 		fOverrideOld:=fOverrideInput;
 	END_IF
 
-	//IF iCycleCounter> iNumCycles THEN
-	//	iCycleCounter:=0;
-	//	iLowCounter:=0;
-	//	iHighCounter:=0;	
-	//END_IF
+	IF iCycleCounter> iNumCycles THEN
+		iCycleCounter:=0;
+		iLowCounter:=0;
+		iHighCounter:=0;	
+	END_IF
 	iCycleCounter:=iCycleCounter+1;
 
 	IF iLowCycles>0 THEN
@@ -97,6 +97,9 @@ END_IF
 
 ]]></ST>
     </Implementation>
-    <ObjectProperties />
+    <LineIds Name="FB_PWM_OVERRIDE_V0_01">
+      <LineId Id="3" Count="61" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>

@@ -99,7 +99,7 @@ CASE stStatEpics.eTargetState OF
 			//ramp velocity with selected acceleration
 			fbRampVelo(bExecute:=stCmdEpics.bExecute,
               fVelSetIn:=fbModeVelo.fSpeedSetpoint,
-              iBlockSampleTimeMicroS:=10000,
+              iBlockSampleTimeMicroS:=GVL_Parameters.nTaskSampleTime*1000,
               fVelSetOut:=stCommands.fVelocityCommandValue);
 			  
 // add extra torque att startup TEST
@@ -129,14 +129,16 @@ CASE stStatEpics.eTargetState OF
 			dLatchedPosition:= dLatchedPosition,	
 			stCommands:=       stCommands);
 			
-			//ramp velocity with selected acceleration
-			fbRampVelo(bExecute:=stCmdEpics.bExecute,
-              fVelSetIn:=fbModePhase.fSpeedSetpoint,
-              iBlockSampleTimeMicroS:=10000,
-              fVelSetOut:=stCommands.fVelocityCommandValue);
-				
-			//stCommands.fVelocityCommandValue:=fbModePhase.fSpeedSetpoint;
-			
+			//ramp velocity with selected acceleration (as long as not phasing)
+			IF NOT fbModePhase.bPhasing THEN
+              fbRampVelo(bExecute:=stCmdEpics.bExecute,
+                fVelSetIn:=fbModePhase.fSpeedSetpoint,
+                iBlockSampleTimeMicroS:=GVL_Parameters.nTaskSampleTime*1000,
+                fVelSetOut:=stCommands.fVelocityCommandValue);
+			ELSE // if phasing then take setpoint direct from fbModePhase
+			  stCommands.fVelocityCommandValue:=fbModePhase.fSpeedSetpoint;
+            END_IF
+						
 	TARGET_STATE_MACHINE.HOMING:
         fbModeHome( 
             bExecute:=         stCmdEpics.bExecute,
@@ -148,7 +150,6 @@ CASE stStatEpics.eTargetState OF
 	TARGET_STATE_MACHINE.TORQUE:
 		stCommands.eOperationMode:=E_OPERATION_MODE_NO.eSecondaryOpMode7;
 	    stCommands.eMotionMode :=e_Motion_mode.eJogPositive;
-	
 	
 	  ELSE  // No valid state
 		  
@@ -334,9 +335,11 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       <LineId Id="472" Count="0" />
       <LineId Id="1328" Count="1" />
       <LineId Id="1331" Count="0" />
+      <LineId Id="1343" Count="0" />
       <LineId Id="1334" Count="2" />
-      <LineId Id="1333" Count="0" />
-      <LineId Id="1326" Count="1" />
+      <LineId Id="1344" Count="1" />
+      <LineId Id="1347" Count="0" />
+      <LineId Id="1346" Count="0" />
       <LineId Id="987" Count="0" />
       <LineId Id="1098" Count="0" />
       <LineId Id="1102" Count="0" />
@@ -345,7 +348,8 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       <LineId Id="1101" Count="0" />
       <LineId Id="1009" Count="0" />
       <LineId Id="1049" Count="0" />
-      <LineId Id="1257" Count="3" />
+      <LineId Id="1257" Count="1" />
+      <LineId Id="1260" Count="0" />
       <LineId Id="1027" Count="0" />
       <LineId Id="1035" Count="0" />
       <LineId Id="1028" Count="0" />

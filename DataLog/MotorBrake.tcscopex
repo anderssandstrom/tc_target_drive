@@ -1,12 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ScopeProject AssemblyName="TwinCAT.Measurement.Scope.API.Model">
-  <Layout />
+  <Layout>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;Layout&gt;
+  &lt;Window Guid="97332cdc-477f-498a-a8da-59f3e238ae5a" LastFocused="132235658336596215" DockedSize="200" PopupSize="0" FloatingLocation="-1, -1" FloatingSize="550, 400" LastOpenDockSituation="Document" LastFixedDockSituation="Document" LastFixedDockLocation="Right" LastFloatingWindowGuid="00000000-0000-0000-0000-000000000000" LastDockContainerCount="0" LastDockContainerIndex="0" DockedWorkingSize="250, 400" DockedWindowGroupGuid="00000000-0000-0000-0000-000000000000" DockedIndexInWindowGroup="0" DockedSplitPath="0" DocumentWorkingSize="250, 400" DocumentWindowGroupGuid="b7c0b38b-b4ac-40c4-9a90-f11db5bd13d2" DocumentIndexInWindowGroup="0" DocumentSplitPath="0" FloatingWorkingSize="250, 400" FloatingWindowGroupGuid="00000000-0000-0000-0000-000000000000" FloatingIndexInWindowGroup="0" FloatingSplitPath="0" /&gt;
+  &lt;DocumentContainer Dock="5"&gt;
+    &lt;SplitLayoutSystem WorkingSize="250, 400" SplitMode="0"&gt;
+      &lt;ControlLayoutSystem WorkingSize="250, 400" Guid="b7c0b38b-b4ac-40c4-9a90-f11db5bd13d2" Collapsed="0" SelectedControl="97332cdc-477f-498a-a8da-59f3e238ae5a"&gt;
+        &lt;Controls&gt;
+          &lt;Control Guid="97332cdc-477f-498a-a8da-59f3e238ae5a" /&gt;
+        &lt;/Controls&gt;
+      &lt;/ControlLayoutSystem&gt;
+    &lt;/SplitLayoutSystem&gt;
+  &lt;/DocumentContainer&gt;
+&lt;/Layout&gt;</Layout>
   <StopMode>AutoStop</StopMode>
   <AutoRestartRecord>false</AutoRestartRecord>
   <ViewDetailLevel>Default</ViewDetailLevel>
   <UseAutoSave>false</UseAutoSave>
-  <AutoSavePath>
-      </AutoSavePath>
+  <AutoSavePath>$ScopeProject$\AutoSave</AutoSavePath>
   <AutoSaveFileNameMask>{SCOPE}_AutoSave_{HH_mm_ss}</AutoSaveFileNameMask>
   <AutoDeleteMode>Disabled</AutoDeleteMode>
   <AutoDeleteOlderThan>0</AutoDeleteOlderThan>
@@ -81,7 +92,7 @@
           <Guid>a37967c4-e5c9-4eb4-a957-67c1d2ca1cf3</Guid>
           <Title>ChartStyle_81</Title>
           <Name>Chart Style</Name>
-          <Comment></Comment>
+          <Comment />
           <DisplayColor>Black</DisplayColor>
           <SortPriority>100</SortPriority>
           <IsFileBased>false</IsFileBased>
@@ -146,7 +157,7 @@
               <Guid>ce14cc40-a607-45b8-b63d-85ec8165b59b</Guid>
               <Title>Time Axis</Title>
               <Name>Time Axis</Name>
-              <Comment></Comment>
+              <Comment />
               <DisplayColor>Black</DisplayColor>
               <SortPriority>100</SortPriority>
               <IsFileBased>false</IsFileBased>
@@ -184,7 +195,7 @@
               <Guid>130d25d5-2cd3-4e8b-a17e-3be14ba98eb9</Guid>
               <Title>Axis</Title>
               <Name>Value Axis (1)</Name>
-              <Comment></Comment>
+              <Comment />
               <DisplayColor>Black</DisplayColor>
               <SortPriority>100</SortPriority>
               <IsFileBased>false</IsFileBased>
@@ -205,16 +216,16 @@
                       <Offset>0</Offset>
                       <Symbol></Symbol>
                       <ReturnText> (None) </ReturnText>
-                      <BaseUnitString />
-                      <NameExtension />
+                      <BaseUnitString></BaseUnitString>
+                      <NameExtension></NameExtension>
                     </Unit>
                     <Transformation>
                       <BaseUnitValue>0</BaseUnitValue>
                       <TargetUnitValue>0</TargetUnitValue>
                       <ScaleFactor>1</ScaleFactor>
                       <Name>None</Name>
-                      <SourceUnitString />
-                      <TargetUnitString />
+                      <SourceUnitString></SourceUnitString>
+                      <TargetUnitString></TargetUnitString>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
                       <Symbol>1</Symbol>
                     </Transformation>
@@ -225,9 +236,9 @@
                       <Offset>0</Offset>
                       <Name>None</Name>
                       <BaseName>UnitOfOne</BaseName>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Symbol></Symbol>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                     <UnitScaleResult>1</UnitScaleResult>
@@ -303,7 +314,7 @@
               <Guid>6ee22e70-9a93-4251-9414-d0ed95c9eab3</Guid>
               <Title>Channel_25</Title>
               <Name>bBrakeFreewheelOn</Name>
-              <Comment></Comment>
+              <Comment />
               <DisplayColor>-16728065</DisplayColor>
               <SortPriority>-1</SortPriority>
               <IsFileBased>false</IsFileBased>
@@ -324,16 +335,16 @@
                       <Offset>0</Offset>
                       <Symbol></Symbol>
                       <ReturnText> (None) </ReturnText>
-                      <BaseUnitString />
-                      <NameExtension />
+                      <BaseUnitString></BaseUnitString>
+                      <NameExtension></NameExtension>
                     </Unit>
                     <Transformation>
                       <BaseUnitValue>0</BaseUnitValue>
                       <TargetUnitValue>0</TargetUnitValue>
                       <ScaleFactor>1</ScaleFactor>
                       <Name>None</Name>
-                      <SourceUnitString />
-                      <TargetUnitString />
+                      <SourceUnitString></SourceUnitString>
+                      <TargetUnitString></TargetUnitString>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
                       <Symbol>1</Symbol>
                     </Transformation>
@@ -344,9 +355,9 @@
                       <Offset>0</Offset>
                       <Name>None</Name>
                       <BaseName>UnitOfOne</BaseName>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Symbol></Symbol>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                     <UnitScaleResult>1</UnitScaleResult>
@@ -422,7 +433,7 @@
               <Guid>965b8875-7658-47f7-87c0-5c8c1381e810</Guid>
               <Title>Channel_25</Title>
               <Name>bBrakeLockedOn</Name>
-              <Comment></Comment>
+              <Comment />
               <DisplayColor>-8355712</DisplayColor>
               <SortPriority>0</SortPriority>
               <IsFileBased>false</IsFileBased>
@@ -498,7 +509,7 @@
               <Guid>ce80a3ab-0897-47c5-a3d9-331e77822f60</Guid>
               <Title>Axis(1)</Title>
               <Name>Value Axis (2)</Name>
-              <Comment></Comment>
+              <Comment />
               <DisplayColor>Black</DisplayColor>
               <SortPriority>100</SortPriority>
               <IsFileBased>false</IsFileBased>
@@ -519,16 +530,16 @@
                       <Offset>0</Offset>
                       <Symbol></Symbol>
                       <ReturnText> (None) </ReturnText>
-                      <BaseUnitString />
-                      <NameExtension />
+                      <BaseUnitString></BaseUnitString>
+                      <NameExtension></NameExtension>
                     </Unit>
                     <Transformation>
                       <BaseUnitValue>0</BaseUnitValue>
                       <TargetUnitValue>0</TargetUnitValue>
                       <ScaleFactor>1</ScaleFactor>
                       <Name>None</Name>
-                      <SourceUnitString />
-                      <TargetUnitString />
+                      <SourceUnitString></SourceUnitString>
+                      <TargetUnitString></TargetUnitString>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
                       <Symbol>1</Symbol>
                     </Transformation>
@@ -539,9 +550,9 @@
                       <Offset>0</Offset>
                       <Name>None</Name>
                       <BaseName>UnitOfOne</BaseName>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Symbol></Symbol>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                     <UnitScaleResult>1</UnitScaleResult>
@@ -617,7 +628,7 @@
               <Guid>c6c861fb-3cd6-442f-b75a-2a1c74c4fc0e</Guid>
               <Title>Channel_25</Title>
               <Name>fActualTorque</Name>
-              <Comment></Comment>
+              <Comment />
               <DisplayColor>-65536</DisplayColor>
               <SortPriority>-1</SortPriority>
               <IsFileBased>false</IsFileBased>
@@ -638,16 +649,16 @@
                       <Offset>0</Offset>
                       <Symbol></Symbol>
                       <ReturnText> (None) </ReturnText>
-                      <BaseUnitString />
-                      <NameExtension />
+                      <BaseUnitString></BaseUnitString>
+                      <NameExtension></NameExtension>
                     </Unit>
                     <Transformation>
                       <BaseUnitValue>0</BaseUnitValue>
                       <TargetUnitValue>0</TargetUnitValue>
                       <ScaleFactor>1</ScaleFactor>
                       <Name>None</Name>
-                      <SourceUnitString />
-                      <TargetUnitString />
+                      <SourceUnitString></SourceUnitString>
+                      <TargetUnitString></TargetUnitString>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
                       <Symbol>1</Symbol>
                     </Transformation>
@@ -658,9 +669,9 @@
                       <Offset>0</Offset>
                       <Name>None</Name>
                       <BaseName>UnitOfOne</BaseName>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Symbol></Symbol>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                     <UnitScaleResult>1</UnitScaleResult>
@@ -736,7 +747,7 @@
               <Guid>ca7731c2-2bdd-455e-b653-5074037aabf4</Guid>
               <Title>Channel_25</Title>
               <Name>fBrakeSpNm</Name>
-              <Comment></Comment>
+              <Comment />
               <DisplayColor>-16776961</DisplayColor>
               <SortPriority>0</SortPriority>
               <IsFileBased>false</IsFileBased>
@@ -812,7 +823,7 @@
               <Guid>37a2582c-21c0-4c62-ad38-8a3ae4f0f2e6</Guid>
               <Title>Axis(2)</Title>
               <Name>Value Axis</Name>
-              <Comment></Comment>
+              <Comment />
               <DisplayColor>Black</DisplayColor>
               <SortPriority>100</SortPriority>
               <IsFileBased>false</IsFileBased>
@@ -833,16 +844,16 @@
                       <Offset>0</Offset>
                       <Symbol></Symbol>
                       <ReturnText> (None) </ReturnText>
-                      <BaseUnitString />
-                      <NameExtension />
+                      <BaseUnitString></BaseUnitString>
+                      <NameExtension></NameExtension>
                     </Unit>
                     <Transformation>
                       <BaseUnitValue>0</BaseUnitValue>
                       <TargetUnitValue>0</TargetUnitValue>
                       <ScaleFactor>1</ScaleFactor>
                       <Name>None</Name>
-                      <SourceUnitString />
-                      <TargetUnitString />
+                      <SourceUnitString></SourceUnitString>
+                      <TargetUnitString></TargetUnitString>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
                       <Symbol>1</Symbol>
                     </Transformation>
@@ -853,9 +864,9 @@
                       <Offset>0</Offset>
                       <Name>None</Name>
                       <BaseName>UnitOfOne</BaseName>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Symbol></Symbol>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                     <UnitScaleResult>1</UnitScaleResult>
@@ -931,7 +942,7 @@
               <Guid>b9434b97-64d6-4404-996f-e7e0e2699345</Guid>
               <Title>Channel_25</Title>
               <Name>fRotMotorTempDegC</Name>
-              <Comment></Comment>
+              <Comment />
               <DisplayColor>-23296</DisplayColor>
               <SortPriority>-1</SortPriority>
               <IsFileBased>false</IsFileBased>
@@ -951,7 +962,7 @@
       <Guid>97332cdc-477f-498a-a8da-59f3e238ae5a</Guid>
       <Title>Chart</Title>
       <Name>YT Chart</Name>
-      <Comment></Comment>
+      <Comment />
       <DisplayColor>-1973016</DisplayColor>
       <SortPriority>10</SortPriority>
       <IsFileBased>false</IsFileBased>
@@ -1001,16 +1012,16 @@
               <Offset>0</Offset>
               <Symbol></Symbol>
               <ReturnText> (None) </ReturnText>
-              <BaseUnitString />
-              <NameExtension />
+              <BaseUnitString></BaseUnitString>
+              <NameExtension></NameExtension>
             </Unit>
             <Transformation>
               <BaseUnitValue>0</BaseUnitValue>
               <TargetUnitValue>0</TargetUnitValue>
               <ScaleFactor>1</ScaleFactor>
               <Name>None</Name>
-              <SourceUnitString />
-              <TargetUnitString />
+              <SourceUnitString></SourceUnitString>
+              <TargetUnitString></TargetUnitString>
               <SourceUnitPrefix>none</SourceUnitPrefix>
               <Symbol>1</Symbol>
             </Transformation>
@@ -1021,9 +1032,9 @@
               <Offset>0</Offset>
               <Name>None</Name>
               <BaseName>UnitOfOne</BaseName>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Symbol></Symbol>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
             <UnitScaleResult>1</UnitScaleResult>
@@ -1033,7 +1044,7 @@
           <Guid>c17a1423-b214-4e57-b82f-3e0246764644</Guid>
           <Title>AdsAcquisition_36</Title>
           <Name>bBrakeFreewheelOn</Name>
-          <Comment></Comment>
+          <Comment />
           <DisplayColor>Black</DisplayColor>
           <SortPriority>10</SortPriority>
           <IsFileBased>false</IsFileBased>
@@ -1081,16 +1092,16 @@
               <Offset>0</Offset>
               <Symbol></Symbol>
               <ReturnText> (None) </ReturnText>
-              <BaseUnitString />
-              <NameExtension />
+              <BaseUnitString></BaseUnitString>
+              <NameExtension></NameExtension>
             </Unit>
             <Transformation>
               <BaseUnitValue>0</BaseUnitValue>
               <TargetUnitValue>0</TargetUnitValue>
               <ScaleFactor>1</ScaleFactor>
               <Name>None</Name>
-              <SourceUnitString />
-              <TargetUnitString />
+              <SourceUnitString></SourceUnitString>
+              <TargetUnitString></TargetUnitString>
               <SourceUnitPrefix>none</SourceUnitPrefix>
               <Symbol>1</Symbol>
             </Transformation>
@@ -1101,9 +1112,9 @@
               <Offset>0</Offset>
               <Name>None</Name>
               <BaseName>UnitOfOne</BaseName>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Symbol></Symbol>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
             <UnitScaleResult>1</UnitScaleResult>
@@ -1113,7 +1124,7 @@
           <Guid>566fe3c4-3299-4d6c-926f-b1f14cf95049</Guid>
           <Title>AdsAcquisition_36</Title>
           <Name>bBrakeLockedOn</Name>
-          <Comment></Comment>
+          <Comment />
           <DisplayColor>Black</DisplayColor>
           <SortPriority>10</SortPriority>
           <IsFileBased>false</IsFileBased>
@@ -1161,16 +1172,16 @@
               <Offset>0</Offset>
               <Symbol></Symbol>
               <ReturnText> (None) </ReturnText>
-              <BaseUnitString />
-              <NameExtension />
+              <BaseUnitString></BaseUnitString>
+              <NameExtension></NameExtension>
             </Unit>
             <Transformation>
               <BaseUnitValue>0</BaseUnitValue>
               <TargetUnitValue>0</TargetUnitValue>
               <ScaleFactor>1</ScaleFactor>
               <Name>None</Name>
-              <SourceUnitString />
-              <TargetUnitString />
+              <SourceUnitString></SourceUnitString>
+              <TargetUnitString></TargetUnitString>
               <SourceUnitPrefix>none</SourceUnitPrefix>
               <Symbol>1</Symbol>
             </Transformation>
@@ -1181,9 +1192,9 @@
               <Offset>0</Offset>
               <Name>None</Name>
               <BaseName>UnitOfOne</BaseName>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Symbol></Symbol>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
             <UnitScaleResult>1</UnitScaleResult>
@@ -1241,16 +1252,16 @@
               <Offset>0</Offset>
               <Symbol></Symbol>
               <ReturnText> (None) </ReturnText>
-              <BaseUnitString />
-              <NameExtension />
+              <BaseUnitString></BaseUnitString>
+              <NameExtension></NameExtension>
             </Unit>
             <Transformation>
               <BaseUnitValue>0</BaseUnitValue>
               <TargetUnitValue>0</TargetUnitValue>
               <ScaleFactor>1</ScaleFactor>
               <Name>None</Name>
-              <SourceUnitString />
-              <TargetUnitString />
+              <SourceUnitString></SourceUnitString>
+              <TargetUnitString></TargetUnitString>
               <SourceUnitPrefix>none</SourceUnitPrefix>
               <Symbol>1</Symbol>
             </Transformation>
@@ -1261,9 +1272,9 @@
               <Offset>0</Offset>
               <Name>None</Name>
               <BaseName>UnitOfOne</BaseName>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Symbol></Symbol>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
             <UnitScaleResult>1</UnitScaleResult>
@@ -1273,7 +1284,7 @@
           <Guid>5fa817b8-da3d-46db-8378-cd430e2b99e4</Guid>
           <Title>AdsAcquisition_36</Title>
           <Name>fBrakeSpNm</Name>
-          <Comment></Comment>
+          <Comment />
           <DisplayColor>Black</DisplayColor>
           <SortPriority>10</SortPriority>
           <IsFileBased>false</IsFileBased>
@@ -1321,16 +1332,16 @@
               <Offset>0</Offset>
               <Symbol></Symbol>
               <ReturnText> (None) </ReturnText>
-              <BaseUnitString />
-              <NameExtension />
+              <BaseUnitString></BaseUnitString>
+              <NameExtension></NameExtension>
             </Unit>
             <Transformation>
               <BaseUnitValue>0</BaseUnitValue>
               <TargetUnitValue>0</TargetUnitValue>
               <ScaleFactor>1</ScaleFactor>
               <Name>None</Name>
-              <SourceUnitString />
-              <TargetUnitString />
+              <SourceUnitString></SourceUnitString>
+              <TargetUnitString></TargetUnitString>
               <SourceUnitPrefix>none</SourceUnitPrefix>
               <Symbol>1</Symbol>
             </Transformation>
@@ -1341,9 +1352,9 @@
               <Offset>0</Offset>
               <Name>None</Name>
               <BaseName>UnitOfOne</BaseName>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Symbol></Symbol>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
             <UnitScaleResult>1</UnitScaleResult>
@@ -1353,15 +1364,15 @@
           <Guid>1d693a6a-c1d9-4eb1-825a-2491022c54ac</Guid>
           <Title>AdsAcquisition_36</Title>
           <Name>fRotMotorTempDegC</Name>
-          <Comment></Comment>
+          <Comment />
           <DisplayColor>Black</DisplayColor>
           <SortPriority>10</SortPriority>
           <IsFileBased>false</IsFileBased>
           <Suffix>.svacq</Suffix>
         </AdsAcquisition>
       </SubMember>
-      <Guid>b5df8926-db0c-4893-bb88-b7d2315ad0ba</Guid>
-      <Title>DataPool_141</Title>
+      <Guid>5db7cdb8-7f6d-4832-a3cc-383b3b559af5</Guid>
+      <Title>DataPool_197</Title>
       <Name>DataPool</Name>
       <Comment />
       <DisplayColor>Black</DisplayColor>
@@ -1384,7 +1395,7 @@
   <Guid>f33c340d-ef44-4fd8-9b92-44c00166b420</Guid>
   <Title>MotorBrake</Title>
   <Name>Scope Project</Name>
-  <Comment></Comment>
+  <Comment />
   <DisplayColor>Black</DisplayColor>
   <SortPriority>100</SortPriority>
   <IsFileBased>true</IsFileBased>
