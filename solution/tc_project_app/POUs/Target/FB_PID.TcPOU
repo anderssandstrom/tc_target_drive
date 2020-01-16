@@ -13,6 +13,8 @@ VAR_INPUT
 	fKff: LREAL:=0;
 	fIOutputMin: LREAL:=0;
 	fIOutputMax: LREAL:=0;
+	fOutputMin:LREAL:=0;
+	fOutputMax:LREAL:=0;
 	bReset:BOOL:=FALSE;
 END_VAR
 VAR_OUTPUT
@@ -57,7 +59,12 @@ END_IF
 
 fOutputD  :=  (fError-fErrorOld)*fKd;
 
-fCtrlOutput := fOutputP + fOutputI + fOutputD + fOutputFF;]]></ST>
+fCtrlOutput := fOutputP + fOutputI + fOutputD + fOutputFF;
+IF fCtrlOutput < fOutputMin THEN
+  fCtrlOutput := fOutputMin;
+ELSIF fCtrlOutput > fOutputMax THEN
+  fCtrlOutput := fOutputMax;
+END_IF]]></ST>
     </Implementation>
     <LineIds Name="FB_PID">
       <LineId Id="252" Count="1" />
@@ -85,6 +92,10 @@ fCtrlOutput := fOutputP + fOutputI + fOutputD + fOutputFF;]]></ST>
       <LineId Id="242" Count="0" />
       <LineId Id="260" Count="0" />
       <LineId Id="243" Count="0" />
+      <LineId Id="264" Count="1" />
+      <LineId Id="267" Count="0" />
+      <LineId Id="269" Count="0" />
+      <LineId Id="266" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

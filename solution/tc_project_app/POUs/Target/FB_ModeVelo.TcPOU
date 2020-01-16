@@ -22,8 +22,10 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
-// Actually not neccesarry to use FB here but nice to keep structure
+      <ST><![CDATA[// Function: Constant velocity of target main  motor
+// Control will be performed by the drive.
+// Author: Anders Sandström 2018
+
 stCommands.eMotionMode :=e_Motion_mode.eJogPositive;
 stCommands.eOperationMode:=e_Operation_mode_no.eSecondaryOpMode2;
 IF bExecute THEN
@@ -34,7 +36,9 @@ END_IF
 stCommands.fCommandVelocity:=0; // Other mode]]></ST>
     </Implementation>
     <LineIds Name="FB_ModeVelo">
-      <LineId Id="886" Count="1" />
+      <LineId Id="914" Count="1" />
+      <LineId Id="887" Count="0" />
+      <LineId Id="913" Count="0" />
       <LineId Id="877" Count="0" />
       <LineId Id="885" Count="0" />
       <LineId Id="879" Count="4" />

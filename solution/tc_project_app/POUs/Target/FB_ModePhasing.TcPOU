@@ -8,19 +8,11 @@ VAR_INPUT
 	stStatus: ST_AXIS_STATUS;
     dLatchedPosition: DINT;
 	fPhaseOffsetDeg: LREAL;
-    fPhaseControlKp: LREAL := 0.00001;
-	///Ti
-	fPhaseControlTn: LREAL := 0;
-	///Td
-	fPhaseControlTv: LREAL := 0;
-	///derviative damping
-	fPhaseControlTd: LREAL := 0;
-	bPhaseControlReset: BOOL := FALSE;
-	
-	// for own pid (use kp above)
-	fPhaseControlKi: LREAL := 0.0001;
-	fPhaseControlKd: LREAL := 0.0001;
+    fPhaseControlKp: LREAL := 0.0012;
+	fPhaseControlKi: LREAL := 0.00015;
+	fPhaseControlKd: LREAL := 0.0;
 	fPhaseControlKff: LREAL := 0.0;
+	bPhaseControlReset: BOOL := FALSE;
 END_VAR
 VAR_OUTPUT
 	bError: BOOL;
@@ -77,6 +69,7 @@ VAR
 	fPidAdd: LREAL := 0;
 	fCtrlCycleTime: INT;
 	fTn: INT;
+	nPIDExeSkipCounter:INT:=0;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -84,7 +77,9 @@ END_VAR
 // 1. Wait for stable velocity then start "phasing" 
 // 2. Choose sector for control
 // 3. Calculate phase error (buffer several revs and filter)
-// 4. Adjust velo setpoint to minimize phase error
+// 4. Adjust velo setpoint to minimize phase error (PID)
+// 5. PWM of the new velocity setpoint in order to increase resolution
+// Note: Seem the indra drive can only hanlde 3 decimals (even if 4 is seen in interface and indradrive software)
 // Author: Anders Sandström 2018
 
 stCommands.fCommandDeceleration:=GVL_Parameters.fAccDefault;	
@@ -195,30 +190,30 @@ IF NOT fbSuperImpose.bBusy  THEN
   bExecuteSuperImpose:= NOT bExecuteSuperImpose;
 END_IF
 
-//Drops very fast from positive to negative error. So, Adjust more gently when phase error is positive
+//Limit output velocity difference from nominal
 IF(fPhaseErrorFiltered > 0) THEN  //Pos error
-  IF ABS(fPhaseErrorFiltered)>10 THEN
-    fDeltaVelo:= 0.003;
+  IF ABS(fPhaseErrorFiltered)>15 THEN
+    fDeltaVelo:= 0.005;
   ELSIF ABS(fPhaseErrorFiltered)>4 THEN
-    fDeltaVelo:= 0.0025;
+    fDeltaVelo:= 0.003;
   ELSIF ABS(fPhaseErrorFiltered)>1 THEN
-    fDeltaVelo:= 0.002;
+    fDeltaVelo:= 0.003;
   ELSIF ABS(fPhaseErrorFiltered)>0.5 THEN
-    fDeltaVelo:= 0.0015;
+    fDeltaVelo:= 0.003;
   ELSE
-	fDeltaVelo:= 0.0015;
+	fDeltaVelo:= 0.002;
   END_IF
 ELSE // neg error
-  IF ABS(fPhaseErrorFiltered)>10 THEN  
-    fDeltaVelo:= 0.003;
+  IF ABS(fPhaseErrorFiltered)>15 THEN  
+    fDeltaVelo:= 0.005;
   ELSIF ABS(fPhaseErrorFiltered)>4 THEN
-    fDeltaVelo:= 0.0025;
+    fDeltaVelo:= 0.003;
   ELSIF ABS(fPhaseErrorFiltered)>1 THEN
-    fDeltaVelo:= 0.002;
+    fDeltaVelo:= 0.003;
   ELSIF ABS(fPhaseErrorFiltered)>0.5 THEN
-    fDeltaVelo:= 0.0015;
+    fDeltaVelo:= 0.003;
   ELSE
-	fDeltaVelo:= 0.0015;
+	fDeltaVelo:= 0.002;
   END_IF	
 END_IF
 
@@ -231,33 +226,26 @@ IF NOT bExecute THEN
   fSpeedSetpoint:=0;	
 END_IF
 IF bNewTriggPulse AND bPhaseAlgTrigg THEN
- (* fbPhasePID(fSetpointValue:=0,
-             fActualValue:=fPhaseErrorFiltered,
-             bReset:=bPhaseControlReset,
-             fCtrlCycleTime:=0.071,
-             fKp:=fPhaseControlKp,
-             fTn:=fPhaseControlTn,
-             fTv:=fPhaseControlTv,
-             fTd:=fPhaseControlTd);*)
-  fbPhasePID(fSetpointValue:=0,
-             fActualValue := fPhaseErrorFiltered,
-             bReset       := bPhaseControlReset,
-			 fFF          := 0,
-			 fKp          := fPhaseControlKp,
-			 fKi          := fPhaseControlKi,
-			 fKd          := fPhaseControlKd,
-			 fKff         := fPhaseControlKff,
-			 fIOutputMin  :=-fDeltaVelo,
-			 fIOutputMax  := fDeltaVelo,
-			 );
-  fPidAdd:=fbPhasePID.fCtrlOutput;
-(*  IF ABS(fbPhasePID.fCtrlOutput)>fDeltaVelo THEN
-    IF fbPhasePID.fCtrlOutput < 0 THEN
-		fPidAdd:=-fDeltaVelo;
-	ELSE
-		fPidAdd:=fDeltaVelo;	
-    END_IF	 
-  END_IF*)
+
+  nPIDExeSkipCounter:=nPIDExeSkipCounter + 1;
+  IF nPIDExeSkipCounter >= GVL_Parameters.nPhasePIDReducedSampleRateFactor THEN
+    nPIDExeSkipCounter:=0;
+    fbPhasePID(fSetpointValue:=0,
+               fActualValue := fPhaseErrorFiltered,
+               bReset       := bPhaseControlReset,
+		  	   fFF          := 0,
+			   fKp          := fPhaseControlKp,
+			   fKi          := fPhaseControlKi,
+			   fKd          := fPhaseControlKd,
+			   fKff         := fPhaseControlKff,
+			   fIOutputMin  :=-fDeltaVelo*0.65,
+			   fIOutputMax  := fDeltaVelo*0.65,
+			   fOutputMin   := -fDeltaVelo,
+			   fOutputMax   := fDeltaVelo,
+			   );
+    fPidAdd:=fbPhasePID.fCtrlOutput;
+  END_IF
+
 ELSIF NOT bPhaseAlgTrigg THEN
   fbPhasePID(bReset:=TRUE);
   fPidAdd:=0;
@@ -269,45 +257,15 @@ fbSuperImpose(bExecute:=bExecuteSuperImpose AND bPhaseAlgTrigg,
       fMaxDeltaVelocityRpm:=fDeltaVelo,
       fPhaseErrorDeg:=fPhaseErrorFiltered/(GVL_Parameters.fWheelDiameter*pi)*360);  
 
-(*IF fPhaseErrorFiltered < 0 THEN
-  fSpeedSetpoint:=fSpeedSetpoint-fDeltaVelo;
-ELSE
-  fSpeedSetpoint:=fSpeedSetpoint+fDeltaVelo;
-END_IF
 fbPWM(
        En:=TRUE,
        bEnable:=TRUE,
        iBlockSampleTimeMicroS:=GVL_Parameters.nTaskSampleTime*1000,
-       iProcessSampleTimeMicroS:=71000,
-       iDecimalPoint:=3,
-       fInput:=fSpeedSetpoint);*)
-
-fbPWM(
-       En:=TRUE,
-       bEnable:=TRUE,
-       iBlockSampleTimeMicroS:=GVL_Parameters.nTaskSampleTime*1000,
-       iProcessSampleTimeMicroS:=71000,
+       iProcessSampleTimeMicroS:=71000*GVL_Parameters.nPhasePIDReducedSampleRateFactor,
        iDecimalPoint:=3,
        fInput:=fSpeedSetpoint+fPidAdd);
-(*fbPWM(
-       En:=TRUE,
-       bEnable:=TRUE,
-       iBlockSampleTimeMicroS:=GVL_Parameters.nTaskSampleTime*1000,
-       iProcessSampleTimeMicroS:=71000,
-       iDecimalPoint:=3,
-       fInput:=fbSuperImpose.fVelocitySetpointRpm);
-	   *)
-(*fbPWM(
-       En:=TRUE,
-       bEnable:=TRUE,
-       iBlockSampleTimeMicroS:=GVL_Parameters.nTaskSampleTime*1000,
-       iOverrideSampleTimeMicroS:=71000,
-       iDecimalPoint:=3,
-       fOverrideInput:=fNomSpeedSetAdjust);*)
-//stCommands.fVelocityCommandValue:=fbPWM.fOverrideOutput;	
+
 fSpeedSetpoint:=fbPWM.fOutput;
-//fSpeedSetpoint:=fbSuperImpose.fVelocitySetpointRpm;
-//fSpeedSetpoint:=fNomSpeedSetAdjust;
 dLatchedPositionOld:=dLatchedPosition;
  
 //*********Errorhandling
@@ -328,6 +286,7 @@ END_IF]]></ST>
       <LineId Id="1065" Count="0" />
       <LineId Id="1070" Count="2" />
       <LineId Id="1067" Count="0" />
+      <LineId Id="1330" Count="1" />
       <LineId Id="948" Count="0" />
       <LineId Id="1068" Count="0" />
       <LineId Id="626" Count="0" />
@@ -392,7 +351,7 @@ END_IF]]></ST>
       <LineId Id="532" Count="0" />
       <LineId Id="529" Count="0" />
       <LineId Id="537" Count="0" />
-      <LineId Id="976" Count="0" />
+      <LineId Id="1333" Count="0" />
       <LineId Id="960" Count="0" />
       <LineId Id="959" Count="0" />
       <LineId Id="931" Count="1" />
@@ -410,19 +369,18 @@ END_IF]]></ST>
       <LineId Id="1162" Count="7" />
       <LineId Id="551" Count="0" />
       <LineId Id="1271" Count="0" />
-      <LineId Id="1170" Count="0" />
-      <LineId Id="1264" Count="6" />
+      <LineId Id="1270" Count="0" />
+      <LineId Id="1329" Count="0" />
+      <LineId Id="1327" Count="0" />
+      <LineId Id="1325" Count="0" />
       <LineId Id="1305" Count="1" />
       <LineId Id="1302" Count="0" />
       <LineId Id="1308" Count="0" />
       <LineId Id="1315" Count="5" />
+      <LineId Id="1322" Count="1" />
       <LineId Id="1307" Count="0" />
       <LineId Id="1294" Count="0" />
-      <LineId Id="1286" Count="0" />
-      <LineId Id="1288" Count="0" />
-      <LineId Id="1293" Count="0" />
-      <LineId Id="1295" Count="1" />
-      <LineId Id="1291" Count="0" />
+      <LineId Id="1328" Count="0" />
       <LineId Id="1289" Count="0" />
       <LineId Id="1299" Count="0" />
       <LineId Id="1321" Count="0" />
@@ -431,24 +389,11 @@ END_IF]]></ST>
       <LineId Id="1262" Count="0" />
       <LineId Id="514" Count="0" />
       <LineId Id="516" Count="3" />
-      <LineId Id="526" Count="0" />
-      <LineId Id="1252" Count="0" />
-      <LineId Id="1250" Count="1" />
-      <LineId Id="1253" Count="1" />
-      <LineId Id="1256" Count="5" />
-      <LineId Id="1255" Count="0" />
       <LineId Id="1280" Count="0" />
       <LineId Id="1273" Count="5" />
       <LineId Id="1272" Count="0" />
-      <LineId Id="1298" Count="0" />
-      <LineId Id="471" Count="4" />
-      <LineId Id="166" Count="0" />
-      <LineId Id="478" Count="0" />
-      <LineId Id="1175" Count="5" />
-      <LineId Id="1174" Count="0" />
       <LineId Id="476" Count="0" />
-      <LineId Id="1043" Count="1" />
-      <LineId Id="1172" Count="0" />
+      <LineId Id="1043" Count="0" />
       <LineId Id="161" Count="0" />
       <LineId Id="160" Count="0" />
       <LineId Id="712" Count="0" />
