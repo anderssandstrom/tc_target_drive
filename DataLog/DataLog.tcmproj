@@ -19,5 +19,8 @@
     <Content Include="Phasing.tcscopex">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="PWM.tcscopex">
+      <SubType>Content</SubType>
+    </Content>
   </ItemGroup>
 </Project>

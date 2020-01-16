@@ -6,8 +6,9 @@ VAR_INPUT
   En: BOOL;
   bExecute: BOOL;
   iSampleRateMs:INT;
+  iProcessSampleRateMs:INT:=0;
   fNominalVelocityRpm: LREAL;
-  fDeltaVelocityRpm: LREAL;
+  fMaxDeltaVelocityRpm: LREAL;
   fPhaseErrorDeg: LREAL;	
 END_VAR
 VAR_OUTPUT
@@ -30,7 +31,9 @@ END_IF
 
 fbRtrig(clk:=bExecute);
 IF fbRtrig.Q THEN
-  iCyclesToOutput:=LREAL_TO_INT(ABS(fPhaseErrorDeg)/(ABS(fDeltaVelocityRpm)*360.0/60.0)*1000.0/iSampleRateMs*2.0/100.0);
+  // Calculate new velocity to output
+  
+  iCyclesToOutput:=LREAL_TO_INT(ABS(fPhaseErrorDeg)/(ABS(fMaxDeltaVelocityRpm)*360.0/60.0)*1000.0/iSampleRateMs*2.0/100.0);
   IF(iCyclesToOutput>GVL_Parameters.nSuperPosMaxCyclesToOutput) THEN
     iCyclesToOutput:=GVL_Parameters.nSuperPosMaxCyclesToOutput;
   END_IF 
@@ -38,9 +41,9 @@ END_IF
 
 IF iCycleCounter<iCyclesToOutput*GVL_Parameters.fSuperPosDutyCycle AND bExecute  THEN
   IF fPhaseErrorDeg >= 0 THEN
-    fVelocitySetpointRpm:=fNominalVelocityRpm + fDeltaVelocityRpm;
+    fVelocitySetpointRpm:=fNominalVelocityRpm + fMaxDeltaVelocityRpm;
   ELSE 
-    fVelocitySetpointRpm:=fNominalVelocityRpm - fDeltaVelocityRpm;
+    fVelocitySetpointRpm:=fNominalVelocityRpm - fMaxDeltaVelocityRpm;
   END_IF
   bBusy:=TRUE;
 ELSE
@@ -64,6 +67,7 @@ END_IF]]></ST>
       <LineId Id="32" Count="0" />
       <LineId Id="9" Count="0" />
       <LineId Id="33" Count="0" />
+      <LineId Id="119" Count="1" />
       <LineId Id="58" Count="0" />
       <LineId Id="91" Count="0" />
       <LineId Id="94" Count="1" />

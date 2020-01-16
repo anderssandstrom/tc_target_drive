@@ -106,7 +106,7 @@
     <Compile Include="POUs\Target\FB_RampVelo.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Target\FB_PWM_OVERRIDE_V0_01.TcPOU">
+    <Compile Include="POUs\Target\FB_PWM.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Target\FB_TargetSuperImpose.TcPOU">

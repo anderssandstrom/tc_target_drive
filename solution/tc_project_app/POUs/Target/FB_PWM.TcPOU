@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
+  <POU Name="FB_PWM" Id="{329fc295-5889-41aa-b7e1-38a034502569}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_PWM
+VAR_INPUT
+	En: BOOL;
+	bEnable: BOOL;
+	iBlockSampleTimeMicroS: DINT;
+	iProcessSampleTimeMicroS: DINT;
+	iDecimalPoint: INT;
+	fInput: LREAL;
+	//iTrigger:INT:=0;
+END_VAR
+VAR_OUTPUT
+	EnO: BOOL;
+	fOutput: LREAL;
+END_VAR
+VAR
+	iNumCycles: DINT;
+	iBase: DINT;
+	fDecimals: LREAL;
+	i: INT;
+	iDecimalGain: DINT;
+	fOutputHigh: LREAL;
+	iHighCycles: DINT;
+	iLowCycles: DINT;
+	fOutputLow: LREAL;
+	iCycleCounter: DINT;
+	iLowCounter: INT;
+	iHighCounter: INT;
+	fActualPWM: LREAL;
+	fSetpointPWM: LREAL;
+	fOverrideOld: LREAL;
+	//iTriggerOld : INT:=0;  //To indicate new fOverideValue
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+IF bEnable THEN
+  //IF(iTrigger<>iTriggerOld) THEN // New fOverride value
+    iNumCycles:=iProcessSampleTimeMicroS/iBlockSampleTimeMicroS; //71 if 71ms and 1ms
+	iDecimalGain:=1;
+	FOR i:=1 TO iDecimalPoint DO
+	  iDecimalGain:=iDecimalGain*10; //10000 if iDecimalpoint is 4
+	END_FOR
+	iBase:=LREAL_TO_DINT(fInput*iDecimalGain); //=900004 if fOverride=90.00045
+    fDecimals:=fInput*iDecimalGain-iBase; //=0.5 if fOverride=90.00045
+    iHighCycles:=LREAL_TO_INT(iNumCycles*fDecimals);
+    iLowCycles:=iNumCycles-iHighCycles;
+    fOutputLow:=DINT_TO_LREAL(iBase)/iDecimalGain; //90.0004
+    fOutputHigh:=DINT_TO_LREAL(iBase+1)/iDecimalGain; //90.0005
+    //iCycleCounter:=0;
+    //iLowCounter:=0;
+    //iHighCounter:=0;	
+  //END_IF
+	
+  (*IF ABS(fInput-fOverrideOld)>0 THEN 
+	iCycleCounter:=0;
+	iLowCounter:=0;
+	iHighCounter:=0;	
+	fOverrideOld:=fInput;
+   END_IF*)
+
+  IF iCycleCounter> iNumCycles THEN
+	iCycleCounter:=0;
+	iLowCounter:=0;
+	iHighCounter:=0;	
+  END_IF
+  
+  iCycleCounter:=iCycleCounter+1;
+  IF iLowCycles > 0 THEN
+	IF iHighCycles > 0 THEN
+	  //Both high and low should be output during the period
+	  IF iLowCounter = 0 THEN
+		fOutput:=fOutputLow;
+		iLowCounter:=iLowCounter+1;
+	  ELSE
+	    IF iHighCounter = 0 THEN
+		  fOutput:=fOutputHigh;
+		  iHighCounter:=iHighCounter+1;
+	    ELSE //both counters is atleast 1
+		  fActualPWM:= DINT_TO_LREAL(iHighCounter)/DINT_TO_LREAL(iLowCounter+iHighCounter);
+		  fSetpointPWM:=DINT_TO_LREAL(iHighCycles)/DINT_TO_LREAL(iLowCycles+iHighCycles);
+		  IF fActualPWM>fSetpointPWM THEN
+		    fOutput:=fOutputLow;
+		    iLowCounter:=iLowCounter+1;
+		  ELSE
+            fOutput:=fOutputHigh;
+		    iHighCounter:=iHighCounter+1;
+		  END_IF				
+	    END_IF				
+	  END_IF
+    ELSE		
+	  fOutput:=fOutputLow;
+	  iLowCounter:=iLowCounter+1;
+    END_IF
+  ELSE
+    fOutput:=fOutputHigh;
+	iHighCounter:=iHighCounter+1;
+  END_IF
+ELSE	
+	fOutput:=fInput;	
+END_IF
+	
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="FB_PWM">
+      <LineId Id="3" Count="1" />
+      <LineId Id="97" Count="0" />
+      <LineId Id="5" Count="10" />
+      <LineId Id="99" Count="2" />
+      <LineId Id="95" Count="0" />
+      <LineId Id="102" Count="0" />
+      <LineId Id="16" Count="11" />
+      <LineId Id="103" Count="0" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="30" Count="16" />
+      <LineId Id="105" Count="0" />
+      <LineId Id="48" Count="16" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
