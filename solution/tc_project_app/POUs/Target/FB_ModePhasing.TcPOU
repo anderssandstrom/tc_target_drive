@@ -16,6 +16,11 @@ VAR_INPUT
 	///derviative damping
 	fPhaseControlTd: LREAL := 0;
 	bPhaseControlReset: BOOL := FALSE;
+	
+	// for own pid (use kp above)
+	fPhaseControlKi: LREAL := 0.0001;
+	fPhaseControlKd: LREAL := 0.0001;
+	fPhaseControlKff: LREAL := 0.0;
 END_VAR
 VAR_OUTPUT
 	bError: BOOL;
@@ -36,7 +41,8 @@ VAR
 	fClosestSectorId: LREAL;
 	nClosestSectorId: INT;
 	fLatchedPosition:LREAL;
-	fbPhasePID: Tc2_Utilities.FB_BasicPID;
+	//fbPhasePID: Tc2_Utilities.FB_BasicPID;
+	fbPhasePID: FB_PID;
 	fPhaseError: LREAL;
 	fPhaseErrorFiltered:LREAL;
 	fPhaseErrorMM: LREAL:=0;
@@ -68,6 +74,9 @@ VAR
 	timerCheckLatchFreq:TON;
 	fNomSpeedSetAdjust: LREAL := 0;
 	bTEst: BOOL := FALSE;
+	fPidAdd: LREAL := 0;
+	fCtrlCycleTime: INT;
+	fTn: INT;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -189,27 +198,27 @@ END_IF
 //Drops very fast from positive to negative error. So, Adjust more gently when phase error is positive
 IF(fPhaseErrorFiltered > 0) THEN  //Pos error
   IF ABS(fPhaseErrorFiltered)>10 THEN
-    fDeltaVelo:= 0.01;
-  ELSIF ABS(fPhaseErrorFiltered)>4 THEN
-    fDeltaVelo:= 0.005;
-  ELSIF ABS(fPhaseErrorFiltered)>1 THEN
     fDeltaVelo:= 0.003;
-  ELSIF ABS(fPhaseErrorFiltered)>0.5 THEN
+  ELSIF ABS(fPhaseErrorFiltered)>4 THEN
+    fDeltaVelo:= 0.0025;
+  ELSIF ABS(fPhaseErrorFiltered)>1 THEN
     fDeltaVelo:= 0.002;
+  ELSIF ABS(fPhaseErrorFiltered)>0.5 THEN
+    fDeltaVelo:= 0.0015;
   ELSE
-	fDeltaVelo:= 0.002;
+	fDeltaVelo:= 0.0015;
   END_IF
 ELSE // neg error
   IF ABS(fPhaseErrorFiltered)>10 THEN  
-    fDeltaVelo:= 0.01;
-  ELSIF ABS(fPhaseErrorFiltered)>4 THEN
-    fDeltaVelo:= 0.005;
-  ELSIF ABS(fPhaseErrorFiltered)>1 THEN
     fDeltaVelo:= 0.003;
-  ELSIF ABS(fPhaseErrorFiltered)>0.5 THEN
+  ELSIF ABS(fPhaseErrorFiltered)>4 THEN
+    fDeltaVelo:= 0.0025;
+  ELSIF ABS(fPhaseErrorFiltered)>1 THEN
     fDeltaVelo:= 0.002;
+  ELSIF ABS(fPhaseErrorFiltered)>0.5 THEN
+    fDeltaVelo:= 0.0015;
   ELSE
-	fDeltaVelo:= 0.002;
+	fDeltaVelo:= 0.0015;
   END_IF	
 END_IF
 
@@ -221,15 +230,38 @@ END_IF
 IF NOT bExecute THEN
   fSpeedSetpoint:=0;	
 END_IF
-fbPhasePID(fSetpointValue:=0,
-           fActualValue:=1,
-           bReset:=bReset,
-           fCtrlCycleTime:=0.071,
-           fKp:=1,
-           fTn:=2,
-           fTv:=0,
-           fTd:=0);
-
+IF bNewTriggPulse AND bPhaseAlgTrigg THEN
+ (* fbPhasePID(fSetpointValue:=0,
+             fActualValue:=fPhaseErrorFiltered,
+             bReset:=bPhaseControlReset,
+             fCtrlCycleTime:=0.071,
+             fKp:=fPhaseControlKp,
+             fTn:=fPhaseControlTn,
+             fTv:=fPhaseControlTv,
+             fTd:=fPhaseControlTd);*)
+  fbPhasePID(fSetpointValue:=0,
+             fActualValue := fPhaseErrorFiltered,
+             bReset       := bPhaseControlReset,
+			 fFF          := 0,
+			 fKp          := fPhaseControlKp,
+			 fKi          := fPhaseControlKi,
+			 fKd          := fPhaseControlKd,
+			 fKff         := fPhaseControlKff,
+			 fIOutputMin  :=-fDeltaVelo,
+			 fIOutputMax  := fDeltaVelo,
+			 );
+  fPidAdd:=fbPhasePID.fCtrlOutput;
+(*  IF ABS(fbPhasePID.fCtrlOutput)>fDeltaVelo THEN
+    IF fbPhasePID.fCtrlOutput < 0 THEN
+		fPidAdd:=-fDeltaVelo;
+	ELSE
+		fPidAdd:=fDeltaVelo;	
+    END_IF	 
+  END_IF*)
+ELSIF NOT bPhaseAlgTrigg THEN
+  fbPhasePID(bReset:=TRUE);
+  fPidAdd:=0;
+END_IF
 
 fbSuperImpose(bExecute:=bExecuteSuperImpose AND bPhaseAlgTrigg,
       iSampleRateMs:=GVL_Parameters.nTaskSampleTime,
@@ -249,14 +281,22 @@ fbPWM(
        iProcessSampleTimeMicroS:=71000,
        iDecimalPoint:=3,
        fInput:=fSpeedSetpoint);*)
+
 fbPWM(
        En:=TRUE,
        bEnable:=TRUE,
        iBlockSampleTimeMicroS:=GVL_Parameters.nTaskSampleTime*1000,
        iProcessSampleTimeMicroS:=71000,
        iDecimalPoint:=3,
+       fInput:=fSpeedSetpoint+fPidAdd);
+(*fbPWM(
+       En:=TRUE,
+       bEnable:=TRUE,
+       iBlockSampleTimeMicroS:=GVL_Parameters.nTaskSampleTime*1000,
+       iProcessSampleTimeMicroS:=71000,
+       iDecimalPoint:=3,
        fInput:=fbSuperImpose.fVelocitySetpointRpm);
-	   
+	   *)
 (*fbPWM(
        En:=TRUE,
        bEnable:=TRUE,
@@ -369,8 +409,24 @@ END_IF]]></ST>
       <LineId Id="963" Count="0" />
       <LineId Id="1162" Count="7" />
       <LineId Id="551" Count="0" />
+      <LineId Id="1271" Count="0" />
       <LineId Id="1170" Count="0" />
       <LineId Id="1264" Count="6" />
+      <LineId Id="1305" Count="1" />
+      <LineId Id="1302" Count="0" />
+      <LineId Id="1308" Count="0" />
+      <LineId Id="1315" Count="5" />
+      <LineId Id="1307" Count="0" />
+      <LineId Id="1294" Count="0" />
+      <LineId Id="1286" Count="0" />
+      <LineId Id="1288" Count="0" />
+      <LineId Id="1293" Count="0" />
+      <LineId Id="1295" Count="1" />
+      <LineId Id="1291" Count="0" />
+      <LineId Id="1289" Count="0" />
+      <LineId Id="1299" Count="0" />
+      <LineId Id="1321" Count="0" />
+      <LineId Id="1300" Count="0" />
       <LineId Id="1263" Count="0" />
       <LineId Id="1262" Count="0" />
       <LineId Id="514" Count="0" />
@@ -381,7 +437,11 @@ END_IF]]></ST>
       <LineId Id="1253" Count="1" />
       <LineId Id="1256" Count="5" />
       <LineId Id="1255" Count="0" />
-      <LineId Id="470" Count="5" />
+      <LineId Id="1280" Count="0" />
+      <LineId Id="1273" Count="5" />
+      <LineId Id="1272" Count="0" />
+      <LineId Id="1298" Count="0" />
+      <LineId Id="471" Count="4" />
       <LineId Id="166" Count="0" />
       <LineId Id="478" Count="0" />
       <LineId Id="1175" Count="5" />

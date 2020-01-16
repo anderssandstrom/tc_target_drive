@@ -31,7 +31,6 @@ VAR
 	fActualPWM: LREAL;
 	fSetpointPWM: LREAL;
 	fOverrideOld: LREAL;
-	//iTriggerOld : INT:=0;  //To indicate new fOverideValue
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -43,9 +42,9 @@ IF bEnable THEN
 	FOR i:=1 TO iDecimalPoint DO
 	  iDecimalGain:=iDecimalGain*10; //10000 if iDecimalpoint is 4
 	END_FOR
-	iBase:=LREAL_TO_DINT(fInput*iDecimalGain); //=900004 if fOverride=90.00045
+	iBase:=TRUNC(fInput*iDecimalGain); //=900004 if fOverride=90.00045
     fDecimals:=fInput*iDecimalGain-iBase; //=0.5 if fOverride=90.00045
-    iHighCycles:=LREAL_TO_INT(iNumCycles*fDecimals);
+    iHighCycles:=TRUNC(iNumCycles*fDecimals);
     iLowCycles:=iNumCycles-iHighCycles;
     fOutputLow:=DINT_TO_LREAL(iBase)/iDecimalGain; //90.0004
     fOutputHigh:=DINT_TO_LREAL(iBase+1)/iDecimalGain; //90.0005

@@ -103,6 +103,9 @@
     <Compile Include="POUs\Target\FB_ModeHome.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Target\FB_PID.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\Target\FB_RampVelo.TcPOU">
       <SubType>Code</SubType>
     </Compile>
