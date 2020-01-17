@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.6">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
   <POU Name="EL3214" Id="{0ef824af-3384-4b63-9d1f-7d6cf6b0bd23}" SpecialFunc="None">
     <Declaration><![CDATA[//EL3214 | 4-channel analog input terminal, PT100 (RTD)
 FUNCTION_BLOCK EL3214
@@ -7,7 +7,6 @@ FUNCTION_BLOCK EL3214
 VAR_INPUT
 	En: BOOL;
 	iTerminal_ID : INT;
-	//ErrorSystem : POINTER TO ST_ErrorSystem;
 END_VAR
 
 VAR_OUTPUT
@@ -20,7 +19,6 @@ VAR_OUTPUT
 	iAi_Ch2_Stat : BYTE;
 	iAi_Ch3_Stat : BYTE;
 	iAi_Ch4_Stat : BYTE;
-	
 	bError: BOOL;
 END_VAR
 
@@ -38,9 +36,6 @@ VAR
 	//Terminal status
 	WcState_WcState AT %I*: BOOL;
 	InfoData_State AT %I*: UINT;
-	
-	//FB-s
-	//EL3214_Error : FB_TerminalError;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -50,17 +45,6 @@ END_VAR
 *)
 
 EnO := En;
-
-//Error FB instance
-//EL3214_Error(
-//	En := TRUE,
-//	iTerminal_ID := iTerminal_ID,
-//	bWcState := WcState_WcState,
-//	uiInfoData_State := InfoData_State,
-//	pErrorSystem := ErrorSystem,
-//	bError => bError,
-//);
-
 
 IF En THEN
 	iAi_Ch1_Stat:=WORD_TO_BYTE(AI_RTD_Ch_1_Status);
@@ -76,10 +60,10 @@ IF En THEN
 		iAi_Ch3_Value := AI_RTD_Ch_3_Value;
 		iAi_Ch4_Value := AI_RTD_Ch_4_Value;
 	ELSE
-		iAi_Ch1_Value := 0;
-		iAi_Ch2_Value := 0;
-		iAi_Ch3_Value := 0;
-		iAi_Ch4_Value := 0;
+		iAi_Ch1_Value := 32768;
+		iAi_Ch2_Value := 32768;
+		iAi_Ch3_Value := 32768;
+		iAi_Ch4_Value := 32768;
 	END_IF
 END_IF
 ]]></ST>
@@ -87,8 +71,7 @@ END_IF
     <LineIds Name="EL3214">
       <LineId Id="50" Count="2" />
       <LineId Id="12" Count="0" />
-      <LineId Id="54" Count="11" />
-      <LineId Id="116" Count="0" />
+      <LineId Id="54" Count="1" />
       <LineId Id="66" Count="1" />
       <LineId Id="121" Count="0" />
       <LineId Id="127" Count="3" />

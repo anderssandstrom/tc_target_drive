@@ -101,8 +101,6 @@ ELSE
 	fOutput:=fInput;	
 END_IF
 fInputOld:=fInput;
-	
-
 ]]></ST>
     </Implementation>
     <LineIds Name="FB_PWM">
@@ -128,8 +126,7 @@ fInputOld:=fInput;
       <LineId Id="105" Count="0" />
       <LineId Id="48" Count="14" />
       <LineId Id="122" Count="0" />
-      <LineId Id="63" Count="1" />
-      <LineId Id="2" Count="0" />
+      <LineId Id="63" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

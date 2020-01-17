@@ -6,7 +6,6 @@ VAR_INPUT
 	fSetpointValue: LREAL:=0;
 	fActualValue :LREAL :=0;
 	fFF:LREAL:=0;
-	//iBlockSampleTimeMicroS: DINT;
 	fKp: LREAL:=0;
 	fKi: LREAL:=0;
 	fKd: LREAL:=0;

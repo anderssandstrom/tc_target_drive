@@ -3,21 +3,16 @@
   <POU Name="FB_BrakeTorque" Id="{ac54a68e-0c0d-4c2e-a105-bba2ce4e7751}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_BrakeTorque
 VAR_INPUT
-	
 	iTorqueValueinNm: LREAL;
 END_VAR
-
 VAR_OUTPUT
 	iTorqueScaled: INT; //Scaled torque value 
-    
 END_VAR
-	
 VAR
 	iTorqueMin:LREAL := 2; // Min brake torque in Nm
 	iTorqueMax:LREAL := 200; // Max brake torque in Nm
 	iVoltageDecMin:INT := 0; // 0V in decimal representation
 	iVoltageDecMax:INT := 32767; //10V in decimal representation
-
 END_VAR
 ]]></Declaration>
     <Implementation>

@@ -17,9 +17,6 @@ END_VAR
 VAR_IN_OUT
 	stCommands: ST_AXIS_COMMAND;
 END_VAR
-VAR
-
-END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Function: Constant velocity of target main  motor

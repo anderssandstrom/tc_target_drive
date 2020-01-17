@@ -10,7 +10,7 @@ VAR_GLOBAL CONSTANT
 	nSectors: LREAL :=36;
     nPulseFreqHz:LREAL:=14;
 	fNominalSpeedRpm: LREAL := GVL_Parameters.nPulseFreqHz/GVL_Parameters.nSectors*60;
-	fNominalSpeedAdjust: LREAL:=-0.000;//-0.0002;  //Timing system vs drive clock tuning. Automize later!
+	fNominalSpeedAdjust: LREAL:=0.001;//-0.0002;  //Timing system vs drive clock tuning. Automize later!
 	fPhaseSpeedTol:LREAL:=0.02;   //Speed for last rev needs to be below before start to phase
 	fHomeSpeedRpm: LREAL := 1;
     fMaximumSPeedRpm: LREAL := GVL_Parameters.fNominalSpeedRpm*1.1;

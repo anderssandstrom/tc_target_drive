@@ -23,9 +23,9 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[
-// Function: Superimpose of positioning 
-// CURRENTLLY NOT USED!!!!!! 
+// Function: Superimpose of positioning (ONLY FOR TARGET)
 // Author: Anders Sandström 2018
+
 IF NOT bExecute THEN
 	bBusy:=FALSE;
 	iCycleCounter:=0;
@@ -62,8 +62,9 @@ END_IF]]></ST>
     </Implementation>
     <LineIds Name="FB_TargetSuperImpose">
       <LineId Id="26" Count="0" />
-      <LineId Id="141" Count="1" />
+      <LineId Id="141" Count="0" />
       <LineId Id="140" Count="0" />
+      <LineId Id="162" Count="0" />
       <LineId Id="25" Count="0" />
       <LineId Id="31" Count="0" />
       <LineId Id="47" Count="0" />
