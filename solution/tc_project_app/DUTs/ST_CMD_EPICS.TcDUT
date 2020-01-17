@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.6">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
   <DUT Name="ST_CMD_EPICS" Id="{4efa13fc-0f5c-44cc-8a6d-b3a9305f00ac}">
     <Declaration><![CDATA[TYPE ST_CMD_EPICS :
 STRUCT
@@ -10,6 +10,7 @@ STRUCT
 	fVelSet:LREAL:=0;
 	fPosSet:LREAL:=0;
 	eTargetStateCmd: TARGET_STATE_MACHINE:=0;
+	ePhaseCntrlAlg:E_PHASE_TYPE:=E_PHASE_TYPE.PID;
 	
 	//brake
 	bBrakeLockOnCmd:BOOL:=FALSE;

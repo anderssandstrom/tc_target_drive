@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
+  <POU Name="FB_PWM" Id="{329fc295-5889-41aa-b7e1-38a034502569}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_PWM
+VAR_INPUT
+	En: BOOL;
+	bEnable: BOOL;
+	iBlockSampleTimeMicroS: DINT;
+	iProcessSampleTimeMicroS: DINT;
+	iDecimalPoint: INT;
+	fInput: LREAL;
+END_VAR
+VAR_OUTPUT
+	EnO: BOOL;
+	fOutput: LREAL;
+	fOutputError:LREAL:=0;  // Esitmated error of the PWM alg.
+END_VAR
+VAR
+	iNumCycles: DINT;
+	iBase: DINT;
+	fDecimals: LREAL;
+	i: INT;
+	iDecimalGain: DINT;
+	fOutputHigh: LREAL;
+	iHighCycles: DINT;
+	iLowCycles: DINT;
+	fOutputLow: LREAL;
+	iCycleCounter: DINT;
+	iLowCounter: INT;
+	iHighCounter: INT;
+	fActualPWM: LREAL;
+	fSetpointPWM: LREAL;
+	fInputOld:LREAL:=0;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Function: PWM block to be used to enhance resolution of signals
+// Usefull for instance when a ethercat slave communicates with ints and you need 
+// higher precision than the int provides. The desired input value are then PWM so that the
+// average over processSampleTime is as close as possile to the desired value.
+// Note: Average resolution will be higher on the cost of sample rate
+// Note: Error of PWM alg can be seen in fOutputError
+// Author: Anders Sandström 2018
+
+IF bEnable THEN
+  IF(fInput<>fInputOld) THEN // New input value
+    iNumCycles:=iProcessSampleTimeMicroS/iBlockSampleTimeMicroS; //71 if 71ms and 1ms
+	iDecimalGain:=1;
+	FOR i:=1 TO iDecimalPoint DO
+	  iDecimalGain:=iDecimalGain*10; //10000 if iDecimalpoint is 4
+	END_FOR
+	iBase:=TRUNC(fInput*iDecimalGain); //=900004 if fOverride=90.00045
+    fDecimals:=fInput*iDecimalGain-iBase; //=0.5 if fOverride=90.00045
+	iHighCycles:=LREAL_TO_INT(iNumCycles*fDecimals);
+    iLowCycles:=iNumCycles-iHighCycles;
+    fOutputLow:=DINT_TO_LREAL(iBase)/iDecimalGain; //90.0004
+    fOutputHigh:=DINT_TO_LREAL(iBase+1)/iDecimalGain; //90.0005
+	iCycleCounter:=0;
+	iLowCounter:=0;
+	iHighCounter:=0;
+	fOutputError:=(fDecimals-DINT_TO_LREAL(iHighCycles)/DINT_TO_LREAL(iNumCycles))/iDecimalGain;
+  END_IF
+  IF iCycleCounter > iNumCycles THEN
+	iCycleCounter:=0;
+	iLowCounter:=0;
+	iHighCounter:=0;	
+  END_IF
+  
+  iCycleCounter:=iCycleCounter+1;
+  IF iLowCycles > 0 THEN
+	IF iHighCycles > 0 THEN
+	  //Both high and low should be output during the period
+	  IF iLowCounter = 0 THEN
+		fOutput:=fOutputLow;
+		iLowCounter:=iLowCounter+1;
+	  ELSE
+	    IF iHighCounter = 0 THEN
+		  fOutput:=fOutputHigh;
+		  iHighCounter:=iHighCounter+1;
+	    ELSE //both counters is atleast 1
+		  fActualPWM:= DINT_TO_LREAL(iHighCounter)/DINT_TO_LREAL(iLowCounter+iHighCounter);
+		  fSetpointPWM:=DINT_TO_LREAL(iHighCycles)/DINT_TO_LREAL(iLowCycles+iHighCycles);
+		  IF fActualPWM>fSetpointPWM THEN
+		    fOutput:=fOutputLow;
+		    iLowCounter:=iLowCounter+1;
+		  ELSE
+            fOutput:=fOutputHigh;
+		    iHighCounter:=iHighCounter+1;
+		  END_IF				
+	    END_IF				
+	  END_IF
+    ELSE		
+	  fOutput:=fOutputLow;
+	  iLowCounter:=iLowCounter+1;
+    END_IF
+  ELSE
+    fOutput:=fOutputHigh;
+	iHighCounter:=iHighCounter+1;
+  END_IF
+ELSE	
+	fOutput:=fInput;	
+END_IF
+fInputOld:=fInput;
+]]></ST>
+    </Implementation>
+    <LineIds Name="FB_PWM">
+      <LineId Id="129" Count="0" />
+      <LineId Id="131" Count="0" />
+      <LineId Id="133" Count="1" />
+      <LineId Id="136" Count="0" />
+      <LineId Id="135" Count="0" />
+      <LineId Id="3" Count="0" />
+      <LineId Id="132" Count="0" />
+      <LineId Id="4" Count="0" />
+      <LineId Id="97" Count="0" />
+      <LineId Id="5" Count="6" />
+      <LineId Id="121" Count="0" />
+      <LineId Id="13" Count="2" />
+      <LineId Id="125" Count="1" />
+      <LineId Id="124" Count="0" />
+      <LineId Id="128" Count="0" />
+      <LineId Id="22" Count="5" />
+      <LineId Id="103" Count="0" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="30" Count="16" />
+      <LineId Id="105" Count="0" />
+      <LineId Id="48" Count="14" />
+      <LineId Id="122" Count="0" />
+      <LineId Id="63" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

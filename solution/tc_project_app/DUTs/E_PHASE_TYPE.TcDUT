@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
+  <DUT Name="E_PHASE_TYPE" Id="{40856cb0-38c3-45d6-836b-fc9ebb3c7ea0}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_PHASE_TYPE :
+(
+	NONE := 0,
+	PID:=1,
+	SUPERIMPOSE:=2,
+	ONLY_MEASURE:=3
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

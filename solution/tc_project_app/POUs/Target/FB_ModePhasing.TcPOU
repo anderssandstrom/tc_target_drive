@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.6">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
   <POU Name="FB_ModePhasing" Id="{d2a3a91d-9b2d-4e1e-8e68-2aba1e8abe60}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_ModePhasing
 VAR_INPUT
@@ -8,14 +8,12 @@ VAR_INPUT
 	stStatus: ST_AXIS_STATUS;
     dLatchedPosition: DINT;
 	fPhaseOffsetDeg: LREAL;
-    fPhaseControlKp: LREAL := 0.00001;
-	///Ti
-	fPhaseControlTn: LREAL := 0;
-	///Td
-	fPhaseControlTv: LREAL := 0;
-	///derviative damping
-	fPhaseControlTd: LREAL := 0;
+    fPhaseControlKp: LREAL := 0.0012;
+	fPhaseControlKi: LREAL := 0.00015;
+	fPhaseControlKd: LREAL := 0.0;
+	fPhaseControlKff: LREAL := 0.0;
 	bPhaseControlReset: BOOL := FALSE;
+	ePhaseType:E_PHASE_TYPE:=E_PHASE_TYPE.PID;
 END_VAR
 VAR_OUTPUT
 	bError: BOOL;
@@ -30,13 +28,14 @@ VAR_IN_OUT
 END_VAR
 VAR
 	fLatchedPositionOld: LREAL;
-	fDistancePerPulse: LREAL;
+	fDistBetweenLastPulses: LREAL;
 	fLastSectorVelocity: LREAL;
 	fVelocityFromDriveScaled: LREAL;
 	fClosestSectorId: LREAL;
 	nClosestSectorId: INT;
 	fLatchedPosition:LREAL;
 	//fbPhasePID: Tc2_Utilities.FB_BasicPID;
+	fbPhasePID: FB_PID;
 	fPhaseError: LREAL;
 	fPhaseErrorFiltered:LREAL;
 	fPhaseErrorMM: LREAL:=0;
@@ -44,6 +43,7 @@ VAR
 	fPhaseErrorAcc:LREAL;
 	ii: INT;
 	bTestReset: BOOL;
+	bNewTriggPulse:BOOL:=FALSE;
 	fArrayFiltVelo: ARRAY[ 0 ..35] OF LREAL;
 	fArrayPhaseErrorFilt: ARRAY[ 0 ..99] OF LREAL;
 	fArrayPhaseErrorLongTime: ARRAY[ 0 ..99] OF LREAL;
@@ -57,7 +57,7 @@ VAR
 	iRangeOKCounterOld:INT:=0;
 	nChoosenSector:INT:=0;
 	bPhaseAlgTrigg: BOOL;
-	fbPWM: FB_PWM_OVERRIDE_V0_01;
+	fbPWM: FB_PWM;
 	fbSuperImpose:FB_TargetSuperImpose;
 	bExecuteSuperImpose: BOOL;
 	fPhaseErrorSlope: LREAL;
@@ -65,255 +65,339 @@ VAR
 	fDeltaVelo: LREAL;
 	bVeloStable:BOOL:=FALSE;
 	timerCheckLatchFreq:TON;
-	fSpeedAdjust: LREAL := 0;
+	fNomSpeedSetAdjust: LREAL := 0;
+	bTEst: BOOL := FALSE;
+	fPidAdd: LREAL := 0;
+	fCtrlCycleTime: INT;
+	fTn: INT;
+	nPIDExeSkipCounter:INT:=0;
+	fSpeedSetpointLocal:LREAL:=0;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[//Reduce overshoot by lowering acc when closing in on setpoint 
-(*IF stStatus.fActualVelocity/10 > GVL_Parameters.fNominalSpeedRpm * 0.995  THEN
-  stCommands.fCommandAcceleration:= GVL_Parameters.fAccDefault;
-  stCommands.fCommandDeceleration:=GVL_Parameters.fAccDefault;	
-ELSIF stStatus.fActualVelocity/10 > GVL_Parameters.fNominalSpeedRpm * 0.9  THEN	
-  stCommands.fCommandAcceleration:= GVL_Parameters.fAccDefault*0.2;
-  stCommands.fCommandDeceleration:=GVL_Parameters.fAccDefault*0.2;	
-ELSIF stStatus.fActualVelocity/10 > GVL_Parameters.fNominalSpeedRpm * 0.80 THEN
-  stCommands.fCommandAcceleration:= GVL_Parameters.fAccDefault*0.35;
-  stCommands.fCommandDeceleration:=GVL_Parameters.fAccDefault*0.35;	
-ELSIF stStatus.fActualVelocity/10 > GVL_Parameters.fNominalSpeedRpm * 0.70 THEN
-  stCommands.fCommandAcceleration:= GVL_Parameters.fAccDefault*0.5;
-  stCommands.fCommandDeceleration:=GVL_Parameters.fAccDefault*0.5;	
-ELSE
-  stCommands.fCommandAcceleration:= GVL_Parameters.fAccDefault;
-  stCommands.fCommandDeceleration:=GVL_Parameters.fAccDefault;
-END_IF*)
+      <ST><![CDATA[// Function: 
+// 1. Wait for stable velocity then start "phasing" (depending on ePhaseMode)
+// 2. Choose sector for control
+// 3. Calculate phase error (buffer several revs and filter)
+// 4. Adjust velo setpoint to minimize phase error (PID)
+// 5. PWM of the new velocity setpoint in order to increase resolution
+// Note: Seems the indradrive can only hanlde 3 decimals (even if 4 is seen in interface and indradrive software)
+// Author: Anders Sandström 2018
 
 stCommands.fCommandDeceleration:=GVL_Parameters.fAccDefault;	
 stCommands.fCommandAcceleration:= GVL_Parameters.fAccDefault;
+stCommands.eMotionMode :=e_Motion_mode.eJogPositive;
+stCommands.eOperationMode:=e_Operation_mode_no.eSecondaryOpMode2;
+fVelocityFromDriveScaled:=stStatus.fActualVelocity/10;
+bNewTriggPulse:=FALSE;
+bPhasing:=FALSE;
+fNomSpeedSetAdjust:=GVL_Parameters.fNominalSpeedRpm + GVL_Parameters.fNominalSpeedAdjust; // Adjust speed setpoint
+bPhasing:=bPhaseAlgTrigg;
+
+// Reset alg
+IF NOT bExecute OR bPhaseControlReset THEN
+  bPhaseAlgTrigg:=FALSE;
+END_IF
 
 fLatchedPositionOld:=fLatchedPosition;
-
 fLatchedPosition:=DINT_TO_LREAL(dLatchedPosition)/10000.0;
+
+// New trigger from timing system
 IF (fLatchedPosition-fLatchedPositionOld)<>0 THEN
-  	IF(fLatchedPositionOld>fLatchedPosition) THEN
-		fDistancePerPulse:=(360-fLatchedPositionOld)+fLatchedPosition;
-    ELSE
-		fDistancePerPulse:=fLatchedPosition-fLatchedPositionOld;
+  IF(fLatchedPositionOld>fLatchedPosition) THEN
+	fDistBetweenLastPulses:=(360-fLatchedPositionOld+fLatchedPosition);
+  ELSE
+	fDistBetweenLastPulses:=fLatchedPosition-fLatchedPositionOld;
+  END_IF
+  bNewTriggPulse:=TRUE;
+  fLastSectorVelocity:=fDistBetweenLastPulses*GVL_Parameters.nPulseFreqHz*60/360;
+  nClosestSectorId:= LREAL_TO_INT(fLatchedPosition/10);
+  
+  // Check if stable velocity (close to nominal)	
+  iRangeOKCounterOld:=iRangeOKCounter;
+  fArrayFiltVelo[iFiltVeloArrayIndex]:=fLastSectorVelocity;
+  iFiltVeloArrayIndex:=iFiltVeloArrayIndex+1;
+  IF iFiltVeloArrayIndex>35 THEN
+	iFiltVeloArrayIndex:=0;
+  END_IF
+  fLastSectorVelocityOld:=fLastSectorVelocity;
+  fMaxValue:=fArrayFiltVelo[0];
+  fMinValue:=fArrayFiltVelo[0];
+  FOR i:=1 TO 35 BY 1 DO
+    IF fArrayFiltVelo[i]> fMaxValue THEN
+	  fMaxValue:=fArrayFiltVelo[i];  
+    END_IF
+    IF fArrayFiltVelo[i]< fMinValue THEN
+      fMinValue:=fArrayFiltVelo[i];  
+    END_IF
+  END_FOR;
+  fRange:=fMaxValue-fMinValue;
+  IF fRange < GVL_Parameters.fPhaseSpeedTol AND 
+     ABS(fNomSpeedSetAdjust-fMinValue) < GVL_Parameters.fPhaseSpeedTol AND  
+     ABS(fNomSpeedSetAdjust-fMaxValue) < GVL_Parameters.fPhaseSpeedTol THEN
+	IF iRangeOKCounter <= GVL_Parameters.nVeloInRangeCount THEN
+      iRangeOKCounter:=iRangeOKCounter+1;
 	END_IF
-	fLastSectorVelocity:=fDistancePerPulse*GVL_Parameters.nPulseFreqHz*60/360;		
+  ELSE
+	iRangeOKCounter:=0; 
+  END_IF
+  bVeloStable:=iRangeOKCounter >= GVL_Parameters.nVeloInRangeCount;
+  IF bVeloStable AND NOT bPhaseAlgTrigg (*AND bTEst*) THEN
+    nChoosenSector:=nClosestSectorId-1;
+    bPhaseAlgTrigg:=TRUE;
+    MEMSET(destAddr:=ADR(fArrayPhaseErrorFilt[0]),0,SIZEOF(fArrayPhaseErrorFilt));
+    fPhaseErrorFiltered:=0;
+  END_IF
 END_IF
 
 //Ensure that pulses arrive from timing system when velocity is above certain limit
 timerCheckLatchFreq(IN:=fLatchedPosition = fLatchedPositionOld AND ABS(stStatus.fActualVelocity)>0,PT:=LREAL_TO_TIME(1000/GVL_Parameters.nPulseFreqHz*2));
 
-
-fVelocityFromDriveScaled:=stStatus.fActualVelocity/10;
-nClosestSectorId:= LREAL_TO_INT(fLatchedPosition/10);	
-stCommands.eMotionMode :=e_Motion_mode.eJogPositive;
-stCommands.eOperationMode:=e_Operation_mode_no.eSecondaryOpMode2;
-
-bPhasing:=FALSE;
-IF  NOT bExecute  OR bTestReset OR bPhaseControlReset THEN
- fSpeedSetpoint:=0;
- //fbPhasePID(bReset:=TRUE);
- bPhaseAlgTrigg:=FALSE;
-END_IF
-IF fLastSectorVelocityOld <> fLastSectorVelocity THEN
-	iRangeOKCounterOld:=iRangeOKCounter;
-	fArrayFiltVelo[iFiltVeloArrayIndex]:=fLastSectorVelocity;
-	iFiltVeloArrayIndex:=iFiltVeloArrayIndex+1;
-	IF iFiltVeloArrayIndex>35 THEN
-		iFiltVeloArrayIndex:=0;
-	END_IF
-	fLastSectorVelocityOld:=fLastSectorVelocity;
-	fMaxValue:=fArrayFiltVelo[0];
-  fMinValue:=fArrayFiltVelo[0];
-  FOR i:=1 TO 35 BY 1 DO
-     IF fArrayFiltVelo[i]> fMaxValue THEN
-	   fMaxValue:=fArrayFiltVelo[i];  
-     END_IF
-     IF fArrayFiltVelo[i]< fMinValue THEN
-	   fMinValue:=fArrayFiltVelo[i];  
-     END_IF
-  END_FOR;
-  fRange:=fMaxValue-fMinValue;
-  IF fRange < 0.04 AND iRangeOKCounter < 1000 THEN 
-    iRangeOKCounter:=iRangeOKCounter+1;
-  END_IF
-  IF fRange >= 0.04 THEN
-    iRangeOKCounter:=0; 
-  END_IF
-END_IF
-
 IF NOT bPhaseAlgTrigg THEN
-	fPhaseError:=nClosestSectorId*10-fLatchedPosition;
+  fPhaseError:=nClosestSectorId*10-fLatchedPosition;
 END_IF
 
- IF iRangeOKCounter>GVL_Parameters.nVeloInRangeCount AND GVL_Parameters.nVeloInRangeCount <=100  AND NOT bPhaseAlgTrigg THEN
-    nChoosenSector:=nClosestSectorId-1;
-	bPhaseAlgTrigg:=TRUE;
-	MEMSET(destAddr:=ADR(fArrayPhaseErrorFilt[0]),0,SIZEOF(fArrayPhaseErrorFilt));
-	fPhaseErrorFiltered:=0;
- END_IF  
-	
-IF fLatchedPosition<>fLatchedPositionOld THEN
-    nChoosenSector:=nChoosenSector+1;
-	IF nChoosenSector >35 THEN
-         nChoosenSector:=0;
-    END_IF	
+IF bNewTriggPulse THEN
+  nChoosenSector:=nChoosenSector+1;
+  IF nChoosenSector > 35 THEN
+    nChoosenSector:=0;
+  END_IF	
 END_IF
 
-fPhaseError:=nChoosenSector*10-fLatchedPosition;
-IF fPhaseError >=180 THEN
+// Calculate phase error
+IF bPhaseAlgTrigg THEN
+  fPhaseError:=nChoosenSector*10-fLatchedPosition;
+  IF fPhaseError >=180 THEN
 	fPhaseError:=360-fPhaseError;
-ELSIF fPhaseError<-180 THEN
-	fPhaseError:=fPhaseError+360;		
+  ELSIF fPhaseError<-180 THEN
+	fPhaseError:=fPhaseError+360;
+  END_IF
+ELSE
+  fPhaseError:=nClosestSectorId*10-fLatchedPosition;
 END_IF
-bVeloStable:=iRangeOKCounter > 360;
-
 fPhaseErrorMM:=fPhaseError*GVL_Parameters.fWheelDiameter*pi/360.0; 
 
-IF  bPhaseAlgTrigg THEN
-  	bPhasing:=TRUE;
-END_IF
-
-//Adjust nominal speed (this function should be automated (adaptive))
-fSpeedSetpoint:=GVL_Parameters.fNominalSpeedRpm+ GVL_Parameters.fNominalSpeedAdjust;
-
-IF fSpeedSetpoint>GVL_Parameters.fMaximumSPeedRpm THEN
-  fSpeedSetpoint:=GVL_Parameters.fMaximumSPeedRpm; 
-END_IF
-
-IF NOT bExecute THEN
-	fSpeedSetpoint:=0;	
-END_IF
-
 //Filter phase error
-IF (fLatchedPosition-fLatchedPositionOld)<>0 THEN
-	MEMMOVE(destAddr:=ADR(fArrayPhaseErrorFilt[1]),srcAddr:=ADR(fArrayPhaseErrorFilt[0]),SIZEOF(LREAL)*(GVL_Parameters.nPhaseErrorFilterSize-1));
-	fArrayPhaseErrorFilt[0]:=fPhaseErrorMM;
-	fPhaseErrorFiltered:=0;
-	FOR ii := 0 TO (GVL_Parameters.nPhaseErrorFilterSize-1) DO
-		fPhaseErrorFiltered:=fPhaseErrorFiltered+fArrayPhaseErrorFilt[ii];
-	END_FOR
-	fPhaseErrorFiltered:=fPhaseErrorFiltered/GVL_Parameters.nPhaseErrorFilterSize;
+IF bNewTriggPulse THEN
+  MEMMOVE(destAddr:=ADR(fArrayPhaseErrorFilt[1]),srcAddr:=ADR(fArrayPhaseErrorFilt[0]),SIZEOF(LREAL)*(GVL_Parameters.nPhaseErrorFilterSize-1));
+  fArrayPhaseErrorFilt[0]:=fPhaseErrorMM;
+  fPhaseErrorFiltered:=0;
+  FOR ii := 0 TO (GVL_Parameters.nPhaseErrorFilterSize-1) DO
+    fPhaseErrorFiltered:=fPhaseErrorFiltered+fArrayPhaseErrorFilt[ii];
+  END_FOR
+  fPhaseErrorFiltered:=fPhaseErrorFiltered/GVL_Parameters.nPhaseErrorFilterSize;
 END_IF
 
 IF NOT fbSuperImpose.bBusy  THEN
   bExecuteSuperImpose:= NOT bExecuteSuperImpose;
 END_IF
 
-//Drops very fast from positive to negative error. So, Adjust more gently when phase error is positive
-IF(fPhaseErrorFiltered > 0) THEN  //Pos error
-  IF ABS(fPhaseErrorFiltered)>10 THEN
-    fDeltaVelo:= 0.01;
-  ELSIF ABS(fPhaseErrorFiltered)>4 THEN
-    fDeltaVelo:= 0.002;
-  ELSIF ABS(fPhaseErrorFiltered)>1 THEN
-    fDeltaVelo:= 0.002;
-  ELSIF ABS(fPhaseErrorFiltered)>0.5 THEN
-    fDeltaVelo:= 0.002;
+// Control phase in different ways
+// 1: PID
+// 2: Superimpose
+// 3: Only measure
+CASE ePhaseType OF
+  E_PHASE_TYPE.PID: 
+    // Phasing using PID controller
+	//  PID controller with integral anti windup is used to control phase error
+	
+    IF bNewTriggPulse AND bPhaseAlgTrigg THEN
+      nPIDExeSkipCounter:=nPIDExeSkipCounter + 1;
+	  
+      IF nPIDExeSkipCounter >= GVL_Parameters.nPhasePIDReducedSampleRateFactor THEN
+		//Limit output velocity difference from nominal
+        IF(fPhaseErrorFiltered > 0) THEN  //Pos error
+          IF ABS(fPhaseErrorFiltered)>15 THEN
+            fDeltaVelo:= 0.005;
+          ELSIF ABS(fPhaseErrorFiltered)>4 THEN
+            fDeltaVelo:= 0.003;
+          ELSIF ABS(fPhaseErrorFiltered)>1 THEN
+            fDeltaVelo:= 0.003;
+          ELSIF ABS(fPhaseErrorFiltered)>0.5 THEN
+            fDeltaVelo:= 0.002;
+          ELSE
+	        fDeltaVelo:= 0.002;
+          END_IF
+        ELSE // neg error
+          IF ABS(fPhaseErrorFiltered)>15 THEN  
+            fDeltaVelo:= 0.005;
+          ELSIF ABS(fPhaseErrorFiltered)>4 THEN
+            fDeltaVelo:= 0.003;
+          ELSIF ABS(fPhaseErrorFiltered)>1 THEN
+            fDeltaVelo:= 0.003;
+          ELSIF ABS(fPhaseErrorFiltered)>0.5 THEN
+            fDeltaVelo:= 0.003;
+          ELSE
+	        fDeltaVelo:= 0.003;
+          END_IF	
+        END_IF
+        nPIDExeSkipCounter:=0;
+        fbPhasePID(fSetpointValue:=0,
+                   fActualValue := fPhaseErrorFiltered,
+                   bReset       := bPhaseControlReset,
+		  	       fFF          := 0,
+			       fKp          := fPhaseControlKp,
+			       fKi          := fPhaseControlKi,
+			       fKd          := fPhaseControlKd,
+			       fKff         := fPhaseControlKff,
+			       fIOutputMin  :=-fDeltaVelo*0.65,
+			       fIOutputMax  := fDeltaVelo*0.65,
+			       fOutputMin   := -fDeltaVelo,
+			       fOutputMax   := fDeltaVelo);
+        fPidAdd:=fbPhasePID.fCtrlOutput;
+      END_IF
+    ELSIF NOT bPhaseAlgTrigg THEN
+      fbPhasePID(bReset:=TRUE);  //Reset pid since not used
+      fPidAdd:=0;
+    END_IF
+	fSpeedSetpointLocal:=fNomSpeedSetAdjust+fPidAdd;
+	
+  E_PHASE_TYPE.SUPERIMPOSE:  
+    // Phasing using position superimpose block
+	// Positioning is overeloaded over the constant velocity command
+	
+    //Limit output velocity difference from nominal
+    IF(fPhaseErrorFiltered > 0) THEN  //Pos error
+      IF ABS(fPhaseErrorFiltered)>15 THEN
+        fDeltaVelo:= 0.005;
+      ELSIF ABS(fPhaseErrorFiltered)>4 THEN
+        fDeltaVelo:= 0.003;
+      ELSIF ABS(fPhaseErrorFiltered)>1 THEN
+        fDeltaVelo:= 0.002;
+      ELSIF ABS(fPhaseErrorFiltered)>0.5 THEN
+        fDeltaVelo:= 0.002;
+      ELSE
+        fDeltaVelo:= 0.001;
+      END_IF
+    ELSE // neg error
+      IF ABS(fPhaseErrorFiltered)>15 THEN  
+        fDeltaVelo:= 0.005;
+      ELSIF ABS(fPhaseErrorFiltered)>4 THEN
+        fDeltaVelo:= 0.0035;
+      ELSIF ABS(fPhaseErrorFiltered)>1 THEN
+        fDeltaVelo:= 0.0035;
+      ELSIF ABS(fPhaseErrorFiltered)>0.5 THEN
+        fDeltaVelo:= 0.0035;
+      ELSE
+	    fDeltaVelo:= 0.0025;
+      END_IF	
+    END_IF  
+	fbSuperImpose(bExecute:=bExecuteSuperImpose AND bPhaseAlgTrigg,
+                  iSampleRateMs:=GVL_Parameters.nTaskSampleTime,
+                  fNominalVelocityRpm:=fNomSpeedSetAdjust,
+                  fMaxDeltaVelocityRpm:=fDeltaVelo,
+                  fPhaseErrorDeg:=fPhaseErrorFiltered/(GVL_Parameters.fWheelDiameter*pi)*360);
+ 
+    fSpeedSetpointLocal:=fbSuperImpose.fVelocitySetpointRpm;
+	fbPhasePID(bReset:=TRUE);  //Reset pid since not used
+	
+  E_PHASE_TYPE.ONLY_MEASURE:  
+    // No control, just measure phase error.
+	// Usefull for tuning nominal speed.
+	// Procedure: 
+	// 1: Set to "ONLY_MEASURE" mode
+	// 2: ramp up to nominal speed
+	// 3: at constant speed adjust GVL_Parameters.fNominalSpeedAdjust so that
+	//    phase error is not changing.
+	//    -if phase error is increasing then increase velocity
+	//    -if phase error is decreasing then decrease velocity 
+ 
+    fSpeedSetpointLocal:=fNomSpeedSetAdjust;
+	fbPhasePID(bReset:=TRUE);  //Reset pid since not used
   ELSE
-	fDeltaVelo:= 0.001;
-  END_IF
-ELSE // neg error
-  IF ABS(fPhaseErrorFiltered)>10 THEN  
-    fDeltaVelo:= 0.01;
-  ELSIF ABS(fPhaseErrorFiltered)>4 THEN
-    fDeltaVelo:= 0.004;
-  ELSIF ABS(fPhaseErrorFiltered)>1 THEN
-    fDeltaVelo:= 0.0025;
-  ELSIF ABS(fPhaseErrorFiltered)>0.5 THEN
-    fDeltaVelo:= 0.002;
-  ELSE
-	fDeltaVelo:= 0.001;
-  END_IF	
-END_IF
+	fSpeedSetpointLocal:=0;
+	fbPhasePID(bReset:=TRUE);  //Reset pid since not used
+END_CASE;
 
-fbSuperImpose(bExecute:=bExecuteSuperImpose AND bPhaseAlgTrigg,
-      iSampleRateMs:=10,
-      fNominalVelocityRpm:=fSpeedSetpoint,
-      fDeltaVelocityRpm:=fDeltaVelo,
-      fPhasePositionDeg:=fPhaseErrorFiltered/(GVL_Parameters.fWheelDiameter*pi)*360);  
-  
 fbPWM(
        En:=TRUE,
        bEnable:=TRUE,
-       iBlockSampleTimeMicroS:=10000,
-       iOverrideSampleTimeMicroS:=71000,
+       iBlockSampleTimeMicroS:=GVL_Parameters.nTaskSampleTime*1000,
+       iProcessSampleTimeMicroS:=71000*GVL_Parameters.nPhasePIDReducedSampleRateFactor,
        iDecimalPoint:=3,
-       fOverrideInput:=fbSuperImpose.fVelocitySetpointRpm);
-	   
-stCommands.fVelocityCommandValue:=fbPWM.fOverrideOutput;	   
+       fInput:=fSpeedSetpointLocal);
+
+fSpeedSetpoint:=fbPWM.fOutput;
+
+IF fSpeedSetpoint>GVL_Parameters.fMaximumSPeedRpm THEN
+  fSpeedSetpoint:=GVL_Parameters.fMaximumSPeedRpm; 
+END_IF
+
+IF NOT bExecute THEN
+  fSpeedSetpoint:=0;	
+END_IF
+
 dLatchedPositionOld:=dLatchedPosition;
  
 //*********Errorhandling
-
 // Latched pulses missing
 IF timerCheckLatchFreq.Q THEN
-	bError:=TRUE;
-	nErrorId:=GVL_ErrorCodes.nErrorNoLatchId;
-	sErrorStr:=GVL_ErrorCodes.sErrorNoLatchStr;
+  bError:=TRUE;
+  nErrorId:=GVL_ErrorCodes.nErrorNoLatchId;
+  sErrorStr:=GVL_ErrorCodes.sErrorNoLatchStr;
 END_IF
 
 IF bReset THEN
-	bError:=FALSE;
-	nErrorId:=0;
-END_IF]]></ST>
+  bError:=FALSE;
+  nErrorId:=0;
+END_IF
+]]></ST>
     </Implementation>
     <LineIds Name="FB_ModePhasing">
-      <LineId Id="847" Count="16" />
+      <LineId Id="1065" Count="0" />
+      <LineId Id="1070" Count="2" />
+      <LineId Id="1067" Count="0" />
+      <LineId Id="1330" Count="1" />
       <LineId Id="948" Count="0" />
+      <LineId Id="1068" Count="0" />
       <LineId Id="626" Count="0" />
-      <LineId Id="949" Count="1" />
-      <LineId Id="53" Count="0" />
-      <LineId Id="692" Count="0" />
-      <LineId Id="54" Count="7" />
+      <LineId Id="949" Count="0" />
+      <LineId Id="1077" Count="0" />
+      <LineId Id="1074" Count="0" />
+      <LineId Id="1078" Count="0" />
+      <LineId Id="1083" Count="1" />
+      <LineId Id="1050" Count="0" />
+      <LineId Id="1086" Count="0" />
+      <LineId Id="1150" Count="0" />
+      <LineId Id="1149" Count="0" />
+      <LineId Id="1146" Count="1" />
+      <LineId Id="1136" Count="0" />
+      <LineId Id="1148" Count="0" />
+      <LineId Id="53" Count="1" />
+      <LineId Id="1119" Count="0" />
+      <LineId Id="1118" Count="0" />
+      <LineId Id="55" Count="5" />
+      <LineId Id="1047" Count="0" />
+      <LineId Id="61" Count="0" />
+      <LineId Id="1088" Count="0" />
+      <LineId Id="1121" Count="0" />
+      <LineId Id="1116" Count="0" />
+      <LineId Id="1090" Count="25" />
+      <LineId Id="1089" Count="0" />
+      <LineId Id="1123" Count="0" />
+      <LineId Id="1128" Count="0" />
+      <LineId Id="1124" Count="3" />
+      <LineId Id="1129" Count="0" />
       <LineId Id="63" Count="0" />
       <LineId Id="698" Count="0" />
       <LineId Id="694" Count="0" />
       <LineId Id="693" Count="0" />
-      <LineId Id="697" Count="0" />
-      <LineId Id="696" Count="0" />
-      <LineId Id="64" Count="0" />
-      <LineId Id="72" Count="0" />
-      <LineId Id="48" Count="0" />
-      <LineId Id="11" Count="0" />
-      <LineId Id="121" Count="4" />
-      <LineId Id="415" Count="0" />
-      <LineId Id="127" Count="0" />
-      <LineId Id="224" Count="0" />
-      <LineId Id="285" Count="0" />
-      <LineId Id="226" Count="0" />
-      <LineId Id="228" Count="4" />
-      <LineId Id="261" Count="15" />
-      <LineId Id="260" Count="0" />
-      <LineId Id="227" Count="0" />
       <LineId Id="287" Count="0" />
       <LineId Id="411" Count="2" />
-      <LineId Id="322" Count="2" />
-      <LineId Id="356" Count="0" />
-      <LineId Id="563" Count="1" />
-      <LineId Id="336" Count="7" />
+      <LineId Id="336" Count="0" />
+      <LineId Id="338" Count="0" />
+      <LineId Id="1133" Count="2" />
+      <LineId Id="342" Count="1" />
+      <LineId Id="1145" Count="0" />
+      <LineId Id="1144" Count="0" />
       <LineId Id="347" Count="0" />
       <LineId Id="346" Count="0" />
       <LineId Id="348" Count="1" />
       <LineId Id="354" Count="1" />
-      <LineId Id="350" Count="1" />
+      <LineId Id="350" Count="0" />
+      <LineId Id="1141" Count="1" />
       <LineId Id="329" Count="0" />
       <LineId Id="345" Count="0" />
-      <LineId Id="933" Count="0" />
-      <LineId Id="129" Count="0" />
-      <LineId Id="132" Count="0" />
-      <LineId Id="135" Count="0" />
-      <LineId Id="958" Count="0" />
-      <LineId Id="951" Count="0" />
-      <LineId Id="259" Count="0" />
-      <LineId Id="146" Count="0" />
-      <LineId Id="145" Count="0" />
-      <LineId Id="147" Count="1" />
-      <LineId Id="138" Count="1" />
-      <LineId Id="153" Count="0" />
-      <LineId Id="152" Count="0" />
       <LineId Id="944" Count="0" />
       <LineId Id="88" Count="0" />
       <LineId Id="157" Count="0" />
@@ -328,34 +412,60 @@ END_IF]]></ST>
       <LineId Id="532" Count="0" />
       <LineId Id="529" Count="0" />
       <LineId Id="537" Count="0" />
-      <LineId Id="976" Count="0" />
-      <LineId Id="960" Count="0" />
-      <LineId Id="959" Count="0" />
-      <LineId Id="931" Count="1" />
-      <LineId Id="929" Count="0" />
-      <LineId Id="928" Count="0" />
-      <LineId Id="946" Count="1" />
-      <LineId Id="548" Count="0" />
-      <LineId Id="531" Count="0" />
-      <LineId Id="560" Count="0" />
-      <LineId Id="553" Count="0" />
-      <LineId Id="552" Count="0" />
-      <LineId Id="961" Count="0" />
-      <LineId Id="964" Count="10" />
-      <LineId Id="963" Count="0" />
-      <LineId Id="551" Count="0" />
-      <LineId Id="514" Count="0" />
-      <LineId Id="516" Count="3" />
-      <LineId Id="526" Count="0" />
-      <LineId Id="470" Count="5" />
-      <LineId Id="166" Count="0" />
-      <LineId Id="478" Count="0" />
+      <LineId Id="1551" Count="0" />
+      <LineId Id="1338" Count="0" />
+      <LineId Id="1552" Count="2" />
+      <LineId Id="1337" Count="0" />
+      <LineId Id="1344" Count="0" />
+      <LineId Id="1476" Count="2" />
+      <LineId Id="1351" Count="0" />
+      <LineId Id="1353" Count="0" />
+      <LineId Id="1410" Count="0" />
+      <LineId Id="1354" Count="0" />
+      <LineId Id="1412" Count="24" />
+      <LineId Id="1411" Count="0" />
+      <LineId Id="1355" Count="12" />
+      <LineId Id="1369" Count="1" />
+      <LineId Id="1372" Count="2" />
+      <LineId Id="1350" Count="0" />
+      <LineId Id="1375" Count="0" />
+      <LineId Id="1404" Count="0" />
+      <LineId Id="1346" Count="0" />
+      <LineId Id="1473" Count="2" />
+      <LineId Id="1462" Count="0" />
+      <LineId Id="1438" Count="9" />
+      <LineId Id="1463" Count="0" />
+      <LineId Id="1449" Count="12" />
+      <LineId Id="1384" Count="0" />
+      <LineId Id="1378" Count="3" />
+      <LineId Id="1376" Count="0" />
+      <LineId Id="1406" Count="0" />
+      <LineId Id="1382" Count="1" />
+      <LineId Id="1408" Count="0" />
+      <LineId Id="1347" Count="0" />
+      <LineId Id="1464" Count="6" />
+      <LineId Id="1556" Count="1" />
+      <LineId Id="1472" Count="0" />
+      <LineId Id="1348" Count="0" />
+      <LineId Id="1403" Count="0" />
+      <LineId Id="1377" Count="0" />
+      <LineId Id="1349" Count="0" />
+      <LineId Id="1409" Count="0" />
+      <LineId Id="1345" Count="0" />
+      <LineId Id="1280" Count="0" />
+      <LineId Id="1273" Count="5" />
+      <LineId Id="1272" Count="0" />
       <LineId Id="476" Count="0" />
+      <LineId Id="1043" Count="0" />
+      <LineId Id="1397" Count="0" />
+      <LineId Id="1392" Count="2" />
+      <LineId Id="1402" Count="0" />
+      <LineId Id="1395" Count="1" />
+      <LineId Id="1391" Count="0" />
+      <LineId Id="1398" Count="0" />
       <LineId Id="161" Count="0" />
       <LineId Id="160" Count="0" />
-      <LineId Id="712" Count="0" />
-      <LineId Id="714" Count="0" />
-      <LineId Id="713" Count="0" />
+      <LineId Id="712" Count="1" />
       <LineId Id="700" Count="1" />
       <LineId Id="703" Count="0" />
       <LineId Id="782" Count="0" />
@@ -365,6 +475,7 @@ END_IF]]></ST>
       <LineId Id="707" Count="0" />
       <LineId Id="709" Count="0" />
       <LineId Id="708" Count="0" />
+      <LineId Id="1555" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.6">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
   <POU Name="FB_ModeHome" Id="{d7b39c30-3a80-4d2f-9742-8a95cc6e84c5}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_ModeHome
 VAR_INPUT
@@ -22,12 +22,19 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[stCommands.eMotionMode:=e_Motion_mode.ePositioning;
+      <ST><![CDATA[// Function: Initiate homing of target main  motor
+// Actual homing will be performed by the drive.
+// Author: Anders Sandström 2018
+
+stCommands.eMotionMode:=e_Motion_mode.ePositioning;
 stCommands.bCmd_DriveControlledHoming:=bExecute;
 stCommands.fVelocityCommandValue:=GVL_Parameters.fHomeSpeedRpm;
 stCommands.fCommandVelocity:=GVL_Parameters.fHomeSpeedRpm;]]></ST>
     </Implementation>
     <LineIds Name="FB_ModeHome">
+      <LineId Id="912" Count="1" />
+      <LineId Id="911" Count="0" />
+      <LineId Id="914" Count="0" />
       <LineId Id="888" Count="1" />
       <LineId Id="891" Count="0" />
       <LineId Id="708" Count="0" />

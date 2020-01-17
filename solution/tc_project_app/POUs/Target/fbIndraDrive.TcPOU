@@ -17,7 +17,6 @@ VAR
 	fbReadParameter					: FB_EcSoERead;
 	nS149_DataStatus				: UDINT	:= 0;
 	bDummy: BOOL;
-	ii: INT;
 END_VAR
 
 VAR CONSTANT
@@ -176,7 +175,7 @@ sAmsNetId := F_CreateAmsNetId(AmsNetId);
 		
 		// Enabling of the Axis 
 		IF (NOT stAxisCommands.bEnableAxis) THEN 
-			stDriveCommands.stS134_MasterControlWord.bS134_DriveEnable	:= TRUE; 
+			stDriveCommands.stS134_MasterControlWord.bS134_DriveEnable	:= FALSE; 
 			stDriveCommands.stS134_MasterControlWord.bS134_DriveOn		:= FALSE; 
 			stDriveCommands.stS134_MasterControlWord.bS134_DriveHalt	:= FALSE; 
 		ELSIF stAxisCommands.bEnableAxis AND (NOT stAxisCommands.bHaltAxis) THEN 
@@ -202,8 +201,7 @@ sAmsNetId := F_CreateAmsNetId(AmsNetId);
 				stDriveCommands.stS145_SignalControlWord.bS346_2_PosCtrlWord_PosActivation	:= TRUE; 				
 			E_MOTION_MODE.ePositioning: 
 				stDriveCommands.stS145_SignalControlWord.bS346_1_PosCtrlWord_PosActivation	:= FALSE; 
-				stDriveCommands.stS145_SignalControlWord.bS346_2_PosCtrlWord_PosActivation	:= FALSE; 	
-ii:=ii-1;			
+				stDriveCommands.stS145_SignalControlWord.bS346_2_PosCtrlWord_PosActivation	:= FALSE; 				
 		END_CASE
 		
 		// Position command change 
@@ -279,9 +277,7 @@ ii:=ii-1;
 ]]></ST>
     </Implementation>
     <LineIds Name="fbIndraDrive">
-      <LineId Id="3" Count="176" />
-      <LineId Id="296" Count="0" />
-      <LineId Id="180" Count="58" />
+      <LineId Id="3" Count="235" />
       <LineId Id="272" Count="1" />
       <LineId Id="239" Count="10" />
       <LineId Id="2" Count="0" />

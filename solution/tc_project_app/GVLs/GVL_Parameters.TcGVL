@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.6">
-  <GVL Name="GVL_Parameters" Id="{c7b465dd-090c-4ea5-b2d2-91bf4a0ef82f}">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
+  <GVL Name="GVL_Parameters" Id="{5744ec71-fce0-400b-ae43-6b52add682c5}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
 	fSpeedToleranceRpm: LREAL := 0.05;
@@ -10,17 +10,20 @@ VAR_GLOBAL CONSTANT
 	nSectors: LREAL :=36;
     nPulseFreqHz:LREAL:=14;
 	fNominalSpeedRpm: LREAL := GVL_Parameters.nPulseFreqHz/GVL_Parameters.nSectors*60;
-	fNominalSpeedAdjust: LREAL:=-0.0002;  //Timing system vs drive clock tuning. Automize later!
+	fNominalSpeedAdjust: LREAL:=0.001;//-0.0002;  //Timing system vs drive clock tuning. Automize later!
+	fPhaseSpeedTol:LREAL:=0.02;   //Speed for last rev needs to be below before start to phase
 	fHomeSpeedRpm: LREAL := 1;
     fMaximumSPeedRpm: LREAL := GVL_Parameters.fNominalSpeedRpm*1.1;
 	nMaxMotorTemperature: INT:= 80;
 	nMaxBrakeTemperature: INT:= 100;
 	fWheelDiameter:LREAL:=2500;
-	fAccDefault:LREAL:=0.001;
+	fAccDefault:LREAL:=0.039;  //RPM/S^2 (0.039 => tn min to 23.3) 
 	nPhaseErrorFilterSize:INT:=36;  //Two revs
 	nVeloInRangeCount:INT:=100;
-	nSuperPosMaxCyclesToOutput:INT:=300;
+	nSuperPosMaxCyclesToOutput:INT:=100;
 	fSuperPosDutyCycle:LREAL:=2.0/3.0;
+	nTaskSampleTime:INT:=1;
+	nPhasePIDReducedSampleRateFactor:INT:=1;   //run pid every time new pulse
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
