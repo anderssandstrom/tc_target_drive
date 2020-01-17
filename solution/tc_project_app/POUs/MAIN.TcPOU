@@ -103,7 +103,8 @@ CASE stStatEpics.eTargetState OF
 			bExecute:=         stCmdEpics.bExecute,
             bReset:=           stCmdEpics.bReset,
 			stStatus:=	       stStatus,
-			dLatchedPosition:= dLatchedPosition,	
+			dLatchedPosition:= dLatchedPosition,
+			ePhaseType:=stCmdEpics.ePhaseCntrlAlg,
 			stCommands:=       stCommands);
 			
 			//ramp velocity with selected acceleration (as long as not phasing)
@@ -125,6 +126,7 @@ CASE stStatEpics.eTargetState OF
 			fPosSet:=          stCmdEpics.fPosSet,
 			stStatus:=	       stStatus,	
 			stCommands:=       stCommands);
+			
 	TARGET_STATE_MACHINE.TORQUE:
 		stCommands.eOperationMode:=E_OPERATION_MODE_NO.eSecondaryOpMode7;
 	    stCommands.eMotionMode :=e_Motion_mode.eJogPositive;
@@ -350,6 +352,7 @@ END_IF]]></ST>
       <LineId Id="810" Count="0" />
       <LineId Id="443" Count="0" />
       <LineId Id="447" Count="0" />
+      <LineId Id="1391" Count="0" />
       <LineId Id="472" Count="0" />
       <LineId Id="1328" Count="1" />
       <LineId Id="1331" Count="0" />
@@ -366,6 +369,7 @@ END_IF]]></ST>
       <LineId Id="1103" Count="0" />
       <LineId Id="1101" Count="0" />
       <LineId Id="1009" Count="0" />
+      <LineId Id="1392" Count="0" />
       <LineId Id="1049" Count="0" />
       <LineId Id="1257" Count="1" />
       <LineId Id="1260" Count="0" />
