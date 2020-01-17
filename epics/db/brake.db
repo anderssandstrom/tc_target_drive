@@ -1,0 +1,128 @@
+
+record(bi,"$(P)Rotation-Brk-FreeWheelOn-Stat"){
+  field(PINI, "1")
+#   field(TSE, -2)
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.bBrakeFreeWheelOn?")
+  field(SCAN,"I/O Intr")
+  field(ZNAM,"Operation Mode")
+  field(ONAM,"Param Mode")
+  field(DESC,"Rotation: Brake Freewheel On ")
+}
+
+record(bi,"$(P)Rotation-Brk-LockedOn-Stat"){
+  field(PINI, "1")
+#   field(TSE, -2)
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.bBrakeLockedOn?")
+  field(SCAN,"I/O Intr")
+  field(ZNAM,"Operation Mode")
+  field(ONAM,"Param Mode")
+  field(DESC,"Rotation: Brake Locked On ")
+}
+
+record(ai,"$(P)Rotation-Brk-TorqueRaw-Cmd-RB"){
+  field(PINI, "1")
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.iBrakeSpRaw?")
+  field(PREC, "0")
+  field(SCAN, "I/O Intr")
+  field(DESC, "Rotation: Brake Torque Raw SP")
+}
+
+record(ao,"$(P)Rotation-Brk-Torque-Cmd"){
+  info(asyn:READBACK,"1")
+  field(PINI, "1")
+#   field(TSE, -2)
+  field(DTYP, "asynFloat64")
+  field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stCmdEpics.fBrakeSpNm?")
+  field(PREC, "3")
+  field(SCAN,"Passive")
+  field(DESC, "Rotation: Brake Torque SP Nm")
+}
+
+record(bo,"$(P)Rotation-Brk-FreeWheelOn-Cmd"){
+  info(asyn:READBACK,"1")
+  field(PINI, "1")
+#   field(TSE, -2)
+  field(DTYP, "asynInt32")
+  field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stCmdEpics.bFreeWheelOnOnCmd?")
+  field(SCAN,"Passive")
+  field(ZNAM,"Brake")
+  field(ONAM,"Freewheel")
+  field(DESC, "Rotation: Brake Free Wheel Cmd")
+}
+
+record(bo,"$(P)Rotation-Brk-LockedOn-Cmd"){
+  info(asyn:READBACK,"1")
+  field(PINI, "1")
+#   field(TSE, -2)
+  field(DTYP, "asynInt32")
+  field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stCmdEpics.bBrakeLockOnCmd?")
+  field(SCAN,"Passive")
+  field(ZNAM,"Unlock")
+  field(ONAM,"Lock")
+  field(DESC, "Rotation: Brake Lock On Cmd")
+}
+
+record(ai,"$(P)Rotation-Brk-Temp1-Act"){
+  field(PINI, "1")
+#  field(TSE,  "-2")
+  field(DTYP, "asynFloat64")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.fBrakeActTemp1?")
+  field(PREC, "0")
+  field(SCAN, "I/O Intr")
+  field(DESC, "Rotation: Brake Temp 1")
+}
+
+record(ai,"$(P)Rotation-Brk-Temp2-Act"){
+  field(PINI, "1")
+#  field(TSE,  "-2")
+  field(DTYP, "asynFloat64")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.fBrakeActTemp2?")
+  field(PREC, "0")
+  field(SCAN, "I/O Intr")
+  field(DESC, "Rotation: Brake Temp 2")
+}
+
+record(bi,"$(P)Rotation-Brk-Temp1-Alm"){
+  field(PINI, "1")
+#  field(TSE,  "-2")
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.bBrake1TempAlarm?")
+  field(ZNAM,"No Alarm")
+  field(ONAM,"Alarm")
+  field(SCAN, "I/O Intr")
+  field(DESC, "Brake: Temp to high (sensor 1)")
+}
+
+record(bi,"$(P)Rotation-Brk-Temp2-Alm"){
+  field(PINI, "1")
+#  field(TSE,  "-2")
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.bBrake2TempAlarm?")
+  field(ZNAM,"No Alarm")
+  field(ONAM,"Alarm")
+  field(SCAN, "I/O Intr")
+  field(DESC, "Brake: Temp to high (sensor 2)")
+}
+
+record(ai,"$(P)Rotation-Brk-Temp1-Act-Slow"){
+  field(PINI, "1")
+#  field(TSE,  "-2")
+  field(DTYP, "asynFloat64")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.fBrakeActTemp1?")
+  field(PREC, "0")
+  field(SCAN, "1 second")
+  field(DESC, "Rotation: Brake Temp 1 Slow")
+}
+
+record(ai,"$(P)Rotation-Brk-Temp2-Act-Slow"){
+  field(PINI, "1")
+#  field(TSE,  "-2")
+  field(DTYP, "asynFloat64")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.fBrakeActTemp2?")
+  field(PREC, "0")
+  field(SCAN, "1 second")
+  field(DESC, "Rotation: Brake Temp 2 Slow")
+}
