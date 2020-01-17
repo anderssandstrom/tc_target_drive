@@ -1,6 +1,5 @@
 record(bo,"$(P)Rotation-Ena-Cmd"){
   field(PINI, "1")
-#  field(TSE,  "-2")
   field(DTYP, "asynInt32")
   field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stCmdEpics.bEnable=")
   field(SCAN, "Passive")
@@ -10,8 +9,7 @@ record(bo,"$(P)Rotation-Ena-Cmd"){
 }
 
 record(bi,"$(P)Rotation-Ena-Cmd-RB"){
-  field(PINI, "1")
-#  field(TSE,  "-2")
+  field(PINI, "1")  
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stCmdEpics.bEnable?")
   field(SCAN, "I/O Intr")
@@ -22,7 +20,6 @@ record(bi,"$(P)Rotation-Ena-Cmd-RB"){
 
 record(bi,"$(P)Rotation-Ena-Stat"){
   field(PINI, "1")
-#  field(TSE,  "-2")
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.bEnabled?")
   field(SCAN, "I/O Intr")
@@ -33,7 +30,6 @@ record(bi,"$(P)Rotation-Ena-Stat"){
 
 record(ai,"$(P)Rotation-ActPos"){
   field(PINI, "1")
-#  field(TSE,  "-2")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.stStatEpics.fActPos?")
   field(PREC, "3")
@@ -43,7 +39,6 @@ record(ai,"$(P)Rotation-ActPos"){
 
 record(ai,"$(P)Rotation-ActVel"){
   field(PINI, "1")
- # field(TSE,  "-2")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.fActVel?")
   field(SCAN, "I/O Intr")
@@ -55,7 +50,6 @@ record(ai,"$(P)Rotation-ActVel"){
 
 record(ai,"$(P)Rotation-ActTorque"){
   field(PINI, "1")
- # field(TSE,  "-2")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.fActTorque?")
   field(PREC, "3")
@@ -65,7 +59,6 @@ record(ai,"$(P)Rotation-ActTorque"){
 
 record(ai,"$(P)Rotation-ActTemp"){
   field(PINI, "1")
- # field(TSE,  "-2")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.fActTemp?")
   field(PREC, "2")
@@ -75,7 +68,6 @@ record(ai,"$(P)Rotation-ActTemp"){
 
 record(ai,"$(P)Rotation-ActPhaseErrorMM"){
   field(PINI, "1")
- # field(TSE,  "-2")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.fPhaseErrorMM?")
   field(PREC, "3")
@@ -86,7 +78,6 @@ record(ai,"$(P)Rotation-ActPhaseErrorMM"){
 record(ao,"$(P)Rotation-State-Cmd"){
   info(asyn:READBACK,"1")
   field(PINI, "1")
- # field(TSE,  "-2")
   field(DTYP, "asynInt32")
   field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))ADSPORT=852/Main.stCmdEpics.eTargetStateCmd?")
   field(SCAN, "Passive")
@@ -95,7 +86,6 @@ record(ao,"$(P)Rotation-State-Cmd"){
 
 record(ai,"$(P)Rotation-State-Stat"){  
   field(PINI, "1")
- # field(TSE,  "-2")
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))ADSPORT=852/Main.stStatEpics.eTargetState?")
   field(SCAN, "I/O Intr")
@@ -105,7 +95,6 @@ record(ai,"$(P)Rotation-State-Stat"){
 record(bo,"$(P)Rotation-Exe-Cmd"){
   info(asyn:READBACK,"1")
   field(PINI, "1")
-#  field(TSE,  "-2")
   field(DTYP, "asynInt32")
   field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stCmdEpics.bExecute?")
   field(SCAN, "Passive")
@@ -117,7 +106,6 @@ record(bo,"$(P)Rotation-Exe-Cmd"){
 record(bo,"$(P)Rotation-Rst-Cmd"){
   info(asyn:READBACK,"1")
   field(PINI, "1")
-#  field(TSE,  "-2")
   field(DTYP, "asynInt32")
   field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stCmdEpics.bReset?")
   field(SCAN, "Passive")
@@ -129,7 +117,6 @@ record(bo,"$(P)Rotation-Rst-Cmd"){
 record(ao,"$(P)Rotation-MaxMotorTemp-Cmd"){
   info(asyn:READBACK,"1")
   field(PINI, "1")
-#  field(TSE,  "-2")
   field(DTYP, "asynInt32")
   field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/GVL_Parameters.nMaxMotorTemperature?")
   field(PREC, "1")
@@ -139,7 +126,6 @@ record(ao,"$(P)Rotation-MaxMotorTemp-Cmd"){
 
 record(ai,"$(P)Rotation-LatchedPos"){
   field(PINI, "1")
-#  field(TSE,  "-2")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.fLatchedPosition?")
   field(PREC, "0")
@@ -149,7 +135,6 @@ record(ai,"$(P)Rotation-LatchedPos"){
 
 record(bi,"$(P)Rotation-Phasing-Stat"){
   field(PINI, "1")
-#  field(TSE,  "-2")
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.bPhasing?")  
   field(SCAN, "I/O Intr")
@@ -158,7 +143,6 @@ record(bi,"$(P)Rotation-Phasing-Stat"){
 
 record(ai,"$(P)Rotation-ClosestSectorID"){
   field(PINI, "1")
-#  field(TSE,  "-2")
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.nClosestSectorId?")
   field(PREC, "0")
@@ -168,7 +152,6 @@ record(ai,"$(P)Rotation-ClosestSectorID"){
 
 record(ai,"$(P)Rotation-ChoosenSector"){
   field(PINI, "1")
-#  field(TSE,  "-2")
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.nChoosenSector?")
   field(PREC, "0")
@@ -178,7 +161,6 @@ record(ai,"$(P)Rotation-ChoosenSector"){
 
 record(ai,"$(P)Rotation-Cntrl-Cmd"){
   field(PINI, "1")
-#  field(TSE,  "-2")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.fCtrlOutput?")
   field(PREC, "3")
@@ -188,7 +170,6 @@ record(ai,"$(P)Rotation-Cntrl-Cmd"){
 
 record(ai,"$(P)Rotation-Vel-Stable-Count"){
   field(PINI, "1")
-#  field(TSE,  "-2")
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.iRangeOkCounter?")
   field(PREC, "0")
@@ -198,19 +179,16 @@ record(ai,"$(P)Rotation-Vel-Stable-Count"){
 
 record(bi,"$(P)Rotation-Vel-Stable"){
   field(PINI, "1")
-#  field(TSE,  "-2")
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.bVeloStable?")  
   field(SCAN, "I/O Intr")
   field(DESC, "Rotation: Velocity Stable")
   field(ZNAM, "Unstable")
   field(ONAM, "Stable")
-
 }
 
 record(ai,"$(P)Rotation--Stat"){
   field(PINI, "1")
-#  field(TSE,  "-2")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.fSetVelRaw?")
   field(PREC, "0")
@@ -220,7 +198,6 @@ record(ai,"$(P)Rotation--Stat"){
 
 record(ai,"$(P)Rotation-ActVel-LastSector"){
   field(PINI, "1")
-#  field(TSE,  "-2")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.fLastSectorVelocity?")
   field(PREC, "0")
@@ -241,7 +218,6 @@ record(waveform,"$(P)ErrorStr"){
 
 record(ai,"$(P)ErrorId"){
   field(PINI, "1")
-#  field(TSE,  "-2")
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.nErrorId?")
   field(PREC, "0")
@@ -251,17 +227,14 @@ record(ai,"$(P)ErrorId"){
 
 record(bi,"$(P)Error"){
   field(PINI, "1")
-#  field(TSE,  "-2")
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.bError?")
-  field(PREC, "0")
   field(SCAN, "I/O Intr")
   field(DESC, "Error")
 }
 
 record(ai,"$(P)Rotation-ActTemp_1Hz"){
   field(PINI, "1")
-#  field(TSE,  "-2")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.fActTemp?")
   field(PREC, "2")
@@ -271,7 +244,6 @@ record(ai,"$(P)Rotation-ActTemp_1Hz"){
 
 record(ai,"$(P)Rotation-ActTorque_1Hz"){
   field(PINI, "1")
-#  field(TSE,  "-2")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.fActTorque?")
   field(PREC, "3")
@@ -281,7 +253,6 @@ record(ai,"$(P)Rotation-ActTorque_1Hz"){
 
 record(ai,"$(P)Rotation-ActPhaseErrorMM_1Hz"){
   field(PINI, "1")
-#  field(TSE,  "-2")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.fPhaseErrorMM?")
   field(PREC, "3")
@@ -291,7 +262,6 @@ record(ai,"$(P)Rotation-ActPhaseErrorMM_1Hz"){
 
 record(ai,"$(P)Rotation-ActVel_1Hz"){
   field(PINI, "1")
-#  field(TSE,  "-2")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.fActVel?")
   field(SCAN, "1 second")
@@ -303,7 +273,6 @@ record(ai,"$(P)Rotation-ActVel_1Hz"){
 
 record(ai,"$(P)Rotation-Vel-Cmd_1Hz"){
   field(PINI, "1")
-#  field(TSE,  "-2")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.fSetVelRaw?")
   field(PREC, "0")
@@ -314,7 +283,6 @@ record(ai,"$(P)Rotation-Vel-Cmd_1Hz"){
 record(ao,"$(P)Rotation-Vel-Cmd"){
   info(asyn:READBACK,"1")
   field(PINI, "1")
-#  field(TSE,  "-2")
   field(DTYP, "asynInt32")
   field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stCmdEpics.fVelSet?")
   field(PREC, "1")
@@ -325,7 +293,6 @@ record(ao,"$(P)Rotation-Vel-Cmd"){
 record(ao,"$(P)Rotation-Pos-Cmd"){
   info(asyn:READBACK,"1")
   field(PINI, "1")
-#  field(TSE,  "-2")
   field(DTYP, "asynInt32")
   field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stCmdEpics.fPosSet?")
   field(PREC, "1")
@@ -335,7 +302,6 @@ record(ao,"$(P)Rotation-Pos-Cmd"){
 
 record(ai,"$(P)Rotation-ActTemp_Slow"){
   field(PINI, "1")
-#  field(TSE,  "-2")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.fActTemp?")
   field(PREC, "2")
@@ -345,7 +311,6 @@ record(ai,"$(P)Rotation-ActTemp_Slow"){
 
 record(ai,"$(P)Rotation-ActPhaseErrorMM_Slow"){
   field(PINI, "1")
-#  field(TSE,  "-2")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.fPhaseErrorMM?")
   field(PREC, "3")
@@ -355,7 +320,6 @@ record(ai,"$(P)Rotation-ActPhaseErrorMM_Slow"){
 
 record(ai,"$(P)Rotation-ActVel_Slow"){
   field(PINI, "1")
-#  field(TSE,  "-2")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.fActVel?")
   field(SCAN, "1 second")
@@ -367,7 +331,6 @@ record(ai,"$(P)Rotation-ActVel_Slow"){
 
 record(ai,"$(P)Rotation-ActTorque_Slow"){
   field(PINI, "1")
-#  field(TSE,  "-2")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.fActTorque?")
   field(PREC, "3")
