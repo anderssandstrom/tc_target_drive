@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.6">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
   <POU Name="FB_TargetSuperImpose" Id="{15eb4c9f-4200-4cfb-8447-041bc6a9a901}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_TargetSuperImpose
 VAR_INPUT
   En: BOOL;
   bExecute: BOOL;
   iSampleRateMs:INT;
+  iProcessSampleRateMs:INT:=0;
   fNominalVelocityRpm: LREAL;
-  fDeltaVelocityRpm: LREAL;
-  fPhasePositionDeg: LREAL;	
+  fMaxDeltaVelocityRpm: LREAL;
+  fPhaseErrorDeg: LREAL;	
 END_VAR
 VAR_OUTPUT
 	fVelocitySetpointRpm: LREAL;
@@ -22,6 +23,9 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[
+// Function: Superimpose of positioning (ONLY FOR TARGET)
+// Author: Anders Sandström 2018
+
 IF NOT bExecute THEN
 	bBusy:=FALSE;
 	iCycleCounter:=0;
@@ -30,17 +34,19 @@ END_IF
 
 fbRtrig(clk:=bExecute);
 IF fbRtrig.Q THEN
-  iCyclesToOutput:=LREAL_TO_INT(ABS(fPhasePositionDeg)/(ABS(fDeltaVelocityRpm)/60.0*360.0)*1000.0/iSampleRateMs*2.0/3.0);
+  // Calculate new velocity to output
+  
+  iCyclesToOutput:=LREAL_TO_INT(ABS(fPhaseErrorDeg)/(ABS(fMaxDeltaVelocityRpm)*360.0/60.0)*1000.0/iSampleRateMs*2.0/100.0);
   IF(iCyclesToOutput>GVL_Parameters.nSuperPosMaxCyclesToOutput) THEN
     iCyclesToOutput:=GVL_Parameters.nSuperPosMaxCyclesToOutput;
   END_IF 
 END_IF
 
 IF iCycleCounter<iCyclesToOutput*GVL_Parameters.fSuperPosDutyCycle AND bExecute  THEN
-  IF fPhasePositionDeg>=0 THEN
-    fVelocitySetpointRpm:=fNominalVelocityRpm + fDeltaVelocityRpm;
+  IF fPhaseErrorDeg >= 0 THEN
+    fVelocitySetpointRpm:=fNominalVelocityRpm + fMaxDeltaVelocityRpm;
   ELSE 
-    fVelocitySetpointRpm:=fNominalVelocityRpm - fDeltaVelocityRpm;
+    fVelocitySetpointRpm:=fNominalVelocityRpm - fMaxDeltaVelocityRpm;
   END_IF
   bBusy:=TRUE;
 ELSE
@@ -56,6 +62,9 @@ END_IF]]></ST>
     </Implementation>
     <LineIds Name="FB_TargetSuperImpose">
       <LineId Id="26" Count="0" />
+      <LineId Id="141" Count="0" />
+      <LineId Id="140" Count="0" />
+      <LineId Id="162" Count="0" />
       <LineId Id="25" Count="0" />
       <LineId Id="31" Count="0" />
       <LineId Id="47" Count="0" />
@@ -64,6 +73,7 @@ END_IF]]></ST>
       <LineId Id="32" Count="0" />
       <LineId Id="9" Count="0" />
       <LineId Id="33" Count="0" />
+      <LineId Id="119" Count="1" />
       <LineId Id="58" Count="0" />
       <LineId Id="91" Count="0" />
       <LineId Id="94" Count="1" />

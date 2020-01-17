@@ -1,0 +1,348 @@
+record(bo,"$(P)Rotation-Ena-Cmd"){
+  field(PINI, "1")
+  field(DTYP, "asynInt32")
+  field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stCmdEpics.bEnable=")
+  field(SCAN, "Passive")
+  field(ZNAM, "Zero")
+  field(ONAM, "One")
+  field(DESC, "Rotation: Drive Enable Cmd")
+}
+
+record(bi,"$(P)Rotation-Ena-Cmd-RB"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stCmdEpics.bEnable?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Zero")
+  field(ONAM, "One")
+  field(DESC, "Rotation: Drive Enable Cmd RB")
+}
+
+record(bi,"$(P)Rotation-Ena-Stat"){
+  field(PINI, "1")
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.bEnabled?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Zero")
+  field(ONAM, "One")
+  field(DESC, "Rotation: Drive Enabled")
+}
+
+record(ai,"$(P)Rotation-ActPos"){
+  field(PINI, "1")
+  field(DTYP, "asynFloat64")
+  field(INP,  "@asyn($(PORT),0,1)TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.stStatEpics.fActPos?")
+  field(PREC, "3")
+  field(SCAN, "I/O Intr")
+  field(DESC, "Rotation: Motor Position [deg]")
+}
+
+record(ai,"$(P)Rotation-ActVel"){
+  field(PINI, "1")
+  field(DTYP, "asynFloat64")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.fActVel?")
+  field(SCAN, "I/O Intr")
+  field(LINR, "SLOPE")
+  field(ESLO, "0.1")
+  field(EOFF, "0")   
+  field(DESC, "Rotation: Act Velocity [rpm]")
+}
+
+record(ai,"$(P)Rotation-ActTorque"){
+  field(PINI, "1")
+  field(DTYP, "asynFloat64")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.fActTorque?")
+  field(PREC, "3")
+  field(SCAN, "I/O Intr")
+  field(DESC, "Rotation: Act Torque [%]")
+}
+
+record(ai,"$(P)Rotation-ActTemp"){
+  field(PINI, "1")
+  field(DTYP, "asynFloat64")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.fActTemp?")
+  field(PREC, "2")
+  field(SCAN, "I/O Intr")
+  field(DESC, "Rotation: Motor Temp [degC]")
+}
+
+record(ai,"$(P)Rotation-ActPhaseErrorMM"){
+  field(PINI, "1")
+  field(DTYP, "asynFloat64")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.fPhaseErrorMM?")
+  field(PREC, "3")
+  field(SCAN, "I/O Intr")
+  field(DESC, "Rotation: Act Phase Error [mm]")
+}
+
+record(ao,"$(P)Rotation-State-Cmd"){
+  info(asyn:READBACK,"1")
+  field(PINI, "1")
+  field(DTYP, "asynInt32")
+  field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))ADSPORT=852/Main.stCmdEpics.eTargetStateCmd?")
+  field(SCAN, "Passive")
+  field(DESC, "Rotation: Main State Cmd")
+}
+
+record(ai,"$(P)Rotation-State-Stat"){  
+  field(PINI, "1")
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))ADSPORT=852/Main.stStatEpics.eTargetState?")
+  field(SCAN, "I/O Intr")
+  field(DESC, "Rotation: Main State Status")
+}
+
+record(bo,"$(P)Rotation-Exe-Cmd"){
+  info(asyn:READBACK,"1")
+  field(PINI, "1")
+  field(DTYP, "asynInt32")
+  field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stCmdEpics.bExecute?")
+  field(SCAN, "Passive")
+  field(ZNAM, "Not Executing")
+  field(ONAM, "Executeing")
+  field(DESC, "Rotation: Execute Cmd")
+}
+
+record(bo,"$(P)Rotation-Rst-Cmd"){
+  info(asyn:READBACK,"1")
+  field(PINI, "1")
+  field(DTYP, "asynInt32")
+  field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stCmdEpics.bReset?")
+  field(SCAN, "Passive")
+  field(ZNAM, "Not Reseting")
+  field(ONAM, "Reseting")
+  field(DESC, "Rotation: Reset Cmd")
+}
+
+record(ao,"$(P)Rotation-MaxMotorTemp-Cmd"){
+  info(asyn:READBACK,"1")
+  field(PINI, "1")
+  field(DTYP, "asynInt32")
+  field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/GVL_Parameters.nMaxMotorTemperature?")
+  field(PREC, "1")
+  field(SCAN, "I/O Intr")
+  field(DESC, "Rotation: Max Motor Temp Cmd")
+}
+
+record(ai,"$(P)Rotation-LatchedPos"){
+  field(PINI, "1")
+  field(DTYP, "asynFloat64")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.fLatchedPosition?")
+  field(PREC, "0")
+  field(SCAN, "I/O Intr")
+  field(DESC, "Rotation: Last Latched Position")
+}
+
+record(bi,"$(P)Rotation-Phasing-Stat"){
+  field(PINI, "1")
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.bPhasing?")  
+  field(SCAN, "I/O Intr")
+  field(DESC, "Rotation: Phasing")
+}
+
+record(ai,"$(P)Rotation-ClosestSectorID"){
+  field(PINI, "1")
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.nClosestSectorId?")
+  field(PREC, "0")
+  field(SCAN, "I/O Intr")
+  field(DESC, "Rotation: Closest Sector ID")
+}
+
+record(ai,"$(P)Rotation-ChoosenSector"){
+  field(PINI, "1")
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.nChoosenSector?")
+  field(PREC, "0")
+  field(SCAN, "I/O Intr")
+  field(DESC, "Rotation: Choosen Sector ID")
+}
+
+record(ai,"$(P)Rotation-Cntrl-Cmd"){
+  field(PINI, "1")
+  field(DTYP, "asynFloat64")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.fCtrlOutput?")
+  field(PREC, "3")
+  field(SCAN, "I/O Intr")
+  field(DESC, "Rotation: Phase PID Controller output")
+}
+
+record(ai,"$(P)Rotation-Vel-Stable-Count"){
+  field(PINI, "1")
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.iRangeOkCounter?")
+  field(PREC, "0")
+  field(SCAN, "I/O Intr")
+  field(DESC, "Rotation: Velocity Stable Counter")
+}
+
+record(bi,"$(P)Rotation-Vel-Stable"){
+  field(PINI, "1")
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.bVeloStable?")  
+  field(SCAN, "I/O Intr")
+  field(DESC, "Rotation: Velocity Stable")
+  field(ZNAM, "Unstable")
+  field(ONAM, "Stable")
+}
+
+record(ai,"$(P)Rotation--Stat"){
+  field(PINI, "1")
+  field(DTYP, "asynFloat64")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.fSetVelRaw?")
+  field(PREC, "0")
+  field(SCAN, "I/O Intr")
+  field(DESC, "Rotation: Vel Set to Drive")
+}
+
+record(ai,"$(P)Rotation-ActVel-LastSector"){
+  field(PINI, "1")
+  field(DTYP, "asynFloat64")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.fLastSectorVelocity?")
+  field(PREC, "0")
+  field(SCAN, "I/O Intr")
+  field(DESC, "Rotation: Act Vel for Last Sector")
+}
+
+record(waveform,"$(P)ErrorStr"){
+  field(PINI, "1")
+  field(TSE, -2)
+  field(DTYP,"asynInt8ArrayIn")
+  field(INP,"@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.sErrorStr?")
+  field(NELM,128)
+  field(SCAN,"I/O Intr")
+  field(FTVL,"CHAR")
+  field(DESC, "Error description")
+}
+
+record(ai,"$(P)ErrorId"){
+  field(PINI, "1")
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.nErrorId?")
+  field(PREC, "0")
+  field(SCAN, "I/O Intr")
+  field(DESC, "Error Id")
+}
+
+record(bi,"$(P)Error"){
+  field(PINI, "1")
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.bError?")
+  field(SCAN, "I/O Intr")
+  field(DESC, "Error")
+}
+
+record(ai,"$(P)Rotation-ActTemp_1Hz"){
+  field(PINI, "1")
+  field(DTYP, "asynFloat64")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.fActTemp?")
+  field(PREC, "2")
+  field(SCAN, "1 second")
+  field(DESC, "Rotation: Motor Temp [degC]")
+}
+
+record(ai,"$(P)Rotation-ActTorque_1Hz"){
+  field(PINI, "1")
+  field(DTYP, "asynFloat64")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.fActTorque?")
+  field(PREC, "3")
+  field(SCAN, "1 second")
+  field(DESC, "Rotation: Act Torque [%]")
+}
+
+record(ai,"$(P)Rotation-ActPhaseErrorMM_1Hz"){
+  field(PINI, "1")
+  field(DTYP, "asynFloat64")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.fPhaseErrorMM?")
+  field(PREC, "3")
+  field(SCAN, "1 second")
+  field(DESC, "Rotation: Act Phase Error [mm]")
+}
+
+record(ai,"$(P)Rotation-ActVel_1Hz"){
+  field(PINI, "1")
+  field(DTYP, "asynFloat64")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.fActVel?")
+  field(SCAN, "1 second")
+  field(LINR, "SLOPE")
+  field(ESLO, "0.1")
+  field(EOFF, "0")   
+  field(DESC, "Rotation: Act Velocity [rpm]")
+}
+
+record(ai,"$(P)Rotation-Vel-Cmd_1Hz"){
+  field(PINI, "1")
+  field(DTYP, "asynFloat64")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.fSetVelRaw?")
+  field(PREC, "0")
+  field(SCAN, "1 second")
+  field(DESC, "Rotation: Vel Set to Drive")
+}
+
+record(ao,"$(P)Rotation-Vel-Cmd"){
+  info(asyn:READBACK,"1")
+  field(PINI, "1")
+  field(DTYP, "asynInt32")
+  field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stCmdEpics.fVelSet?")
+  field(PREC, "1")
+  field(SCAN, "Passive")
+  field(DESC, "Rotation: Velocity setpoint [RPM]")
+}
+
+record(ao,"$(P)Rotation-Pos-Cmd"){
+  info(asyn:READBACK,"1")
+  field(PINI, "1")
+  field(DTYP, "asynInt32")
+  field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stCmdEpics.fPosSet?")
+  field(PREC, "1")
+  field(SCAN, "Passive")
+  field(DESC, "Rotation: Position setpoint [deg]")
+}
+
+record(ai,"$(P)Rotation-ActTemp_Slow"){
+  field(PINI, "1")
+  field(DTYP, "asynFloat64")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.fActTemp?")
+  field(PREC, "2")
+  field(SCAN, "1 second")
+  field(DESC, "Rotation: Motor Temp [degC]")
+}
+
+record(ai,"$(P)Rotation-ActPhaseErrorMM_Slow"){
+  field(PINI, "1")
+  field(DTYP, "asynFloat64")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.fPhaseErrorMM?")
+  field(PREC, "3")
+  field(SCAN, "1 second")
+  field(DESC, "Rotation: Act Phase Error [mm]")
+}
+
+record(ai,"$(P)Rotation-ActVel_Slow"){
+  field(PINI, "1")
+  field(DTYP, "asynFloat64")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.fActVel?")
+  field(SCAN, "1 second")
+  field(LINR, "SLOPE")
+  field(ESLO, "0.1")
+  field(EOFF, "0")   
+  field(DESC, "Rotation: Act Velocity [rpm]")
+}
+
+record(ai,"$(P)Rotation-ActTorque_Slow"){
+  field(PINI, "1")
+  field(DTYP, "asynFloat64")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.fActTorque?")
+  field(PREC, "3")
+  field(SCAN, "1 second")
+  field(DESC, "Rotation: Act Torque [%]")
+}
+
+record(ao,"$(P)Rotation-State-Phase-Ctrl-Type"){
+  info(asyn:READBACK,"1")
+  field(PINI, "1")
+  field(DTYP, "asynInt32")
+  field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))ADSPORT=852/Main.stCmdEpics.ePhaseCntrlAlg?")
+  field(SCAN, "Passive")
+  field(DESC, "Rotation: Main Phase control algorithm")
+}

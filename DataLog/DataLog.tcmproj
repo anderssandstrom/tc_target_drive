@@ -10,13 +10,19 @@
     <Name>DataLog</Name>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="Phasing.tcscope">
+    <Content Include="Digital.tcscopex">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="MotorBrake.tcscope">
+    <Content Include="MotorBrake.tcscopex">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Digital.tcscope">
+    <Content Include="Phasing.tcscopex">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="PWM.tcscopex">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="YT Scope Project1.tcscopex">
       <SubType>Content</SubType>
     </Content>
   </ItemGroup>

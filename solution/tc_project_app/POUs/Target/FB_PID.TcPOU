@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
+  <POU Name="FB_PID" Id="{e8ce7494-da3d-46a0-ae88-55a03263d16e}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_PID
+VAR_INPUT
+	fSetpointValue: LREAL:=0;
+	fActualValue :LREAL :=0;
+	fFF:LREAL:=0;
+	fKp: LREAL:=0;
+	fKi: LREAL:=0;
+	fKd: LREAL:=0;
+	fKff: LREAL:=0;
+	fIOutputMin: LREAL:=0;
+	fIOutputMax: LREAL:=0;
+	fOutputMin:LREAL:=0;
+	fOutputMax:LREAL:=0;
+	bReset:BOOL:=FALSE;
+END_VAR
+VAR_OUTPUT
+	fCtrlOutput: LREAL;
+END_VAR
+VAR
+	fOutputFF:LREAL:=0;
+    fOutputP:LREAL:=0;
+	fOutputI:LREAL:=0;
+	fOutputD:LREAL:=0;
+	fError:LREAL:=0;
+	fErrorOld:LREAL:=0;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Function: Simple PID controller with FF and limits for integral..
+// Custom implementation needed since integral high and low limits are 
+// needed in order to prvent integral windup.
+// Author: Anders Sandström 20200115
+ 
+IF bReset THEN
+  fOutputP:=0;
+  fOutputI:=0;
+  fOutputD:=0;
+  fFF:=0;
+  fCtrlOutput:=0;
+  RETURN;
+END_IF
+
+fErrorOld := fError;
+fError    := fActualValue-fSetpointValue;
+
+fOutputFF := fFF*fKff;         
+fOutputP  := fKp*fError;
+fOutputI  := fOutputI + fKi* fError;
+// Prevent integral windup
+IF fOutputI > fIOutputMax THEN
+  fOutputI := fIOutputMax;
+ELSIF fOutputI < fIOutputMin THEN
+  fOutputI := fIOutputMin; 
+END_IF
+
+fOutputD  :=  (fError-fErrorOld)*fKd;
+
+fCtrlOutput := fOutputP + fOutputI + fOutputD + fOutputFF;
+IF fCtrlOutput < fOutputMin THEN
+  fCtrlOutput := fOutputMin;
+ELSIF fCtrlOutput > fOutputMax THEN
+  fCtrlOutput := fOutputMax;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="FB_PID">
+      <LineId Id="252" Count="1" />
+      <LineId Id="255" Count="0" />
+      <LineId Id="148" Count="0" />
+      <LineId Id="161" Count="0" />
+      <LineId Id="163" Count="0" />
+      <LineId Id="215" Count="0" />
+      <LineId Id="217" Count="0" />
+      <LineId Id="219" Count="3" />
+      <LineId Id="218" Count="0" />
+      <LineId Id="257" Count="0" />
+      <LineId Id="233" Count="0" />
+      <LineId Id="226" Count="0" />
+      <LineId Id="250" Count="0" />
+      <LineId Id="168" Count="0" />
+      <LineId Id="172" Count="0" />
+      <LineId Id="231" Count="0" />
+      <LineId Id="240" Count="0" />
+      <LineId Id="228" Count="0" />
+      <LineId Id="235" Count="0" />
+      <LineId Id="238" Count="1" />
+      <LineId Id="236" Count="0" />
+      <LineId Id="246" Count="0" />
+      <LineId Id="242" Count="0" />
+      <LineId Id="260" Count="0" />
+      <LineId Id="243" Count="0" />
+      <LineId Id="264" Count="1" />
+      <LineId Id="267" Count="0" />
+      <LineId Id="269" Count="0" />
+      <LineId Id="266" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

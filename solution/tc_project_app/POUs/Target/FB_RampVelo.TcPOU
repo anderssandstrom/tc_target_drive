@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
+  <POU Name="FB_RampVelo" Id="{d4ab285d-06ec-4c4c-adcf-b2df350d8b46}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_RampVelo
+VAR_INPUT
+	bExecute:BOOL;
+	fVelSetIn:LREAL:=0;
+	iBlockSampleTimeMicroS:INT:=10000;
+	fVelActIn:LREAL:=0;
+END_VAR
+VAR_IN_OUT
+    fVelSetOut:LREAL:=0;
+END_VAR
+VAR
+  fChangePerCycle:LREAL:=0;
+  fCurrAcc:LREAL:=0;
+  fAccX1:LREAL:=0.8;
+  fAccX2:LREAL:=0.99;
+  fAccY1:LREAL:=GVL_Parameters.fAccDefault;
+  fAccY2:LREAL:=GVL_Parameters.fAccDefault*0.1;
+  fAccK:LREAL:=0;
+  fAccM:LREAL:=0;
+  x:LREAL:=0;
+  bExecuteOld:BOOL:=FALSE;
+  fActVeloOld:LREAL:=0;  // Used for extra sanity check of velo
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Function: Ramp velocity with a defined acceleration.
+// Accelerartion is ramped down when apparching velosity setpoint in order to reduce
+// overshoot and oscillations..
+// Author: Anders Sandström 20200114
+
+IF NOT bExecute OR fVelSetIn > GVL_Parameters.fMaximumSPeedRpm THEN
+  fVelSetOut:=0;
+  bExecuteOld:=bExecute;
+  RETURN;
+END_IF;
+
+// Start at current velocity if retreigger (avoid go to zero)
+IF NOT bExecuteOld AND bExecute THEN
+  // Sanity check of the actual velocity
+  IF fVelActIn > -GVL_Parameters.fMaximumSPeedRpm AND 
+	 fVelActIn < GVL_Parameters.fMaximumSPeedRpm AND 
+	 fActVeloOld > -GVL_Parameters.fMaximumSPeedRpm AND 
+	 fActVeloOld < GVL_Parameters.fMaximumSPeedRpm THEN
+	fVelSetOut:=(fVelActIn+fActVeloOld)/2;  //Set to average of two cycles
+  ELSE
+    fVelSetOut:=0;
+  END_IF  
+END_IF
+bExecuteOld:=bExecute;
+fActVeloOld:=fVelActIn;
+
+IF fVelSetOut=fVelSetIn THEN
+  fVelSetOut:=fVelSetIn;
+  RETURN;
+END_IF;
+
+//Reduce overshoot by lowering acc when closing in on setpoint (linear)
+//           Acceleration [rpm/s^2]
+//                 ^
+//  y1=defAcc     -|-----------------\
+//                 |                  \  
+//                 |                   \
+//                 |                    \ 
+//                 |                     \
+//  y2=defAcc*0.1 -|                      \-----------------
+//                 |--------------------------------------------> fSetOut/fSetIn []
+//                                 x1=0.8 x2=1.0 
+fAccK:=(fAccY2-fAccY1)/(fAccX2-fAccX1);
+fAccM:= fAccY1-fAccK*fAccX1;
+x:=fVelSetOut/fVelSetIn;
+// try linear ramp down off acceleration from 0.8*velsetin to velset in (from defacc to 0.1* defacc)
+fCurrAcc:=GVL_Parameters.fAccDefault;
+IF x > fAccX1 AND x <= fAccX2 AND fVelSetOut<fVelSetIn THEN
+  fCurrAcc:=fAccK*fVelSetOut/fVelSetIn+fAccM;
+ELSIF x >= fAccX2 THEN
+  fCurrAcc:=GVL_Parameters.fAccDefault*0.1;
+END_IF
+
+// Change per execution
+fChangePerCycle:=fCurrAcc/(1E6/iBlockSampleTimeMicroS);
+
+// Ramp finished
+IF ABS(fVelSetIn-fVelSetOut)<fChangePerCycle THEN
+  fVelSetOut:=fVelSetIn;
+  RETURN;
+END_IF
+
+//Acc
+IF fVelSetIn > fVelSetOut THEN             // Acc
+  fVelSetOut:=fVelSetOut+fChangePerCycle;
+ELSIF fVelSetIn < fVelSetOut THEN          // Dec
+  fVelSetOut:=fVelSetOut-fChangePerCycle;
+END_IF
+]]></ST>
+    </Implementation>
+    <LineIds Name="FB_RampVelo">
+      <LineId Id="1018" Count="2" />
+      <LineId Id="886" Count="0" />
+      <LineId Id="1021" Count="0" />
+      <LineId Id="924" Count="1" />
+      <LineId Id="1078" Count="0" />
+      <LineId Id="932" Count="0" />
+      <LineId Id="926" Count="0" />
+      <LineId Id="1054" Count="0" />
+      <LineId Id="1050" Count="0" />
+      <LineId Id="928" Count="0" />
+      <LineId Id="1086" Count="0" />
+      <LineId Id="1079" Count="1" />
+      <LineId Id="1089" Count="1" />
+      <LineId Id="1082" Count="3" />
+      <LineId Id="1052" Count="1" />
+      <LineId Id="1077" Count="0" />
+      <LineId Id="1091" Count="0" />
+      <LineId Id="931" Count="0" />
+      <LineId Id="708" Count="0" />
+      <LineId Id="933" Count="1" />
+      <LineId Id="1007" Count="0" />
+      <LineId Id="987" Count="0" />
+      <LineId Id="1010" Count="0" />
+      <LineId Id="1009" Count="0" />
+      <LineId Id="1008" Count="0" />
+      <LineId Id="1011" Count="6" />
+      <LineId Id="988" Count="0" />
+      <LineId Id="998" Count="0" />
+      <LineId Id="1027" Count="0" />
+      <LineId Id="956" Count="0" />
+      <LineId Id="990" Count="0" />
+      <LineId Id="1001" Count="1" />
+      <LineId Id="1024" Count="0" />
+      <LineId Id="1026" Count="0" />
+      <LineId Id="1006" Count="0" />
+      <LineId Id="999" Count="0" />
+      <LineId Id="937" Count="0" />
+      <LineId Id="939" Count="0" />
+      <LineId Id="1023" Count="0" />
+      <LineId Id="941" Count="0" />
+      <LineId Id="935" Count="0" />
+      <LineId Id="944" Count="0" />
+      <LineId Id="947" Count="0" />
+      <LineId Id="943" Count="0" />
+      <LineId Id="952" Count="0" />
+      <LineId Id="949" Count="0" />
+      <LineId Id="948" Count="0" />
+      <LineId Id="950" Count="0" />
+      <LineId Id="953" Count="1" />
+      <LineId Id="951" Count="0" />
+      <LineId Id="955" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
