@@ -22,13 +22,14 @@ asynSetTraceMask("TARGET_ADS", -1, 0x41)
 
 ##############################################################################
 ############# Load records
-dbLoadRecords("target.db","P=TARGET_DU:,PORT=TARGET_ADS")
-dbLoadRecords("indraDriveStatus.db","P=TARGET_DU:,PORT=TARGET_ADS")
-dbLoadRecords("indraDriveCommand.db","P=TARGET_DU:,PORT=TARGET_ADS")
-dbLoadRecords("brake.db","P=TARGET_DU:,PORT=TARGET_ADS")
+dbLoadRecords("./db/target.db","P=TARGET_DU:,PORT=TARGET_ADS")
+dbLoadRecords("./db/indraDriveStatus.db","P=TARGET_DU:,PORT=TARGET_ADS")
+dbLoadRecords("./db/indraDriveCommand.db","P=TARGET_DU:,PORT=TARGET_ADS")
+dbLoadRecords("./db/brake.db","P=TARGET_DU:,PORT=TARGET_ADS")
 
 ##############################################################################
 ############# Usefull commands
 #var streamDebug 1
 #asynReport(2,"TARGET_ADS")
 #asynSetTraceMask("TARGET_ADS", -1, 0xFF)
+iocInit
