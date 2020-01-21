@@ -228,7 +228,7 @@
       <show_scrollbar>true</show_scrollbar>
       <tooltip></tooltip>
       <transparent>true</transparent>
-      <visible>false</visible>
+      <visible>true</visible>
       <widget_type>Grouping Container</widget_type>
       <width>899</width>
       <wuid>-b703144:161e0cabb89:-7c09</wuid>
@@ -1964,258 +1964,6 @@ $(pv_value)</tooltip>
         <x>304</x>
         <y>440</y>
       </widget>
-      <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="2.0.0">
-        <actions hook="false" hook_all="false">
-          <action type="WRITE_PV">
-            <pv_name>$(pv_name)</pv_name>
-            <value>2</value>
-            <timeout>10</timeout>
-            <confirm_message></confirm_message>
-            <description></description>
-          </action>
-        </actions>
-        <alarm_pulsing>false</alarm_pulsing>
-        <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
-        <background_color>
-          <color red="240" green="240" blue="240" />
-        </background_color>
-        <border_alarm_sensitive>false</border_alarm_sensitive>
-        <border_color>
-          <color red="0" green="128" blue="255" />
-        </border_color>
-        <border_style>0</border_style>
-        <border_width>1</border_width>
-        <enabled>true</enabled>
-        <font>
-          <opifont.name fontName="Cantarell" height="11" style="0" pixels="false">Default</opifont.name>
-        </font>
-        <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
-        <foreground_color>
-          <color red="0" green="0" blue="0" />
-        </foreground_color>
-        <height>40</height>
-        <image></image>
-        <name>Action Button</name>
-        <push_action_index>0</push_action_index>
-        <pv_name>$(P):Rotation-State-Cmd</pv_name>
-        <pv_value />
-        <rules>
-          <rule name="Rule" prop_id="background_color" out_exp="false">
-            <exp bool_exp="pv0==2">
-              <value>
-                <color red="0" green="240" blue="0" />
-              </value>
-            </exp>
-            <pv trig="true">$(P):Rotation-State-Stat</pv>
-          </rule>
-        </rules>
-        <scale_options>
-          <width_scalable>true</width_scalable>
-          <height_scalable>true</height_scalable>
-          <keep_wh_ratio>false</keep_wh_ratio>
-        </scale_options>
-        <scripts />
-        <style>0</style>
-        <text>Const. Velo.</text>
-        <toggle_button>false</toggle_button>
-        <tooltip>$(pv_name)
-$(pv_value)</tooltip>
-        <visible>true</visible>
-        <widget_type>Action Button</widget_type>
-        <width>127</width>
-        <wuid>726f9604:16947878845:-1cc2</wuid>
-        <x>138</x>
-        <y>146</y>
-      </widget>
-      <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="2.0.0">
-        <actions hook="false" hook_all="false">
-          <action type="WRITE_PV">
-            <pv_name>$(pv_name)</pv_name>
-            <value>3</value>
-            <timeout>10</timeout>
-            <confirm_message></confirm_message>
-            <description></description>
-          </action>
-        </actions>
-        <alarm_pulsing>false</alarm_pulsing>
-        <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
-        <background_color>
-          <color red="240" green="240" blue="240" />
-        </background_color>
-        <border_alarm_sensitive>false</border_alarm_sensitive>
-        <border_color>
-          <color red="0" green="128" blue="255" />
-        </border_color>
-        <border_style>0</border_style>
-        <border_width>1</border_width>
-        <enabled>true</enabled>
-        <font>
-          <opifont.name fontName="Cantarell" height="11" style="0" pixels="false">Default</opifont.name>
-        </font>
-        <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
-        <foreground_color>
-          <color red="0" green="0" blue="0" />
-        </foreground_color>
-        <height>40</height>
-        <image></image>
-        <name>Action Button</name>
-        <push_action_index>0</push_action_index>
-        <pv_name>$(P):Rotation-State-Cmd</pv_name>
-        <pv_value />
-        <rules>
-          <rule name="Rule" prop_id="background_color" out_exp="false">
-            <exp bool_exp="pv0==3">
-              <value>
-                <color red="0" green="240" blue="0" />
-              </value>
-            </exp>
-            <pv trig="true">$(P):Rotation-State-Stat</pv>
-          </rule>
-        </rules>
-        <scale_options>
-          <width_scalable>true</width_scalable>
-          <height_scalable>true</height_scalable>
-          <keep_wh_ratio>false</keep_wh_ratio>
-        </scale_options>
-        <scripts />
-        <style>0</style>
-        <text>Positioning</text>
-        <toggle_button>false</toggle_button>
-        <tooltip>$(pv_name)
-$(pv_value)</tooltip>
-        <visible>true</visible>
-        <widget_type>Action Button</widget_type>
-        <width>127</width>
-        <wuid>726f9604:16947878845:-1cae</wuid>
-        <x>138</x>
-        <y>185</y>
-      </widget>
-      <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="2.0.0">
-        <actions hook="false" hook_all="false">
-          <action type="WRITE_PV">
-            <pv_name>$(pv_name)</pv_name>
-            <value>4</value>
-            <timeout>10</timeout>
-            <confirm_message></confirm_message>
-            <description></description>
-          </action>
-        </actions>
-        <alarm_pulsing>false</alarm_pulsing>
-        <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
-        <background_color>
-          <color red="240" green="240" blue="240" />
-        </background_color>
-        <border_alarm_sensitive>false</border_alarm_sensitive>
-        <border_color>
-          <color red="0" green="128" blue="255" />
-        </border_color>
-        <border_style>0</border_style>
-        <border_width>1</border_width>
-        <enabled>true</enabled>
-        <font>
-          <opifont.name fontName="Cantarell" height="11" style="0" pixels="false">Default</opifont.name>
-        </font>
-        <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
-        <foreground_color>
-          <color red="0" green="0" blue="0" />
-        </foreground_color>
-        <height>40</height>
-        <image></image>
-        <name>Action Button</name>
-        <push_action_index>0</push_action_index>
-        <pv_name>$(P):Rotation-State-Cmd</pv_name>
-        <pv_value />
-        <rules>
-          <rule name="Rule" prop_id="background_color" out_exp="false">
-            <exp bool_exp="pv0==4">
-              <value>
-                <color red="0" green="240" blue="0" />
-              </value>
-            </exp>
-            <pv trig="true">$(P):Rotation-State-Stat</pv>
-          </rule>
-        </rules>
-        <scale_options>
-          <width_scalable>true</width_scalable>
-          <height_scalable>true</height_scalable>
-          <keep_wh_ratio>false</keep_wh_ratio>
-        </scale_options>
-        <scripts />
-        <style>0</style>
-        <text>Phasing</text>
-        <toggle_button>false</toggle_button>
-        <tooltip>$(pv_name)
-$(pv_value)</tooltip>
-        <visible>true</visible>
-        <widget_type>Action Button</widget_type>
-        <width>127</width>
-        <wuid>726f9604:16947878845:-1c9e</wuid>
-        <x>138</x>
-        <y>224</y>
-      </widget>
-      <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="2.0.0">
-        <actions hook="false" hook_all="false">
-          <action type="WRITE_PV">
-            <pv_name>$(pv_name)</pv_name>
-            <value>5</value>
-            <timeout>10</timeout>
-            <confirm_message></confirm_message>
-            <description></description>
-          </action>
-        </actions>
-        <alarm_pulsing>false</alarm_pulsing>
-        <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
-        <background_color>
-          <color red="240" green="240" blue="240" />
-        </background_color>
-        <border_alarm_sensitive>false</border_alarm_sensitive>
-        <border_color>
-          <color red="0" green="128" blue="255" />
-        </border_color>
-        <border_style>0</border_style>
-        <border_width>1</border_width>
-        <enabled>true</enabled>
-        <font>
-          <opifont.name fontName="Cantarell" height="11" style="0" pixels="false">Default</opifont.name>
-        </font>
-        <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
-        <foreground_color>
-          <color red="0" green="0" blue="0" />
-        </foreground_color>
-        <height>40</height>
-        <image></image>
-        <name>Action Button</name>
-        <push_action_index>0</push_action_index>
-        <pv_name>$(P):Rotation-State-Cmd</pv_name>
-        <pv_value />
-        <rules>
-          <rule name="Rule" prop_id="background_color" out_exp="false">
-            <exp bool_exp="pv0==5">
-              <value>
-                <color red="0" green="240" blue="0" />
-              </value>
-            </exp>
-            <pv trig="true">$(P):Rotation-State-Stat</pv>
-          </rule>
-        </rules>
-        <scale_options>
-          <width_scalable>true</width_scalable>
-          <height_scalable>true</height_scalable>
-          <keep_wh_ratio>false</keep_wh_ratio>
-        </scale_options>
-        <scripts />
-        <style>0</style>
-        <text>Homing</text>
-        <toggle_button>false</toggle_button>
-        <tooltip>$(pv_name)
-$(pv_value)</tooltip>
-        <visible>true</visible>
-        <widget_type>Action Button</widget_type>
-        <width>127</width>
-        <wuid>726f9604:16947878845:-1c8e</wuid>
-        <x>138</x>
-        <y>263</y>
-      </widget>
       <widget typeId="org.csstudio.opibuilder.widgets.TextInput" version="2.0.0">
         <actions hook="false" hook_all="false" />
         <alarm_pulsing>false</alarm_pulsing>
@@ -2501,6 +2249,52 @@ $(pv_value)</tooltip>
         <wuid>74c1ee73:169b3b9630b:-7cb9</wuid>
         <x>153</x>
         <y>379</y>
+      </widget>
+      <widget typeId="org.csstudio.opibuilder.widgets.choiceButton" version="1.0.0">
+        <actions hook="false" hook_all="false" />
+        <alarm_pulsing>false</alarm_pulsing>
+        <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+        <background_color>
+          <color red="240" green="240" blue="240" />
+        </background_color>
+        <border_alarm_sensitive>true</border_alarm_sensitive>
+        <border_color>
+          <color red="0" green="128" blue="255" />
+        </border_color>
+        <border_style>0</border_style>
+        <border_width>1</border_width>
+        <enabled>true</enabled>
+        <font>
+          <opifont.name fontName="Cantarell" height="11" style="0" pixels="false">Default</opifont.name>
+        </font>
+        <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+        <foreground_color>
+          <color red="0" green="0" blue="0" />
+        </foreground_color>
+        <height>167</height>
+        <horizontal>false</horizontal>
+        <items_from_pv>true</items_from_pv>
+        <name>Choice Button</name>
+        <pv_name>$(P):Rotation-State-Cmd</pv_name>
+        <pv_value />
+        <rules />
+        <scale_options>
+          <width_scalable>true</width_scalable>
+          <height_scalable>true</height_scalable>
+          <keep_wh_ratio>false</keep_wh_ratio>
+        </scale_options>
+        <scripts />
+        <selected_color>
+          <color name="IO Normal Level Alarm" red="0" green="255" blue="0" />
+        </selected_color>
+        <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+        <visible>true</visible>
+        <widget_type>Choice Button</widget_type>
+        <width>176</width>
+        <wuid>-12b4592a:16fb3caf691:-6b60</wuid>
+        <x>154</x>
+        <y>140</y>
       </widget>
     </widget>
     <widget typeId="org.csstudio.opibuilder.widgets.groupingContainer" version="1.0.0">
@@ -8786,7 +8580,7 @@ $(pv_value)</tooltip>
       <show_scrollbar>true</show_scrollbar>
       <tooltip></tooltip>
       <transparent>true</transparent>
-      <visible>true</visible>
+      <visible>false</visible>
       <widget_type>Grouping Container</widget_type>
       <width>899</width>
       <wuid>726f9604:16947878845:-4733</wuid>
@@ -9370,7 +9164,7 @@ $(pv_value)</tooltip>
         <width>200</width>
         <wuid>726f9604:16947878845:-3d4e</wuid>
         <x>684</x>
-        <y>12</y>
+        <y>24</y>
       </widget>
       <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0.0">
         <actions hook="false" hook_all="false" />
@@ -9638,22 +9432,14 @@ $(trace_0_y_pv_value)</tooltip>
         <x>12</x>
         <y>144</y>
       </widget>
-      <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="2.0.0">
-        <actions hook="false" hook_all="false">
-          <action type="WRITE_PV">
-            <pv_name>$(pv_name)</pv_name>
-            <value>1</value>
-            <timeout>10</timeout>
-            <confirm_message></confirm_message>
-            <description></description>
-          </action>
-        </actions>
+      <widget typeId="org.csstudio.opibuilder.widgets.choiceButton" version="1.0.0">
+        <actions hook="false" hook_all="false" />
         <alarm_pulsing>false</alarm_pulsing>
         <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
         <background_color>
           <color red="240" green="240" blue="240" />
         </background_color>
-        <border_alarm_sensitive>false</border_alarm_sensitive>
+        <border_alarm_sensitive>true</border_alarm_sensitive>
         <border_color>
           <color red="0" green="128" blue="255" />
         </border_color>
@@ -9667,56 +9453,39 @@ $(trace_0_y_pv_value)</tooltip>
         <foreground_color>
           <color red="0" green="0" blue="0" />
         </foreground_color>
-        <height>40</height>
-        <image></image>
-        <name>Action Button</name>
-        <push_action_index>0</push_action_index>
-        <pv_name>$(P):Rotation-State-Phase-Ctrl-Type</pv_name>
+        <height>100</height>
+        <horizontal>false</horizontal>
+        <items_from_pv>true</items_from_pv>
+        <name>Choice Button</name>
+        <pv_name>$(P):Rotation-State-Phase-PWM-Type</pv_name>
         <pv_value />
-        <rules>
-          <rule name="Rule" prop_id="background_color" out_exp="false">
-            <exp bool_exp="pv0==1">
-              <value>
-                <color red="0" green="240" blue="0" />
-              </value>
-            </exp>
-            <pv trig="true">$(P):Rotation-State-Phase-Ctrl-Type</pv>
-          </rule>
-        </rules>
+        <rules />
         <scale_options>
           <width_scalable>true</width_scalable>
           <height_scalable>true</height_scalable>
           <keep_wh_ratio>false</keep_wh_ratio>
         </scale_options>
         <scripts />
-        <style>0</style>
-        <text>PID</text>
-        <toggle_button>false</toggle_button>
+        <selected_color>
+          <color name="IO Normal Level Alarm" red="0" green="255" blue="0" />
+        </selected_color>
         <tooltip>$(pv_name)
 $(pv_value)</tooltip>
         <visible>true</visible>
-        <widget_type>Action Button</widget_type>
-        <width>127</width>
-        <wuid>-eeea48b:16d4e1b9c78:-6022</wuid>
-        <x>546</x>
-        <y>15</y>
+        <widget_type>Choice Button</widget_type>
+        <width>100</width>
+        <wuid>-12b4592a:16fb3caf691:-76b1</wuid>
+        <x>784</x>
+        <y>300</y>
       </widget>
-      <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="2.0.0">
-        <actions hook="false" hook_all="false">
-          <action type="WRITE_PV">
-            <pv_name>$(pv_name)</pv_name>
-            <value>2</value>
-            <timeout>10</timeout>
-            <confirm_message></confirm_message>
-            <description></description>
-          </action>
-        </actions>
+      <widget typeId="org.csstudio.opibuilder.widgets.choiceButton" version="1.0.0">
+        <actions hook="false" hook_all="false" />
         <alarm_pulsing>false</alarm_pulsing>
         <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
         <background_color>
           <color red="240" green="240" blue="240" />
         </background_color>
-        <border_alarm_sensitive>false</border_alarm_sensitive>
+        <border_alarm_sensitive>true</border_alarm_sensitive>
         <border_color>
           <color red="0" green="128" blue="255" />
         </border_color>
@@ -9730,56 +9499,37 @@ $(pv_value)</tooltip>
         <foreground_color>
           <color red="0" green="0" blue="0" />
         </foreground_color>
-        <height>40</height>
-        <image></image>
-        <name>Action Button_1</name>
-        <push_action_index>0</push_action_index>
+        <height>100</height>
+        <horizontal>false</horizontal>
+        <items_from_pv>true</items_from_pv>
+        <name>Choice Button</name>
         <pv_name>$(P):Rotation-State-Phase-Ctrl-Type</pv_name>
         <pv_value />
-        <rules>
-          <rule name="Rule" prop_id="background_color" out_exp="false">
-            <exp bool_exp="pv0==2">
-              <value>
-                <color red="0" green="240" blue="0" />
-              </value>
-            </exp>
-            <pv trig="true">$(P):Rotation-State-Phase-Ctrl-Type</pv>
-          </rule>
-        </rules>
+        <rules />
         <scale_options>
           <width_scalable>true</width_scalable>
           <height_scalable>true</height_scalable>
           <keep_wh_ratio>false</keep_wh_ratio>
         </scale_options>
         <scripts />
-        <style>0</style>
-        <text>Superimpose</text>
-        <toggle_button>false</toggle_button>
+        <selected_color>
+          <color name="IO Normal Level Alarm" red="0" green="255" blue="0" />
+        </selected_color>
         <tooltip>$(pv_name)
 $(pv_value)</tooltip>
         <visible>true</visible>
-        <widget_type>Action Button</widget_type>
-        <width>127</width>
-        <wuid>-eeea48b:16d4e1b9c78:-6021</wuid>
-        <x>546</x>
-        <y>54</y>
+        <widget_type>Choice Button</widget_type>
+        <width>100</width>
+        <wuid>-12b4592a:16fb3caf691:-741c</wuid>
+        <x>784</x>
+        <y>174</y>
       </widget>
-      <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="2.0.0">
-        <actions hook="false" hook_all="false">
-          <action type="WRITE_PV">
-            <pv_name>$(pv_name)</pv_name>
-            <value>3</value>
-            <timeout>10</timeout>
-            <confirm_message></confirm_message>
-            <description></description>
-          </action>
-        </actions>
-        <alarm_pulsing>false</alarm_pulsing>
-        <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0.0">
+        <actions hook="false" hook_all="false" />
+        <auto_size>false</auto_size>
         <background_color>
-          <color red="240" green="240" blue="240" />
+          <color red="255" green="255" blue="255" />
         </background_color>
-        <border_alarm_sensitive>false</border_alarm_sensitive>
         <border_color>
           <color red="0" green="128" blue="255" />
         </border_color>
@@ -9789,43 +9539,70 @@ $(pv_value)</tooltip>
         <font>
           <opifont.name fontName="Cantarell" height="11" style="0" pixels="false">Default</opifont.name>
         </font>
-        <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
         <foreground_color>
           <color red="0" green="0" blue="0" />
         </foreground_color>
-        <height>40</height>
-        <image></image>
-        <name>Action Button_2</name>
-        <push_action_index>0</push_action_index>
-        <pv_name>$(P):Rotation-State-Phase-Ctrl-Type</pv_name>
-        <pv_value />
-        <rules>
-          <rule name="Rule" prop_id="background_color" out_exp="false">
-            <exp bool_exp="pv0==3">
-              <value>
-                <color red="0" green="240" blue="0" />
-              </value>
-            </exp>
-            <pv trig="true">$(P):Rotation-State-Phase-Ctrl-Type</pv>
-          </rule>
-        </rules>
+        <height>20</height>
+        <horizontal_alignment>0</horizontal_alignment>
+        <name>Label_9</name>
+        <rules />
         <scale_options>
           <width_scalable>true</width_scalable>
           <height_scalable>true</height_scalable>
           <keep_wh_ratio>false</keep_wh_ratio>
         </scale_options>
         <scripts />
-        <style>0</style>
-        <text>Only measure</text>
-        <toggle_button>false</toggle_button>
-        <tooltip>$(pv_name)
-$(pv_value)</tooltip>
+        <text>Ctrl Type:</text>
+        <tooltip></tooltip>
+        <transparent>true</transparent>
+        <vertical_alignment>1</vertical_alignment>
         <visible>true</visible>
-        <widget_type>Action Button</widget_type>
-        <width>127</width>
-        <wuid>-eeea48b:16d4e1b9c78:-6020</wuid>
-        <x>546</x>
-        <y>93</y>
+        <widget_type>Label</widget_type>
+        <width>75</width>
+        <wrap_words>false</wrap_words>
+        <wuid>-12b4592a:16fb3caf691:-6d48</wuid>
+        <x>784</x>
+        <y>155</y>
+      </widget>
+      <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0.0">
+        <actions hook="false" hook_all="false" />
+        <auto_size>false</auto_size>
+        <background_color>
+          <color red="255" green="255" blue="255" />
+        </background_color>
+        <border_color>
+          <color red="0" green="128" blue="255" />
+        </border_color>
+        <border_style>0</border_style>
+        <border_width>1</border_width>
+        <enabled>true</enabled>
+        <font>
+          <opifont.name fontName="Cantarell" height="11" style="0" pixels="false">Default</opifont.name>
+        </font>
+        <foreground_color>
+          <color red="0" green="0" blue="0" />
+        </foreground_color>
+        <height>20</height>
+        <horizontal_alignment>0</horizontal_alignment>
+        <name>Label_9</name>
+        <rules />
+        <scale_options>
+          <width_scalable>true</width_scalable>
+          <height_scalable>true</height_scalable>
+          <keep_wh_ratio>false</keep_wh_ratio>
+        </scale_options>
+        <scripts />
+        <text>PWM Type:</text>
+        <tooltip></tooltip>
+        <transparent>true</transparent>
+        <vertical_alignment>1</vertical_alignment>
+        <visible>true</visible>
+        <widget_type>Label</widget_type>
+        <width>81</width>
+        <wrap_words>false</wrap_words>
+        <wuid>-12b4592a:16fb3caf691:-6d3e</wuid>
+        <x>784</x>
+        <y>281</y>
       </widget>
     </widget>
     <widget typeId="org.csstudio.opibuilder.widgets.groupingContainer" version="1.0.0">
