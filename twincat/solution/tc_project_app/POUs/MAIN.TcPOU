@@ -104,7 +104,8 @@ CASE stStatEpics.eTargetState OF
             bReset:=           stCmdEpics.bReset,
 			stStatus:=	       stStatus,
 			dLatchedPosition:= dLatchedPosition,
-			ePhaseType:=stCmdEpics.ePhaseCntrlAlg,
+			ePhaseType:=       stCmdEpics.ePhaseCntrlAlg,
+			ePwmType:=         stCmdEpics.ePhasePwmType,
 			stCommands:=       stCommands);
 			
 			//ramp velocity with selected acceleration (as long as not phasing)
@@ -353,6 +354,7 @@ END_IF]]></ST>
       <LineId Id="443" Count="0" />
       <LineId Id="447" Count="0" />
       <LineId Id="1391" Count="0" />
+      <LineId Id="1424" Count="0" />
       <LineId Id="472" Count="0" />
       <LineId Id="1328" Count="1" />
       <LineId Id="1331" Count="0" />

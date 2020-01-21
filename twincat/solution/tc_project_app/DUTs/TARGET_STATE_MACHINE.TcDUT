@@ -1,17 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.6">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
   <DUT Name="TARGET_STATE_MACHINE" Id="{23a8bb66-a35e-4cf7-a868-16a9ae9e73b5}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 {attribute 'strict'}
 TYPE TARGET_STATE_MACHINE :
 (
-	POWER_OFF := 0,
-	POWER_ON := 1,
-	CONSTANT_VELOCITY :=2,
-	POSITIONING :=3,
-	PHASING :=4,
-	HOMING := 5,
-	TORQUE := 6	
+	NONE              := 0,
+	CONSTANT_VELOCITY := 2,
+	POSITIONING       := 3,
+	PHASING           := 4,
+	HOMING            := 5,
+	TORQUE            := 6
 );
 END_TYPE
 ]]></Declaration>

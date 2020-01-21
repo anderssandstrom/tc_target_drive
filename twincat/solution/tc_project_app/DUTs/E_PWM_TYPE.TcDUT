@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
+  <DUT Name="E_PWM_TYPE" Id="{d5dc90a4-1ab5-4837-b499-42784813563a}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_PWM_TYPE :
+(
+	NONE := 0,
+	OPTIMIZED:=1,
+	SIMPLE:=2
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -4,11 +4,16 @@
     <Declaration><![CDATA[FUNCTION_BLOCK FB_PWM
 VAR_INPUT
 	En: BOOL;
-	bEnable: BOOL;
-	iBlockSampleTimeMicroS: DINT;
-	iProcessSampleTimeMicroS: DINT;
-	iDecimalPoint: INT;
-	fInput: LREAL;
+	bEnable: BOOL;                  // Enable PWM alg
+	iBlockSampleTimeMicroS: DINT;   // How often this block is called 
+	iProcessSampleTimeMicroS: DINT; // Pwm cycle time. iProcessSampleTimeMicroS >> iBlockSampleTimeMicroS to get a good PWM resolution
+ 	iDecimalPoint: INT;             // At which decimal should teh pwm take place
+	fInput: LREAL;                  // Input process value (that will be PWM:ed) 
+	// PWM type:
+	// Optimized: The low and high values are as ebenly distibuted in time as possible
+	// Simple:    Either the low or high values are output first then the other (depending on bPromoteHigh bit)
+	ePwmType:E_PWM_TYPE:=E_PWM_TYPE.OPTIMIZED;  
+	bPromoteHigh:BOOL:=TRUE; // Only used in simple mode.
 END_VAR
 VAR_OUTPUT
 	EnO: BOOL;
@@ -35,19 +40,31 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Function: PWM block to be used to enhance resolution of signals
+//
 // Usefull for instance when a ethercat slave communicates with ints and you need 
 // higher precision than the int provides. The desired input value are then PWM so that the
 // average over processSampleTime is as close as possile to the desired value.
+// Block can execute in three different modes:
+//   OPTIMIZED: The low and high values are as evently as possible distributed over time
+//   SIMPLE:    All high or low values are output first then the other (depending on bPromoteHigh bit)
+//   NONE:      Output is same as input (no PWM)
+//
 // Note: Average resolution will be higher on the cost of sample rate
 // Note: Error of PWM alg can be seen in fOutputError
+//
+// Example: fInput = 23.33333333, iDecimalpoint=3  ==>
+//            fOutput will be pulse width modulated with the two discrete values: 23.333 and 23.334
+//            in 33% of iProcessSampleTimeMicroS fOutput will be 23.333 and
+//            in 67% of iProcessSampleTimeMicroS fOutput will be 23.334
+//
 // Author: Anders Sandström 2018
-
+//
 IF bEnable THEN
   IF(fInput<>fInputOld) THEN // New input value
     iNumCycles:=iProcessSampleTimeMicroS/iBlockSampleTimeMicroS; //71 if 71ms and 1ms
 	iDecimalGain:=1;
 	FOR i:=1 TO iDecimalPoint DO
-	  iDecimalGain:=iDecimalGain*10; //10000 if iDecimalpoint is 4
+      iDecimalGain:=iDecimalGain*10; //10000 if iDecimalpoint is 4
 	END_FOR
 	iBase:=TRUNC(fInput*iDecimalGain); //=900004 if fOverride=90.00045
     fDecimals:=fInput*iDecimalGain-iBase; //=0.5 if fOverride=90.00045
@@ -59,44 +76,74 @@ IF bEnable THEN
 	iLowCounter:=0;
 	iHighCounter:=0;
 	fOutputError:=(fDecimals-DINT_TO_LREAL(iHighCycles)/DINT_TO_LREAL(iNumCycles))/iDecimalGain;
-  END_IF
-  IF iCycleCounter > iNumCycles THEN
-	iCycleCounter:=0;
-	iLowCounter:=0;
-	iHighCounter:=0;	
-  END_IF
-  
-  iCycleCounter:=iCycleCounter+1;
-  IF iLowCycles > 0 THEN
-	IF iHighCycles > 0 THEN
-	  //Both high and low should be output during the period
-	  IF iLowCounter = 0 THEN
-		fOutput:=fOutputLow;
-		iLowCounter:=iLowCounter+1;
-	  ELSE
-	    IF iHighCounter = 0 THEN
-		  fOutput:=fOutputHigh;
-		  iHighCounter:=iHighCounter+1;
-	    ELSE //both counters is atleast 1
-		  fActualPWM:= DINT_TO_LREAL(iHighCounter)/DINT_TO_LREAL(iLowCounter+iHighCounter);
-		  fSetpointPWM:=DINT_TO_LREAL(iHighCycles)/DINT_TO_LREAL(iLowCycles+iHighCycles);
-		  IF fActualPWM>fSetpointPWM THEN
-		    fOutput:=fOutputLow;
-		    iLowCounter:=iLowCounter+1;
-		  ELSE
-            fOutput:=fOutputHigh;
-		    iHighCounter:=iHighCounter+1;
-		  END_IF				
-	    END_IF				
-	  END_IF
-    ELSE		
-	  fOutput:=fOutputLow;
-	  iLowCounter:=iLowCounter+1;
+	fSetpointPWM:=DINT_TO_LREAL(iHighCycles)/DINT_TO_LREAL(iLowCycles+iHighCycles);
     END_IF
-  ELSE
-    fOutput:=fOutputHigh;
-	iHighCounter:=iHighCounter+1;
-  END_IF
+
+    IF iCycleCounter > iNumCycles THEN
+	  iCycleCounter:=0;
+	  iLowCounter:=0;
+	  iHighCounter:=0;	
+    END_IF
+    iCycleCounter:=iCycleCounter+1;
+	
+  CASE ePwmType OF
+	E_PWM_TYPE.OPTIMIZED:  // Distribute low and high evenly in time
+       IF iLowCycles > 0 THEN
+	     IF iHighCycles > 0 THEN
+	       //Both high and low should be output during the period
+	       IF iLowCounter = 0 THEN
+		     fOutput:=fOutputLow;
+		     iLowCounter:=iLowCounter+1;
+	       ELSE
+	         IF iHighCounter = 0 THEN
+		       fOutput:=fOutputHigh;
+		       iHighCounter:=iHighCounter+1;
+	         ELSE //both counters is atleast 1
+		       fActualPWM:= DINT_TO_LREAL(iHighCounter)/DINT_TO_LREAL(iLowCounter+iHighCounter);
+		       IF fActualPWM>fSetpointPWM THEN
+		         fOutput:=fOutputLow;
+		         iLowCounter:=iLowCounter+1;
+		       ELSE
+                 fOutput:=fOutputHigh;
+		         iHighCounter:=iHighCounter+1;
+		       END_IF				
+	        END_IF				
+	      END_IF
+        ELSE		
+	      fOutput:=fOutputLow;
+	      iLowCounter:=iLowCounter+1;
+        END_IF
+      ELSE
+        fOutput:=fOutputHigh;
+	    iHighCounter:=iHighCounter+1;
+      END_IF
+	  
+    E_PWM_TYPE.SIMPLE:  // Take all low or high first then the other
+	  IF bPromoteHigh THEN  // All high first
+        IF iHighCounter < iHighCycles THEN
+          iHighCounter:=iHighCounter+1;
+		  fOutput:=fOutputHigh;
+		ELSE
+		  iLowCounter:=iLowCounter+1;
+		  fOutput:=fOutputLow;
+        END_IF
+	  ELSE                  // All low first
+        IF iLowCounter < iLowCycles THEN
+          iLowCounter:=iLowCounter+1;
+		  fOutput:=fOutputLow;
+		ELSE
+		  iHighCounter:=iHighCounter+1;
+		  fOutput:=fOutputHigh;
+        END_IF
+		  
+	  END_IF
+	E_PWM_TYPE.NONE:    // Output same as input
+	  fOutput:=fInput;
+	  iCycleCounter:=0;
+	  iLowCounter:=0;
+	  iHighCounter:=0;	
+	END_CASE
+    
 ELSE	
 	fOutput:=fInput;	
 END_IF
@@ -105,26 +152,51 @@ fInputOld:=fInput;
     </Implementation>
     <LineIds Name="FB_PWM">
       <LineId Id="129" Count="0" />
+      <LineId Id="288" Count="0" />
       <LineId Id="131" Count="0" />
       <LineId Id="133" Count="1" />
+      <LineId Id="282" Count="4" />
       <LineId Id="136" Count="0" />
       <LineId Id="135" Count="0" />
+      <LineId Id="287" Count="0" />
+      <LineId Id="292" Count="0" />
+      <LineId Id="294" Count="0" />
+      <LineId Id="296" Count="1" />
+      <LineId Id="295" Count="0" />
       <LineId Id="3" Count="0" />
       <LineId Id="132" Count="0" />
       <LineId Id="4" Count="0" />
-      <LineId Id="97" Count="0" />
-      <LineId Id="5" Count="6" />
-      <LineId Id="121" Count="0" />
-      <LineId Id="13" Count="2" />
-      <LineId Id="125" Count="1" />
-      <LineId Id="124" Count="0" />
-      <LineId Id="128" Count="0" />
-      <LineId Id="22" Count="5" />
-      <LineId Id="103" Count="0" />
-      <LineId Id="28" Count="0" />
-      <LineId Id="30" Count="16" />
-      <LineId Id="105" Count="0" />
-      <LineId Id="48" Count="14" />
+      <LineId Id="236" Count="3" />
+      <LineId Id="257" Count="0" />
+      <LineId Id="241" Count="10" />
+      <LineId Id="261" Count="0" />
+      <LineId Id="252" Count="0" />
+      <LineId Id="258" Count="0" />
+      <LineId Id="253" Count="3" />
+      <LineId Id="234" Count="1" />
+      <LineId Id="259" Count="0" />
+      <LineId Id="171" Count="1" />
+      <LineId Id="202" Count="11" />
+      <LineId Id="215" Count="15" />
+      <LineId Id="174" Count="0" />
+      <LineId Id="232" Count="0" />
+      <LineId Id="175" Count="0" />
+      <LineId Id="260" Count="0" />
+      <LineId Id="262" Count="0" />
+      <LineId Id="265" Count="0" />
+      <LineId Id="264" Count="0" />
+      <LineId Id="266" Count="1" />
+      <LineId Id="270" Count="0" />
+      <LineId Id="269" Count="0" />
+      <LineId Id="268" Count="0" />
+      <LineId Id="272" Count="6" />
+      <LineId Id="271" Count="0" />
+      <LineId Id="263" Count="0" />
+      <LineId Id="177" Count="1" />
+      <LineId Id="280" Count="1" />
+      <LineId Id="279" Count="0" />
+      <LineId Id="173" Count="0" />
+      <LineId Id="59" Count="3" />
       <LineId Id="122" Count="0" />
       <LineId Id="63" Count="0" />
     </LineIds>

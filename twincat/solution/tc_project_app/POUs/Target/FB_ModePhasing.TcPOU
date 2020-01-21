@@ -3,75 +3,63 @@
   <POU Name="FB_ModePhasing" Id="{d2a3a91d-9b2d-4e1e-8e68-2aba1e8abe60}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_ModePhasing
 VAR_INPUT
-	bExecute:BOOL;
-	bReset: BOOL;
-	stStatus: ST_AXIS_STATUS;
-    dLatchedPosition: DINT;
-	fPhaseOffsetDeg: LREAL;
-    fPhaseControlKp: LREAL := 0.0012;
-	fPhaseControlKi: LREAL := 0.00015;
-	fPhaseControlKd: LREAL := 0.0;
-	fPhaseControlKff: LREAL := 0.0;
-	bPhaseControlReset: BOOL := FALSE;
-	ePhaseType:E_PHASE_TYPE:=E_PHASE_TYPE.PID;
+	bExecute           : BOOL         := FALSE;
+	bReset             : BOOL         := FALSE;
+	stStatus           : ST_AXIS_STATUS;
+    dLatchedPosition   : DINT         := 0;
+	fPhaseOffsetDeg    : LREAL        := 0;
+    fPhaseControlKp    : LREAL        := 0.0012;
+	fPhaseControlKi    : LREAL        := 0.00015;
+	fPhaseControlKd    : LREAL        := 0.0;
+	fPhaseControlKff   : LREAL        := 0.0;
+	bPhaseControlReset : BOOL         := FALSE;
+	ePhaseType         : E_PHASE_TYPE := E_PHASE_TYPE.PID;
+	ePwmType           : E_PWM_TYPE   := E_PWM_TYPE.OPTIMIZED;
 END_VAR
 VAR_OUTPUT
-	bError: BOOL;
-	nErrorId: UDINT;
-	sErrorStr: STRING:=GVL_ErrorCodes.nErrorCodeOKStr;
-	bPhasing:BOOL;
-	fSpeedSetpoint: LREAL;
-	fCtrlOutput:LREAL;
+	bError             : BOOL;
+	nErrorId           : UDINT;
+	sErrorStr          : STRING := GVL_ErrorCodes.nErrorCodeOKStr;
+	bPhasing           : BOOL;
+	fSpeedSetpoint     : LREAL;
 END_VAR
 VAR_IN_OUT
-	stCommands: ST_AXIS_COMMAND;
+	stCommands         : ST_AXIS_COMMAND;
 END_VAR
 VAR
-	fLatchedPositionOld: LREAL;
-	fDistBetweenLastPulses: LREAL;
-	fLastSectorVelocity: LREAL;
-	fVelocityFromDriveScaled: LREAL;
-	fClosestSectorId: LREAL;
-	nClosestSectorId: INT;
-	fLatchedPosition:LREAL;
-	//fbPhasePID: Tc2_Utilities.FB_BasicPID;
-	fbPhasePID: FB_PID;
-	fPhaseError: LREAL;
-	fPhaseErrorFiltered:LREAL;
-	fPhaseErrorMM: LREAL:=0;
-	dLatchedPositionOld:DINT;
-	fPhaseErrorAcc:LREAL;
-	ii: INT;
-	bTestReset: BOOL;
-	bNewTriggPulse:BOOL:=FALSE;
-	fArrayFiltVelo: ARRAY[ 0 ..35] OF LREAL;
-	fArrayPhaseErrorFilt: ARRAY[ 0 ..99] OF LREAL;
-	fArrayPhaseErrorLongTime: ARRAY[ 0 ..99] OF LREAL;
-	iFiltVeloArrayIndex:INT:=0;
-	fLastSectorVelocityOld:LREAL:=0;
-	i:INT:=0;
-	fMaxValue:LREAL:=0;
-	fMinValue:LREAL:=0;
-	fRange:LREAL:=0;
-	iRangeOKCounter:INT:=0;
-	iRangeOKCounterOld:INT:=0;
-	nChoosenSector:INT:=0;
-	bPhaseAlgTrigg: BOOL;
-	fbPWM: FB_PWM;
-	fbSuperImpose:FB_TargetSuperImpose;
-	bExecuteSuperImpose: BOOL;
-	fPhaseErrorSlope: LREAL;
-	iNominalVelCounter:INT:=0;
-	fDeltaVelo: LREAL;
-	bVeloStable:BOOL:=FALSE;
-	timerCheckLatchFreq:TON;
-	fNomSpeedSetAdjust: LREAL := 0;
-	bTEst: BOOL := FALSE;
-	fPidAdd: LREAL := 0;
-	fCtrlCycleTime: INT;
-	fTn: INT;
-	nPIDExeSkipCounter:INT:=0;
-	fSpeedSetpointLocal:LREAL:=0;
+  bNewTriggPulse           : BOOL  := FALSE;
+  bExecuteSuperImpose      : BOOL  := FALSE;
+  bVeloStable              : BOOL  := FALSE;
+  bPhaseAlgTrigg           : BOOL  := FALSE;
+  nClosestSectorId         : INT   := 0;
+  nPIDExeSkipCounter       : INT   := 0;
+  iFiltVeloArrayIndex      : INT   := 0;
+  i                        : INT   := 0;
+  iRangeOKCounter          : INT   := 0;
+  iRangeOKCounterOld       : INT   := 0;
+  nChoosenSector           : INT   := 0;
+  dLatchedPositionOld      : DINT  := 0;
+  fLatchedPositionOld      : LREAL := 0;
+  fDistBetweenLastPulses   : LREAL := 0;
+  fLastSectorVelocity      : LREAL := 0;
+  fLatchedPosition         : LREAL := 0;
+  fPhaseError              : LREAL := 0;
+  fPhaseErrorFiltered      : LREAL := 0;
+  fPhaseErrorMM            : LREAL := 0;
+  fLastSectorVelocityOld   : LREAL := 0;
+  fMaxValue                : LREAL := 0;
+  fMinValue                : LREAL := 0;
+  fRange                   : LREAL := 0;
+  fDeltaVelo               : LREAL := 0;
+  fNomSpeedSetAdjust       : LREAL := 0;
+  fPidAdd                  : LREAL := 0;
+  fSpeedSetpointLocal      : LREAL := 0;
+  fArrayFiltVelo           : ARRAY[ 0 ..35] OF LREAL;
+  fArrayPhaseErrorFilt     : ARRAY[ 0 ..99] OF LREAL;
+  fbPhasePID               : FB_PID;
+  fbPWM                    : FB_PWM;
+  fbSuperImpose            : FB_TargetSuperImpose;
+  timerCheckLatchFreq      : TON;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -88,7 +76,7 @@ stCommands.fCommandDeceleration:=GVL_Parameters.fAccDefault;
 stCommands.fCommandAcceleration:= GVL_Parameters.fAccDefault;
 stCommands.eMotionMode :=e_Motion_mode.eJogPositive;
 stCommands.eOperationMode:=e_Operation_mode_no.eSecondaryOpMode2;
-fVelocityFromDriveScaled:=stStatus.fActualVelocity/10;
+
 bNewTriggPulse:=FALSE;
 bPhasing:=FALSE;
 fNomSpeedSetAdjust:=GVL_Parameters.fNominalSpeedRpm + GVL_Parameters.fNominalSpeedAdjust; // Adjust speed setpoint
@@ -182,8 +170,8 @@ IF bNewTriggPulse THEN
   MEMMOVE(destAddr:=ADR(fArrayPhaseErrorFilt[1]),srcAddr:=ADR(fArrayPhaseErrorFilt[0]),SIZEOF(LREAL)*(GVL_Parameters.nPhaseErrorFilterSize-1));
   fArrayPhaseErrorFilt[0]:=fPhaseErrorMM;
   fPhaseErrorFiltered:=0;
-  FOR ii := 0 TO (GVL_Parameters.nPhaseErrorFilterSize-1) DO
-    fPhaseErrorFiltered:=fPhaseErrorFiltered+fArrayPhaseErrorFilt[ii];
+  FOR i := 0 TO (GVL_Parameters.nPhaseErrorFilterSize-1) DO
+    fPhaseErrorFiltered:=fPhaseErrorFiltered+fArrayPhaseErrorFilt[i];
   END_FOR
   fPhaseErrorFiltered:=fPhaseErrorFiltered/GVL_Parameters.nPhaseErrorFilterSize;
 END_IF
@@ -315,7 +303,8 @@ fbPWM(
        iBlockSampleTimeMicroS:=GVL_Parameters.nTaskSampleTime*1000,
        iProcessSampleTimeMicroS:=71000*GVL_Parameters.nPhasePIDReducedSampleRateFactor,
        iDecimalPoint:=3,
-       fInput:=fSpeedSetpointLocal);
+       fInput:=fSpeedSetpointLocal,
+       bPromoteHigh:=fPhaseErrorFiltered>0);
 
 fSpeedSetpoint:=fbPWM.fOutput;
 
@@ -455,6 +444,7 @@ END_IF
       <LineId Id="1280" Count="0" />
       <LineId Id="1273" Count="5" />
       <LineId Id="1272" Count="0" />
+      <LineId Id="1630" Count="0" />
       <LineId Id="476" Count="0" />
       <LineId Id="1043" Count="0" />
       <LineId Id="1397" Count="0" />
