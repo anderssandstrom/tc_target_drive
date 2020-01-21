@@ -75,21 +75,47 @@ record(ai,"$(P)Rotation-ActPhaseErrorMM"){
   field(DESC, "Rotation: Act Phase Error [mm]")
 }
 
-record(ao,"$(P)Rotation-State-Cmd"){
+record(mbbo,"$(P)Rotation-State-Cmd"){
   info(asyn:READBACK,"1")
   field(PINI, "1")
   field(DTYP, "asynInt32")
   field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))ADSPORT=852/Main.stCmdEpics.eTargetStateCmd?")
   field(SCAN, "Passive")
   field(DESC, "Rotation: Main State Cmd")
+  field(ZRVL, "0")
+  field(ZRST, "NONE")
+#  field(ONVL, "1")
+#  field(ONST, "NOT_USED")
+  field(TWVL, "2")
+  field(TWST, "CONSTANT_VELOCITY")
+  field(THVL, "3")
+  field(THST, "POSITION")
+  field(FRVL, "4")
+  field(FRST, "PHASE")
+  field(FVVL, "5")
+  field(FVST, "HOME")
+  field(SXVL, "6")
+  field(SXST, "TORQUE")
 }
 
-record(ai,"$(P)Rotation-State-Stat"){  
+record(mbbi,"$(P)Rotation-State-Stat"){  
   field(PINI, "1")
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))ADSPORT=852/Main.stStatEpics.eTargetState?")
   field(SCAN, "I/O Intr")
   field(DESC, "Rotation: Main State Status")
+#  field(ONVL, "1")
+#  field(ONST, "NOT_USED")
+  field(TWVL, "2")
+  field(TWST, "CONSTANT_VELOCITY")
+  field(THVL, "3")
+  field(THST, "POSITION")
+  field(FRVL, "4")
+  field(FRST, "PHASE")
+  field(FVVL, "5")
+  field(FVST, "HOME")
+  field(SXVL, "6")
+  field(SXST, "TORQUE")
 }
 
 record(bo,"$(P)Rotation-Exe-Cmd"){
@@ -338,11 +364,73 @@ record(ai,"$(P)Rotation-ActTorque_Slow"){
   field(DESC, "Rotation: Act Torque [%]")
 }
 
-record(ao,"$(P)Rotation-State-Phase-Ctrl-Type"){
+record(mbbo,"$(P)Rotation-State-Phase-Ctrl-Type"){
   info(asyn:READBACK,"1")
   field(PINI, "1")
   field(DTYP, "asynInt32")
   field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))ADSPORT=852/Main.stCmdEpics.ePhaseCntrlAlg?")
   field(SCAN, "Passive")
   field(DESC, "Rotation: Main Phase control algorithm")
+  field(ZRVL, "0")
+  field(ZRST, "NONE")
+  field(ONVL, "1")
+  field(ONST, "PID")
+  field(TWVL, "2")
+  field(TWST, "SUPERIMPOSE")
+  field(THVL, "3")
+  field(THST, "ONLY_MEASURE")
 }
+
+record(mbbo,"$(P)Rotation-State-Phase-PWM-Type"){
+  info(asyn:READBACK,"1")
+  field(PINI, "1")
+  field(DTYP, "asynInt32")
+  field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))ADSPORT=852/Main.stCmdEpics.ePhasePwmType?")
+  field(SCAN, "Passive")
+  field(DESC, "Rotation: Main Phase PWM Type")
+  field(ZRVL, "0")
+  field(ZRST, "NONE")
+  field(ONVL, "1")
+  field(ONST, "OPTIMIZED")
+  field(TWVL, "2")
+  field(TWST, "SIMPLE")
+}
+
+# mbbo
+#OUT	Output Link	OUTLINK	Yes	0	No	No	N/A	No
+#DTYP	Device Type	DEVCHOICE	Yes	0	Yes	No	No	 
+#RVAL	Raw Data Value	ULONG	No	0	Yes	Yes	Yes	Yes
+#SHFT	Shift	USHORT	No	0	Yes	No	No	No
+#SDEF	States Defined?	SHORT	No	0	Yes	No	No	No
+#ZRVL	Zero Value	ULONG	Yes	0	Yes	Yes	No	Yes
+#ONVL	One value	ULONG	Yes	0	Yes	Yes	No	Yes
+#TWVL	Two Value	ULONG	Yes	0	Yes	Yes	No	Yes
+#THVL	Three Value	ULONG	Yes	0	Yes	Yes	No	Yes
+#FRVL	Four Value	ULONG	Yes	0	Yes	Yes	No	Yes
+#FVVL	Five Value	ULONG	Yes	0	Yes	Yes	No	Yes
+#SXVL	Six Value	ULONG	Yes	0	Yes	Yes	No	Yes
+#SVVL	Seven Value	ULONG	Yes	0	Yes	Yes	No	Yes
+#EIVL	Eight value	ULONG	Yes	0	Yes	Yes	No	Yes
+#NIVL	Nine Value	ULONG	Yes	0	Yes	Yes	No	Yes
+#TEVL	Ten Value	ULONG	Yes	0	Yes	Yes	No	Yes
+#ELVL	Eleven Value	ULONG	Yes	0	Yes	Yes	No	Yes
+#TVVL	Twelve Value	ULONG	Yes	0	Yes	Yes	No	Yes
+#TTVL	Thirteen Value	ULONG	Yes	0	Yes	Yes	No	Yes
+#FTVL	Fourteen Value	ULONG	Yes	0	Yes	Yes	No	Yes
+#FFVL	Fifteen Value	ULONG	Yes	0	Yes	Yes	No	Yes
+#ZRST	Zero String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
+#ONST	One String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
+#TWST	Two String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
+#THST	Three String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
+#FRST	Four String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
+#FVST	Five String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
+#SXST	Six String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
+#SVST	Seven String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
+#EIST	Eight String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
+#NIST	Nine String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
+#TEST	Ten String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
+#ELST	Eleven String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
+#TVST	Twelve String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
+#TTST	Thirteen String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
+#FTST	Fourteen String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
+#FFST	Fifteen String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
