@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
   <DUT Name="ST_S144_SIGNALSTATUSWORD" Id="{d674754d-2026-442b-8ab7-a2070219a63a}">
     <Declaration><![CDATA[TYPE ST_S144_SIGNALSTATUSWORD :
 STRUCT
@@ -28,8 +28,9 @@ STRUCT
 	bS437_5_Acceleration				: BIT; 	// TRUE: Axis in acceleration
 	bS437_6_Deceleration				: BIT; 	// TRUE: Axis in deceleration
 	bS437_12_JogMode					: BIT; 	// TRUE: Axis in Axis in jog mode
-	{attribute 'hide'}
-	bS144_15_NotDefined					: BIT;	
+	//{attribute 'hide'}
+	//bS144_15_NotDefined					: BIT;	
+	bP14_0_C1400_GetMarkerPositionDone  : BIT   := FALSE;
 END_STRUCT
 END_TYPE
 ]]></Declaration>

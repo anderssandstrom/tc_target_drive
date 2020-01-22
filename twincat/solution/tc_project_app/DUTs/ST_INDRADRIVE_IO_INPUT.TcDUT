@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
   <DUT Name="ST_INDRADRIVE_IO_INPUT" Id="{02069775-3e70-4f01-a5cf-95bccd9cb822}">
     <Declaration><![CDATA[TYPE ST_INDRADRIVE_IO_INPUT :	// Contains the data that is read from the drive
 STRUCT
@@ -11,6 +11,7 @@ STRUCT
 	stS144_SignalStatusWord				AT %I*	: ST_S144_SIGNALSTATUSWORD;
 	nS84_TorqueFeedback					AT %I*	: INT;
 	nS189_PositionError					AT %I*	: DINT;
+	nP173_MarkerPosition                AT %I*  : DINT;
 END_STRUCT
 END_TYPE
 ]]></Declaration>

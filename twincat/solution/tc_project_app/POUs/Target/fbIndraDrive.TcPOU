@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.6">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
   <POU Name="fbIndraDrive" Id="{c552eacd-cc63-42de-838c-771e92ee46fa}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK fbIndraDrive
 VAR_INPUT 
@@ -79,6 +79,8 @@ sAmsNetId := F_CreateAmsNetId(AmsNetId);
 		stAxisStatus.bCommandChange					:= stDriveStatus.nS135_DriveStatusWord.bS135_CommandChange; 
 		// Drive command value processing  
 		stAxisStatus.bCommandValueProcessing		:= stDriveStatus.stS144_SignalStatusWord.bP115_3_StatusOfCmdValueProcessing; 
+        // C1400 Get Marker Position
+		stAxisStatus.bCmd_GetMarkerPositionDone     := stDriveStatus.stS144_SignalStatusWord.bP14_0_C1400_GetMarkerPositionDone;
 		
 		// Disable monitoring  
 		IF 	(stAxisCommands.bCmd_DisableLimits AND (NOT stAxisStatus.bLimitsDisabled)) OR 
@@ -133,7 +135,9 @@ sAmsNetId := F_CreateAmsNetId(AmsNetId);
 		stAxisStatus.fActualTorque			:= INT_TO_LREAL(stDriveStatus.nS84_TorqueFeedback) / 10.0; 
 		// Actual position error (scale by 10000) 
 		stAxisStatus.fPositionError		:= DINT_TO_LREAL(stDriveStatus.nS189_PositionError) / 10000.0; 
-
+        // Command C1400: Incremental encoder marker position (scale by 10000).
+		stAxisStatus.fMarkerPosition := DINT_TO_LREAL(stDriveStatus.nP173_MarkerPosition) / 10000.0; 
+		
 (*==================================================================================================================================================
 =============    COMMANDS TO THE DRIVE    ==========================================================================================================
 ==================================================================================================================================================*)
@@ -222,6 +226,10 @@ sAmsNetId := F_CreateAmsNetId(AmsNetId);
 			stDriveCommands.nS282_PositioningCommandValue 	:= stDriveStatus.nS386_ActivePositionFeedbackValue;
 		END_IF
 		
+		// Look for ref mark (latch)
+		stDriveCommands.stS145_SignalControlWord.bP14_0_C1400_GetMarkerPosition := stAxisCommands.bCmd_GetMarkerPosition;
+		// External home enabled
+		stDriveCommands.stS145_SignalControlWord.bS407_0_HomingEnbale:=stAxisCommands.bCmd_NCHomeEnable;
 		// Target velocity 
 		stDriveCommands.nS259_PositioningVelocity := LREAL_TO_UDINT(10000.0 * stAxisCommands.fCommandVelocity);
 		
@@ -266,18 +274,30 @@ sAmsNetId := F_CreateAmsNetId(AmsNetId);
 		// Run the Virtual Master
 		IF stAxisCommands.bCmd_RunVirtualMater THEN 
 			stDriveCommands.stS145_SignalControlWord.bP760_VM_PosCtrlWord_1_PosActivation	:= TRUE;
-			stDriveCommands.stS145_SignalControlWord.bP760_VM_PosCtrlWord_2_PosActivation	:= FALSE;
+			//stDriveCommands.stS145_SignalControlWord.bP760_VM_PosCtrlWord_2_PosActivation	:= FALSE;
 			stDriveCommands.stS145_SignalControlWord.bP760_VM_PosCtrlWord_CmdValueAccept	:= TRUE;
 		ELSE
 			stDriveCommands.stS145_SignalControlWord.bP760_VM_PosCtrlWord_1_PosActivation	:= TRUE;
-			stDriveCommands.stS145_SignalControlWord.bP760_VM_PosCtrlWord_2_PosActivation	:= TRUE;
+			//stDriveCommands.stS145_SignalControlWord.bP760_VM_PosCtrlWord_2_PosActivation	:= TRUE;
 			stDriveCommands.stS145_SignalControlWord.bP760_VM_PosCtrlWord_CmdValueAccept	:= FALSE;
 		END_IF
 		
 ]]></ST>
     </Implementation>
     <LineIds Name="fbIndraDrive">
-      <LineId Id="3" Count="235" />
+      <LineId Id="3" Count="53" />
+      <LineId Id="303" Count="0" />
+      <LineId Id="296" Count="1" />
+      <LineId Id="58" Count="52" />
+      <LineId Id="299" Count="0" />
+      <LineId Id="111" Count="0" />
+      <LineId Id="300" Count="0" />
+      <LineId Id="112" Count="86" />
+      <LineId Id="307" Count="0" />
+      <LineId Id="301" Count="1" />
+      <LineId Id="199" Count="0" />
+      <LineId Id="306" Count="0" />
+      <LineId Id="200" Count="38" />
       <LineId Id="272" Count="1" />
       <LineId Id="239" Count="10" />
       <LineId Id="2" Count="0" />

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
   <DUT Name="ST_S145_SIGNALCONTROLWORD" Id="{b58711c2-b06c-4ce4-937b-60126394b60e}">
     <Declaration><![CDATA[TYPE ST_S145_SIGNALCONTROLWORD :
 STRUCT
@@ -31,12 +31,17 @@ STRUCT
 																// (bP760_2 | bP760_1) 01: 	Infinite travel in positive direction (jog+) (Positioning will be aborted)
 																// (bP760_2 | bP760_1) 10: 	Infinite travel in negative direction (jog-) (Positioning will be aborted)
 																// (bP760_2 | bP760_1) 11: 	Stopping the axis (positioning stop) (Positioning will be aborted)
-	bP760_VM_PosCtrlWord_2_PosActivation	: BIT	:= FALSE;	// (bP760_2 | bP760_1) 00:	Positioning active, started by toggling of bit 0
+	//bP760_VM_PosCtrlWord_2_PosActivation	: BIT	:= FALSE;	// (bP760_2 | bP760_1) 00:	Positioning active, started by toggling of bit 0
 																// (bP760_2 | bP760_1) 01: 	Infinite travel in positive direction (jog+) (Positioning will be aborted), started by toggling of bit 0
 																// (bP760_2 | bP760_1) 10: 	Infinite travel in negative direction (jog-) (Positioning will be aborted), started by toggling of bit 0
 																// (bP760_2 | bP760_1) 11: 	Stopping the axis (positioning stop) (Positioning will be aborted)
-	{attribute 'hide'}
-	bS145_15_NotDefined						: BIT	:= FALSE;
+	//{attribute 'hide'}
+	//bS145_15_NotDefined						: BIT	:= FALSE;
+	
+	//Bit 15
+	bS407_0_HomingEnbale                    : BIT   := FALSE;
+	//Bit 16
+	bP14_0_C1400_GetMarkerPosition          : BIT   := FALSE;  
 END_STRUCT
 END_TYPE
 ]]></Declaration>

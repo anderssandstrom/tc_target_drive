@@ -87,7 +87,7 @@
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name GUID="{50590704-8C4D-4FD8-9670-11E39DA38DD8}" AutoDeleteType="true">ST_S144_SIGNALSTATUSWORD</Name>
+			<Name GUID="{1642AA04-0B3B-44CC-92AC-D98DCDBF8D53}" AutoDeleteType="true">ST_S144_SIGNALSTATUSWORD</Name>
 			<BitSize>16</BitSize>
 			<SubItem>
 				<Name>bS424_DriveMode</Name>
@@ -159,6 +159,20 @@
 				<BitSize>1</BitSize>
 				<BitOffs>14</BitOffs>
 			</SubItem>
+			<SubItem>
+				<Name>bP14_0_C1400_GetMarkerPositionDone</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[{attribute 'hide'}
+bS144_15_NotDefined					: BIT;	]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>15</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<Hides>
+				<Hide GUID="{50590704-8C4D-4FD8-9670-11E39DA38DD8}"/>
+			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{4CCFD5CA-E676-474E-B42D-6A96C42819C9}" AutoDeleteType="true">ST_S134_MASTERCONTROLWORD</Name>
@@ -214,7 +228,7 @@
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name GUID="{356849DC-7175-4AB3-A9EB-61AF708DF42F}" AutoDeleteType="true">ST_S145_SIGNALCONTROLWORD</Name>
+			<Name GUID="{F0E5854A-EEDE-452D-9BB8-B565B2C7BFC3}" AutoDeleteType="true">ST_S145_SIGNALCONTROLWORD</Name>
 			<BitSize>16</BitSize>
 			<SubItem>
 				<Name>bS346_0_PosCtrlWord_CmdValueAccept</Name>
@@ -357,15 +371,37 @@
 				</Default>
 			</SubItem>
 			<SubItem>
-				<Name>bP760_VM_PosCtrlWord_2_PosActivation</Name>
+				<Name>bS407_0_HomingEnbale</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment><![CDATA[ (bP760_2 | bP760_1) 00:	Positioning active, started by toggling of bit 0]]></Comment>
+				<Comment><![CDATA[ (bP760_2 | bP760_1) 01: 	Infinite travel in positive direction (jog+) (Positioning will be aborted)
+ (bP760_2 | bP760_1) 10: 	Infinite travel in negative direction (jog-) (Positioning will be aborted)
+ (bP760_2 | bP760_1) 11: 	Stopping the axis (positioning stop) (Positioning will be aborted)
+bP760_VM_PosCtrlWord_2_PosActivation	: BIT	:= FALSE;	// (bP760_2 | bP760_1) 00:	Positioning active, started by toggling of bit 0
+ (bP760_2 | bP760_1) 01: 	Infinite travel in positive direction (jog+) (Positioning will be aborted), started by toggling of bit 0
+ (bP760_2 | bP760_1) 10: 	Infinite travel in negative direction (jog-) (Positioning will be aborted), started by toggling of bit 0
+ (bP760_2 | bP760_1) 11: 	Stopping the axis (positioning stop) (Positioning will be aborted)
+{attribute 'hide'}
+bS145_15_NotDefined						: BIT	:= FALSE;
+Bit 15]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>14</BitOffs>
 				<Default>
 					<Value>0</Value>
 				</Default>
 			</SubItem>
+			<SubItem>
+				<Name>bP14_0_C1400_GetMarkerPosition</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[Bit 16]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>15</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<Hides>
+				<Hide GUID="{C611E284-5D81-42D2-9EAA-1D349EB6D88D}"/>
+			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{18071995-0000-0000-0000-002000000006}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..5] OF BIT</Name>
@@ -522,6 +558,10 @@
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
+							<Name>MAIN.nMainDriveMarkPosition</Name>
+							<Type>DINT</Type>
+						</Var>
+						<Var>
 							<Name>MAIN.fbIndraDrive.stDriveStatus.nS135_DriveStatusWord</Name>
 							<Type GUID="{E8EE2899-4679-469C-BAC5-7318F329907D}">ST_S135_DRIVESTATUSWORD</Type>
 							<SubVar>
@@ -579,7 +619,7 @@
 						</Var>
 						<Var>
 							<Name>MAIN.fbIndraDrive.stDriveStatus.stS144_SignalStatusWord</Name>
-							<Type GUID="{50590704-8C4D-4FD8-9670-11E39DA38DD8}">ST_S144_SIGNALSTATUSWORD</Type>
+							<Type GUID="{1642AA04-0B3B-44CC-92AC-D98DCDBF8D53}">ST_S144_SIGNALSTATUSWORD</Type>
 							<SubVar>
 								<Name>bS424_DriveMode</Name>
 								<Comment><![CDATA[ FALSE: Operating mode]]></Comment>
@@ -620,6 +660,11 @@
 								<Name>bS437_12_JogMode</Name>
 								<Comment><![CDATA[ TRUE: Axis in Axis in jog mode]]></Comment>
 							</SubVar>
+							<SubVar>
+								<Name>bP14_0_C1400_GetMarkerPositionDone</Name>
+								<Comment><![CDATA[{attribute 'hide'}
+bS144_15_NotDefined					: BIT;	]]></Comment>
+							</SubVar>
 						</Var>
 						<Var>
 							<Name>MAIN.fbIndraDrive.stDriveStatus.nS84_TorqueFeedback</Name>
@@ -627,6 +672,10 @@
 						</Var>
 						<Var>
 							<Name>MAIN.fbIndraDrive.stDriveStatus.nS189_PositionError</Name>
+							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbIndraDrive.stDriveStatus.nP173_MarkerPosition</Name>
 							<Type>DINT</Type>
 						</Var>
 					</Vars>
@@ -640,10 +689,6 @@
 							<Name>MAIN.nAdditiveTorqueSetpoint</Name>
 							<Comment><![CDATA[ Unit 0.1%  (10=1%)]]></Comment>
 							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.nAdditivePositionSetpoiunt</Name>
-							<Type>DINT</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.iBrakeSpRaw</Name>
@@ -719,7 +764,7 @@
 						</Var>
 						<Var>
 							<Name>MAIN.fbIndraDrive.stDriveCommands.stS145_SignalControlWord</Name>
-							<Type GUID="{356849DC-7175-4AB3-A9EB-61AF708DF42F}">ST_S145_SIGNALCONTROLWORD</Type>
+							<Type GUID="{F0E5854A-EEDE-452D-9BB8-B565B2C7BFC3}">ST_S145_SIGNALCONTROLWORD</Type>
 							<SubVar>
 								<Name>bS346_0_PosCtrlWord_CmdValueAccept</Name>
 								<Comment><![CDATA[ Toggle to execute Slave Axis command]]></Comment>
@@ -777,8 +822,21 @@
 								<Comment><![CDATA[ (bP760_2 | bP760_1) 00:	Positioning active, started by toggling of bit 0]]></Comment>
 							</SubVar>
 							<SubVar>
-								<Name>bP760_VM_PosCtrlWord_2_PosActivation</Name>
-								<Comment><![CDATA[ (bP760_2 | bP760_1) 00:	Positioning active, started by toggling of bit 0]]></Comment>
+								<Name>bS407_0_HomingEnbale</Name>
+								<Comment><![CDATA[ (bP760_2 | bP760_1) 01: 	Infinite travel in positive direction (jog+) (Positioning will be aborted)
+ (bP760_2 | bP760_1) 10: 	Infinite travel in negative direction (jog-) (Positioning will be aborted)
+ (bP760_2 | bP760_1) 11: 	Stopping the axis (positioning stop) (Positioning will be aborted)
+bP760_VM_PosCtrlWord_2_PosActivation	: BIT	:= FALSE;	// (bP760_2 | bP760_1) 00:	Positioning active, started by toggling of bit 0
+ (bP760_2 | bP760_1) 01: 	Infinite travel in positive direction (jog+) (Positioning will be aborted), started by toggling of bit 0
+ (bP760_2 | bP760_1) 10: 	Infinite travel in negative direction (jog-) (Positioning will be aborted), started by toggling of bit 0
+ (bP760_2 | bP760_1) 11: 	Stopping the axis (positioning stop) (Positioning will be aborted)
+{attribute 'hide'}
+bS145_15_NotDefined						: BIT	:= FALSE;
+Bit 15]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bP14_0_C1400_GetMarkerPosition</Name>
+								<Comment><![CDATA[Bit 16]]></Comment>
 							</SubVar>
 						</Var>
 						<Var>
@@ -1527,7 +1585,7 @@
 						<SyncMan>0018ea002600010001000000ea00ea00ea00001826010000</SyncMan>
 						<SyncMan>001aea002200010002000000ea00ea00ea00001a22010000</SyncMan>
 						<SyncMan>001028006400010003000000000000000000001064010000</SyncMan>
-						<SyncMan>00111e006200010004000000000000000000001162010000</SyncMan>
+						<SyncMan>001122006200010004000000000000000000001162010000</SyncMan>
 						<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
 						<Fmmu>0000000000000000001000020100000001000000000000000000000000000000</Fmmu>
 						<Fmmu>0000000000000000001100010100000002000000000000000000000000000000</Fmmu>
@@ -1565,6 +1623,9 @@
 								<Type>INT</Type>
 							</Entry>
 							<Entry Name="Following distance" Index="#x00bd">
+								<Type>DINT</Type>
+							</Entry>
+							<Entry Name="Marker position A " Index="#x00ad">
 								<Type>DINT</Type>
 							</Entry>
 						</Pdo>
@@ -1704,6 +1765,7 @@
 			</OwnerB>
 			<OwnerB Name="TIID^Device 4 (EtherCAT)^Drive 10 (IndraDrive MPB18/19)">
 				<Link VarA="PlcTask Inputs^MAIN.dLatchedPosition" VarB="AT^Probe value 1 positive edge"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nP173_MarkerPosition" VarB="AT^Marker position A "/>
 				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nS135_DriveStatusWord" VarB="AT^Drive status word"/>
 				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nS189_PositionError" VarB="AT^Following distance"/>
 				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nS386_ActivePositionFeedbackValue" VarB="AT^Active position feedback value"/>

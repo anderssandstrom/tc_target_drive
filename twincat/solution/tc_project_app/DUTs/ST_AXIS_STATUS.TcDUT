@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
   <DUT Name="ST_AXIS_STATUS" Id="{e254610f-185a-469f-a884-c83c971223f1}">
     <Declaration><![CDATA[TYPE ST_AXIS_STATUS :
 STRUCT
@@ -21,7 +21,8 @@ STRUCT
 	fActualVelocity				: LREAL;	// The actual velocity of the axis
 	fActualTorque				: LREAL;	// The actual torque of the axis
 	fPositionError				: LREAL;	// The position error of the axis, i.e. the deviation between the Axis Set position and Actual position
-	bCommandChange				: BOOL;		// (S135.5): Bit that toggle every time a new command has been recognised by the drive 
+	fMarkerPosition             : LREAL;
+    bCommandChange				: BOOL;		// (S135.5): Bit that toggle every time a new command has been recognised by the drive 
 	bCommandValueProcessing		: BOOL;		// FALSE (S115.3): Drive ignores (external) command value input (S47, S258, S282 etc) 
 											// TRUE (S115.3): Drive follows (external) command value input (S47, S258, S282 etc) 
 	bLimitsDisabled				: BOOL;		// TRUE (S159-C1300): 	Monitoring of Position error, Position command error, Velocity error and Acceleration limit is disabled
@@ -29,6 +30,7 @@ STRUCT
 	bDiagMessage				: BOOL;		// TRUE (S135.11): There is a Diagnostic message on the drive 
 	bWarning					: BOOL;		// TRUE (S135.12): There is a warning present on the drive 
 	bError 						: BOOL;		// TRUE (S135.13): There is an error present on the drive 
+	bCmd_GetMarkerPositionDone  : BOOL;     // C1400 command Get Marker Position done
 	nDiagMessage				: DWORD;	// (S390) Displays the actual diagnostic message on the drive 
 END_STRUCT
 END_TYPE

@@ -6,7 +6,7 @@ VAR
 	stAmsNetId	AT %I*	              : AMSNETID;
 	nPort	AT %I*                    : WORD;
 	nMasterAxisPosition AT %I*        : DINT;
-	nAdditivePositionSetpoiunt AT %Q* : DINT;
+	nMainDriveMarkPosition AT %I*     : DINT;
 	nAdditiveTorqueSetpoint    AT %Q* : INT;   // Unit 0.1%  (10=1%)
 	dLatchedPosition AT %I*           : DINT;
 	iBrakeSpRaw AT %Q*                : INT := 0;
@@ -34,7 +34,10 @@ VAR
 	nTest: INT;
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// Monitor temperature
+      <ST><![CDATA[// Check hardware status
+ACT_Hardware();
+
+// Monitor temperature
 ACT_Temperature();
 
 // Control brake
@@ -46,6 +49,7 @@ ACT_MainDrive();
 // Error handling
 ACT_Error();
 
+// Post exe
 eTargetStateOld:=stStatEpics.eTargetState;
 ]]></ST>
     </Implementation>
@@ -99,42 +103,55 @@ iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
 
 IF stStatEpics.eTargetState = TARGET_STATE_MACHINE.PHASING THEN
   IF fbModePhase.bError AND NOT stStatEpics.bError THEN
-	  stStatEpics.bError:=fbModePhase.bError;
-	  stStatEpics.nErrorId:=fbModePhase.nErrorId;
-	  stStatEpics.sErrorStr:=fbModePhase.sErrorStr;
+	stStatEpics.bError:=fbModePhase.bError;
+	stStatEpics.nErrorId:=fbModePhase.nErrorId;
+	stStatEpics.sErrorStr:=fbModePhase.sErrorStr;
   END_IF
   
 ELSIF stStatEpics.eTargetState = TARGET_STATE_MACHINE.CONSTANT_VELOCITY THEN
-   IF fbModeVelo.bError AND NOT stStatEpics.bError THEN
-	  stStatEpics.bError:=fbModeVelo.bError;
-	  stStatEpics.nErrorId:=fbModeVelo.nErrorId;
-	  stStatEpics.sErrorStr:=fbModeVelo.sErrorStr;
+  IF fbModeVelo.bError AND NOT stStatEpics.bError THEN
+	stStatEpics.bError:=fbModeVelo.bError;
+	stStatEpics.nErrorId:=fbModeVelo.nErrorId;
+	stStatEpics.sErrorStr:=fbModeVelo.sErrorStr;
   END_IF
   
 ELSIF stStatEpics.eTargetState = TARGET_STATE_MACHINE.POSITIONING THEN
   IF fbModePos.bError AND NOT stStatEpics.bError THEN
-	  stStatEpics.bError:=fbModePos.bError;
-	  stStatEpics.nErrorId:=fbModePos.nErrorId;
-	  stStatEpics.sErrorStr:=fbModePos.sErrorStr;
+	stStatEpics.bError:=fbModePos.bError;
+	stStatEpics.nErrorId:=fbModePos.nErrorId;
+	stStatEpics.sErrorStr:=fbModePos.sErrorStr;
   END_IF
   
 ELSIF stStatEpics.eTargetState = TARGET_STATE_MACHINE.HOMING THEN
   IF fbModeHome.bError AND NOT stStatEpics.bError THEN
-	  stStatEpics.bError:=fbModeHome.bError;
-	  stStatEpics.nErrorId:=fbModeHome.nErrorId;
-	  stStatEpics.sErrorStr:=fbModeHome.sErrorStr;
+    stStatEpics.bError:=fbModeHome.bError;
+	stStatEpics.nErrorId:=fbModeHome.nErrorId;
+	stStatEpics.sErrorStr:=fbModeHome.sErrorStr;
   END_IF
-  
 END_IF
 
+// To high velocity detected. Shutdown..
+IF stStatus.fActualVelocity/10 > GVL_Parameters.fMaximumSPeedRpm THEN 
+  stCommands.bEnableAxis:= FALSE;
+  stCmdEpics.bEnable:=FALSE;
+  stCmdEpics.bExecute:=FALSE;
+  stStatEpics.bError:=TRUE;
+  stStatEpics.nErrorId:=GVL_ErrorCodes.nErrorVelToHigh;
+  stStatEpics.sErrorStr:=GVL_ErrorCodes.sErrorVelToHigh;
+END_IF
 
 IF stcmdEpics.bReset THEN
-	stStatEpics.bError:=FALSE;
-	stStatEpics.nErrorId:=GVL_ErrorCodes.nErrorCodeOKId;
-	stStatEpics.sErrorStr:=GVL_ErrorCodes.nErrorCodeOKStr;
-	stStatEpics.bBrake1TempAlarm:=FALSE;
-	stStatEpics.bBrake2TempAlarm:=FALSE;
+  stStatEpics.bError:=FALSE;
+  stStatEpics.nErrorId:=GVL_ErrorCodes.nErrorCodeOKId;
+  stStatEpics.sErrorStr:=GVL_ErrorCodes.nErrorCodeOKStr;
+  stStatEpics.bBrake1TempAlarm:=FALSE;
+  stStatEpics.bBrake2TempAlarm:=FALSE;
 END_IF]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_Hardware" Id="{713eae55-748e-42a3-b2f0-81f54e66f4bd}">
+      <Implementation>
+        <ST><![CDATA[// Check state of hardware]]></ST>
       </Implementation>
     </Action>
     <Action Name="ACT_MainDrive" Id="{0608089f-ed53-4fbf-a585-99ff0324bc84}">
@@ -224,11 +241,17 @@ CASE stStatEpics.eTargetState OF
         fbModeHome( 
             bExecute:=         stCmdEpics.bExecute,
             bReset:=           stCmdEpics.bReset,
-			fVelSet:=          stCmdEpics.fVelSet,
+			fVelSet:=          GVL_Parameters.fHomeSpeedRpm,
 			fPosSet:=          stCmdEpics.fPosSet,
 			stStatus:=	       stStatus,	
 			stCommands:=       stCommands);
-		stCommands.fFeedrateOverride:=1.0;
+		//stCommands.fFeedrateOverride:=1.0;
+		//ramp velocity with selected acceleration
+		fbRampVelo(bExecute:=stCmdEpics.bExecute,
+              fVelSetIn:=fbModeHome.fSpeedSetpoint,
+              iBlockSampleTimeMicroS:=GVL_Parameters.nTaskSampleTime*1000,
+              fVelSetOut:=stCommands.fVelocityCommandValue,
+              fVelActIn:=stStatus.fActualVelocity/10);
  
 	TARGET_STATE_MACHINE.TORQUE:
 		stCommands.eOperationMode:=E_OPERATION_MODE_NO.eSecondaryOpMode7;
@@ -256,6 +279,14 @@ END_IF
 
 // TODO: Why I put this here?
 stCommands.eMotionMode:=E_MOTION_MODE.eStop;
+
+// Check maximum velocity
+IF stCommands.fCommandVelocity > GVL_Parameters.fMaximumSPeedRpm THEN
+  stCommands.fCommandVelocity := GVL_Parameters.fMaximumSPeedRpm;
+END_IF
+IF stCommands.fVelocityCommandValue > GVL_Parameters.fMaximumSPeedRpm THEN
+  stCommands.fVelocityCommandValue := GVL_Parameters.fMaximumSPeedRpm;
+END_IF
 
 // Rexroth FB
 fbIndraDrive(
@@ -291,19 +322,19 @@ stStatEpics.fBrakeActTemp1:=fbTemp.iAi_Ch2_Value/10.0;
 stStatEpics.fBrakeActTemp2:=fbTemp.iAi_Ch3_Value/10.0;
 
 // Motor Temperature Monitoring Interlock
-IF (stStatEpics.fActTemp >= GVL_Parameters.nMaxMotorTemperature)  OR fbTemp.iAi_Ch1_Stat >0 THEN
+IF (stStatEpics.fActTemp >= GVL_Parameters.nMaxMotorTemperature)  OR fbTemp.iAi_Ch1_Stat > 0 THEN
 	stCmdEpics.bEnable:= FALSE;
 	stCmdEpics.bExecute:= FALSE;	
 END_IF
 
 //Brake temperature monitoring Interlock 1
-IF (stStatEpics.fBrakeActTemp1 >= GVL_Parameters.nMaxBrakeTemperature) OR fbTemp.iAi_Ch2_Stat >0 OR stStatEpics.bBrake1TempAlarm THEN
+IF (stStatEpics.fBrakeActTemp1 >= GVL_Parameters.nMaxBrakeTemperature) OR fbTemp.iAi_Ch2_Stat > 0 OR stStatEpics.bBrake1TempAlarm THEN
 	stCmdEpics.bEnable:= FALSE;
 	stCmdEpics.bExecute:= FALSE;		
     stStatEpics.bBrake1TempAlarm:=TRUE; 
 END_IF
 //Brake temperature monitoring Interlock 2
-IF (stStatEpics.fBrakeActTemp2 >= GVL_Parameters.nMaxBrakeTemperature) OR fbTemp.iAi_Ch3_Stat >0 OR stStatEpics.bBrake2TempAlarm THEN
+IF (stStatEpics.fBrakeActTemp2 >= GVL_Parameters.nMaxBrakeTemperature) OR fbTemp.iAi_Ch3_Stat > 0 OR stStatEpics.bBrake2TempAlarm THEN
 	stCmdEpics.bEnable:= FALSE;
 	stCmdEpics.bExecute:= FALSE;		
     stStatEpics.bBrake2TempAlarm:=TRUE; 
@@ -311,6 +342,8 @@ END_IF]]></ST>
       </Implementation>
     </Action>
     <LineIds Name="MAIN">
+      <LineId Id="1534" Count="0" />
+      <LineId Id="1532" Count="1" />
       <LineId Id="1383" Count="0" />
       <LineId Id="1146" Count="0" />
       <LineId Id="1530" Count="0" />
@@ -322,6 +355,7 @@ END_IF]]></ST>
       <LineId Id="1388" Count="0" />
       <LineId Id="1386" Count="0" />
       <LineId Id="1001" Count="0" />
+      <LineId Id="1536" Count="0" />
       <LineId Id="1390" Count="0" />
       <LineId Id="941" Count="0" />
       <LineId Id="1389" Count="0" />
@@ -344,15 +378,36 @@ END_IF]]></ST>
     </LineIds>
     <LineIds Name="MAIN.ACT_Error">
       <LineId Id="41" Count="0" />
-      <LineId Id="2" Count="38" />
+      <LineId Id="2" Count="28" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="57" Count="0" />
+      <LineId Id="44" Count="1" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="47" Count="1" />
+      <LineId Id="54" Count="1" />
+      <LineId Id="53" Count="0" />
+      <LineId Id="33" Count="7" />
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="MAIN.ACT_Hardware">
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="MAIN.ACT_MainDrive">
       <LineId Id="115" Count="17" />
       <LineId Id="113" Count="1" />
-      <LineId Id="2" Count="82" />
+      <LineId Id="2" Count="69" />
+      <LineId Id="134" Count="4" />
+      <LineId Id="133" Count="0" />
+      <LineId Id="72" Count="12" />
       <LineId Id="112" Count="0" />
-      <LineId Id="85" Count="26" />
+      <LineId Id="85" Count="12" />
+      <LineId Id="144" Count="0" />
+      <LineId Id="139" Count="0" />
+      <LineId Id="98" Count="0" />
+      <LineId Id="140" Count="1" />
+      <LineId Id="147" Count="2" />
+      <LineId Id="145" Count="0" />
+      <LineId Id="99" Count="12" />
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="MAIN.ACT_Temperature">

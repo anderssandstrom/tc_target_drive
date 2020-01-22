@@ -68,15 +68,22 @@ END_IF;
 //  y2=defAcc*0.1 -|                      \-----------------
 //                 |--------------------------------------------> fSetOut/fSetIn []
 //                                 x1=0.8 x2=1.0 
+
 fAccK:=(fAccY2-fAccY1)/(fAccX2-fAccX1);
 fAccM:= fAccY1-fAccK*fAccX1;
-x:=fVelSetOut/fVelSetIn;
+IF fVelSetIn<>0 THEN
+  x:=fVelSetOut/fVelSetIn;
+ELSE
+  x:=1.0;
+END_IF
 // try linear ramp down off acceleration from 0.8*velsetin to velset in (from defacc to 0.1* defacc)
 fCurrAcc:=GVL_Parameters.fAccDefault;
-IF x > fAccX1 AND x <= fAccX2 AND fVelSetOut<fVelSetIn THEN
-  fCurrAcc:=fAccK*fVelSetOut/fVelSetIn+fAccM;
-ELSIF x >= fAccX2 THEN
-  fCurrAcc:=GVL_Parameters.fAccDefault*0.1;
+IF fVelSetIn > fVelSetOut THEN 
+  IF x > fAccX1 AND x <= fAccX2 AND fVelSetOut<fVelSetIn THEN
+    fCurrAcc:=fAccK*fVelSetOut/fVelSetIn+fAccM;
+  ELSIF x >= fAccX2 THEN
+    fCurrAcc:=GVL_Parameters.fAccDefault*0.1;
+  END_IF
 END_IF
 
 // Change per execution
@@ -104,7 +111,7 @@ END_IF
       <LineId Id="1078" Count="0" />
       <LineId Id="932" Count="0" />
       <LineId Id="926" Count="0" />
-      <LineId Id="1054" Count="0" />
+      <LineId Id="1120" Count="0" />
       <LineId Id="1050" Count="0" />
       <LineId Id="928" Count="0" />
       <LineId Id="1086" Count="0" />
@@ -123,16 +130,21 @@ END_IF
       <LineId Id="1009" Count="0" />
       <LineId Id="1008" Count="0" />
       <LineId Id="1011" Count="6" />
+      <LineId Id="1123" Count="0" />
       <LineId Id="988" Count="0" />
       <LineId Id="998" Count="0" />
+      <LineId Id="1115" Count="0" />
       <LineId Id="1027" Count="0" />
+      <LineId Id="1116" Count="2" />
       <LineId Id="956" Count="0" />
       <LineId Id="990" Count="0" />
+      <LineId Id="1125" Count="0" />
       <LineId Id="1001" Count="1" />
       <LineId Id="1024" Count="0" />
       <LineId Id="1026" Count="0" />
       <LineId Id="1006" Count="0" />
       <LineId Id="999" Count="0" />
+      <LineId Id="1126" Count="0" />
       <LineId Id="937" Count="0" />
       <LineId Id="939" Count="0" />
       <LineId Id="1023" Count="0" />
