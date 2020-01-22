@@ -26,6 +26,7 @@ dbLoadRecords("./db/target.db","P=TARGET_DU:,PORT=TARGET_ADS")
 dbLoadRecords("./db/indraDriveStatus.db","P=TARGET_DU:,PORT=TARGET_ADS")
 dbLoadRecords("./db/indraDriveCommand.db","P=TARGET_DU:,PORT=TARGET_ADS")
 dbLoadRecords("./db/brake.db","P=TARGET_DU:,PORT=TARGET_ADS")
+dbLoadRecords("./db/home.db","P=TARGET_DU:,PORT=TARGET_ADS")
 
 ##############################################################################
 ############# Usefull commands
