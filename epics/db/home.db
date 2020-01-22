@@ -1,0 +1,44 @@
+
+record(bi,"$(P)Rotation-Home-Homed"){
+  field(PINI, "1")
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModeHome.bHomed?")  
+  field(SCAN, "I/O Intr")
+  field(DESC, "Rotation: Homed")
+}
+
+record(ai,"$(P)Rotation-Home-Pos-offset"){
+  field(PINI, "1")
+  field(DTYP, "asynFloat64")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModeHome.fActPositionOffset?")
+  field(PREC, "3")
+  field(SCAN, "I/O Intr")
+  field(DESC, "Rotation: Home position offset")
+}
+
+record(mbbi,"$(P)Rotation-Home-State"){
+  field(PINI, "1")
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))ADSPORT=852/Main.fbModeHome.eHomeState?")
+  field(SCAN, "I/O Intr")
+  field(DESC, "Rotation: Home sequence state")
+  field(ZRVL, "0")
+  field(ZRST, "IDLE")
+  field(ONVL, "1")
+  field(ONST, "RAMP_UP")
+  field(TWVL, "2")
+  field(TWST, "HOMING")
+  field(THVL, "3")
+  field(THST, "RAMP_DOWN")
+}
+
+record(waveform,"$(P)Rotation-Home-IndexLatchBuffer"){
+  field(PINI, "1")
+  field(TSE, -2)
+  field(DTYP,"asynFloat64ArrayIn")
+  field(INP,"@asyn($(PORT),0,1)ADSPORT=852/Main.fbModeHome.fRefMarkPosArray?")
+  field(NELM,10)
+  field(FTVL,"DOUBLE")
+  field(SCAN,"I/O Intr")
+  field(DESC, "Rotation: Home latched positions buffer")
+}
