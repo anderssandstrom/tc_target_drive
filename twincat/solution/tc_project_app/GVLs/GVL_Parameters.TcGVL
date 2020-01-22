@@ -3,27 +3,36 @@
   <GVL Name="GVL_Parameters" Id="{5744ec71-fce0-400b-ae43-6b52add682c5}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
-	fSpeedToleranceRpm: LREAL := 0.05;
+  fSpeedToleranceRpm: LREAL := 0.05;
 END_VAR
 
 VAR_GLOBAL CONSTANT
-	nSectors: LREAL :=36;
-    nPulseFreqHz:LREAL:=14;
-	fNominalSpeedRpm: LREAL := GVL_Parameters.nPulseFreqHz/GVL_Parameters.nSectors*60;
-	fNominalSpeedAdjust: LREAL:=0.001;//-0.0002;  //Timing system vs drive clock tuning. Automize later!
-	fPhaseSpeedTol:LREAL:=0.02;   //Speed for last rev needs to be below before start to phase
-	fHomeSpeedRpm: LREAL := 1;
-    fMaximumSPeedRpm: LREAL := GVL_Parameters.fNominalSpeedRpm*1.1;
-	nMaxMotorTemperature: INT:= 80;
-	nMaxBrakeTemperature: INT:= 100;
-	fWheelDiameter:LREAL:=2500;
-	fAccDefault:LREAL:=0.039;  //RPM/S^2 (0.039 => tn min to 23.3) 
-	nPhaseErrorFilterSize:INT:=36;  //Two revs
-	nVeloInRangeCount:INT:=100;
-	nSuperPosMaxCyclesToOutput:INT:=100;
-	fSuperPosDutyCycle:LREAL:=2.0/3.0;
-	nTaskSampleTime:INT:=1;
-	nPhasePIDReducedSampleRateFactor:INT:=1;   //run pid every time new pulse
+  // Sectors of wheel	
+  nSectors                             : LREAL := 36;
+  // Pulse frequency
+  nPulseFreqHz                         : LREAL := 14;
+  // Nominal velocity of wheel
+  fNominalSpeedRpm                     : LREAL := GVL_Parameters.nPulseFreqHz/GVL_Parameters.nSectors*60;
+  // Velocity offset, to compensate for differnce in drive and timing system
+  fNominalSpeedAdjust                  : LREAL:=0.001;//-0.0002;  //Timing system vs drive clock tuning. Automize later!
+  // Speed for last revs needs to be below this value before start to phase 
+  fPhaseSpeedTol                       : LREAL := 0.02;
+  // Velocity setpoint for homing 
+  fHomeSpeedRpm: LREAL := 5;
+  // Maximum allowed speed
+  fMaximumSPeedRpm: LREAL := GVL_Parameters.fNominalSpeedRpm*1.1;
+  nMaxMotorTemperature: INT:= 80;
+  nMaxBrakeTemperature: INT:= 100;
+  fWheelDiameter:LREAL:=2500;
+  fAccDefault:LREAL:=0.039;  //RPM/S^2 (0.039 => tn min to 23.3) 
+  nPhaseErrorFilterSize:INT:=36;  //Two revs
+  nVeloInRangeCount:INT:=100;
+  nSuperPosMaxCyclesToOutput:INT:=100;
+  fSuperPosDutyCycle:LREAL:=2.0/3.0;
+  nTaskSampleTime:INT:=1;
+  nPhasePIDReducedSampleRateFactor:INT:=1;   //run pid every time new pulse
+  nRefMarkArraySize:UDINT:=10;
+  
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

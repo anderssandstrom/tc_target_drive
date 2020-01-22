@@ -3,41 +3,258 @@
   <POU Name="FB_ModeHome" Id="{d7b39c30-3a80-4d2f-9742-8a95cc6e84c5}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_ModeHome
 VAR_INPUT
-	bExecute:BOOL;
-	bReset: BOOL;
-	fVelSet:LREAL:=0;
-	fPosSet:LREAL:=0;
-	stStatus: ST_AXIS_STATUS;
+	bExecute           : BOOL  := FALSE;
+	bReset             : BOOL  := FALSE;
+	fVelSet            : LREAL := 0;
+	fPosSet            : LREAL := 0;
+	stStatus           : ST_AXIS_STATUS;
 END_VAR
 VAR_OUTPUT
-	bError: BOOL;
-	nErrorId: UDINT;
-	sErrorStr: STRING:=GVL_ErrorCodes.nErrorCodeOKStr;
+	fSpeedSetpoint     : LREAL  := 0;
+	fActPositionOffset : LREAL  := 0;
+	bHomed             : BOOL   := FALSE;
+	bBusy              : BOOL   := FALSE;
+	bError             : BOOL   := 0;
+	nErrorId           : UDINT  := 0;
+	sErrorStr          : STRING := GVL_ErrorCodes.nErrorCodeOKStr;
 END_VAR
 VAR_IN_OUT
 	stCommands: ST_AXIS_COMMAND;
 END_VAR
 VAR
-
+  bRefMarkPosArrayConsistent : BOOL  := FALSE;
+  bTriggLatchMark            : BOOL  := FALSE;
+  bExecuteOld                : BOOL  := FALSE;  
+  nRevCounter                : UDINT := 0;
+  nCounter                   : UDINT := 0;
+  nRefMarksTotCount          : UDINT := 0;
+  i                          : UDINT := 0;
+  fNewestRefMarkPos          : LREAL := 0;
+  fActPosAtHomeStart         : LREAL := 0;
+  fMarkerPositionOld         : LREAL := 0;
+  fActPositionOld            : LREAL := 0;
+  fRefMarkPosArray           : ARRAY[ 0 ..GVL_Parameters.nRefMarkArraySize] OF LREAL;
+  eHomeState                 : E_HOME_STATE := E_HOME_STATE.IDLE;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// Function: Initiate homing of target main  motor
-// Actual homing will be performed by the drive.
+      <ST><![CDATA[// Function: Initiate homing of target main motor
+// Homing procedure:
+// 1. Ramp up to (95% of) homing velocity (GVL_Parameters.fHomeSpeedRpm)
+// 2. Issue drive command C1400 (latch encoder mark position)
+//    - Latch GVL_Parameters.nRefMarkArraySize times (revolutions).
+//    - Check that one latch per rev occurs.
+//    - Check that all the latched psoitions are same.
+//    - If everything is OK then store the position offset in fActPositionOffset 
+//    - and set the bHomed flag. 
+// 3. Ramp down.
+// 4. Homing procedure is finalized
+//    Now the fActPositionOffset can be used to offset the position from the drive
+//    bBusy is set to false.
+//
+// Note: Homing is here in TwinCAT since the built in homing procedure cannot be used since
+//       position loop in the drive is imposible to tune. 
+//       This procedure runs the motor in velocity mode which are used for all other modes 
+//       and can be releatively well tuned.
+//
 // Author: Anders Sandström 2018
+//
 
-stCommands.eMotionMode:=e_Motion_mode.ePositioning;
-stCommands.bCmd_DriveControlledHoming:=bExecute;
-stCommands.fVelocityCommandValue:=GVL_Parameters.fHomeSpeedRpm;
-stCommands.fCommandVelocity:=GVL_Parameters.fHomeSpeedRpm;]]></ST>
+// Test to ref in const velo
+stCommands.eMotionMode :=e_Motion_mode.eJogPositive;
+stCommands.eOperationMode:=e_Operation_mode_no.eSecondaryOpMode2;
+stCommands.bCmd_NCHomeEnable:=TRUE;  // not used
+stCommands.fCommandVelocity:=0; // Other mode
+stCommands.bCmd_GetMarkerPosition:=bTriggLatchMark;
+// Clear array and start
+IF NOT bExecute AND eHomeState <> E_HOME_STATE.IDLE THEN
+  eHomeState:=E_HOME_STATE.RAMP_DOWN;
+END_IF
+
+IF bReset THEN
+  bError    := FALSE;
+  nErrorID  := 0;
+  sErrorStr := GVL_ErrorCodes.nErrorCodeOKStr;	
+END_IF
+
+CASE eHomeState OF
+  E_HOME_STATE.IDLE:
+    bBusy:=FALSE;
+    IF bExecute AND NOT bExecuteOld AND NOT bError THEN
+	  // Clear buffer and reset variables on state transition
+      MEMSET(ADR(fRefMarkPosArray),0,SIZEOF(fRefMarkPosArray));
+	  bBusy              := TRUE;  
+      bTriggLatchMark    := FALSE;
+      bHomed             := FALSE;
+      nRefMarksTotCount  := 0;
+	  nRevCounter        := 0;
+	  fSpeedSetpoint     := 0;
+	  fActPosAtHomeStart := 0;
+	  fActPositionOffset := 0;
+	  eHomeState:=E_HOME_STATE.RAMP_UP;
+    END_IF
+
+  E_HOME_STATE.RAMP_UP:
+    // Wait until reached velocity (once)
+	fSpeedSetpoint:=fVelSet;
+	bBusy:=TRUE;
+    IF stStatus.fActualVelocity/10 > 0.95 * GVL_Parameters.fHomeSpeedRpm THEN
+	  fActPosAtHomeStart := stStatus.fActualPosition;
+      eHomeState:=E_HOME_STATE.HOMING;
+    END_IF
+	
+  E_HOME_STATE.HOMING:
+    // Move new latched value to buffer (newest always on index 0)
+    IF (*stStatus.bCmd_GetMarkerPositionDone*) fMarkerPositionOld <> stStatus.fMarkerPosition AND 
+      stStatus.fMarkerPosition <> 0 THEN
+      MEMMOVE(ADR(fRefMarkPosArray)+SIZEOF(LREAL),ADR(fRefMarkPosArray),SIZEOF(fRefMarkPosArray)-SIZEOF(LREAL));
+      fRefMarkPosArray[0]:=stStatus.fMarkerPosition;
+      nCounter:=0;
+      nRefMarksTotCount:=nRefMarksTotCount+1;
+      // Check that complete buffer have same value (same latched value for all revs)
+      IF nRefMarksTotCount >= GVL_Parameters.nRefMarkArraySize THEN
+        fNewestRefMarkPos:=fRefMarkPosArray[0];
+        bRefMarkPosArrayConsistent := TRUE;
+        FOR i:=1 TO GVL_Parameters.nRefMarkArraySize - 1 DO
+	      IF bRefMarkPosArrayConsistent THEN
+	        bRefMarkPosArrayConsistent := fRefMarkPosArray[i] = fNewestRefMarkPos;
+	      END_IF
+        END_FOR
+        bHomed:=bRefMarkPosArrayConsistent;
+		IF bHomed THEN
+		  fActPositionOffset := fNewestRefMarkPos;
+		ELSE
+		  bError:=TRUE;	
+          nErrorId:=GVL_ErrorCodes.nErrorEncoderLatchMissMatch;
+          sErrorStr:=GVL_ErrorCodes.sErrorEncoderLatchMissMatch; 
+		END_IF
+      END_IF
+    END_IF
+
+    // Wait 100 cycles to ensure communication with drive..
+    IF stStatus.fMarkerPosition <> 0 AND nCounter > 100 THEN
+      bTriggLatchMark:=NOT bTriggLatchMark;
+      nCounter:=0;  // wait for "response"
+    END_IF
+    nCounter:=nCounter+1;
+	
+    // Count revs since start homing. Must be one latch per rev.
+	IF stStatus.fActualPosition > fActPosAtHomeStart AND fActPositionOld <= fActPosAtHomeStart THEN
+      nRevCounter := nRevCounter+1;
+	END_IF
+	
+	IF nRevCounter - nRefMarksTotCount > 1 THEN
+	  bError := TRUE;
+	  nErrorID := GVL_ErrorCodes.nErrorEncoderLatchLost;
+	  sErrorStr := GVL_ErrorCodes.sErrorEncoderLatchLost;
+	  eHomeState := E_HOME_STATE.RAMP_DOWN;
+	END_IF
+	
+	IF nRefMarksTotCount > GVL_Parameters.nRefMarkArraySize OR bError THEN
+	  eHomeState := E_HOME_STATE.RAMP_DOWN;
+	END_IF
+	
+  E_HOME_STATE.RAMP_DOWN:
+    fSpeedSetpoint:=0;
+	IF stStatus.bAxisStandStillStatus THEN
+	  eHomeState:=E_HOME_STATE.IDLE;
+	  bBusy:=FALSE;
+	END_IF
+	
+  ELSE
+	eHomeState:=E_HOME_STATE.RAMP_DOWN;	
+	
+END_CASE
+
+fMarkerPositionOld:=stStatus.fMarkerPosition;
+fActPositionOld := stStatus.fActualPosition;
+bExecuteOld:=bExecute;
+]]></ST>
     </Implementation>
     <LineIds Name="FB_ModeHome">
       <LineId Id="912" Count="1" />
+      <LineId Id="1024" Count="0" />
+      <LineId Id="1207" Count="1" />
+      <LineId Id="1212" Count="0" />
+      <LineId Id="1211" Count="0" />
+      <LineId Id="1215" Count="1" />
+      <LineId Id="1213" Count="0" />
+      <LineId Id="1217" Count="0" />
+      <LineId Id="1222" Count="0" />
+      <LineId Id="1220" Count="0" />
+      <LineId Id="1223" Count="2" />
+      <LineId Id="1227" Count="1" />
+      <LineId Id="1226" Count="0" />
       <LineId Id="911" Count="0" />
-      <LineId Id="914" Count="0" />
-      <LineId Id="888" Count="1" />
-      <LineId Id="891" Count="0" />
-      <LineId Id="708" Count="0" />
+      <LineId Id="935" Count="0" />
+      <LineId Id="1218" Count="0" />
+      <LineId Id="936" Count="2" />
+      <LineId Id="954" Count="0" />
+      <LineId Id="1078" Count="0" />
+      <LineId Id="1076" Count="0" />
+      <LineId Id="958" Count="0" />
+      <LineId Id="1088" Count="1" />
+      <LineId Id="1047" Count="0" />
+      <LineId Id="1196" Count="0" />
+      <LineId Id="1115" Count="0" />
+      <LineId Id="1197" Count="0" />
+      <LineId Id="1205" Count="0" />
+      <LineId Id="1201" Count="0" />
+      <LineId Id="1198" Count="1" />
+      <LineId Id="1048" Count="1" />
+      <LineId Id="1151" Count="0" />
+      <LineId Id="1104" Count="0" />
+      <LineId Id="1107" Count="0" />
+      <LineId Id="1178" Count="0" />
+      <LineId Id="1177" Count="0" />
+      <LineId Id="1176" Count="0" />
+      <LineId Id="1175" Count="0" />
+      <LineId Id="1111" Count="0" />
+      <LineId Id="1181" Count="0" />
+      <LineId Id="1113" Count="0" />
+      <LineId Id="1174" Count="0" />
+      <LineId Id="1158" Count="1" />
+      <LineId Id="1103" Count="0" />
+      <LineId Id="1096" Count="0" />
+      <LineId Id="1054" Count="0" />
+      <LineId Id="1072" Count="0" />
+      <LineId Id="1086" Count="0" />
+      <LineId Id="1152" Count="0" />
+      <LineId Id="1073" Count="0" />
+      <LineId Id="1179" Count="0" />
+      <LineId Id="1074" Count="0" />
+      <LineId Id="1055" Count="0" />
+      <LineId Id="1079" Count="0" />
+      <LineId Id="1059" Count="0" />
+      <LineId Id="1118" Count="16" />
+      <LineId Id="1160" Count="1" />
+      <LineId Id="1229" Count="0" />
+      <LineId Id="1232" Count="0" />
+      <LineId Id="1230" Count="1" />
+      <LineId Id="1162" Count="0" />
+      <LineId Id="1135" Count="7" />
+      <LineId Id="1056" Count="0" />
+      <LineId Id="1145" Count="0" />
+      <LineId Id="1187" Count="0" />
+      <LineId Id="1183" Count="2" />
+      <LineId Id="1191" Count="2" />
+      <LineId Id="1202" Count="1" />
+      <LineId Id="1195" Count="0" />
+      <LineId Id="1194" Count="0" />
+      <LineId Id="1186" Count="0" />
+      <LineId Id="1153" Count="3" />
+      <LineId Id="1060" Count="0" />
+      <LineId Id="1098" Count="2" />
+      <LineId Id="1102" Count="0" />
+      <LineId Id="1101" Count="0" />
+      <LineId Id="1146" Count="1" />
+      <LineId Id="1149" Count="1" />
+      <LineId Id="1046" Count="0" />
+      <LineId Id="974" Count="0" />
+      <LineId Id="957" Count="0" />
+      <LineId Id="1189" Count="0" />
+      <LineId Id="945" Count="0" />
+      <LineId Id="992" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

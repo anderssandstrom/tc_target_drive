@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.10">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
   <DUT Name="ST_AXIS_COMMAND" Id="{1f17bf9a-e1c8-4812-a12d-020cbadfb6be}">
     <Declaration><![CDATA[TYPE ST_AXIS_COMMAND :
 STRUCT
@@ -28,11 +28,12 @@ STRUCT
 	bCmd_SetAbsolutePosition	: BOOL	:= FALSE;	// (P12, C0300): Sets the Absolute position of the drive according to drive configuration 
 	bCmd_DriveControlledHoming	: BOOL	:= FALSE;	// (S148, C0600): Starts the homing procedure configured in the drive. NOTE that this does not set the absolute position 
 	bCmd_DisableLimits			: BOOL	:= FALSE;	// (bS159, C1300): Disables Monitoring of Position error, Position command error, Velocity error and Acceleration limit
-	bCmd_ActivateParameterMode	: BOOL	:= FALSE;	//  (S420, C0400): TRUE: Brings the drive to parameter mode 
-	bCmd_ExitParameterMode		: BOOL	:= FALSE;	//  (S422, C0200): TRUE: Brings the drive from parameter mode 
-	bCmd_RunVirtualMater		: BOOL	:= FALSE;	//  Jog command to the virtual Master
+	bCmd_ActivateParameterMode	: BOOL	:= FALSE;	// (S420, C0400): TRUE: Brings the drive to parameter mode 
+	bCmd_ExitParameterMode		: BOOL	:= FALSE;	// (S422, C0200): TRUE: Brings the drive from parameter mode 
+	bCmd_RunVirtualMater		: BOOL	:= FALSE;	// Jog command to the virtual Master
+	bCmd_NCHomeEnable           : BOOL  := FALSE;   // Home from master NC enable (to be able to latch ref marks)
+    bCmd_GetMarkerPosition      : BOOL  := FALSE;   // Start command C1400 Get Marker Position
 	fVelocityCommandValue		: LREAL	:= 0.0; 	// (S40): The velocity used for Positioning and Jogging
-
 END_STRUCT
 END_TYPE
 ]]></Declaration>
