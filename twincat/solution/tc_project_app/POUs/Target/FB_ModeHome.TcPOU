@@ -123,6 +123,10 @@ CASE eHomeState OF
         bHomed:=bRefMarkPosArrayConsistent;
 		IF bHomed THEN
 		  fActPositionOffset := fNewestRefMarkPos;
+		ELSE
+		  bError:=TRUE;	
+          nErrorId:=GVL_ErrorCodes.nErrorEncoderLatchMissMatch;
+          sErrorStr:=GVL_ErrorCodes.sErrorEncoderLatchMissMatch; 
 		END_IF
       END_IF
     END_IF
@@ -146,7 +150,7 @@ CASE eHomeState OF
 	  eHomeState := E_HOME_STATE.RAMP_DOWN;
 	END_IF
 	
-	IF nRefMarksTotCount > GVL_Parameters.nRefMarkArraySize THEN
+	IF nRefMarksTotCount > GVL_Parameters.nRefMarkArraySize OR bError THEN
 	  eHomeState := E_HOME_STATE.RAMP_DOWN;
 	END_IF
 	
@@ -223,7 +227,11 @@ bExecuteOld:=bExecute;
       <LineId Id="1079" Count="0" />
       <LineId Id="1059" Count="0" />
       <LineId Id="1118" Count="16" />
-      <LineId Id="1160" Count="2" />
+      <LineId Id="1160" Count="1" />
+      <LineId Id="1229" Count="0" />
+      <LineId Id="1232" Count="0" />
+      <LineId Id="1230" Count="1" />
+      <LineId Id="1162" Count="0" />
       <LineId Id="1135" Count="7" />
       <LineId Id="1056" Count="0" />
       <LineId Id="1145" Count="0" />

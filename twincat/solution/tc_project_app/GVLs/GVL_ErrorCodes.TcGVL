@@ -4,21 +4,25 @@
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
   // ************************General****************************	
-  nErrorCodeOKId:UDINT:=0;
-  nErrorCodeOKStr:STRING:='NO ERROR';
+  nErrorCodeOKId              : UDINT  := 0;
+  nErrorCodeOKStr             : STRING := 'NO ERROR';
   // To high velocity 
-  nErrorVelToHigh:UDINT:=1000;
-  sErrorVelToHigh:STRING:='VELOCITY TO HIGH';
+  nErrorVelToHigh             : UDINT  := 100;
+  sErrorVelToHigh             : STRING := 'MAIN: VELOCITY TO HIGH';
   
   // ************************FB_ModePhase()****************************	
   // No new latched position value have been identified for the last 71 ms (no signal from timing system?)
-  nErrorNoLatchId:UDINT:=1000;
-  sErrorNoLatchStr:STRING:='NO LATCH FROM DRIVE';
+  nErrorNoLatchId             : UDINT  := 1000;
+  sErrorNoLatchStr            : STRING := 'PHASE: NO LATCH FROM DRIVE';
 	
   // ************************FB_ModeHome()*****************************
   // The encoder index pulse seems to be lost (a latch have not been identified for the last rev)
-  nErrorEncoderLatchLost : UDINT:= 2000;
-  sErrorEncoderLatchLost : STRING := 'ENCODER INDEX PULSE LATCH LOST';
+  nErrorEncoderLatchLost      : UDINT  := 2000;
+  sErrorEncoderLatchLost      : STRING := 'HOME: ENCODER INDEX PULSE LATCH LOST';
+  // Deviation found in the latched position values (on index pulse)
+  // Could be that encoder pulses are lost or that several index latches occurs per rev.
+  nErrorEncoderLatchMissMatch : UDINT  := 2001;
+  sErrorEncoderLatchMissMatch : STRING := 'HOME: ENCODER INDEX PULSES POSITION MISSMATCH';
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
