@@ -82,8 +82,8 @@ record(mbbo,"$(P)Rotation-State-Cmd"){
   field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))ADSPORT=852/Main.stCmdEpics.eTargetStateCmd?")
   field(SCAN, "Passive")
   field(DESC, "Rotation: Main State Cmd")
-  field(ZRVL, "0")
-  field(ZRST, "NONE")
+#  field(ZRVL, "0")
+#  field(ZRST, "NONE")
 #  field(ONVL, "1")
 #  field(ONST, "NOT_USED")
   field(TWVL, "2")
@@ -185,14 +185,14 @@ record(ai,"$(P)Rotation-ChoosenSector"){
   field(DESC, "Rotation: Choosen Sector ID")
 }
 
-record(ai,"$(P)Rotation-Cntrl-Cmd"){
-  field(PINI, "1")
-  field(DTYP, "asynFloat64")
-  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.fCtrlOutput?")
-  field(PREC, "3")
-  field(SCAN, "I/O Intr")
-  field(DESC, "Rotation: Phase PID Controller output")
-}
+#record(ai,"$(P)Rotation-Cntrl-Cmd"){
+#  field(PINI, "1")
+#  field(DTYP, "asynFloat64")
+#  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.fCtrlOutput?")
+#  field(PREC, "3")
+#  field(SCAN, "I/O Intr")
+#  field(DESC, "Rotation: Phase PID Controller output")
+#}
 
 record(ai,"$(P)Rotation-Vel-Stable-Count"){
   field(PINI, "1")
@@ -371,8 +371,8 @@ record(mbbo,"$(P)Rotation-State-Phase-Ctrl-Type"){
   field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))ADSPORT=852/Main.stCmdEpics.ePhaseCntrlAlg?")
   field(SCAN, "Passive")
   field(DESC, "Rotation: Main Phase control algorithm")
-  field(ZRVL, "0")
-  field(ZRST, "NONE")
+#  field(ZRVL, "0")
+#  field(ZRST, "NONE")
   field(ONVL, "1")
   field(ONST, "PID")
   field(TWVL, "2")
@@ -395,42 +395,3 @@ record(mbbo,"$(P)Rotation-State-Phase-PWM-Type"){
   field(TWVL, "2")
   field(TWST, "SIMPLE")
 }
-
-# mbbo
-#OUT	Output Link	OUTLINK	Yes	0	No	No	N/A	No
-#DTYP	Device Type	DEVCHOICE	Yes	0	Yes	No	No	 
-#RVAL	Raw Data Value	ULONG	No	0	Yes	Yes	Yes	Yes
-#SHFT	Shift	USHORT	No	0	Yes	No	No	No
-#SDEF	States Defined?	SHORT	No	0	Yes	No	No	No
-#ZRVL	Zero Value	ULONG	Yes	0	Yes	Yes	No	Yes
-#ONVL	One value	ULONG	Yes	0	Yes	Yes	No	Yes
-#TWVL	Two Value	ULONG	Yes	0	Yes	Yes	No	Yes
-#THVL	Three Value	ULONG	Yes	0	Yes	Yes	No	Yes
-#FRVL	Four Value	ULONG	Yes	0	Yes	Yes	No	Yes
-#FVVL	Five Value	ULONG	Yes	0	Yes	Yes	No	Yes
-#SXVL	Six Value	ULONG	Yes	0	Yes	Yes	No	Yes
-#SVVL	Seven Value	ULONG	Yes	0	Yes	Yes	No	Yes
-#EIVL	Eight value	ULONG	Yes	0	Yes	Yes	No	Yes
-#NIVL	Nine Value	ULONG	Yes	0	Yes	Yes	No	Yes
-#TEVL	Ten Value	ULONG	Yes	0	Yes	Yes	No	Yes
-#ELVL	Eleven Value	ULONG	Yes	0	Yes	Yes	No	Yes
-#TVVL	Twelve Value	ULONG	Yes	0	Yes	Yes	No	Yes
-#TTVL	Thirteen Value	ULONG	Yes	0	Yes	Yes	No	Yes
-#FTVL	Fourteen Value	ULONG	Yes	0	Yes	Yes	No	Yes
-#FFVL	Fifteen Value	ULONG	Yes	0	Yes	Yes	No	Yes
-#ZRST	Zero String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
-#ONST	One String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
-#TWST	Two String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
-#THST	Three String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
-#FRST	Four String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
-#FVST	Five String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
-#SXST	Six String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
-#SVST	Seven String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
-#EIST	Eight String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
-#NIST	Nine String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
-#TEST	Ten String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
-#ELST	Eleven String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
-#TVST	Twelve String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
-#TTST	Thirteen String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
-#FTST	Fourteen String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
-#FFST	Fifteen String	STRING [16]	Yes	Null	Yes	Yes	No	Yes
