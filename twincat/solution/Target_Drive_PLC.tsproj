@@ -1484,6 +1484,587 @@ bS144_15_NotDefined					: BIT;	]]></Comment>
 			</Hides>
 		</DataType>
 		<DataType>
+			<Name GUID="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" AutoDeleteType="true">DUT_EL2819_ChannelStatus</Name>
+			<BitSize>64</BitSize>
+			<SubItem>
+				<Name>bCh1_Overtemperature</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ Need to add all 64 to get byte and naming consistency]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>0</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh1_Open_Load</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>1</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh1_Overcurrent</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>2</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh1_Short_Circuit_to_24V</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>3</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh2_Overtemperature</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>4</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh2_Open_Load</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>5</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh2_Overcurrent</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>6</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh2_Short_Circuit_to_24V</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>7</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh3_Overtemperature</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>8</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh3_Open_Load</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>9</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh3_Overcurrent</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>10</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh3_Short_Circuit_to_24V</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>11</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh4_Overtemperature</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>12</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh4_Open_Load</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>13</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh4_Overcurrent</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>14</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh4_Short_Circuit_to_24V</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>15</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh5_Overtemperature</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>16</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh5_Open_Load</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>17</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh5_Overcurrent</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>18</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh5_Short_Circuit_to_24V</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>19</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh6_Overtemperature</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>20</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh6_Open_Load</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>21</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh6_Overcurrent</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>22</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh6_Short_Circuit_to_24V</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>23</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh7_Overtemperature</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>24</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh7_Open_Load</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>25</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh7_Overcurrent</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>26</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh7_Short_Circuit_to_24V</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>27</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh8_Overtemperature</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>28</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh8_Open_Load</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>29</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh8_Overcurrent</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>30</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh8_Short_Circuit_to_24V</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>31</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh9_Overtemperature</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>32</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh9_Open_Load</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>33</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh9_Overcurrent</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>34</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh9_Short_Circuit_to_24V</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>35</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh10_Overtemperature</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>36</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh10_Open_Load</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>37</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh10_Overcurrent</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>38</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh10_Short_Circuit_to_24V</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>39</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh11_Overtemperature</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>40</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh11_Open_Load</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>41</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh11_Overcurrent</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>42</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh11_Short_Circuit_to_24V</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>43</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh12_Overtemperature</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>44</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh12_Open_Load</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>45</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh12_Overcurrent</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>46</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh12_Short_Circuit_to_24V</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>47</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh13_Overtemperature</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>48</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh13_Open_Load</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>49</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh13_Overcurrent</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>50</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh13_Short_Circuit_to_24V</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>51</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh14_Overtemperature</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>52</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh14_Open_Load</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>53</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh14_Overcurrent</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>54</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh14_Short_Circuit_to_24V</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>55</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh15_Overtemperature</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>56</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh15_Open_Load</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>57</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh15_Overcurrent</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>58</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh15_Short_Circuit_to_24V</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>59</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh16_Overtemperature</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>60</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh16_Open_Load</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>61</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh16_Overcurrent</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>62</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bCh16_Short_Circuit_to_24V</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>63</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+		</DataType>
+		<DataType>
 			<Name GUID="{4CCFD5CA-E676-474E-B42D-6A96C42819C9}" AutoDeleteType="true">ST_S134_MASTERCONTROLWORD</Name>
 			<BitSize>16</BitSize>
 			<SubItem>
@@ -1816,6 +2397,7 @@ Bit 15]]></Comment>
 	</ImageDatas>
 	<Project ProjectGUID="{9CF97348-B9D3-4938-B1F2-5F0B0B6AA66A}" TargetNetId="192.168.88.122.1.1" Target64Bit="true" ShowHideConfigurations="#x106">
 		<System>
+			<Settings MaxCpus="2"/>
 			<Tasks>
 				<Task Id="2" Priority="26" CycleTime="100000" AmsPort="350" AdtTasks="true">
 					<Name>PlcTaskCom</Name>
@@ -2839,6 +3421,314 @@ bS144_15_NotDefined					: BIT;	]]></Comment>
 							<Name>MAIN.fbIndraDrive.stDriveStatus.nP173_MarkerPosition</Name>
 							<Type>DINT</Type>
 						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.Channel_1_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.Channel_2_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.Channel_3_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.Channel_4_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.Channel_5_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.Channel_6_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.Channel_7_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.Channel_8_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.Channel_9_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.Channel_10_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.Channel_11_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.Channel_12_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.Channel_13_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.Channel_14_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.Channel_15_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.Channel_16_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.WcState_WcState</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.InfoData_State</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s8_EL9410.bStatus_Us_UV</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s8_EL9410.bStatus_Up_UV</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s8_EL9410.WcState_WcState</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s8_EL9410.InfoData_State</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s15_EL9410.bStatus_Us_UV</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s15_EL9410.bStatus_Up_UV</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s15_EL9410.WcState_WcState</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s15_EL9410.InfoData_State</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s4_EL2819.WcState_WcState</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s4_EL2819.InfoData_State</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s4_EL2819.Device_Common_Fault</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s4_EL2819.Device_Overtemerature</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s4_EL2819.Device_Common_Under_Voltage</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s4_EL2819.Device_Common_Missing_Voltage</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s4_EL2819.stChanneDiag</Name>
+							<Comment><![CDATA[ 1..16 channels of 4 bits (total 64 bits):
+   0: Overtemperature
+   1: Open Load
+   2: Overccurrent
+   3: Short circuit to 24V ]]></Comment>
+							<Type GUID="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}">DUT_EL2819_ChannelStatus</Type>
+							<SubVar>
+								<Name>bCh1_Overtemperature</Name>
+								<Comment><![CDATA[ Need to add all 64 to get byte and naming consistency]]></Comment>
+							</SubVar>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s5_EL2819.WcState_WcState</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s5_EL2819.InfoData_State</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s5_EL2819.Device_Common_Fault</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s5_EL2819.Device_Overtemerature</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s5_EL2819.Device_Common_Under_Voltage</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s5_EL2819.Device_Common_Missing_Voltage</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s5_EL2819.stChanneDiag</Name>
+							<Comment><![CDATA[ 1..16 channels of 4 bits (total 64 bits):
+   0: Overtemperature
+   1: Open Load
+   2: Overccurrent
+   3: Short circuit to 24V ]]></Comment>
+							<Type GUID="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}">DUT_EL2819_ChannelStatus</Type>
+							<SubVar>
+								<Name>bCh1_Overtemperature</Name>
+								<Comment><![CDATA[ Need to add all 64 to get byte and naming consistency]]></Comment>
+							</SubVar>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.Channel_1_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.Channel_2_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.Channel_3_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.Channel_4_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.Channel_5_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.Channel_6_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.Channel_7_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.Channel_8_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.Channel_9_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.Channel_10_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.Channel_11_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.Channel_12_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.Channel_13_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.Channel_14_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.Channel_15_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.Channel_16_Input</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.WcState_WcState</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.InfoData_State</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s6_EL9505.bStatus_Uo_Power_OK</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s6_EL9505.bStatus_Uo_Overload</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s6_EL9505.WcState_WcState</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s6_EL9505.InfoData_State</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s13_EL3214.AI_RTD_Ch_1_Status</Name>
+							<Comment><![CDATA[Channels]]></Comment>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s13_EL3214.AI_RTD_Ch_1_Value</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s13_EL3214.AI_RTD_Ch_2_Status</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s13_EL3214.AI_RTD_Ch_2_Value</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s13_EL3214.AI_RTD_Ch_3_Status</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s13_EL3214.AI_RTD_Ch_3_Value</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s13_EL3214.AI_RTD_Ch_4_Status</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s13_EL3214.AI_RTD_Ch_4_Value</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s13_EL3214.WcState_WcState</Name>
+							<Comment><![CDATA[Terminal status]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s13_EL3214.InfoData_State</Name>
+							<Type>UINT</Type>
+						</Var>
 					</Vars>
 					<Vars VarGrpType="2">
 						<Name>PlcTask Outputs</Name>
@@ -3008,29 +3898,187 @@ Bit 15]]></Comment>
 							<Name>MAIN.fbIndraDrive.stDriveCommands.nS40_VelocityCommandValue</Name>
 							<Type>DINT</Type>
 						</Var>
+						<Var>
+							<Name>MAIN.fb_s4_EL2819.Channel_1_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s4_EL2819.Channel_2_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s4_EL2819.Channel_3_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s4_EL2819.Channel_4_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s4_EL2819.Channel_5_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s4_EL2819.Channel_6_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s4_EL2819.Channel_7_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s4_EL2819.Channel_8_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s4_EL2819.Channel_9_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s4_EL2819.Channel_10_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s4_EL2819.Channel_11_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s4_EL2819.Channel_12_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s4_EL2819.Channel_13_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s4_EL2819.Channel_14_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s4_EL2819.Channel_15_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s4_EL2819.Channel_16_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s5_EL2819.Channel_1_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s5_EL2819.Channel_2_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s5_EL2819.Channel_3_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s5_EL2819.Channel_4_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s5_EL2819.Channel_5_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s5_EL2819.Channel_6_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s5_EL2819.Channel_7_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s5_EL2819.Channel_8_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s5_EL2819.Channel_9_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s5_EL2819.Channel_10_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s5_EL2819.Channel_11_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s5_EL2819.Channel_12_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s5_EL2819.Channel_13_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s5_EL2819.Channel_14_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s5_EL2819.Channel_15_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s5_EL2819.Channel_16_Output</Name>
+							<Type>BOOL</Type>
+						</Var>
 					</Vars>
+					<UnrestoredVarLinks ImportTime="2020-01-29T12:37:59">
+						<OwnerA Name="InputDst" Prefix="TIPC^tc_project_app^tc_project_app Instance" Type="1">
+							<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 8 (EL9410)">
+								<Link VarA="MAIN.fb_s8_EL9505.InfoData_State" TypeA="UINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000005}" VarB="InfoData^State" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s8_EL9505.WcState_WcState" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="WcState^WcState" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s8_EL9505.bStatus_Up_UV" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Status Up^Undervoltage" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s8_EL9505.bStatus_Us_UV" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Status Us^Undervoltage" Size="1" RestoreInfo="ANotFound"/>
+							</OwnerB>
+						</OwnerA>
+					</UnrestoredVarLinks>
+					<UnrestoredVarLinks ImportTime="2020-01-29T15:36:45">
+						<OwnerA Name="InputDst" Prefix="TIPC^tc_project_app^tc_project_app Instance" Type="1">
+							<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 4 (EL2819)">
+								<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 1" Size="4" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 10" Size="4" OffsA="36" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 11" Size="4" OffsA="40" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 12" Size="4" OffsA="44" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 13" Size="4" OffsA="48" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 14" Size="4" OffsA="52" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 15" Size="4" OffsA="56" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 16" Size="4" OffsA="60" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 2" Size="4" OffsA="4" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 3" Size="4" OffsA="8" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 4" Size="4" OffsA="12" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 5" Size="4" OffsA="16" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 6" Size="4" OffsA="20" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 7" Size="4" OffsA="24" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 8" Size="4" OffsA="28" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 9" Size="4" OffsA="32" RestoreInfo="ANotFound"/>
+							</OwnerB>
+							<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 5 (EL2819)">
+								<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 1" Size="4" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 10" Size="4" OffsA="36" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 11" Size="4" OffsA="40" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 12" Size="4" OffsA="44" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 13" Size="4" OffsA="48" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 14" Size="4" OffsA="52" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 15" Size="4" OffsA="56" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 16" Size="4" OffsA="60" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 2" Size="4" OffsA="4" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 3" Size="4" OffsA="8" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 4" Size="4" OffsA="12" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 5" Size="4" OffsA="16" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 6" Size="4" OffsA="20" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 7" Size="4" OffsA="24" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 8" Size="4" OffsA="28" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 9" Size="4" OffsA="32" RestoreInfo="ANotFound"/>
+							</OwnerB>
+						</OwnerA>
+					</UnrestoredVarLinks>
 					<TaskPouOids>
 						<TaskPouOid Prio="20" OTCID="#x08502041"/>
-					</TaskPouOids>
-				</Instance>
-			</Project>
-			<Project GUID="{87E6730D-AA5D-4877-938D-9367D6DB8F89}" Name="tc_project_app_faster" PrjFilePath="tc_project_app_faster\tc_project_app_faster.plcproj" TmcFilePath="tc_project_app_faster\tc_project_app_faster.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="tc_project_app_faster\tc_project_app_faster.tmc">
-					<Name>tc_project_app_faster Instance</Name>
-					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
-					<Vars VarGrpType="1">
-						<Name>PlcTask Inputs</Name>
-						<Var>
-							<Name>MAIN.inputDigSens1</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.inputDigSens2</Name>
-							<Type>BOOL</Type>
-						</Var>
-					</Vars>
-					<TaskPouOids>
-						<TaskPouOid Prio="20" OTCID="#x08502001"/>
 					</TaskPouOids>
 				</Instance>
 			</Project>
@@ -3262,16 +4310,16 @@ Bit 15]]></Comment>
 							<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
 							<BootStrapData>0010f400f410f400</BootStrapData>
 							<Pdo Name="DIG Diag Inputs" Index="#x1a00" Flags="#x0010" SyncMan="3">
-								<Entry Name="Channel 1__Overtemperature" Index="#x6001" Sub="#x01">
+								<Entry Name="Channel 1__Overtemperature" Index="#x6001" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 1__Open Load" Index="#x6001" Sub="#x02">
+								<Entry Name="Channel 1__Open Load" Index="#x6001" Sub="#x02" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 1__Overcurrent" Index="#x6001" Sub="#x03">
+								<Entry Name="Channel 1__Overcurrent" Index="#x6001" Sub="#x03" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 1__Short Circuit to 24V" Index="#x6001" Sub="#x04">
+								<Entry Name="Channel 1__Short Circuit to 24V" Index="#x6001" Sub="#x04" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Channel 2__Overtemperature" Index="#x6011" Sub="#x01">
@@ -3442,7 +4490,7 @@ Bit 15]]></Comment>
 								<Entry Name="Channel 15__Short Circuit to 24V" Index="#x60e1" Sub="#x04">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 16__Overtemperature" Index="#x60f1" Sub="#x01">
+								<Entry Name="Channel 16__Overtemperature" Index="#x60f1" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Channel 16__Open Load" Index="#x60f1" Sub="#x02">
@@ -3473,52 +4521,52 @@ Bit 15]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="DIG Outputs" Index="#x1600" InOut="1" Flags="#x0010" SyncMan="2">
-								<Entry Name="Channel 1__Output" Index="#x7000" Sub="#x01">
+								<Entry Name="Channel 1__Output" Index="#x7000" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 2__Output" Index="#x7010" Sub="#x01">
+								<Entry Name="Channel 2__Output" Index="#x7010" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 3__Output" Index="#x7020" Sub="#x01">
+								<Entry Name="Channel 3__Output" Index="#x7020" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 4__Output" Index="#x7030" Sub="#x01">
+								<Entry Name="Channel 4__Output" Index="#x7030" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 5__Output" Index="#x7040" Sub="#x01">
+								<Entry Name="Channel 5__Output" Index="#x7040" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 6__Output" Index="#x7050" Sub="#x01">
+								<Entry Name="Channel 6__Output" Index="#x7050" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 7__Output" Index="#x7060" Sub="#x01">
+								<Entry Name="Channel 7__Output" Index="#x7060" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 8__Output" Index="#x7070" Sub="#x01">
+								<Entry Name="Channel 8__Output" Index="#x7070" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 9__Output" Index="#x7080" Sub="#x01">
+								<Entry Name="Channel 9__Output" Index="#x7080" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 10__Output" Index="#x7090" Sub="#x01">
+								<Entry Name="Channel 10__Output" Index="#x7090" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 11__Output" Index="#x70a0" Sub="#x01">
+								<Entry Name="Channel 11__Output" Index="#x70a0" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 12__Output" Index="#x70b0" Sub="#x01">
+								<Entry Name="Channel 12__Output" Index="#x70b0" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 13__Output" Index="#x70c0" Sub="#x01">
+								<Entry Name="Channel 13__Output" Index="#x70c0" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 14__Output" Index="#x70d0" Sub="#x01">
+								<Entry Name="Channel 14__Output" Index="#x70d0" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 15__Output" Index="#x70e0" Sub="#x01">
+								<Entry Name="Channel 15__Output" Index="#x70e0" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 16__Output" Index="#x70f0" Sub="#x01">
+								<Entry Name="Channel 16__Output" Index="#x70f0" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
@@ -3764,52 +4812,52 @@ Bit 15]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="DIG Outputs" Index="#x1600" InOut="1" Flags="#x0010" SyncMan="2">
-								<Entry Name="Channel 1__Output" Index="#x7000" Sub="#x01">
+								<Entry Name="Channel 1__Output" Index="#x7000" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 2__Output" Index="#x7010" Sub="#x01">
+								<Entry Name="Channel 2__Output" Index="#x7010" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 3__Output" Index="#x7020" Sub="#x01">
+								<Entry Name="Channel 3__Output" Index="#x7020" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 4__Output" Index="#x7030" Sub="#x01">
+								<Entry Name="Channel 4__Output" Index="#x7030" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 5__Output" Index="#x7040" Sub="#x01">
+								<Entry Name="Channel 5__Output" Index="#x7040" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 6__Output" Index="#x7050" Sub="#x01">
+								<Entry Name="Channel 6__Output" Index="#x7050" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 7__Output" Index="#x7060" Sub="#x01">
+								<Entry Name="Channel 7__Output" Index="#x7060" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 8__Output" Index="#x7070" Sub="#x01">
+								<Entry Name="Channel 8__Output" Index="#x7070" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 9__Output" Index="#x7080" Sub="#x01">
+								<Entry Name="Channel 9__Output" Index="#x7080" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 10__Output" Index="#x7090" Sub="#x01">
+								<Entry Name="Channel 10__Output" Index="#x7090" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 11__Output" Index="#x70a0" Sub="#x01">
+								<Entry Name="Channel 11__Output" Index="#x70a0" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 12__Output" Index="#x70b0" Sub="#x01">
+								<Entry Name="Channel 12__Output" Index="#x70b0" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 13__Output" Index="#x70c0" Sub="#x01">
+								<Entry Name="Channel 13__Output" Index="#x70c0" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 14__Output" Index="#x70d0" Sub="#x01">
+								<Entry Name="Channel 14__Output" Index="#x70d0" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 15__Output" Index="#x70e0" Sub="#x01">
+								<Entry Name="Channel 15__Output" Index="#x70e0" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Channel 16__Output" Index="#x70f0" Sub="#x01">
+								<Entry Name="Channel 16__Output" Index="#x70f0" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
@@ -7108,8 +8156,12 @@ Bit 8 - 15 : reserved]]></Comment>
 				<EtherCAT EpMacAddr="020105100000" DcSyncMode="3" EpIpAddr="-1442945026" EpMaxCon="16" EpFirstConAddr="57344" EnableVirtualSwitch="true" MaxSwitchPorts="7" MaxSwitchFrames="220" MaxSwitchMACs="100"/>
 			</Device>
 		</Io>
+		<SymbolWatch>
+			<Variable>TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 4 (EL2819)^WcState^WcState</Variable>
+		</SymbolWatch>
 	</Project>
 	<Mappings>
+		<MappingInfo Identifier="{08502041-0020-0304-4020-500820000403}" Id="#x02030040" Watchdog="00000000000000000000000000000000"/>
 		<MappingInfo Identifier="{00000000-2041-0850-4020-500841000403}" Id="#x02030020"/>
 		<MappingInfo Identifier="{00000000-0010-0304-3000-040310000403}" Id="#x02030010"/>
 		<MappingInfo Identifier="{00000000-0020-0304-3000-040322000403}" Id="#x02030030"/>
@@ -7201,6 +8253,144 @@ Bit 8 - 15 : reserved]]></Comment>
 				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.stS145_SignalControlWord" VarB="MDT^Signal control word"/>
 				<Link VarA="PlcTask Outputs^MAIN.iTorqueCommandValue" VarB="MDT^Torque/force command value"/>
 				<Link VarA="PlcTask Outputs^MAIN.nAdditiveTorqueSetpoint" VarB="MDT^Additive torque/force command value"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 15 (EL9410)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s15_EL9410.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s15_EL9410.WcState_WcState" VarB="WcState^WcState"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s15_EL9410.bStatus_Up_UV" VarB="Status Up^Undervoltage"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s15_EL9410.bStatus_Us_UV" VarB="Status Us^Undervoltage"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 2 (EL1809)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.Channel_10_Input" VarB="Channel 10^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.Channel_11_Input" VarB="Channel 11^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.Channel_12_Input" VarB="Channel 12^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.Channel_13_Input" VarB="Channel 13^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.Channel_14_Input" VarB="Channel 14^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.Channel_15_Input" VarB="Channel 15^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.Channel_16_Input" VarB="Channel 16^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.Channel_1_Input" VarB="Channel 1^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.Channel_2_Input" VarB="Channel 2^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.Channel_3_Input" VarB="Channel 3^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.Channel_4_Input" VarB="Channel 4^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.Channel_5_Input" VarB="Channel 5^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.Channel_6_Input" VarB="Channel 6^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.Channel_7_Input" VarB="Channel 7^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.Channel_8_Input" VarB="Channel 8^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.Channel_9_Input" VarB="Channel 9^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.WcState_WcState" VarB="WcState^WcState"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 3 (EL1809)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.Channel_10_Input" VarB="Channel 10^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.Channel_11_Input" VarB="Channel 11^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.Channel_12_Input" VarB="Channel 12^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.Channel_13_Input" VarB="Channel 13^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.Channel_14_Input" VarB="Channel 14^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.Channel_15_Input" VarB="Channel 15^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.Channel_16_Input" VarB="Channel 16^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.Channel_1_Input" VarB="Channel 1^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.Channel_2_Input" VarB="Channel 2^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.Channel_3_Input" VarB="Channel 3^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.Channel_4_Input" VarB="Channel 4^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.Channel_5_Input" VarB="Channel 5^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.Channel_6_Input" VarB="Channel 6^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.Channel_7_Input" VarB="Channel 7^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.Channel_8_Input" VarB="Channel 8^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.Channel_9_Input" VarB="Channel 9^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.WcState_WcState" VarB="WcState^WcState"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 4 (EL2819)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.Device_Common_Fault" VarB="DIG Inputs Device^Common Fault"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.Device_Common_Missing_Voltage" VarB="DIG Inputs Device^Missing Voltage"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.Device_Common_Under_Voltage" VarB="DIG Inputs Device^Undervoltage"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.Device_Overtemerature" VarB="DIG Inputs Device^Overtemperature Device"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.WcState_WcState" VarB="WcState^WcState"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 10" Size="4" OffsA="36"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 11" Size="4" OffsA="40"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 12" Size="4" OffsA="44"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 13" Size="4" OffsA="48"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 14" Size="4" OffsA="52"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 15" Size="4" OffsA="56"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 16" Size="4" OffsA="60"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 2" Size="4" OffsA="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 3" Size="4" OffsA="8"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 4" Size="4" OffsA="12"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 5" Size="4" OffsA="16"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 6" Size="4" OffsA="20"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 7" Size="4" OffsA="24"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 8" Size="4" OffsA="28"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 9" Size="4" OffsA="32"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s4_EL2819.Channel_10_Output" VarB="DIG Outputs^Channel 10^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s4_EL2819.Channel_11_Output" VarB="DIG Outputs^Channel 11^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s4_EL2819.Channel_12_Output" VarB="DIG Outputs^Channel 12^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s4_EL2819.Channel_13_Output" VarB="DIG Outputs^Channel 13^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s4_EL2819.Channel_14_Output" VarB="DIG Outputs^Channel 14^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s4_EL2819.Channel_15_Output" VarB="DIG Outputs^Channel 15^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s4_EL2819.Channel_16_Output" VarB="DIG Outputs^Channel 16^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s4_EL2819.Channel_1_Output" VarB="DIG Outputs^Channel 1^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s4_EL2819.Channel_2_Output" VarB="DIG Outputs^Channel 2^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s4_EL2819.Channel_3_Output" VarB="DIG Outputs^Channel 3^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s4_EL2819.Channel_4_Output" VarB="DIG Outputs^Channel 4^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s4_EL2819.Channel_5_Output" VarB="DIG Outputs^Channel 5^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s4_EL2819.Channel_6_Output" VarB="DIG Outputs^Channel 6^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s4_EL2819.Channel_7_Output" VarB="DIG Outputs^Channel 7^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s4_EL2819.Channel_8_Output" VarB="DIG Outputs^Channel 8^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s4_EL2819.Channel_9_Output" VarB="DIG Outputs^Channel 9^Output"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 5 (EL2819)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.Device_Common_Fault" VarB="DIG Inputs Device^Common Fault"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.Device_Common_Missing_Voltage" VarB="DIG Inputs Device^Missing Voltage"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.Device_Common_Under_Voltage" VarB="DIG Inputs Device^Undervoltage"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.Device_Overtemerature" VarB="DIG Inputs Device^Overtemperature Device"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.WcState_WcState" VarB="WcState^WcState"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 10" Size="4" OffsA="36"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 11" Size="4" OffsA="40"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 12" Size="4" OffsA="44"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 13" Size="4" OffsA="48"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 14" Size="4" OffsA="52"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 15" Size="4" OffsA="56"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 16" Size="4" OffsA="60"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 2" Size="4" OffsA="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 3" Size="4" OffsA="8"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 4" Size="4" OffsA="12"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 5" Size="4" OffsA="16"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 6" Size="4" OffsA="20"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 7" Size="4" OffsA="24"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 8" Size="4" OffsA="28"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.stChanneDiag" VarB="DIG Diag Inputs^Channel 9" Size="4" OffsA="32"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s5_EL2819.Channel_10_Output" VarB="DIG Outputs^Channel 10^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s5_EL2819.Channel_11_Output" VarB="DIG Outputs^Channel 11^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s5_EL2819.Channel_12_Output" VarB="DIG Outputs^Channel 12^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s5_EL2819.Channel_13_Output" VarB="DIG Outputs^Channel 13^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s5_EL2819.Channel_14_Output" VarB="DIG Outputs^Channel 14^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s5_EL2819.Channel_15_Output" VarB="DIG Outputs^Channel 15^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s5_EL2819.Channel_16_Output" VarB="DIG Outputs^Channel 16^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s5_EL2819.Channel_1_Output" VarB="DIG Outputs^Channel 1^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s5_EL2819.Channel_2_Output" VarB="DIG Outputs^Channel 2^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s5_EL2819.Channel_3_Output" VarB="DIG Outputs^Channel 3^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s5_EL2819.Channel_4_Output" VarB="DIG Outputs^Channel 4^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s5_EL2819.Channel_5_Output" VarB="DIG Outputs^Channel 5^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s5_EL2819.Channel_6_Output" VarB="DIG Outputs^Channel 6^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s5_EL2819.Channel_7_Output" VarB="DIG Outputs^Channel 7^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s5_EL2819.Channel_8_Output" VarB="DIG Outputs^Channel 8^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.fb_s5_EL2819.Channel_9_Output" VarB="DIG Outputs^Channel 9^Output"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 6 (EL9505)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s6_EL9505.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s6_EL9505.WcState_WcState" VarB="WcState^WcState"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s6_EL9505.bStatus_Uo_Overload" VarB="Status Uo^Overload"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s6_EL9505.bStatus_Uo_Power_OK" VarB="Status Uo^Power OK"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 8 (EL9410)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s8_EL9410.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s8_EL9410.WcState_WcState" VarB="WcState^WcState"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s8_EL9410.bStatus_Up_UV" VarB="Status Up^Undervoltage"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s8_EL9410.bStatus_Us_UV" VarB="Status Us^Undervoltage"/>
 			</OwnerB>
 		</OwnerA>
 	</Mappings>
