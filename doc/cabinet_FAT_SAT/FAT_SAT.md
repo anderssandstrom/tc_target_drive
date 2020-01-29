@@ -1,3 +1,5 @@
+### File includes notes and findings regarding FAT/SAT/commissioning of target drive cabinet
+
 Item | Drawings OK | Description
 --- | --- | --- | 
 1 | Yes | Moved EtherCAT bus from EL6695 to EK1110. Cable slightly to short
