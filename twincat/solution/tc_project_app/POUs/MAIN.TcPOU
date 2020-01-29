@@ -32,28 +32,118 @@ VAR
 	iTorqueCommandValue  AT %Q*       : INT := 0;
 	bApplyTorqueFF                    : BOOL := FALSE;
 	nTest: INT;
+	
+	//hardware
+	fbErrorList:FB_ErrorList;
+	//stErrorSystem:ST_ErrorSystem;
+	fb_s2_EL1809:EL1809;
+	fb_s3_EL1809:EL1809;
+	fb_s4_EL2819:EL2819;
+	fb_s5_EL2819:EL2819;
+	fb_s6_EL9505:EL9505;
+	//fb_s7_EL1252:EL1252;            //missing
+	fb_s8_EL9410:EL9410;
+	//fb_s9_EL1252:EL1252;            //missing
+	//fb_s10_EL7201:EL7201;           //missing
+	//fb_s11_EL7201:EL7201;           //missing
+	//fb_s12_EL7201:EL7201;           //missing
+	fb_s13_EL3214:EL3214;
+	//fb_s14_EL6695:EL6695;           //missing
+	fb_s15_EL9410:EL9410;
+	//fb_s16_EL2032:EL2032;           //missing
+	//fb_s17_EK1110:EK1110;           //missing
+	//fb_s18_IndraDrive:IndraDrive_hw //missing;
+	//fb_s19_IPOS8020:IPOS8020;       //missing
+	//fb_s20_IPOS8020:IPOS8020;       //missing
+	//fb_s21_IPOS8020:IPOS8020;       //missing
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Check hardware status
-ACT_Hardware();
+ACT_1_Hardware();
 
 // Monitor temperature
-ACT_Temperature();
+ACT_2_Temperature();
 
 // Control brake
-ACT_Brake();
+ACT_3_Brake();
 
 // Main motor motion
-ACT_MainDrive();
+ACT_4_MainDrive();
 
 // Error handling
-ACT_Error();
+ACT_5_Error();
 
 // Post exe
 eTargetStateOld:=stStatEpics.eTargetState;
 ]]></ST>
     </Implementation>
-    <Action Name="ACT_Brake" Id="{a8ef5cdf-33a2-41f9-b34e-1a95819e04c4}">
+    <Action Name="ACT_1_Hardware" Id="{713eae55-748e-42a3-b2f0-81f54e66f4bd}">
+      <Implementation>
+        <ST><![CDATA[// Check state of hardware
+    
+	fb_s2_EL1809(ErrorSystem:=fbErrorList.pErrorSystem,En:=TRUE,iTerminal_ID:=2);
+	fb_s3_EL1809(ErrorSystem:=fbErrorList.pErrorSystem,En:=TRUE,iTerminal_ID:=3);
+	fb_s4_EL2819(ErrorSystem:=fbErrorList.pErrorSystem,En:=TRUE,iTerminal_ID:=4);
+	fb_s5_EL2819(ErrorSystem:=fbErrorList.pErrorSystem,En:=TRUE,iTerminal_ID:=5);
+	fb_s6_EL9505(ErrorSystem:=fbErrorList.pErrorSystem,En:=TRUE,iTerminal_ID:=6);
+	//fb_s7_EL1252:EL1252;            //missing
+	fb_s8_EL9410(ErrorSystem:=fbErrorList.pErrorSystem,En:=TRUE,iTerminal_ID:=8);
+	//fb_s9_EL1252:EL1252;            //missing
+	//fb_s10_EL7201:EL7201;           //missing
+	//fb_s11_EL7201:EL7201;           //missing
+	//fb_s12_EL7201:EL7201;           //missing
+	//fb_s13_EL3214:EL3214;           //missing
+	//fb_s14_EL6695:EL6695;           //missing
+	fb_s15_EL9410(ErrorSystem:=fbErrorList.pErrorSystem,En:=TRUE,iTerminal_ID:=15);
+	//fb_s16_EL2032:EL2032;           //missing
+	//fb_s17_EK1110:EK1110;           //missing
+	//fb_s18_IndraDrive:IndraDrive_hw //missing;
+	//fb_s19_IPOS8020:IPOS8020;       //missing
+	//fb_s20_IPOS8020:IPOS8020;       //missing
+	//fb_s21_IPOS8020:IPOS8020;       //missing
+	
+	fbErrorList(En:=TRUE);
+	]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_2_Temperature" Id="{ec2bd795-c2d7-49be-acd7-2671eaea481b}">
+      <Implementation>
+        <ST><![CDATA[// Function: Monitor tempertures
+// Interlock motion on temperatures
+// Author: Anders Sandström 2019
+
+fbTemp(En:=TRUE);
+
+IF fbTemp.bError THEN
+	stCmdEpics.bExecute:=0;
+	stCmdEpics.bEnable:=0;
+END_IF
+
+stStatEpics.fActTemp:=fbTemp.iAi_Ch1_Value/10.0;
+stStatEpics.fBrakeActTemp1:=fbTemp.iAi_Ch2_Value/10.0;
+stStatEpics.fBrakeActTemp2:=fbTemp.iAi_Ch3_Value/10.0;
+
+// Motor Temperature Monitoring Interlock
+IF (stStatEpics.fActTemp >= GVL_Parameters.nMaxMotorTemperature)  OR fbTemp.iAi_Ch1_Stat > 0 THEN
+	stCmdEpics.bEnable:= FALSE;
+	stCmdEpics.bExecute:= FALSE;	
+END_IF
+
+//Brake temperature monitoring Interlock 1
+IF (stStatEpics.fBrakeActTemp1 >= GVL_Parameters.nMaxBrakeTemperature) OR fbTemp.iAi_Ch2_Stat > 0 OR stStatEpics.bBrake1TempAlarm THEN
+	stCmdEpics.bEnable:= FALSE;
+	stCmdEpics.bExecute:= FALSE;		
+    stStatEpics.bBrake1TempAlarm:=TRUE; 
+END_IF
+//Brake temperature monitoring Interlock 2
+IF (stStatEpics.fBrakeActTemp2 >= GVL_Parameters.nMaxBrakeTemperature) OR fbTemp.iAi_Ch3_Stat > 0 OR stStatEpics.bBrake2TempAlarm THEN
+	stCmdEpics.bEnable:= FALSE;
+	stCmdEpics.bExecute:= FALSE;		
+    stStatEpics.bBrake2TempAlarm:=TRUE; 
+END_IF]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_3_Brake" Id="{a8ef5cdf-33a2-41f9-b34e-1a95819e04c4}">
       <Implementation>
         <ST><![CDATA[// Function: Control of brake for simulation of traction
 // Use at target test rig
@@ -66,95 +156,7 @@ fbBrakeTorque(iTorqueValueinNm:=stCmdEpics.fBrakeSpNm);
 iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
       </Implementation>
     </Action>
-    <Action Name="ACT_Diag" Id="{2a0ea7d8-8ff8-4796-ae8a-6c3ebb6f7955}">
-      <Implementation>
-        <ST><![CDATA[// Function: Some parameters just for debugging
-// Note: Do not need to be executed, can be watched online anyway..
-// Author: Anders Sandström 2019
-
-	stCommands.bCmd_ActivateParameterMode;//True puts the drive in parameter mode
-	stCommands.bCmd_DisableLimits;// True disables monitoring of errors
-	stCommands.bCmd_DriveControlledHoming;// True starts homing procedure defined in the drive
-	stCommands.bCmd_ErrorReset;
-	stCommands.bCmd_ExitParameterMode;
-	stCommands.bCmd_RunVirtualMater;// Jog command to the virtual master
-	stCommands.bCmd_SetAbsolutePosition;
-	stCommands.bCommandPositionChange;// Drive moves to the current target position, when bCommandVAlueAccept toggled, drive moves to the new target position
-	stCommands.bCommandValueAccept;// Used in "Drive positioning Mode" to update the target position when toggled
-	stCommands.bEnableAxis;
-	stCommands.bHaltAxis;// Performs halt on the drive, bEnableaxis has to be TRUE
-	stCommands.bPositionCommandValue;//0=Absolute;1=Relative
-	stCommands.eMotionMode;
-	stCommands.eOperationMode;
-	stCommands.fCommandAcceleration;// Acceleration used for positioning and jogging
-	stCommands.fCommandDeceleration;// Deceleration used for positioning and jogging
-	stCommands.fCommandPosition;
-	stCommands.fCommandVelocity;// Velocity used for positioning and jogging
-	stCommands.fFeedrateOverride;// Parameter used for adjustment of the velocity (0,100)%
-	stCommands.fTorqueLimit;
-	stCommands.fVelocityCommandValue;// S40, velocity used for positining and jogging (in velocity mode)
-	stStatus.bAxisEnabled;]]></ST>
-      </Implementation>
-    </Action>
-    <Action Name="ACT_Error" Id="{6316e704-a716-4c28-824a-a22fe5448145}">
-      <Implementation>
-        <ST><![CDATA[// Function: Error handling
-// Author: Anders Sandström 2019
-
-IF stStatEpics.eTargetState = TARGET_STATE_MACHINE.PHASING THEN
-  IF fbModePhase.bError AND NOT stStatEpics.bError THEN
-	stStatEpics.bError:=fbModePhase.bError;
-	stStatEpics.nErrorId:=fbModePhase.nErrorId;
-	stStatEpics.sErrorStr:=fbModePhase.sErrorStr;
-  END_IF
-  
-ELSIF stStatEpics.eTargetState = TARGET_STATE_MACHINE.CONSTANT_VELOCITY THEN
-  IF fbModeVelo.bError AND NOT stStatEpics.bError THEN
-	stStatEpics.bError:=fbModeVelo.bError;
-	stStatEpics.nErrorId:=fbModeVelo.nErrorId;
-	stStatEpics.sErrorStr:=fbModeVelo.sErrorStr;
-  END_IF
-  
-ELSIF stStatEpics.eTargetState = TARGET_STATE_MACHINE.POSITIONING THEN
-  IF fbModePos.bError AND NOT stStatEpics.bError THEN
-	stStatEpics.bError:=fbModePos.bError;
-	stStatEpics.nErrorId:=fbModePos.nErrorId;
-	stStatEpics.sErrorStr:=fbModePos.sErrorStr;
-  END_IF
-  
-ELSIF stStatEpics.eTargetState = TARGET_STATE_MACHINE.HOMING THEN
-  IF fbModeHome.bError AND NOT stStatEpics.bError THEN
-    stStatEpics.bError:=fbModeHome.bError;
-	stStatEpics.nErrorId:=fbModeHome.nErrorId;
-	stStatEpics.sErrorStr:=fbModeHome.sErrorStr;
-  END_IF
-END_IF
-
-// To high velocity detected. Shutdown..
-IF stStatus.fActualVelocity/10 > GVL_Parameters.fMaximumSPeedRpm THEN 
-  stCommands.bEnableAxis:= FALSE;
-  stCmdEpics.bEnable:=FALSE;
-  stCmdEpics.bExecute:=FALSE;
-  stStatEpics.bError:=TRUE;
-  stStatEpics.nErrorId:=GVL_ErrorCodes.nErrorVelToHigh;
-  stStatEpics.sErrorStr:=GVL_ErrorCodes.sErrorVelToHigh;
-END_IF
-
-IF stcmdEpics.bReset THEN
-  stStatEpics.bError:=FALSE;
-  stStatEpics.nErrorId:=GVL_ErrorCodes.nErrorCodeOKId;
-  stStatEpics.sErrorStr:=GVL_ErrorCodes.nErrorCodeOKStr;
-  stStatEpics.bBrake1TempAlarm:=FALSE;
-  stStatEpics.bBrake2TempAlarm:=FALSE;
-END_IF]]></ST>
-      </Implementation>
-    </Action>
-    <Action Name="ACT_Hardware" Id="{713eae55-748e-42a3-b2f0-81f54e66f4bd}">
-      <Implementation>
-        <ST><![CDATA[// Check state of hardware]]></ST>
-      </Implementation>
-    </Action>
-    <Action Name="ACT_MainDrive" Id="{0608089f-ed53-4fbf-a585-99ff0324bc84}">
+    <Action Name="ACT_4_MainDrive" Id="{0608089f-ed53-4fbf-a585-99ff0324bc84}">
       <Implementation>
         <ST><![CDATA[
 // Enable Axis independent of state
@@ -304,41 +306,87 @@ stStatEpics.fActTorque:=stStatus.fActualTorque;
 stStatEpics.fActVel:=stStatus.fActualVelocity/10;]]></ST>
       </Implementation>
     </Action>
-    <Action Name="ACT_Temperature" Id="{ec2bd795-c2d7-49be-acd7-2671eaea481b}">
+    <Action Name="ACT_5_Error" Id="{6316e704-a716-4c28-824a-a22fe5448145}">
       <Implementation>
-        <ST><![CDATA[// Function: Monitor tempertures
-// Interlock motion on temperatures
+        <ST><![CDATA[// Function: Error handling
 // Author: Anders Sandström 2019
 
-fbTemp(En:=TRUE);
-
-IF fbTemp.bError THEN
-	stCmdEpics.bExecute:=0;
-	stCmdEpics.bEnable:=0;
+IF stStatEpics.eTargetState = TARGET_STATE_MACHINE.PHASING THEN
+  IF fbModePhase.bError AND NOT stStatEpics.bError THEN
+	stStatEpics.bError:=fbModePhase.bError;
+	stStatEpics.nErrorId:=fbModePhase.nErrorId;
+	stStatEpics.sErrorStr:=fbModePhase.sErrorStr;
+  END_IF
+  
+ELSIF stStatEpics.eTargetState = TARGET_STATE_MACHINE.CONSTANT_VELOCITY THEN
+  IF fbModeVelo.bError AND NOT stStatEpics.bError THEN
+	stStatEpics.bError:=fbModeVelo.bError;
+	stStatEpics.nErrorId:=fbModeVelo.nErrorId;
+	stStatEpics.sErrorStr:=fbModeVelo.sErrorStr;
+  END_IF
+  
+ELSIF stStatEpics.eTargetState = TARGET_STATE_MACHINE.POSITIONING THEN
+  IF fbModePos.bError AND NOT stStatEpics.bError THEN
+	stStatEpics.bError:=fbModePos.bError;
+	stStatEpics.nErrorId:=fbModePos.nErrorId;
+	stStatEpics.sErrorStr:=fbModePos.sErrorStr;
+  END_IF
+  
+ELSIF stStatEpics.eTargetState = TARGET_STATE_MACHINE.HOMING THEN
+  IF fbModeHome.bError AND NOT stStatEpics.bError THEN
+    stStatEpics.bError:=fbModeHome.bError;
+	stStatEpics.nErrorId:=fbModeHome.nErrorId;
+	stStatEpics.sErrorStr:=fbModeHome.sErrorStr;
+  END_IF
 END_IF
 
-stStatEpics.fActTemp:=fbTemp.iAi_Ch1_Value/10.0;
-stStatEpics.fBrakeActTemp1:=fbTemp.iAi_Ch2_Value/10.0;
-stStatEpics.fBrakeActTemp2:=fbTemp.iAi_Ch3_Value/10.0;
-
-// Motor Temperature Monitoring Interlock
-IF (stStatEpics.fActTemp >= GVL_Parameters.nMaxMotorTemperature)  OR fbTemp.iAi_Ch1_Stat > 0 THEN
-	stCmdEpics.bEnable:= FALSE;
-	stCmdEpics.bExecute:= FALSE;	
+// To high velocity detected. Shutdown..
+IF stStatus.fActualVelocity/10 > GVL_Parameters.fMaximumSPeedRpm THEN 
+  stCommands.bEnableAxis:= FALSE;
+  stCmdEpics.bEnable:=FALSE;
+  stCmdEpics.bExecute:=FALSE;
+  stStatEpics.bError:=TRUE;
+  stStatEpics.nErrorId:=GVL_ErrorCodes.nErrorVelToHigh;
+  stStatEpics.sErrorStr:=GVL_ErrorCodes.sErrorVelToHigh;
 END_IF
 
-//Brake temperature monitoring Interlock 1
-IF (stStatEpics.fBrakeActTemp1 >= GVL_Parameters.nMaxBrakeTemperature) OR fbTemp.iAi_Ch2_Stat > 0 OR stStatEpics.bBrake1TempAlarm THEN
-	stCmdEpics.bEnable:= FALSE;
-	stCmdEpics.bExecute:= FALSE;		
-    stStatEpics.bBrake1TempAlarm:=TRUE; 
-END_IF
-//Brake temperature monitoring Interlock 2
-IF (stStatEpics.fBrakeActTemp2 >= GVL_Parameters.nMaxBrakeTemperature) OR fbTemp.iAi_Ch3_Stat > 0 OR stStatEpics.bBrake2TempAlarm THEN
-	stCmdEpics.bEnable:= FALSE;
-	stCmdEpics.bExecute:= FALSE;		
-    stStatEpics.bBrake2TempAlarm:=TRUE; 
+IF stcmdEpics.bReset THEN
+  stStatEpics.bError:=FALSE;
+  stStatEpics.nErrorId:=GVL_ErrorCodes.nErrorCodeOKId;
+  stStatEpics.sErrorStr:=GVL_ErrorCodes.nErrorCodeOKStr;
+  stStatEpics.bBrake1TempAlarm:=FALSE;
+  stStatEpics.bBrake2TempAlarm:=FALSE;
 END_IF]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_Diag" Id="{2a0ea7d8-8ff8-4796-ae8a-6c3ebb6f7955}">
+      <Implementation>
+        <ST><![CDATA[// Function: Some parameters just for debugging
+// Note: Do not need to be executed, can be watched online anyway..
+// Author: Anders Sandström 2019
+
+	stCommands.bCmd_ActivateParameterMode;//True puts the drive in parameter mode
+	stCommands.bCmd_DisableLimits;// True disables monitoring of errors
+	stCommands.bCmd_DriveControlledHoming;// True starts homing procedure defined in the drive
+	stCommands.bCmd_ErrorReset;
+	stCommands.bCmd_ExitParameterMode;
+	stCommands.bCmd_RunVirtualMater;// Jog command to the virtual master
+	stCommands.bCmd_SetAbsolutePosition;
+	stCommands.bCommandPositionChange;// Drive moves to the current target position, when bCommandVAlueAccept toggled, drive moves to the new target position
+	stCommands.bCommandValueAccept;// Used in "Drive positioning Mode" to update the target position when toggled
+	stCommands.bEnableAxis;
+	stCommands.bHaltAxis;// Performs halt on the drive, bEnableaxis has to be TRUE
+	stCommands.bPositionCommandValue;//0=Absolute;1=Relative
+	stCommands.eMotionMode;
+	stCommands.eOperationMode;
+	stCommands.fCommandAcceleration;// Acceleration used for positioning and jogging
+	stCommands.fCommandDeceleration;// Deceleration used for positioning and jogging
+	stCommands.fCommandPosition;
+	stCommands.fCommandVelocity;// Velocity used for positioning and jogging
+	stCommands.fFeedrateOverride;// Parameter used for adjustment of the velocity (0,100)%
+	stCommands.fTorqueLimit;
+	stCommands.fVelocityCommandValue;// S40, velocity used for positining and jogging (in velocity mode)
+	stStatus.bAxisEnabled;]]></ST>
       </Implementation>
     </Action>
     <LineIds Name="MAIN">
@@ -360,7 +408,20 @@ END_IF]]></ST>
       <LineId Id="941" Count="0" />
       <LineId Id="1389" Count="0" />
     </LineIds>
-    <LineIds Name="MAIN.ACT_Brake">
+    <LineIds Name="MAIN.ACT_1_Hardware">
+      <LineId Id="1" Count="0" />
+      <LineId Id="3" Count="22" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="MAIN.ACT_2_Temperature">
+      <LineId Id="31" Count="1" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="1" Count="0" />
+      <LineId Id="3" Count="26" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="MAIN.ACT_3_Brake">
       <LineId Id="9" Count="1" />
       <LineId Id="8" Count="0" />
       <LineId Id="3" Count="0" />
@@ -369,30 +430,7 @@ END_IF]]></ST>
       <LineId Id="4" Count="0" />
       <LineId Id="1" Count="1" />
     </LineIds>
-    <LineIds Name="MAIN.ACT_Diag">
-      <LineId Id="2" Count="0" />
-      <LineId Id="24" Count="1" />
-      <LineId Id="28" Count="0" />
-      <LineId Id="3" Count="20" />
-      <LineId Id="1" Count="0" />
-    </LineIds>
-    <LineIds Name="MAIN.ACT_Error">
-      <LineId Id="41" Count="0" />
-      <LineId Id="2" Count="28" />
-      <LineId Id="32" Count="0" />
-      <LineId Id="57" Count="0" />
-      <LineId Id="44" Count="1" />
-      <LineId Id="56" Count="0" />
-      <LineId Id="47" Count="1" />
-      <LineId Id="54" Count="1" />
-      <LineId Id="53" Count="0" />
-      <LineId Id="33" Count="7" />
-      <LineId Id="1" Count="0" />
-    </LineIds>
-    <LineIds Name="MAIN.ACT_Hardware">
-      <LineId Id="1" Count="0" />
-    </LineIds>
-    <LineIds Name="MAIN.ACT_MainDrive">
+    <LineIds Name="MAIN.ACT_4_MainDrive">
       <LineId Id="115" Count="17" />
       <LineId Id="113" Count="1" />
       <LineId Id="2" Count="69" />
@@ -410,13 +448,25 @@ END_IF]]></ST>
       <LineId Id="99" Count="12" />
       <LineId Id="1" Count="0" />
     </LineIds>
-    <LineIds Name="MAIN.ACT_Temperature">
-      <LineId Id="31" Count="1" />
-      <LineId Id="30" Count="0" />
-      <LineId Id="33" Count="0" />
+    <LineIds Name="MAIN.ACT_5_Error">
+      <LineId Id="41" Count="0" />
+      <LineId Id="2" Count="28" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="57" Count="0" />
+      <LineId Id="44" Count="1" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="47" Count="1" />
+      <LineId Id="54" Count="1" />
+      <LineId Id="53" Count="0" />
+      <LineId Id="33" Count="7" />
       <LineId Id="1" Count="0" />
-      <LineId Id="3" Count="26" />
+    </LineIds>
+    <LineIds Name="MAIN.ACT_Diag">
       <LineId Id="2" Count="0" />
+      <LineId Id="24" Count="1" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="3" Count="20" />
+      <LineId Id="1" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
