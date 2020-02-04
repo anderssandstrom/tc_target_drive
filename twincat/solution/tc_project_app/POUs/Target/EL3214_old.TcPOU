@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
-  <POU Name="EL3214" Id="{0ef824af-3384-4b63-9d1f-7d6cf6b0bd23}" SpecialFunc="None">
+  <POU Name="EL3214_old" Id="{0ef824af-3384-4b63-9d1f-7d6cf6b0bd23}" SpecialFunc="None">
     <Declaration><![CDATA[//EL3214 | 4-channel analog input terminal, PT100 (RTD)
-FUNCTION_BLOCK EL3214
+FUNCTION_BLOCK EL3214_old
 
 VAR_INPUT
 	En: BOOL;
@@ -68,7 +68,7 @@ IF En THEN
 END_IF
 ]]></ST>
     </Implementation>
-    <LineIds Name="EL3214">
+    <LineIds Name="EL3214_old">
       <LineId Id="50" Count="2" />
       <LineId Id="12" Count="0" />
       <LineId Id="54" Count="1" />

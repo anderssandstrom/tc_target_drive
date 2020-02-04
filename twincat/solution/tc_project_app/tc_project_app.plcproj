@@ -76,6 +76,9 @@
     <Compile Include="DUTs\TARGET_STATE_MACHINE.TcDUT">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GlobalTextList.TcGTLO">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="GVLs\GVL_ErrorCodes.TcGVL">
       <SubType>Code</SubType>
     </Compile>
@@ -91,7 +94,7 @@
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Target\EL3214.TcPOU">
+    <Compile Include="POUs\Target\EL3214_old.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Target\fbIndraDrive.TcPOU">
@@ -124,157 +127,225 @@
     <Compile Include="POUs\Target\FB_TargetSuperImpose.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\DUTs\DUT_AxisStatus_v0_01.TcDUT">
+    <Compile Include="tc_mca_std_lib\DUTs_std\MotionFunctions.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\GVLs\GVL.TcGVL">
+    <Compile Include="tc_mca_std_lib\DUTs_std\RestorePosition.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\ChangeConfig\FB_ReadFloatParameter.TcPOU">
+    <Compile Include="tc_mca_std_lib\DUTs_std\ST_AxisConfig.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\ChangeConfig\FB_ReadParameterInNc_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\DUTs_std\ST_AxisControl.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\ChangeConfig\FB_WriteFloatParameter.TcPOU">
+    <Compile Include="tc_mca_std_lib\DUTs_std\ST_AxisInputs.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\ChangeConfig\FB_WriteParameterInNc_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\DUTs_std\ST_AxisPersistent.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\ErrorHandling\DUT_ErrorState.TcDUT">
+    <Compile Include="tc_mca_std_lib\DUTs_std\ST_AxisStatus.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\ErrorHandling\DUT_TerminalError.TcDUT">
+    <Compile Include="tc_mca_std_lib\DUTs_std\ST_AxisStruct.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\ErrorHandling\FB_ErrorList.TcPOU">
+    <Compile Include="tc_mca_std_lib\DUTs_std\ST_GearAxis.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\ErrorHandling\FB_TerminalError.TcPOU">
+    <Compile Include="tc_mca_std_lib\GVLs_std\GVL.TcGVL">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\ErrorHandling\GVL_ErrorSystem.TcGVL">
+    <Compile Include="tc_mca_std_lib\POUs_std\ChangeConfig\FB_ReadFloatParameter.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\ErrorHandling\ST_ErrorSystem.TcDUT">
+    <Compile Include="tc_mca_std_lib\POUs_std\ChangeConfig\FB_ReadParameterInNc_v1_00.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Analog_Inputs\EL3174_0002.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\ChangeConfig\FB_WriteFloatParameter.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Analog_Inputs\EL3255.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\ChangeConfig\FB_WriteParameterInNc_v1_00.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Analog_Inputs\FB_CalculateFrequency_3702_v0_01.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\ErrorHandling\DUT_ErrorState.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1008.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\ErrorHandling\FB_ErrorSystem.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1018.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\ErrorHandling\FB_GenericError.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1808.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\ErrorHandling\FB_NC_Error.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1809.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\ErrorHandling\FB_TerminalError.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1819.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\ErrorHandling\ST_ErrorEntry.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs\FB_EL1252ASM_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\ErrorHandling\ST_ErrorSystem.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2014.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Analog_Inputs\EL3174_0002.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2252.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Analog_Inputs\EL3214.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2808.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Analog_Inputs\EL3255.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2819.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1008.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\External_Types\dutEL2521_Ctrl.TcDUT">
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1018.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\External_Types\dutEL2521_Status.TcDUT">
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1252.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\External_Types\DUT_EL2819_ChannelStatus.TcDUT">
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1808.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Measuring_Terminals\EL5002.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1809.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Measuring_Terminals\EL5021.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1819.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Measuring_Terminals\EL5042.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2014.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Measuring_Terminals\EL5101.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2252.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Motion\EL7211_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2808.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Motion\EL9576_v1_00.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2819.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\System\EL9410.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Digital_Outputs\External_Types\dutEL2521_Ctrl.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\System\EL9505.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Digital_Outputs\External_Types\dutEL2521_Status.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Hardware\Other\EK1200.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Drives\EL2522.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Motion\FB_DriveVirtual.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Drives\EL4134.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Motion\FB_NcAxis.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Drives\EL7037.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Motion\Homing\FB_HomeDirect.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Drives\EL7041_0052.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Motion\Homing\FB_HomeFinish.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Drives\EL7047.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Motion\Homing\FB_HomePrepare.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Drives\EL7211.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Motion\Homing\FB_HomeReadNcVelocities.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Feedback_Terminals\EL5002.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Motion\Homing\FB_HomeReadSoftLimEnable.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Feedback_Terminals\EL5021.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Motion\Homing\FB_HomeToSwitch.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Feedback_Terminals\EL5042.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Motion\Homing\FB_HomeVirtual.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Feedback_Terminals\EL5101.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Motion\Homing\FB_HomeWriteNcVelocities.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Feedback_Terminals\EL7201.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\POUs\Motion\Homing\FB_HomeWriteSoftLimEnable.TcPOU">
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\System\EK1100.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib\VISUs\FbDriveVisual.TcVIS">
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\System\EK1110.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\System\EL9410.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\System\EL9505.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs_std\Motion\FB_Axis.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs_std\Motion\Homing\FB_HomeAbsoluteSwitch.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs_std\Motion\Homing\FB_HomeDirect.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs_std\Motion\Homing\FB_HomeFinish.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs_std\Motion\Homing\FB_HomePrepare.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs_std\Motion\Homing\FB_HomeReadNcVelocities.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs_std\Motion\Homing\FB_HomeReadSoftLimEnable.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs_std\Motion\Homing\FB_HomeToSwitch.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs_std\Motion\Homing\FB_HomeVirtual.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs_std\Motion\Homing\FB_HomeWriteNcVelocities.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs_std\Motion\Homing\FB_HomeWriteSoftLimEnable.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs_std\Motion\Homing\FB_Homing.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs_std\VISUs\Error_Log_Visu.TcVIS">
       <SubType>Code</SubType>
       <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
     </Compile>
-    <Compile Include="tc_mca_std_lib\VISUs\Visualization.TcVIS">
+    <Compile Include="tc_mca_std_lib\POUs_std\VISUs\languageSupport.TcTLO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs_std\VISUs\MainVisu.TcVIS">
       <SubType>Code</SubType>
       <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs_std\VISUs\visuTextLinks.TcTLO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\VISUs_std\Error_Log_Visu_1.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\VISUs_std\languageSupport_1.TcTLO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\VISUs_std\MainVisu_1.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\VISUs_std\visuTextLinks_1.TcTLO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Visualization Manager.TcVMO">
+      <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -282,30 +353,72 @@
     <Folder Include="GVLs" />
     <Folder Include="POUs\Target" />
     <Folder Include="tc_mca_std_lib" />
-    <Folder Include="tc_mca_std_lib\DUTs" />
-    <Folder Include="tc_mca_std_lib\GVLs" />
-    <Folder Include="tc_mca_std_lib\POUs" />
-    <Folder Include="tc_mca_std_lib\POUs\ChangeConfig" />
+    <Folder Include="tc_mca_std_lib\DUTs_std" />
+    <Folder Include="tc_mca_std_lib\GVLs_std" />
+    <Folder Include="tc_mca_std_lib\VISUs_std" />
+    <Folder Include="tc_mca_std_lib\POUs_std" />
     <Folder Include="tc_mca_std_lib\POUs\Hardware" />
     <Folder Include="tc_mca_std_lib\POUs\Hardware" />
-    <Folder Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals" />
-    <Folder Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Analog_Inputs" />
-    <Folder Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Inputs" />
-    <Folder Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs" />
-    <Folder Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Digital_Outputs\External_Types" />
-    <Folder Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Measuring_Terminals" />
-    <Folder Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\Motion" />
-    <Folder Include="tc_mca_std_lib\POUs\Hardware\EtherCAT_Terminals\System" />
-    <Folder Include="tc_mca_std_lib\POUs\Hardware\Other" />
-    <Folder Include="tc_mca_std_lib\POUs\Motion" />
-    <Folder Include="tc_mca_std_lib\POUs\Hardware" />
-    <Folder Include="tc_mca_std_lib\POUs\ErrorHandling" />
-    <Folder Include="tc_mca_std_lib\POUs\Motion\Homing" />
-    <Folder Include="tc_mca_std_lib\VISUs" />
+    <Folder Include="tc_mca_std_lib\POUs_std\ChangeConfig" />
+    <Folder Include="tc_mca_std_lib\POUs_std\ErrorHandling" />
+    <Folder Include="tc_mca_std_lib\POUs_std\Hardware" />
+    <Folder Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals" />
+    <Folder Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Analog_Inputs" />
+    <Folder Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Digital_Inputs" />
+    <Folder Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Digital_Outputs" />
+    <Folder Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Digital_Outputs\External_Types" />
+    <Folder Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Drives" />
+    <Folder Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Feedback_Terminals" />
+    <Folder Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\System" />
+    <Folder Include="tc_mca_std_lib\POUs_std\Motion" />
+    <Folder Include="tc_mca_std_lib\POUs_std\Motion\Homing" />
+    <Folder Include="tc_mca_std_lib\POUs_std\VISUs" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>
   <ItemGroup>
+    <PlaceholderReference Include="System_VisuElemMeter">
+      <DefaultResolution>VisuElemMeter, 3.5.13.0 (System)</DefaultResolution>
+      <Namespace>VisuElemMeter</Namespace>
+      <SystemLibrary>true</SystemLibrary>
+      <ResolverGuid>2717eb6a-dd07-4c66-8d8d-cacebd7b18ae</ResolverGuid>
+    </PlaceholderReference>
+    <PlaceholderReference Include="System_VisuElems">
+      <DefaultResolution>VisuElems, 3.5.13.21 (System)</DefaultResolution>
+      <Namespace>VisuElems</Namespace>
+      <SystemLibrary>true</SystemLibrary>
+      <ResolverGuid>2717eb6a-dd07-4c66-8d8d-cacebd7b18ae</ResolverGuid>
+    </PlaceholderReference>
+    <PlaceholderReference Include="System_VisuElemsSpecialControls">
+      <DefaultResolution>VisuElemsSpecialControls, 3.5.13.0 (System)</DefaultResolution>
+      <Namespace>VisuElemsSpecialControls</Namespace>
+      <SystemLibrary>true</SystemLibrary>
+      <ResolverGuid>2717eb6a-dd07-4c66-8d8d-cacebd7b18ae</ResolverGuid>
+    </PlaceholderReference>
+    <PlaceholderReference Include="System_VisuElemsWinControls">
+      <DefaultResolution>VisuElemsWinControls, 3.5.13.20 (System)</DefaultResolution>
+      <Namespace>VisuElemsWinControls</Namespace>
+      <SystemLibrary>true</SystemLibrary>
+      <ResolverGuid>2717eb6a-dd07-4c66-8d8d-cacebd7b18ae</ResolverGuid>
+    </PlaceholderReference>
+    <PlaceholderReference Include="System_VisuElemTextEditor">
+      <DefaultResolution>VisuElemTextEditor, 3.5.13.0 (System)</DefaultResolution>
+      <Namespace>VisuElemTextEditor</Namespace>
+      <SystemLibrary>true</SystemLibrary>
+      <ResolverGuid>2717eb6a-dd07-4c66-8d8d-cacebd7b18ae</ResolverGuid>
+    </PlaceholderReference>
+    <PlaceholderReference Include="system_visuinputs">
+      <DefaultResolution>visuinputs, 3.5.13.0 (system)</DefaultResolution>
+      <Namespace>visuinputs</Namespace>
+      <SystemLibrary>true</SystemLibrary>
+      <ResolverGuid>2717eb6a-dd07-4c66-8d8d-cacebd7b18ae</ResolverGuid>
+    </PlaceholderReference>
+    <PlaceholderReference Include="System_VisuNativeControl">
+      <DefaultResolution>VisuNativeControl, 3.5.13.0 (System)</DefaultResolution>
+      <Namespace>VisuNativeControl</Namespace>
+      <SystemLibrary>true</SystemLibrary>
+      <ResolverGuid>2717eb6a-dd07-4c66-8d8d-cacebd7b18ae</ResolverGuid>
+    </PlaceholderReference>
     <PlaceholderReference Include="Tc2_EtherCAT">
       <DefaultResolution>Tc2_EtherCAT, * (Beckhoff Automation GmbH)</DefaultResolution>
       <Namespace>Tc2_EtherCAT</Namespace>
@@ -339,8 +452,8 @@
   <ProjectExtensions>
     <PlcProjectOptions>
       <XmlArchive>
-        <Data>
-          <o xml:space="preserve" t="OptionKey">
+  <Data>
+    <o xml:space="preserve" t="OptionKey">
       <v n="Name">"&lt;ProjectRoot&gt;"</v>
       <d n="SubKeys" t="Hashtable" ckt="String" cvt="OptionKey">
         <v>{192FAD59-8248-4824-A8DE-9177C94C195A}</v>
@@ -353,9 +466,11 @@
         <o>
           <v n="Name">"{246001F4-279D-43AC-B241-948EB31120E1}"</v>
           <d n="SubKeys" t="Hashtable" />
-          <d n="Values" t="Hashtable" ckt="String" cvt="String">
+          <d n="Values" t="Hashtable" ckt="String">
             <v>GlobalVisuImageFilePath</v>
-            <v>%APPLICATIONPATH%</v>
+            <v>"%APPLICATIONPATH%"</v>
+            <v>UnicodeStrings</v>
+            <v>false</v>
           </d>
         </o>
         <v>{29BD8D0C-3586-4548-BB48-497B9A01693F}</v>
@@ -391,14 +506,15 @@
       </d>
       <d n="Values" t="Hashtable" />
     </o>
-        </Data>
-        <TypeList>
-          <Type n="Hashtable">System.Collections.Hashtable</Type>
-          <Type n="Int32">System.Int32</Type>
-          <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
-          <Type n="String">System.String</Type>
-        </TypeList>
-      </XmlArchive>
+  </Data>
+  <TypeList>
+    <Type n="Boolean">System.Boolean</Type>
+    <Type n="Hashtable">System.Collections.Hashtable</Type>
+    <Type n="Int32">System.Int32</Type>
+    <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
+    <Type n="String">System.String</Type>
+  </TypeList>
+</XmlArchive>
     </PlcProjectOptions>
   </ProjectExtensions>
 </Project>

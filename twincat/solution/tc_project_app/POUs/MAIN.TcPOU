@@ -10,7 +10,7 @@ VAR
 	nAdditiveTorqueSetpoint    AT %Q* : INT;   // Unit 0.1%  (10=1%)
 	dLatchedPosition AT %I*           : DINT;
 	iBrakeSpRaw AT %Q*                : INT := 0;
-    fbTemp                            : EL3214;
+    fbTemp                            : EL3214_old;
 	bBrakeFreewheelOn AT %Q*          : BOOL;
 	bBrakeLockedOn AT %Q*             : BOOL;
     inputDummy AT %I*                 : BOOL;
@@ -34,7 +34,7 @@ VAR
 	nTest: INT;
 	
 	//hardware
-	fbErrorList:FB_ErrorList;
+	fbErrorList:FB_ErrorSystem;
 	//stErrorSystem:ST_ErrorSystem;
 	fb_s2_EL1809:EL1809;
 	fb_s3_EL1809:EL1809;
@@ -47,7 +47,7 @@ VAR
 	//fb_s10_EL7201:EL7201;           //missing
 	//fb_s11_EL7201:EL7201;           //missing
 	//fb_s12_EL7201:EL7201;           //missing
-	fb_s13_EL3214:EL3214;
+	fb_s13_EL3214:EL3214_old;
 	//fb_s14_EL6695:EL6695;           //missing
 	fb_s15_EL9410:EL9410;
 	//fb_s16_EL2032:EL2032;           //missing
