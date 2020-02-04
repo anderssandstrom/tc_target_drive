@@ -86,13 +86,13 @@ eTargetStateOld:=stStatEpics.eTargetState;
 	fb_s4_EL2819(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=4);
 	fb_s5_EL2819(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=5);
 	fb_s6_EL9505(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=6);
-	//fb_s7_EL1252:EL1252;            //missing
+	fb_s7_EL1252(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=7);
 	fb_s8_EL9410(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=8);
-	//fb_s9_EL1252:EL1252;            //missing
-	//fb_s10_EL7201:EL7201;           //missing
-	//fb_s11_EL7201:EL7201;           //missing
-	//fb_s12_EL7201:EL7201;           //missing
-	//fb_s13_EL3214:EL3214;           //missing
+	fb_s9_EL1252(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=9);
+	fb_s10_EL7201(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=10);
+	fb_s11_EL7201(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=11);
+	fb_s12_EL7201(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=12);
+	fb_s13_EL3214(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=13);
 	//fb_s14_EL6695:EL6695;           //missing
 	fb_s15_EL9410(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=15);
 	//fb_s16_EL2032:EL2032;           //missing
@@ -410,7 +410,9 @@ END_IF]]></ST>
     </LineIds>
     <LineIds Name="MAIN.ACT_1_Hardware">
       <LineId Id="1" Count="0" />
-      <LineId Id="3" Count="22" />
+      <LineId Id="3" Count="7" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="12" Count="13" />
       <LineId Id="2" Count="0" />
     </LineIds>
     <LineIds Name="MAIN.ACT_2_Temperature">
