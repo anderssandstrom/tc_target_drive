@@ -1,0 +1,108 @@
+
+# Slave status word:
+# bit 0..3  al_state    :  The application-layer state of the slave.
+#                             - 1: \a INIT
+#                             - 2: \a PREOP
+#                             - 4: \a SAFEOP
+#                             - 8: \a OP
+record(longin,"$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-Stat"){
+  field(DESC, "$(HWTYPE): Slave Status Word")
+  field(PINI, "$(PINI=1)")
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=${ADSPORT=852}/Main.fb_s${SLAVE_POS}_${HWTYPE}.InfoData_State?")
+  field(SCAN, "I/O Intr")
+  field(FLNK, "$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-Stat_.PROC")
+  field(TSE,  "$(TSE=-2)")
+}
+
+record(mbbiDirect,"$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-Stat_"){
+  field(DESC, "$(HWTYPE): Slave Status Word mbbiD")
+  field(PINI, "$(PINI=1)")
+  field(INP,  "$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-Stat.VAL")
+  field(FLNK, "$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-alstate-init.PROC")
+  field(TSE,  "$(TSE=-2)")
+}
+
+record(bi,"$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-alstate-init"){
+  field(DESC, "$(HWTYPE): Slave alstate INIT")
+  field(INP,  "$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-Stat_.B0")
+  field(ZNAM, "Not INIT")
+  field(ONAM, "INIT")
+  field(ZSV,  "NO_ALARM")
+  field(OSV,  "NO_ALARM")
+  field(FLNK, "$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-alstate-preop.PROC")
+}
+
+record(bi,"$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-alstate-preop"){
+  field(DESC, "$(HWTYPE): Slave alstate PREOP")
+  field(INP,  "$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-Stat_.B1")
+  field(ZNAM, "Not PREOP")
+  field(ONAM, "PREOP")
+  field(ZSV,  "NO_ALARM")
+  field(OSV,  "NO_ALARM")
+  field(FLNK, "$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-alstate-safeop.PROC")
+}
+
+record(bi,"$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-alstate-safeop"){
+  field(DESC, "$(HWTYPE): Slave alstate SAFEOP")
+  field(INP,  "$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-Stat_.B2")
+  field(ZNAM, "Not SAFEOP")
+  field(ONAM, "SAFEOP")
+  field(ZSV,  "NO_ALARM")
+  field(OSV,  "NO_ALARM")
+  field(FLNK, "$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-alstate-op.PROC")
+}
+
+record(bi,"$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-alstate-op"){
+  field(DESC, "$(HWTYPE): Slave alstate OP")
+  field(INP,  "$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-Stat_.B3")
+  field(ZNAM, "Not OP")
+  field(ONAM, "OP")
+  field(ZSV,  "NO_ALARM")
+  field(OSV,  "NO_ALARM")
+}
+
+record(stringin, "$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-HWType"){
+  field(DESC, "EtherCAT terminal hardware type name")
+  field(PINI, "YES")
+  field(VAL,  "$(HWTYPE)")
+}
+
+# Data valid
+record(bi,"$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-data-valid"){
+  field(DESC, "$(HWTYPE): Data valid")
+  field(PINI, "$(PINI=1)")
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=${ADSPORT=852}/Main.fb_s${SLAVE_POS}_${HWTYPE}.WcState_WcState?")
+  field(SCAN, "I/O Intr")
+  field(TSE,  "$(TSE=-2)")
+  field(ZSV,  "NO_ALARM")
+  field(OSV,  "MAJOR")
+  field(ZNAM, "Valid")
+  field(ONAM, "Not valid")
+}
+
+# bError
+record(bi,"$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-Err"){
+  field(DESC, "$(HWTYPE): Error")
+  field(PINI, "$(PINI=1)")
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=${ADSPORT=852}/Main.fb_s${SLAVE_POS}_${HWTYPE}.bError?")
+  field(SCAN, "I/O Intr")
+  field(TSE,  "$(TSE=-2)")
+  field(ZSV,  "NO_ALARM")
+  field(OSV,  "MAJOR")
+  field(ZNAM, "No Error")
+  field(ONAM, "Error")
+}
+
+# sErrorMessage
+record(waveform,"$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-ErrMsg"){
+  field(PINI, "1")
+  field(TSE, -2)
+  field(DTYP,"asynInt8ArrayIn")
+  field(INP,"@asyn($(PORT),0,1)TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=${ADSPORT=852}/Main.fb_s${SLAVE_POS}_${HWTYPE}.sErrorMessage?")
+  field(NELM,100)
+  field(SCAN,"I/O Intr")
+  field(FTVL,"CHAR")
+}
