@@ -44,6 +44,14 @@ epicsEnvSet("EC_SLAVE_NUM",    "3")
 epicsEnvSet("EC_HWTYPE",       "EL1809")
 dbLoadTemplate("./db/${EC_HWTYPE}.substitutions","P=${PREFIX},PORT=${ADS_ASYN_PORT},ADDR=0,TIMEOUT=1,ADSPORT=${ADSPORT_DEF},MASTER_ID=${EC_MASTER_ID},SLAVE_POS=${EC_SLAVE_NUM},HWTYPE=${EC_HWTYPE},T_SMP_MS=${SAMPLE_RATE_MS_DEF},TSE=${TSE=0}")
 
+epicsEnvSet("EC_SLAVE_NUM",    "4")
+epicsEnvSet("EC_HWTYPE",       "EL2819")
+dbLoadTemplate("./db/${EC_HWTYPE}.substitutions","P=${PREFIX},PORT=${ADS_ASYN_PORT},ADDR=0,TIMEOUT=1,ADSPORT=${ADSPORT_DEF},MASTER_ID=${EC_MASTER_ID},SLAVE_POS=${EC_SLAVE_NUM},HWTYPE=${EC_HWTYPE},T_SMP_MS=${SAMPLE_RATE_MS_DEF},TSE=${TSE=0}")
+
+epicsEnvSet("EC_SLAVE_NUM",    "5")
+epicsEnvSet("EC_HWTYPE",       "EL2819")
+dbLoadTemplate("./db/${EC_HWTYPE}.substitutions","P=${PREFIX},PORT=${ADS_ASYN_PORT},ADDR=0,TIMEOUT=1,ADSPORT=${ADSPORT_DEF},MASTER_ID=${EC_MASTER_ID},SLAVE_POS=${EC_SLAVE_NUM},HWTYPE=${EC_HWTYPE},T_SMP_MS=${SAMPLE_RATE_MS_DEF},TSE=${TSE=0}")
+
 ##############################################################################
 ############# Usefull commands
 #var streamDebug 1

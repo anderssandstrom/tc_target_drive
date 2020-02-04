@@ -1,0 +1,62 @@
+# Diagnostics (4 channels per status word)
+#    PDO entry 0x60*1:01,  1 bit, "Overtemperature"
+#    PDO entry 0x60*1:02,  1 bit, "Open Load"
+#    PDO entry 0x60*1:03,  1 bit, "Overcurrent"
+#    PDO entry 0x60*1:04,  1 bit, "Short Circuit to 24V"
+
+record(longin,"$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-BO${CH_ID}-Stat"){
+  field(DESC, "$(HWTYPE): BO${CH_ID} Status")
+  field(PINI, "$(PINI=1)")
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=${ADSPORT=852}/Main.fb_s${SLAVE_POS}_${HWTYPE}.wCH${CH_ID}_Diag?")
+  field(SCAN, "I/O Intr")
+  field(FLNK, "$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-BO${CH_ID}-Stat_.PROC")
+  field(TSE,  "$(TSE=-2)")
+}
+
+record(mbbiDirect,"$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-BO${CH_ID}-Stat_"){
+  field(DESC, "$(HWTYPE): BO${CH_ID} Status")
+  field(PINI, "$(PINI=1)")
+  field(INP,  "$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-BO${CH_ID}-Stat")  
+  field(FLNK, "$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-BO${CH_ID}-OvrTmp-Alrm.PROC")
+  field(TSE,  "$(TSE=-2)")
+}
+
+record(bi,"$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-BO${CH_ID}-OvrTmp-Alrm"){
+  field(DESC, "$(HWTYPE): BO${CH_ID} Overtemp Alarm")
+  field(INP,  "$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-BO${CH_ID}-Stat_.B0")
+  field(ZNAM, "No Alarm")
+  field(ONAM, "Overtemp")
+  field(ZSV,  "NO_ALARM")
+  field(OSV,  "MAJOR")
+  field(FLNK, "$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-BO${CH_ID}-OpnLoad-Alrm.PROC")
+}
+
+record(bi,"$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-BO${CH_ID}-OpnLoad-Alrm"){
+  field(DESC, "$(HWTYPE): BO${CH_ID} Open Load Alarm")
+  field(INP,  "$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-BO${CH_ID}-Stat_.B1")
+  field(ZNAM, "No Alarm")
+  field(ONAM, "Open load")
+  field(ZSV,  "NO_ALARM")
+  field(OSV,  "MINOR")
+  field(FLNK, "$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-BO${CH_ID}-OvrCurr-Alrm.PROC")
+}
+
+record(bi,"$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-BO${CH_ID}-OvrCurr-Alrm"){
+  field(DESC, "$(HWTYPE): BO${CH_ID} Over Current Alarm")
+  field(INP,  "$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-BO${CH_ID}-Stat_.B2")
+  field(ZNAM, "No Alarm")
+  field(ONAM, "Over Current")
+  field(ZSV,  "NO_ALARM")
+  field(OSV,  "MAJOR")
+  field(FLNK, "$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-BO${CH_ID}-ShrtCirc-Alrm.PROC")
+}
+
+record(bi,"$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-BO${CH_ID}-ShrtCirc-Alrm"){
+  field(DESC, "$(HWTYPE): BO${CH_ID} Short Circuit to 24V")
+  field(INP,  "$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-BO${CH_ID}-Stat_.B3")
+  field(ZNAM, "No Alarm")
+  field(ONAM, "Short Circuit")
+  field(ZSV,  "NO_ALARM")
+  field(OSV,  "MAJOR")
+}
