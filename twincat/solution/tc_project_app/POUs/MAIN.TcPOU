@@ -34,24 +34,24 @@ VAR
 	nTest: INT;
 	
 	//hardware
-	fbErrorList:FB_ErrorSystem;
+	fbErrorSystem:FB_ErrorSystem;
 	//stErrorSystem:ST_ErrorSystem;
 	fb_s2_EL1809:EL1809;
 	fb_s3_EL1809:EL1809;
 	fb_s4_EL2819:EL2819;
 	fb_s5_EL2819:EL2819;
 	fb_s6_EL9505:EL9505;
-	//fb_s7_EL1252:EL1252;            //missing
+	fb_s7_EL1252:EL1252;
 	fb_s8_EL9410:EL9410;
-	//fb_s9_EL1252:EL1252;            //missing
-	//fb_s10_EL7201:EL7201;           //missing
-	//fb_s11_EL7201:EL7201;           //missing
-	//fb_s12_EL7201:EL7201;           //missing
-	fb_s13_EL3214:EL3214_old;
+	fb_s9_EL1252:EL1252;
+	fb_s10_EL7201:EL7201;
+	fb_s11_EL7201:EL7201;
+	fb_s12_EL7201:EL7201;
+	fb_s13_EL3214:EL3214;
 	//fb_s14_EL6695:EL6695;           //missing
 	fb_s15_EL9410:EL9410;
 	//fb_s16_EL2032:EL2032;           //missing
-	//fb_s17_EK1110:EK1110;           //missing
+	fb_s17_EK1110:EK1110;
 	//fb_s18_IndraDrive:IndraDrive_hw //missing;
 	//fb_s19_IPOS8020:IPOS8020;       //missing
 	//fb_s20_IPOS8020:IPOS8020;       //missing
@@ -81,20 +81,20 @@ eTargetStateOld:=stStatEpics.eTargetState;
       <Implementation>
         <ST><![CDATA[// Check state of hardware
     
-	fb_s2_EL1809(ErrorSystem:=fbErrorList.pErrorSystem,En:=TRUE,iTerminal_ID:=2);
-	fb_s3_EL1809(ErrorSystem:=fbErrorList.pErrorSystem,En:=TRUE,iTerminal_ID:=3);
-	fb_s4_EL2819(ErrorSystem:=fbErrorList.pErrorSystem,En:=TRUE,iTerminal_ID:=4);
-	fb_s5_EL2819(ErrorSystem:=fbErrorList.pErrorSystem,En:=TRUE,iTerminal_ID:=5);
-	fb_s6_EL9505(ErrorSystem:=fbErrorList.pErrorSystem,En:=TRUE,iTerminal_ID:=6);
+	fb_s2_EL1809(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=2);
+	fb_s3_EL1809(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=3);
+	fb_s4_EL2819(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=4);
+	fb_s5_EL2819(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=5);
+	fb_s6_EL9505(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=6);
 	//fb_s7_EL1252:EL1252;            //missing
-	fb_s8_EL9410(ErrorSystem:=fbErrorList.pErrorSystem,En:=TRUE,iTerminal_ID:=8);
+	fb_s8_EL9410(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=8);
 	//fb_s9_EL1252:EL1252;            //missing
 	//fb_s10_EL7201:EL7201;           //missing
 	//fb_s11_EL7201:EL7201;           //missing
 	//fb_s12_EL7201:EL7201;           //missing
 	//fb_s13_EL3214:EL3214;           //missing
 	//fb_s14_EL6695:EL6695;           //missing
-	fb_s15_EL9410(ErrorSystem:=fbErrorList.pErrorSystem,En:=TRUE,iTerminal_ID:=15);
+	fb_s15_EL9410(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=15);
 	//fb_s16_EL2032:EL2032;           //missing
 	//fb_s17_EK1110:EK1110;           //missing
 	//fb_s18_IndraDrive:IndraDrive_hw //missing;
@@ -102,7 +102,7 @@ eTargetStateOld:=stStatEpics.eTargetState;
 	//fb_s20_IPOS8020:IPOS8020;       //missing
 	//fb_s21_IPOS8020:IPOS8020;       //missing
 	
-	fbErrorList(En:=TRUE);
+	fbErrorSystem(En:=TRUE);
 	]]></ST>
       </Implementation>
     </Action>
