@@ -1947,6 +1947,14 @@ bS144_15_NotDefined					: BIT;	]]></Comment>
 							<Type>UINT</Type>
 						</Var>
 						<Var>
+							<Name>MAIN.fb_s7_EL1252.bBI_1</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s7_EL1252.bBI_2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
 							<Name>MAIN.fb_s7_EL1252.WcState_WcState</Name>
 							<Type>BOOL</Type>
 						</Var>
@@ -1969,6 +1977,14 @@ bS144_15_NotDefined					: BIT;	]]></Comment>
 						<Var>
 							<Name>MAIN.fb_s8_EL9410.InfoData_State</Name>
 							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s9_EL1252.bBI_1</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s9_EL1252.bBI_2</Name>
+							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.fb_s9_EL1252.WcState_WcState</Name>
@@ -2003,6 +2019,22 @@ bS144_15_NotDefined					: BIT;	]]></Comment>
 							<Type>UINT</Type>
 						</Var>
 						<Var>
+							<Name>MAIN.fb_s13_EL3214.iAI_1</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s13_EL3214.iAI_2</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s13_EL3214.iAI_3</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s13_EL3214.iAI_4</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
 							<Name>MAIN.fb_s13_EL3214.wCh1_Status</Name>
 							<Comment><![CDATA[Channels]]></Comment>
 							<Type>WORD</Type>
@@ -2029,6 +2061,14 @@ bS144_15_NotDefined					: BIT;	]]></Comment>
 							<Type>UINT</Type>
 						</Var>
 						<Var>
+							<Name>MAIN.fb_s14_EL6695.WcState_WcState</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s14_EL6695.InfoData_State</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
 							<Name>MAIN.fb_s15_EL9410.bUs_Undervoltage</Name>
 							<Type>BOOL</Type>
 						</Var>
@@ -2045,7 +2085,289 @@ bS144_15_NotDefined					: BIT;	]]></Comment>
 							<Type>UINT</Type>
 						</Var>
 						<Var>
+							<Name>MAIN.fb_s16_EL2032.WcState_WcState</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s16_EL2032.InfoData_State</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
 							<Name>MAIN.fb_s17_EK1110.InfoData_State</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s18_IndraDrive.WcState_WcState</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s18_IndraDrive.InfoData_State</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s19_IPOS8020.WcState_WcState</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s19_IPOS8020.InfoData_State</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s20_IPOS8020.WcState_WcState</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s20_IPOS8020.InfoData_State</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s21_IPOS8020.WcState_WcState</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s21_IPOS8020.InfoData_State</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s22_EK1100.InfoData_State</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s23_EL1252.bBI_1</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s23_EL1252.bBI_2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s23_EL1252.WcState_WcState</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s23_EL1252.InfoData_State</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s24_EL3742.WcState_WcState</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s24_EL3742.InfoData_State</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s25_EL3214.iAI_1</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s25_EL3214.iAI_2</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s25_EL3214.iAI_3</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s25_EL3214.iAI_4</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s25_EL3214.wCh1_Status</Name>
+							<Comment><![CDATA[Channels]]></Comment>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s25_EL3214.wCh2_Status</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s25_EL3214.wCh3_Status</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s25_EL3214.wCh4_Status</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s25_EL3214.WcState_WcState</Name>
+							<Comment><![CDATA[Terminal status]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s25_EL3214.InfoData_State</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s26_EL3214.iAI_1</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s26_EL3214.iAI_2</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s26_EL3214.iAI_3</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s26_EL3214.iAI_4</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s26_EL3214.wCh1_Status</Name>
+							<Comment><![CDATA[Channels]]></Comment>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s26_EL3214.wCh2_Status</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s26_EL3214.wCh3_Status</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s26_EL3214.wCh4_Status</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s26_EL3214.WcState_WcState</Name>
+							<Comment><![CDATA[Terminal status]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s26_EL3214.InfoData_State</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s27_EL3214.iAI_1</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s27_EL3214.iAI_2</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s27_EL3214.iAI_3</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s27_EL3214.iAI_4</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s27_EL3214.wCh1_Status</Name>
+							<Comment><![CDATA[Channels]]></Comment>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s27_EL3214.wCh2_Status</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s27_EL3214.wCh3_Status</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s27_EL3214.wCh4_Status</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s27_EL3214.WcState_WcState</Name>
+							<Comment><![CDATA[Terminal status]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s27_EL3214.InfoData_State</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s28_EL2819.wCH1_Diag</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s28_EL2819.wCH2_Diag</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s28_EL2819.wCH3_Diag</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s28_EL2819.wCH4_Diag</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s28_EL2819.wCH5_Diag</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s28_EL2819.wCH6_Diag</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s28_EL2819.wCH7_Diag</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s28_EL2819.wCH8_Diag</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s28_EL2819.wCH9_Diag</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s28_EL2819.wCH10_Diag</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s28_EL2819.wCH11_Diag</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s28_EL2819.wCH12_Diag</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s28_EL2819.wCH13_Diag</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s28_EL2819.wCH14_Diag</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s28_EL2819.wCH15_Diag</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s28_EL2819.wCH16_Diag</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s28_EL2819.bDev_CommonFault</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s28_EL2819.bDev_Overtemperature</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s28_EL2819.bDev_UnderVoltage</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s28_EL2819.bDev_MissingVoltage</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s28_EL2819.WcState_WcState</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s28_EL2819.InfoData_State</Name>
 							<Type>UINT</Type>
 						</Var>
 						<Var>
@@ -2640,6 +2962,23 @@ Bit 15]]></Comment>
 								<Link VarA="MAIN.fb_s3_EL1809.bi_7" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 7^Input" Size="1" RestoreInfo="ANotFound"/>
 								<Link VarA="MAIN.fb_s3_EL1809.bi_8" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 8^Input" Size="1" RestoreInfo="ANotFound"/>
 								<Link VarA="MAIN.fb_s3_EL1809.bi_9" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 9^Input" Size="1" RestoreInfo="ANotFound"/>
+							</OwnerB>
+						</OwnerA>
+					</UnrestoredVarLinks>
+					<UnrestoredVarLinks ImportTime="2020-02-07T14:39:02">
+						<OwnerA Name="InputDst" Prefix="TIPC^tc_project_app^tc_project_app Instance" Type="1">
+							<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 52 (EK1100)^Term 55 (EL3214)">
+								<Link VarA="MAIN.fb_s24_EL3214.InfoData_State" TypeA="UINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000005}" VarB="InfoData^State" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s24_EL3214.iAI_1" TypeA="INT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000006}" VarB="RTD Inputs Channel 1^Value" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s24_EL3214.iAI_2" TypeA="INT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000006}" VarB="RTD Inputs Channel 2^Value" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s24_EL3214.iAI_3" TypeA="INT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000006}" VarB="RTD Inputs Channel 3^Value" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s24_EL3214.iAI_4" TypeA="INT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000006}" VarB="RTD Inputs Channel 4^Value" RestoreInfo="ANotFound"/>
+							</OwnerB>
+							<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 52 (EK1100)^Term 56 (EL3214)">
+								<Link VarA="MAIN.fb_s24_EL3214.wCh1_Status" TypeA="WORD" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000004}" VarB="RTD Inputs Channel 1^Value" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s24_EL3214.wCh2_Status" TypeA="WORD" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000004}" VarB="RTD Inputs Channel 2^Value" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s24_EL3214.wCh3_Status" TypeA="WORD" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000004}" VarB="RTD Inputs Channel 3^Value" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fb_s24_EL3214.wCh4_Status" TypeA="WORD" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000004}" VarB="RTD Inputs Channel 4^Value" RestoreInfo="ANotFound"/>
 							</OwnerB>
 						</OwnerA>
 					</UnrestoredVarLinks>
@@ -6799,6 +7138,8 @@ Bit 8 - 15 : reserved]]></Comment>
 				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nS51_PositionFeedbackValue" VarB="AT^Position feedback value 1"/>
 				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nS84_TorqueFeedback" VarB="AT^Torque/force feedback value"/>
 				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.stS144_SignalStatusWord" VarB="AT^Signal status word"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s18_IndraDrive.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s18_IndraDrive.WcState_WcState" VarB="WcState^WcState"/>
 				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS108_FeedrateOverride" VarB="MDT^Feedrate override"/>
 				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS258_TargetPosition" VarB="MDT^Target position"/>
 				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS259_PositioningVelocity" VarB="MDT^Positioning velocity"/>
@@ -6812,6 +7153,18 @@ Bit 8 - 15 : reserved]]></Comment>
 				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.stS145_SignalControlWord" VarB="MDT^Signal control word"/>
 				<Link VarA="PlcTask Outputs^MAIN.iTorqueCommandValue" VarB="MDT^Torque/force command value"/>
 				<Link VarA="PlcTask Outputs^MAIN.nAdditiveTorqueSetpoint" VarB="MDT^Additive torque/force command value"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Drive 49 (iPOS8020 BX-CAT)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s19_IPOS8020.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s19_IPOS8020.WcState_WcState" VarB="WcState^WcState"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Drive 50 (iPOS8020 BX-CAT)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s20_IPOS8020.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s20_IPOS8020.WcState_WcState" VarB="WcState^WcState"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Drive 51 (iPOS8020 BX-CAT)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s21_IPOS8020.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s21_IPOS8020.WcState_WcState" VarB="WcState^WcState"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 10 (EL7201)">
 				<Link VarA="PlcTask Inputs^MAIN.fb_s10_EL7201.InfoData_State" VarB="InfoData^State"/>
@@ -6828,16 +7181,28 @@ Bit 8 - 15 : reserved]]></Comment>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 13 (EL3214)">
 				<Link VarA="PlcTask Inputs^MAIN.fb_s13_EL3214.InfoData_State" VarB="InfoData^State"/>
 				<Link VarA="PlcTask Inputs^MAIN.fb_s13_EL3214.WcState_WcState" VarB="WcState^WcState"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s13_EL3214.iAI_1" VarB="RTD Inputs Channel 1^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s13_EL3214.iAI_2" VarB="RTD Inputs Channel 2^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s13_EL3214.iAI_3" VarB="RTD Inputs Channel 3^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s13_EL3214.iAI_4" VarB="RTD Inputs Channel 4^Value"/>
 				<Link VarA="PlcTask Inputs^MAIN.fb_s13_EL3214.wCh1_Status" VarB="RTD Inputs Channel 1^Status"/>
 				<Link VarA="PlcTask Inputs^MAIN.fb_s13_EL3214.wCh2_Status" VarB="RTD Inputs Channel 2^Status"/>
 				<Link VarA="PlcTask Inputs^MAIN.fb_s13_EL3214.wCh3_Status" VarB="RTD Inputs Channel 3^Status"/>
 				<Link VarA="PlcTask Inputs^MAIN.fb_s13_EL3214.wCh4_Status" VarB="RTD Inputs Channel 4^Status"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 14 (EL6695)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s14_EL6695.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s14_EL6695.WcState_WcState" VarB="WcState^WcState"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 15 (EL9410)">
 				<Link VarA="PlcTask Inputs^MAIN.fb_s15_EL9410.InfoData_State" VarB="InfoData^State"/>
 				<Link VarA="PlcTask Inputs^MAIN.fb_s15_EL9410.WcState_WcState" VarB="WcState^WcState"/>
 				<Link VarA="PlcTask Inputs^MAIN.fb_s15_EL9410.bUp_Undervoltage" VarB="Status Up^Undervoltage"/>
 				<Link VarA="PlcTask Inputs^MAIN.fb_s15_EL9410.bUs_Undervoltage" VarB="Status Us^Undervoltage"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 16 (EL2032)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s16_EL2032.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s16_EL2032.WcState_WcState" VarB="WcState^WcState"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 17 (EK1110)">
 				<Link VarA="PlcTask Inputs^MAIN.fb_s17_EK1110.InfoData_State" VarB="InfoData^State"/>
@@ -6939,6 +7304,8 @@ Bit 8 - 15 : reserved]]></Comment>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 7 (EL1252-0050)">
 				<Link VarA="PlcTask Inputs^MAIN.fb_s7_EL1252.InfoData_State" VarB="InfoData^State"/>
 				<Link VarA="PlcTask Inputs^MAIN.fb_s7_EL1252.WcState_WcState" VarB="WcState^WcState"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s7_EL1252.bBI_1" VarB="Channel 1^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s7_EL1252.bBI_2" VarB="Channel 2^Input"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 8 (EL9410)">
 				<Link VarA="PlcTask Inputs^MAIN.fb_s8_EL9410.InfoData_State" VarB="InfoData^State"/>
@@ -6949,6 +7316,81 @@ Bit 8 - 15 : reserved]]></Comment>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 9 (EL1252)">
 				<Link VarA="PlcTask Inputs^MAIN.fb_s9_EL1252.InfoData_State" VarB="InfoData^State"/>
 				<Link VarA="PlcTask Inputs^MAIN.fb_s9_EL1252.WcState_WcState" VarB="WcState^WcState"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s9_EL1252.bBI_1" VarB="Channel 1^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s9_EL1252.bBI_2" VarB="Channel 2^Input"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 52 (EK1100)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s22_EK1100.InfoData_State" VarB="InfoData^State"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 52 (EK1100)^Term 53 (EL1252)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s23_EL1252.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s23_EL1252.WcState_WcState" VarB="WcState^WcState"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s23_EL1252.bBI_1" VarB="Channel 1^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s23_EL1252.bBI_2" VarB="Channel 2^Input"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 52 (EK1100)^Term 54 (EL3742)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s24_EL3742.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s24_EL3742.WcState_WcState" VarB="WcState^WcState"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 52 (EK1100)^Term 55 (EL3214)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s25_EL3214.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s25_EL3214.WcState_WcState" VarB="WcState^WcState"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s25_EL3214.iAI_1" VarB="RTD Inputs Channel 1^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s25_EL3214.iAI_2" VarB="RTD Inputs Channel 2^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s25_EL3214.iAI_3" VarB="RTD Inputs Channel 3^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s25_EL3214.iAI_4" VarB="RTD Inputs Channel 4^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s25_EL3214.wCh1_Status" VarB="RTD Inputs Channel 1^Status"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s25_EL3214.wCh2_Status" VarB="RTD Inputs Channel 2^Status"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s25_EL3214.wCh3_Status" VarB="RTD Inputs Channel 3^Status"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s25_EL3214.wCh4_Status" VarB="RTD Inputs Channel 4^Status"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 52 (EK1100)^Term 56 (EL3214)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s26_EL3214.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s26_EL3214.WcState_WcState" VarB="WcState^WcState"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s26_EL3214.iAI_1" VarB="RTD Inputs Channel 1^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s26_EL3214.iAI_2" VarB="RTD Inputs Channel 2^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s26_EL3214.iAI_3" VarB="RTD Inputs Channel 3^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s26_EL3214.iAI_4" VarB="RTD Inputs Channel 4^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s26_EL3214.wCh1_Status" VarB="RTD Inputs Channel 1^Status"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s26_EL3214.wCh2_Status" VarB="RTD Inputs Channel 2^Status"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s26_EL3214.wCh3_Status" VarB="RTD Inputs Channel 3^Status"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s26_EL3214.wCh4_Status" VarB="RTD Inputs Channel 4^Status"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 52 (EK1100)^Term 57 (EL3214)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s27_EL3214.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s27_EL3214.WcState_WcState" VarB="WcState^WcState"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s27_EL3214.iAI_1" VarB="RTD Inputs Channel 1^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s27_EL3214.iAI_2" VarB="RTD Inputs Channel 2^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s27_EL3214.iAI_3" VarB="RTD Inputs Channel 3^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s27_EL3214.iAI_4" VarB="RTD Inputs Channel 4^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s27_EL3214.wCh1_Status" VarB="RTD Inputs Channel 1^Status"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s27_EL3214.wCh2_Status" VarB="RTD Inputs Channel 2^Status"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s27_EL3214.wCh3_Status" VarB="RTD Inputs Channel 3^Status"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s27_EL3214.wCh4_Status" VarB="RTD Inputs Channel 4^Status"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 52 (EK1100)^Term 58 (EL2819)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s28_EL2819.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s28_EL2819.WcState_WcState" VarB="WcState^WcState"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s28_EL2819.bDev_CommonFault" VarB="DIG Inputs Device^Common Fault"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s28_EL2819.bDev_MissingVoltage" VarB="DIG Inputs Device^Missing Voltage"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s28_EL2819.bDev_Overtemperature" VarB="DIG Inputs Device^Overtemperature Device"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s28_EL2819.bDev_UnderVoltage" VarB="DIG Inputs Device^Undervoltage"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s28_EL2819.wCH10_Diag" VarB="DIG Diag Inputs^Channel 10"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s28_EL2819.wCH11_Diag" VarB="DIG Diag Inputs^Channel 11"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s28_EL2819.wCH12_Diag" VarB="DIG Diag Inputs^Channel 12"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s28_EL2819.wCH13_Diag" VarB="DIG Diag Inputs^Channel 13"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s28_EL2819.wCH14_Diag" VarB="DIG Diag Inputs^Channel 14"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s28_EL2819.wCH15_Diag" VarB="DIG Diag Inputs^Channel 15"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s28_EL2819.wCH16_Diag" VarB="DIG Diag Inputs^Channel 16"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s28_EL2819.wCH1_Diag" VarB="DIG Diag Inputs^Channel 1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s28_EL2819.wCH2_Diag" VarB="DIG Diag Inputs^Channel 2"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s28_EL2819.wCH3_Diag" VarB="DIG Diag Inputs^Channel 3"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s28_EL2819.wCH4_Diag" VarB="DIG Diag Inputs^Channel 4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s28_EL2819.wCH5_Diag" VarB="DIG Diag Inputs^Channel 5"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s28_EL2819.wCH6_Diag" VarB="DIG Diag Inputs^Channel 6"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s28_EL2819.wCH7_Diag" VarB="DIG Diag Inputs^Channel 7"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s28_EL2819.wCH8_Diag" VarB="DIG Diag Inputs^Channel 8"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s28_EL2819.wCH9_Diag" VarB="DIG Diag Inputs^Channel 9"/>
 			</OwnerB>
 		</OwnerA>
 	</Mappings>
