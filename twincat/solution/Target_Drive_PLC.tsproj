@@ -1275,7 +1275,7 @@ Bit 15]]></Comment>
 			</Relations>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-002000000004}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..3] OF BIT</Name>
+			<Name GUID="{18071995-0000-0000-0000-002000000004}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..3] OF BIT</Name>
 			<BitSize>4</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
 			<ArrayInfo>
@@ -1284,7 +1284,7 @@ Bit 15]]></Comment>
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-002000000006}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..5] OF BIT</Name>
+			<Name GUID="{18071995-0000-0000-0000-002000000006}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..5] OF BIT</Name>
 			<BitSize>6</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
 			<ArrayInfo>
@@ -1320,7 +1320,7 @@ Bit 15]]></Comment>
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-00200000000D}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..12] OF BIT</Name>
+			<Name GUID="{18071995-0000-0000-0000-00200000000D}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..12] OF BIT</Name>
 			<BitSize>13</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
 			<ArrayInfo>
@@ -1329,7 +1329,7 @@ Bit 15]]></Comment>
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-002000000007}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..6] OF BIT</Name>
+			<Name GUID="{18071995-0000-0000-0000-002000000007}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..6] OF BIT</Name>
 			<BitSize>7</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
 			<ArrayInfo>
@@ -1356,7 +1356,7 @@ Bit 15]]></Comment>
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-00200000000A}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..9] OF BIT</Name>
+			<Name GUID="{18071995-0000-0000-0000-00200000000A}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..9] OF BIT</Name>
 			<BitSize>10</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
 			<ArrayInfo>
@@ -1607,6 +1607,152 @@ bS144_15_NotDefined					: BIT;	]]></Comment>
 						<Var>
 							<Name>MAIN.fbIndraDrive.stDriveStatus.nP173_MarkerPosition</Name>
 							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.bBI_1</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.bBI_2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.bBI_3</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.bBI_4</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.bBI_5</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.bBI_6</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.bBI_7</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.bBI_8</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.bBI_9</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.bBI_10</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.bBI_11</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.bBI_12</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.bBI_13</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.bBI_14</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.bBI_15</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.bBI_16</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.WcState_WcState</Name>
+							<Comment><![CDATA[ invalid]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s2_EL1809.InfoData_State</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.bBI_1</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.bBI_2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.bBI_3</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.bBI_4</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.bBI_5</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.bBI_6</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.bBI_7</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.bBI_8</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.bBI_9</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.bBI_10</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.bBI_11</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.bBI_12</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.bBI_13</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.bBI_14</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.bBI_15</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.bBI_16</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.WcState_WcState</Name>
+							<Comment><![CDATA[ invalid]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s3_EL1809.InfoData_State</Name>
+							<Type>UINT</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.fb_s4_EL2819.wCH1_Diag</Name>
@@ -2090,152 +2236,6 @@ External Setpoint Generation:
 3: axis is a slave axis
 ]]></Comment>
 							</SubVar>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s2_EL1809.bBI_1</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s2_EL1809.bBI_2</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s2_EL1809.bBI_3</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s2_EL1809.bBI_4</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s2_EL1809.bBI_5</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s2_EL1809.bBI_6</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s2_EL1809.bBI_7</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s2_EL1809.bBI_8</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s2_EL1809.bBI_9</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s2_EL1809.bBI_10</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s2_EL1809.bBI_11</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s2_EL1809.bBI_12</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s2_EL1809.bBI_13</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s2_EL1809.bBI_14</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s2_EL1809.bBI_15</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s2_EL1809.bBI_16</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s2_EL1809.WcState_WcState</Name>
-							<Comment><![CDATA[ invalid]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s2_EL1809.InfoData_State</Name>
-							<Type>UINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s3_EL1809.bBI_1</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s3_EL1809.bBI_2</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s3_EL1809.bBI_3</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s3_EL1809.bBI_4</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s3_EL1809.bBI_5</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s3_EL1809.bBI_6</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s3_EL1809.bBI_7</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s3_EL1809.bBI_8</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s3_EL1809.bBI_9</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s3_EL1809.bBI_10</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s3_EL1809.bBI_11</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s3_EL1809.bBI_12</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s3_EL1809.bBI_13</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s3_EL1809.bBI_14</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s3_EL1809.bBI_15</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s3_EL1809.bBI_16</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s3_EL1809.WcState_WcState</Name>
-							<Comment><![CDATA[ invalid]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s3_EL1809.InfoData_State</Name>
-							<Type>UINT</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="2">
@@ -4507,7 +4507,7 @@ Bit 8 - 15 : reserved]]></Comment>
 							<Entry Name="Following distance" Index="#x00bd">
 								<Type>DINT</Type>
 							</Entry>
-							<Entry Name="Marker position A " Index="#x00ad">
+							<Entry Name="Marker position A" Index="#x00ad">
 								<Type>DINT</Type>
 							</Entry>
 						</Pdo>
@@ -4552,6 +4552,67 @@ Bit 8 - 15 : reserved]]></Comment>
 								<Type>INT</Type>
 							</Entry>
 						</Pdo>
+					</EtherCAT>
+				</Box>
+				<Box Id="20" Disabled="true" BoxType="9099" BoxFlags="#x00000020">
+					<Name>Box 20 (IndraDrive MPB20 CoE)</Name>
+					<ImageId>38</ImageId>
+					<EtherCAT SlaveType="2" PdiType="#x0006" MboxDataLinkLayer="true" StateMBoxPolling="true" CfgModeSafeOp="true" CycleMBoxPollingTime="0" CoeType="9" EoeType="3" FoeType="1" VendorId="#x00000024" ProductCode="#x00242c04" RevisionNo="#x00000003" SerialNo="#x00000001" InfoDataAddr="true" InfoDataSoeDS401="true" InfoDataDcTimes="true" EnableWdDivider0400="true" EnableWdTime0420="true" TimeoutStateChange1="5000" TimeoutStateChange2="25000" TimeoutStateChange4="500" TimeoutMailbox2="6000" PortPhys="17" IdentificationAdo="18" Type="IndraDrive MPB20 CoE" Desc="IndraDrive MPB20 CoE" PortABoxInfo="#x01000013">
+						<SyncMan>0018ea002600010001000000ea00ea00ea00001826010000</SyncMan>
+						<SyncMan>001aea002200010002000000ea00ea00ea00001a22010000</SyncMan>
+						<SyncMan>001006006400010003000000000000000000001064010000</SyncMan>
+						<SyncMan>00110a002000010004000000000000000000001120010000</SyncMan>
+						<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
+						<Fmmu>0000000000000000001000020100000001000000000000000000000000000000</Fmmu>
+						<Fmmu>0000000000000000001100010100000002000000000000000000000000000000</Fmmu>
+						<SwitchPortData>01000000e903fea90000ffffc14cfea900000000426f785f32305f5f496e64726144720000000000000000000000000000000000000000000000000000000000</SwitchPortData>
+						<BootStrapData>0018ea00001aea00</BootStrapData>
+						<DcData>00250000000000000000000020a1070001000000010000000000000000000000</DcData>
+						<DcMode>44432d53796e633120326d730000000044432d53796e6331204379636c65203e3d20326d7300000000000000000000000000000000000000b0710b00000000250100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<DcMode>44432d53796e633120316d732053740044432d53796e6331204379636c653d316d73205374616e6461726420502e0000000000000000000020a10700000000250100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<DcMode>44432d53796e633120316d732041640044432d53796e6331204379636c653d316d7320416476616e63656420502e00000000000000000000801a0600000000250100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<DcMode>44432d53796e6331203530307573200044432d53796e6331204379636c653d3530307573205374616e64617264205000000000000000000000000000000000250100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<DcMode>44432d53796e6331203530307573200044432d53796e6331204379636c653d353030757320416476616e636564205000000000000000000090d00300000000250100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<DcMode>44432d53796e6331203235307573200044432d53796e6331204379636c653d323530757320416476616e636564205000000000000000000000000000000000250100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<DcMode>4672656552756e000000000000000000467265652052756e20286e6f2073796e6368726f6e697a6174696f6e29000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<MBoxUserCmdData>02000300090000001900000003000000010009030000000000000000000000002060600001000000094379636c69632073796e632076656c6f63697479206d6f646500</MBoxUserCmdData>
+						<Pdo Name="Transmit PDO Mapping Parameter" Index="#x1a00" Flags="#x0080" SyncMan="3">
+							<Entry Name="CiA402: Statusword" Index="#x6041">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="CiA402: Velocity actual value" Index="#x606c">
+								<Type>DINT</Type>
+							</Entry>
+							<Entry Name="CiA402: Position actual value" Index="#x6064">
+								<Type>DINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Receive PDO Mapping Parameter" Index="#x1600" InOut="1" Flags="#x0080" SyncMan="2">
+							<Entry Name="CiA402: Controlword" Index="#x6040">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="CiA402: Target velocity" Index="#x60ff">
+								<Type>DINT</Type>
+							</Entry>
+						</Pdo>
+						<CoeProfile ProfileNo="402"/>
+						<Slot Name="Axis 1">
+							<SlotData>0000010001000000000000000000000000000000000000000000000000000000</SlotData>
+							<ModuleIdent>256</ModuleIdent>
+							<ModuleIdent>257</ModuleIdent>
+							<ModuleIdent>258</ModuleIdent>
+							<ModuleIdent>259</ModuleIdent>
+							<ModuleIdent>260</ModuleIdent>
+							<ModuleIdent>261</ModuleIdent>
+							<Module Id="#x03090001" Type="Cyclic sync velocity mode" Class="">
+								<Name>Module 1 (Cyclic sync velocity mode)</Name>
+								<ImageId>38</ImageId>
+								<ModuleData>2400000001010000000004000000000000000000000000000000000000000000</ModuleData>
+								<PdoIndex>6656</PdoIndex>
+								<PdoIndex>5632</PdoIndex>
+								<CoeProfile ProfileNo="#x00000192"/>
+							</Module>
+						</Slot>
 					</EtherCAT>
 				</Box>
 				<Box Id="49" BoxType="9099">
@@ -6716,7 +6777,7 @@ Bit 8 - 15 : reserved]]></Comment>
 						</Pdo>
 					</EtherCAT>
 				</Box>
-				<EtherCAT EpMacAddr="020105100000" DcSyncMode="3" EpIpAddr="-1442945026" EpMaxCon="16" EpFirstConAddr="57344" EnableVirtualSwitch="true" MaxSwitchPorts="7" MaxSwitchFrames="220" MaxSwitchMACs="100"/>
+				<EtherCAT EpMacAddr="020105100000" DcSyncMode="3" EpIpAddr="-1442945026" EpMaxCon="16" EpFirstConAddr="57344" EnableVirtualSwitch="true" MaxSwitchPorts="8" MaxSwitchFrames="240" MaxSwitchMACs="100"/>
 			</Device>
 		</Io>
 		<SymbolWatch>
@@ -6729,7 +6790,7 @@ Bit 8 - 15 : reserved]]></Comment>
 		<OwnerA Name="TIPC^tc_project_app^tc_project_app Instance">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Drive 10 (IndraDrive MPB18/19)">
 				<Link VarA="PlcTask Inputs^MAIN.dLatchedPosition" VarB="AT^Probe value 1 positive edge"/>
-				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nP173_MarkerPosition" VarB="AT^Marker position A "/>
+				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nP173_MarkerPosition" VarB="AT^Marker position A"/>
 				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nS135_DriveStatusWord" VarB="AT^Drive status word"/>
 				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nS189_PositionError" VarB="AT^Following distance"/>
 				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nS386_ActivePositionFeedbackValue" VarB="AT^Active position feedback value"/>
