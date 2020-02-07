@@ -203,6 +203,12 @@
     <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Analog_Inputs\EL3255.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Analog_Inputs\El3742.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Communication\EL6695.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Digital_Inputs\EL1008.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -233,6 +239,9 @@
     <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2819.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Digital_Outputs\EL2032.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Digital_Outputs\External_Types\dutEL2521_Ctrl.TcDUT">
       <SubType>Code</SubType>
     </Compile>
@@ -245,6 +254,9 @@
     <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Drives\EL4134.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Drives\iPOS8020.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Drives\EL7037.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -255,6 +267,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Drives\EL7211.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Drives\indraDrive.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Feedback_Terminals\EL5002.TcPOU">
@@ -360,6 +375,7 @@
     <Folder Include="tc_mca_std_lib\DUTs_std" />
     <Folder Include="tc_mca_std_lib\GVLs_std" />
     <Folder Include="tc_mca_std_lib\POUs" />
+    <Folder Include="tc_mca_std_lib\POUs_std\Hardware\EtherCAT_Terminals\Communication" />
     <Folder Include="tc_mca_std_lib\VISUs_std" />
     <Folder Include="tc_mca_std_lib\POUs_std" />
     <Folder Include="tc_mca_std_lib\POUs\Hardware" />
