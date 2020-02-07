@@ -1,0 +1,29 @@
+
+# Status Us Undervolatge
+record(bi,"$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-Us-UnderVolt"){
+  field(DESC, "$(HWTYPE): Us Undervolatge")
+  field(PINI, "$(PINI=1)")
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=${ADSPORT=852}/Main.fb_s${SLAVE_POS}_${HWTYPE}.bUs_Undervoltage?")
+  field(SCAN, "I/O Intr")
+  field(TSE,  "$(TSE=-2)")
+  field(ZSV,  "MAJOR")
+  field(OSV,  "NO_ALARM")
+  field(ZNAM, "Us OK")
+  field(ONAM, "Us Undervolage")
+}
+
+# Up Undervolatge
+record(bi,"$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-Up-UnderVolt"){
+  field(DESC, "$(HWTYPE): Up Undervolatge")
+  field(PINI, "$(PINI=1)")
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=${ADSPORT=852}/Main.fb_s${SLAVE_POS}_${HWTYPE}.bUp_Undervoltage?")
+  field(SCAN, "I/O Intr")
+  field(TSE,  "$(TSE=-2)")
+  field(ZSV,  "NO_ALARM")
+  field(OSV,  "MAJOR")
+  field(ZNAM, "Up OK")
+  field(ONAM, "Up Undervolage")
+}
+

@@ -1,0 +1,12 @@
+# No WcState
+#file "./db/ecSlave.template"
+#{
+#  pattern {}
+#          {}
+#}
+
+file "./db/EK11X0.template"
+{
+  pattern {}
+          {}
+}
