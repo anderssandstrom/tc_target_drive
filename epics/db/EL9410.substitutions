@@ -1,0 +1,11 @@
+file "./db/ecSlave.template"
+{
+  pattern {}
+          {}
+}
+
+file "./db/EL9410.template"
+{
+  pattern {}
+          {}
+}

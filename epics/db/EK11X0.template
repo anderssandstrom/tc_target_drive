@@ -68,20 +68,6 @@ record(stringin, "$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-HWType"){
   field(VAL,  "$(HWTYPE)")
 }
 
-# Data valid
-record(bi,"$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-data-valid"){
-  field(DESC, "$(HWTYPE): Data valid")
-  field(PINI, "$(PINI=1)")
-  field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=${ADSPORT=852}/Main.fb_s${SLAVE_POS}_${HWTYPE}.WcState_WcState?")
-  field(SCAN, "I/O Intr")
-  field(TSE,  "$(TSE=-2)")
-  field(ZSV,  "NO_ALARM")
-  field(OSV,  "MAJOR")
-  field(ZNAM, "Valid")
-  field(ONAM, "Not valid")
-}
-
 # bError
 record(bi,"$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-Err"){
   field(DESC, "$(HWTYPE): Error")

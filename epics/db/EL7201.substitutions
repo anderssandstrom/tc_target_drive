@@ -1,0 +1,12 @@
+file "./db/ecSlave.template"
+{
+  pattern {}
+          {}
+}
+
+# No custom data yet
+#file "./db/EL7201.template"
+#{
+#  pattern {}
+#          {}
+#}
