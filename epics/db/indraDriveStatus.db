@@ -228,3 +228,29 @@ record(ai,"$(P)Rotation-Drv-Stat-Diag-Code"){
   field(SCAN,"I/O Intr")
   field(DESC,"Rotation: Drive Diagnostic Message")
 }
+
+record(bi,"$(P)Rotation-Drv-Stat-STO-Active-Ch1"){
+  field(PINI, "1")
+  field(TSE, -2)
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatus.bSTOActiveCh1?")
+  field(SCAN,"I/O Intr")
+  field(ZNAM,"STO Inactive")
+  field(ONAM,"STO active")
+  field(ZSV,  "NO_ALARM")
+  field(OSV,  "MAJOR")
+  field(DESC,"Rotation: STO active ch1")
+}
+
+record(bi,"$(P)Rotation-Drv-Stat-STO-Active-Ch2"){
+  field(PINI, "1")
+  field(TSE, -2)
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatus.bSTOActiveCh2?")
+  field(SCAN,"I/O Intr")
+  field(ZNAM,"STO Inactive")
+  field(ONAM,"STO Active")
+  field(ZSV,  "NO_ALARM")
+  field(OSV,  "MAJOR")
+  field(DESC,"Rotation: STO active ch2")
+}
