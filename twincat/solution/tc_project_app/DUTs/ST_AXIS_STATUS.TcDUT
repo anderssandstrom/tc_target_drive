@@ -25,7 +25,11 @@ STRUCT
     bCommandChange				: BOOL;		// (S135.5): Bit that toggle every time a new command has been recognised by the drive 
 	bCommandValueProcessing		: BOOL;		// FALSE (S115.3): Drive ignores (external) command value input (S47, S258, S282 etc) 
 											// TRUE (S115.3): Drive follows (external) command value input (S47, S258, S282 etc) 
-	bLimitsDisabled				: BOOL;		// TRUE (S159-C1300): 	Monitoring of Position error, Position command error, Velocity error and Acceleration limit is disabled
+	bSTOActiveCh1   			: BOOL;     // FALSE: STO OK (motor can run)
+	                                        // TRUE:  STO is active
+	bSTOActiveCh2   			: BOOL;     // FALSE: STO OK (motor can run)
+	                                        // TRUE:  STO is active
+    bLimitsDisabled				: BOOL;		// TRUE (S159-C1300): 	Monitoring of Position error, Position command error, Velocity error and Acceleration limit is disabled
 											// FALSE (S159-C1300): 	Monitoring of Position error, Position command error, Velocity error and Acceleration limit is enabled 
 	bDiagMessage				: BOOL;		// TRUE (S135.11): There is a Diagnostic message on the drive 
 	bWarning					: BOOL;		// TRUE (S135.12): There is a warning present on the drive 
