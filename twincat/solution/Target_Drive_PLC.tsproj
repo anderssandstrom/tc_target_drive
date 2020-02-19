@@ -87,7 +87,7 @@
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name GUID="{1642AA04-0B3B-44CC-92AC-D98DCDBF8D53}" AutoDeleteType="true">ST_S144_SIGNALSTATUSWORD</Name>
+			<Name GUID="{8AD6E8B9-D3F6-4CE2-AA31-A4B86C802016}" AutoDeleteType="true">ST_S144_SIGNALSTATUSWORD</Name>
 			<BitSize>16</BitSize>
 			<SubItem>
 				<Name>bS424_DriveMode</Name>
@@ -123,6 +123,20 @@
 				<Comment><![CDATA[ FALSE: Drive ignores external command value input ]]></Comment>
 				<BitSize>1</BitSize>
 				<BitOffs>7</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bP106_1_STO_ch1</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ FALSE: STO OK (motor can run)]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bP106_2_STO_ch2</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ FALSE: STO OK (motor can run)]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>9</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>bS419_0_PositioningCmdAck</Name>
@@ -171,7 +185,7 @@ bS144_15_NotDefined					: BIT;	]]></Comment>
 				</Default>
 			</SubItem>
 			<Hides>
-				<Hide GUID="{50590704-8C4D-4FD8-9670-11E39DA38DD8}"/>
+				<Hide GUID="{1642AA04-0B3B-44CC-92AC-D98DCDBF8D53}"/>
 			</Hides>
 		</DataType>
 		<DataType>
@@ -1275,7 +1289,7 @@ Bit 15]]></Comment>
 			</Relations>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-002000000004}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..3] OF BIT</Name>
+			<Name GUID="{18071995-0000-0000-0000-002000000004}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..3] OF BIT</Name>
 			<BitSize>4</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
 			<ArrayInfo>
@@ -1284,7 +1298,7 @@ Bit 15]]></Comment>
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-002000000006}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..5] OF BIT</Name>
+			<Name GUID="{18071995-0000-0000-0000-002000000006}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..5] OF BIT</Name>
 			<BitSize>6</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
 			<ArrayInfo>
@@ -1320,7 +1334,7 @@ Bit 15]]></Comment>
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-00200000000D}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..12] OF BIT</Name>
+			<Name GUID="{18071995-0000-0000-0000-00200000000D}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..12] OF BIT</Name>
 			<BitSize>13</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
 			<ArrayInfo>
@@ -1329,7 +1343,7 @@ Bit 15]]></Comment>
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-002000000007}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..6] OF BIT</Name>
+			<Name GUID="{18071995-0000-0000-0000-002000000007}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..6] OF BIT</Name>
 			<BitSize>7</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
 			<ArrayInfo>
@@ -1356,7 +1370,7 @@ Bit 15]]></Comment>
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-00200000000A}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..9] OF BIT</Name>
+			<Name GUID="{18071995-0000-0000-0000-00200000000A}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..9] OF BIT</Name>
 			<BitSize>10</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
 			<ArrayInfo>
@@ -1549,7 +1563,7 @@ Bit 15]]></Comment>
 						</Var>
 						<Var>
 							<Name>MAIN.fbIndraDrive.stDriveStatus.stS144_SignalStatusWord</Name>
-							<Type GUID="{1642AA04-0B3B-44CC-92AC-D98DCDBF8D53}">ST_S144_SIGNALSTATUSWORD</Type>
+							<Type GUID="{8AD6E8B9-D3F6-4CE2-AA31-A4B86C802016}">ST_S144_SIGNALSTATUSWORD</Type>
 							<SubVar>
 								<Name>bS424_DriveMode</Name>
 								<Comment><![CDATA[ FALSE: Operating mode]]></Comment>
@@ -1569,6 +1583,14 @@ Bit 15]]></Comment>
 							<SubVar>
 								<Name>bP115_3_StatusOfCmdValueProcessing</Name>
 								<Comment><![CDATA[ FALSE: Drive ignores external command value input ]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bP106_1_STO_ch1</Name>
+								<Comment><![CDATA[ FALSE: STO OK (motor can run)]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bP106_2_STO_ch2</Name>
+								<Comment><![CDATA[ FALSE: STO OK (motor can run)]]></Comment>
 							</SubVar>
 							<SubVar>
 								<Name>bS419_0_PositioningCmdAck</Name>
@@ -4506,6 +4528,11 @@ Bit 8 - 15 : reserved]]></Comment>
 							<Fmmu>0000000000000000801100010100000002000000000000000000000000000000</Fmmu>
 							<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
 							<BootStrapData>0010f400f410f400</BootStrapData>
+							<MBoxUserCmdData>020003000a0000000b000000030000000000000000000000000000000000000020308019020000001a0052544420656c656d656e7400</MBoxUserCmdData>
+							<MBoxUserCmdData>020003000a0000001500000003000000000000000000000000000000000000002030801a020000000000436f6e6e656374696f6e20746563686e6f6c6f677900</MBoxUserCmdData>
+							<MBoxUserCmdData>020003000a0000001500000003000000000000000000000000000000000000002000801a020000000300436f6e6e656374696f6e20746563686e6f6c6f677900</MBoxUserCmdData>
+							<MBoxUserCmdData>020003000a0000001500000003000000000000000000000000000000000000002010801a020000000300436f6e6e656374696f6e20746563686e6f6c6f677900</MBoxUserCmdData>
+							<MBoxUserCmdData>020003000a0000001500000003000000000000000000000000000000000000002020801a020000000300436f6e6e656374696f6e20746563686e6f6c6f677900</MBoxUserCmdData>
 							<Pdo Name="RTD Inputs Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="3">
 								<Entry Name="Status__Underrange" Index="#x6000" Sub="#x01">
 									<Type>BIT</Type>

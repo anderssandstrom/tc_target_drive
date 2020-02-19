@@ -19,10 +19,11 @@ STRUCT
 	bS144_6_NotDefined					: BIT;
 	bP115_3_StatusOfCmdValueProcessing	: BIT; 	// FALSE: Drive ignores external command value input 
 												// TRUE: Drive follows external command value input
-	{attribute 'hide'}
-	bS144_8_NotDefined					: BIT;
-	{attribute 'hide'}
-	bS144_9_NotDefined					: BIT;
+	
+	bP106_1_STO_ch1 					: BIT;  // FALSE: STO OK (motor can run)
+	                                            // TRUE:  STO is active
+	bP106_2_STO_ch2 					: BIT;  // FALSE: STO OK (motor can run)
+	                                            // TRUE:  STO is active
 	bS419_0_PositioningCmdAck			: BIT; 	// Toggled as soon as the new Position Command value is accepted and effective
 	bS437_4_ConstantVelocity			: BIT; 	// TRUE: Axis in constant velocity
 	bS437_5_Acceleration				: BIT; 	// TRUE: Axis in acceleration
