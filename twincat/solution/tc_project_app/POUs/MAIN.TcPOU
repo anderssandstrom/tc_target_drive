@@ -72,7 +72,7 @@ ACT_1_Hardware();
 ACT_2_Temperature();
 
 // Control brake
-ACT_3_Brake();
+//ACT_3_Brake();
 
 // Main motor motion
 ACT_4_MainDrive();
@@ -87,28 +87,109 @@ eTargetStateOld:=stStatEpics.eTargetState;
     <Action Name="ACT_1_Hardware" Id="{713eae55-748e-42a3-b2f0-81f54e66f4bd}">
       <Implementation>
         <ST><![CDATA[// Check state of hardware
+
+// s2: ch1: emergency stop ok
+// s2: ch2: rf01 termal braking filter OK
+// s2: ch3: ta01 and ta02 24V power supply ok
+// s2: ch4: fc11 24V fuse OK
+// s2: ch5: fa01 and fa02 overvoltage protection OK
+// s2: ch6: fc01 fuse target wheel motor OK
+// s2: ch7: fc06 and fc07 ICS outlets fuse OK
+// s2: ch8: fc51, fc52 and fc53 UPS fuses OK (something wrong)
 fb_s2_EL1809(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=2);
+
+// s3: ch1: w02.bg01 stepper x limit max
+// s3: ch2: w02.bg02 stepper x limit min
+// s3: ch3: w02.bg03 stepper x limit max max
+// s3: ch4: w02.bg04 stepper x limit min min
+// s3: ch5: w02.bg05 stepper y limit max
+// s3: ch6: w02.bg06 stepper y limit min
+// s3: ch7: w02.bg07 stepper y limit max max
+// s3: ch8: w02.bg08 stepper y limit min min
+// s3: ch9: w03.bg01 stepper z limit max
+// s3: ch10: w03.bg02 stepper z limit min
+// s3: ch11: w03.bg03 stepper z limit min service (lowest switch)
+// s3: ch12: w03.bg04 stepper z limit max max
+// s3: ch13: w03.bg05 stepper z limit min min
+// s3: ch14: w03.bg06 stepper z limit min min service (lowest switch)
 fb_s3_EL1809(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=3);
+
+// s4: ch1: Feed omron sensor 1
+// s4: ch2: Feed omron sensor 2
 fb_s4_EL2819(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=4);
+
+// s5: ch1: kf05: w02.bg01 w02.bg02 stepper x limit switch max, limit min
+// s5: ch2: kf05: w02.ql1: stepper x brake
+// s5: ch3: kf05: w02.bg03 w02.bg04 stepper x limit switch max max, limit min min
+// s5: ch5: kf05: w02.bg05 w02.bg06 stepper y limit switch max, limit min
+// s5: ch6: kf05: w02.ql2: stepper y brake
+// s5: ch7: kf05: w02.bg07 w02.bg08 stepper y limit switch max max, limit min min
+// s5: ch9: kf05: w03.bg01 w03.bg02 w03.bg03  stepper z limit switch max, limit min limit min min (service)
+// s5: ch10: kf05: w03.bg04 w03.bg05 w03.bg06  stepper z limit switch max max, limit min min
 fb_s5_EL2819(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=5);
+
+// s6: 5V power supply
 fb_s6_EL9505(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=6);
+
+// s7: time stamped 5V input from timing system (timing reference pulse 14Hz)
+// s7: ch1: kf06. Timing system ref pulse (14Hz). Synch pulse ICS.
 fb_s7_EL1252(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=7);
+
+// s8: 24V power supply
 fb_s8_EL9410(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=8);
+
+// s9: Omron time stamp 24V
+// s9: ch1: w01.bg01 fibre sensor input (home or sector?)
+// s9: ch2: w01.bg02 fibre sensor input (home or sector?)
 fb_s9_EL1252(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=9);
+
+// s10 ch1: kf09 w02.bg21 Resolver X  
 fb_s10_EL7201(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=10);
+
+// s11 ch1: kf10 w02.bg22 Resolver Y
 fb_s11_EL7201(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=11);
+
+// s11 ch1: kf11 w03.bg21 Resolver Z
 fb_s12_EL7201(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=12);
+
+// s13: ch1: kf12 w02.bt01 temperature stepper X PT100
+// s13: ch2: kf12 w02.bt02 temperature stepper Y PT100
+// s13: ch3: kf12 w03.bt01 temperature stepper Z PT100
+// s13: ch4: kf12 Target Main motor Temperature (KTY) (in deg*10)
 fb_s13_EL3214(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=13);
+
+// s14: Communication to monitoring system
 fb_s14_EL6695(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=14);
+
+// s15: 24V power supply
 fb_s15_EL9410(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=15);
+
+// Grease system.. will be moved to ICS s..
 fb_s16_EL2032(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=16);
+
+// s1?: Two EL2612 Relay for MPS not in system yet
+// s1?: ch1: kf17 Ready for beam
+// s1?: ch2: kf17 Beam permit
+// s1?: ch3: kf18 Ready for beam
+// s1?: ch4: kf18 Beam permit
+
+// extension to drives
 fb_s17_EK1110(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=17);
+
+// s18: Main target drive
 fb_s18_IndraDrive(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=18);
+
+// s19: Stepper 1
 fb_s19_IPOS8020(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=19);
+
+// s20: Stepper 2
 fb_s20_IPOS8020(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=20);
+
+// s21: Stepper 3
 fb_s21_IPOS8020(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=21);
 	
-// Below part will be broken out to separate PLC plus some rebuilds to the above
+// Below part will be broken out to separate PLC plus some rebuilds to the 
+// above (grease, monitoring, statemachine..)
 fb_s22_EK1100(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=22);
 fb_s23_EL1252(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=23);
 fb_s24_EL3742(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=24);
@@ -127,14 +208,14 @@ fbErrorSystem(En:=TRUE);
 // Interlock motion on temperatures
 // Author: Anders Sandström 2019
 
-fbTemp(En:=TRUE);
+//fbTemp(En:=TRUE);
 
-IF fbTemp.bError THEN
-	stCmdEpics.bExecute:=0;
-	stCmdEpics.bEnable:=0;
-END_IF
+//IF fb_s13_EL3214.bError THEN
+//	stCmdEpics.bExecute:=0;
+//	stCmdEpics.bEnable:=0;
+//END_IF
 
-stStatEpics.fActTemp:=fbTemp.iAi_Ch1_Value/10.0;
+stStatEpics.fActTemp:=fb_s13_EL3214.iAI_4/10.0;
 stStatEpics.fBrakeActTemp1:=fbTemp.iAi_Ch2_Value/10.0;
 stStatEpics.fBrakeActTemp2:=fbTemp.iAi_Ch3_Value/10.0;
 
@@ -145,17 +226,17 @@ IF (stStatEpics.fActTemp >= GVL_Parameters.nMaxMotorTemperature)  OR fbTemp.iAi_
 END_IF
 
 //Brake temperature monitoring Interlock 1
-IF (stStatEpics.fBrakeActTemp1 >= GVL_Parameters.nMaxBrakeTemperature) OR fbTemp.iAi_Ch2_Stat > 0 OR stStatEpics.bBrake1TempAlarm THEN
-	stCmdEpics.bEnable:= FALSE;
-	stCmdEpics.bExecute:= FALSE;		
-    stStatEpics.bBrake1TempAlarm:=TRUE; 
-END_IF
+//IF (stStatEpics.fBrakeActTemp1 >= GVL_Parameters.nMaxBrakeTemperature) OR fbTemp.iAi_Ch2_Stat > 0 OR stStatEpics.bBrake1TempAlarm THEN
+//	stCmdEpics.bEnable:= FALSE;
+//	stCmdEpics.bExecute:= FALSE;		
+//    stStatEpics.bBrake1TempAlarm:=TRUE; 
+//END_IF
 //Brake temperature monitoring Interlock 2
-IF (stStatEpics.fBrakeActTemp2 >= GVL_Parameters.nMaxBrakeTemperature) OR fbTemp.iAi_Ch3_Stat > 0 OR stStatEpics.bBrake2TempAlarm THEN
-	stCmdEpics.bEnable:= FALSE;
-	stCmdEpics.bExecute:= FALSE;		
-    stStatEpics.bBrake2TempAlarm:=TRUE; 
-END_IF]]></ST>
+//IF (stStatEpics.fBrakeActTemp2 >= GVL_Parameters.nMaxBrakeTemperature) OR fbTemp.iAi_Ch3_Stat > 0 OR stStatEpics.bBrake2TempAlarm THEN
+//	stCmdEpics.bEnable:= FALSE;
+//	stCmdEpics.bExecute:= FALSE;		
+//    stStatEpics.bBrake2TempAlarm:=TRUE; 
+//END_IF]]></ST>
       </Implementation>
     </Action>
     <Action Name="ACT_3_Brake" Id="{a8ef5cdf-33a2-41f9-b34e-1a95819e04c4}">
@@ -425,11 +506,86 @@ END_IF]]></ST>
     </LineIds>
     <LineIds Name="MAIN.ACT_1_Hardware">
       <LineId Id="1" Count="0" />
-      <LineId Id="4" Count="5" />
+      <LineId Id="58" Count="7" />
+      <LineId Id="57" Count="0" />
+      <LineId Id="4" Count="0" />
+      <LineId Id="81" Count="0" />
+      <LineId Id="73" Count="0" />
+      <LineId Id="126" Count="2" />
+      <LineId Id="134" Count="3" />
+      <LineId Id="139" Count="3" />
+      <LineId Id="145" Count="0" />
+      <LineId Id="138" Count="0" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="82" Count="0" />
+      <LineId Id="67" Count="0" />
+      <LineId Id="69" Count="0" />
+      <LineId Id="6" Count="0" />
+      <LineId Id="83" Count="0" />
+      <LineId Id="110" Count="0" />
+      <LineId Id="74" Count="0" />
+      <LineId Id="116" Count="0" />
+      <LineId Id="118" Count="3" />
+      <LineId Id="123" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="95" Count="0" />
+      <LineId Id="94" Count="0" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="97" Count="0" />
+      <LineId Id="96" Count="0" />
+      <LineId Id="151" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="99" Count="0" />
+      <LineId Id="98" Count="0" />
       <LineId Id="37" Count="0" />
+      <LineId Id="101" Count="0" />
+      <LineId Id="100" Count="0" />
+      <LineId Id="148" Count="1" />
       <LineId Id="26" Count="0" />
-      <LineId Id="12" Count="11" />
+      <LineId Id="70" Count="0" />
+      <LineId Id="152" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="71" Count="0" />
+      <LineId Id="153" Count="0" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="86" Count="0" />
+      <LineId Id="72" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="156" Count="0" />
+      <LineId Id="155" Count="0" />
+      <LineId Id="154" Count="0" />
+      <LineId Id="87" Count="0" />
+      <LineId Id="66" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="88" Count="0" />
+      <LineId Id="75" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="105" Count="0" />
+      <LineId Id="104" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="171" Count="0" />
+      <LineId Id="89" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="170" Count="0" />
+      <LineId Id="167" Count="2" />
+      <LineId Id="162" Count="1" />
+      <LineId Id="172" Count="0" />
+      <LineId Id="106" Count="0" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="90" Count="0" />
+      <LineId Id="80" Count="0" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="91" Count="0" />
+      <LineId Id="77" Count="0" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="92" Count="0" />
+      <LineId Id="78" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="93" Count="0" />
+      <LineId Id="79" Count="0" />
+      <LineId Id="23" Count="0" />
       <LineId Id="35" Count="1" />
+      <LineId Id="173" Count="0" />
       <LineId Id="30" Count="1" />
       <LineId Id="38" Count="0" />
       <LineId Id="32" Count="2" />
