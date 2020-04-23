@@ -3,8 +3,8 @@ require ads,dev
 ##############################################################################
 ############# Configure ads device driver:
 # 1.  Asyn port name                         :  "TARGET_ADS"
-# 2.  IP                                     :  "192.168.88.200"
-# 3.  AMS of plc                             :  "5.46.8.38.1.1"
+# 2.  IP                                     :  "172.30.2.35"
+# 3.  AMS of plc                             :  "172.30.2.35.1.1"
 # 4.  Default ams port                       :  851 for plc 1, 852 plc 2 ...
 # 5.  Parameter table size (max parameters)  :  1000
 # 6.  priority                               :  0
@@ -21,7 +21,7 @@ epicsEnvSet("ADSPORT_DEF",        "852")
 epicsEnvSet("SAMPLE_RATE_MS_DEF", "500");
 epicsEnvSet("MAX_DLY_MS_DEF",     "100");
 
-adsAsynPortDriverConfigure("${ADS_ASYN_PORT}","192.168.88.122","192.168.88.122.1.1",${ADSPORT_DEF},1000,0,0,${SAMPLE_RATE_MS_DEF},${MAX_DLY_MS_DEF},1000,0)
+adsAsynPortDriverConfigure("${ADS_ASYN_PORT}","172.30.2.35","172.30.2.35.1.1",${ADSPORT_DEF},1000,0,0,${SAMPLE_RATE_MS_DEF},${MAX_DLY_MS_DEF},1000,0)
 
 asynOctetSetOutputEos("${ADS_ASYN_PORT}", -1, "\n")
 asynOctetSetInputEos("${ADS_ASYN_PORT}", -1, "\n")
@@ -32,7 +32,7 @@ asynSetTraceMask("${ADS_ASYN_PORT}", -1, 0x41)
 dbLoadRecords("./db/target.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
 dbLoadRecords("./db/indraDriveStatus.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
 dbLoadRecords("./db/indraDriveCommand.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
-dbLoadRecords("./db/brake.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
+#dbLoadRecords("./db/brake.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
 dbLoadRecords("./db/home.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
 
 # Load hardware
