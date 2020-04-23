@@ -15,8 +15,9 @@ In virtual machine (windows 10 + twincat)
 3. test to ping controller 172.30.2.35
 4. In twincat when searching for target. Enter ip directly in the searchbox in the top left corner. 172.30.2.35
 5. Press top left button, then the target drive plc should appear 
-6. Add route (pw = "1")
-7. Close dialog
-8. Now you should be able to choose the targetdrive plc as "target"
+6. Maybe needed click advanced and check "unidirectional"
+7. Add route (pw = "1")
+8. Close dialog
+9. Now you should be able to choose the targetdrive plc as "target"
 
 If not work, disable firewall in virtual machine.
