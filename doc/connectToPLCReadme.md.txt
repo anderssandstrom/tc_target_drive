@@ -8,6 +8,7 @@ In mac:
 1. Use thunderbolt etherbet adapter (anders sandström), this is regeresitered in csEntry
 2. test to ping controller 172.30.2.35
 3. diable wifi (maybe not needed)
+4. Seems also VPN needs to be off
 
 In virtual machine (windows 10 + twincat)
 2. Share the mac ip ("share with my Mac") in wmware
