@@ -27,7 +27,8 @@ END_VAR
 // Author: Anders Sandström 2018
 
 stCommands.eMotionMode :=e_Motion_mode.ePositioning;
-stCommands.eOperationMode:=e_Operation_mode_no.eSecondaryOpMode1;
+stCommands.eOperationMode:=e_Operation_mode_no.ePrimaryOpMode;
+//stCommands.eOperationMode:=e_Operation_mode_no.eSecondaryOpMode4;
 IF bExecute THEN
   stCommands.fVelocityCommandValue:=fVelSet;
 ELSE
@@ -42,6 +43,7 @@ stCommands.fCommandPosition:=fPosSet;]]></ST>
       <LineId Id="918" Count="0" />
       <LineId Id="886" Count="0" />
       <LineId Id="893" Count="0" />
+      <LineId Id="938" Count="0" />
       <LineId Id="888" Count="4" />
       <LineId Id="708" Count="0" />
       <LineId Id="896" Count="0" />

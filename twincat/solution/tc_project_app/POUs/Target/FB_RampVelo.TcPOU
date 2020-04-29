@@ -16,8 +16,8 @@ VAR
   fCurrAcc:LREAL:=0;
   fAccX1:LREAL:=0.8;
   fAccX2:LREAL:=0.99;
-  fAccY1:LREAL:=GVL_Parameters.fAccDefault;
-  fAccY2:LREAL:=GVL_Parameters.fAccDefault*0.1;
+  fAccY1:LREAL:=GVL_Parameters.fAccDefaultVel;
+  fAccY2:LREAL:=GVL_Parameters.fAccDefaultVel*0.1;
   fAccK:LREAL:=0;
   fAccM:LREAL:=0;
   x:LREAL:=0;
@@ -77,12 +77,12 @@ ELSE
   x:=1.0;
 END_IF
 // try linear ramp down off acceleration from 0.8*velsetin to velset in (from defacc to 0.1* defacc)
-fCurrAcc:=GVL_Parameters.fAccDefault;
+fCurrAcc:=GVL_Parameters.fAccDefaultVel;
 IF fVelSetIn > fVelSetOut THEN 
   IF x > fAccX1 AND x <= fAccX2 AND fVelSetOut<fVelSetIn THEN
     fCurrAcc:=fAccK*fVelSetOut/fVelSetIn+fAccM;
   ELSIF x >= fAccX2 THEN
-    fCurrAcc:=GVL_Parameters.fAccDefault*0.1;
+    fCurrAcc:=GVL_Parameters.fAccDefaultVel*0.1;
   END_IF
 END_IF
 

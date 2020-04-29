@@ -230,6 +230,9 @@ sAmsNetId := F_CreateAmsNetId(AmsNetId);
 			stDriveCommands.nS282_PositioningCommandValue 	:= stDriveStatus.nS386_ActivePositionFeedbackValue;
 		END_IF
 		
+		// Did not enter any of the above cases so need to set for positioning mode.
+		stDriveCommands.nS47_PositionCommandValue 	:= LREAL_TO_DINT(10000.0 * stAxisCommands.fCommandPosition);
+			
 		// Look for ref mark (latch)
 		stDriveCommands.stS145_SignalControlWord.bP14_0_C1400_GetMarkerPosition := stAxisCommands.bCmd_GetMarkerPosition;
 		// External home enabled
@@ -300,6 +303,8 @@ sAmsNetId := F_CreateAmsNetId(AmsNetId);
       <LineId Id="300" Count="0" />
       <LineId Id="112" Count="86" />
       <LineId Id="307" Count="0" />
+      <LineId Id="362" Count="0" />
+      <LineId Id="360" Count="1" />
       <LineId Id="301" Count="1" />
       <LineId Id="199" Count="0" />
       <LineId Id="306" Count="0" />

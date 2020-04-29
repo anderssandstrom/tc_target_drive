@@ -72,8 +72,8 @@ END_VAR
 // Note: Seems the indradrive can only hanlde 3 decimals (even if 4 is seen in interface and indradrive software)
 // Author: Anders Sandström 2018
 
-stCommands.fCommandDeceleration:=GVL_Parameters.fAccDefault;	
-stCommands.fCommandAcceleration:= GVL_Parameters.fAccDefault;
+stCommands.fCommandDeceleration:=GVL_Parameters.fAccDefaultVel;	
+stCommands.fCommandAcceleration:= GVL_Parameters.fAccDefaultVel;
 stCommands.eMotionMode :=e_Motion_mode.eJogPositive;
 stCommands.eOperationMode:=e_Operation_mode_no.eSecondaryOpMode2;
 

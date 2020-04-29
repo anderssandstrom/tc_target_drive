@@ -24,7 +24,8 @@ VAR_GLOBAL CONSTANT
   nMaxMotorTemperature: INT:= 80;
   nMaxBrakeTemperature: INT:= 100;
   fWheelDiameter:LREAL:=2500;
-  fAccDefault:LREAL:=0.039;  //RPM/S^2 (0.039 => tn min to 23.3) 
+  fAccDefaultVel:LREAL:=0.039;  //RPM/S^2 (0.039 => tn min to 23.3) 
+  fAccDefaultPos:LREAL:=0.001;  //RPM/S^2 (0.039 => tn min to 23.3) 
   nPhaseErrorFilterSize:INT:=36;  //Two revs
   nVeloInRangeCount:INT:=100;
   nSuperPosMaxCyclesToOutput:INT:=100;
