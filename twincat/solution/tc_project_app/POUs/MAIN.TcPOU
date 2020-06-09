@@ -47,22 +47,23 @@ VAR
 	fb_s11_EL7201:EL7201;
 	fb_s12_EL7201:EL7201;
 	fb_s13_EL3214:EL3214;
-	fb_s14_EL6695:EL6695;
-	fb_s15_EL9410:EL9410;
-	fb_s16_EL2032:EL2032;
-	fb_s17_EK1110:EK1110;
-	fb_s18_IndraDrive:IndraDrive;
-	fb_s19_IPOS8020:iPOS8020;
+	fb_s14_EL5021:EL5021;
+	fb_s15_EL6695:EL6695;
+	fb_s16_EL9410:EL9410;
+	fb_s17_EL2032:EL2032;
+	fb_s18_EK1110:EK1110;
+	fb_s19_IndraDrive:IndraDrive;
 	fb_s20_IPOS8020:iPOS8020;
 	fb_s21_IPOS8020:iPOS8020;
+	fb_s22_IPOS8020:iPOS8020;
 
-	fb_s22_EK1100:EK1100;
-	fb_s23_EL1252:EL1252;
-	fb_s24_EL3742:EL3742;
-	fb_s25_EL3214:EL3214;
-	fb_s26_EL3214:EL3214;
-	fb_s27_EL3214:EL3214;
-	fb_s28_EL2819:EL2819;
+	//fb_s22_EK1100:EK1100;
+	//fb_s23_EL1252:EL1252;
+	//fb_s24_EL3742:EL3742;
+	//fb_s25_EL3214:EL3214;
+	//fb_s26_EL3214:EL3214;
+	//fb_s27_EL3214:EL3214;
+	//fb_s28_EL2819:EL2819;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Check hardware status
@@ -158,14 +159,17 @@ fb_s12_EL7201(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=12)
 // s13: ch4: kf12 Target Main motor Temperature (KTY) (in deg*10)
 fb_s13_EL3214(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=13);
 
-// s14: Communication to monitoring system
-fb_s14_EL6695(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=14);
+// s14: Extra encoder (main rotation)
+fb_s14_EL5021(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=14);
+
+// s15: Communication to monitoring system
+fb_s15_EL6695(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=15);
 
 // s15: 24V power supply
-fb_s15_EL9410(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=15);
+fb_s16_EL9410(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=16);
 
-// Grease system.. will be moved to ICS s..
-fb_s16_EL2032(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=16);
+// s17: Grease system.. will be moved to ICS s..
+fb_s17_EL2032(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=17);
 
 // s1?: Two EL2612 Relay for MPS not in system yet
 // s1?: ch1: kf17 Ready for beam
@@ -173,30 +177,30 @@ fb_s16_EL2032(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=16)
 // s1?: ch3: kf18 Ready for beam
 // s1?: ch4: kf18 Beam permit
 
-// extension to drives
-fb_s17_EK1110(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=17);
+// s18: extension to drives
+fb_s18_EK1110(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=18);
 
-// s18: Main target drive
-fb_s18_IndraDrive(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=18);
+// s19: Main target drive
+fb_s19_IndraDrive(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=19);
 
-// s19: Stepper 1
-fb_s19_IPOS8020(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=19);
-
-// s20: Stepper 2
+// s20: Stepper 1
 fb_s20_IPOS8020(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=20);
 
-// s21: Stepper 3
+// s21: Stepper 2
 fb_s21_IPOS8020(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=21);
+
+// s22: Stepper 3
+fb_s22_IPOS8020(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=22);
 	
 // Below part will be broken out to separate PLC plus some rebuilds to the 
 // above (grease, monitoring, statemachine..)
-fb_s22_EK1100(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=22);
-fb_s23_EL1252(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=23);
-fb_s24_EL3742(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=24);
-fb_s25_EL3214(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=25);
-fb_s26_EL3214(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=26);
-fb_s27_EL3214(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=27);
-fb_s28_EL2819(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=28);
+//fb_s22_EK1100(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=22);
+//fb_s23_EL1252(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=23);
+//fb_s24_EL3742(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=24);
+//fb_s25_EL3214(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=25);
+//fb_s26_EL3214(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=26);
+//fb_s27_EL3214(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=27);
+//fb_s28_EL2819(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=28);
 //Execute error system (not sure if should be used)
 fbErrorSystem(En:=TRUE);
 	]]></ST>
@@ -568,7 +572,9 @@ END_IF]]></ST>
       <LineId Id="87" Count="0" />
       <LineId Id="66" Count="0" />
       <LineId Id="15" Count="0" />
+      <LineId Id="176" Count="1" />
       <LineId Id="88" Count="0" />
+      <LineId Id="175" Count="0" />
       <LineId Id="75" Count="0" />
       <LineId Id="16" Count="0" />
       <LineId Id="105" Count="0" />

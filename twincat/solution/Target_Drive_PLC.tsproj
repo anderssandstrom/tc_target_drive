@@ -20,6 +20,175 @@
 			</Format>
 		</DataType>
 		<DataType>
+			<Name GUID="{E8EE2899-4679-469C-BAC5-7318F329907D}" AutoDeleteType="true">ST_S135_DRIVESTATUSWORD</Name>
+			<BitSize>16</BitSize>
+			<SubItem>
+				<Name>bS135_CommandChange</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ 	Toggling bit to acknowledge that the Command status has changed ]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>5</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS135_ActualOperationMode_Bit0</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS135_ActualOperationMode_Bit1</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>9</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS135_ActualOperationMode_Bit2</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>10</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS135_Class3_Diag_Mess</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ 	TRUE: There is a Class 3 Diagnostic message present in the drive]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>11</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS135_Class2_Diag_Warn</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ 	TRUE: There is a Warning present in the drive]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>12</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS135_Class1_Diag_Err</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ 	TRUE: There is a Error present in the drive]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>13</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS135_ReadyForOperation_Bit0</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ 	(bS135_ReadyForOp_B1 | bS135_ReadyForOp_B0)]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>14</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS135_ReadyForOperation_Bit1</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ 	(bS135_ReadyForOp_B1 | bS135_ReadyForOp_B0)]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>15</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{8AD6E8B9-D3F6-4CE2-AA31-A4B86C802016}" AutoDeleteType="true">ST_S144_SIGNALSTATUSWORD</Name>
+			<BitSize>16</BitSize>
+			<SubItem>
+				<Name>bS424_DriveMode</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ FALSE: Operating mode]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS403_0_AxisHomedStatus</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ FALSE: Axis is NOT homed ]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>2</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS331_StandStillStatus</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ FALSE: Axis is moving]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>3</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS437_2_CommandPositionReached</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ FALSE: Axis is NOT not within command position]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>4</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bP115_3_StatusOfCmdValueProcessing</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ FALSE: Drive ignores external command value input ]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>7</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bP106_1_STO_ch1</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ FALSE: STO OK (motor can run)]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bP106_2_STO_ch2</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ FALSE: STO OK (motor can run)]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>9</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS419_0_PositioningCmdAck</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ Toggled as soon as the new Position Command value is accepted and effective]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>10</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS437_4_ConstantVelocity</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ TRUE: Axis in constant velocity]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>11</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS437_5_Acceleration</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ TRUE: Axis in acceleration]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>12</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS437_6_Deceleration</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ TRUE: Axis in deceleration]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>13</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS437_12_JogMode</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ TRUE: Axis in Axis in jog mode]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>14</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bP14_0_C1400_GetMarkerPositionDone</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[{attribute 'hide'}
+bS144_15_NotDefined					: BIT;	]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>15</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<Hides>
+				<Hide GUID="{1642AA04-0B3B-44CC-92AC-D98DCDBF8D53}"/>
+			</Hides>
+		</DataType>
+		<DataType>
 			<Name GUID="{4C3FC5AC-D5AA-44C6-AC5A-159774BA0F6D}" Namespace="MC" TcBaseType="true" HideType="true" IecDeclaration="DWORD;">NCTOPLC_AXIS_REF_STATE</Name>
 			<BitSize>32</BitSize>
 			<SubItem>
@@ -713,353 +882,6 @@ External Setpoint Generation:
 			</Relations>
 		</DataType>
 		<DataType>
-			<Name GUID="{E8EE2899-4679-469C-BAC5-7318F329907D}" AutoDeleteType="true">ST_S135_DRIVESTATUSWORD</Name>
-			<BitSize>16</BitSize>
-			<SubItem>
-				<Name>bS135_CommandChange</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment><![CDATA[ 	Toggling bit to acknowledge that the Command status has changed ]]></Comment>
-				<BitSize>1</BitSize>
-				<BitOffs>5</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>bS135_ActualOperationMode_Bit0</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment><![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]></Comment>
-				<BitSize>1</BitSize>
-				<BitOffs>8</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>bS135_ActualOperationMode_Bit1</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment><![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]></Comment>
-				<BitSize>1</BitSize>
-				<BitOffs>9</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>bS135_ActualOperationMode_Bit2</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment><![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]></Comment>
-				<BitSize>1</BitSize>
-				<BitOffs>10</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>bS135_Class3_Diag_Mess</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment><![CDATA[ 	TRUE: There is a Class 3 Diagnostic message present in the drive]]></Comment>
-				<BitSize>1</BitSize>
-				<BitOffs>11</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>bS135_Class2_Diag_Warn</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment><![CDATA[ 	TRUE: There is a Warning present in the drive]]></Comment>
-				<BitSize>1</BitSize>
-				<BitOffs>12</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>bS135_Class1_Diag_Err</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment><![CDATA[ 	TRUE: There is a Error present in the drive]]></Comment>
-				<BitSize>1</BitSize>
-				<BitOffs>13</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>bS135_ReadyForOperation_Bit0</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment><![CDATA[ 	(bS135_ReadyForOp_B1 | bS135_ReadyForOp_B0)]]></Comment>
-				<BitSize>1</BitSize>
-				<BitOffs>14</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>bS135_ReadyForOperation_Bit1</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment><![CDATA[ 	(bS135_ReadyForOp_B1 | bS135_ReadyForOp_B0)]]></Comment>
-				<BitSize>1</BitSize>
-				<BitOffs>15</BitOffs>
-			</SubItem>
-		</DataType>
-		<DataType>
-			<Name GUID="{8AD6E8B9-D3F6-4CE2-AA31-A4B86C802016}" AutoDeleteType="true">ST_S144_SIGNALSTATUSWORD</Name>
-			<BitSize>16</BitSize>
-			<SubItem>
-				<Name>bS424_DriveMode</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment><![CDATA[ FALSE: Operating mode]]></Comment>
-				<BitSize>1</BitSize>
-				<BitOffs>0</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>bS403_0_AxisHomedStatus</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment><![CDATA[ FALSE: Axis is NOT homed ]]></Comment>
-				<BitSize>1</BitSize>
-				<BitOffs>2</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>bS331_StandStillStatus</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment><![CDATA[ FALSE: Axis is moving]]></Comment>
-				<BitSize>1</BitSize>
-				<BitOffs>3</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>bS437_2_CommandPositionReached</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment><![CDATA[ FALSE: Axis is NOT not within command position]]></Comment>
-				<BitSize>1</BitSize>
-				<BitOffs>4</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>bP115_3_StatusOfCmdValueProcessing</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment><![CDATA[ FALSE: Drive ignores external command value input ]]></Comment>
-				<BitSize>1</BitSize>
-				<BitOffs>7</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>bP106_1_STO_ch1</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment><![CDATA[ FALSE: STO OK (motor can run)]]></Comment>
-				<BitSize>1</BitSize>
-				<BitOffs>8</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>bP106_2_STO_ch2</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment><![CDATA[ FALSE: STO OK (motor can run)]]></Comment>
-				<BitSize>1</BitSize>
-				<BitOffs>9</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>bS419_0_PositioningCmdAck</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment><![CDATA[ Toggled as soon as the new Position Command value is accepted and effective]]></Comment>
-				<BitSize>1</BitSize>
-				<BitOffs>10</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>bS437_4_ConstantVelocity</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment><![CDATA[ TRUE: Axis in constant velocity]]></Comment>
-				<BitSize>1</BitSize>
-				<BitOffs>11</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>bS437_5_Acceleration</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment><![CDATA[ TRUE: Axis in acceleration]]></Comment>
-				<BitSize>1</BitSize>
-				<BitOffs>12</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>bS437_6_Deceleration</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment><![CDATA[ TRUE: Axis in deceleration]]></Comment>
-				<BitSize>1</BitSize>
-				<BitOffs>13</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>bS437_12_JogMode</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment><![CDATA[ TRUE: Axis in Axis in jog mode]]></Comment>
-				<BitSize>1</BitSize>
-				<BitOffs>14</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>bP14_0_C1400_GetMarkerPositionDone</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<Comment><![CDATA[{attribute 'hide'}
-bS144_15_NotDefined					: BIT;	]]></Comment>
-				<BitSize>1</BitSize>
-				<BitOffs>15</BitOffs>
-				<Default>
-					<Value>0</Value>
-				</Default>
-			</SubItem>
-			<Hides>
-				<Hide GUID="{1642AA04-0B3B-44CC-92AC-D98DCDBF8D53}"/>
-			</Hides>
-		</DataType>
-		<DataType>
-			<Name GUID="{875D2B22-B7EB-497E-B933-0C004593CCF3}" Namespace="MC" TcBaseType="true" HideType="true" IecDeclaration="DWORD;">PLCTONC_AXIS_REF_CTRL</Name>
-			<BitSize>32</BitSize>
-			<SubItem>
-				<Name>Enable</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<BitSize>1</BitSize>
-				<BitOffs>0</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>FeedEnablePlus</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<BitSize>1</BitSize>
-				<BitOffs>1</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>FeedEnableMinus</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<BitSize>1</BitSize>
-				<BitOffs>2</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>HomingSensor</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<BitSize>1</BitSize>
-				<BitOffs>5</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>AcceptBlockedDrive</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<BitSize>1</BitSize>
-				<BitOffs>8</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>PlcDebugFlag</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<BitSize>1</BitSize>
-				<BitOffs>30</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>NcDebugFlag</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
-				<BitSize>1</BitSize>
-				<BitOffs>31</BitOffs>
-			</SubItem>
-			<Format Name="Short">
-				<Printf>%08x</Printf>
-			</Format>
-			<Format Name="Cpp">
-				<Printf>0x%08x</Printf>
-			</Format>
-			<Format Name="IEC">
-				<Printf>16#%08X</Printf>
-			</Format>
-		</DataType>
-		<DataType>
-			<Name GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC" TcBaseType="true">PLCTONC_AXIS_REF</Name>
-			<BitSize>1024</BitSize>
-			<SubItem>
-				<Name>ControlDWord</Name>
-				<Type GUID="{875D2B22-B7EB-497E-B933-0C004593CCF3}" Namespace="MC">PLCTONC_AXIS_REF_CTRL</Type>
-				<BitSize>32</BitSize>
-				<BitOffs>0</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>Override</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
-				<BitSize>32</BitSize>
-				<BitOffs>32</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>AxisModeRequest</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
-				<BitSize>32</BitSize>
-				<BitOffs>64</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>AxisModeDWord</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
-				<BitSize>32</BitSize>
-				<BitOffs>96</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>AxisModeLReal</Name>
-				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
-				<BitSize>64</BitSize>
-				<BitOffs>128</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>PositionCorrection</Name>
-				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
-				<BitSize>64</BitSize>
-				<BitOffs>192</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>ExtSetPos</Name>
-				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
-				<BitSize>64</BitSize>
-				<BitOffs>256</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>ExtSetVelo</Name>
-				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
-				<BitSize>64</BitSize>
-				<BitOffs>320</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>ExtSetAcc</Name>
-				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
-				<BitSize>64</BitSize>
-				<BitOffs>384</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>ExtSetDirection</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
-				<BitSize>32</BitSize>
-				<BitOffs>448</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>ExtControllerOutput</Name>
-				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
-				<BitSize>64</BitSize>
-				<BitOffs>512</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>GearRatio1</Name>
-				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
-				<BitSize>64</BitSize>
-				<BitOffs>576</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>GearRatio2</Name>
-				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
-				<BitSize>64</BitSize>
-				<BitOffs>640</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>GearRatio3</Name>
-				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
-				<BitSize>64</BitSize>
-				<BitOffs>704</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>GearRatio4</Name>
-				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
-				<BitSize>64</BitSize>
-				<BitOffs>768</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>MapState</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
-				<BitSize>8</BitSize>
-				<BitOffs>832</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>PlcCycleControl</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
-				<BitSize>8</BitSize>
-				<BitOffs>840</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>PlcCycleCount</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
-				<BitSize>8</BitSize>
-				<BitOffs>848</BitOffs>
-			</SubItem>
-			<Properties>
-				<Property>
-					<Name>NcStructType</Name>
-					<Value>1</Value>
-				</Property>
-			</Properties>
-			<Relations>
-				<Relation Priority="100">
-					<Type GUID="{60392271-8688-4F4C-B404-618DF106325D}">NCAXLESTRUCT_FROMPLC3</Type>
-				</Relation>
-			</Relations>
-		</DataType>
-		<DataType>
 			<Name GUID="{4CCFD5CA-E676-474E-B42D-6A96C42819C9}" AutoDeleteType="true">ST_S134_MASTERCONTROLWORD</Name>
 			<BitSize>16</BitSize>
 			<SubItem>
@@ -1287,6 +1109,184 @@ Bit 15]]></Comment>
 			<Hides>
 				<Hide GUID="{C611E284-5D81-42D2-9EAA-1D349EB6D88D}"/>
 			</Hides>
+		</DataType>
+		<DataType>
+			<Name GUID="{875D2B22-B7EB-497E-B933-0C004593CCF3}" Namespace="MC" TcBaseType="true" HideType="true" IecDeclaration="DWORD;">PLCTONC_AXIS_REF_CTRL</Name>
+			<BitSize>32</BitSize>
+			<SubItem>
+				<Name>Enable</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>FeedEnablePlus</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>1</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>FeedEnableMinus</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>2</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>HomingSensor</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>5</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>AcceptBlockedDrive</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>PlcDebugFlag</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>30</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>NcDebugFlag</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>31</BitOffs>
+			</SubItem>
+			<Format Name="Short">
+				<Printf>%08x</Printf>
+			</Format>
+			<Format Name="Cpp">
+				<Printf>0x%08x</Printf>
+			</Format>
+			<Format Name="IEC">
+				<Printf>16#%08X</Printf>
+			</Format>
+		</DataType>
+		<DataType>
+			<Name GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC" TcBaseType="true">PLCTONC_AXIS_REF</Name>
+			<BitSize>1024</BitSize>
+			<SubItem>
+				<Name>ControlDWord</Name>
+				<Type GUID="{875D2B22-B7EB-497E-B933-0C004593CCF3}" Namespace="MC">PLCTONC_AXIS_REF_CTRL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Override</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>AxisModeRequest</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>64</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>AxisModeDWord</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>96</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>AxisModeLReal</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>128</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>PositionCorrection</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>192</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ExtSetPos</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>256</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ExtSetVelo</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>320</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ExtSetAcc</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>384</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ExtSetDirection</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>448</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ExtControllerOutput</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>512</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>GearRatio1</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>576</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>GearRatio2</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>640</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>GearRatio3</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>704</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>GearRatio4</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>768</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>MapState</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>832</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>PlcCycleControl</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>840</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>PlcCycleCount</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>848</BitOffs>
+			</SubItem>
+			<Properties>
+				<Property>
+					<Name>NcStructType</Name>
+					<Value>1</Value>
+				</Property>
+			</Properties>
+			<Relations>
+				<Relation Priority="100">
+					<Type GUID="{60392271-8688-4F4C-B404-618DF106325D}">NCAXLESTRUCT_FROMPLC3</Type>
+				</Relation>
+			</Relations>
 		</DataType>
 		<DataType>
 			<Name GUID="{18071995-0000-0000-0000-002000000004}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..3] OF BIT</Name>
@@ -1521,6 +1521,131 @@ Bit 15]]></Comment>
 						<Var>
 							<Name>MAIN.inputDigSens2</Name>
 							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbIndraDrive.stDriveStatus.nS135_DriveStatusWord</Name>
+							<Type GUID="{E8EE2899-4679-469C-BAC5-7318F329907D}">ST_S135_DRIVESTATUSWORD</Type>
+							<SubVar>
+								<Name>bS135_CommandChange</Name>
+								<Comment><![CDATA[ 	Toggling bit to acknowledge that the Command status has changed ]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS135_ActualOperationMode_Bit0</Name>
+								<Comment><![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS135_ActualOperationMode_Bit1</Name>
+								<Comment><![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS135_ActualOperationMode_Bit2</Name>
+								<Comment><![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS135_Class3_Diag_Mess</Name>
+								<Comment><![CDATA[ 	TRUE: There is a Class 3 Diagnostic message present in the drive]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS135_Class2_Diag_Warn</Name>
+								<Comment><![CDATA[ 	TRUE: There is a Warning present in the drive]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS135_Class1_Diag_Err</Name>
+								<Comment><![CDATA[ 	TRUE: There is a Error present in the drive]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS135_ReadyForOperation_Bit0</Name>
+								<Comment><![CDATA[ 	(bS135_ReadyForOp_B1 | bS135_ReadyForOp_B0)]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS135_ReadyForOperation_Bit1</Name>
+								<Comment><![CDATA[ 	(bS135_ReadyForOp_B1 | bS135_ReadyForOp_B0)]]></Comment>
+							</SubVar>
+						</Var>
+						<Var>
+							<Name>MAIN.fbIndraDrive.stDriveStatus.nS51_PositionFeedbackValue</Name>
+							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbIndraDrive.stDriveStatus.nS386_ActivePositionFeedbackValue</Name>
+							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbIndraDrive.stDriveStatus.nS40_VelocityFeedbackValue</Name>
+							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbIndraDrive.stDriveStatus.nS390_DiagnosticMessageNumber</Name>
+							<Type>DWORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbIndraDrive.stDriveStatus.stS144_SignalStatusWord</Name>
+							<Type GUID="{8AD6E8B9-D3F6-4CE2-AA31-A4B86C802016}">ST_S144_SIGNALSTATUSWORD</Type>
+							<SubVar>
+								<Name>bS424_DriveMode</Name>
+								<Comment><![CDATA[ FALSE: Operating mode]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS403_0_AxisHomedStatus</Name>
+								<Comment><![CDATA[ FALSE: Axis is NOT homed ]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS331_StandStillStatus</Name>
+								<Comment><![CDATA[ FALSE: Axis is moving]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS437_2_CommandPositionReached</Name>
+								<Comment><![CDATA[ FALSE: Axis is NOT not within command position]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bP115_3_StatusOfCmdValueProcessing</Name>
+								<Comment><![CDATA[ FALSE: Drive ignores external command value input ]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bP106_1_STO_ch1</Name>
+								<Comment><![CDATA[ FALSE: STO OK (motor can run)]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bP106_2_STO_ch2</Name>
+								<Comment><![CDATA[ FALSE: STO OK (motor can run)]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS419_0_PositioningCmdAck</Name>
+								<Comment><![CDATA[ Toggled as soon as the new Position Command value is accepted and effective]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS437_4_ConstantVelocity</Name>
+								<Comment><![CDATA[ TRUE: Axis in constant velocity]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS437_5_Acceleration</Name>
+								<Comment><![CDATA[ TRUE: Axis in acceleration]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS437_6_Deceleration</Name>
+								<Comment><![CDATA[ TRUE: Axis in deceleration]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS437_12_JogMode</Name>
+								<Comment><![CDATA[ TRUE: Axis in Axis in jog mode]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bP14_0_C1400_GetMarkerPositionDone</Name>
+								<Comment><![CDATA[{attribute 'hide'}
+bS144_15_NotDefined					: BIT;	]]></Comment>
+							</SubVar>
+						</Var>
+						<Var>
+							<Name>MAIN.fbIndraDrive.stDriveStatus.nS84_TorqueFeedback</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbIndraDrive.stDriveStatus.nS189_PositionError</Name>
+							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbIndraDrive.stDriveStatus.nP173_MarkerPosition</Name>
+							<Type>DINT</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.fb_s2_EL1809.bBI_1</Name>
@@ -1975,55 +2100,55 @@ Bit 15]]></Comment>
 							<Type>UINT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.fb_s14_EL6695.WcState_WcState</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s14_EL6695.InfoData_State</Name>
+							<Name>MAIN.fb_s14_EL5021.InfoData_State</Name>
 							<Type>UINT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.fb_s15_EL9410.bUs_Undervoltage</Name>
+							<Name>MAIN.fb_s14_EL5021.WcState_WcState</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.fb_s15_EL9410.bUp_Undervoltage</Name>
+							<Name>MAIN.fb_s15_EL6695.WcState_WcState</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.fb_s15_EL9410.WcState_WcState</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s15_EL9410.InfoData_State</Name>
+							<Name>MAIN.fb_s15_EL6695.InfoData_State</Name>
 							<Type>UINT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.fb_s16_EL2032.WcState_WcState</Name>
+							<Name>MAIN.fb_s16_EL9410.bUs_Undervoltage</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.fb_s16_EL2032.InfoData_State</Name>
-							<Type>UINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s17_EK1110.InfoData_State</Name>
-							<Type>UINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s18_IndraDrive.WcState_WcState</Name>
+							<Name>MAIN.fb_s16_EL9410.bUp_Undervoltage</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.fb_s18_IndraDrive.InfoData_State</Name>
-							<Type>UINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s19_IPOS8020.WcState_WcState</Name>
+							<Name>MAIN.fb_s16_EL9410.WcState_WcState</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.fb_s19_IPOS8020.InfoData_State</Name>
+							<Name>MAIN.fb_s16_EL9410.InfoData_State</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s17_EL2032.WcState_WcState</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s17_EL2032.InfoData_State</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s18_EK1110.InfoData_State</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s19_IndraDrive.WcState_WcState</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fb_s19_IndraDrive.InfoData_State</Name>
 							<Type>UINT</Type>
 						</Var>
 						<Var>
@@ -2043,245 +2168,11 @@ Bit 15]]></Comment>
 							<Type>UINT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.fb_s22_EK1100.InfoData_State</Name>
-							<Type>UINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s23_EL1252.bBI_1</Name>
+							<Name>MAIN.fb_s22_IPOS8020.WcState_WcState</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.fb_s23_EL1252.bBI_2</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s23_EL1252.WcState_WcState</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s23_EL1252.InfoData_State</Name>
-							<Type>UINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s24_EL3742.WcState_WcState</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s24_EL3742.InfoData_State</Name>
-							<Type>UINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s25_EL3214.iAI_1</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s25_EL3214.iAI_2</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s25_EL3214.iAI_3</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s25_EL3214.iAI_4</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s25_EL3214.wCh1_Status</Name>
-							<Comment><![CDATA[Channels]]></Comment>
-							<Type>WORD</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s25_EL3214.wCh2_Status</Name>
-							<Type>WORD</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s25_EL3214.wCh3_Status</Name>
-							<Type>WORD</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s25_EL3214.wCh4_Status</Name>
-							<Type>WORD</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s25_EL3214.WcState_WcState</Name>
-							<Comment><![CDATA[Terminal status]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s25_EL3214.InfoData_State</Name>
-							<Type>UINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s26_EL3214.iAI_1</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s26_EL3214.iAI_2</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s26_EL3214.iAI_3</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s26_EL3214.iAI_4</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s26_EL3214.wCh1_Status</Name>
-							<Comment><![CDATA[Channels]]></Comment>
-							<Type>WORD</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s26_EL3214.wCh2_Status</Name>
-							<Type>WORD</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s26_EL3214.wCh3_Status</Name>
-							<Type>WORD</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s26_EL3214.wCh4_Status</Name>
-							<Type>WORD</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s26_EL3214.WcState_WcState</Name>
-							<Comment><![CDATA[Terminal status]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s26_EL3214.InfoData_State</Name>
-							<Type>UINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s27_EL3214.iAI_1</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s27_EL3214.iAI_2</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s27_EL3214.iAI_3</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s27_EL3214.iAI_4</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s27_EL3214.wCh1_Status</Name>
-							<Comment><![CDATA[Channels]]></Comment>
-							<Type>WORD</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s27_EL3214.wCh2_Status</Name>
-							<Type>WORD</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s27_EL3214.wCh3_Status</Name>
-							<Type>WORD</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s27_EL3214.wCh4_Status</Name>
-							<Type>WORD</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s27_EL3214.WcState_WcState</Name>
-							<Comment><![CDATA[Terminal status]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s27_EL3214.InfoData_State</Name>
-							<Type>UINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s28_EL2819.wCH1_Diag</Name>
-							<Type>BYTE</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s28_EL2819.wCH2_Diag</Name>
-							<Type>BYTE</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s28_EL2819.wCH3_Diag</Name>
-							<Type>BYTE</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s28_EL2819.wCH4_Diag</Name>
-							<Type>BYTE</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s28_EL2819.wCH5_Diag</Name>
-							<Type>BYTE</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s28_EL2819.wCH6_Diag</Name>
-							<Type>BYTE</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s28_EL2819.wCH7_Diag</Name>
-							<Type>BYTE</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s28_EL2819.wCH8_Diag</Name>
-							<Type>BYTE</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s28_EL2819.wCH9_Diag</Name>
-							<Type>BYTE</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s28_EL2819.wCH10_Diag</Name>
-							<Type>BYTE</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s28_EL2819.wCH11_Diag</Name>
-							<Type>BYTE</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s28_EL2819.wCH12_Diag</Name>
-							<Type>BYTE</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s28_EL2819.wCH13_Diag</Name>
-							<Type>BYTE</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s28_EL2819.wCH14_Diag</Name>
-							<Type>BYTE</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s28_EL2819.wCH15_Diag</Name>
-							<Type>BYTE</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s28_EL2819.wCH16_Diag</Name>
-							<Type>BYTE</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s28_EL2819.bDev_CommonFault</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s28_EL2819.bDev_Overtemperature</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s28_EL2819.bDev_UnderVoltage</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s28_EL2819.bDev_MissingVoltage</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s28_EL2819.WcState_WcState</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fb_s28_EL2819.InfoData_State</Name>
+							<Name>MAIN.fb_s22_IPOS8020.InfoData_State</Name>
 							<Type>UINT</Type>
 						</Var>
 						<Var>
@@ -2473,131 +2364,6 @@ External Setpoint Generation:
 ]]></Comment>
 							</SubVar>
 						</Var>
-						<Var>
-							<Name>MAIN.fbIndraDrive.stDriveStatus.nS135_DriveStatusWord</Name>
-							<Type GUID="{E8EE2899-4679-469C-BAC5-7318F329907D}">ST_S135_DRIVESTATUSWORD</Type>
-							<SubVar>
-								<Name>bS135_CommandChange</Name>
-								<Comment><![CDATA[ 	Toggling bit to acknowledge that the Command status has changed ]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS135_ActualOperationMode_Bit0</Name>
-								<Comment><![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS135_ActualOperationMode_Bit1</Name>
-								<Comment><![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS135_ActualOperationMode_Bit2</Name>
-								<Comment><![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS135_Class3_Diag_Mess</Name>
-								<Comment><![CDATA[ 	TRUE: There is a Class 3 Diagnostic message present in the drive]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS135_Class2_Diag_Warn</Name>
-								<Comment><![CDATA[ 	TRUE: There is a Warning present in the drive]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS135_Class1_Diag_Err</Name>
-								<Comment><![CDATA[ 	TRUE: There is a Error present in the drive]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS135_ReadyForOperation_Bit0</Name>
-								<Comment><![CDATA[ 	(bS135_ReadyForOp_B1 | bS135_ReadyForOp_B0)]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS135_ReadyForOperation_Bit1</Name>
-								<Comment><![CDATA[ 	(bS135_ReadyForOp_B1 | bS135_ReadyForOp_B0)]]></Comment>
-							</SubVar>
-						</Var>
-						<Var>
-							<Name>MAIN.fbIndraDrive.stDriveStatus.nS51_PositionFeedbackValue</Name>
-							<Type>DINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fbIndraDrive.stDriveStatus.nS386_ActivePositionFeedbackValue</Name>
-							<Type>DINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fbIndraDrive.stDriveStatus.nS40_VelocityFeedbackValue</Name>
-							<Type>DINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fbIndraDrive.stDriveStatus.nS390_DiagnosticMessageNumber</Name>
-							<Type>DWORD</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fbIndraDrive.stDriveStatus.stS144_SignalStatusWord</Name>
-							<Type GUID="{8AD6E8B9-D3F6-4CE2-AA31-A4B86C802016}">ST_S144_SIGNALSTATUSWORD</Type>
-							<SubVar>
-								<Name>bS424_DriveMode</Name>
-								<Comment><![CDATA[ FALSE: Operating mode]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS403_0_AxisHomedStatus</Name>
-								<Comment><![CDATA[ FALSE: Axis is NOT homed ]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS331_StandStillStatus</Name>
-								<Comment><![CDATA[ FALSE: Axis is moving]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS437_2_CommandPositionReached</Name>
-								<Comment><![CDATA[ FALSE: Axis is NOT not within command position]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bP115_3_StatusOfCmdValueProcessing</Name>
-								<Comment><![CDATA[ FALSE: Drive ignores external command value input ]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bP106_1_STO_ch1</Name>
-								<Comment><![CDATA[ FALSE: STO OK (motor can run)]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bP106_2_STO_ch2</Name>
-								<Comment><![CDATA[ FALSE: STO OK (motor can run)]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS419_0_PositioningCmdAck</Name>
-								<Comment><![CDATA[ Toggled as soon as the new Position Command value is accepted and effective]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS437_4_ConstantVelocity</Name>
-								<Comment><![CDATA[ TRUE: Axis in constant velocity]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS437_5_Acceleration</Name>
-								<Comment><![CDATA[ TRUE: Axis in acceleration]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS437_6_Deceleration</Name>
-								<Comment><![CDATA[ TRUE: Axis in deceleration]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS437_12_JogMode</Name>
-								<Comment><![CDATA[ TRUE: Axis in Axis in jog mode]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bP14_0_C1400_GetMarkerPositionDone</Name>
-								<Comment><![CDATA[{attribute 'hide'}
-bS144_15_NotDefined					: BIT;	]]></Comment>
-							</SubVar>
-						</Var>
-						<Var>
-							<Name>MAIN.fbIndraDrive.stDriveStatus.nS84_TorqueFeedback</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fbIndraDrive.stDriveStatus.nS189_PositionError</Name>
-							<Type>DINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fbIndraDrive.stDriveStatus.nP173_MarkerPosition</Name>
-							<Type>DINT</Type>
-						</Var>
 					</Vars>
 					<Vars VarGrpType="2">
 						<Name>PlcTask Outputs</Name>
@@ -2617,22 +2383,6 @@ bS144_15_NotDefined					: BIT;	]]></Comment>
 						<Var>
 							<Name>MAIN.bBrakeLockedOn</Name>
 							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.iTorqueCommandValue</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>GVL.axes[1].Axis.PlcToNc</Name>
-							<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
-						</Var>
-						<Var>
-							<Name>GVL.axes[2].Axis.PlcToNc</Name>
-							<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
-						</Var>
-						<Var>
-							<Name>GVL.axes[3].Axis.PlcToNc</Name>
-							<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.fbIndraDrive.stDriveCommands.stS134_MasterControlWord</Name>
@@ -2778,6 +2528,22 @@ Bit 15]]></Comment>
 						<Var>
 							<Name>MAIN.fbIndraDrive.stDriveCommands.nS40_VelocityCommandValue</Name>
 							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.iTorqueCommandValue</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>GVL.axes[1].Axis.PlcToNc</Name>
+							<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+						</Var>
+						<Var>
+							<Name>GVL.axes[2].Axis.PlcToNc</Name>
+							<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+						</Var>
+						<Var>
+							<Name>GVL.axes[3].Axis.PlcToNc</Name>
+							<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
 					</Vars>
 					<UnrestoredVarLinks ImportTime="2020-01-29T12:37:59">
@@ -5286,8 +5052,8 @@ Bit 8 - 15 : reserved]]></Comment>
 				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nS51_PositionFeedbackValue" VarB="AT^Position feedback value 1"/>
 				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nS84_TorqueFeedback" VarB="AT^Torque/force feedback value"/>
 				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.stS144_SignalStatusWord" VarB="AT^Signal status word"/>
-				<Link VarA="PlcTask Inputs^MAIN.fb_s18_IndraDrive.InfoData_State" VarB="InfoData^State"/>
-				<Link VarA="PlcTask Inputs^MAIN.fb_s18_IndraDrive.WcState_WcState" VarB="WcState^WcState"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s19_IndraDrive.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s19_IndraDrive.WcState_WcState" VarB="WcState^WcState"/>
 				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS108_FeedrateOverride" VarB="MDT^Feedrate override"/>
 				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS258_TargetPosition" VarB="MDT^Target position"/>
 				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS259_PositioningVelocity" VarB="MDT^Positioning velocity"/>
@@ -5303,16 +5069,16 @@ Bit 8 - 15 : reserved]]></Comment>
 				<Link VarA="PlcTask Outputs^MAIN.nAdditiveTorqueSetpoint" VarB="MDT^Additive torque/force command value"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Drive 49 (iPOS8020 BX-CAT)">
-				<Link VarA="PlcTask Inputs^MAIN.fb_s19_IPOS8020.InfoData_State" VarB="InfoData^State"/>
-				<Link VarA="PlcTask Inputs^MAIN.fb_s19_IPOS8020.WcState_WcState" VarB="WcState^WcState"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Drive 50 (iPOS8020 BX-CAT)">
-				<Link VarA="PlcTask Inputs^MAIN.fb_s20_IPOS8020.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTemp.InfoData_State" VarB="InfoData^State"/>
 				<Link VarA="PlcTask Inputs^MAIN.fb_s20_IPOS8020.WcState_WcState" VarB="WcState^WcState"/>
 			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Drive 51 (iPOS8020 BX-CAT)">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Drive 50 (iPOS8020 BX-CAT)">
 				<Link VarA="PlcTask Inputs^MAIN.fb_s21_IPOS8020.InfoData_State" VarB="InfoData^State"/>
 				<Link VarA="PlcTask Inputs^MAIN.fb_s21_IPOS8020.WcState_WcState" VarB="WcState^WcState"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Drive 51 (iPOS8020 BX-CAT)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s22_IPOS8020.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s22_IPOS8020.WcState_WcState" VarB="WcState^WcState"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 10 (EL7201)">
 				<Link VarA="PlcTask Inputs^MAIN.fb_s10_EL7201.InfoData_State" VarB="InfoData^State"/>
@@ -5339,21 +5105,22 @@ Bit 8 - 15 : reserved]]></Comment>
 				<Link VarA="PlcTask Inputs^MAIN.fb_s13_EL3214.wCh4_Status" VarB="RTD Inputs Channel 4^Status"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 14 (EL6695)">
-				<Link VarA="PlcTask Inputs^MAIN.fb_s14_EL6695.InfoData_State" VarB="InfoData^State"/>
-				<Link VarA="PlcTask Inputs^MAIN.fb_s14_EL6695.WcState_WcState" VarB="WcState^WcState"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s15_EL6695.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s15_EL6695.WcState_WcState" VarB="WcState^WcState"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 15 (EL9410)">
-				<Link VarA="PlcTask Inputs^MAIN.fb_s15_EL9410.InfoData_State" VarB="InfoData^State"/>
-				<Link VarA="PlcTask Inputs^MAIN.fb_s15_EL9410.WcState_WcState" VarB="WcState^WcState"/>
-				<Link VarA="PlcTask Inputs^MAIN.fb_s15_EL9410.bUp_Undervoltage" VarB="Status Up^Undervoltage"/>
-				<Link VarA="PlcTask Inputs^MAIN.fb_s15_EL9410.bUs_Undervoltage" VarB="Status Us^Undervoltage"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s16_EL9410.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s16_EL9410.WcState_WcState" VarB="WcState^WcState"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s16_EL9410.bUp_Undervoltage" VarB="Status Up^Undervoltage"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s16_EL9410.bUs_Undervoltage" VarB="Status Us^Undervoltage"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 16 (EL2032)">
-				<Link VarA="PlcTask Inputs^MAIN.fb_s16_EL2032.InfoData_State" VarB="InfoData^State"/>
-				<Link VarA="PlcTask Inputs^MAIN.fb_s16_EL2032.WcState_WcState" VarB="WcState^WcState"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s17_EL2032.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s17_EL2032.WcState_WcState" VarB="WcState^WcState"/>
 			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 17 (EK1110)">
-				<Link VarA="PlcTask Inputs^MAIN.fb_s17_EK1110.InfoData_State" VarB="InfoData^State"/>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 18 (EL5021)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s14_EL5021.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s14_EL5021.WcState_WcState" VarB="WcState^WcState"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 2 (EL1809)">
 				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.InfoData_State" VarB="InfoData^State"/>
