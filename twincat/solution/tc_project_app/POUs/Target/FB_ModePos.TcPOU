@@ -30,11 +30,11 @@ stCommands.eMotionMode :=e_Motion_mode.ePositioning;
 stCommands.eOperationMode:=e_Operation_mode_no.ePrimaryOpMode;
 //stCommands.eOperationMode:=e_Operation_mode_no.eSecondaryOpMode4;
 IF bExecute THEN
-  stCommands.fVelocityCommandValue:=fVelSet;
+  stCommands.fCommandVelocity:=fVelSet;
 ELSE
-  stCommands.fVelocityCommandValue:=0;
+  stCommands.fCommandVelocity:=0;
 END_IF
-stCommands.fCommandVelocity:=0;
+stCommands.fVelocityCommandValue:=0;  //Used for other mode
 stCommands.fCommandPosition:=fPosSet;]]></ST>
     </Implementation>
     <LineIds Name="FB_ModePos">

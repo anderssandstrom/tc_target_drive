@@ -16,7 +16,6 @@ VAR
 	sAmsNetId						: T_AmsNetId;
 	fbReadParameter					: FB_EcSoERead;
 	nS149_DataStatus				: UDINT	:= 0;
-	bDummy: BOOL;
 END_VAR
 
 VAR CONSTANT
@@ -197,26 +196,36 @@ sAmsNetId := F_CreateAmsNetId(AmsNetId);
 		END_IF
 		
 		// Positioning, Jog or stop the axis 
+		stDriveCommands.nS47_PositionCommandValue 	:= stDriveStatus.nS386_ActivePositionFeedbackValue;
+		stDriveCommands.nS282_PositioningCommandValue 	:= stDriveStatus.nS386_ActivePositionFeedbackValue;
 		CASE stAxisCommands.eMotionMode OF 
 			E_MOTION_MODE.eStop: 
 				stDriveCommands.stS145_SignalControlWord.bS346_1_PosCtrlWord_PosActivation	:= TRUE; 
-				stDriveCommands.stS145_SignalControlWord.bS346_2_PosCtrlWord_PosActivation	:= TRUE; 				
+				stDriveCommands.stS145_SignalControlWord.bS346_2_PosCtrlWord_PosActivation	:= TRUE;
+                stDriveCommands.nS258_TargetPosition 		:= stDriveStatus.nS386_ActivePositionFeedbackValue;			
 			E_MOTION_MODE.eJogPositive: 
 				stDriveCommands.stS145_SignalControlWord.bS346_1_PosCtrlWord_PosActivation	:= TRUE; 
-				stDriveCommands.stS145_SignalControlWord.bS346_2_PosCtrlWord_PosActivation	:= FALSE; 				
+				stDriveCommands.stS145_SignalControlWord.bS346_2_PosCtrlWord_PosActivation	:= FALSE;
+                stDriveCommands.nS258_TargetPosition 		:= stDriveStatus.nS386_ActivePositionFeedbackValue; 				
 			E_MOTION_MODE.eJogNegative: 
 				stDriveCommands.stS145_SignalControlWord.bS346_1_PosCtrlWord_PosActivation	:= FALSE; 
-				stDriveCommands.stS145_SignalControlWord.bS346_2_PosCtrlWord_PosActivation	:= TRUE; 				
+				stDriveCommands.stS145_SignalControlWord.bS346_2_PosCtrlWord_PosActivation	:= TRUE;
+                stDriveCommands.nS258_TargetPosition 		:= stDriveStatus.nS386_ActivePositionFeedbackValue;				
 			E_MOTION_MODE.ePositioning: 
 				stDriveCommands.stS145_SignalControlWord.bS346_1_PosCtrlWord_PosActivation	:= FALSE; 
-				stDriveCommands.stS145_SignalControlWord.bS346_2_PosCtrlWord_PosActivation	:= FALSE; 				
+				stDriveCommands.stS145_SignalControlWord.bS346_2_PosCtrlWord_PosActivation	:= FALSE;
+		        stDriveCommands.nS258_TargetPosition := LREAL_TO_DINT(10000.0 * stAxisCommands.fCommandPosition);
 		END_CASE
 		
 		// Position command change 
 		stDriveCommands.stS145_SignalControlWord.bS346_5_PosCtrlWord_ImmBlockChange	:= stAxisCommands.bCommandPositionChange; 
-
-		// Command position depending on Operation mode 
-		IF stAxisStatus.nDiagMessage >= 16#C00A0102 AND stAxisStatus.nDiagMessage <= 16#C00A0105 THEN 
+        
+        // 282 drive controlled positioning
+		// 258 "Drive-internal interpolat
+		// 47: cyclic position setpoint
+		// Command position depending on Operation mode
+		
+		(*IF stAxisStatus.nDiagMessage >= 16#C00A0102 AND stAxisStatus.nDiagMessage <= 16#C00A0105 THEN
 			stDriveCommands.nS47_PositionCommandValue 	:= LREAL_TO_DINT(10000.0 * stAxisCommands.fCommandPosition);
 			stDriveCommands.nS282_PositioningCommandValue 	:= stDriveStatus.nS386_ActivePositionFeedbackValue;
 			stDriveCommands.nS258_TargetPosition 		:= stDriveStatus.nS386_ActivePositionFeedbackValue;
@@ -228,7 +237,7 @@ sAmsNetId := F_CreateAmsNetId(AmsNetId);
 			stDriveCommands.nS258_TargetPosition := LREAL_TO_DINT(10000.0 * stAxisCommands.fCommandPosition);
 			stDriveCommands.nS47_PositionCommandValue 	:= stDriveStatus.nS386_ActivePositionFeedbackValue;
 			stDriveCommands.nS282_PositioningCommandValue 	:= stDriveStatus.nS386_ActivePositionFeedbackValue;
-		END_IF
+		END_IF*)
 		
 		// Did not enter any of the above cases so need to set for positioning mode.
 		stDriveCommands.nS47_PositionCommandValue 	:= LREAL_TO_DINT(10000.0 * stAxisCommands.fCommandPosition);
@@ -301,7 +310,22 @@ sAmsNetId := F_CreateAmsNetId(AmsNetId);
       <LineId Id="299" Count="0" />
       <LineId Id="111" Count="0" />
       <LineId Id="300" Count="0" />
-      <LineId Id="112" Count="86" />
+      <LineId Id="112" Count="54" />
+      <LineId Id="374" Count="1" />
+      <LineId Id="167" Count="3" />
+      <LineId Id="378" Count="0" />
+      <LineId Id="171" Count="2" />
+      <LineId Id="377" Count="0" />
+      <LineId Id="174" Count="2" />
+      <LineId Id="376" Count="0" />
+      <LineId Id="177" Count="2" />
+      <LineId Id="372" Count="0" />
+      <LineId Id="180" Count="4" />
+      <LineId Id="369" Count="0" />
+      <LineId Id="367" Count="1" />
+      <LineId Id="185" Count="0" />
+      <LineId Id="370" Count="0" />
+      <LineId Id="186" Count="12" />
       <LineId Id="307" Count="0" />
       <LineId Id="362" Count="0" />
       <LineId Id="360" Count="1" />

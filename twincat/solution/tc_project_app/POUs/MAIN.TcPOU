@@ -72,9 +72,6 @@ ACT_1_Hardware();
 // Monitor temperature
 ACT_2_Temperature();
 
-// Control brake
-//ACT_3_Brake();
-
 // Main motor motion
 ACT_4_MainDrive();
 
@@ -243,19 +240,6 @@ END_IF
 //END_IF]]></ST>
       </Implementation>
     </Action>
-    <Action Name="ACT_3_Brake" Id="{a8ef5cdf-33a2-41f9-b34e-1a95819e04c4}">
-      <Implementation>
-        <ST><![CDATA[// Function: Control of brake for simulation of traction
-// Use at target test rig
-// Author: Anders Sandström 2019
-
-bBrakeFreewheelOn:=stCmdEpics.bFreeWheelOnOnCmd;
-bBrakeLockedOn:=stCmdEpics.bBrakeLockOnCmd;
-
-fbBrakeTorque(iTorqueValueinNm:=stCmdEpics.fBrakeSpNm);
-iBrakeSpRaw:=fbBrakeTorque.iTorqueScaled;]]></ST>
-      </Implementation>
-    </Action>
     <Action Name="ACT_4_MainDrive" Id="{0608089f-ed53-4fbf-a585-99ff0324bc84}">
       <Implementation>
         <ST><![CDATA[
@@ -391,7 +375,7 @@ IF NOT stCmdEpics.bExecute THEN
 END_IF
 
 // TODO: Why I put this here?
-stCommands.eMotionMode:=E_MOTION_MODE.eStop;
+//stCommands.eMotionMode:=E_MOTION_MODE.eStop;
 
 // Check maximum velocity
 IF stCommands.fCommandVelocity > GVL_Parameters.fMaximumSPeedRpm THEN
@@ -470,7 +454,7 @@ IF stcmdEpics.bReset THEN
 END_IF]]></ST>
       </Implementation>
     </Action>
-    <Action Name="ACT_Diag" Id="{2a0ea7d8-8ff8-4796-ae8a-6c3ebb6f7955}">
+    <Action Name="ACT_X_Diag" Id="{2a0ea7d8-8ff8-4796-ae8a-6c3ebb6f7955}">
       <Implementation>
         <ST><![CDATA[// Function: Some parameters just for debugging
 // Note: Do not need to be executed, can be watched online anyway..
@@ -505,9 +489,6 @@ END_IF]]></ST>
       <LineId Id="1532" Count="1" />
       <LineId Id="1383" Count="0" />
       <LineId Id="1146" Count="0" />
-      <LineId Id="1530" Count="0" />
-      <LineId Id="1382" Count="0" />
-      <LineId Id="1381" Count="0" />
       <LineId Id="1529" Count="0" />
       <LineId Id="1439" Count="0" />
       <LineId Id="1244" Count="0" />
@@ -618,15 +599,6 @@ END_IF]]></ST>
       <LineId Id="3" Count="26" />
       <LineId Id="2" Count="0" />
     </LineIds>
-    <LineIds Name="MAIN.ACT_3_Brake">
-      <LineId Id="9" Count="1" />
-      <LineId Id="8" Count="0" />
-      <LineId Id="3" Count="0" />
-      <LineId Id="7" Count="0" />
-      <LineId Id="5" Count="0" />
-      <LineId Id="4" Count="0" />
-      <LineId Id="1" Count="1" />
-    </LineIds>
     <LineIds Name="MAIN.ACT_4_MainDrive">
       <LineId Id="115" Count="9" />
       <LineId Id="127" Count="5" />
@@ -673,7 +645,7 @@ END_IF]]></ST>
       <LineId Id="33" Count="7" />
       <LineId Id="1" Count="0" />
     </LineIds>
-    <LineIds Name="MAIN.ACT_Diag">
+    <LineIds Name="MAIN.ACT_X_Diag">
       <LineId Id="2" Count="0" />
       <LineId Id="24" Count="1" />
       <LineId Id="28" Count="0" />
