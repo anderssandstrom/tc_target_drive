@@ -1523,131 +1523,6 @@ Bit 15]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.fbIndraDrive.stDriveStatus.nS135_DriveStatusWord</Name>
-							<Type GUID="{E8EE2899-4679-469C-BAC5-7318F329907D}">ST_S135_DRIVESTATUSWORD</Type>
-							<SubVar>
-								<Name>bS135_CommandChange</Name>
-								<Comment><![CDATA[ 	Toggling bit to acknowledge that the Command status has changed ]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS135_ActualOperationMode_Bit0</Name>
-								<Comment><![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS135_ActualOperationMode_Bit1</Name>
-								<Comment><![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS135_ActualOperationMode_Bit2</Name>
-								<Comment><![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS135_Class3_Diag_Mess</Name>
-								<Comment><![CDATA[ 	TRUE: There is a Class 3 Diagnostic message present in the drive]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS135_Class2_Diag_Warn</Name>
-								<Comment><![CDATA[ 	TRUE: There is a Warning present in the drive]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS135_Class1_Diag_Err</Name>
-								<Comment><![CDATA[ 	TRUE: There is a Error present in the drive]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS135_ReadyForOperation_Bit0</Name>
-								<Comment><![CDATA[ 	(bS135_ReadyForOp_B1 | bS135_ReadyForOp_B0)]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS135_ReadyForOperation_Bit1</Name>
-								<Comment><![CDATA[ 	(bS135_ReadyForOp_B1 | bS135_ReadyForOp_B0)]]></Comment>
-							</SubVar>
-						</Var>
-						<Var>
-							<Name>MAIN.fbIndraDrive.stDriveStatus.nS51_PositionFeedbackValue</Name>
-							<Type>DINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fbIndraDrive.stDriveStatus.nS386_ActivePositionFeedbackValue</Name>
-							<Type>DINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fbIndraDrive.stDriveStatus.nS40_VelocityFeedbackValue</Name>
-							<Type>DINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fbIndraDrive.stDriveStatus.nS390_DiagnosticMessageNumber</Name>
-							<Type>DWORD</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fbIndraDrive.stDriveStatus.stS144_SignalStatusWord</Name>
-							<Type GUID="{8AD6E8B9-D3F6-4CE2-AA31-A4B86C802016}">ST_S144_SIGNALSTATUSWORD</Type>
-							<SubVar>
-								<Name>bS424_DriveMode</Name>
-								<Comment><![CDATA[ FALSE: Operating mode]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS403_0_AxisHomedStatus</Name>
-								<Comment><![CDATA[ FALSE: Axis is NOT homed ]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS331_StandStillStatus</Name>
-								<Comment><![CDATA[ FALSE: Axis is moving]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS437_2_CommandPositionReached</Name>
-								<Comment><![CDATA[ FALSE: Axis is NOT not within command position]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bP115_3_StatusOfCmdValueProcessing</Name>
-								<Comment><![CDATA[ FALSE: Drive ignores external command value input ]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bP106_1_STO_ch1</Name>
-								<Comment><![CDATA[ FALSE: STO OK (motor can run)]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bP106_2_STO_ch2</Name>
-								<Comment><![CDATA[ FALSE: STO OK (motor can run)]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS419_0_PositioningCmdAck</Name>
-								<Comment><![CDATA[ Toggled as soon as the new Position Command value is accepted and effective]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS437_4_ConstantVelocity</Name>
-								<Comment><![CDATA[ TRUE: Axis in constant velocity]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS437_5_Acceleration</Name>
-								<Comment><![CDATA[ TRUE: Axis in acceleration]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS437_6_Deceleration</Name>
-								<Comment><![CDATA[ TRUE: Axis in deceleration]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bS437_12_JogMode</Name>
-								<Comment><![CDATA[ TRUE: Axis in Axis in jog mode]]></Comment>
-							</SubVar>
-							<SubVar>
-								<Name>bP14_0_C1400_GetMarkerPositionDone</Name>
-								<Comment><![CDATA[{attribute 'hide'}
-bS144_15_NotDefined					: BIT;	]]></Comment>
-							</SubVar>
-						</Var>
-						<Var>
-							<Name>MAIN.fbIndraDrive.stDriveStatus.nS84_TorqueFeedback</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fbIndraDrive.stDriveStatus.nS189_PositionError</Name>
-							<Type>DINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.fbIndraDrive.stDriveStatus.nP173_MarkerPosition</Name>
-							<Type>DINT</Type>
-						</Var>
-						<Var>
 							<Name>MAIN.fb_s2_EL1809.bBI_1</Name>
 							<Type>BOOL</Type>
 						</Var>
@@ -2176,6 +2051,131 @@ bS144_15_NotDefined					: BIT;	]]></Comment>
 							<Type>UINT</Type>
 						</Var>
 						<Var>
+							<Name>MAIN.fbIndraDrive.stDriveStatus.nS135_DriveStatusWord</Name>
+							<Type GUID="{E8EE2899-4679-469C-BAC5-7318F329907D}">ST_S135_DRIVESTATUSWORD</Type>
+							<SubVar>
+								<Name>bS135_CommandChange</Name>
+								<Comment><![CDATA[ 	Toggling bit to acknowledge that the Command status has changed ]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS135_ActualOperationMode_Bit0</Name>
+								<Comment><![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS135_ActualOperationMode_Bit1</Name>
+								<Comment><![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS135_ActualOperationMode_Bit2</Name>
+								<Comment><![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS135_Class3_Diag_Mess</Name>
+								<Comment><![CDATA[ 	TRUE: There is a Class 3 Diagnostic message present in the drive]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS135_Class2_Diag_Warn</Name>
+								<Comment><![CDATA[ 	TRUE: There is a Warning present in the drive]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS135_Class1_Diag_Err</Name>
+								<Comment><![CDATA[ 	TRUE: There is a Error present in the drive]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS135_ReadyForOperation_Bit0</Name>
+								<Comment><![CDATA[ 	(bS135_ReadyForOp_B1 | bS135_ReadyForOp_B0)]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS135_ReadyForOperation_Bit1</Name>
+								<Comment><![CDATA[ 	(bS135_ReadyForOp_B1 | bS135_ReadyForOp_B0)]]></Comment>
+							</SubVar>
+						</Var>
+						<Var>
+							<Name>MAIN.fbIndraDrive.stDriveStatus.nS51_PositionFeedbackValue</Name>
+							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbIndraDrive.stDriveStatus.nS386_ActivePositionFeedbackValue</Name>
+							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbIndraDrive.stDriveStatus.nS40_VelocityFeedbackValue</Name>
+							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbIndraDrive.stDriveStatus.nS390_DiagnosticMessageNumber</Name>
+							<Type>DWORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbIndraDrive.stDriveStatus.stS144_SignalStatusWord</Name>
+							<Type GUID="{8AD6E8B9-D3F6-4CE2-AA31-A4B86C802016}">ST_S144_SIGNALSTATUSWORD</Type>
+							<SubVar>
+								<Name>bS424_DriveMode</Name>
+								<Comment><![CDATA[ FALSE: Operating mode]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS403_0_AxisHomedStatus</Name>
+								<Comment><![CDATA[ FALSE: Axis is NOT homed ]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS331_StandStillStatus</Name>
+								<Comment><![CDATA[ FALSE: Axis is moving]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS437_2_CommandPositionReached</Name>
+								<Comment><![CDATA[ FALSE: Axis is NOT not within command position]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bP115_3_StatusOfCmdValueProcessing</Name>
+								<Comment><![CDATA[ FALSE: Drive ignores external command value input ]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bP106_1_STO_ch1</Name>
+								<Comment><![CDATA[ FALSE: STO OK (motor can run)]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bP106_2_STO_ch2</Name>
+								<Comment><![CDATA[ FALSE: STO OK (motor can run)]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS419_0_PositioningCmdAck</Name>
+								<Comment><![CDATA[ Toggled as soon as the new Position Command value is accepted and effective]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS437_4_ConstantVelocity</Name>
+								<Comment><![CDATA[ TRUE: Axis in constant velocity]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS437_5_Acceleration</Name>
+								<Comment><![CDATA[ TRUE: Axis in acceleration]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS437_6_Deceleration</Name>
+								<Comment><![CDATA[ TRUE: Axis in deceleration]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bS437_12_JogMode</Name>
+								<Comment><![CDATA[ TRUE: Axis in Axis in jog mode]]></Comment>
+							</SubVar>
+							<SubVar>
+								<Name>bP14_0_C1400_GetMarkerPositionDone</Name>
+								<Comment><![CDATA[{attribute 'hide'}
+bS144_15_NotDefined					: BIT;	]]></Comment>
+							</SubVar>
+						</Var>
+						<Var>
+							<Name>MAIN.fbIndraDrive.stDriveStatus.nS84_TorqueFeedback</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbIndraDrive.stDriveStatus.nS189_PositionError</Name>
+							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbIndraDrive.stDriveStatus.nP173_MarkerPosition</Name>
+							<Type>DINT</Type>
+						</Var>
+						<Var>
 							<Name>GVL.axes[1].inputs.bLimitFwd</Name>
 							<Comment><![CDATA[////Axis Inputs///////]]></Comment>
 							<Type>BOOL</Type>
@@ -2385,6 +2385,10 @@ External Setpoint Generation:
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
+							<Name>MAIN.iTorqueCommandValue</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
 							<Name>MAIN.fbIndraDrive.stDriveCommands.stS134_MasterControlWord</Name>
 							<Type GUID="{4CCFD5CA-E676-474E-B42D-6A96C42819C9}">ST_S134_MASTERCONTROLWORD</Type>
 							<SubVar>
@@ -2528,10 +2532,6 @@ Bit 15]]></Comment>
 						<Var>
 							<Name>MAIN.fbIndraDrive.stDriveCommands.nS40_VelocityCommandValue</Name>
 							<Type>DINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.iTorqueCommandValue</Name>
-							<Type>INT</Type>
 						</Var>
 						<Var>
 							<Name>GVL.axes[1].Axis.PlcToNc</Name>
@@ -4443,7 +4443,7 @@ Bit 8 - 15 : reserved]]></Comment>
 							<DcMode>4443494e00000000000000000000000044432d53796e6368726f6e2028696e7075742062617365642900000000000000000000007888ffffa8610000000000070100000000000000000001000000000000000000000000000000000000000000</DcMode>
 							<MBoxUserCmdData>02000300090000000000000003000000000000000000000000000000000000002082f001010000000000</MBoxUserCmdData>
 							<Pdo Name="ENC Status" Index="#x1a00" Flags="#x0011" SyncMan="3">
-								<Entry Name="Status__Latch C valid" Index="#x6000" Sub="#x01">
+								<Entry Name="Status__Latch C valid" Index="#x6000" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Status__">
@@ -4494,13 +4494,13 @@ Bit 8 - 15 : reserved]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="ENC Control" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="2">
-								<Entry Name="Control__Enable latch C" Index="#x7000" Sub="#x01">
+								<Entry Name="Control__Enable latch C" Index="#x7000" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Control__">
 									<Type GUID="{18071995-0000-0000-0000-002000000001}">ARRAY [0..0] OF BIT</Type>
 								</Entry>
-								<Entry Name="Control__Set counter" Index="#x7000" Sub="#x03">
+								<Entry Name="Control__Set counter" Index="#x7000" Sub="#x03" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Control__">
