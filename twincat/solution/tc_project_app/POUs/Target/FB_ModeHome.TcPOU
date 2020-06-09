@@ -101,6 +101,7 @@ CASE eHomeState OF
     IF stStatus.fActualVelocity/10 > 0.95 * GVL_Parameters.fHomeSpeedRpm THEN
 	  fActPosAtHomeStart := stStatus.fActualPosition;
       eHomeState:=E_HOME_STATE.HOMING;
+	  bTriggLatchMark := TRUE;
     END_IF
 	
   E_HOME_STATE.HOMING:
@@ -223,6 +224,7 @@ bExecuteOld:=bExecute;
       <LineId Id="1073" Count="0" />
       <LineId Id="1179" Count="0" />
       <LineId Id="1074" Count="0" />
+      <LineId Id="1268" Count="0" />
       <LineId Id="1055" Count="0" />
       <LineId Id="1079" Count="0" />
       <LineId Id="1059" Count="0" />
