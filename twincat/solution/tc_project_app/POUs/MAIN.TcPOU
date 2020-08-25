@@ -213,7 +213,7 @@ END_IF
         <ST><![CDATA[
 // Enable Axis independent of state (Ensure that drive is ready to enable)
 IF stCmdEpics.bEnable THEN
-   IF stStatus.bDCBusPresent AND NOT stStatus.bSTOActiveCh1 AND NOT stStatus.bSTOActiveCh2 THEN 
+   IF stStatus.bDCBusPresent AND NOT stStatus.bSTOActiveCh1 AND NOT stStatus.bSTOActiveCh2 AND NOT stStatus.bError THEN 
 	   stCommands.bEnableAxis :=stCmdEpics.bEnable;
    ELSE
 	   stCommands.bEnableAxis := FALSE;
