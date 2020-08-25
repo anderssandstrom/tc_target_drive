@@ -9,14 +9,9 @@ VAR
 	nMainDriveMarkPosition AT %I*     : DINT;
 	nAdditiveTorqueSetpoint    AT %Q* : INT;   // Unit 0.1%  (10=1%)
 	dLatchedPosition AT %I*           : DINT;
-	iBrakeSpRaw AT %Q*                : INT := 0;
     fbTemp                            : EL3214_old;
-	bBrakeFreewheelOn AT %Q*          : BOOL;
-	bBrakeLockedOn AT %Q*             : BOOL;
-    inputDummy AT %I*                 : BOOL;
 	inputDigSens1 AT %I*              : BOOL;
 	inputDigSens2 AT %I*              : BOOL;
-	fbBrakeTorque                     : FB_BrakeTorque;  // Control brake
 	fbModePhase                       : FB_ModePhasing;	 // Phasing Mode
 	fbRampVelo                        : FB_RampVelo;
 	fbModeVelo                        : FB_ModeVelo;     // Velocity Mode
@@ -56,14 +51,6 @@ VAR
 	fb_s20_IPOS8020:iPOS8020;
 	fb_s21_IPOS8020:iPOS8020;
 	fb_s22_IPOS8020:iPOS8020;
-
-	//fb_s22_EK1100:EK1100;
-	//fb_s23_EL1252:EL1252;
-	//fb_s24_EL3742:EL3742;
-	//fb_s25_EL3214:EL3214;
-	//fb_s26_EL3214:EL3214;
-	//fb_s27_EL3214:EL3214;
-	//fb_s28_EL2819:EL2819;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Check hardware status
@@ -209,47 +196,42 @@ fbErrorSystem(En:=TRUE);
 // Interlock motion on temperatures
 // Author: Anders Sandström 2019
 
-//fbTemp(En:=TRUE);
-
-//IF fb_s13_EL3214.bError THEN
-//	stCmdEpics.bExecute:=0;
-//	stCmdEpics.bEnable:=0;
-//END_IF
-
 stStatEpics.fActTemp:=fb_s13_EL3214.iAI_4/10.0;
-stStatEpics.fBrakeActTemp1:=fbTemp.iAi_Ch2_Value/10.0;
-stStatEpics.fBrakeActTemp2:=fbTemp.iAi_Ch3_Value/10.0;
 
 // Motor Temperature Monitoring Interlock
 IF (stStatEpics.fActTemp >= GVL_Parameters.nMaxMotorTemperature)  OR fbTemp.iAi_Ch1_Stat > 0 THEN
 	stCmdEpics.bEnable:= FALSE;
-	stCmdEpics.bExecute:= FALSE;	
+	stCmdEpics.bExecute:= FALSE;
+	stStatEpics.nErrorId:=GVL_ErrorCodes.nErrorIndraTempToHigh;
+	stStatEpics.sErrorStr:=GVL_ErrorCodes.sErrorIndraTempToHigh;
 END_IF
-
-//Brake temperature monitoring Interlock 1
-//IF (stStatEpics.fBrakeActTemp1 >= GVL_Parameters.nMaxBrakeTemperature) OR fbTemp.iAi_Ch2_Stat > 0 OR stStatEpics.bBrake1TempAlarm THEN
-//	stCmdEpics.bEnable:= FALSE;
-//	stCmdEpics.bExecute:= FALSE;		
-//    stStatEpics.bBrake1TempAlarm:=TRUE; 
-//END_IF
-//Brake temperature monitoring Interlock 2
-//IF (stStatEpics.fBrakeActTemp2 >= GVL_Parameters.nMaxBrakeTemperature) OR fbTemp.iAi_Ch3_Stat > 0 OR stStatEpics.bBrake2TempAlarm THEN
-//	stCmdEpics.bEnable:= FALSE;
-//	stCmdEpics.bExecute:= FALSE;		
-//    stStatEpics.bBrake2TempAlarm:=TRUE; 
-//END_IF]]></ST>
+]]></ST>
       </Implementation>
     </Action>
     <Action Name="ACT_4_MainDrive" Id="{0608089f-ed53-4fbf-a585-99ff0324bc84}">
       <Implementation>
         <ST><![CDATA[
-// Enable Axis independent of state
-stCommands.bEnableAxis :=stCmdEpics.bEnable;
+// Enable Axis independent of state (Ensure that drive is ready to enable)
+IF stCmdEpics.bEnable THEN
+   IF stStatus.bDCBusPresent AND NOT stStatus.bSTOActiveCh1 AND NOT stStatus.bSTOActiveCh2 THEN 
+	   stCommands.bEnableAxis :=stCmdEpics.bEnable;
+   ELSE
+	   stCommands.bEnableAxis := FALSE;
+	   stCmdEpics.bExecute := FALSE;
+	   stStatEpics.bError:=TRUE;
+	   stStatEpics.nErrorId:=GVL_ErrorCodes.nErrorIndraNotReady;
+	   stStatEpics.sErrorStr:=GVL_ErrorCodes.sErrorIndraNotReady; 
+   END_IF
+ELSE
+	//Reset enable
+    stCommands.bEnableAxis:=stCmdEpics.bEnable;
+END_IF
+
 stCommands.bHaltAxis:=stCmdEpics.bExecute;
 stStatEpics.bEnabled:=stStatus.bAxisEnabled;
 stCommands.bCmd_ErrorReset:=stCmdEpics.bReset;
 
-IF NOT stCmdEpics.bEnable THEN
+IF NOT stCommands.bEnableAxis THEN
   stCmdEpics.bExecute:=FALSE;
 END_IF
 
@@ -353,6 +335,7 @@ CASE stStatEpics.eTargetState OF
 	    stCommands.eMotionMode :=e_Motion_mode.eJogPositive;
 	
 	  ELSE  // No valid state
+		  
 		bApplyTorqueFF:=FALSE;
 		stCmdEpics.bExecute:=FALSE;
         stCmdEpics.bEnable:=FALSE;
@@ -360,7 +343,8 @@ CASE stStatEpics.eTargetState OF
 		stCommands.fCommandVelocity:=0;
 		stCommands.fCommandAcceleration:=0;
         stCommands.fCommandDeceleration:=0;
-
+		stStatEpics.nErrorId:=GVL_ErrorCodes.nErrorInvalidState;
+	    stStatEpics.sErrorStr:=GVL_ErrorCodes.sErrorInvalidState;
 END_CASE
 
 IF bApplyTorqueFF THEN
@@ -436,7 +420,7 @@ ELSIF stStatEpics.eTargetState = TARGET_STATE_MACHINE.HOMING THEN
 END_IF
 
 // To high velocity detected. Shutdown..
-IF stStatus.fActualVelocity/10 > GVL_Parameters.fMaximumSPeedRpm THEN 
+IF ABS(stStatus.fActualVelocity)/10 > GVL_Parameters.fMaximumSPeedRpm THEN 
   stCommands.bEnableAxis:= FALSE;
   stCmdEpics.bEnable:=FALSE;
   stCmdEpics.bExecute:=FALSE;
@@ -594,13 +578,27 @@ END_IF]]></ST>
     <LineIds Name="MAIN.ACT_2_Temperature">
       <LineId Id="31" Count="1" />
       <LineId Id="30" Count="0" />
-      <LineId Id="33" Count="0" />
-      <LineId Id="1" Count="0" />
-      <LineId Id="3" Count="26" />
+      <LineId Id="8" Count="1" />
+      <LineId Id="12" Count="4" />
+      <LineId Id="35" Count="1" />
+      <LineId Id="17" Count="0" />
       <LineId Id="2" Count="0" />
     </LineIds>
     <LineIds Name="MAIN.ACT_4_MainDrive">
-      <LineId Id="115" Count="9" />
+      <LineId Id="115" Count="1" />
+      <LineId Id="175" Count="2" />
+      <LineId Id="180" Count="0" />
+      <LineId Id="187" Count="1" />
+      <LineId Id="181" Count="0" />
+      <LineId Id="183" Count="0" />
+      <LineId Id="185" Count="0" />
+      <LineId Id="178" Count="0" />
+      <LineId Id="189" Count="0" />
+      <LineId Id="192" Count="0" />
+      <LineId Id="190" Count="0" />
+      <LineId Id="174" Count="0" />
+      <LineId Id="186" Count="0" />
+      <LineId Id="118" Count="6" />
       <LineId Id="127" Count="5" />
       <LineId Id="113" Count="1" />
       <LineId Id="2" Count="6" />
@@ -618,9 +616,13 @@ END_IF]]></ST>
       <LineId Id="133" Count="0" />
       <LineId Id="72" Count="1" />
       <LineId Id="163" Count="1" />
-      <LineId Id="74" Count="8" />
+      <LineId Id="74" Count="3" />
+      <LineId Id="193" Count="0" />
+      <LineId Id="78" Count="4" />
       <LineId Id="166" Count="1" />
-      <LineId Id="83" Count="1" />
+      <LineId Id="194" Count="0" />
+      <LineId Id="197" Count="0" />
+      <LineId Id="84" Count="0" />
       <LineId Id="112" Count="0" />
       <LineId Id="85" Count="12" />
       <LineId Id="144" Count="0" />

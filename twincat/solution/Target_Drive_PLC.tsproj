@@ -1511,10 +1511,6 @@ Bit 15]]></Comment>
 							<Type>UINT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.inputDummy</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
 							<Name>MAIN.inputDigSens1</Name>
 							<Type>BOOL</Type>
 						</Var>
@@ -2371,18 +2367,6 @@ External Setpoint Generation:
 							<Name>MAIN.nAdditiveTorqueSetpoint</Name>
 							<Comment><![CDATA[ Unit 0.1%  (10=1%)]]></Comment>
 							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.iBrakeSpRaw</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.bBrakeFreewheelOn</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.bBrakeLockedOn</Name>
-							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.fbIndraDrive.stDriveCommands.stS134_MasterControlWord</Name>

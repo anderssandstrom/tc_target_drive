@@ -9,6 +9,9 @@ VAR_GLOBAL
   // To high velocity 
   nErrorVelToHigh             : UDINT  := 100;
   sErrorVelToHigh             : STRING := 'MAIN: VELOCITY TO HIGH';
+  //Invalid state choosen
+  nErrorInvalidState          : UDINT  := 101;
+  sErrorInvalidState          : STRING := 'MAIN: Invalid state';
   
   // ************************FB_ModePhase()****************************	
   // No new latched position value have been identified for the last 71 ms (no signal from timing system?)
@@ -23,6 +26,12 @@ VAR_GLOBAL
   // Could be that encoder pulses are lost or that several index latches occurs per rev.
   nErrorEncoderLatchMissMatch : UDINT  := 2001;
   sErrorEncoderLatchMissMatch : STRING := 'HOME: ENCODER INDEX PULSES POSITION MISSMATCH';
+  
+  // ************************Indrdradrive*****************************
+  nErrorIndraNotReady : UDINT  := 3000;
+  sErrorIndraNotReady : STRING := 'INDRA: Not ready. Check status of drive (DC-BUS, STO, Tempereature...)';
+  nErrorIndraTempToHigh : UDINT  := 3001;
+  sErrorIndraTempToHigh : STRING := 'INDRA: Motor temperature to high.';
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
