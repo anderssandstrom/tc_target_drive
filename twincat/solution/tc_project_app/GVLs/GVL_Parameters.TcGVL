@@ -33,6 +33,7 @@ VAR_GLOBAL CONSTANT
   nTaskSampleTime:INT:=1;
   nPhasePIDReducedSampleRateFactor:INT:=1;   //run pid every time new pulse
   nRefMarkArraySize:UDINT:=10;
+  fCheckTimingPulseMinVel: LREAL:=2.0;
   
 END_VAR]]></Declaration>
   </GVL>
