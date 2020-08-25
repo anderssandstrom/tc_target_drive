@@ -227,13 +227,26 @@ ELSE
     stCommands.bEnableAxis:=stCmdEpics.bEnable;
 END_IF
 
-stCommands.bHaltAxis:=stCmdEpics.bExecute;
-stStatEpics.bEnabled:=stStatus.bAxisEnabled;
-stCommands.bCmd_ErrorReset:=stCmdEpics.bReset;
+IF stCmdEpics.bExecute THEN
+  IF stStatus.bAxisEnabled THEN
+    stCommands.bHaltAxis:=stCmdEpics.bExecute;
+  ELSE
+	stCmdEpics.bExecute:=FALSE;
+	stCommands.bHaltAxis:=FALSE;
+	stStatEpics.nErrorId:=GVL_ErrorCodes.nErrorNotEnabled;
+	stStatEpics.sErrorStr:=GVL_ErrorCodes.sErrorNotEnabled; 
+  END_IF
+ELSE
+  stCommands.bHaltAxis:=stCmdEpics.bExecute;
+END_IF
 
 IF NOT stCommands.bEnableAxis THEN
   stCmdEpics.bExecute:=FALSE;
 END_IF
+
+stStatEpics.bEnabled:=stStatus.bAxisEnabled;
+stCommands.bCmd_ErrorReset:=stCmdEpics.bReset;
+
 
 stCommands.bCmd_DriveControlledHoming:=FALSE;
 
@@ -597,8 +610,21 @@ END_IF]]></ST>
       <LineId Id="192" Count="0" />
       <LineId Id="190" Count="0" />
       <LineId Id="174" Count="0" />
+      <LineId Id="199" Count="0" />
       <LineId Id="186" Count="0" />
-      <LineId Id="118" Count="6" />
+      <LineId Id="215" Count="0" />
+      <LineId Id="118" Count="0" />
+      <LineId Id="211" Count="0" />
+      <LineId Id="216" Count="0" />
+      <LineId Id="218" Count="2" />
+      <LineId Id="217" Count="0" />
+      <LineId Id="208" Count="0" />
+      <LineId Id="212" Count="2" />
+      <LineId Id="209" Count="1" />
+      <LineId Id="207" Count="0" />
+      <LineId Id="206" Count="0" />
+      <LineId Id="119" Count="1" />
+      <LineId Id="124" Count="0" />
       <LineId Id="127" Count="5" />
       <LineId Id="113" Count="1" />
       <LineId Id="2" Count="6" />

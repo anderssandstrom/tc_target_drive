@@ -28,10 +28,13 @@ VAR_GLOBAL
   sErrorEncoderLatchMissMatch : STRING := 'HOME: ENCODER INDEX PULSES POSITION MISSMATCH';
   
   // ************************Indrdradrive*****************************
-  nErrorIndraNotReady : UDINT  := 3000;
-  sErrorIndraNotReady : STRING := 'INDRA: Not ready. Check status of drive (DC-BUS, STO, Tempereature...)';
-  nErrorIndraTempToHigh : UDINT  := 3001;
-  sErrorIndraTempToHigh : STRING := 'INDRA: Motor temperature to high.';
+  nErrorIndraNotReady    : UDINT  := 3000;
+  sErrorIndraNotReady    : STRING := 'INDRA: Not ready. Check status of drive (DC-BUS, STO, Tempereature...)';
+  nErrorIndraTempToHigh  : UDINT  := 3001;
+  sErrorIndraTempToHigh  : STRING := 'INDRA: Motor temperature to high.';
+  // Drive not enable
+  nErrorNotEnabled       : UDINT  := 3002;
+  sErrorNotEnabled       : STRING := 'INDRA: Drive not enabled';
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
