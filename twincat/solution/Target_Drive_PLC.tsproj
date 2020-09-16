@@ -2021,7 +2021,7 @@ Drive Status 4 (manually linked):
 					<Controller Name="Ctrl" CtrType="1">
 						<CtrPara PriorControlFactor="1">
 							<PosDiffControl Range="20"/>
-							<PID PosKp="10"/>
+							<PID PosKp="20"/>
 							<Observer BandWidth="20"/>
 						</CtrPara>
 					</Controller>
@@ -2083,7 +2083,6 @@ External Setpoint Generation:
 					<Name>Axis 2</Name>
 					<AxisPara>
 						<OtherSettings AllowMotionCmdToSlave="true"/>
-						<ParameterChanged>18</ParameterChanged>
 					</AxisPara>
 					<Encoder Name="Enc" EncType="19">
 						<EncPara ScaleFactorNumerator="360" ScaleFactorDenominator="51200" MaxCount="#xffffffff"/>
@@ -2221,6 +2220,7 @@ Drive Status 4 (manually linked):
 					<Controller Name="Ctrl" CtrType="1">
 						<CtrPara PriorControlFactor="1">
 							<PosDiffControl Range="20"/>
+							<PID PosKp="20"/>
 							<Observer BandWidth="20"/>
 						</CtrPara>
 					</Controller>
@@ -2421,6 +2421,7 @@ Drive Status 4 (manually linked):
 					<Controller Name="Ctrl" CtrType="1">
 						<CtrPara PriorControlFactor="1">
 							<PosDiffControl Range="20"/>
+							<PID PosKp="20"/>
 							<Observer BandWidth="20"/>
 						</CtrPara>
 					</Controller>
@@ -3213,6 +3214,29 @@ bS144_15_NotDefined					: BIT;	]]></Comment>
 							<Type>UINT</Type>
 						</Var>
 						<Var>
+							<Name>MAIN.bLimitFwd1</Name>
+							<Comment><![CDATA[Steppers
+    M1Link:FB_NcAxis;
+	M2Link:FB_NcAxis;
+	M3Link:FB_NcAxis;
+	M1:FB_DriveVirtual;
+	M2:FB_DriveVirtual;
+	M3:FB_DriveVirtual;]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.bLimitBwd1</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.bHomeSensor1</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.bLimitFwd2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
 							<Name>GVL.axes[1].inputs.bLimitFwd</Name>
 							<Comment><![CDATA[////Axis Inputs///////]]></Comment>
 							<Type>BOOL</Type>
@@ -3400,6 +3424,26 @@ External Setpoint Generation:
 3: axis is a slave axis
 ]]></Comment>
 							</SubVar>
+						</Var>
+						<Var>
+							<Name>MAIN.bLimitBwd2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.bHomeSensor2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.bLimitFwd3</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.bLimitBwd3</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.bHomeSensor3</Name>
+							<Type>BOOL</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="2">
