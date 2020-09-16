@@ -2020,7 +2020,8 @@ Drive Status 4 (manually linked):
 					</Drive>
 					<Controller Name="Ctrl" CtrType="1">
 						<CtrPara PriorControlFactor="1">
-							<PosDiffControl Enable="false"/>
+							<PosDiffControl Range="20"/>
+							<PID PosKp="10"/>
 							<Observer BandWidth="20"/>
 						</CtrPara>
 					</Controller>
@@ -2082,6 +2083,7 @@ External Setpoint Generation:
 					<Name>Axis 2</Name>
 					<AxisPara>
 						<OtherSettings AllowMotionCmdToSlave="true"/>
+						<ParameterChanged>18</ParameterChanged>
 					</AxisPara>
 					<Encoder Name="Enc" EncType="19">
 						<EncPara ScaleFactorNumerator="360" ScaleFactorDenominator="51200" MaxCount="#xffffffff"/>
@@ -2218,6 +2220,7 @@ Drive Status 4 (manually linked):
 					</Drive>
 					<Controller Name="Ctrl" CtrType="1">
 						<CtrPara PriorControlFactor="1">
+							<PosDiffControl Range="20"/>
 							<Observer BandWidth="20"/>
 						</CtrPara>
 					</Controller>
@@ -2417,6 +2420,7 @@ Drive Status 4 (manually linked):
 					</Drive>
 					<Controller Name="Ctrl" CtrType="1">
 						<CtrPara PriorControlFactor="1">
+							<PosDiffControl Range="20"/>
 							<Observer BandWidth="20"/>
 						</CtrPara>
 					</Controller>
@@ -5911,6 +5915,7 @@ Bit 8 - 15 : reserved]]></Comment>
 						<DcData>3003000000000000000000000000000001000000000000000000000000000000</DcData>
 						<DcMode>446353796e6300000000000000000000446353796e630000000000000000000000000000000000000000000000000000000000000000000000000000000030030100000000000000000000000000000000000000000000000000000000000000</DcMode>
 						<DcMode>467265650000000000000000000000004672656500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<MBoxUserCmdData>020003000900000003000000030000000000000000000000000000000000000020606000010000000943535600</MBoxUserCmdData>
 						<Pdo Name="Transmit PDO 1 mapping parameters" Index="#x1a00" Flags="#x0000" SyncMan="3">
 							<Entry Name="Statusword" Index="#x6041">
 								<Type>UINT</Type>
@@ -5991,6 +5996,7 @@ Bit 8 - 15 : reserved]]></Comment>
 						<DcData>3003000000000000000000000000000001000000000000000000000000000000</DcData>
 						<DcMode>446353796e6300000000000000000000446353796e630000000000000000000000000000000000000000000000000000000000000000000000000000000030030100000000000000000000000000000000000000000000000000000000000000</DcMode>
 						<DcMode>467265650000000000000000000000004672656500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<MBoxUserCmdData>020003000900000003000000030000000000000000000000000000000000000020606000010000000943535600</MBoxUserCmdData>
 						<Pdo Name="Transmit PDO 1 mapping parameters" Index="#x1a00" Flags="#x0000" SyncMan="3">
 							<Entry Name="Statusword" Index="#x6041">
 								<Type>UINT</Type>
