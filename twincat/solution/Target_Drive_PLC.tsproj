@@ -1886,10 +1886,7 @@ Bit 15]]></Comment>
 						<OtherSettings AllowMotionCmdToSlave="true"/>
 					</AxisPara>
 					<Encoder Name="Enc" EncType="19">
-						<EncPara ScaleFactorNumerator="360" ScaleFactorDenominator="51200" MaxCount="#xffffffff">
-							<ParameterChanged>36</ParameterChanged>
-							<ParameterChanged>35</ParameterChanged>
-						</EncPara>
+						<EncPara ScaleFactorNumerator="360" ScaleFactorDenominator="51200" MaxCount="#xffffffff"/>
 						<Vars VarGrpType="1">
 							<Name>Inputs</Name>
 							<Var>
@@ -1957,7 +1954,6 @@ Bit 15]]></Comment>
 						<DrvPara MaxCount="#xffffffff">
 							<Analog VeloScale="9322.33" TorqueScale="10" ScaleFactorActTorque="0.1"/>
 							<TimeComp TaskDelayCycles="1"/>
-							<ParameterChanged>261</ParameterChanged>
 						</DrvPara>
 						<Vars VarGrpType="1">
 							<Name>Inputs</Name>
@@ -2024,6 +2020,7 @@ Drive Status 4 (manually linked):
 					</Drive>
 					<Controller Name="Ctrl" CtrType="1">
 						<CtrPara PriorControlFactor="1">
+							<PosDiffControl Enable="false"/>
 							<Observer BandWidth="20"/>
 						</CtrPara>
 					</Controller>
@@ -2087,10 +2084,7 @@ External Setpoint Generation:
 						<OtherSettings AllowMotionCmdToSlave="true"/>
 					</AxisPara>
 					<Encoder Name="Enc" EncType="19">
-						<EncPara ScaleFactorNumerator="360" ScaleFactorDenominator="51200" MaxCount="#xffffffff">
-							<ParameterChanged>36</ParameterChanged>
-							<ParameterChanged>35</ParameterChanged>
-						</EncPara>
+						<EncPara ScaleFactorNumerator="360" ScaleFactorDenominator="51200" MaxCount="#xffffffff"/>
 						<Vars VarGrpType="1">
 							<Name>Inputs</Name>
 							<Var>
@@ -2158,7 +2152,6 @@ External Setpoint Generation:
 						<DrvPara MaxCount="#xffffffff">
 							<Analog VeloScale="9322.33" TorqueScale="10" ScaleFactorActTorque="0.1"/>
 							<TimeComp TaskDelayCycles="1"/>
-							<ParameterChanged>261</ParameterChanged>
 						</DrvPara>
 						<Vars VarGrpType="1">
 							<Name>Inputs</Name>
@@ -2290,10 +2283,7 @@ External Setpoint Generation:
 						<OtherSettings AllowMotionCmdToSlave="true"/>
 					</AxisPara>
 					<Encoder Name="Enc" EncType="19">
-						<EncPara ScaleFactorNumerator="360" ScaleFactorDenominator="51200" MaxCount="#xffffffff">
-							<ParameterChanged>36</ParameterChanged>
-							<ParameterChanged>35</ParameterChanged>
-						</EncPara>
+						<EncPara ScaleFactorNumerator="360" ScaleFactorDenominator="51200" MaxCount="#xffffffff"/>
 						<Vars VarGrpType="1">
 							<Name>Inputs</Name>
 							<Var>
@@ -2361,7 +2351,6 @@ External Setpoint Generation:
 						<DrvPara MaxCount="#xffffffff">
 							<Analog VeloScale="9322.33" TorqueScale="10" ScaleFactorActTorque="0.1"/>
 							<TimeComp TaskDelayCycles="1"/>
-							<ParameterChanged>261</ParameterChanged>
 						</DrvPara>
 						<Vars VarGrpType="1">
 							<Name>Inputs</Name>
@@ -5841,6 +5830,7 @@ Bit 8 - 15 : reserved]]></Comment>
 						<DcData>3003000000000000000000000000000001000000000000000000000000000000</DcData>
 						<DcMode>446353796e6300000000000000000000446353796e630000000000000000000000000000000000000000000000000000000000000000000000000000000030030100000000000000000000000000000000000000000000000000000000000000</DcMode>
 						<DcMode>467265650000000000000000000000004672656500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<MBoxUserCmdData>020003000900000003000000030000000000000000000000000000000000000020606000010000000943535600</MBoxUserCmdData>
 						<Pdo Name="Transmit PDO 1 mapping parameters" Index="#x1a00" Flags="#x0000" SyncMan="3">
 							<Entry Name="Statusword" Index="#x6041">
 								<Type>UINT</Type>
