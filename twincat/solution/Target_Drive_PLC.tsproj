@@ -1886,7 +1886,10 @@ Bit 15]]></Comment>
 						<OtherSettings AllowMotionCmdToSlave="true"/>
 					</AxisPara>
 					<Encoder Name="Enc" EncType="19">
-						<EncPara MaxCount="#xffffffff"/>
+						<EncPara ScaleFactorNumerator="360" ScaleFactorDenominator="51200" MaxCount="#xffffffff">
+							<ParameterChanged>36</ParameterChanged>
+							<ParameterChanged>35</ParameterChanged>
+						</EncPara>
 						<Vars VarGrpType="1">
 							<Name>Inputs</Name>
 							<Var>
@@ -1952,8 +1955,9 @@ Bit 15]]></Comment>
 					</Encoder>
 					<Drive Name="Drive" DrvType="16">
 						<DrvPara MaxCount="#xffffffff">
-							<Analog TorqueScale="10" ScaleFactorActTorque="0.1"/>
+							<Analog VeloScale="9322.33" TorqueScale="10" ScaleFactorActTorque="0.1"/>
 							<TimeComp TaskDelayCycles="1"/>
+							<ParameterChanged>261</ParameterChanged>
 						</DrvPara>
 						<Vars VarGrpType="1">
 							<Name>Inputs</Name>
@@ -2083,7 +2087,10 @@ External Setpoint Generation:
 						<OtherSettings AllowMotionCmdToSlave="true"/>
 					</AxisPara>
 					<Encoder Name="Enc" EncType="19">
-						<EncPara MaxCount="#xffffffff"/>
+						<EncPara ScaleFactorNumerator="360" ScaleFactorDenominator="51200" MaxCount="#xffffffff">
+							<ParameterChanged>36</ParameterChanged>
+							<ParameterChanged>35</ParameterChanged>
+						</EncPara>
 						<Vars VarGrpType="1">
 							<Name>Inputs</Name>
 							<Var>
@@ -2149,8 +2156,9 @@ External Setpoint Generation:
 					</Encoder>
 					<Drive Name="Drive" DrvType="16">
 						<DrvPara MaxCount="#xffffffff">
-							<Analog TorqueScale="10" ScaleFactorActTorque="0.1"/>
+							<Analog VeloScale="9322.33" TorqueScale="10" ScaleFactorActTorque="0.1"/>
 							<TimeComp TaskDelayCycles="1"/>
+							<ParameterChanged>261</ParameterChanged>
 						</DrvPara>
 						<Vars VarGrpType="1">
 							<Name>Inputs</Name>
@@ -2282,7 +2290,10 @@ External Setpoint Generation:
 						<OtherSettings AllowMotionCmdToSlave="true"/>
 					</AxisPara>
 					<Encoder Name="Enc" EncType="19">
-						<EncPara MaxCount="#xffffffff"/>
+						<EncPara ScaleFactorNumerator="360" ScaleFactorDenominator="51200" MaxCount="#xffffffff">
+							<ParameterChanged>36</ParameterChanged>
+							<ParameterChanged>35</ParameterChanged>
+						</EncPara>
 						<Vars VarGrpType="1">
 							<Name>Inputs</Name>
 							<Var>
@@ -2348,8 +2359,9 @@ External Setpoint Generation:
 					</Encoder>
 					<Drive Name="Drive" DrvType="16">
 						<DrvPara MaxCount="#xffffffff">
-							<Analog TorqueScale="10" ScaleFactorActTorque="0.1"/>
+							<Analog VeloScale="9322.33" TorqueScale="10" ScaleFactorActTorque="0.1"/>
 							<TimeComp TaskDelayCycles="1"/>
+							<ParameterChanged>261</ParameterChanged>
 						</DrvPara>
 						<Vars VarGrpType="1">
 							<Name>Inputs</Name>
