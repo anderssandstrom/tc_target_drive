@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.5">
   <POU Name="FB_ModePhasing" Id="{d2a3a91d-9b2d-4e1e-8e68-2aba1e8abe60}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_ModePhasing
 VAR_INPUT
@@ -60,7 +60,8 @@ VAR
   fbPWM                    : FB_PWM;
   fbSuperImpose            : FB_TargetSuperImpose;
   timerCheckLatchFreq      : TON;
-  nMissedTimingPulses      : int:=0;
+  nMissedTimingPulses      : INT:=0;
+  nMissedTimingPulsesOld   : INT:=0;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -329,7 +330,7 @@ dLatchedPositionOld:=dLatchedPosition;
  
 //*********Errorhandling
 // Latched pulses missing
-IF timerCheckLatchFreq.Q THEN
+IF nMissedTimingPulsesOld<>nMissedTimingPulses THEN
   bError:=TRUE;
   nErrorId:=GVL_ErrorCodes.nErrorNoLatchId;
   sErrorStr:=GVL_ErrorCodes.sErrorNoLatchStr;
@@ -338,9 +339,11 @@ END_IF
 IF bReset THEN
   bError:=FALSE;
   nErrorId:=0;
-  nMissedTimingPulses:=0;
+  //nMissedTimingPulses:=0;
+  timerCheckLatchFreq(IN:=FALSE);  //Reset
 END_IF
-]]></ST>
+
+nMissedTimingPulsesOld:=nMissedTimingPulses;]]></ST>
     </Implementation>
     <LineIds Name="FB_ModePhasing">
       <LineId Id="1065" Count="0" />
@@ -483,7 +486,9 @@ END_IF
       <LineId Id="707" Count="0" />
       <LineId Id="709" Count="0" />
       <LineId Id="1702" Count="0" />
+      <LineId Id="1764" Count="0" />
       <LineId Id="708" Count="0" />
+      <LineId Id="1766" Count="0" />
       <LineId Id="1555" Count="0" />
     </LineIds>
   </POU>
