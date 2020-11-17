@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.6">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.5">
   <DUT Name="ST_STAT_EPICS" Id="{6d9583db-fbc6-4b57-83c8-8f61b33208e9}">
     <Declaration><![CDATA[TYPE ST_STAT_EPICS :
 STRUCT
@@ -16,6 +16,7 @@ STRUCT
 	fSetVelRaw:LREAL;
 	fBrakeActTemp1:LREAL;
 	fBrakeActTemp2:LREAL;
+	fPhaseOffsetActDeg:LREAL;
 	bBrake1TempAlarm:BOOL;
 	bBrake2TempAlarm:BOOL;
 END_STRUCT

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.5">
   <DUT Name="ST_CMD_EPICS" Id="{4efa13fc-0f5c-44cc-8a6d-b3a9305f00ac}">
     <Declaration><![CDATA[TYPE ST_CMD_EPICS :
 STRUCT
@@ -11,7 +11,7 @@ STRUCT
 	eTargetStateCmd   : TARGET_STATE_MACHINE:=TARGET_STATE_MACHINE.NONE;
 	ePhaseCntrlAlg    : E_PHASE_TYPE:=E_PHASE_TYPE.PID;
 	ePhasePwmType     : E_PWM_TYPE:=E_PWM_TYPE.OPTIMIZED;
-	
+	fPhaseOffsetMM    : LREAL:=0; 
 	//brake
 	bBrakeLockOnCmd   : BOOL:=FALSE;
 	bFreeWheelOnOnCmd : BOOL:=TRUE;

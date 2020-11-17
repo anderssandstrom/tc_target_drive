@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.5">
   <POU Name="MAIN" Id="{40828a63-f1c1-40a3-a7c5-8a47be350a36}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
@@ -276,6 +276,7 @@ IF stCmdEpics.eTargetStateCmd <> stStatEpics.eTargetState AND NOT stCmdEpics.bex
 	stStatEpics.eTargetState:=stCmdEpics.eTargetStateCmd;
 END_IF
 
+stStatEpics.fPhaseOffsetActDeg := stCmdEpics.fPhaseOffsetMM /(GVL_Parameters.fWheelDiameter*pi/360.0);
 //nAdditiveTorqueSetpoint:=0;
 //IF NOT  stCmdEpics.bExecute THEN
 //	addStartupTorqueTrigger:=TRUE;
@@ -331,7 +332,8 @@ CASE stStatEpics.eTargetState OF
 			dLatchedPosition:= dLatchedPosition,
 			ePhaseType:=       stCmdEpics.ePhaseCntrlAlg,
 			ePwmType:=         stCmdEpics.ePhasePwmType,
-			stCommands:=       stCommands);
+			stCommands:=       stCommands,
+            fPhaseOffsetMM:=stCmdEpics.fPhaseOffsetMM);
 			
 			//ramp velocity with selected acceleration (as long as not phasing)
 			IF NOT fbModePhase.bPhasing THEN
@@ -3053,7 +3055,9 @@ END_IF]]></ST>
       <LineId Id="119" Count="1" />
       <LineId Id="124" Count="0" />
       <LineId Id="127" Count="5" />
-      <LineId Id="113" Count="1" />
+      <LineId Id="113" Count="0" />
+      <LineId Id="225" Count="0" />
+      <LineId Id="114" Count="0" />
       <LineId Id="2" Count="6" />
       <LineId Id="152" Count="0" />
       <LineId Id="150" Count="0" />
@@ -3062,7 +3066,9 @@ END_IF]]></ST>
       <LineId Id="153" Count="0" />
       <LineId Id="34" Count="8" />
       <LineId Id="157" Count="1" />
-      <LineId Id="43" Count="20" />
+      <LineId Id="43" Count="7" />
+      <LineId Id="224" Count="0" />
+      <LineId Id="51" Count="12" />
       <LineId Id="160" Count="1" />
       <LineId Id="64" Count="7" />
       <LineId Id="134" Count="4" />

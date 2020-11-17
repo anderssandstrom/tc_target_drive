@@ -7,11 +7,12 @@ VAR_INPUT
 	bReset             : BOOL         := FALSE;
 	stStatus           : ST_AXIS_STATUS;
     dLatchedPosition   : DINT         := 0;
-	fPhaseOffsetDeg    : LREAL        := 0;
+	//fPhaseOffsetDeg    : LREAL        := 0;
     fPhaseControlKp    : LREAL        := 0.0012;
 	fPhaseControlKi    : LREAL        := 0.00015;
 	fPhaseControlKd    : LREAL        := 0.0;
 	fPhaseControlKff   : LREAL        := 0.0;
+	fPhaseOffsetMM     : LREAL        := 0.0;
 	bPhaseControlReset : BOOL         := FALSE;
 	ePhaseType         : E_PHASE_TYPE := E_PHASE_TYPE.PID;
 	ePwmType           : E_PWM_TYPE   := E_PWM_TYPE.OPTIMIZED;
@@ -173,7 +174,7 @@ IF bPhaseAlgTrigg THEN
 ELSE
   fPhaseError:=nClosestSectorId*10-fLatchedPosition;
 END_IF
-fPhaseErrorMM:=fPhaseError*GVL_Parameters.fWheelDiameter*pi/360.0; 
+fPhaseErrorMM:=fPhaseError*GVL_Parameters.fWheelDiameter*pi/360.0 + fPhaseOffsetMM; 
 
 //Filter phase error
 IF bNewTriggPulse THEN
