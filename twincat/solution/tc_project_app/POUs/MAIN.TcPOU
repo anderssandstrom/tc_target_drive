@@ -276,7 +276,15 @@ IF stCmdEpics.eTargetStateCmd <> stStatEpics.eTargetState AND NOT stCmdEpics.bex
 	stStatEpics.eTargetState:=stCmdEpics.eTargetStateCmd;
 END_IF
 
+IF stCmdEpics.fPhaseOffsetMM > GVL_Parameters.fMaxPhaseOffsetMM THEN
+	stCmdEpics.fPhaseOffsetMM :=  GVL_Parameters.fMaxPhaseOffsetMM;
+END_IF
+IF stCmdEpics.fPhaseOffsetMM < GVL_Parameters.fMinPhaseOffsetMM THEN
+	stCmdEpics.fPhaseOffsetMM :=  GVL_Parameters.fMinPhaseOffsetMM;
+END_IF
+
 stStatEpics.fPhaseOffsetActDeg := stCmdEpics.fPhaseOffsetMM /(GVL_Parameters.fWheelDiameter*pi/360.0);
+
 //nAdditiveTorqueSetpoint:=0;
 //IF NOT  stCmdEpics.bExecute THEN
 //	addStartupTorqueTrigger:=TRUE;
@@ -3056,8 +3064,13 @@ END_IF]]></ST>
       <LineId Id="124" Count="0" />
       <LineId Id="127" Count="5" />
       <LineId Id="113" Count="0" />
+      <LineId Id="228" Count="0" />
       <LineId Id="225" Count="0" />
+      <LineId Id="229" Count="1" />
+      <LineId Id="233" Count="2" />
+      <LineId Id="232" Count="0" />
       <LineId Id="114" Count="0" />
+      <LineId Id="226" Count="0" />
       <LineId Id="2" Count="6" />
       <LineId Id="152" Count="0" />
       <LineId Id="150" Count="0" />
