@@ -159,6 +159,25 @@ record(ao,"$(P)Rotation-MaxMotorTemp-Cmd"){
   field(DESC, "Rotation: Max Motor Temp Cmd")
 }
 
+record(ao,"$(P)Rotation-PhaseOffetMM-Cmd"){
+  info(asyn:READBACK,"1")
+  field(PINI, "1")
+  field(DTYP, "asynFloat64")
+  field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stCmdEpics.fPhaseOffsetMM?")
+  field(PREC, "3")
+  field(SCAN, "Passive")
+  field(DESC, "Rotation: Offset of phase in [mm]")
+}
+
+record(ai,"$(P)Rotation-PhaseOffetDeg-Act"){
+  field(PINI, "1")
+  field(DTYP, "asynFloat64")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatEpics.fPhaseOffsetActDeg?")
+  field(PREC, "3")
+  field(SCAN, "1 second")
+  field(DESC, "Rotation: Offset of phase in [deg]")
+}
+
 record(ai,"$(P)Rotation-LatchedPos"){
   field(PINI, "1")
   field(DTYP, "asynFloat64")
