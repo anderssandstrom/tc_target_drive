@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.5">
   <POU Name="FB_ModePos" Id="{6ecfe6fb-3b6b-4228-bef4-e3d81387d91d}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_ModePos
 VAR_INPUT
@@ -28,7 +28,7 @@ END_VAR
 
 stCommands.eMotionMode :=e_Motion_mode.ePositioning;
 stCommands.eOperationMode:=e_Operation_mode_no.ePrimaryOpMode;
-//stCommands.eOperationMode:=e_Operation_mode_no.eSecondaryOpMode4;
+//stCommands.eOperationMode:=e_Operation_mode_no.eSecondaryOpMode3;
 IF bExecute THEN
   stCommands.fCommandVelocity:=fVelSet;
 ELSE
