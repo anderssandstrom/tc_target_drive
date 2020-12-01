@@ -7,6 +7,7 @@ VAR_INPUT
 	bReset: BOOL;
 	fVelSet:LREAL:=0;
 	fPosSet:LREAL:=0;
+	fRefOffset:LREAL:=0;  //Offset from homing
 	stStatus: ST_AXIS_STATUS;
 END_VAR
 VAR_OUTPUT
@@ -18,7 +19,7 @@ VAR_IN_OUT
 	stCommands: ST_AXIS_COMMAND;
 END_VAR
 VAR
-
+ 
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -34,8 +35,16 @@ IF bExecute THEN
 ELSE
   stCommands.fCommandVelocity:=0;
 END_IF
+stCommands.fCommandPosition:=fPosSet + fRefOffset;
+IF stCommands.fCommandPosition > 360 THEN
+  stCommands.fCommandPosition:=stCommands.fCommandPosition-360;	
+END_IF
+IF stCommands.fCommandPosition < 0 THEN
+  stCommands.fCommandPosition:=stCommands.fCommandPosition+360;	
+END_IF
 stCommands.fVelocityCommandValue:=0;  //Used for other mode
-stCommands.fCommandPosition:=fPosSet;]]></ST>
+
+stCommands.fCommandPosition:=fPosSet + fRefOffset;]]></ST>
     </Implementation>
     <LineIds Name="FB_ModePos">
       <LineId Id="916" Count="1" />
@@ -45,7 +54,10 @@ stCommands.fCommandPosition:=fPosSet;]]></ST>
       <LineId Id="893" Count="0" />
       <LineId Id="938" Count="0" />
       <LineId Id="888" Count="4" />
+      <LineId Id="962" Count="5" />
+      <LineId Id="961" Count="0" />
       <LineId Id="708" Count="0" />
+      <LineId Id="960" Count="0" />
       <LineId Id="896" Count="0" />
     </LineIds>
   </POU>
