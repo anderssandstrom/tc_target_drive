@@ -343,7 +343,8 @@ CASE stStatEpics.eTargetState OF
 			ePhaseType:=       stCmdEpics.ePhaseCntrlAlg,
 			ePwmType:=         stCmdEpics.ePhasePwmType,
 			stCommands:=       stCommands,
-            fPhaseOffsetMM:=stCmdEpics.fPhaseOffsetMM);
+            fPhaseOffsetMM:=   stCmdEpics.fPhaseOffsetMM,
+            fRefOffset:=       fbModeHome.fActPositionOffset);
 			
 			//ramp velocity with selected acceleration (as long as not phasing)
 			IF NOT fbModePhase.bPhasing THEN
@@ -3093,6 +3094,7 @@ END_IF]]></ST>
       <LineId Id="157" Count="1" />
       <LineId Id="43" Count="7" />
       <LineId Id="224" Count="0" />
+      <LineId Id="250" Count="0" />
       <LineId Id="51" Count="12" />
       <LineId Id="160" Count="1" />
       <LineId Id="64" Count="7" />

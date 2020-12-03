@@ -43,8 +43,7 @@ IF stCommands.fCommandPosition < 0 THEN
   stCommands.fCommandPosition:=stCommands.fCommandPosition+360;	
 END_IF
 stCommands.fVelocityCommandValue:=0;  //Used for other mode
-
-stCommands.fCommandPosition:=fPosSet + fRefOffset;]]></ST>
+]]></ST>
     </Implementation>
     <LineIds Name="FB_ModePos">
       <LineId Id="916" Count="1" />
@@ -57,7 +56,6 @@ stCommands.fCommandPosition:=fPosSet + fRefOffset;]]></ST>
       <LineId Id="962" Count="5" />
       <LineId Id="961" Count="0" />
       <LineId Id="708" Count="0" />
-      <LineId Id="960" Count="0" />
       <LineId Id="896" Count="0" />
     </LineIds>
   </POU>

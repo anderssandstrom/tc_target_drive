@@ -13,6 +13,7 @@ VAR_INPUT
 	fPhaseControlKd    : LREAL        := 0.0;
 	fPhaseControlKff   : LREAL        := 0.0;
 	fPhaseOffsetMM     : LREAL        := 0.0;
+	fRefOffset         : LREAL        :=0;  //Offset from homing
 	bPhaseControlReset : BOOL         := FALSE;
 	ePhaseType         : E_PHASE_TYPE := E_PHASE_TYPE.PID;
 	ePwmType           : E_PWM_TYPE   := E_PWM_TYPE.OPTIMIZED;
@@ -90,8 +91,14 @@ IF NOT bExecute OR bPhaseControlReset THEN
   bPhaseAlgTrigg:=FALSE;
 END_IF
 
-fLatchedPositionOld:=fLatchedPosition;
-fLatchedPosition:=DINT_TO_LREAL(dLatchedPosition)/10000.0;
+fLatchedPositionOld:=fLatchedPosition;  // Backup old
+fLatchedPosition:=DINT_TO_LREAL(dLatchedPosition)/10000.0-fRefOffset;  // remove homing offset
+IF fLatchedPosition > 360 THEN
+  fLatchedPosition:=fLatchedPosition - 360;	
+END_IF
+IF fLatchedPosition < 0 THEN
+  fLatchedPosition:=fLatchedPosition + 360;	
+END_IF
 
 // New trigger from timing system
 IF (fLatchedPosition-fLatchedPositionOld)<>0 THEN
@@ -365,8 +372,10 @@ nMissedTimingPulsesOld:=nMissedTimingPulses;]]></ST>
       <LineId Id="1149" Count="0" />
       <LineId Id="1146" Count="1" />
       <LineId Id="1136" Count="0" />
-      <LineId Id="1148" Count="0" />
+      <LineId Id="1838" Count="0" />
       <LineId Id="53" Count="1" />
+      <LineId Id="1832" Count="4" />
+      <LineId Id="1831" Count="0" />
       <LineId Id="1119" Count="0" />
       <LineId Id="1118" Count="0" />
       <LineId Id="55" Count="5" />
