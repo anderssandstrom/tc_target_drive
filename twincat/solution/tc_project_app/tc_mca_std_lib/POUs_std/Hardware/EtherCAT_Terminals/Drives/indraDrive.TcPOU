@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
+  <POU Name="indraDrive" Id="{3a923ffd-7b3f-4cfe-938d-cc2403ef3419}" SpecialFunc="None">
+    <Declaration><![CDATA[//Rexroth indradrive
+FUNCTION_BLOCK indraDrive
+
+VAR_INPUT
+    En: BOOL;
+    iTerminal_ID : INT;
+    ErrorSystem : POINTER TO ST_ErrorSystem;
+END_VAR
+
+VAR_OUTPUT
+    EnO: BOOL;
+    bError: BOOL;
+	sErrorMessage       : STRING;
+END_VAR
+
+VAR
+    WcState_WcState AT %I* : BOOL := FALSE;
+    InfoData_State  AT %I* : UINT := 0;
+
+    //FB-s
+    indraDrive_Error    : FB_TerminalError;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(*
+* TODO: Test on hardware
+*)
+
+EnO:=En;
+
+indraDrive_Error(
+    En := TRUE,
+    iTerminal_ID := iTerminal_ID,
+    bWcState := FALSE,
+    uiInfoData_State := InfoData_State,
+    pErrorSystem := ErrorSystem,
+    bError => bError,
+);
+
+IF bError THEN
+	sErrorMessage:=indraDrive_Error.ErrorData.sErrorMessage;
+ELSE
+	sErrorMessage:='';
+END_IF
+]]></ST>
+    </Implementation>
+    <LineIds Name="indraDrive">
+      <LineId Id="33" Count="13" />
+      <LineId Id="69" Count="2" />
+      <LineId Id="74" Count="1" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="77" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
