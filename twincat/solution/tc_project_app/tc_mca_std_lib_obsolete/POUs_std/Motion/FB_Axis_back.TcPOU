@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
-  <POU Name="FB_Axis" Id="{45901cd0-c6d2-4114-b7cf-de832171219f}" SpecialFunc="None">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+  <POU Name="FB_Axis_back" Id="{45901cd0-c6d2-4114-b7cf-de832171219f}" SpecialFunc="None">
     <Declaration><![CDATA[///#########################################################
 ///Function block to run a virtual drive with Nc
 /// Library:
@@ -13,7 +13,7 @@
 /// External functions:
 ///
 ///###########################################################
-FUNCTION_BLOCK FB_Axis
+FUNCTION_BLOCK FB_Axis_back
 VAR
     sVersion: STRING:='1.0.4';
     masterAxis          :   ST_GearAxis :=(index:=1, ratio:=0) ;
@@ -266,7 +266,7 @@ END_IF
 (*Reset bExecute*)
 stAxisStruct.control.bExecute:=FALSE;]]></ST>
     </Implementation>
-    <LineIds Name="FB_Axis">
+    <LineIds Name="FB_Axis_back">
       <LineId Id="2448" Count="0" />
       <LineId Id="2659" Count="0" />
       <LineId Id="2185" Count="0" />
@@ -365,7 +365,7 @@ stAxisStruct.control.bExecute:=FALSE;]]></ST>
       <LineId Id="2888" Count="0" />
       <LineId Id="2331" Count="5" />
       <LineId Id="2934" Count="0" />
-      <LineId Id="2332" Count="3" />
+      <LineId Id="2992" Count="3" />
       <LineId Id="2339" Count="0" />
       <LineId Id="2309" Count="0" />
       <LineId Id="2216" Count="0" />
@@ -393,9 +393,7 @@ stAxisStruct.control.bExecute:=FALSE;]]></ST>
       <LineId Id="1995" Count="6" />
       <LineId Id="2272" Count="0" />
       <LineId Id="1934" Count="0" />
-      <LineId Id="202" Count="3" />
-      <LineId Id="2" Count="0" />
-      <LineId Id="2980" Count="0" />
+      <LineId Id="202" Count="1" />
     </LineIds>
   </POU>
 </TcPlcObject>

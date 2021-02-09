@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
   <POU Name="FB_ErrorSystem" Id="{978ea49f-a940-4b4e-9f45-8cdde4adcf37}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_ErrorSystem
 
@@ -118,7 +118,7 @@ IF ErrorSystem.nNoError <> nNoErrorPrev OR ErrorSystem.nNoActive <> nNoActivePre
     nNoErrorPrev    := ErrorSystem.nNoError;
     nNoActivePrev   := ErrorSystem.nNoActive;
     //Copy the structure to GVL
-    MEMCPY ( ADR(GVL.stErrorSystemCom), ADR(ErrorSystem), SIZEOF(ST_ErrorSystem));
+    MEMCPY ( ADR(GVL_back.stErrorSystemCom), ADR(ErrorSystem), SIZEOF(ST_ErrorSystem));
 END_IF
 
 

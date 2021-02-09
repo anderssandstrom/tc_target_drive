@@ -3536,75 +3536,105 @@ Bit 15]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL.axes[1].inputs.bLimitFwd</Name>
-							<Comment><![CDATA[////Axis Inputs///////]]></Comment>
+							<Name>GVL_back.axes[1].stInputs.bLimitFwd</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL.axes[1].inputs.bLimitBwd</Name>
-							<Comment><![CDATA[Backward limit switch]]></Comment>
+							<Name>GVL_back.axes[1].stInputs.bLimitBwd</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL.axes[1].inputs.bHomeSensor</Name>
+							<Name>GVL_back.axes[1].stInputs.bHomeSensor</Name>
 							<Comment><![CDATA[Reference siganl for homing]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL.axes[1].inputs.bEncLAtch</Name>
-							<Comment><![CDATA[Reference index signal from inc. enconder]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL.axes[1].Axis.NcToPlc</Name>
+							<Name>GVL_back.axes[1].Axis.NcToPlc</Name>
 							<Type GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 						</Var>
 						<Var>
-							<Name>GVL.axes[2].inputs.bLimitFwd</Name>
-							<Comment><![CDATA[////Axis Inputs///////]]></Comment>
+							<Name>GVL_back.axes[2].stInputs.bLimitFwd</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL.axes[2].inputs.bLimitBwd</Name>
-							<Comment><![CDATA[Backward limit switch]]></Comment>
+							<Name>GVL_back.axes[2].stInputs.bLimitBwd</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL.axes[2].inputs.bHomeSensor</Name>
+							<Name>GVL_back.axes[2].stInputs.bHomeSensor</Name>
 							<Comment><![CDATA[Reference siganl for homing]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL.axes[2].inputs.bEncLAtch</Name>
-							<Comment><![CDATA[Reference index signal from inc. enconder]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL.axes[2].Axis.NcToPlc</Name>
+							<Name>GVL_back.axes[2].Axis.NcToPlc</Name>
 							<Type GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 						</Var>
 						<Var>
-							<Name>GVL.axes[3].inputs.bLimitFwd</Name>
-							<Comment><![CDATA[////Axis Inputs///////]]></Comment>
+							<Name>GVL_back.axes[3].stInputs.bLimitFwd</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL.axes[3].inputs.bLimitBwd</Name>
-							<Comment><![CDATA[Backward limit switch]]></Comment>
+							<Name>GVL_back.axes[3].stInputs.bLimitBwd</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL.axes[3].inputs.bHomeSensor</Name>
+							<Name>GVL_back.axes[3].stInputs.bHomeSensor</Name>
 							<Comment><![CDATA[Reference siganl for homing]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL.axes[3].inputs.bEncLAtch</Name>
-							<Comment><![CDATA[Reference index signal from inc. enconder]]></Comment>
+							<Name>GVL_back.axes[3].Axis.NcToPlc</Name>
+							<Type GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+						</Var>
+						<Var>
+							<Name>GVL.astAxes[1].stInputs.bLimitFwd</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL.axes[3].Axis.NcToPlc</Name>
+							<Name>GVL.astAxes[1].stInputs.bLimitBwd</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL.astAxes[1].stInputs.bHomeSensor</Name>
+							<Comment><![CDATA[Reference siganl for homing]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL.astAxes[1].Axis.NcToPlc</Name>
+							<Type GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+						</Var>
+						<Var>
+							<Name>GVL.astAxes[2].stInputs.bLimitFwd</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL.astAxes[2].stInputs.bLimitBwd</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL.astAxes[2].stInputs.bHomeSensor</Name>
+							<Comment><![CDATA[Reference siganl for homing]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL.astAxes[2].Axis.NcToPlc</Name>
+							<Type GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+						</Var>
+						<Var>
+							<Name>GVL.astAxes[3].stInputs.bLimitFwd</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL.astAxes[3].stInputs.bLimitBwd</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL.astAxes[3].stInputs.bHomeSensor</Name>
+							<Comment><![CDATA[Reference siganl for homing]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL.astAxes[3].Axis.NcToPlc</Name>
 							<Type GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 						</Var>
 					</Vars>
@@ -3664,15 +3694,27 @@ Bit 15]]></Comment>
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>GVL.axes[1].Axis.PlcToNc</Name>
+							<Name>GVL_back.axes[1].Axis.PlcToNc</Name>
 							<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
 						<Var>
-							<Name>GVL.axes[2].Axis.PlcToNc</Name>
+							<Name>GVL_back.axes[2].Axis.PlcToNc</Name>
 							<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
 						<Var>
-							<Name>GVL.axes[3].Axis.PlcToNc</Name>
+							<Name>GVL_back.axes[3].Axis.PlcToNc</Name>
+							<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+						</Var>
+						<Var>
+							<Name>GVL.astAxes[1].Axis.PlcToNc</Name>
+							<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+						</Var>
+						<Var>
+							<Name>GVL.astAxes[2].Axis.PlcToNc</Name>
+							<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+						</Var>
+						<Var>
+							<Name>GVL.astAxes[3].Axis.PlcToNc</Name>
 							<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
 					</Vars>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+  <DUT Name="ST_AxisInputs_1" Id="{9e5584bc-47d8-4416-91c4-2eebd5517782}">
+    <Declaration><![CDATA[TYPE ST_AxisInputs_1 :
+STRUCT
+    bLimitFwd AT %I*: BOOL;
+    bLimitBwd AT %I*: BOOL;
+    bHomeSensor AT %I*: BOOL; //Reference siganl for homing
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

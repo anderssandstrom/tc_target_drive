@@ -1,3 +1,6 @@
 [submodule "solution/tc_epicscommodule"]
 	path = twincat/solution/tc_epicscommodule
 	url = https://bitbucket.org/europeanspallationsource/tc_epicscommodule.git
+[submodule "twincat/solution/tc_project_app/tc_mca_std_lib_real"]
+	path = twincat/solution/tc_project_app/tc_mca_std_lib_real
+	url = https://bitbucket.org/europeanspallationsource/tc_mca_std_lib.git

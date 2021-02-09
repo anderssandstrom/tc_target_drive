@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
-  <DUT Name="ST_AxisConfig" Id="{e00fe310-8ff8-452a-800a-823efa83b1a3}">
-    <Declaration><![CDATA[TYPE ST_AxisConfig :
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+  <DUT Name="ST_AxisConfig_back" Id="{e00fe310-8ff8-452a-800a-823efa83b1a3}">
+    <Declaration><![CDATA[TYPE ST_AxisConfig_back :
 STRUCT
 
     ///////Axis Parameters//////
