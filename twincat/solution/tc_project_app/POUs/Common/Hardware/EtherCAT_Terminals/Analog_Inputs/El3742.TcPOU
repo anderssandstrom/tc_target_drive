@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+  <POU Name="El3742" Id="{5ca1b1bb-d285-4b0b-865e-18c7a559b02f}" SpecialFunc="None">
+    <Declaration><![CDATA[//EL3742 | 2-channel analog input terminal 0…20 mA, differential input, with oversampling
+FUNCTION_BLOCK El3742
+
+VAR_INPUT
+    En: BOOL;
+    iTerminal_ID : INT;
+    ErrorSystem : POINTER TO ST_ErrorSystem;
+END_VAR
+
+VAR_OUTPUT
+    EnO: BOOL;
+    bError: BOOL;
+	sErrorMessage : STRING;
+END_VAR
+
+VAR
+    WcState_WcState AT %I* : BOOL := FALSE;
+    InfoData_State  AT %I* : UINT := 0;
+
+    //FB-s
+    EL3742_Error    : FB_TerminalError;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(*
+* TODO: Test on hardware
+*)
+
+EnO:=En;
+
+EL3742_Error(
+    En := TRUE,
+    iTerminal_ID := iTerminal_ID,
+    bWcState := FALSE,
+    uiInfoData_State := InfoData_State,
+    pErrorSystem := ErrorSystem,
+    bError => bError,
+);
+
+IF bError THEN
+	sErrorMessage:=EL3742_Error.ErrorData.sErrorMessage;
+ELSE
+	sErrorMessage:='';
+END_IF
+]]></ST>
+    </Implementation>
+    <LineIds Name="El3742">
+      <LineId Id="16" Count="13" />
+      <LineId Id="73" Count="4" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="79" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

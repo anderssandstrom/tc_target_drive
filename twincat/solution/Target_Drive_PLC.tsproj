@@ -3641,6 +3641,28 @@ Bit 15]]></Comment>
 					<Vars VarGrpType="2" AreaNo="1">
 						<Name>PlcTask Outputs</Name>
 						<Var>
+							<Name>MAIN_NORMAL_MOTION.bOutput1</Name>
+							<Comment><![CDATA[Outputs: Power for Limit switches and Home Sensors (every 4th output)]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN_NORMAL_MOTION.bOutput5</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN_NORMAL_MOTION.bEncSupply1</Name>
+							<Comment><![CDATA[bOutput13 AT %Q*: BOOL := TRUE;
+bOutput17 AT %Q*: BOOL := TRUE;
+bOutput21 AT %Q*: BOOL := TRUE;
+bOutput24 AT %Q*: BOOL := TRUE;
+bOutput28 AT %Q*: BOOL := TRUE;]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN_NORMAL_MOTION.bEncSupply2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
 							<Name>MAIN.nAdditiveTorqueSetpoint</Name>
 							<Comment><![CDATA[ Unit 0.1%  (10=1%)]]></Comment>
 							<Type>INT</Type>
