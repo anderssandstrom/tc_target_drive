@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.5">
+  <POU Name="Axis_3" Id="{1bec8e22-b127-4216-8a57-916e22c1b930}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM Axis_3
+VAR
+	bLimitPowerAxis3 AT %Q*: BOOL := TRUE;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//Initial parameters of an Axis
+(*IF _TaskInfo[fbGetCurTaskIndex.index].FirstCycle THEN
+    //Initial default values:
+    GVL.astAxes[1].stControl.fVelocity := GVL.astAxes[1].stConfig.fVelocityDefaultSlow;
+    GVL.astAxes[1].stConfig.eHomeSeq := 0;
+    GVL.astAxes[1].stConfig.fHomePosition := 0.0;
+    GVL.astAxes[1].stConfig.fHomeFinishDistance := 0.0;
+END_IF*)
+
+//Define ACTIONS() or write exclusive code for an specific axis.
+//Eg. Stop when temperature reaches certain values, reduce speed if  a signal is activated, etc.
+]]></ST>
+    </Implementation>
+    <LineIds Name="Axis_3">
+      <LineId Id="20" Count="0" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="17" Count="2" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="23" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
