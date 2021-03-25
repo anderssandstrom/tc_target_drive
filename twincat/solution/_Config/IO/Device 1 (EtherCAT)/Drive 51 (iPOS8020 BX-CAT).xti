@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.11" ClassName="CFlbTermDef" SubType="9099">
+	<Box Id="51" BoxType="9099">
+		<Name>__FILENAME__</Name>
+		<ImageId>38</ImageId>
+		<EtherCAT SlaveType="2" PdiType="#x0e05" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="15" EoeType="1" FoeType="1" VendorId="#x000001a3" ProductCode="#x01bae7ad" RevisionNo="#x3531354a" InfoDataAddr="true" InfoDataSoeDS401="true" InfoDataDcTimes="true" PortPhys="17" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="iPOS8020 BX-CAT" Desc="iPOS8020 BX-CAT">
+			<SyncMan>001080002600010001000000000000008000001026010000</SyncMan>
+			<SyncMan>001480002200010002000000000000008000001422010000</SyncMan>
+			<SyncMan>00180e002400010003000000000000000600001824010000</SyncMan>
+			<SyncMan>001c15002000010004000000000000001000001c20010000</SyncMan>
+			<Fmmu>0000000000000000001800020100000001000000000000000000000000000000</Fmmu>
+			<Fmmu>0000000000000000001c00010100000002000000000000000000000000000000</Fmmu>
+			<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
+			<SwitchPortData>00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</SwitchPortData>
+			<BootStrapData>0010800000148000</BootStrapData>
+			<DcData>3003000000000000000000000000000001000000000000000000000000000000</DcData>
+			<DcMode>446353796e6300000000000000000000446353796e630000000000000000000000000000000000000000000000000000000000000000000000000000000030030100000000000000000000000000000000000000000000000000000000000000</DcMode>
+			<DcMode>467265650000000000000000000000004672656500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000</DcMode>
+			<MBoxUserCmdData>020003000900000003000000030000000000000000000000000000000000000020606000010000000943535600</MBoxUserCmdData>
+			<Pdo Name="Transmit PDO 1 mapping parameters" Index="#x1a00" Flags="#x0000" SyncMan="3">
+				<Entry Name="Statusword" Index="#x6041">
+					<Type>UINT</Type>
+				</Entry>
+				<Entry Name="Position actual value" Index="#x6064">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Torque (current) actual value" Index="#x6077">
+					<Type>INT</Type>
+				</Entry>
+			</Pdo>
+			<Pdo Name="Transmit PDO 2 mapping parameters" Index="#x1a01" Flags="#x0000" SyncMan="3">
+				<Entry Name="Following error actual value" Index="#x60f4">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Digital inputs" Index="#x60fd">
+					<Type>UDINT</Type>
+				</Entry>
+			</Pdo>
+			<Pdo Name="Transmit PDO 3 mapping parameters" Index="#x1a02" Flags="#x0000" SyncMan="3">
+				<Entry Name="Velocity actual value" Index="#x606c">
+					<Type>DINT</Type>
+				</Entry>
+			</Pdo>
+			<Pdo Name="Transmit PDO 4 mapping parameters" Index="#x1a03" Flags="#x0000" SyncMan="3">
+				<Entry Name="Modes of operation display" Index="#x6061">
+					<Type>SINT</Type>
+				</Entry>
+			</Pdo>
+			<Pdo Name="Receive PDO 1 mapping parameters" Index="#x1600" InOut="1" Flags="#x0000" SyncMan="2">
+				<Entry Name="Controlword" Index="#x6040">
+					<Type>UINT</Type>
+				</Entry>
+				<Entry Name="Target Velocity" Index="#x60ff">
+					<Type>DINT</Type>
+				</Entry>
+			</Pdo>
+			<Pdo Name="Receive PDO 2 mapping parameters" Index="#x1601" InOut="1" Flags="#x0000" SyncMan="2">
+				<Entry Name="Digital outputs - Physical outputs" Index="#x60fe" Sub="#x01">
+					<Type>UDINT</Type>
+				</Entry>
+				<Entry Name="Digital outputs - Bit mask" Index="#x60fe" Sub="#x02">
+					<Type>UDINT</Type>
+				</Entry>
+			</Pdo>
+			<Pdo Name="Receive PDO 3 mapping parameters" Index="#x1602" InOut="1" Flags="#x0000">
+				<Entry Name="Modes of operation" Index="#x6060">
+					<Type>SINT</Type>
+				</Entry>
+				<Entry Name="Target torque" Index="#x6071">
+					<Type>INT</Type>
+				</Entry>
+			</Pdo>
+			<Pdo Name="Receive PDO 4 mapping parameters" Index="#x1603" InOut="1" Flags="#x0000">
+				<Entry Name="Profile velocity" Index="#x6081">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Profile acceleration" Index="#x6083">
+					<Type>DINT</Type>
+				</Entry>
+			</Pdo>
+			<CoeProfile ProfileNo="402"/>
+		</EtherCAT>
+	</Box>
+</TcSmItem>
