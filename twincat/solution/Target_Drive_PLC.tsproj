@@ -2863,12 +2863,12 @@ Bit 15]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.nPort</Name>
-							<Type>WORD</Type>
-						</Var>
-						<Var>
 							<Name>MAIN.stAmsNetId</Name>
 							<Type GUID="{18071995-0000-0000-0000-000000000041}">AMSNETID</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.nPort</Name>
+							<Type>WORD</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.nMasterAxisPosition</Name>
@@ -2879,12 +2879,12 @@ Bit 15]]></Comment>
 							<Type>DINT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.dLatchedPosition</Name>
-							<Type>DINT</Type>
-						</Var>
-						<Var>
 							<Name>MAIN.inputDigSens2</Name>
 							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.dLatchedPosition</Name>
+							<Type>DINT</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.fbTemp.AI_RTD_Ch_1_Status</Name>

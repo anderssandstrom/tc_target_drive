@@ -358,6 +358,63 @@
     <Compile Include="tc_mca_std_lib_real\VISUs\visuTextLinks.TcTLO">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="tc_pils\tc_pils_app_specific\GVLs\GVL_PILS.TcGVL">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_app_specific\POUs\PILS_DEVICES.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\E_Permission.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\E_PILS_ParamControl.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\E_PILS_State.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\ST_1201.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\ST_1202.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\ST_1204.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\ST_1602.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\ST_5008.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\ST_5010.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\ST_AxisParameters.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\ST_DeviceInfo.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\ST_Indexer.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\ST_Indexer_InfoTyp0.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\ST_ParamOutput.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\U_IndexerData.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\POUs\COMM.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\POUs\PILS_device_types\FB_5008_Axis.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Visualization Manager.TcVMO">
       <SubType>Code</SubType>
     </Compile>
@@ -391,6 +448,14 @@
     <Folder Include="tc_mca_std_lib_real\POUs\Motion" />
     <Folder Include="tc_mca_std_lib_real\POUs\Motion\Homing" />
     <Folder Include="tc_mca_std_lib_real\VISUs" />
+    <Folder Include="tc_pils" />
+    <Folder Include="tc_pils\tc_pils_app_specific" />
+    <Folder Include="tc_pils\tc_pils_app_specific\GVLs" />
+    <Folder Include="tc_pils\tc_pils_app_specific\POUs" />
+    <Folder Include="tc_pils\tc_pils_generic" />
+    <Folder Include="tc_pils\tc_pils_generic\DUTs" />
+    <Folder Include="tc_pils\tc_pils_generic\POUs" />
+    <Folder Include="tc_pils\tc_pils_generic\POUs\PILS_device_types" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>
