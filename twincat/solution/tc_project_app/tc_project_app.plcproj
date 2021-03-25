@@ -98,6 +98,15 @@
     <Compile Include="POUs\Application_Specific\Axes\Axis_Template.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Application_Specific\Axes\Axis_1.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Application_Specific\Axes\Axis_2.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Application_Specific\Axes\Axis_3.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\Common\ChangeConfig\FB_ReadFloatParameter.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -239,12 +248,6 @@
     <Compile Include="POUs\Common\Hardware\EtherCAT_Terminals\System\EL9505.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Common\VISUs\languageSupport.TcTLO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Common\VISUs\visuTextLinks.TcTLO">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\MAIN_NORMAL_MOTION.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -343,6 +346,20 @@
     </Compile>
     <Compile Include="tc_mca_std_lib_real\VISUs\Error_Log_Visu.TcVIS">
       <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="tc_mca_std_lib_real\VISUs\languageSupport.TcTLO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib_real\VISUs\MainVisu.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="tc_mca_std_lib_real\VISUs\visuTextLinks.TcTLO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Visualization Manager.TcVMO">
+      <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -431,6 +448,10 @@
     <PlaceholderReference Include="Tc2_Standard">
       <DefaultResolution>Tc2_Standard, * (Beckhoff Automation GmbH)</DefaultResolution>
       <Namespace>Tc2_Standard</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc2_SUPS">
+      <DefaultResolution>Tc2_SUPS, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_SUPS</Namespace>
     </PlaceholderReference>
     <PlaceholderReference Include="Tc2_System">
       <DefaultResolution>Tc2_System, * (Beckhoff Automation GmbH)</DefaultResolution>

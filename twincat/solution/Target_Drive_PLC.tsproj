@@ -2863,12 +2863,12 @@ Bit 15]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.stAmsNetId</Name>
-							<Type GUID="{18071995-0000-0000-0000-000000000041}">AMSNETID</Type>
-						</Var>
-						<Var>
 							<Name>MAIN.nPort</Name>
 							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.stAmsNetId</Name>
+							<Type GUID="{18071995-0000-0000-0000-000000000041}">AMSNETID</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.nMasterAxisPosition</Name>
@@ -2879,12 +2879,12 @@ Bit 15]]></Comment>
 							<Type>DINT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.inputDigSens2</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
 							<Name>MAIN.dLatchedPosition</Name>
 							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.inputDigSens2</Name>
+							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.fbTemp.AI_RTD_Ch_1_Status</Name>
@@ -2963,17 +2963,6 @@ Bit 15]]></Comment>
 						<Var>
 							<Name>MAIN.fbIndraDrive.stDriveStatus.nP173_MarkerPosition</Name>
 							<Type>DINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.bLimitFwd1</Name>
-							<Comment><![CDATA[Steppers
-    M1Link:FB_NcAxis;
-	M2Link:FB_NcAxis;
-	M3Link:FB_NcAxis;
-	M1:FB_DriveVirtual;
-	M2:FB_DriveVirtual;
-	M3:FB_DriveVirtual;]]></Comment>
-							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.fb_s2_EL1809.bBI_1</Name>
@@ -3504,38 +3493,6 @@ Bit 15]]></Comment>
 							<Type>UINT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.bLimitBwd1</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.bHomeSensor1</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.bLimitFwd2</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.bLimitBwd2</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.bHomeSensor2</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.bLimitFwd3</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.bLimitBwd3</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.bHomeSensor3</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
 							<Name>GVL.astAxes[1].stInputs.bLimitFwd</Name>
 							<Type>BOOL</Type>
 						</Var>
@@ -3694,25 +3651,15 @@ Bit 15]]></Comment>
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN_NORMAL_MOTION.bOutput1</Name>
-							<Comment><![CDATA[Outputs: Power for Limit switches and Home Sensors (every 4th output)]]></Comment>
+							<Name>Axis_1.bLimitPowerAxis1</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN_NORMAL_MOTION.bOutput5</Name>
+							<Name>Axis_2.bLimitPowerAxis2</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN_NORMAL_MOTION.bEncSupply1</Name>
-							<Comment><![CDATA[bOutput13 AT %Q*: BOOL := TRUE;
-bOutput17 AT %Q*: BOOL := TRUE;
-bOutput21 AT %Q*: BOOL := TRUE;
-bOutput24 AT %Q*: BOOL := TRUE;
-bOutput28 AT %Q*: BOOL := TRUE;]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN_NORMAL_MOTION.bEncSupply2</Name>
+							<Name>Axis_3.bLimitPowerAxis3</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -6251,6 +6198,7 @@ Bit 8 - 15 : reserved]]></Comment>
 		<MappingInfo Identifier="{00000000-0010-0304-3000-040310000403}" Id="#x02030010"/>
 		<MappingInfo Identifier="{00000000-0020-0304-3000-040322000403}" Id="#x02030030"/>
 		<MappingInfo Identifier="{00000000-2041-0850-4020-500841000403}" Id="#x02030020"/>
+		<MappingInfo Identifier="{05000010-2041-0850-3000-040340205008}" Id="#x02030050" Watchdog="04000000080000000400000004000000"/>
 		<MappingInfo Identifier="{08502041-0020-0304-4020-500820000403}" Id="#x02030040" Watchdog="00000000000000000000000000000000"/>
 		<OwnerA Name="TINC^NC-Task 1 SAF^Axes^Axis 1">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Drive 49 (iPOS8020 BX-CAT)">
@@ -6499,6 +6447,10 @@ Bit 8 - 15 : reserved]]></Comment>
 				<Link VarA="PlcTask Inputs^MAIN.fb_s9_EL1252.WcState_WcState" VarB="WcState^WcState"/>
 				<Link VarA="PlcTask Inputs^MAIN.fb_s9_EL1252.bBI_1" VarB="Channel 1^Input"/>
 				<Link VarA="PlcTask Inputs^MAIN.fb_s9_EL1252.bBI_2" VarB="Channel 2^Input"/>
+			</OwnerB>
+			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 1">
+				<Link VarA="PlcTask Inputs^GVL.astAxes[1].Axis.NcToPlc" VarB="Outputs^ToPlc"/>
+				<Link VarA="PlcTask Outputs^GVL.astAxes[1].Axis.PlcToNc" VarB="Inputs^FromPlc"/>
 			</OwnerB>
 		</OwnerA>
 	</Mappings>

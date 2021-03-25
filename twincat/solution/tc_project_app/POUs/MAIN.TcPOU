@@ -59,15 +59,7 @@ VAR
 //	M1:FB_DriveVirtual;
 //	M2:FB_DriveVirtual;
 //	M3:FB_DriveVirtual;
-	bLimitFwd1 AT %I*: BOOL;
-	bLimitBwd1 AT %I*: BOOL;
-	bHomeSensor1 AT %I*: BOOL;
-	bLimitFwd2 AT %I*: BOOL;
-	bLimitBwd2 AT %I*: BOOL;
-	bHomeSensor2 AT %I*: BOOL;
-	bLimitFwd3 AT %I*: BOOL;
-	bLimitBwd3 AT %I*: BOOL;
-	bHomeSensor3 AT %I*: BOOL;
+
 	
 END_VAR]]></Declaration>
     <Implementation>
