@@ -344,7 +344,7 @@
     <Compile Include="tc_mca_std_lib_real\POUs\Motion\Homing\FB_Homing.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib_real\VISUs\Error_Log_Visu.TcVIS">
+    <Compile Include="tc_mca_std_lib_real\VISUs\Error_Log_Visu_1.TcVIS">
       <SubType>Code</SubType>
       <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
     </Compile>
