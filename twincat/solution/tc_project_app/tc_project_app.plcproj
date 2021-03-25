@@ -92,6 +92,12 @@
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Application_Specific\Applications\Application_Template.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Application_Specific\Axes\Axis_Template.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\Common\ChangeConfig\FB_ReadFloatParameter.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -342,6 +348,8 @@
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
+    <Folder Include="POUs\Application_Specific\Applications" />
+    <Folder Include="POUs\Application_Specific\Axes" />
     <Folder Include="POUs\Common" />
     <Folder Include="POUs\Common\ChangeConfig" />
     <Folder Include="POUs\Common\ErrorHandling" />
@@ -357,6 +365,7 @@
     <Folder Include="POUs\Common\Hardware\EtherCAT_Terminals\Feedback_Terminals" />
     <Folder Include="POUs\Common\Hardware\EtherCAT_Terminals\System" />
     <Folder Include="POUs\Common\VISUs" />
+    <Folder Include="POUs\Application_Specific" />
     <Folder Include="POUs\Target" />
     <Folder Include="tc_mca_std_lib_real" />
     <Folder Include="tc_mca_std_lib_real\DUTs" />
