@@ -3,6 +3,10 @@
   <POU Name="MAIN" Id="{40828a63-f1c1-40a3-a7c5-8a47be350a36}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
+	
+	hmiAxisSelection: INT := 1; //Not possible to use local hmi variables for array indexes
+    afbAxes: ARRAY [1..GVL_APP.nAXIS_NUM] OF FB_Axis;
+	
 	stAmsNetId	AT %I*	              : AMSNETID;
 	nPort	AT %I*                    : WORD;
 	nMasterAxisPosition AT %I*        : DINT;

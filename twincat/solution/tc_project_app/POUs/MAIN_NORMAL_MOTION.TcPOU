@@ -4,8 +4,8 @@
     <Declaration><![CDATA[PROGRAM MAIN_NORMAL_MOTION
 VAR
     sVersion: STRING := '1.0.0';
-    afbAxes: ARRAY [1..GVL_APP.nAXIS_NUM] OF FB_Axis;
-    hmiAxisSelection: INT := 1; //Not possible to use local hmi variables for array indexes
+
+    //hmiAxisSelection: INT := 1; //Not possible to use local hmi variables for array indexes
 
 //Startup, Shutdown and UPS
     fbUPS: FB_S_UPS_CX51x0;
@@ -37,7 +37,7 @@ GVL.fbGetCurTaskIndex();
 
 //Create an stAxisStruct for every axis in the project.
 FOR GVL.iAxis := 1 TO GVL_APP.nAXIS_NUM DO
-    afbAxes[GVL.iAxis](stAxisStruct := GVL.astAxes[GVL.iAxis]);
+    Main.afbAxes[GVL.iAxis](stAxisStruct := GVL.astAxes[GVL.iAxis]);
 END_FOR]]></ST>
       </Implementation>
     </Action>
