@@ -10,7 +10,7 @@ END_VAR
       <ST><![CDATA[//Initial parameters of an Axis
 IF _TaskInfo[fbGetCurTaskIndex.index].FirstCycle THEN
     //Initial default values:
-    GVL.astAxes[1].stConfig.eHomeSeq := 1;
+    GVL.astAxes[1].stConfig.eHomeSeq := 0;
     GVL.astAxes[1].stConfig.fHomePosition := 0.0;
     GVL.astAxes[1].stConfig.fHomeFinishDistance := -1;
 END_IF
