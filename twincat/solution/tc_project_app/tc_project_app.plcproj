@@ -92,6 +92,9 @@
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="PlcTaskCom.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\Application_Specific\Applications\Application_Template.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -413,6 +416,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="tc_pils\tc_pils_generic\POUs\PILS_device_types\FB_5008_Axis.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\POUs\PILS_device_types\FB_5010_Axis.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Visualization Manager.TcVMO">

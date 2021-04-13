@@ -1322,28 +1322,12 @@ Bit 15]]></Comment>
 			<Vars VarGrpType="1">
 				<Name>PlcTask Inputs</Name>
 				<Var>
-					<Name>MAIN.inputDigSens1</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
 					<Name>MAIN.stAmsNetId</Name>
 					<Type GUID="{18071995-0000-0000-0000-000000000041}">AMSNETID</Type>
 				</Var>
 				<Var>
 					<Name>MAIN.nPort</Name>
 					<Type>WORD</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.nMasterAxisPosition</Name>
-					<Type>DINT</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.nMainDriveMarkPosition</Name>
-					<Type>DINT</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.inputDigSens2</Name>
-					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>MAIN.dLatchedPosition</Name>
@@ -2006,57 +1990,6 @@ Bit 15]]></Comment>
 					<Name>GVL.astAxes[3].Axis.NcToPlc</Name>
 					<Type GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 				</Var>
-				<Var>
-					<Name>GVL_back.axes[1].stInputs.bLimitFwd</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>GVL_back.axes[1].stInputs.bLimitBwd</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>GVL_back.axes[1].stInputs.bHomeSensor</Name>
-					<Comment><![CDATA[Reference siganl for homing]]></Comment>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>GVL_back.axes[1].Axis.NcToPlc</Name>
-					<Type GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
-				</Var>
-				<Var>
-					<Name>GVL_back.axes[2].stInputs.bLimitFwd</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>GVL_back.axes[2].stInputs.bLimitBwd</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>GVL_back.axes[2].stInputs.bHomeSensor</Name>
-					<Comment><![CDATA[Reference siganl for homing]]></Comment>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>GVL_back.axes[2].Axis.NcToPlc</Name>
-					<Type GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
-				</Var>
-				<Var>
-					<Name>GVL_back.axes[3].stInputs.bLimitFwd</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>GVL_back.axes[3].stInputs.bLimitBwd</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>GVL_back.axes[3].stInputs.bHomeSensor</Name>
-					<Comment><![CDATA[Reference siganl for homing]]></Comment>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>GVL_back.axes[3].Axis.NcToPlc</Name>
-					<Type GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
-				</Var>
 			</Vars>
 			<Vars VarGrpType="2" AreaNo="1">
 				<Name>PlcTask Outputs</Name>
@@ -2110,6 +2043,91 @@ Bit 15]]></Comment>
 					<Type>DINT</Type>
 				</Var>
 				<Var>
+					<Name>GVL.astAxes[1].Axis.PlcToNc</Name>
+					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>GVL.astAxes[2].Axis.PlcToNc</Name>
+					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>GVL.astAxes[3].Axis.PlcToNc</Name>
+					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+				</Var>
+			</Vars>
+			<Vars VarGrpType="1" ContextId="1" AreaNo="16">
+				<Name>PlcTaskCom Inputs</Name>
+				<Var>
+					<Name>MAIN.inputDigSens1</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.nMasterAxisPosition</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.nMainDriveMarkPosition</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.inputDigSens2</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_back.axes[1].stInputs.bLimitFwd</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_back.axes[1].stInputs.bLimitBwd</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_back.axes[1].stInputs.bHomeSensor</Name>
+					<Comment><![CDATA[Reference siganl for homing]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_back.axes[1].Axis.NcToPlc</Name>
+					<Type GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>GVL_back.axes[2].stInputs.bLimitFwd</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_back.axes[2].stInputs.bLimitBwd</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_back.axes[2].stInputs.bHomeSensor</Name>
+					<Comment><![CDATA[Reference siganl for homing]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_back.axes[2].Axis.NcToPlc</Name>
+					<Type GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>GVL_back.axes[3].stInputs.bLimitFwd</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_back.axes[3].stInputs.bLimitBwd</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_back.axes[3].stInputs.bHomeSensor</Name>
+					<Comment><![CDATA[Reference siganl for homing]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_back.axes[3].Axis.NcToPlc</Name>
+					<Type GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+				</Var>
+			</Vars>
+			<Vars VarGrpType="2" ContextId="1" AreaNo="17">
+				<Name>PlcTaskCom Outputs</Name>
+				<Var>
 					<Name>MAIN.iTorqueCommandValue</Name>
 					<Type>INT</Type>
 				</Var>
@@ -2124,18 +2142,6 @@ Bit 15]]></Comment>
 				<Var>
 					<Name>Axis_3.bLimitPowerAxis3</Name>
 					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>GVL.astAxes[1].Axis.PlcToNc</Name>
-					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
-				</Var>
-				<Var>
-					<Name>GVL.astAxes[2].Axis.PlcToNc</Name>
-					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
-				</Var>
-				<Var>
-					<Name>GVL.astAxes[3].Axis.PlcToNc</Name>
-					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
 				<Var>
 					<Name>GVL_back.axes[1].Axis.PlcToNc</Name>
@@ -2401,9 +2407,19 @@ Bit 15]]></Comment>
 					<Priority>20</Priority>
 					<CycleTime>1000000</CycleTime>
 				</Context>
+				<Context>
+					<Id NeedCalleeCall="true">1</Id>
+					<Name>PlcTaskCom</Name>
+					<ManualConfig>
+						<OTCID>#x02010020</OTCID>
+					</ManualConfig>
+					<Priority>26</Priority>
+					<CycleTime>1000000</CycleTime>
+				</Context>
 			</Contexts>
 			<TaskPouOids>
 				<TaskPouOid Prio="20" OTCID="#x08502041"/>
+				<TaskPouOid Prio="26" OTCID="#x08502042"/>
 			</TaskPouOids>
 		</Instance>
 	</Project>
@@ -2433,8 +2449,8 @@ Bit 15]]></Comment>
 				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS92_BiPolarTorqueLimit" VarB="MDT^Bipolar torque/force limit value"/>
 				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.stS134_MasterControlWord" VarB="MDT^Master control word"/>
 				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.stS145_SignalControlWord" VarB="MDT^Signal control word"/>
-				<Link VarA="PlcTask Outputs^MAIN.iTorqueCommandValue" VarB="MDT^Torque/force command value"/>
 				<Link VarA="PlcTask Outputs^MAIN.nAdditiveTorqueSetpoint" VarB="MDT^Additive torque/force command value"/>
+				<Link VarA="PlcTaskCom Outputs^MAIN.iTorqueCommandValue" VarB="MDT^Torque/force command value"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Drive 49 (iPOS8020 BX-CAT)">
 				<Link VarA="PlcTask Inputs^MAIN.fbTemp.InfoData_State" VarB="InfoData^State"/>
