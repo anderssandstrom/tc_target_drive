@@ -17,6 +17,277 @@
 	<Box Id="10" BoxType="9099" BoxFlags="#x00000020">
 		<Name>__FILENAME__</Name>
 		<ImageId>1000</ImageId>
+		<Xml>
+			<EL72xxDriveTool>
+				<InitCmds>
+					<InitCmd Index="7186" SubIndex="0" MotorDataLevel="0" DisableMode="0">
+						<Data>02</Data>
+					</InitCmd>
+					<InitCmd Index="7186" SubIndex="1" MotorDataLevel="0" DisableMode="0">
+						<Data>0016</Data>
+					</InitCmd>
+					<InitCmd Index="7186" SubIndex="2" MotorDataLevel="0" DisableMode="0">
+						<Data>0116</Data>
+					</InitCmd>
+					<InitCmd Index="7186" SubIndex="3" MotorDataLevel="0" DisableMode="0">
+						<Data>0000</Data>
+					</InitCmd>
+					<InitCmd Index="7186" SubIndex="4" MotorDataLevel="0" DisableMode="0">
+						<Data>0000</Data>
+					</InitCmd>
+					<InitCmd Index="7186" SubIndex="5" MotorDataLevel="0" DisableMode="0">
+						<Data>0000</Data>
+					</InitCmd>
+					<InitCmd Index="7186" SubIndex="6" MotorDataLevel="0" DisableMode="0">
+						<Data>0000</Data>
+					</InitCmd>
+					<InitCmd Index="7186" SubIndex="7" MotorDataLevel="0" DisableMode="0">
+						<Data>0000</Data>
+					</InitCmd>
+					<InitCmd Index="7187" SubIndex="0" MotorDataLevel="0" DisableMode="0">
+						<Data>02</Data>
+					</InitCmd>
+					<InitCmd Index="7187" SubIndex="1" MotorDataLevel="0" DisableMode="0">
+						<Data>001a</Data>
+					</InitCmd>
+					<InitCmd Index="7187" SubIndex="2" MotorDataLevel="0" DisableMode="0">
+						<Data>011a</Data>
+					</InitCmd>
+					<InitCmd Index="7187" SubIndex="3" MotorDataLevel="0" DisableMode="0">
+						<Data>0000</Data>
+					</InitCmd>
+					<InitCmd Index="7187" SubIndex="4" MotorDataLevel="0" DisableMode="0">
+						<Data>0000</Data>
+					</InitCmd>
+					<InitCmd Index="7187" SubIndex="5" MotorDataLevel="0" DisableMode="0">
+						<Data>0000</Data>
+					</InitCmd>
+					<InitCmd Index="7187" SubIndex="6" MotorDataLevel="0" DisableMode="0">
+						<Data>0000</Data>
+					</InitCmd>
+					<InitCmd Index="7187" SubIndex="7" MotorDataLevel="0" DisableMode="0">
+						<Data>0000</Data>
+					</InitCmd>
+					<InitCmd Index="7187" SubIndex="8" MotorDataLevel="0" DisableMode="0">
+						<Data>0000</Data>
+					</InitCmd>
+					<InitCmd Index="7218" SubIndex="1" MotorDataLevel="0" DisableMode="0">
+						<Data>0000</Data>
+					</InitCmd>
+					<InitCmd Index="7218" SubIndex="2" MotorDataLevel="0" DisableMode="0">
+						<Data>90d00300</Data>
+					</InitCmd>
+					<InitCmd Index="7218" SubIndex="8" MotorDataLevel="0" DisableMode="0">
+						<Data>0000</Data>
+					</InitCmd>
+					<InitCmd Index="7219" SubIndex="1" MotorDataLevel="0" DisableMode="0">
+						<Data>0000</Data>
+					</InitCmd>
+					<InitCmd Index="7219" SubIndex="2" MotorDataLevel="0" DisableMode="0">
+						<Data>90d00300</Data>
+					</InitCmd>
+					<InitCmd Index="7219" SubIndex="8" MotorDataLevel="0" DisableMode="0">
+						<Data>0000</Data>
+					</InitCmd>
+					<InitCmd Index="32768" SubIndex="1" MotorDataLevel="0" DisableMode="0">
+						<Data>00</Data>
+					</InitCmd>
+					<InitCmd Index="32768" SubIndex="17" MotorDataLevel="0" DisableMode="0">
+						<Data>01000000</Data>
+					</InitCmd>
+					<InitCmd Index="32768" SubIndex="18" MotorDataLevel="0" DisableMode="0">
+						<Data>14</Data>
+					</InitCmd>
+					<InitCmd Index="32768" SubIndex="19" MotorDataLevel="0" DisableMode="0">
+						<Data>0c</Data>
+					</InitCmd>
+					<InitCmd Index="32776" SubIndex="1" MotorDataLevel="0" DisableMode="0">
+						<Data>00</Data>
+					</InitCmd>
+					<InitCmd Index="32776" SubIndex="2" MotorDataLevel="0" DisableMode="0">
+						<Data>00</Data>
+					</InitCmd>
+					<InitCmd Index="32776" SubIndex="17" MotorDataLevel="0" DisableMode="0">
+						<Data>f401</Data>
+					</InitCmd>
+					<InitCmd Index="32776" SubIndex="18" MotorDataLevel="0" DisableMode="0">
+						<Data>0000803f</Data>
+					</InitCmd>
+					<InitCmd Index="32776" SubIndex="19" MotorDataLevel="0" DisableMode="0">
+						<Data>00</Data>
+					</InitCmd>
+					<InitCmd Index="32776" SubIndex="20" MotorDataLevel="0" DisableMode="0">
+						<Data>32</Data>
+					</InitCmd>
+					<InitCmd Index="32784" SubIndex="1" MotorDataLevel="0" DisableMode="0">
+						<Data>00</Data>
+					</InitCmd>
+					<InitCmd Index="32784" SubIndex="2" MotorDataLevel="0" DisableMode="0">
+						<Data>00</Data>
+					</InitCmd>
+					<InitCmd Index="32784" SubIndex="3" MotorDataLevel="0" DisableMode="0">
+						<Data>00</Data>
+					</InitCmd>
+					<InitCmd Index="32784" SubIndex="17" MotorDataLevel="0" DisableMode="0">
+						<Data>01000000</Data>
+					</InitCmd>
+					<InitCmd Index="32784" SubIndex="18" MotorDataLevel="0" DisableMode="0">
+						<Data>0a00</Data>
+					</InitCmd>
+					<InitCmd Index="32784" SubIndex="19" MotorDataLevel="0" DisableMode="0">
+						<Data>6400</Data>
+					</InitCmd>
+					<InitCmd Index="32784" SubIndex="20" MotorDataLevel="0" DisableMode="0">
+						<Data>32000000</Data>
+					</InitCmd>
+					<InitCmd Index="32784" SubIndex="21" MotorDataLevel="0" DisableMode="0">
+						<Data>96000000</Data>
+					</InitCmd>
+					<InitCmd Index="32784" SubIndex="25" MotorDataLevel="0" DisableMode="0">
+						<Data>80bb0000</Data>
+					</InitCmd>
+					<InitCmd Index="32784" SubIndex="26" MotorDataLevel="0" DisableMode="0">
+						<Data>901a0000</Data>
+					</InitCmd>
+					<InitCmd Index="32784" SubIndex="27" MotorDataLevel="0" DisableMode="0">
+						<Data>60ea0000</Data>
+					</InitCmd>
+					<InitCmd Index="32784" SubIndex="41" MotorDataLevel="0" DisableMode="0">
+						<Data>50</Data>
+					</InitCmd>
+					<InitCmd Index="32784" SubIndex="42" MotorDataLevel="0" DisableMode="0">
+						<Data>69</Data>
+					</InitCmd>
+					<InitCmd Index="32784" SubIndex="43" MotorDataLevel="0" DisableMode="0">
+						<Data>2003</Data>
+					</InitCmd>
+					<InitCmd Index="32784" SubIndex="44" MotorDataLevel="0" DisableMode="0">
+						<Data>e803</Data>
+					</InitCmd>
+					<InitCmd Index="32784" SubIndex="49" MotorDataLevel="0" DisableMode="0">
+						<Data>00000400</Data>
+					</InitCmd>
+					<InitCmd Index="32784" SubIndex="50" MotorDataLevel="0" DisableMode="0">
+						<Data>e803</Data>
+					</InitCmd>
+					<InitCmd Index="32784" SubIndex="51" MotorDataLevel="0" DisableMode="0">
+						<Data>0000</Data>
+					</InitCmd>
+					<InitCmd Index="32784" SubIndex="57" MotorDataLevel="0" DisableMode="0">
+						<Data>01</Data>
+					</InitCmd>
+					<InitCmd Index="32784" SubIndex="58" MotorDataLevel="0" DisableMode="0">
+						<Data>01</Data>
+					</InitCmd>
+					<InitCmd Index="32784" SubIndex="65" MotorDataLevel="0" DisableMode="0">
+						<Data>4001</Data>
+					</InitCmd>
+					<InitCmd Index="32784" SubIndex="73" MotorDataLevel="0" DisableMode="0">
+						<Data>70f50000</Data>
+					</InitCmd>
+					<InitCmd Index="32784" SubIndex="80" MotorDataLevel="0" DisableMode="0">
+						<Data>ffffffff</Data>
+					</InitCmd>
+					<InitCmd Index="32784" SubIndex="81" MotorDataLevel="0" DisableMode="0">
+						<Data>0000</Data>
+					</InitCmd>
+					<InitCmd Index="32784" SubIndex="82" MotorDataLevel="0" DisableMode="0">
+						<Data>0000</Data>
+					</InitCmd>
+					<InitCmd Index="32784" SubIndex="83" MotorDataLevel="0" DisableMode="0">
+						<Data>0a000000</Data>
+					</InitCmd>
+					<InitCmd Index="32784" SubIndex="84" MotorDataLevel="0" DisableMode="0">
+						<Data>00000000</Data>
+					</InitCmd>
+					<InitCmd Index="32785" SubIndex="17" MotorDataLevel="0" DisableMode="0">
+						<Data>70170000</Data>
+					</InitCmd>
+					<InitCmd Index="32785" SubIndex="18" MotorDataLevel="0" DisableMode="0">
+						<Data>e8030000</Data>
+					</InitCmd>
+					<InitCmd Index="32785" SubIndex="19" MotorDataLevel="0" DisableMode="0">
+						<Data>03</Data>
+					</InitCmd>
+					<InitCmd Index="32785" SubIndex="21" MotorDataLevel="0" DisableMode="0">
+						<Data>0000</Data>
+					</InitCmd>
+					<InitCmd Index="32785" SubIndex="22" MotorDataLevel="0" DisableMode="0">
+						<Data>00000000</Data>
+					</InitCmd>
+					<InitCmd Index="32785" SubIndex="24" MotorDataLevel="0" DisableMode="0">
+						<Data>00000000</Data>
+					</InitCmd>
+					<InitCmd Index="32785" SubIndex="25" MotorDataLevel="0" DisableMode="0">
+						<Data>0e00</Data>
+					</InitCmd>
+					<InitCmd Index="32785" SubIndex="27" MotorDataLevel="0" DisableMode="0">
+						<Data>00000400</Data>
+					</InitCmd>
+					<InitCmd Index="32785" SubIndex="41" MotorDataLevel="0" DisableMode="0">
+						<Data>50</Data>
+					</InitCmd>
+					<InitCmd Index="32785" SubIndex="42" MotorDataLevel="0" DisableMode="0">
+						<Data>69</Data>
+					</InitCmd>
+					<InitCmd Index="32785" SubIndex="45" MotorDataLevel="0" DisableMode="0">
+						<Data>2800</Data>
+					</InitCmd>
+					<InitCmd Index="32786" SubIndex="1" MotorDataLevel="0" DisableMode="0">
+						<Data>00</Data>
+					</InitCmd>
+					<InitCmd Index="32786" SubIndex="17" MotorDataLevel="0" DisableMode="0">
+						<Data>0000</Data>
+					</InitCmd>
+					<InitCmd Index="32786" SubIndex="18" MotorDataLevel="0" DisableMode="0">
+						<Data>0000</Data>
+					</InitCmd>
+					<InitCmd Index="32786" SubIndex="19" MotorDataLevel="0" DisableMode="0">
+						<Data>0000</Data>
+					</InitCmd>
+					<InitCmd Index="32786" SubIndex="20" MotorDataLevel="0" DisableMode="0">
+						<Data>0000</Data>
+					</InitCmd>
+					<InitCmd Index="61448" SubIndex="0" MotorDataLevel="0" DisableMode="0">
+						<Data>00000000</Data>
+					</InitCmd>
+					<InitCmd Index="61456" SubIndex="0" MotorDataLevel="0" DisableMode="0">
+						<Data>02</Data>
+					</InitCmd>
+					<InitCmd Index="61456" SubIndex="1" MotorDataLevel="0" DisableMode="0">
+						<Data>01020000</Data>
+					</InitCmd>
+					<InitCmd Index="61456" SubIndex="2" MotorDataLevel="0" DisableMode="0">
+						<Data>e6020000</Data>
+					</InitCmd>
+					<InitCmd Index="61569" SubIndex="1" MotorDataLevel="0" DisableMode="0">
+						<Data>00001500</Data>
+					</InitCmd>
+				</InitCmds>
+				<StatusBar>
+					<Element option="0" SortOder="0" SubIdx="1">
+						<Index>24592</Index>
+						<Width>100</Width>
+					</Element>
+					<Element option="0" SortOder="0" SubIdx="18">
+						<Index>36880</Index>
+						<Width>105</Width>
+					</Element>
+					<Element option="0" SortOder="0" SubIdx="17">
+						<Index>36888</Index>
+						<Width>100</Width>
+					</Element>
+					<Element option="0" SortOder="0" SubIdx="17">
+						<Index>36880</Index>
+						<Width>100</Width>
+					</Element>
+					<Element option="0" SortOder="0" SubIdx="3">
+						<Index>24592</Index>
+						<Width>200</Width>
+					</Element>
+				</StatusBar>
+			</EL72xxDriveTool>
+		</Xml>
 		<EtherCAT SlaveType="2" PdiType="#x0405" MboxDataLinkLayer="true" StateMBoxPolling="true" CfgModeSafeOp="true" CycleMBoxPollingTime="0" CoeType="39" FoeType="1" VendorId="#x00000002" ProductCode="#x1c213052" RevisionNo="#x00150000" InfoDataAddr="true" InfoDataSoeDS401="true" InfoDataDcTimes="true" TimeoutMailbox2="2000" CheckRevisionNoType="3" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL7201 1Ch. MDP742 Servo motor output stage (50V, 4A)" Desc="EL7201">
 			<SyncMan>001080002600010001000000500080008000001026010000</SyncMan>
 			<SyncMan>801080002200010002000000500080008000801022010000</SyncMan>
@@ -28,7 +299,8 @@
 			<BootStrapData>0010f400f410f400</BootStrapData>
 			<DcData>000700000000000030750000e80300000100ffff000000000000000000000000</DcData>
 			<DcMode>4443000000000000000000000000000044432d53796e6368726f6e0000000000000000000000000000000000000000000000000030750000e8030000ffff00070100000000000000000000000000000000000000000000000000000000000000</DcMode>
-			<MBoxUserCmdData>004003000c0000000000000003000000000000000000000000000000000000002081f001040000000000150000</MBoxUserCmdData>
+			<MBoxUserCmdData>004003000c0000000000000000000000000000000000000000000000000000002081f001040000000000150000</MBoxUserCmdData>
+			<MBoxUserCmdData>0200030009000000190000000000000000000000000000000000000000000000200080010100000000496e7665727420666565646261636b20646972656374696f6e00</MBoxUserCmdData>
 			<Pdo Name="FB Position" Index="#x1a00" Flags="#x0010" SyncMan="3">
 				<Entry Name="Position" Index="#x6000" Sub="#x11">
 					<Type>UDINT</Type>

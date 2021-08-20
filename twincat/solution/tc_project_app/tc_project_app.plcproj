@@ -16,6 +16,12 @@
     <AutoUpdateVisuProfile>true</AutoUpdateVisuProfile>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DUTs\Bridge Terminal\ST_Bridge_TDU.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\Bridge Terminal\ST_Bridge_TSCS.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DUTs\E_HOME_STATE.TcDUT">
       <SubType>Code</SubType>
     </Compile>
@@ -79,6 +85,10 @@
     <Compile Include="GlobalTextList.TcGTLO">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GVLs\BridgeTerminal_TSCS.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
     <Compile Include="GVLs\GVL_APP.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
@@ -108,6 +118,21 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Application_Specific\Axes\Axis_3.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Bridge Terminal\TSCS_Bridge_Inputs.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Bridge Terminal\TSCS_Bridge_Outputs.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Bridge Terminal\TSCS_Bridge_Test.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Data Type Conversion Functions\SCALE_REAL_TO_UDINT.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Data Type Conversion Functions\SCALE_UDINT_TO_REAL.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Common\ChangeConfig\FB_ReadFloatParameter.TcPOU">
@@ -423,9 +448,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DUTs" />
+    <Folder Include="DUTs\Bridge Terminal" />
     <Folder Include="GVLs" />
     <Folder Include="POUs\Application_Specific\Applications" />
     <Folder Include="POUs\Application_Specific\Axes" />
+    <Folder Include="POUs\Data Type Conversion Functions" />
     <Folder Include="POUs\Common" />
     <Folder Include="POUs\Common\ChangeConfig" />
     <Folder Include="POUs\Common\ErrorHandling" />
@@ -442,6 +469,7 @@
     <Folder Include="POUs\Common\Hardware\EtherCAT_Terminals\System" />
     <Folder Include="POUs\Common\VISUs" />
     <Folder Include="POUs\Application_Specific" />
+    <Folder Include="POUs\Bridge Terminal" />
     <Folder Include="POUs\Target" />
     <Folder Include="tc_mca_std_lib_real" />
     <Folder Include="tc_mca_std_lib_real\DUTs" />

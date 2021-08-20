@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+  <DUT Name="ST_Bridge_TDU" Id="{16478b7d-ec9f-46b2-b9f0-b1a6c173221e}">
+    <Declaration><![CDATA[TYPE ST_Bridge_TDU :
+STRUCT
+	//  Outputs from TDU PLC to TSCS PLC
+	//	NOTE: 
+    //		Generic framework. Map signals in the POU.
+	
+	// Booleans
+	Byte_01 : USINT;	// 8 Booleans from TDU
+	Byte_02 : USINT;	// 8 Booleans from TDU
+	Byte_03 : USINT;	// 8 Booleans from TDU
+	
+	// UINTs
+	UINT_01 : UINT;		// 16 bit Integer from TDU
+	UINT_02 : UINT;		// 16 bit Integer from TDU
+	UINT_03 : UINT;		// 16 bit Integer from TDU
+	UINT_04 : UINT;		// 16 bit Integer from TDU
+	UINT_05 : UINT;		// 16 bit Integer from TDU
+
+	// Reals
+	UDINT_01 : UDINT;	// 32 bit Real from TDU
+	UDINT_02 : UDINT;	// 32 bit Real from TDU
+	UDINT_03 : UDINT;	// 32 bit Real from TDU
+	UDINT_04 : UDINT;	// 32 bit Real from TDU
+ 	UDINT_05 : UDINT;	// 32 bit Real from TDU
+	UDINT_06 : UDINT;	// 32 bit Real from TDU
+	UDINT_07 : UDINT;	// 32 bit Real from TDU
+	UDINT_08 : UDINT;	// 32 bit Real from TDU
+	UDINT_09 : UDINT;	// 32 bit Real from TDU
+	UDINT_10 : UDINT;	// 32 bit Real from TDU
+	UDINT_11 : UDINT;	// 32 bit Real from TDU
+	UDINT_12 : UDINT;	// 32 bit Real from TDU
+	UDINT_13 : UDINT;	// 32 bit Real from TDU
+	UDINT_14 : UDINT;	// 32 bit Real from TDU
+	UDINT_15 : UDINT;	// 32 bit Real from TDU
+	UDINT_16 : UDINT;	// 32 bit Real from TDU
+	UDINT_17 : UDINT;	// 32 bit Real from TDU
+	UDINT_18 : UDINT;	// 32 bit Real from TDU
+	UDINT_19 : UDINT;	// 32 bit Real from TDU
+	UDINT_20 : UDINT;	// 32 bit Real from TDU
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

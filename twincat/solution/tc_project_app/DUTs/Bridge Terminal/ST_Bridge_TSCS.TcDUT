@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+  <DUT Name="ST_Bridge_TSCS" Id="{7d2aed18-8bf0-4a0d-adc6-fa69b66256b7}">
+    <Declaration><![CDATA[TYPE ST_Bridge_TSCS :
+STRUCT
+	// 	Outputs of TSCS PLC to TDU PLC and TMS PLC
+	//	NOTE: 
+    //		Generic framework. Map signals in the POU.
+	//		List does not include readback signals. Direct Input -> Output links are configured at the terminals.  
+	
+	// BOOLEANS
+	TSCS_Byte_01 : USINT;	// 8 Booleans, originating in TSCS
+	TSCS_Byte_02 : USINT;	// 8 Booleans, originating in TSCS
+	TSCS_Byte_03 : USINT;	// 8 Booleans, originating in TSCS
+	
+	// INTEGERS
+	TSCS_UINT_01 : UINT;	// 16 bit integer, originating in TSCS
+	TSCS_UINT_02 : UINT;	// 16 bit integer, originating in TSCS
+	TSCS_UINT_03 : UINT;	// 16 bit integer, originating in TSCS
+	TSCS_UINT_04 : UINT;	// 16 bit integer, originating in TSCS
+	TSCS_UINT_05 : UINT;	// 16 bit integer, originating in TSCS
+
+	// REALS
+	TSCS_UDINT_01 : UDINT;	// 32 bit Real, originating in TSCS
+	TSCS_UDINT_02 : UDINT;	// 32 bit Real, originating in TSCS
+	TSCS_UDINT_03 : UDINT;	// 32 bit Real, originating in TSCS
+	TSCS_UDINT_04 : UDINT;	// 32 bit Real, originating in TSCS
+ 	TSCS_UDINT_05 : UDINT;	// 32 bit Real, originating in TSCS
+	TSCS_UDINT_06 : UDINT;	// 32 bit Real, originating in TSCS
+	TSCS_UDINT_07 : UDINT;	// 32 bit Real, originating in TSCS
+	TSCS_UDINT_08 : UDINT;	// 32 bit Real, originating in TSCS
+	TSCS_UDINT_09 : UDINT;	// 32 bit Real, originating in TSCS
+	TSCS_UDINT_10 : UDINT;	// 32 bit Real, originating in TSCS
+	TSCS_UDINT_11 : UDINT;	// 32 bit Real, originating in TSCS
+	TSCS_UDINT_12 : UDINT;	// 32 bit Real, originating in TSCS
+	TSCS_UDINT_13 : UDINT;	// 32 bit Real, originating in TSCS
+	TSCS_UDINT_14 : UDINT;	// 32 bit Real, originating in TSCS
+	TSCS_UDINT_15 : UDINT;	// 32 bit Real, originating in TSCS
+	TSCS_UDINT_16 : UDINT;	// 32 bit Real, originating in TSCS
+	TSCS_UDINT_17 : UDINT;	// 32 bit Real, originating in TSCS
+	TSCS_UDINT_18 : UDINT;	// 32 bit Real, originating in TSCS
+	TSCS_UDINT_19 : UDINT;	// 32 bit Real, originating in TSCS
+	TSCS_UDINT_20 : UDINT;	// 32 bit Real, originating in TSCS
+	
+	(*################################################################*)
+	// Readback signals, originating in TDU
+	// BOOLEANS
+	TDU_RB_Byte_01 : USINT;		// 8 Booleans, originating in TDU
+	TDU_RB_Byte_02 : USINT;		// 8 Booleans, originating in TDU
+	TDU_RB_Byte_03 : USINT;		// 8 Booleans, originating in TDU
+	
+	// INTEGERS
+	TDU_RB_UINT_01 : UINT;		// 16 bit integer, originating in TDU
+	TDU_RB_UINT_02 : UINT;		// 16 bit integer, originating in TDU
+	TDU_RB_UINT_03 : UINT;		// 16 bit integer, originating in TDU
+	TDU_RB_UINT_04 : UINT;		// 16 bit integer, originating in TDU
+	TDU_RB_UINT_05 : UINT;		// 16 bit integer, originating in TDU
+
+	// REALS
+	TDU_RB_UDINT_01 : UDINT;	// 32 bit Real, originating in TDU
+	TDU_RB_UDINT_02 : UDINT;	// 32 bit Real, originating in TDU
+	TDU_RB_UDINT_03 : UDINT;	// 32 bit Real, originating in TDU
+	TDU_RB_UDINT_04 : UDINT;	// 32 bit Real, originating in TDU
+ 	TDU_RB_UDINT_05 : UDINT;	// 32 bit Real, originating in TDU
+	TDU_RB_UDINT_06 : UDINT;	// 32 bit Real, originating in TDU
+	TDU_RB_UDINT_07 : UDINT;	// 32 bit Real, originating in TDU
+	TDU_RB_UDINT_08 : UDINT;	// 32 bit Real, originating in TDU
+	TDU_RB_UDINT_09 : UDINT;	// 32 bit Real, originating in TDU
+	TDU_RB_UDINT_10 : UDINT;	// 32 bit Real, originating in TDU
+	TDU_RB_UDINT_11 : UDINT;	// 32 bit Real, originating in TDU
+	TDU_RB_UDINT_12 : UDINT;	// 32 bit Real, originating in TDU
+	TDU_RB_UDINT_13 : UDINT;	// 32 bit Real, originating in TDU
+	TDU_RB_UDINT_14 : UDINT;	// 32 bit Real, originating in TDU
+	TDU_RB_UDINT_15 : UDINT;	// 32 bit Real, originating in TDU
+	TDU_RB_UDINT_16 : UDINT;	// 32 bit Real, originating in TDU
+	TDU_RB_UDINT_17 : UDINT;	// 32 bit Real, originating in TDU
+	TDU_RB_UDINT_18 : UDINT;	// 32 bit Real, originating in TDU
+	TDU_RB_UDINT_19 : UDINT;	// 32 bit Real, originating in TDU
+	TDU_RB_UDINT_20 : UDINT;	// 32 bit Real, originating in TDU
+	
+	(*################################################################*)
+	// Readback signals, originating in TMS
+	// BOOLEANS
+	TMS_RB_Byte_01 : USINT;		// 8 Booleans, originating in TMS
+	TMS_RB_Byte_02 : USINT;		// 8 Booleans, originating in TMS
+	TMS_RB_Byte_03 : USINT;		// 8 Booleans, originating in TMS
+	
+	// INTEGERS
+	TMS_RB_UINT_01 : UINT;		// 16 bit integer, originating in TMS
+	TMS_RB_UINT_02 : UINT;		// 16 bit integer, originating in TMS
+	TMS_RB_UINT_03 : UINT;		// 16 bit integer, originating in TMS
+	TMS_RB_UINT_04 : UINT;		// 16 bit integer, originating in TMS
+	TMS_RB_UINT_05 : UINT;		// 16 bit integer, originating in TMS
+
+	// REALS
+	TMS_RB_UDINT_01 : UDINT;	// 32 bit Real, originating in TMS
+	TMS_RB_UDINT_02 : UDINT;	// 32 bit Real, originating in TMS
+	TMS_RB_UDINT_03 : UDINT;	// 32 bit Real, originating in TMS
+	TMS_RB_UDINT_04 : UDINT;	// 32 bit Real, originating in TMS
+ 	TMS_RB_UDINT_05 : UDINT;	// 32 bit Real, originating in TMS
+	TMS_RB_UDINT_06 : UDINT;	// 32 bit Real, originating in TMS
+	TMS_RB_UDINT_07 : UDINT;	// 32 bit Real, originating in TMS
+	TMS_RB_UDINT_08 : UDINT;	// 32 bit Real, originating in TMS
+	TMS_RB_UDINT_09 : UDINT;	// 32 bit Real, originating in TMS
+	TMS_RB_UDINT_10 : UDINT;	// 32 bit Real, originating in TMS
+	TMS_RB_UDINT_11 : UDINT;	// 32 bit Real, originating in TMS
+	TMS_RB_UDINT_12 : UDINT;	// 32 bit Real, originating in TMS
+	TMS_RB_UDINT_13 : UDINT;	// 32 bit Real, originating in TMS
+	TMS_RB_UDINT_14 : UDINT;	// 32 bit Real, originating in TMS
+	TMS_RB_UDINT_15 : UDINT;	// 32 bit Real, originating in TMS
+	TMS_RB_UDINT_16 : UDINT;	// 32 bit Real, originating in TMS
+	TMS_RB_UDINT_17 : UDINT;	// 32 bit Real, originating in TMS
+	TMS_RB_UDINT_18 : UDINT;	// 32 bit Real, originating in TMS
+	TMS_RB_UDINT_19 : UDINT;	// 32 bit Real, originating in TMS
+	TMS_RB_UDINT_20 : UDINT;	// 32 bit Real, originating in TMS
+	
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

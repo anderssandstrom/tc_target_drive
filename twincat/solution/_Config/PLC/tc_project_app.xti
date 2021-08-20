@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.11" ClassName="CNestedPlcProjDef">
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.12" ClassName="CNestedPlcProjDef">
 	<DataTypes>
 		<DataType>
 			<Name GUID="{18071995-0000-0000-0000-000000000041}" TcBaseType="true" HideSubItems="true" CName="AmsNetId">AMSNETID</Name>
@@ -18,6 +18,598 @@
 				<Parameter>[4]</Parameter>
 				<Parameter>[5]</Parameter>
 			</Format>
+		</DataType>
+		<DataType>
+			<Name GUID="{CECD406D-7CC5-E68C-9D8F-6AAEAEECA1A4}" AutoDeleteType="true">ST_Bridge_TSCS</Name>
+			<BitSize>2304</BitSize>
+			<SubItem>
+				<Name>TSCS_Byte_01</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<Comment><![CDATA[ 8 Booleans, originating in TSCS]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_Byte_02</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<Comment><![CDATA[ 8 Booleans, originating in TSCS]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_Byte_03</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<Comment><![CDATA[ 8 Booleans, originating in TSCS]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_UINT_01</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<Comment><![CDATA[ 16 bit integer, originating in TSCS]]></Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_UINT_02</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<Comment><![CDATA[ 16 bit integer, originating in TSCS]]></Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>48</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_UINT_03</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<Comment><![CDATA[ 16 bit integer, originating in TSCS]]></Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>64</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_UINT_04</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<Comment><![CDATA[ 16 bit integer, originating in TSCS]]></Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>80</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_UINT_05</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<Comment><![CDATA[ 16 bit integer, originating in TSCS]]></Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>96</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_UDINT_01</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TSCS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>128</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_UDINT_02</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TSCS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>160</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_UDINT_03</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TSCS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>192</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_UDINT_04</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TSCS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>224</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_UDINT_05</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TSCS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>256</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_UDINT_06</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TSCS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>288</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_UDINT_07</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TSCS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>320</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_UDINT_08</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TSCS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>352</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_UDINT_09</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TSCS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>384</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_UDINT_10</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TSCS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>416</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_UDINT_11</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TSCS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>448</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_UDINT_12</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TSCS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>480</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_UDINT_13</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TSCS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>512</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_UDINT_14</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TSCS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>544</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_UDINT_15</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TSCS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>576</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_UDINT_16</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TSCS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>608</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_UDINT_17</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TSCS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>640</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_UDINT_18</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TSCS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>672</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_UDINT_19</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TSCS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>704</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_UDINT_20</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TSCS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>736</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_RB_Byte_01</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<Comment><![CDATA[ 8 Booleans, originating in TDU]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>768</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_RB_Byte_02</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<Comment><![CDATA[ 8 Booleans, originating in TDU]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>776</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_RB_Byte_03</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<Comment><![CDATA[ 8 Booleans, originating in TDU]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>784</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_RB_UINT_01</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<Comment><![CDATA[ 16 bit integer, originating in TDU]]></Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>800</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_RB_UINT_02</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<Comment><![CDATA[ 16 bit integer, originating in TDU]]></Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>816</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_RB_UINT_03</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<Comment><![CDATA[ 16 bit integer, originating in TDU]]></Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>832</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_RB_UINT_04</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<Comment><![CDATA[ 16 bit integer, originating in TDU]]></Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>848</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_RB_UINT_05</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<Comment><![CDATA[ 16 bit integer, originating in TDU]]></Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>864</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_RB_UDINT_01</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>896</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_RB_UDINT_02</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>928</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_RB_UDINT_03</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>960</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_RB_UDINT_04</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>992</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_RB_UDINT_05</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1024</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_RB_UDINT_06</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1056</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_RB_UDINT_07</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1088</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_RB_UDINT_08</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1120</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_RB_UDINT_09</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1152</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_RB_UDINT_10</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1184</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_RB_UDINT_11</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1216</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_RB_UDINT_12</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1248</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_RB_UDINT_13</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1280</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_RB_UDINT_14</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1312</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_RB_UDINT_15</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1344</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_RB_UDINT_16</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1376</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_RB_UDINT_17</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1408</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_RB_UDINT_18</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1440</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_RB_UDINT_19</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1472</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_RB_UDINT_20</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1504</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_RB_Byte_01</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<Comment><![CDATA[ 8 Booleans, originating in TMS]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>1536</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_RB_Byte_02</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<Comment><![CDATA[ 8 Booleans, originating in TMS]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>1544</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_RB_Byte_03</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<Comment><![CDATA[ 8 Booleans, originating in TMS]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>1552</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_RB_UINT_01</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<Comment><![CDATA[ 16 bit integer, originating in TMS]]></Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>1568</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_RB_UINT_02</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<Comment><![CDATA[ 16 bit integer, originating in TMS]]></Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>1584</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_RB_UINT_03</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<Comment><![CDATA[ 16 bit integer, originating in TMS]]></Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>1600</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_RB_UINT_04</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<Comment><![CDATA[ 16 bit integer, originating in TMS]]></Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>1616</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_RB_UINT_05</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<Comment><![CDATA[ 16 bit integer, originating in TMS]]></Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>1632</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_RB_UDINT_01</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TMS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1664</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_RB_UDINT_02</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TMS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1696</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_RB_UDINT_03</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TMS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1728</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_RB_UDINT_04</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TMS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1760</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_RB_UDINT_05</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TMS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1792</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_RB_UDINT_06</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TMS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1824</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_RB_UDINT_07</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TMS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1856</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_RB_UDINT_08</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TMS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1888</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_RB_UDINT_09</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TMS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1920</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_RB_UDINT_10</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TMS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1952</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_RB_UDINT_11</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TMS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1984</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_RB_UDINT_12</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TMS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>2016</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_RB_UDINT_13</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TMS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>2048</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_RB_UDINT_14</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TMS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>2080</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_RB_UDINT_15</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TMS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>2112</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_RB_UDINT_16</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TMS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>2144</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_RB_UDINT_17</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TMS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>2176</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_RB_UDINT_18</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TMS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>2208</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_RB_UDINT_19</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TMS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>2240</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_RB_UDINT_20</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real, originating in TMS]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>2272</BitOffs>
+			</SubItem>
 		</DataType>
 		<DataType>
 			<Name GUID="{E8EE2899-4679-469C-BAC5-7318F329907D}" AutoDeleteType="true">ST_S135_DRIVESTATUSWORD</Name>
@@ -908,6 +1500,206 @@ External Setpoint Generation:
 			</Relations>
 		</DataType>
 		<DataType>
+			<Name GUID="{7F51FAD4-8220-449E-CCAE-C330F92A2774}" AutoDeleteType="true">ST_Bridge_TDU</Name>
+			<BitSize>768</BitSize>
+			<SubItem>
+				<Name>Byte_01</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<Comment><![CDATA[ 8 Booleans from TDU]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Byte_02</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<Comment><![CDATA[ 8 Booleans from TDU]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Byte_03</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<Comment><![CDATA[ 8 Booleans from TDU]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>UINT_01</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<Comment><![CDATA[ 16 bit Integer from TDU]]></Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>UINT_02</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<Comment><![CDATA[ 16 bit Integer from TDU]]></Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>48</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>UINT_03</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<Comment><![CDATA[ 16 bit Integer from TDU]]></Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>64</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>UINT_04</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<Comment><![CDATA[ 16 bit Integer from TDU]]></Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>80</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>UINT_05</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<Comment><![CDATA[ 16 bit Integer from TDU]]></Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>96</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>UDINT_01</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real from TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>128</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>UDINT_02</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real from TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>160</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>UDINT_03</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real from TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>192</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>UDINT_04</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real from TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>224</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>UDINT_05</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real from TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>256</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>UDINT_06</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real from TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>288</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>UDINT_07</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real from TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>320</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>UDINT_08</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real from TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>352</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>UDINT_09</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real from TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>384</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>UDINT_10</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real from TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>416</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>UDINT_11</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real from TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>448</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>UDINT_12</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real from TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>480</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>UDINT_13</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real from TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>512</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>UDINT_14</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real from TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>544</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>UDINT_15</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real from TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>576</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>UDINT_16</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real from TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>608</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>UDINT_17</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real from TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>640</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>UDINT_18</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real from TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>672</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>UDINT_19</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real from TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>704</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>UDINT_20</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ 32 bit Real from TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>736</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
 			<Name GUID="{4CCFD5CA-E676-474E-B42D-6A96C42819C9}" AutoDeleteType="true">ST_S134_MASTERCONTROLWORD</Name>
 			<BitSize>16</BitSize>
 			<SubItem>
@@ -1322,12 +2114,12 @@ Bit 15]]></Comment>
 			<Vars VarGrpType="1">
 				<Name>PlcTask Inputs</Name>
 				<Var>
-					<Name>MAIN.stAmsNetId</Name>
-					<Type GUID="{18071995-0000-0000-0000-000000000041}">AMSNETID</Type>
-				</Var>
-				<Var>
 					<Name>MAIN.nPort</Name>
 					<Type>WORD</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.stAmsNetId</Name>
+					<Type GUID="{18071995-0000-0000-0000-000000000041}">AMSNETID</Type>
 				</Var>
 				<Var>
 					<Name>MAIN.dLatchedPosition</Name>
@@ -1374,42 +2166,6 @@ Bit 15]]></Comment>
 				<Var>
 					<Name>MAIN.fbTemp.InfoData_State</Name>
 					<Type>UINT</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fbIndraDrive.stDriveStatus.nS135_DriveStatusWord</Name>
-					<Type GUID="{E8EE2899-4679-469C-BAC5-7318F329907D}">ST_S135_DRIVESTATUSWORD</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fbIndraDrive.stDriveStatus.nS51_PositionFeedbackValue</Name>
-					<Type>DINT</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fbIndraDrive.stDriveStatus.nS386_ActivePositionFeedbackValue</Name>
-					<Type>DINT</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fbIndraDrive.stDriveStatus.nS40_VelocityFeedbackValue</Name>
-					<Type>DINT</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fbIndraDrive.stDriveStatus.nS390_DiagnosticMessageNumber</Name>
-					<Type>DWORD</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fbIndraDrive.stDriveStatus.stS144_SignalStatusWord</Name>
-					<Type GUID="{8AD6E8B9-D3F6-4CE2-AA31-A4B86C802016}">ST_S144_SIGNALSTATUSWORD</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fbIndraDrive.stDriveStatus.nS84_TorqueFeedback</Name>
-					<Type>INT</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fbIndraDrive.stDriveStatus.nS189_PositionError</Name>
-					<Type>DINT</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fbIndraDrive.stDriveStatus.nP173_MarkerPosition</Name>
-					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>MAIN.fb_s2_EL1809.bBI_1</Name>
@@ -1940,6 +2696,47 @@ Bit 15]]></Comment>
 					<Type>UINT</Type>
 				</Var>
 				<Var>
+					<Name>BridgeTerminal_TSCS.Inputs</Name>
+					<Comment><![CDATA[ Inputs]]></Comment>
+					<Type GUID="{CECD406D-7CC5-E68C-9D8F-6AAEAEECA1A4}">ST_Bridge_TSCS</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveStatus.nS135_DriveStatusWord</Name>
+					<Type GUID="{E8EE2899-4679-469C-BAC5-7318F329907D}">ST_S135_DRIVESTATUSWORD</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveStatus.nS51_PositionFeedbackValue</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveStatus.nS386_ActivePositionFeedbackValue</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveStatus.nS40_VelocityFeedbackValue</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveStatus.nS390_DiagnosticMessageNumber</Name>
+					<Type>DWORD</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveStatus.stS144_SignalStatusWord</Name>
+					<Type GUID="{8AD6E8B9-D3F6-4CE2-AA31-A4B86C802016}">ST_S144_SIGNALSTATUSWORD</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveStatus.nS84_TorqueFeedback</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveStatus.nS189_PositionError</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveStatus.nP173_MarkerPosition</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
 					<Name>GVL.astAxes[1].stInputs.bLimitFwd</Name>
 					<Type>BOOL</Type>
 				</Var>
@@ -1997,6 +2794,11 @@ Bit 15]]></Comment>
 					<Name>MAIN.nAdditiveTorqueSetpoint</Name>
 					<Comment><![CDATA[ Unit 0.1%  (10=1%)]]></Comment>
 					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>BridgeTerminal_TSCS.Outputs</Name>
+					<Comment><![CDATA[ Outputs]]></Comment>
+					<Type GUID="{7F51FAD4-8220-449E-CCAE-C330F92A2774}">ST_Bridge_TDU</Type>
 				</Var>
 				<Var>
 					<Name>MAIN.fbIndraDrive.stDriveCommands.stS134_MasterControlWord</Name>
@@ -2062,16 +2864,16 @@ Bit 15]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
+					<Name>MAIN.inputDigSens2</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
 					<Name>MAIN.nMasterAxisPosition</Name>
 					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>MAIN.nMainDriveMarkPosition</Name>
 					<Type>DINT</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.inputDigSens2</Name>
-					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_back.axes[1].stInputs.bLimitFwd</Name>
@@ -2397,6 +3199,20 @@ Bit 15]]></Comment>
 					</OwnerB>
 				</OwnerA>
 			</UnrestoredVarLinks>
+			<UnrestoredVarLinks ImportTime="2021-04-27T12:35:21">
+				<OwnerA Name="InputDst" Prefix="TIPC^tc_project_app^tc_project_app Instance" Type="1">
+					<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 10 (EL7201)">
+						<Link VarA="Axis_1.nResolverVal" TypeA="DINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="FB Position^Position" RestoreInfo="ANotFound"/>
+					</OwnerB>
+				</OwnerA>
+			</UnrestoredVarLinks>
+			<UnrestoredVarLinks ImportTime="2021-04-27T14:06:29">
+				<OwnerA Name="InputDst" Prefix="TIPC^tc_project_app^tc_project_app Instance" Type="1">
+					<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 1">
+						<Link VarA="MAIN.nTargetVel" TypeA="DINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="Drive^Outputs^Out^nDataOut2" RestoreInfo="ANotFound"/>
+					</OwnerB>
+				</OwnerA>
+			</UnrestoredVarLinks>
 			<Contexts>
 				<Context>
 					<Id NeedCalleeCall="true">0</Id>
@@ -2486,8 +3302,120 @@ Bit 15]]></Comment>
 				<Link VarA="PlcTask Inputs^MAIN.fb_s13_EL3214.wCh4_Status" VarB="RTD Inputs Channel 4^Status"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 14 (EL6695)">
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TDU_RB_Byte_01" VarB="IO Inputs^TDU_RB_Byte_01"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TDU_RB_Byte_02" VarB="IO Inputs^TDU_RB_Byte_02"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TDU_RB_Byte_03" VarB="IO Inputs^TDU_RB_Byte_03"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TDU_RB_UDINT_01" VarB="IO Inputs^TDU_RB_UDINT_01"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TDU_RB_UDINT_02" VarB="IO Inputs^TDU_RB_UDINT_02"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TDU_RB_UDINT_03" VarB="IO Inputs^TDU_RB_UDINT_03"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TDU_RB_UDINT_04" VarB="IO Inputs^TDU_RB_UDINT_04"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TDU_RB_UDINT_05" VarB="IO Inputs^TDU_RB_UDINT_05"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TDU_RB_UDINT_06" VarB="IO Inputs^TDU_RB_UDINT_06"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TDU_RB_UDINT_07" VarB="IO Inputs^TDU_RB_UDINT_07"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TDU_RB_UDINT_08" VarB="IO Inputs^TDU_RB_UDINT_08"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TDU_RB_UDINT_09" VarB="IO Inputs^TDU_RB_UDINT_09"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TDU_RB_UDINT_10" VarB="IO Inputs^TDU_RB_UDINT_10"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TDU_RB_UDINT_11" VarB="IO Inputs^TDU_RB_UDINT_11"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TDU_RB_UDINT_12" VarB="IO Inputs^TDU_RB_UDINT_12"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TDU_RB_UDINT_13" VarB="IO Inputs^TDU_RB_UDINT_13"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TDU_RB_UDINT_14" VarB="IO Inputs^TDU_RB_UDINT_14"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TDU_RB_UDINT_15" VarB="IO Inputs^TDU_RB_UDINT_15"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TDU_RB_UDINT_16" VarB="IO Inputs^TDU_RB_UDINT_16"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TDU_RB_UDINT_17" VarB="IO Inputs^TDU_RB_UDINT_17"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TDU_RB_UDINT_18" VarB="IO Inputs^TDU_RB_UDINT_18"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TDU_RB_UDINT_19" VarB="IO Inputs^TDU_RB_UDINT_19"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TDU_RB_UDINT_20" VarB="IO Inputs^TDU_RB_UDINT_20"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TDU_RB_UINT_01" VarB="IO Inputs^TDU_RB_UINT_01"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TDU_RB_UINT_02" VarB="IO Inputs^TDU_RB_UINT_02"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TDU_RB_UINT_03" VarB="IO Inputs^TDU_RB_UINT_03"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TDU_RB_UINT_04" VarB="IO Inputs^TDU_RB_UINT_04"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TDU_RB_UINT_05" VarB="IO Inputs^TDU_RB_UINT_05"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TMS_RB_Byte_01" VarB="IO Inputs^TMS_RB_Byte_01"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TMS_RB_Byte_02" VarB="IO Inputs^TMS_RB_Byte_02"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TMS_RB_Byte_03" VarB="IO Inputs^TMS_RB_Byte_03"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TMS_RB_UDINT_01" VarB="IO Inputs^TMS_RB_UDINT_01"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TMS_RB_UDINT_02" VarB="IO Inputs^TMS_RB_UDINT_02"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TMS_RB_UDINT_03" VarB="IO Inputs^TMS_RB_UDINT_03"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TMS_RB_UDINT_04" VarB="IO Inputs^TMS_RB_UDINT_04"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TMS_RB_UDINT_05" VarB="IO Inputs^TMS_RB_UDINT_05"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TMS_RB_UDINT_06" VarB="IO Inputs^TMS_RB_UDINT_06"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TMS_RB_UDINT_07" VarB="IO Inputs^TMS_RB_UDINT_07"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TMS_RB_UDINT_08" VarB="IO Inputs^TMS_RB_UDINT_08"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TMS_RB_UDINT_09" VarB="IO Inputs^TMS_RB_UDINT_09"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TMS_RB_UDINT_10" VarB="IO Inputs^TMS_RB_UDINT_10"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TMS_RB_UDINT_11" VarB="IO Inputs^TMS_RB_UDINT_11"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TMS_RB_UDINT_12" VarB="IO Inputs^TMS_RB_UDINT_12"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TMS_RB_UDINT_13" VarB="IO Inputs^TMS_RB_UDINT_13"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TMS_RB_UDINT_14" VarB="IO Inputs^TMS_RB_UDINT_14"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TMS_RB_UDINT_15" VarB="IO Inputs^TMS_RB_UDINT_15"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TMS_RB_UDINT_16" VarB="IO Inputs^TMS_RB_UDINT_16"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TMS_RB_UDINT_17" VarB="IO Inputs^TMS_RB_UDINT_17"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TMS_RB_UDINT_18" VarB="IO Inputs^TMS_RB_UDINT_18"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TMS_RB_UDINT_19" VarB="IO Inputs^TMS_RB_UDINT_19"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TMS_RB_UDINT_20" VarB="IO Inputs^TMS_RB_UDINT_20"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TMS_RB_UINT_01" VarB="IO Inputs^TMS_RB_UINT_01"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TMS_RB_UINT_02" VarB="IO Inputs^TMS_RB_UINT_02"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TMS_RB_UINT_03" VarB="IO Inputs^TMS_RB_UINT_03"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TMS_RB_UINT_04" VarB="IO Inputs^TMS_RB_UINT_04"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TMS_RB_UINT_05" VarB="IO Inputs^TMS_RB_UINT_05"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TSCS_Byte_01" VarB="IO Inputs^TSCS_Byte_01"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TSCS_Byte_02" VarB="IO Inputs^TSCS_Byte_02"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TSCS_Byte_03" VarB="IO Inputs^TSCS_Byte_03"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TSCS_UDINT_01" VarB="IO Inputs^TSCS_UDINT_01"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TSCS_UDINT_02" VarB="IO Inputs^TSCS_UDINT_02"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TSCS_UDINT_03" VarB="IO Inputs^TSCS_UDINT_03"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TSCS_UDINT_04" VarB="IO Inputs^TSCS_UDINT_04"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TSCS_UDINT_05" VarB="IO Inputs^TSCS_UDINT_05"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TSCS_UDINT_06" VarB="IO Inputs^TSCS_UDINT_06"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TSCS_UDINT_07" VarB="IO Inputs^TSCS_UDINT_07"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TSCS_UDINT_08" VarB="IO Inputs^TSCS_UDINT_08"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TSCS_UDINT_09" VarB="IO Inputs^TSCS_UDINT_09"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TSCS_UDINT_10" VarB="IO Inputs^TSCS_UDINT_10"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TSCS_UDINT_11" VarB="IO Inputs^TSCS_UDINT_11"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TSCS_UDINT_12" VarB="IO Inputs^TSCS_UDINT_12"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TSCS_UDINT_13" VarB="IO Inputs^TSCS_UDINT_13"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TSCS_UDINT_14" VarB="IO Inputs^TSCS_UDINT_14"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TSCS_UDINT_15" VarB="IO Inputs^TSCS_UDINT_15"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TSCS_UDINT_16" VarB="IO Inputs^TSCS_UDINT_16"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TSCS_UDINT_17" VarB="IO Inputs^TSCS_UDINT_17"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TSCS_UDINT_18" VarB="IO Inputs^TSCS_UDINT_18"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TSCS_UDINT_19" VarB="IO Inputs^TSCS_UDINT_19"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TSCS_UDINT_20" VarB="IO Inputs^TSCS_UDINT_20"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TSCS_UINT_01" VarB="IO Inputs^TSCS_UINT_01"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TSCS_UINT_02" VarB="IO Inputs^TSCS_UINT_02"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TSCS_UINT_03" VarB="IO Inputs^TSCS_UINT_03"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TSCS_UINT_04" VarB="IO Inputs^TSCS_UINT_04"/>
+				<Link VarA="PlcTask Inputs^BridgeTerminal_TSCS.Inputs^TSCS_UINT_05" VarB="IO Inputs^TSCS_UINT_05"/>
 				<Link VarA="PlcTask Inputs^MAIN.fb_s15_EL6695.InfoData_State" VarB="InfoData^State"/>
 				<Link VarA="PlcTask Inputs^MAIN.fb_s15_EL6695.WcState_WcState" VarB="WcState^WcState" Size="1"/>
+				<Link VarA="PlcTask Outputs^BridgeTerminal_TSCS.Outputs^Byte_01" VarB="IO Outputs^Byte_01"/>
+				<Link VarA="PlcTask Outputs^BridgeTerminal_TSCS.Outputs^Byte_02" VarB="IO Outputs^Byte_02"/>
+				<Link VarA="PlcTask Outputs^BridgeTerminal_TSCS.Outputs^Byte_03" VarB="IO Outputs^Byte_03"/>
+				<Link VarA="PlcTask Outputs^BridgeTerminal_TSCS.Outputs^UDINT_01" VarB="IO Outputs^UDINT_01"/>
+				<Link VarA="PlcTask Outputs^BridgeTerminal_TSCS.Outputs^UDINT_02" VarB="IO Outputs^UDINT_02"/>
+				<Link VarA="PlcTask Outputs^BridgeTerminal_TSCS.Outputs^UDINT_03" VarB="IO Outputs^UDINT_03"/>
+				<Link VarA="PlcTask Outputs^BridgeTerminal_TSCS.Outputs^UDINT_04" VarB="IO Outputs^UDINT_04"/>
+				<Link VarA="PlcTask Outputs^BridgeTerminal_TSCS.Outputs^UDINT_05" VarB="IO Outputs^UDINT_05"/>
+				<Link VarA="PlcTask Outputs^BridgeTerminal_TSCS.Outputs^UDINT_06" VarB="IO Outputs^UDINT_06"/>
+				<Link VarA="PlcTask Outputs^BridgeTerminal_TSCS.Outputs^UDINT_07" VarB="IO Outputs^UDINT_07"/>
+				<Link VarA="PlcTask Outputs^BridgeTerminal_TSCS.Outputs^UDINT_08" VarB="IO Outputs^UDINT_08"/>
+				<Link VarA="PlcTask Outputs^BridgeTerminal_TSCS.Outputs^UDINT_09" VarB="IO Outputs^UDINT_09"/>
+				<Link VarA="PlcTask Outputs^BridgeTerminal_TSCS.Outputs^UDINT_10" VarB="IO Outputs^UDINT_10"/>
+				<Link VarA="PlcTask Outputs^BridgeTerminal_TSCS.Outputs^UDINT_11" VarB="IO Outputs^UDINT_11"/>
+				<Link VarA="PlcTask Outputs^BridgeTerminal_TSCS.Outputs^UDINT_12" VarB="IO Outputs^UDINT_12"/>
+				<Link VarA="PlcTask Outputs^BridgeTerminal_TSCS.Outputs^UDINT_13" VarB="IO Outputs^UDINT_13"/>
+				<Link VarA="PlcTask Outputs^BridgeTerminal_TSCS.Outputs^UDINT_14" VarB="IO Outputs^UDINT_14"/>
+				<Link VarA="PlcTask Outputs^BridgeTerminal_TSCS.Outputs^UDINT_15" VarB="IO Outputs^UDINT_15"/>
+				<Link VarA="PlcTask Outputs^BridgeTerminal_TSCS.Outputs^UDINT_16" VarB="IO Outputs^UDINT_16"/>
+				<Link VarA="PlcTask Outputs^BridgeTerminal_TSCS.Outputs^UDINT_17" VarB="IO Outputs^UDINT_17"/>
+				<Link VarA="PlcTask Outputs^BridgeTerminal_TSCS.Outputs^UDINT_18" VarB="IO Outputs^UDINT_18"/>
+				<Link VarA="PlcTask Outputs^BridgeTerminal_TSCS.Outputs^UDINT_19" VarB="IO Outputs^UDINT_19"/>
+				<Link VarA="PlcTask Outputs^BridgeTerminal_TSCS.Outputs^UDINT_20" VarB="IO Outputs^UDINT_20"/>
+				<Link VarA="PlcTask Outputs^BridgeTerminal_TSCS.Outputs^UINT_01" VarB="IO Outputs^UINT_01"/>
+				<Link VarA="PlcTask Outputs^BridgeTerminal_TSCS.Outputs^UINT_02" VarB="IO Outputs^UINT_02"/>
+				<Link VarA="PlcTask Outputs^BridgeTerminal_TSCS.Outputs^UINT_03" VarB="IO Outputs^UINT_03"/>
+				<Link VarA="PlcTask Outputs^BridgeTerminal_TSCS.Outputs^UINT_04" VarB="IO Outputs^UINT_04"/>
+				<Link VarA="PlcTask Outputs^BridgeTerminal_TSCS.Outputs^UINT_05" VarB="IO Outputs^UINT_05"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 15 (EL9410)">
 				<Link VarA="PlcTask Inputs^MAIN.fb_s16_EL9410.InfoData_State" VarB="InfoData^State"/>
