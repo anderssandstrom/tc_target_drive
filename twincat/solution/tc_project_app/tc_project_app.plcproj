@@ -110,6 +110,15 @@
     <Compile Include="POUs\Application_Specific\Axes\Axis_3.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Bridge Terminal\TSCS_Bridge_Inputs.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Bridge Terminal\TSCS_Bridge_Outputs.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Bridge Terminal\TSCS_Bridge_Test.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\Common\ChangeConfig\FB_ReadFloatParameter.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -249,6 +258,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Common\Hardware\EtherCAT_Terminals\System\EL9505.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Data Type Conversion Functions\SCALE_REAL_TO_UDINT.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Data Type Conversion Functions\SCALE_UDINT_TO_REAL.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN_NORMAL_MOTION.TcPOU">
@@ -426,6 +441,7 @@
     <Folder Include="GVLs" />
     <Folder Include="POUs\Application_Specific\Applications" />
     <Folder Include="POUs\Application_Specific\Axes" />
+    <Folder Include="POUs\Bridge Terminal" />
     <Folder Include="POUs\Common" />
     <Folder Include="POUs\Common\ChangeConfig" />
     <Folder Include="POUs\Common\ErrorHandling" />
@@ -442,6 +458,7 @@
     <Folder Include="POUs\Common\Hardware\EtherCAT_Terminals\System" />
     <Folder Include="POUs\Common\VISUs" />
     <Folder Include="POUs\Application_Specific" />
+    <Folder Include="POUs\Data Type Conversion Functions" />
     <Folder Include="POUs\Target" />
     <Folder Include="tc_mca_std_lib_real" />
     <Folder Include="tc_mca_std_lib_real\DUTs" />
