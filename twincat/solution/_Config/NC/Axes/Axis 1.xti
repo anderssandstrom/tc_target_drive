@@ -1440,7 +1440,6 @@ External Setpoint Generation:
 	<Mappings>
 		<OwnerA>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Drive 49 (iPOS8020 BX-CAT)">
-				<Link VarA="Drive^Inputs^In^nDataIn1" VarB="Transmit PDO 2 mapping parameters^Following error actual value"/>
 				<Link VarA="Drive^Inputs^In^nDataIn3[0]" VarB="Transmit PDO 1 mapping parameters^Torque (current) actual value"/>
 				<Link VarA="Drive^Inputs^In^nDcOutputTime" VarB="InfoData^DcOutputShift"/>
 				<Link VarA="Drive^Inputs^In^nState1" VarB="Transmit PDO 1 mapping parameters^Statusword" Size="8"/>
