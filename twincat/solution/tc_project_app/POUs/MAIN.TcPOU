@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.5">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
   <POU Name="MAIN" Id="{40828a63-f1c1-40a3-a7c5-8a47be350a36}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
@@ -69,6 +69,9 @@ END_VAR]]></Declaration>
       <ST><![CDATA[// Check hardware status
 ACT_1_Hardware();
 
+// Read Bridge Terminal Inputs
+TSCS_Bridge_Inputs();
+
 // Monitor temperature
 ACT_2_Temperature();
 
@@ -77,6 +80,10 @@ ACT_4_MainDrive();
 
 // Steppers
 ACT_5_Steppers();
+
+// Write Bridge Terminal Outputs (incl. test)
+TSCS_Bridge_Test();
+TSCS_Bridge_Outputs();
 
 // Error handling
 ACT_6_Error();
@@ -2922,7 +2929,10 @@ END_IF]]></ST>
     </Action>
     <LineIds Name="MAIN">
       <LineId Id="1534" Count="0" />
-      <LineId Id="1532" Count="1" />
+      <LineId Id="1532" Count="0" />
+      <LineId Id="1745" Count="1" />
+      <LineId Id="1744" Count="0" />
+      <LineId Id="1533" Count="0" />
       <LineId Id="1383" Count="0" />
       <LineId Id="1146" Count="0" />
       <LineId Id="1529" Count="0" />
@@ -2931,7 +2941,9 @@ END_IF]]></ST>
       <LineId Id="1612" Count="0" />
       <LineId Id="1388" Count="0" />
       <LineId Id="1611" Count="0" />
+      <LineId Id="1747" Count="2" />
       <LineId Id="1610" Count="0" />
+      <LineId Id="1750" Count="0" />
       <LineId Id="1386" Count="0" />
       <LineId Id="1001" Count="0" />
       <LineId Id="1536" Count="0" />
