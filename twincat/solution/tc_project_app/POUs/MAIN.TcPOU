@@ -82,7 +82,7 @@ ACT_4_MainDrive();
 ACT_5_Steppers();
 
 // Write Bridge Terminal Outputs (incl. test)
-TSCS_Bridge_Test();
+TSCS_Bridge_Diagnostic();
 TSCS_Bridge_Outputs();
 
 // Error handling

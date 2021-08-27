@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="FB_Bridge_Outputs_Real" Id="{c42de6ac-0d72-4d02-a02c-d4f14c7bae2c}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Bridge_Outputs_Real
+// Interface with 20 ports. Converts REAL to UDINT (32 bits)
+VAR_INPUT
+	I00 : REAL := 0;
+	I01 : REAL := 0;
+	I02 : REAL := 0;
+	I03 : REAL := 0;
+	I04 : REAL := 0;
+	I05 : REAL := 0;
+	I06 : REAL := 0;
+	I07 : REAL := 0;
+	I08 : REAL := 0;
+	I09 : REAL := 0;
+	I10 : REAL := 0;
+	I11 : REAL := 0;
+	I12 : REAL := 0;
+	I13 : REAL := 0;
+	I14 : REAL := 0;
+	I15 : REAL := 0;
+	I16 : REAL := 0;
+	I17 : REAL := 0;
+	I18 : REAL := 0;
+	I19 : REAL := 0;
+END_VAR
+VAR_OUTPUT
+	Q00 : UDINT;
+	Q01 : UDINT;
+	Q02 : UDINT;
+	Q03 : UDINT;
+	Q04 : UDINT;
+	Q05 : UDINT;
+	Q06 : UDINT;
+	Q07 : UDINT;
+	Q08 : UDINT;
+	Q09 : UDINT;
+	Q10 : UDINT;
+	Q11 : UDINT;
+	Q12 : UDINT;
+	Q13 : UDINT;
+	Q14 : UDINT;
+	Q15 : UDINT;
+	Q16 : UDINT;
+	Q17 : UDINT;
+	Q18 : UDINT;
+	Q19 : UDINT;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[Q00 := REAL_TO_DW(I00);
+Q01 := REAL_TO_DW(I01);
+Q02 := REAL_TO_DW(I02);
+Q03 := REAL_TO_DW(I03);
+Q04 := REAL_TO_DW(I04);
+Q05 := REAL_TO_DW(I05);
+Q06 := REAL_TO_DW(I06);
+Q07 := REAL_TO_DW(I07);
+Q08 := REAL_TO_DW(I08);
+Q09 := REAL_TO_DW(I09);
+Q10 := REAL_TO_DW(I10);
+Q11 := REAL_TO_DW(I11);
+Q12 := REAL_TO_DW(I12);
+Q13 := REAL_TO_DW(I13);
+Q14 := REAL_TO_DW(I14);
+Q15 := REAL_TO_DW(I15);
+Q16 := REAL_TO_DW(I16);
+Q17 := REAL_TO_DW(I17);
+Q18 := REAL_TO_DW(I18);
+Q19 := REAL_TO_DW(I19);]]></ST>
+    </Implementation>
+    <LineIds Name="FB_Bridge_Outputs_Real">
+      <LineId Id="9" Count="0" />
+      <LineId Id="212" Count="0" />
+      <LineId Id="96" Count="8" />
+      <LineId Id="106" Count="8" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

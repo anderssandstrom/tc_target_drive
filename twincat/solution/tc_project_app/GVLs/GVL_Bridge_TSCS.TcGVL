@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <GVL Name="GVL_Bridge_TSCS" Id="{446546ba-e92c-4390-aff6-c7d51684de6a}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	INPUTS  AT %I* : ST_Bridge_TSCS_INPUTS;		// Inputs
+	OUTPUTS AT %Q* : ST_Bridge_TSCS_OUTPUTS;	// Outputs
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>
