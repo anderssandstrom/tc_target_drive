@@ -135,21 +135,11 @@ stHWStatus.bFC51_FC52_FC53_FuseUPSOK:=fb_s2_EL1809.bBI_8;
 // s3: ch14: w03.bg06 stepper z limit min min service (lowest switch)
 fb_s3_EL1809(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=3);
 
-// Feed hardware from EL2819
-stHWControl.bRotOmronSensor1Feed:=TRUE;
-stHWControl.bRotOmronSensor2Feed:=TRUE;
-stHWControl.bXMinMaxFeed:=TRUE;
-stHWControl.bXMinMinMaxMaxFeed:=TRUE;
-stHWControl.bYMinMaxFeed:=TRUE;
-stHWControl.bYMinMinMaxMaxFeed:=TRUE;
-stHWControl.bZMinMaxFeed:=TRUE;
-stHWControl.bZMinMinMaxMaxFeed:=TRUE;
-
-
 // s4: ch1: Feed omron sensor 1
 // s4: ch2: Feed omron sensor 2
 fb_s4_EL2819(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=4);
-
+stHWControl.bRotOmronSensor1Feed:=TRUE;
+stHWControl.bRotOmronSensor2Feed:=TRUE;
 
 // s5: ch1: kf05: w02.bg01 w02.bg02 stepper x limit switch max, limit min
 // s5: ch2: kf05: w02.ql1: stepper x brake
@@ -160,6 +150,13 @@ fb_s4_EL2819(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=4);
 // s5: ch9: kf05: w03.bg01 w03.bg02 w03.bg03  stepper z limit switch max, limit min limit min min (service)
 // s5: ch10: kf05: w03.bg04 w03.bg05 w03.bg06  stepper z limit switch max max, limit min min
 fb_s5_EL2819(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=5);
+stHWControl.bXMinMaxFeed:=TRUE;
+stHWControl.bXMinMinMaxMaxFeed:=TRUE;
+stHWControl.bYMinMaxFeed:=TRUE;
+stHWControl.bYMinMinMaxMaxFeed:=TRUE;
+stHWControl.bZMinMaxFeed:=TRUE;
+stHWControl.bZMinMinMaxMaxFeed:=TRUE;
+// Note brakes needs control!!!
 
 // s6: 5V power supply
 fb_s6_EL9505(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=6);
@@ -190,6 +187,10 @@ fb_s12_EL7201(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=12)
 // s13: ch3: kf12 w03.bt01 temperature stepper Z PT100
 // s13: ch4: kf12 Target Main motor Temperature (KTY) (in deg*10)
 fb_s13_EL3214(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=13);
+stHWStatus.fW02_BT01_XTemp:=INT_TO_LREAL(fb_s13_EL3214.iAI_1)/10;
+stHWStatus.fW02_BT02_YTemp:=INT_TO_LREAL(fb_s13_EL3214.iAI_2)/10;
+stHWStatus.fW03_BT01_ZTemp:=INT_TO_LREAL(fb_s13_EL3214.iAI_3)/10;
+stHWStatus.fKF12_RotTemp:=INT_TO_LREAL(fb_s13_EL3214.iAI_4)/10;
 
 // s14: Extra encoder (main rotation)
 fb_s14_EL5021(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=14);
@@ -200,7 +201,7 @@ fb_s15_EL6695(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=15)
 // s15: 24V power supply
 fb_s16_EL9410(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=16);
 
-// s17: Grease system.. will be moved to ICS s..
+// s17: MPS com.
 fb_s17_EL2032(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=17);
 
 // s1?: Two EL2612 Relay for MPS not in system yet
@@ -2993,19 +2994,11 @@ stcmdEpics.bReset:=FALSE;]]></ST>
       <LineId Id="145" Count="0" />
       <LineId Id="138" Count="0" />
       <LineId Id="5" Count="0" />
-      <LineId Id="200" Count="0" />
-      <LineId Id="199" Count="0" />
-      <LineId Id="82" Count="0" />
-      <LineId Id="190" Count="0" />
-      <LineId Id="193" Count="1" />
-      <LineId Id="192" Count="0" />
-      <LineId Id="195" Count="1" />
-      <LineId Id="189" Count="0" />
-      <LineId Id="201" Count="0" />
       <LineId Id="197" Count="0" />
       <LineId Id="67" Count="0" />
       <LineId Id="69" Count="0" />
       <LineId Id="6" Count="0" />
+      <LineId Id="209" Count="0" />
       <LineId Id="188" Count="0" />
       <LineId Id="83" Count="0" />
       <LineId Id="110" Count="0" />
@@ -3014,6 +3007,9 @@ stcmdEpics.bReset:=FALSE;]]></ST>
       <LineId Id="118" Count="3" />
       <LineId Id="123" Count="0" />
       <LineId Id="7" Count="0" />
+      <LineId Id="203" Count="4" />
+      <LineId Id="202" Count="0" />
+      <LineId Id="210" Count="0" />
       <LineId Id="95" Count="0" />
       <LineId Id="94" Count="0" />
       <LineId Id="8" Count="0" />
@@ -3043,7 +3039,9 @@ stcmdEpics.bReset:=FALSE;]]></ST>
       <LineId Id="87" Count="0" />
       <LineId Id="66" Count="0" />
       <LineId Id="15" Count="0" />
-      <LineId Id="176" Count="1" />
+      <LineId Id="176" Count="0" />
+      <LineId Id="211" Count="3" />
+      <LineId Id="177" Count="0" />
       <LineId Id="88" Count="0" />
       <LineId Id="175" Count="0" />
       <LineId Id="75" Count="0" />
