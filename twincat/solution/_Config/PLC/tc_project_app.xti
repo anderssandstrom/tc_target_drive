@@ -189,6 +189,86 @@ bS144_15_NotDefined					: BIT;	]]></Comment>
 			</Hides>
 		</DataType>
 		<DataType>
+			<Name GUID="{87C0FCC2-5B94-C3C3-5793-F6875ECBE605}" AutoDeleteType="true">ST_Bridge_TSCS_INPUTS</Name>
+			<BitSize>1760</BitSize>
+			<SubItem>
+				<Name>TSCS_Byte</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>5</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ Boolean words from TSCS PLC (5x 8 Booleans)]]></Comment>
+				<BitSize>40</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_Integer</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>10</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ Integer signals from TSCS PLC (10x)	]]></Comment>
+				<BitSize>160</BitSize>
+				<BitOffs>48</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_Real</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>20</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ Real signals from TSCS PLC (20x)]]></Comment>
+				<BitSize>640</BitSize>
+				<BitOffs>224</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_Byte</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>5</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ Boolean words from TMS PLC (via TSCS) (5x 8 Booleans)]]></Comment>
+				<BitSize>40</BitSize>
+				<BitOffs>864</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_Integer</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>10</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ Integer signals from TMS PLC (via TSCS) (10x)]]></Comment>
+				<BitSize>160</BitSize>
+				<BitOffs>912</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_Real</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>20</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ Real signals from TMS PLC (via TSCS) (20x)]]></Comment>
+				<BitSize>640</BitSize>
+				<BitOffs>1088</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_TestSignal_RB</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ Diagnostic signal readback TDU->TSCS->TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1728</BitOffs>
+			</SubItem>
+			<Hides>
+				<Hide GUID="{2D933307-2102-52D9-81B5-BA47BDBD19C3}"/>
+			</Hides>
+		</DataType>
+		<DataType>
 			<Name GUID="{CBC83B73-B816-4597-A9E5-2B03263CA131}" Namespace="MC" TcBaseType="true" HideType="true" IecDeclaration="DWORD;">NCTOPLC_AXIS_REF_STATE</Name>
 			<BitSize>32</BitSize>
 			<SubItem>
@@ -973,86 +1053,6 @@ External Setpoint Generation:
 			</Relations>
 		</DataType>
 		<DataType>
-			<Name GUID="{87C0FCC2-5B94-C3C3-5793-F6875ECBE605}" AutoDeleteType="true">ST_Bridge_TSCS_INPUTS</Name>
-			<BitSize>1760</BitSize>
-			<SubItem>
-				<Name>TSCS_Byte</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
-				<ArrayInfo>
-					<LBound>0</LBound>
-					<Elements>5</Elements>
-				</ArrayInfo>
-				<Comment><![CDATA[ Boolean words from TSCS PLC (5x 8 Booleans)]]></Comment>
-				<BitSize>40</BitSize>
-				<BitOffs>0</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>TSCS_Integer</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
-				<ArrayInfo>
-					<LBound>0</LBound>
-					<Elements>10</Elements>
-				</ArrayInfo>
-				<Comment><![CDATA[ Integer signals from TSCS PLC (10x)	]]></Comment>
-				<BitSize>160</BitSize>
-				<BitOffs>48</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>TSCS_Real</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
-				<ArrayInfo>
-					<LBound>0</LBound>
-					<Elements>20</Elements>
-				</ArrayInfo>
-				<Comment><![CDATA[ Real signals from TSCS PLC (20x)]]></Comment>
-				<BitSize>640</BitSize>
-				<BitOffs>224</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>TMS_Byte</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
-				<ArrayInfo>
-					<LBound>0</LBound>
-					<Elements>5</Elements>
-				</ArrayInfo>
-				<Comment><![CDATA[ Boolean words from TMS PLC (via TSCS) (5x 8 Booleans)]]></Comment>
-				<BitSize>40</BitSize>
-				<BitOffs>864</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>TMS_Integer</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
-				<ArrayInfo>
-					<LBound>0</LBound>
-					<Elements>10</Elements>
-				</ArrayInfo>
-				<Comment><![CDATA[ Integer signals from TMS PLC (via TSCS) (10x)]]></Comment>
-				<BitSize>160</BitSize>
-				<BitOffs>912</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>TMS_Real</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
-				<ArrayInfo>
-					<LBound>0</LBound>
-					<Elements>20</Elements>
-				</ArrayInfo>
-				<Comment><![CDATA[ Real signals from TMS PLC (via TSCS) (20x)]]></Comment>
-				<BitSize>640</BitSize>
-				<BitOffs>1088</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>TDU_TestSignal_RB</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
-				<Comment><![CDATA[ Diagnostic signal readback TDU->TSCS->TDU]]></Comment>
-				<BitSize>32</BitSize>
-				<BitOffs>1728</BitOffs>
-			</SubItem>
-			<Hides>
-				<Hide GUID="{2D933307-2102-52D9-81B5-BA47BDBD19C3}"/>
-			</Hides>
-		</DataType>
-		<DataType>
 			<Name GUID="{4CCFD5CA-E676-474E-B42D-6A96C42819C9}" AutoDeleteType="true">ST_S134_MASTERCONTROLWORD</Name>
 			<BitSize>16</BitSize>
 			<SubItem>
@@ -1282,6 +1282,53 @@ Bit 15]]></Comment>
 			</Hides>
 		</DataType>
 		<DataType>
+			<Name GUID="{155273E7-D90F-4E0A-DBD3-CADC6647405F}" AutoDeleteType="true">ST_Bridge_TSCS_OUTPUTS</Name>
+			<BitSize>896</BitSize>
+			<SubItem>
+				<Name>TDU_Byte</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>5</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ Boolean words from TDU PLC (5x 8 Booleans)]]></Comment>
+				<BitSize>40</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_Real</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>20</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ Real signals from TDU PLC (20x)]]></Comment>
+				<BitSize>640</BitSize>
+				<BitOffs>64</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_Integer</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>10</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ Real signals from TDU PLC (10x)]]></Comment>
+				<BitSize>160</BitSize>
+				<BitOffs>704</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_TestSignal</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ Diagnostic signal (for readback: This PLC -> Other PLC -> This PLC)]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>864</BitOffs>
+			</SubItem>
+			<Hides>
+				<Hide GUID="{E242E054-4C82-FB43-73EB-168AF9666D1C}"/>
+			</Hides>
+		</DataType>
+		<DataType>
 			<Name GUID="{875D2B22-B7EB-497E-B933-0C004593CCF3}" Namespace="MC" TcBaseType="true" HideType="true" IecDeclaration="DWORD;">PLCTONC_AXIS_REF_CTRL</Name>
 			<BitSize>32</BitSize>
 			<SubItem>
@@ -1458,53 +1505,6 @@ Bit 15]]></Comment>
 					<Type GUID="{60392271-8688-4F4C-B404-618DF106325D}">NCAXLESTRUCT_FROMPLC3</Type>
 				</Relation>
 			</Relations>
-		</DataType>
-		<DataType>
-			<Name GUID="{155273E7-D90F-4E0A-DBD3-CADC6647405F}" AutoDeleteType="true">ST_Bridge_TSCS_OUTPUTS</Name>
-			<BitSize>896</BitSize>
-			<SubItem>
-				<Name>TDU_Byte</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
-				<ArrayInfo>
-					<LBound>0</LBound>
-					<Elements>5</Elements>
-				</ArrayInfo>
-				<Comment><![CDATA[ Boolean words from TDU PLC (5x 8 Booleans)]]></Comment>
-				<BitSize>40</BitSize>
-				<BitOffs>0</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>TDU_Real</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
-				<ArrayInfo>
-					<LBound>0</LBound>
-					<Elements>20</Elements>
-				</ArrayInfo>
-				<Comment><![CDATA[ Real signals from TDU PLC (20x)]]></Comment>
-				<BitSize>640</BitSize>
-				<BitOffs>64</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>TDU_Integer</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
-				<ArrayInfo>
-					<LBound>0</LBound>
-					<Elements>10</Elements>
-				</ArrayInfo>
-				<Comment><![CDATA[ Real signals from TDU PLC (10x)]]></Comment>
-				<BitSize>160</BitSize>
-				<BitOffs>704</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>TDU_TestSignal</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
-				<Comment><![CDATA[ Diagnostic signal (for readback: This PLC -> Other PLC -> This PLC)]]></Comment>
-				<BitSize>32</BitSize>
-				<BitOffs>864</BitOffs>
-			</SubItem>
-			<Hides>
-				<Hide GUID="{E242E054-4C82-FB43-73EB-168AF9666D1C}"/>
-			</Hides>
 		</DataType>
 	</DataTypes>
 	<Project GUID="{FB261665-FD20-4BF2-97F8-2854C82B752D}" Name="tc_project_app" PrjFilePath="..\..\tc_project_app\tc_project_app.plcproj" TmcFilePath="..\..\tc_project_app\tc_project_app.tmc" ReloadTmc="true" AmsPort="852" FileArchiveSettings="#x000e" SymbolicMapping="true">
@@ -2132,6 +2132,11 @@ Bit 15]]></Comment>
 					<Type>UINT</Type>
 				</Var>
 				<Var>
+					<Name>GVL_Bridge_TSCS.INPUTS</Name>
+					<Comment><![CDATA[ Inputs]]></Comment>
+					<Type GUID="{87C0FCC2-5B94-C3C3-5793-F6875ECBE605}">ST_Bridge_TSCS_INPUTS</Type>
+				</Var>
+				<Var>
 					<Name>GVL.astAxes[1].stInputs.bLimitFwd</Name>
 					<Type>BOOL</Type>
 				</Var>
@@ -2181,11 +2186,6 @@ Bit 15]]></Comment>
 				<Var>
 					<Name>GVL.astAxes[3].Axis.NcToPlc</Name>
 					<Type GUID="{10036166-C9D3-404B-BDD3-323034AAA7F4}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Bridge_TSCS.INPUTS</Name>
-					<Comment><![CDATA[ Inputs]]></Comment>
-					<Type GUID="{87C0FCC2-5B94-C3C3-5793-F6875ECBE605}">ST_Bridge_TSCS_INPUTS</Type>
 				</Var>
 			</Vars>
 			<Vars VarGrpType="2" AreaNo="1">
@@ -2240,6 +2240,11 @@ Bit 15]]></Comment>
 					<Type>DINT</Type>
 				</Var>
 				<Var>
+					<Name>GVL_Bridge_TSCS.OUTPUTS</Name>
+					<Comment><![CDATA[ Outputs]]></Comment>
+					<Type GUID="{155273E7-D90F-4E0A-DBD3-CADC6647405F}">ST_Bridge_TSCS_OUTPUTS</Type>
+				</Var>
+				<Var>
 					<Name>GVL.astAxes[1].Axis.PlcToNc</Name>
 					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
@@ -2250,11 +2255,6 @@ Bit 15]]></Comment>
 				<Var>
 					<Name>GVL.astAxes[3].Axis.PlcToNc</Name>
 					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Bridge_TSCS.OUTPUTS</Name>
-					<Comment><![CDATA[ Outputs]]></Comment>
-					<Type GUID="{155273E7-D90F-4E0A-DBD3-CADC6647405F}">ST_Bridge_TSCS_OUTPUTS</Type>
 				</Var>
 			</Vars>
 			<Vars VarGrpType="1" ContextId="1" AreaNo="16">

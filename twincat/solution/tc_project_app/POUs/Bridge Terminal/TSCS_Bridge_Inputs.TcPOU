@@ -5,16 +5,16 @@
 (* Inputs from TSCS PLC to TDU PLC*)
 VAR
 	// Function Blocks
-	BYTE_TO_BITS_10: BYTE_TO_BITS; // Interface for TSCS Byte 0 - Boolean inputs
-	BYTE_TO_BITS_11: BYTE_TO_BITS; // Interface for TSCS Byte 1 - Boolean inputs
-	BYTE_TO_BITS_12: BYTE_TO_BITS; // Interface for TSCS Byte 2 - Boolean inputs
-	BYTE_TO_BITS_13: BYTE_TO_BITS; // Interface for TSCS Byte 3 - Boolean inputs
-	BYTE_TO_BITS_14: BYTE_TO_BITS; // Interface for TSCS Byte 4 - Boolean inputs
-	BYTE_TO_BITS_20: BYTE_TO_BITS; // Interface for TMS Byte 0 - Boolean inputs
-	BYTE_TO_BITS_21: BYTE_TO_BITS; // Interface for TMS Byte 1 - Boolean inputs
-	BYTE_TO_BITS_22: BYTE_TO_BITS; // Interface for TMS Byte 2 - Boolean inputs
-	BYTE_TO_BITS_23: BYTE_TO_BITS; // Interface for TMS Byte 3 - Boolean inputs
-	BYTE_TO_BITS_24: BYTE_TO_BITS; // Interface for TMS Byte 4 - Boolean inputs
+	BYTE_TO_BITS_10: OSCAT_BYTE_TO_BITS; // Interface for TSCS Byte 0 - Boolean inputs
+	BYTE_TO_BITS_11: OSCAT_BYTE_TO_BITS; // Interface for TSCS Byte 1 - Boolean inputs
+	BYTE_TO_BITS_12: OSCAT_BYTE_TO_BITS; // Interface for TSCS Byte 2 - Boolean inputs
+	BYTE_TO_BITS_13: OSCAT_BYTE_TO_BITS; // Interface for TSCS Byte 3 - Boolean inputs
+	BYTE_TO_BITS_14: OSCAT_BYTE_TO_BITS; // Interface for TSCS Byte 4 - Boolean inputs
+	BYTE_TO_BITS_20: OSCAT_BYTE_TO_BITS; // Interface for TMS Byte 0 - Boolean inputs
+	BYTE_TO_BITS_21: OSCAT_BYTE_TO_BITS; // Interface for TMS Byte 1 - Boolean inputs
+	BYTE_TO_BITS_22: OSCAT_BYTE_TO_BITS; // Interface for TMS Byte 2 - Boolean inputs
+	BYTE_TO_BITS_23: OSCAT_BYTE_TO_BITS; // Interface for TMS Byte 3 - Boolean inputs
+	BYTE_TO_BITS_24: OSCAT_BYTE_TO_BITS; // Interface for TMS Byte 4 - Boolean inputs
 	fb_Bridge_Integer_Inputs_0 : FB_Bridge_Inputs_Integer; // Interface for TSCS Integers
 	fb_Bridge_Integer_Inputs_1 : FB_Bridge_Inputs_Integer; // Interface for TMS Integers
 	fb_Bridge_Real_Inputs_0 : FB_Bridge_Inputs_Real; // Interface for TSCS real signals
@@ -74,7 +74,7 @@ END_VAR
                         <v n="Extensible">false</v>
                       </o>
                       <o n="RValue" t="BoxTreeBox">
-                        <v n="BoxType">"BYTE_TO_BITS"</v>
+                        <v n="BoxType">"OSCAT_BYTE_TO_BITS"</v>
                         <o n="Instance" t="Operand">
                           <v n="Operand">"BYTE_TO_BITS_10"</v>
                           <v n="Type">"BYTE_TO_BITS"</v>
@@ -89,7 +89,7 @@ END_VAR
                           <v n="LValue">false</v>
                           <v n="Boolean">false</v>
                           <v n="IsInstance">true</v>
-                          <v n="Id">398L</v>
+                          <v n="Id">822L</v>
                         </o>
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
@@ -271,7 +271,7 @@ END_VAR
                         <n n="STSnippet" />
                         <v n="ContainsExtensibleInputs">false</v>
                         <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">399L</v>
+                        <v n="Id">823L</v>
                       </o>
                       <v n="Id">772L</v>
                     </o>
@@ -290,7 +290,7 @@ END_VAR
                   <v n="OutCommented">false</v>
                   <l2 n="NetworkItems" cet="BoxTreeBox">
                     <o>
-                      <v n="BoxType">"BYTE_TO_BITS"</v>
+                      <v n="BoxType">"OSCAT_BYTE_TO_BITS"</v>
                       <o n="Instance" t="Operand">
                         <v n="Operand">"BYTE_TO_BITS_11"</v>
                         <v n="Type">"BYTE_TO_BITS"</v>
@@ -305,7 +305,7 @@ END_VAR
                         <v n="LValue">false</v>
                         <v n="Boolean">false</v>
                         <v n="IsInstance">true</v>
-                        <v n="Id">386L</v>
+                        <v n="Id">820L</v>
                       </o>
                       <o n="OutputItems" t="OutputItemList">
                         <l2 n="OutputItems" cet="Operand">
@@ -487,7 +487,7 @@ END_VAR
                       <n n="STSnippet" />
                       <v n="ContainsExtensibleInputs">false</v>
                       <v n="ProvidesSTSnippet">false</v>
-                      <v n="Id">387L</v>
+                      <v n="Id">821L</v>
                     </o>
                   </l2>
                   <l2 n="Connectors" />
@@ -504,7 +504,7 @@ END_VAR
                   <v n="OutCommented">false</v>
                   <l2 n="NetworkItems" cet="BoxTreeBox">
                     <o>
-                      <v n="BoxType">"BYTE_TO_BITS"</v>
+                      <v n="BoxType">"OSCAT_BYTE_TO_BITS"</v>
                       <o n="Instance" t="Operand">
                         <v n="Operand">"BYTE_TO_BITS_12"</v>
                         <v n="Type">"BYTE_TO_BITS"</v>
@@ -519,7 +519,7 @@ END_VAR
                         <v n="LValue">false</v>
                         <v n="Boolean">false</v>
                         <v n="IsInstance">true</v>
-                        <v n="Id">374L</v>
+                        <v n="Id">818L</v>
                       </o>
                       <o n="OutputItems" t="OutputItemList">
                         <l2 n="OutputItems" cet="Operand">
@@ -701,7 +701,7 @@ END_VAR
                       <n n="STSnippet" />
                       <v n="ContainsExtensibleInputs">false</v>
                       <v n="ProvidesSTSnippet">false</v>
-                      <v n="Id">375L</v>
+                      <v n="Id">819L</v>
                     </o>
                   </l2>
                   <l2 n="Connectors" />
@@ -718,7 +718,7 @@ END_VAR
                   <v n="OutCommented">false</v>
                   <l2 n="NetworkItems" cet="BoxTreeBox">
                     <o>
-                      <v n="BoxType">"BYTE_TO_BITS"</v>
+                      <v n="BoxType">"OSCAT_BYTE_TO_BITS"</v>
                       <o n="Instance" t="Operand">
                         <v n="Operand">"BYTE_TO_BITS_13"</v>
                         <v n="Type">"BYTE_TO_BITS"</v>
@@ -733,7 +733,7 @@ END_VAR
                         <v n="LValue">false</v>
                         <v n="Boolean">false</v>
                         <v n="IsInstance">true</v>
-                        <v n="Id">362L</v>
+                        <v n="Id">816L</v>
                       </o>
                       <o n="OutputItems" t="OutputItemList">
                         <l2 n="OutputItems" cet="Operand">
@@ -915,7 +915,7 @@ END_VAR
                       <n n="STSnippet" />
                       <v n="ContainsExtensibleInputs">false</v>
                       <v n="ProvidesSTSnippet">false</v>
-                      <v n="Id">363L</v>
+                      <v n="Id">817L</v>
                     </o>
                   </l2>
                   <l2 n="Connectors" />
@@ -932,7 +932,7 @@ END_VAR
                   <v n="OutCommented">false</v>
                   <l2 n="NetworkItems" cet="BoxTreeBox">
                     <o>
-                      <v n="BoxType">"BYTE_TO_BITS"</v>
+                      <v n="BoxType">"OSCAT_BYTE_TO_BITS"</v>
                       <o n="Instance" t="Operand">
                         <v n="Operand">"BYTE_TO_BITS_14"</v>
                         <v n="Type">"BYTE_TO_BITS"</v>
@@ -947,7 +947,7 @@ END_VAR
                         <v n="LValue">false</v>
                         <v n="Boolean">false</v>
                         <v n="IsInstance">true</v>
-                        <v n="Id">320L</v>
+                        <v n="Id">814L</v>
                       </o>
                       <o n="OutputItems" t="OutputItemList">
                         <l2 n="OutputItems" cet="Operand">
@@ -1129,7 +1129,7 @@ END_VAR
                       <n n="STSnippet" />
                       <v n="ContainsExtensibleInputs">false</v>
                       <v n="ProvidesSTSnippet">false</v>
-                      <v n="Id">321L</v>
+                      <v n="Id">815L</v>
                     </o>
                   </l2>
                   <l2 n="Connectors" />
@@ -1146,7 +1146,7 @@ END_VAR
                   <v n="OutCommented">false</v>
                   <l2 n="NetworkItems" cet="BoxTreeBox">
                     <o>
-                      <v n="BoxType">"BYTE_TO_BITS"</v>
+                      <v n="BoxType">"OSCAT_BYTE_TO_BITS"</v>
                       <o n="Instance" t="Operand">
                         <v n="Operand">"BYTE_TO_BITS_20"</v>
                         <v n="Type">"BYTE_TO_BITS"</v>
@@ -1161,7 +1161,7 @@ END_VAR
                         <v n="LValue">false</v>
                         <v n="Boolean">false</v>
                         <v n="IsInstance">true</v>
-                        <v n="Id">411L</v>
+                        <v n="Id">812L</v>
                       </o>
                       <o n="OutputItems" t="OutputItemList">
                         <l2 n="OutputItems" cet="Operand">
@@ -1343,7 +1343,7 @@ END_VAR
                       <n n="STSnippet" />
                       <v n="ContainsExtensibleInputs">false</v>
                       <v n="ProvidesSTSnippet">false</v>
-                      <v n="Id">412L</v>
+                      <v n="Id">813L</v>
                     </o>
                   </l2>
                   <l2 n="Connectors" />
@@ -1360,7 +1360,7 @@ END_VAR
                   <v n="OutCommented">false</v>
                   <l2 n="NetworkItems" cet="BoxTreeBox">
                     <o>
-                      <v n="BoxType">"BYTE_TO_BITS"</v>
+                      <v n="BoxType">"OSCAT_BYTE_TO_BITS"</v>
                       <o n="Instance" t="Operand">
                         <v n="Operand">"BYTE_TO_BITS_21"</v>
                         <v n="Type">"BYTE_TO_BITS"</v>
@@ -1375,7 +1375,7 @@ END_VAR
                         <v n="LValue">false</v>
                         <v n="Boolean">false</v>
                         <v n="IsInstance">true</v>
-                        <v n="Id">423L</v>
+                        <v n="Id">810L</v>
                       </o>
                       <o n="OutputItems" t="OutputItemList">
                         <l2 n="OutputItems" cet="Operand">
@@ -1557,7 +1557,7 @@ END_VAR
                       <n n="STSnippet" />
                       <v n="ContainsExtensibleInputs">false</v>
                       <v n="ProvidesSTSnippet">false</v>
-                      <v n="Id">424L</v>
+                      <v n="Id">811L</v>
                     </o>
                   </l2>
                   <l2 n="Connectors" />
@@ -1574,7 +1574,7 @@ END_VAR
                   <v n="OutCommented">false</v>
                   <l2 n="NetworkItems" cet="BoxTreeBox">
                     <o>
-                      <v n="BoxType">"BYTE_TO_BITS"</v>
+                      <v n="BoxType">"OSCAT_BYTE_TO_BITS"</v>
                       <o n="Instance" t="Operand">
                         <v n="Operand">"BYTE_TO_BITS_22"</v>
                         <v n="Type">"BYTE_TO_BITS"</v>
@@ -1589,7 +1589,7 @@ END_VAR
                         <v n="LValue">false</v>
                         <v n="Boolean">false</v>
                         <v n="IsInstance">true</v>
-                        <v n="Id">435L</v>
+                        <v n="Id">808L</v>
                       </o>
                       <o n="OutputItems" t="OutputItemList">
                         <l2 n="OutputItems" cet="Operand">
@@ -1771,7 +1771,7 @@ END_VAR
                       <n n="STSnippet" />
                       <v n="ContainsExtensibleInputs">false</v>
                       <v n="ProvidesSTSnippet">false</v>
-                      <v n="Id">436L</v>
+                      <v n="Id">809L</v>
                     </o>
                   </l2>
                   <l2 n="Connectors" />
@@ -1788,7 +1788,7 @@ END_VAR
                   <v n="OutCommented">false</v>
                   <l2 n="NetworkItems" cet="BoxTreeBox">
                     <o>
-                      <v n="BoxType">"BYTE_TO_BITS"</v>
+                      <v n="BoxType">"OSCAT_BYTE_TO_BITS"</v>
                       <o n="Instance" t="Operand">
                         <v n="Operand">"BYTE_TO_BITS_23"</v>
                         <v n="Type">"BYTE_TO_BITS"</v>
@@ -1803,7 +1803,7 @@ END_VAR
                         <v n="LValue">false</v>
                         <v n="Boolean">false</v>
                         <v n="IsInstance">true</v>
-                        <v n="Id">447L</v>
+                        <v n="Id">806L</v>
                       </o>
                       <o n="OutputItems" t="OutputItemList">
                         <l2 n="OutputItems" cet="Operand">
@@ -1985,7 +1985,7 @@ END_VAR
                       <n n="STSnippet" />
                       <v n="ContainsExtensibleInputs">false</v>
                       <v n="ProvidesSTSnippet">false</v>
-                      <v n="Id">448L</v>
+                      <v n="Id">807L</v>
                     </o>
                   </l2>
                   <l2 n="Connectors" />
@@ -2002,7 +2002,7 @@ END_VAR
                   <v n="OutCommented">false</v>
                   <l2 n="NetworkItems" cet="BoxTreeBox">
                     <o>
-                      <v n="BoxType">"BYTE_TO_BITS"</v>
+                      <v n="BoxType">"OSCAT_BYTE_TO_BITS"</v>
                       <o n="Instance" t="Operand">
                         <v n="Operand">"BYTE_TO_BITS_24"</v>
                         <v n="Type">"BYTE_TO_BITS"</v>
@@ -2017,7 +2017,7 @@ END_VAR
                         <v n="LValue">false</v>
                         <v n="Boolean">false</v>
                         <v n="IsInstance">true</v>
-                        <v n="Id">459L</v>
+                        <v n="Id">804L</v>
                       </o>
                       <o n="OutputItems" t="OutputItemList">
                         <l2 n="OutputItems" cet="Operand">
@@ -2199,7 +2199,7 @@ END_VAR
                       <n n="STSnippet" />
                       <v n="ContainsExtensibleInputs">false</v>
                       <v n="ProvidesSTSnippet">false</v>
-                      <v n="Id">460L</v>
+                      <v n="Id">805L</v>
                     </o>
                   </l2>
                   <l2 n="Connectors" />
@@ -4834,7 +4834,7 @@ END_VAR
                         <v n="Extensible">false</v>
                       </o>
                       <o n="RValue" t="BoxTreeBox">
-                        <v n="BoxType">"DW_TO_REAL"</v>
+                        <v n="BoxType">"OSCAT_DW_TO_REAL"</v>
                         <o n="Instance" t="Operand">
                           <n n="Operand" />
                           <v n="Type">""</v>
@@ -4849,7 +4849,7 @@ END_VAR
                           <v n="LValue">false</v>
                           <v n="Boolean">false</v>
                           <v n="IsInstance">true</v>
-                          <v n="Id">769L</v>
+                          <v n="Id">824L</v>
                         </o>
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems">
@@ -4905,7 +4905,7 @@ END_VAR
                         <n n="STSnippet" />
                         <v n="ContainsExtensibleInputs">false</v>
                         <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">770L</v>
+                        <v n="Id">825L</v>
                       </o>
                       <v n="Id">768L</v>
                     </o>

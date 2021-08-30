@@ -131,6 +131,18 @@
     <Compile Include="POUs\Bridge Terminal\FBs\FB_Bridge_Inputs_Real.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Bridge Terminal\FBs\OSCAT_BYTE_OF_BIT.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Bridge Terminal\FBs\OSCAT_BYTE_TO_BITS.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Bridge Terminal\FBs\OSCAT_DW_TO_REAL.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Bridge Terminal\FBs\OSCAT_REAL_TO_DW.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\Bridge Terminal\TSCS_Bridge_Inputs.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -585,11 +597,6 @@
     <None Include="tc_project_app.tmc">
       <SubType>Content</SubType>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <LibraryReference Include="BASIC,3.31,OSCAT">
-      <Namespace>BASIC</Namespace>
-    </LibraryReference>
   </ItemGroup>
   <ProjectExtensions>
     <PlcProjectOptions>

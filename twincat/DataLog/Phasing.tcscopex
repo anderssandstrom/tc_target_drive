@@ -4,7 +4,17 @@
   <AutoDeleteMode>Disabled</AutoDeleteMode>
   <AutoDeleteOlderThan>0</AutoDeleteOlderThan>
   <AutoRestartRecord>false</AutoRestartRecord>
+  <AutoSaveExportConfigurationString>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;ExportConfiguration&gt;
+  &lt;Silent&gt;False&lt;/Silent&gt;
+  &lt;Format_Properties&gt;
+    &lt;CSVProperties&gt;
+    &lt;/CSVProperties&gt;
+  &lt;/Format_Properties&gt;
+&lt;/ExportConfiguration&gt;
+</AutoSaveExportConfigurationString>
   <AutoSaveFileNameMask>{SCOPE}_AutoSave_{HH_mm_ss}</AutoSaveFileNameMask>
+  <AutoSaveMode>None</AutoSaveMode>
   <AutoSavePath>$ScopeProject$\AutoSave</AutoSavePath>
   <Comment />
   <DisplayColor>Black</DisplayColor>
@@ -44,7 +54,7 @@
       <IsFileBased>false</IsFileBased>
       <MasterChart>00000000-0000-0000-0000-000000000000</MasterChart>
       <Name>YT Chart</Name>
-      <ShowVisionChart>false</ShowVisionChart>
+      <ShowImageChart>false</ShowImageChart>
       <SortPriority>10</SortPriority>
       <SubMember>
         <OverviewChart AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -297,7 +307,7 @@
                     <SeriesStyle AssemblyName="TwinCAT.Measurement.Scope.API.Model">
                       <Antialias>true</Antialias>
                       <Comment />
-                      <DisplayColor>Plum</DisplayColor>
+                      <DisplayColor>-16711936</DisplayColor>
                       <FillColor>838926080</FillColor>
                       <FillMode>None</FillMode>
                       <Guid>caf46cd1-a07f-48a5-a164-830a2092a0ba</Guid>
@@ -416,7 +426,7 @@
                     <SeriesStyle AssemblyName="TwinCAT.Measurement.Scope.API.Model">
                       <Antialias>true</Antialias>
                       <Comment />
-                      <DisplayColor>Plum</DisplayColor>
+                      <DisplayColor>-65281</DisplayColor>
                       <FillColor>855572735</FillColor>
                       <FillMode>None</FillMode>
                       <Guid>ffba901c-530d-413a-87cb-a0c30757e9f7</Guid>
@@ -535,7 +545,7 @@
                     <SeriesStyle AssemblyName="TwinCAT.Measurement.Scope.API.Model">
                       <Antialias>true</Antialias>
                       <Comment />
-                      <DisplayColor>Plum</DisplayColor>
+                      <DisplayColor>-16777088</DisplayColor>
                       <FillColor>838860928</FillColor>
                       <FillMode>None</FillMode>
                       <Guid>3f78025c-04cd-4e8c-9a0d-0a08f55550bc</Guid>
@@ -738,7 +748,7 @@
                     <SeriesStyle AssemblyName="TwinCAT.Measurement.Scope.API.Model">
                       <Antialias>true</Antialias>
                       <Comment />
-                      <DisplayColor>Plum</DisplayColor>
+                      <DisplayColor>-8355840</DisplayColor>
                       <FillColor>847282176</FillColor>
                       <FillMode>None</FillMode>
                       <Guid>4619d283-259b-4725-bd2f-10cd125b4295</Guid>
@@ -857,7 +867,7 @@
                     <SeriesStyle AssemblyName="TwinCAT.Measurement.Scope.API.Model">
                       <Antialias>true</Antialias>
                       <Comment />
-                      <DisplayColor>Plum</DisplayColor>
+                      <DisplayColor>-65536</DisplayColor>
                       <FillColor>855572480</FillColor>
                       <FillMode>None</FillMode>
                       <Guid>bbf46d58-b5e8-4ab5-a840-e5b7f5ea0325</Guid>
@@ -976,7 +986,7 @@
                     <SeriesStyle AssemblyName="TwinCAT.Measurement.Scope.API.Model">
                       <Antialias>true</Antialias>
                       <Comment />
-                      <DisplayColor>Plum</DisplayColor>
+                      <DisplayColor>-16711936</DisplayColor>
                       <FillColor>838926080</FillColor>
                       <FillMode>None</FillMode>
                       <Guid>20a8115e-cede-48b1-8737-bab946ac88d8</Guid>
@@ -1179,7 +1189,7 @@
                     <SeriesStyle AssemblyName="TwinCAT.Measurement.Scope.API.Model">
                       <Antialias>true</Antialias>
                       <Comment />
-                      <DisplayColor>Plum</DisplayColor>
+                      <DisplayColor>-14774017</DisplayColor>
                       <FillColor>840863999</FillColor>
                       <FillMode>None</FillMode>
                       <Guid>4cab38f0-c83a-4ad2-9212-e6ad32c92d92</Guid>
@@ -1298,7 +1308,7 @@
                     <SeriesStyle AssemblyName="TwinCAT.Measurement.Scope.API.Model">
                       <Antialias>true</Antialias>
                       <Comment />
-                      <DisplayColor>Plum</DisplayColor>
+                      <DisplayColor>-8355840</DisplayColor>
                       <FillColor>847282176</FillColor>
                       <FillMode>None</FillMode>
                       <Guid>2887d14f-3032-4614-b3da-8320901d5e87</Guid>
@@ -1417,7 +1427,7 @@
                     <SeriesStyle AssemblyName="TwinCAT.Measurement.Scope.API.Model">
                       <Antialias>true</Antialias>
                       <Comment />
-                      <DisplayColor>Plum</DisplayColor>
+                      <DisplayColor>-16181</DisplayColor>
                       <FillColor>855621835</FillColor>
                       <FillMode>None</FillMode>
                       <Guid>301d9718-adf1-4f43-955c-abd29b0e695b</Guid>
@@ -1536,7 +1546,7 @@
                     <SeriesStyle AssemblyName="TwinCAT.Measurement.Scope.API.Model">
                       <Antialias>true</Antialias>
                       <Comment />
-                      <DisplayColor>Plum</DisplayColor>
+                      <DisplayColor>-4419697</DisplayColor>
                       <FillColor>851218319</FillColor>
                       <FillMode>None</FillMode>
                       <Guid>c6497871-4772-4e45-ba1a-6d2a70aa908d</Guid>
@@ -1739,7 +1749,7 @@
                     <SeriesStyle AssemblyName="TwinCAT.Measurement.Scope.API.Model">
                       <Antialias>true</Antialias>
                       <Comment />
-                      <DisplayColor>Plum</DisplayColor>
+                      <DisplayColor>-16744448</DisplayColor>
                       <FillColor>838893568</FillColor>
                       <FillMode>None</FillMode>
                       <Guid>b25792ca-fc62-4ee5-9f04-0f8af32c8a5f</Guid>
@@ -1881,6 +1891,7 @@
           <Title>AdsAcquisition_36</Title>
           <UseLocalServer>true</UseLocalServer>
           <UseTaskSampleTime>true</UseTaskSampleTime>
+          <UTF8Encoding>false</UTF8Encoding>
           <VariableSize>8</VariableSize>
         </AdsAcquisition>
         <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -1962,6 +1973,7 @@
           <Title>AdsAcquisition_36</Title>
           <UseLocalServer>true</UseLocalServer>
           <UseTaskSampleTime>true</UseTaskSampleTime>
+          <UTF8Encoding>false</UTF8Encoding>
           <VariableSize>8</VariableSize>
         </AdsAcquisition>
         <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -2043,6 +2055,7 @@
           <Title>AdsAcquisition_36</Title>
           <UseLocalServer>true</UseLocalServer>
           <UseTaskSampleTime>true</UseTaskSampleTime>
+          <UTF8Encoding>false</UTF8Encoding>
           <VariableSize>8</VariableSize>
         </AdsAcquisition>
         <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -2124,6 +2137,7 @@
           <Title>AdsAcquisition_36</Title>
           <UseLocalServer>true</UseLocalServer>
           <UseTaskSampleTime>true</UseTaskSampleTime>
+          <UTF8Encoding>false</UTF8Encoding>
           <VariableSize>8</VariableSize>
         </AdsAcquisition>
         <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -2205,6 +2219,7 @@
           <Title>AdsAcquisition_36</Title>
           <UseLocalServer>true</UseLocalServer>
           <UseTaskSampleTime>true</UseTaskSampleTime>
+          <UTF8Encoding>false</UTF8Encoding>
           <VariableSize>8</VariableSize>
         </AdsAcquisition>
         <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -2286,6 +2301,7 @@
           <Title>AdsAcquisition_36</Title>
           <UseLocalServer>true</UseLocalServer>
           <UseTaskSampleTime>true</UseTaskSampleTime>
+          <UTF8Encoding>false</UTF8Encoding>
           <VariableSize>8</VariableSize>
         </AdsAcquisition>
         <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -2367,6 +2383,7 @@
           <Title>AdsAcquisition_36</Title>
           <UseLocalServer>true</UseLocalServer>
           <UseTaskSampleTime>true</UseTaskSampleTime>
+          <UTF8Encoding>false</UTF8Encoding>
           <VariableSize>1</VariableSize>
         </AdsAcquisition>
         <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -2448,6 +2465,7 @@
           <Title>AdsAcquisition_36</Title>
           <UseLocalServer>true</UseLocalServer>
           <UseTaskSampleTime>true</UseTaskSampleTime>
+          <UTF8Encoding>false</UTF8Encoding>
           <VariableSize>8</VariableSize>
         </AdsAcquisition>
         <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -2529,6 +2547,7 @@
           <Title>AdsAcquisition_36</Title>
           <UseLocalServer>true</UseLocalServer>
           <UseTaskSampleTime>true</UseTaskSampleTime>
+          <UTF8Encoding>false</UTF8Encoding>
           <VariableSize>8</VariableSize>
         </AdsAcquisition>
         <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -2610,6 +2629,7 @@
           <Title>AdsAcquisition_36</Title>
           <UseLocalServer>true</UseLocalServer>
           <UseTaskSampleTime>true</UseTaskSampleTime>
+          <UTF8Encoding>false</UTF8Encoding>
           <VariableSize>1</VariableSize>
         </AdsAcquisition>
         <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -2691,6 +2711,7 @@
           <Title>AdsAcquisition_36</Title>
           <UseLocalServer>true</UseLocalServer>
           <UseTaskSampleTime>true</UseTaskSampleTime>
+          <UTF8Encoding>false</UTF8Encoding>
           <VariableSize>1</VariableSize>
         </AdsAcquisition>
         <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -2772,6 +2793,7 @@
           <Title>AdsAcquisition_36</Title>
           <UseLocalServer>true</UseLocalServer>
           <UseTaskSampleTime>true</UseTaskSampleTime>
+          <UTF8Encoding>false</UTF8Encoding>
           <VariableSize>2</VariableSize>
         </AdsAcquisition>
         <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -2853,6 +2875,7 @@
           <Title>AdsAcquisition_36</Title>
           <UseLocalServer>true</UseLocalServer>
           <UseTaskSampleTime>true</UseTaskSampleTime>
+          <UTF8Encoding>false</UTF8Encoding>
           <VariableSize>8</VariableSize>
         </AdsAcquisition>
         <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -2934,6 +2957,7 @@
           <Title>AdsAcquisition_36</Title>
           <UseLocalServer>true</UseLocalServer>
           <UseTaskSampleTime>true</UseTaskSampleTime>
+          <UTF8Encoding>false</UTF8Encoding>
           <VariableSize>8</VariableSize>
         </AdsAcquisition>
         <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -3015,6 +3039,7 @@
           <Title>AdsAcquisition_36</Title>
           <UseLocalServer>true</UseLocalServer>
           <UseTaskSampleTime>true</UseTaskSampleTime>
+          <UTF8Encoding>false</UTF8Encoding>
           <VariableSize>8</VariableSize>
         </AdsAcquisition>
         <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -3096,6 +3121,7 @@
           <Title>AdsAcquisition_36</Title>
           <UseLocalServer>true</UseLocalServer>
           <UseTaskSampleTime>true</UseTaskSampleTime>
+          <UTF8Encoding>false</UTF8Encoding>
           <VariableSize>8</VariableSize>
         </AdsAcquisition>
         <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -3177,6 +3203,7 @@
           <Title>AdsAcquisition_36</Title>
           <UseLocalServer>true</UseLocalServer>
           <UseTaskSampleTime>true</UseTaskSampleTime>
+          <UTF8Encoding>false</UTF8Encoding>
           <VariableSize>1</VariableSize>
         </AdsAcquisition>
         <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -3258,6 +3285,7 @@
           <Title>AdsAcquisition_36</Title>
           <UseLocalServer>true</UseLocalServer>
           <UseTaskSampleTime>true</UseTaskSampleTime>
+          <UTF8Encoding>false</UTF8Encoding>
           <VariableSize>1</VariableSize>
         </AdsAcquisition>
         <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -3339,6 +3367,7 @@
           <Title>AdsAcquisition_36</Title>
           <UseLocalServer>true</UseLocalServer>
           <UseTaskSampleTime>true</UseTaskSampleTime>
+          <UTF8Encoding>false</UTF8Encoding>
           <VariableSize>1</VariableSize>
         </AdsAcquisition>
         <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -3420,6 +3449,7 @@
           <Title>AdsAcquisition_36</Title>
           <UseLocalServer>true</UseLocalServer>
           <UseTaskSampleTime>true</UseTaskSampleTime>
+          <UTF8Encoding>false</UTF8Encoding>
           <VariableSize>1</VariableSize>
         </AdsAcquisition>
         <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -3501,6 +3531,7 @@
           <Title>AdsAcquisition_36</Title>
           <UseLocalServer>true</UseLocalServer>
           <UseTaskSampleTime>true</UseTaskSampleTime>
+          <UTF8Encoding>false</UTF8Encoding>
           <VariableSize>2</VariableSize>
         </AdsAcquisition>
         <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -3582,6 +3613,7 @@
           <Title>AdsAcquisition_36</Title>
           <UseLocalServer>true</UseLocalServer>
           <UseTaskSampleTime>true</UseTaskSampleTime>
+          <UTF8Encoding>false</UTF8Encoding>
           <VariableSize>2</VariableSize>
         </AdsAcquisition>
         <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -3663,6 +3695,7 @@
           <Title>AdsAcquisition_36</Title>
           <UseLocalServer>true</UseLocalServer>
           <UseTaskSampleTime>true</UseTaskSampleTime>
+          <UTF8Encoding>false</UTF8Encoding>
           <VariableSize>8</VariableSize>
         </AdsAcquisition>
       </SubMember>

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="OSCAT_REAL_TO_DW" Id="{bf077dbe-18a1-40f8-a015-ddd1741aee68}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION OSCAT_REAL_TO_DW : DWORD
+// E. Foy (2021-08-30): Copied from OSCAT library.
+VAR_INPUT
+	X : REAL;
+END_VAR
+VAR
+	pt : POINTER TO DWORD;
+END_VAR
+
+(*
+version 1.0	18. apr. 2008
+programmer 	hugo
+tested by		tobias
+
+this function converts a 32 Bit Real to a dword in a bitwise manner.
+*)
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[pt := ADR(X);
+OSCAT_REAL_TO_DW := pt^;
+
+(* revision history
+hm	18. apr. 2008
+	original version
+
+*)]]></ST>
+    </Implementation>
+    <LineIds Name="OSCAT_REAL_TO_DW">
+      <LineId Id="10" Count="6" />
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
