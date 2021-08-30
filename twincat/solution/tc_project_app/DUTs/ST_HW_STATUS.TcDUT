@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+  <DUT Name="ST_HW_STATUS" Id="{e9aeb18f-2dc6-4226-a36e-34240812c1c9}">
+    <Declaration><![CDATA[// s2: ch1: emergency stop ok                 Verify: OK   
+// s2: ch2: rf01 termal braking filter OK..   Verify: Q to Markus: Maybe this should be rf02?
+// s2: ch3: ta01 and ta02 24V power supply OK Verify: OK  
+// s2: ch4: fc11 24V fuse OK                   Verify: OK
+// s2: ch5: fa01 and fa02 overvoltage protection OK
+// s2: ch6: fc01 fuse target wheel motor OK
+// s2: ch7: fc06 and fc07 ICS outlets fuse OK
+// s2: ch8: fc51, fc52 and fc53 UPS fuses OK (something wrong)
+
+TYPE ST_HW_STATUS :
+STRUCT
+	bEStopOK:BOOL;
+	bRF02_MainDriveThermalFilterOK:BOOL;
+	bTA01_TA02_24VSupplyOK:BOOL;
+	bFC11_Fuse24VOK:BOOL;
+	bFA01_FA02_OvervoltageOK:BOOL;
+	bFC01_FuseMainRotationOK:BOOL;
+	bFC06_FC07_FuseICSOutletsOK:BOOL;
+	bFC51_FC52_FC53_FuseUPSOK:BOOL;
+END_STRUCT
+END_TYPE
+
+
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -20,86 +20,6 @@
 			</Format>
 		</DataType>
 		<DataType>
-			<Name GUID="{87C0FCC2-5B94-C3C3-5793-F6875ECBE605}" AutoDeleteType="true">ST_Bridge_TSCS_INPUTS</Name>
-			<BitSize>1760</BitSize>
-			<SubItem>
-				<Name>TSCS_Byte</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
-				<ArrayInfo>
-					<LBound>0</LBound>
-					<Elements>5</Elements>
-				</ArrayInfo>
-				<Comment><![CDATA[ Boolean words from TSCS PLC (5x 8 Booleans)]]></Comment>
-				<BitSize>40</BitSize>
-				<BitOffs>0</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>TSCS_Integer</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
-				<ArrayInfo>
-					<LBound>0</LBound>
-					<Elements>10</Elements>
-				</ArrayInfo>
-				<Comment><![CDATA[ Integer signals from TSCS PLC (10x)	]]></Comment>
-				<BitSize>160</BitSize>
-				<BitOffs>48</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>TSCS_Real</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
-				<ArrayInfo>
-					<LBound>0</LBound>
-					<Elements>20</Elements>
-				</ArrayInfo>
-				<Comment><![CDATA[ Real signals from TSCS PLC (20x)]]></Comment>
-				<BitSize>640</BitSize>
-				<BitOffs>224</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>TMS_Byte</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
-				<ArrayInfo>
-					<LBound>0</LBound>
-					<Elements>5</Elements>
-				</ArrayInfo>
-				<Comment><![CDATA[ Boolean words from TMS PLC (via TSCS) (5x 8 Booleans)]]></Comment>
-				<BitSize>40</BitSize>
-				<BitOffs>864</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>TMS_Integer</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
-				<ArrayInfo>
-					<LBound>0</LBound>
-					<Elements>10</Elements>
-				</ArrayInfo>
-				<Comment><![CDATA[ Integer signals from TMS PLC (via TSCS) (10x)]]></Comment>
-				<BitSize>160</BitSize>
-				<BitOffs>912</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>TMS_Real</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
-				<ArrayInfo>
-					<LBound>0</LBound>
-					<Elements>20</Elements>
-				</ArrayInfo>
-				<Comment><![CDATA[ Real signals from TMS PLC (via TSCS) (20x)]]></Comment>
-				<BitSize>640</BitSize>
-				<BitOffs>1088</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>TDU_TestSignal_RB</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
-				<Comment><![CDATA[ Diagnostic signal readback TDU->TSCS->TDU]]></Comment>
-				<BitSize>32</BitSize>
-				<BitOffs>1728</BitOffs>
-			</SubItem>
-			<Hides>
-				<Hide GUID="{2D933307-2102-52D9-81B5-BA47BDBD19C3}"/>
-			</Hides>
-		</DataType>
-		<DataType>
 			<Name GUID="{E8EE2899-4679-469C-BAC5-7318F329907D}" AutoDeleteType="true">ST_S135_DRIVESTATUSWORD</Name>
 			<BitSize>16</BitSize>
 			<SubItem>
@@ -266,6 +186,86 @@ bS144_15_NotDefined					: BIT;	]]></Comment>
 			</SubItem>
 			<Hides>
 				<Hide GUID="{1642AA04-0B3B-44CC-92AC-D98DCDBF8D53}"/>
+			</Hides>
+		</DataType>
+		<DataType>
+			<Name GUID="{87C0FCC2-5B94-C3C3-5793-F6875ECBE605}" AutoDeleteType="true">ST_Bridge_TSCS_INPUTS</Name>
+			<BitSize>1760</BitSize>
+			<SubItem>
+				<Name>TSCS_Byte</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>5</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ Boolean words from TSCS PLC (5x 8 Booleans)]]></Comment>
+				<BitSize>40</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_Integer</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>10</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ Integer signals from TSCS PLC (10x)	]]></Comment>
+				<BitSize>160</BitSize>
+				<BitOffs>48</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_Real</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>20</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ Real signals from TSCS PLC (20x)]]></Comment>
+				<BitSize>640</BitSize>
+				<BitOffs>224</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_Byte</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>5</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ Boolean words from TMS PLC (via TSCS) (5x 8 Booleans)]]></Comment>
+				<BitSize>40</BitSize>
+				<BitOffs>864</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_Integer</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>10</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ Integer signals from TMS PLC (via TSCS) (10x)]]></Comment>
+				<BitSize>160</BitSize>
+				<BitOffs>912</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_Real</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>20</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ Real signals from TMS PLC (via TSCS) (20x)]]></Comment>
+				<BitSize>640</BitSize>
+				<BitOffs>1088</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_TestSignal_RB</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ Diagnostic signal readback TDU->TSCS->TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1728</BitOffs>
+			</SubItem>
+			<Hides>
+				<Hide GUID="{2D933307-2102-52D9-81B5-BA47BDBD19C3}"/>
 			</Hides>
 		</DataType>
 		<DataType>
@@ -988,53 +988,6 @@ External Setpoint Generation:
 			</Relations>
 		</DataType>
 		<DataType>
-			<Name GUID="{155273E7-D90F-4E0A-DBD3-CADC6647405F}" AutoDeleteType="true">ST_Bridge_TSCS_OUTPUTS</Name>
-			<BitSize>896</BitSize>
-			<SubItem>
-				<Name>TDU_Byte</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
-				<ArrayInfo>
-					<LBound>0</LBound>
-					<Elements>5</Elements>
-				</ArrayInfo>
-				<Comment><![CDATA[ Boolean words from TDU PLC (5x 8 Booleans)]]></Comment>
-				<BitSize>40</BitSize>
-				<BitOffs>0</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>TDU_Real</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
-				<ArrayInfo>
-					<LBound>0</LBound>
-					<Elements>20</Elements>
-				</ArrayInfo>
-				<Comment><![CDATA[ Real signals from TDU PLC (20x)]]></Comment>
-				<BitSize>640</BitSize>
-				<BitOffs>64</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>TDU_Integer</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
-				<ArrayInfo>
-					<LBound>0</LBound>
-					<Elements>10</Elements>
-				</ArrayInfo>
-				<Comment><![CDATA[ Real signals from TDU PLC (10x)]]></Comment>
-				<BitSize>160</BitSize>
-				<BitOffs>704</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>TDU_TestSignal</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
-				<Comment><![CDATA[ Diagnostic signal (for readback: This PLC -> Other PLC -> This PLC)]]></Comment>
-				<BitSize>32</BitSize>
-				<BitOffs>864</BitOffs>
-			</SubItem>
-			<Hides>
-				<Hide GUID="{E242E054-4C82-FB43-73EB-168AF9666D1C}"/>
-			</Hides>
-		</DataType>
-		<DataType>
 			<Name GUID="{4CCFD5CA-E676-474E-B42D-6A96C42819C9}" AutoDeleteType="true">ST_S134_MASTERCONTROLWORD</Name>
 			<BitSize>16</BitSize>
 			<SubItem>
@@ -1261,6 +1214,53 @@ Bit 15]]></Comment>
 			</SubItem>
 			<Hides>
 				<Hide GUID="{C611E284-5D81-42D2-9EAA-1D349EB6D88D}"/>
+			</Hides>
+		</DataType>
+		<DataType>
+			<Name GUID="{155273E7-D90F-4E0A-DBD3-CADC6647405F}" AutoDeleteType="true">ST_Bridge_TSCS_OUTPUTS</Name>
+			<BitSize>896</BitSize>
+			<SubItem>
+				<Name>TDU_Byte</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>5</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ Boolean words from TDU PLC (5x 8 Booleans)]]></Comment>
+				<BitSize>40</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_Real</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>20</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ Real signals from TDU PLC (20x)]]></Comment>
+				<BitSize>640</BitSize>
+				<BitOffs>64</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_Integer</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>10</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ Real signals from TDU PLC (10x)]]></Comment>
+				<BitSize>160</BitSize>
+				<BitOffs>704</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_TestSignal</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ Diagnostic signal (for readback: This PLC -> Other PLC -> This PLC)]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>864</BitOffs>
+			</SubItem>
+			<Hides>
+				<Hide GUID="{E242E054-4C82-FB43-73EB-168AF9666D1C}"/>
 			</Hides>
 		</DataType>
 		<DataType>
@@ -1501,6 +1501,42 @@ Bit 15]]></Comment>
 				<Var>
 					<Name>MAIN.fbTemp.InfoData_State</Name>
 					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveStatus.nS135_DriveStatusWord</Name>
+					<Type GUID="{E8EE2899-4679-469C-BAC5-7318F329907D}">ST_S135_DRIVESTATUSWORD</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveStatus.nS51_PositionFeedbackValue</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveStatus.nS386_ActivePositionFeedbackValue</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveStatus.nS40_VelocityFeedbackValue</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveStatus.nS390_DiagnosticMessageNumber</Name>
+					<Type>DWORD</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveStatus.stS144_SignalStatusWord</Name>
+					<Type GUID="{8AD6E8B9-D3F6-4CE2-AA31-A4B86C802016}">ST_S144_SIGNALSTATUSWORD</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveStatus.nS84_TorqueFeedback</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveStatus.nS189_PositionError</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveStatus.nP173_MarkerPosition</Name>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>MAIN.fb_s2_EL1809.bBI_1</Name>
@@ -2036,42 +2072,6 @@ Bit 15]]></Comment>
 					<Type GUID="{87C0FCC2-5B94-C3C3-5793-F6875ECBE605}">ST_Bridge_TSCS_INPUTS</Type>
 				</Var>
 				<Var>
-					<Name>MAIN.fbIndraDrive.stDriveStatus.nS135_DriveStatusWord</Name>
-					<Type GUID="{E8EE2899-4679-469C-BAC5-7318F329907D}">ST_S135_DRIVESTATUSWORD</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fbIndraDrive.stDriveStatus.nS51_PositionFeedbackValue</Name>
-					<Type>DINT</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fbIndraDrive.stDriveStatus.nS386_ActivePositionFeedbackValue</Name>
-					<Type>DINT</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fbIndraDrive.stDriveStatus.nS40_VelocityFeedbackValue</Name>
-					<Type>DINT</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fbIndraDrive.stDriveStatus.nS390_DiagnosticMessageNumber</Name>
-					<Type>DWORD</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fbIndraDrive.stDriveStatus.stS144_SignalStatusWord</Name>
-					<Type GUID="{8AD6E8B9-D3F6-4CE2-AA31-A4B86C802016}">ST_S144_SIGNALSTATUSWORD</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fbIndraDrive.stDriveStatus.nS84_TorqueFeedback</Name>
-					<Type>INT</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fbIndraDrive.stDriveStatus.nS189_PositionError</Name>
-					<Type>DINT</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fbIndraDrive.stDriveStatus.nP173_MarkerPosition</Name>
-					<Type>DINT</Type>
-				</Var>
-				<Var>
 					<Name>GVL.astAxes[1].stInputs.bLimitFwd</Name>
 					<Type>BOOL</Type>
 				</Var>
@@ -2131,11 +2131,6 @@ Bit 15]]></Comment>
 					<Type>INT</Type>
 				</Var>
 				<Var>
-					<Name>GVL_Bridge_TSCS.OUTPUTS</Name>
-					<Comment><![CDATA[ Outputs]]></Comment>
-					<Type GUID="{155273E7-D90F-4E0A-DBD3-CADC6647405F}">ST_Bridge_TSCS_OUTPUTS</Type>
-				</Var>
-				<Var>
 					<Name>MAIN.fbIndraDrive.stDriveCommands.stS134_MasterControlWord</Name>
 					<Type GUID="{4CCFD5CA-E676-474E-B42D-6A96C42819C9}">ST_S134_MASTERCONTROLWORD</Type>
 				</Var>
@@ -2178,6 +2173,61 @@ Bit 15]]></Comment>
 				<Var>
 					<Name>MAIN.fbIndraDrive.stDriveCommands.nS40_VelocityCommandValue</Name>
 					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.stHWControl.bRotOmronSensor1Feed</Name>
+					<Comment><![CDATA[ s4: ch1: Feed omron sensor 1]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.stHWControl.bRotOmronSensor2Feed</Name>
+					<Comment><![CDATA[ s4: ch2: Feed omron sensor 2]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.stHWControl.bXMinMaxFeed</Name>
+					<Comment><![CDATA[ s5: ch1: kf05: w02.bg01 w02.bg02 stepper x limit switch max, limit min]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.stHWControl.bXBrakeReleaseCmd</Name>
+					<Comment><![CDATA[ s5: ch2: kf05: w02.ql1: stepper x brake]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.stHWControl.bXMinMinMaxMaxFeed</Name>
+					<Comment><![CDATA[ s5: ch3: kf05: w02.bg03 w02.bg04 stepper x limit switch max max, limit min min]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.stHWControl.bYMinMaxFeed</Name>
+					<Comment><![CDATA[ s5: ch5: kf05: w02.bg05 w02.bg06 stepper y limit switch max, limit min]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.stHWControl.bYBrakeReleaseCmd</Name>
+					<Comment><![CDATA[ s5: ch6: kf05: w02.ql2: stepper y brake]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.stHWControl.bYMinMinMaxMaxFeed</Name>
+					<Comment><![CDATA[ s5: ch7: kf05: w02.bg07 w02.bg08 stepper y limit switch max max, limit min min]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.stHWControl.bZMinMaxFeed</Name>
+					<Comment><![CDATA[ s5: ch9: kf05: w03.bg01 w03.bg02 w03.bg03  stepper z limit switch max, limit min limit min min (service)]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.stHWControl.bZMinMinMaxMaxFeed</Name>
+					<Comment><![CDATA[ s5: ch10: kf05: w03.bg04 w03.bg05 w03.bg06  stepper z limit switch max max, limit min min]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Bridge_TSCS.OUTPUTS</Name>
+					<Comment><![CDATA[ Outputs]]></Comment>
+					<Type GUID="{155273E7-D90F-4E0A-DBD3-CADC6647405F}">ST_Bridge_TSCS_OUTPUTS</Type>
 				</Var>
 				<Var>
 					<Name>GVL.astAxes[1].Axis.PlcToNc</Name>
@@ -2728,6 +2778,16 @@ Bit 15]]></Comment>
 				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.wCH7_Diag" VarB="DIG Diag Inputs^Channel 7" Size="4"/>
 				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.wCH8_Diag" VarB="DIG Diag Inputs^Channel 8" Size="4"/>
 				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.wCH9_Diag" VarB="DIG Diag Inputs^Channel 9" Size="4"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bRotOmronSensor1Feed" VarB="DIG Outputs^Channel 1^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bRotOmronSensor2Feed" VarB="DIG Outputs^Channel 2^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bXBrakeReleaseCmd" VarB="DIG Outputs^Channel 4^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bXMinMaxFeed" VarB="DIG Outputs^Channel 3^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bXMinMinMaxMaxFeed" VarB="DIG Outputs^Channel 5^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bYBrakeReleaseCmd" VarB="DIG Outputs^Channel 7^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bYMinMaxFeed" VarB="DIG Outputs^Channel 6^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bYMinMinMaxMaxFeed" VarB="DIG Outputs^Channel 8^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bZMinMaxFeed" VarB="DIG Outputs^Channel 9^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bZMinMinMaxMaxFeed" VarB="DIG Outputs^Channel 10^Output" Size="1"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 5 (EL2819)">
 				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.InfoData_State" VarB="InfoData^State"/>
