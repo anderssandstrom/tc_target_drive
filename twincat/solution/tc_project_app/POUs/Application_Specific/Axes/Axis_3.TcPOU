@@ -18,8 +18,16 @@ END_IF
 
 //Define ACTIONS() or write exclusive code for an specific axis.
 //Eg. Stop when temperature reaches certain values, reduce speed if  a signal is activated, etc.
-gvl.astAxes[3].stInputs.bLimitBwd := main.stHWStatus.bBG02_ZLimitMin;
-gvl.astAxes[3].stInputs.bLimitFwd := main.stHWStatus.bBG01_ZLimitMax;]]></ST>
+
+// Allow go to park position in "PARKING" mode
+IF main.stStatEpics.eTargetState = TARGET_STATE_MACHINE.PARKING THEN
+  gvl.astAxes[3].stInputs.bLimitBwd := main.stHWStatus.bBG03_ZLimitMinPark;
+ELSE
+  // NORMAL OPERATION
+  gvl.astAxes[3].stInputs.bLimitBwd := main.stHWStatus.bBG02_ZLimitMin;
+END_IF
+gvl.astAxes[3].stInputs.bLimitFwd := main.stHWStatus.bBG01_ZLimitMax;
+]]></ST>
     </Implementation>
     <Action Name="ACT_3_Interlock" Id="{9a8d4546-6892-40d1-9370-4b045bf9101e}">
       <Implementation>
@@ -177,6 +185,16 @@ gvl.astAxes[3].stInputs.bLimitFwd := main.stHWStatus.bBG01_ZLimitMax;]]></ST>
                                 <o>
                                   <v n="Flags">0</v>
                                   <v n="Fixed">true</v>
+                                  <v n="Extensible">false</v>
+                                </o>
+                                <o>
+                                  <v n="Flags">0</v>
+                                  <v n="Fixed">false</v>
+                                  <v n="Extensible">false</v>
+                                </o>
+                                <o>
+                                  <v n="Flags">0</v>
+                                  <v n="Fixed">false</v>
                                   <v n="Extensible">false</v>
                                 </o>
                               </l2>
@@ -435,6 +453,203 @@ gvl.astAxes[3].stInputs.bLimitFwd := main.stHWStatus.bBG01_ZLimitMax;]]></ST>
                                   </o>
                                   <v n="Id">58L</v>
                                 </o>
+                                <o t="BoxTreeOperand">
+                                  <o n="Operand" t="Operand">
+                                    <v n="Operand">"main.stHWStatus.bBG04_ZLimitMaxMax"</v>
+                                    <v n="Type">"BOOL"</v>
+                                    <v n="Comment">""</v>
+                                    <v n="SymbolComment">""</v>
+                                    <v n="Address">""</v>
+                                    <o n="Flags" t="Flags">
+                                      <v n="Flags">0</v>
+                                      <v n="Fixed">false</v>
+                                      <v n="Extensible">false</v>
+                                    </o>
+                                    <v n="LValue">false</v>
+                                    <v n="Boolean">false</v>
+                                    <v n="IsInstance">false</v>
+                                    <v n="Id">78L</v>
+                                  </o>
+                                  <v n="Id">77L</v>
+                                </o>
+                                <o t="BoxTreeBox">
+                                  <v n="BoxType">"SEL"</v>
+                                  <o n="Instance" t="Operand">
+                                    <n n="Operand" />
+                                    <v n="Type">""</v>
+                                    <v n="Comment">""</v>
+                                    <v n="SymbolComment">""</v>
+                                    <v n="Address">""</v>
+                                    <o n="Flags" t="Flags">
+                                      <v n="Flags">0</v>
+                                      <v n="Fixed">false</v>
+                                      <v n="Extensible">false</v>
+                                    </o>
+                                    <v n="LValue">false</v>
+                                    <v n="Boolean">false</v>
+                                    <v n="IsInstance">true</v>
+                                    <v n="Id">89L</v>
+                                  </o>
+                                  <o n="OutputItems" t="OutputItemList">
+                                    <l2 n="OutputItems">
+                                      <n />
+                                    </l2>
+                                  </o>
+                                  <o n="Flags" t="Flags">
+                                    <v n="Flags">0</v>
+                                    <v n="Fixed">true</v>
+                                    <v n="Extensible">false</v>
+                                  </o>
+                                  <n n="InputFlags" />
+                                  <l2 n="InputItems">
+                                    <o t="BoxTreeBox">
+                                      <v n="BoxType">"="</v>
+                                      <o n="Instance" t="Operand">
+                                        <n n="Operand" />
+                                        <v n="Type">""</v>
+                                        <v n="Comment">""</v>
+                                        <v n="SymbolComment">""</v>
+                                        <v n="Address">""</v>
+                                        <o n="Flags" t="Flags">
+                                          <v n="Flags">0</v>
+                                          <v n="Fixed">false</v>
+                                          <v n="Extensible">false</v>
+                                        </o>
+                                        <v n="LValue">false</v>
+                                        <v n="Boolean">false</v>
+                                        <v n="IsInstance">true</v>
+                                        <v n="Id">99L</v>
+                                      </o>
+                                      <o n="OutputItems" t="OutputItemList">
+                                        <l2 n="OutputItems">
+                                          <n />
+                                        </l2>
+                                      </o>
+                                      <o n="Flags" t="Flags">
+                                        <v n="Flags">0</v>
+                                        <v n="Fixed">true</v>
+                                        <v n="Extensible">false</v>
+                                      </o>
+                                      <n n="InputFlags" />
+                                      <l2 n="InputItems" cet="BoxTreeOperand">
+                                        <o>
+                                          <o n="Operand" t="Operand">
+                                            <v n="Operand">"main.stStatEpics.eTargetState"</v>
+                                            <v n="Type">"TARGET_STATE_MACHINE"</v>
+                                            <v n="Comment">""</v>
+                                            <v n="SymbolComment">""</v>
+                                            <v n="Address">""</v>
+                                            <o n="Flags" t="Flags">
+                                              <v n="Flags">0</v>
+                                              <v n="Fixed">false</v>
+                                              <v n="Extensible">false</v>
+                                            </o>
+                                            <v n="LValue">false</v>
+                                            <v n="Boolean">false</v>
+                                            <v n="IsInstance">false</v>
+                                            <v n="Id">82L</v>
+                                          </o>
+                                          <v n="Id">81L</v>
+                                        </o>
+                                        <o>
+                                          <o n="Operand" t="Operand">
+                                            <v n="Operand">"TARGET_STATE_MACHINE.PARKING"</v>
+                                            <v n="Type">"TARGET_STATE_MACHINE"</v>
+                                            <v n="Comment">""</v>
+                                            <v n="SymbolComment">""</v>
+                                            <v n="Address">""</v>
+                                            <o n="Flags" t="Flags">
+                                              <v n="Flags">0</v>
+                                              <v n="Fixed">false</v>
+                                              <v n="Extensible">false</v>
+                                            </o>
+                                            <v n="LValue">false</v>
+                                            <v n="Boolean">false</v>
+                                            <v n="IsInstance">false</v>
+                                            <v n="Id">96L</v>
+                                          </o>
+                                          <v n="Id">95L</v>
+                                        </o>
+                                      </l2>
+                                      <o n="InputParam" t="ParamList">
+                                        <l2 n="Names" />
+                                        <l2 n="Types" />
+                                      </o>
+                                      <o n="OutputParam" t="ParamList">
+                                        <l2 n="Names" cet="String">
+                                          <v></v>
+                                        </l2>
+                                        <l2 n="Types" cet="String">
+                                          <v>BOOL</v>
+                                        </l2>
+                                      </o>
+                                      <v n="CallType" t="Operator">Equal</v>
+                                      <v n="EN">false</v>
+                                      <v n="ENO">false</v>
+                                      <n n="STSnippet" />
+                                      <v n="ContainsExtensibleInputs">false</v>
+                                      <v n="ProvidesSTSnippet">false</v>
+                                      <v n="Id">100L</v>
+                                    </o>
+                                    <o t="BoxTreeOperand">
+                                      <o n="Operand" t="Operand">
+                                        <v n="Operand">"main.stHWStatus.bBG05_ZLimitMinMin"</v>
+                                        <v n="Type">"BOOL"</v>
+                                        <v n="Comment">""</v>
+                                        <v n="SymbolComment">""</v>
+                                        <v n="Address">""</v>
+                                        <o n="Flags" t="Flags">
+                                          <v n="Flags">0</v>
+                                          <v n="Fixed">false</v>
+                                          <v n="Extensible">false</v>
+                                        </o>
+                                        <v n="LValue">false</v>
+                                        <v n="Boolean">false</v>
+                                        <v n="IsInstance">false</v>
+                                        <v n="Id">86L</v>
+                                      </o>
+                                      <v n="Id">85L</v>
+                                    </o>
+                                    <o t="BoxTreeOperand">
+                                      <o n="Operand" t="Operand">
+                                        <v n="Operand">"main.stHWStatus.bBG06_ZLimitMinMinPark"</v>
+                                        <v n="Type">"BOOL"</v>
+                                        <v n="Comment">""</v>
+                                        <v n="SymbolComment">""</v>
+                                        <v n="Address">""</v>
+                                        <o n="Flags" t="Flags">
+                                          <v n="Flags">0</v>
+                                          <v n="Fixed">false</v>
+                                          <v n="Extensible">false</v>
+                                        </o>
+                                        <v n="LValue">false</v>
+                                        <v n="Boolean">false</v>
+                                        <v n="IsInstance">false</v>
+                                        <v n="Id">92L</v>
+                                      </o>
+                                      <v n="Id">91L</v>
+                                    </o>
+                                  </l2>
+                                  <o n="InputParam" t="ParamList">
+                                    <l2 n="Names" />
+                                    <l2 n="Types" />
+                                  </o>
+                                  <o n="OutputParam" t="ParamList">
+                                    <l2 n="Names" cet="String">
+                                      <v></v>
+                                    </l2>
+                                    <l2 n="Types" cet="String">
+                                      <v>INT</v>
+                                    </l2>
+                                  </o>
+                                  <v n="CallType" t="Operator">Sel</v>
+                                  <v n="EN">false</v>
+                                  <v n="ENO">false</v>
+                                  <n n="STSnippet" />
+                                  <v n="ContainsExtensibleInputs">false</v>
+                                  <v n="ProvidesSTSnippet">false</v>
+                                  <v n="Id">90L</v>
+                                </o>
                               </l2>
                               <o n="InputParam" t="ParamList">
                                 <l2 n="Names" />
@@ -529,8 +744,17 @@ gvl.astAxes[3].stInputs.bLimitFwd := main.stHWStatus.bBG01_ZLimitMax;]]></ST>
     </Action>
     <LineIds Name="Axis_3">
       <LineId Id="20" Count="0" />
-      <LineId Id="29" Count="9" />
+      <LineId Id="29" Count="8" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="48" Count="0" />
+      <LineId Id="53" Count="0" />
+      <LineId Id="51" Count="0" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="52" Count="0" />
+      <LineId Id="50" Count="0" />
       <LineId Id="23" Count="0" />
+      <LineId Id="57" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

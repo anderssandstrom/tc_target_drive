@@ -186,6 +186,16 @@ gvl.astAxes[2].stInputs.bLimitFwd := main.stHWStatus.bBG05_YLimitMax;]]></ST>
                                   <v n="Fixed">true</v>
                                   <v n="Extensible">false</v>
                                 </o>
+                                <o>
+                                  <v n="Flags">0</v>
+                                  <v n="Fixed">false</v>
+                                  <v n="Extensible">false</v>
+                                </o>
+                                <o>
+                                  <v n="Flags">0</v>
+                                  <v n="Fixed">false</v>
+                                  <v n="Extensible">false</v>
+                                </o>
                               </l2>
                               <l2 n="InputItems">
                                 <o t="BoxTreeOperand">
@@ -460,6 +470,44 @@ gvl.astAxes[2].stInputs.bLimitFwd := main.stHWStatus.bBG05_YLimitMax;]]></ST>
                                     <v n="Id">59L</v>
                                   </o>
                                   <v n="Id">58L</v>
+                                </o>
+                                <o t="BoxTreeOperand">
+                                  <o n="Operand" t="Operand">
+                                    <v n="Operand">"main.stHWStatus.bBG07_YLimitMaxMax"</v>
+                                    <v n="Type">"BOOL"</v>
+                                    <v n="Comment">""</v>
+                                    <v n="SymbolComment">""</v>
+                                    <v n="Address">""</v>
+                                    <o n="Flags" t="Flags">
+                                      <v n="Flags">0</v>
+                                      <v n="Fixed">false</v>
+                                      <v n="Extensible">false</v>
+                                    </o>
+                                    <v n="LValue">false</v>
+                                    <v n="Boolean">false</v>
+                                    <v n="IsInstance">false</v>
+                                    <v n="Id">78L</v>
+                                  </o>
+                                  <v n="Id">77L</v>
+                                </o>
+                                <o t="BoxTreeOperand">
+                                  <o n="Operand" t="Operand">
+                                    <v n="Operand">"main.stHWStatus.bBG08_YLimitMinMin"</v>
+                                    <v n="Type">"BOOL"</v>
+                                    <v n="Comment">""</v>
+                                    <v n="SymbolComment">""</v>
+                                    <v n="Address">""</v>
+                                    <o n="Flags" t="Flags">
+                                      <v n="Flags">0</v>
+                                      <v n="Fixed">false</v>
+                                      <v n="Extensible">false</v>
+                                    </o>
+                                    <v n="LValue">false</v>
+                                    <v n="Boolean">false</v>
+                                    <v n="IsInstance">false</v>
+                                    <v n="Id">80L</v>
+                                  </o>
+                                  <v n="Id">79L</v>
                                 </o>
                               </l2>
                               <o n="InputParam" t="ParamList">
