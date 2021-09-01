@@ -134,6 +134,20 @@ stHWStatus.bFC51_FC52_FC53_FuseUPSOK:=fb_s2_EL1809.bBI_8;
 // s3: ch13: w03.bg05 stepper z limit min min
 // s3: ch14: w03.bg06 stepper z limit min min service (lowest switch)
 fb_s3_EL1809(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=3);
+main.stHWStatus.bBG01_XLimitMax :=fb_s3_EL1809.bBI_1;// s3: ch1: w02.bg01 stepper x limit max
+main.stHWStatus.bBG02_XLimitMin :=fb_s3_EL1809.bBI_2;// s3: ch2: w02.bg02 stepper x limit min
+main.stHWStatus.bBG03_XLimitMaxMax :=fb_s3_EL1809.bBI_3;// s3: ch3: w02.bg03 stepper x limit max max
+main.stHWStatus.bBG04_XLimitMinMin :=fb_s3_EL1809.bBI_4;// s3: ch4: w02.bg04 stepper x limit min min
+main.stHWStatus.bBG05_YLimitMax :=fb_s3_EL1809.bBI_5;// s3: ch5: w02.bg05 stepper y limit max
+main.stHWStatus.bBG06_YLimitMin :=fb_s3_EL1809.bBI_6;// s3: ch6: w02.bg06 stepper y limit min
+main.stHWStatus.bBG07_YLimitMaxMax :=fb_s3_EL1809.bBI_7;// s3: ch7: w02.bg07 stepper y limit max max
+main.stHWStatus.bBG08_YLimitMinMin :=fb_s3_EL1809.bBI_8;// s3: ch8: w02.bg08 stepper y limit min min
+main.stHWStatus.bBG01_ZLimitMax :=fb_s3_EL1809.bBI_9;// s3: ch9: w03.bg01 stepper z limit max
+main.stHWStatus.bBG02_ZLimitMin :=fb_s3_EL1809.bBI_10;// s3: ch10: w03.bg02 stepper z limit min
+main.stHWStatus.bBG03_ZLimitMinPark :=fb_s3_EL1809.bBI_11;// s3: ch11: w03.bg03 stepper z limit min service (lowest switch)
+main.stHWStatus.bBG04_ZLimitMaxMax :=fb_s3_EL1809.bBI_12;// s3: ch12: w03.bg04 stepper z limit max max
+main.stHWStatus.bBG05_ZLimitMinMin :=fb_s3_EL1809.bBI_13;// s3: ch13: w03.bg05 stepper z limit min min
+main.stHWStatus.bBG06_ZLimitMinMinPark :=fb_s3_EL1809.bBI_14;// s3: ch14: w03.bg06 stepper z limit min min service (lowest switch)
 
 // s4: ch1: Feed omron sensor 1
 // s4: ch2: Feed omron sensor 2
@@ -596,7 +610,9 @@ stcmdEpics.bReset:=FALSE;]]></ST>
       <LineId Id="145" Count="0" />
       <LineId Id="138" Count="0" />
       <LineId Id="5" Count="0" />
+      <LineId Id="216" Count="12" />
       <LineId Id="197" Count="0" />
+      <LineId Id="215" Count="0" />
       <LineId Id="67" Count="0" />
       <LineId Id="69" Count="0" />
       <LineId Id="6" Count="0" />

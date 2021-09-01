@@ -20,8 +20,8 @@ END_IF
 //Eg. Stop when temperature reaches certain values, reduce speed if  a signal is activated, etc.
 
 ACT_1_Interlock();
-gvl.astAxes[1].stInputs.bLimitBwd := TRUE;
-gvl.astAxes[1].stInputs.bLimitFwd := TRUE;
+gvl.astAxes[1].stInputs.bLimitBwd := main.stHWStatus.bBG02_XLimitMin;
+gvl.astAxes[1].stInputs.bLimitFwd := main.stHWStatus.bBG01_XLimitMax;
 ]]></ST>
     </Implementation>
     <Action Name="ACT_1_Interlock" Id="{ca43ea7f-b212-458e-a066-b237d81a70c7}">

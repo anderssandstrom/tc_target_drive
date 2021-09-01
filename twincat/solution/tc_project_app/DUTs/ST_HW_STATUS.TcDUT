@@ -16,6 +16,22 @@ STRUCT
     fW02_BT02_YTemp:LREAL;               // s13: ch2: kf12 w02.bt02 temperature stepper Y PT100
     fW03_BT01_ZTemp:LREAL;               // s13: ch3: kf12 w03.bt01 temperature stepper Z PT100
     fKF12_RotTemp:LREAL;                 // s13: ch4: kf12 Target Main motor Temperature (KTY) (in deg*10)
+	
+	bBG01_XLimitMax:BOOL;
+	bBG02_XLimitMin:BOOL;
+	bBG03_XLimitMaxMax:BOOL;
+	bBG04_XLimitMinMin:BOOL;
+	bBG05_YLimitMax:BOOL;
+	bBG06_YLimitMin:BOOL;
+	bBG07_YLimitMaxMax:BOOL;
+	bBG08_YLimitMinMin:BOOL;
+	bBG01_ZLimitMax:BOOL;
+	bBG02_ZLimitMin:BOOL;
+	bBG03_ZLimitMinPark:BOOL;
+	bBG04_ZLimitMaxMax:BOOL;
+	bBG05_ZLimitMinMin:BOOL;	
+	bBG06_ZLimitMinMinPark:BOOL;	
+	
 END_STRUCT
 END_TYPE
 ]]></Declaration>
