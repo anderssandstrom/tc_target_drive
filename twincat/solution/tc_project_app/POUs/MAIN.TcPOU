@@ -100,76 +100,49 @@ eTargetStateOld:=stStatEpics.eTargetState;
       <Implementation>
         <ST><![CDATA[// Check state of hardware
 
-// s2: ch1: emergency stop ok                 Verify: OK   
-// s2: ch2: rf01 termal braking filter OK..   Verify: Q to Markus: Maybe this should be rd02?
-// s2: ch3: ta01 and ta02 24V power supply OK Verify: OK  
-// s2: ch4: fc11 24V fuse OK                   Verify: OK
-// s2: ch5: fa01 and fa02 overvoltage protection OK
-// s2: ch6: fc01 fuse target wheel motor OK
-// s2: ch7: fc06 and fc07 ICS outlets fuse OK
-// s2: ch8: fc51, fc52 and fc53 UPS fuses OK (something wrong)
+// Slave 2 EL1809: General I/O, fuses...
 fb_s2_EL1809(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=2);
-stHWStatus.bEStopOK:=fb_s2_EL1809.bBI_1;
-stHWStatus.bRF02_MainDriveThermalFilterOK:=fb_s2_EL1809.bBI_2;
-stHWStatus.bTA01_TA02_24VSupplyOK:=fb_s2_EL1809.bBI_3;
-stHWStatus.bFC11_Fuse24VOK:=fb_s2_EL1809.bBI_4;
-stHWStatus.bFA01_FA02_OvervoltageOK:=fb_s2_EL1809.bBI_5;
-stHWStatus.bFC01_FuseMainRotationOK:=fb_s2_EL1809.bBI_6;
-stHWStatus.bFC06_FC07_FuseICSOutletsOK:=fb_s2_EL1809.bBI_7;
-stHWStatus.bFC51_FC52_FC53_FuseUPSOK:=fb_s2_EL1809.bBI_8;
+stHWStatus.bEStopOK:=fb_s2_EL1809.bBI_1;                       // s2: ch1: emergency stop ok                 Verify: OK   
+stHWStatus.bRF02_MainDriveThermalFilterOK:=fb_s2_EL1809.bBI_2; // s2: ch2: rf01 termal braking filter OK..   Verify: Q to Markus: Maybe this should be rd02?
+stHWStatus.bTA01_TA02_24VSupplyOK:=fb_s2_EL1809.bBI_3;         // s2: ch3: ta01 and ta02 24V power supply OK Verify: OK  
+stHWStatus.bFC11_Fuse24VOK:=fb_s2_EL1809.bBI_4;                // s2: ch4: fc11 24V fuse OK                   Verify: OK
+stHWStatus.bFA01_FA02_OvervoltageOK:=fb_s2_EL1809.bBI_5;       // s2: ch5: fa01 and fa02 overvoltage protection OK
+stHWStatus.bFC01_FuseMainRotationOK:=fb_s2_EL1809.bBI_6;       // s2: ch6: fc01 fuse target wheel motor OK
+stHWStatus.bFC06_FC07_FuseICSOutletsOK:=fb_s2_EL1809.bBI_7;    // s2: ch7: fc06 and fc07 ICS outlets fuse OK
+stHWStatus.bFC51_FC52_FC53_FuseUPSOK:=fb_s2_EL1809.bBI_8;      // s2: ch8: fc51, fc52 and fc53 UPS fuses OK (something wrong)
 
-
-// s3: ch1: w02.bg01 stepper x limit max
-// s3: ch2: w02.bg02 stepper x limit min
-// s3: ch3: w02.bg03 stepper x limit max max
-// s3: ch4: w02.bg04 stepper x limit min min
-// s3: ch5: w02.bg05 stepper y limit max
-// s3: ch6: w02.bg06 stepper y limit min
-// s3: ch7: w02.bg07 stepper y limit max max
-// s3: ch8: w02.bg08 stepper y limit min min
-// s3: ch9: w03.bg01 stepper z limit max
-// s3: ch10: w03.bg02 stepper z limit min
-// s3: ch11: w03.bg03 stepper z limit min service (lowest switch)
-// s3: ch12: w03.bg04 stepper z limit max max
-// s3: ch13: w03.bg05 stepper z limit min min
-// s3: ch14: w03.bg06 stepper z limit min min service (lowest switch)
+// Slave 3 EL1809: Motion switches (limits)
 fb_s3_EL1809(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=3);
-main.stHWStatus.bBG01_XLimitMax :=fb_s3_EL1809.bBI_1;// s3: ch1: w02.bg01 stepper x limit max
-main.stHWStatus.bBG02_XLimitMin :=fb_s3_EL1809.bBI_2;// s3: ch2: w02.bg02 stepper x limit min
-main.stHWStatus.bBG03_XLimitMaxMax :=fb_s3_EL1809.bBI_3;// s3: ch3: w02.bg03 stepper x limit max max
-main.stHWStatus.bBG04_XLimitMinMin :=fb_s3_EL1809.bBI_4;// s3: ch4: w02.bg04 stepper x limit min min
-main.stHWStatus.bBG05_YLimitMax :=fb_s3_EL1809.bBI_5;// s3: ch5: w02.bg05 stepper y limit max
-main.stHWStatus.bBG06_YLimitMin :=fb_s3_EL1809.bBI_6;// s3: ch6: w02.bg06 stepper y limit min
-main.stHWStatus.bBG07_YLimitMaxMax :=fb_s3_EL1809.bBI_7;// s3: ch7: w02.bg07 stepper y limit max max
-main.stHWStatus.bBG08_YLimitMinMin :=fb_s3_EL1809.bBI_8;// s3: ch8: w02.bg08 stepper y limit min min
-main.stHWStatus.bBG01_ZLimitMax :=fb_s3_EL1809.bBI_9;// s3: ch9: w03.bg01 stepper z limit max
-main.stHWStatus.bBG02_ZLimitMin :=fb_s3_EL1809.bBI_10;// s3: ch10: w03.bg02 stepper z limit min
-main.stHWStatus.bBG03_ZLimitMinPark :=fb_s3_EL1809.bBI_11;// s3: ch11: w03.bg03 stepper z limit min service (lowest switch)
-main.stHWStatus.bBG04_ZLimitMaxMax :=fb_s3_EL1809.bBI_12;// s3: ch12: w03.bg04 stepper z limit max max
-main.stHWStatus.bBG05_ZLimitMinMin :=fb_s3_EL1809.bBI_13;// s3: ch13: w03.bg05 stepper z limit min min
-main.stHWStatus.bBG06_ZLimitMinMinPark :=fb_s3_EL1809.bBI_14;// s3: ch14: w03.bg06 stepper z limit min min service (lowest switch)
+main.stHWStatus.bBG01_XLimitMax :=fb_s3_EL1809.bBI_1;          // s3: ch1: w02.bg01 stepper x limit max
+main.stHWStatus.bBG02_XLimitMin :=fb_s3_EL1809.bBI_2;          // s3: ch2: w02.bg02 stepper x limit min
+main.stHWStatus.bBG03_XLimitMaxMax :=fb_s3_EL1809.bBI_3;       // s3: ch3: w02.bg03 stepper x limit max max
+main.stHWStatus.bBG04_XLimitMinMin :=fb_s3_EL1809.bBI_4;       // s3: ch4: w02.bg04 stepper x limit min min
+main.stHWStatus.bBG05_YLimitMax :=fb_s3_EL1809.bBI_5;          // s3: ch5: w02.bg05 stepper y limit max
+main.stHWStatus.bBG06_YLimitMin :=fb_s3_EL1809.bBI_6;          // s3: ch6: w02.bg06 stepper y limit min
+main.stHWStatus.bBG07_YLimitMaxMax :=fb_s3_EL1809.bBI_7;       // s3: ch7: w02.bg07 stepper y limit max max
+main.stHWStatus.bBG08_YLimitMinMin :=fb_s3_EL1809.bBI_8;       // s3: ch8: w02.bg08 stepper y limit min min
+main.stHWStatus.bBG01_ZLimitMax :=fb_s3_EL1809.bBI_9;          // s3: ch9: w03.bg01 stepper z limit max
+main.stHWStatus.bBG02_ZLimitMin :=fb_s3_EL1809.bBI_10;         // s3: ch10: w03.bg02 stepper z limit min
+main.stHWStatus.bBG03_ZLimitMinPark :=fb_s3_EL1809.bBI_11;     // s3: ch11: w03.bg03 stepper z limit min service (lowest switch)
+main.stHWStatus.bBG04_ZLimitMaxMax :=fb_s3_EL1809.bBI_12;      // s3: ch12: w03.bg04 stepper z limit max max
+main.stHWStatus.bBG05_ZLimitMinMin :=fb_s3_EL1809.bBI_13;      // s3: ch13: w03.bg05 stepper z limit min min
+main.stHWStatus.bBG06_ZLimitMinMinPark :=fb_s3_EL1809.bBI_14;  // s3: ch14: w03.bg06 stepper z limit min min service (lowest switch)
 
-// s4: ch1: Feed omron sensor 1
-// s4: ch2: Feed omron sensor 2
+// Slave 4 EL2809: Feed sensors
 fb_s4_EL2819(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=4);
-stHWControl.bRotOmronSensor1Feed:=TRUE;
-stHWControl.bRotOmronSensor2Feed:=TRUE;
+stHWControl.bRotOmronSensor1Feed:=TRUE;     // s4: ch1: Feed omron sensor 1
+stHWControl.bRotOmronSensor2Feed:=TRUE;     // s4: ch2: Feed omron sensor 2
 
-// s5: ch1: kf05: w02.bg01 w02.bg02 stepper x limit switch max, limit min
-// s5: ch2: kf05: w02.ql1: stepper x brake
-// s5: ch3: kf05: w02.bg03 w02.bg04 stepper x limit switch max max, limit min min
-// s5: ch5: kf05: w02.bg05 w02.bg06 stepper y limit switch max, limit min
-// s5: ch6: kf05: w02.ql2: stepper y brake
-// s5: ch7: kf05: w02.bg07 w02.bg08 stepper y limit switch max max, limit min min
-// s5: ch9: kf05: w03.bg01 w03.bg02 w03.bg03  stepper z limit switch max, limit min limit min min (service)
-// s5: ch10: kf05: w03.bg04 w03.bg05 w03.bg06  stepper z limit switch max max, limit min min
+// Slave 5 EL2809: Feed switches and brakes
 fb_s5_EL2819(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=5);
-stHWControl.bXMinMaxFeed:=TRUE;
-stHWControl.bXMinMinMaxMaxFeed:=TRUE;
-stHWControl.bYMinMaxFeed:=TRUE;
-stHWControl.bYMinMinMaxMaxFeed:=TRUE;
-stHWControl.bZMinMaxFeed:=TRUE;
-stHWControl.bZMinMinMaxMaxFeed:=TRUE;
+stHWControl.bXMinMaxFeed:=TRUE;           // s5: ch1: kf05: w02.bg01 w02.bg02 stepper x limit switch max, limit min
+//stHWControl.bXBrakeReleaseCmd           // s5: ch2: kf05: w02.ql1: stepper x brake
+stHWControl.bXMinMinMaxMaxFeed:=TRUE;     // s5: ch3: kf05: w02.bg03 w02.bg04 stepper x limit switch max max, limit min min
+stHWControl.bYMinMaxFeed:=TRUE;           // s5: ch5: kf05: w02.bg05 w02.bg06 stepper y limit switch max, limit min
+//stHWControl.bYBrakeReleaseCmd           // s5: ch6: kf05: w02.ql2: stepper y brake
+stHWControl.bYMinMinMaxMaxFeed:=TRUE;     // s5: ch7: kf05: w02.bg07 w02.bg08 stepper y limit switch max max, limit min min
+stHWControl.bZMinMaxFeed:=TRUE;           // s5: ch9: kf05: w03.bg01 w03.bg02 w03.bg03  stepper z limit switch max, limit min limit min min (service)
+stHWControl.bZMinMinMaxMaxFeed:=TRUE;     // s5: ch10: kf05: w03.bg04 w03.bg05 w03.bg06  stepper z limit switch max max, limit min min
 // Note brakes needs control!!!
 
 // s6: 5V power supply
@@ -596,36 +569,29 @@ stcmdEpics.bReset:=FALSE;]]></ST>
     </LineIds>
     <LineIds Name="MAIN.ACT_1_Hardware">
       <LineId Id="1" Count="0" />
-      <LineId Id="58" Count="7" />
+      <LineId Id="229" Count="0" />
       <LineId Id="57" Count="0" />
       <LineId Id="4" Count="0" />
       <LineId Id="179" Count="0" />
       <LineId Id="181" Count="6" />
-      <LineId Id="81" Count="0" />
-      <LineId Id="180" Count="0" />
-      <LineId Id="73" Count="0" />
-      <LineId Id="126" Count="2" />
-      <LineId Id="134" Count="3" />
-      <LineId Id="139" Count="3" />
-      <LineId Id="145" Count="0" />
+      <LineId Id="230" Count="0" />
       <LineId Id="138" Count="0" />
       <LineId Id="5" Count="0" />
       <LineId Id="216" Count="12" />
       <LineId Id="197" Count="0" />
-      <LineId Id="215" Count="0" />
       <LineId Id="67" Count="0" />
       <LineId Id="69" Count="0" />
       <LineId Id="6" Count="0" />
       <LineId Id="209" Count="0" />
       <LineId Id="188" Count="0" />
+      <LineId Id="231" Count="0" />
       <LineId Id="83" Count="0" />
-      <LineId Id="110" Count="0" />
-      <LineId Id="74" Count="0" />
-      <LineId Id="116" Count="0" />
-      <LineId Id="118" Count="3" />
-      <LineId Id="123" Count="0" />
       <LineId Id="7" Count="0" />
-      <LineId Id="203" Count="4" />
+      <LineId Id="203" Count="0" />
+      <LineId Id="232" Count="0" />
+      <LineId Id="204" Count="1" />
+      <LineId Id="233" Count="0" />
+      <LineId Id="206" Count="1" />
       <LineId Id="202" Count="0" />
       <LineId Id="210" Count="0" />
       <LineId Id="95" Count="0" />
