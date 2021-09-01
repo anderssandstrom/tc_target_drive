@@ -169,15 +169,12 @@ fb_s11_EL7201(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=11)
 // s11 ch1: kf11 w03.bg21 Resolver Z
 fb_s12_EL7201(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=12);
 
-// s13: ch1: kf12 w02.bt01 temperature stepper X PT100
-// s13: ch2: kf12 w02.bt02 temperature stepper Y PT100
-// s13: ch3: kf12 w03.bt01 temperature stepper Z PT100
-// s13: ch4: kf12 Target Main motor Temperature (KTY) (in deg*10)
+// s13 EL3214: Temperature inputs X,Y,Z and rotation
 fb_s13_EL3214(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=13);
-stHWStatus.fW02_BT01_XTemp:=INT_TO_LREAL(fb_s13_EL3214.iAI_1)/10;
-stHWStatus.fW02_BT02_YTemp:=INT_TO_LREAL(fb_s13_EL3214.iAI_2)/10;
-stHWStatus.fW03_BT01_ZTemp:=INT_TO_LREAL(fb_s13_EL3214.iAI_3)/10;
-stHWStatus.fKF12_RotTemp:=INT_TO_LREAL(fb_s13_EL3214.iAI_4)/10;
+stHWStatus.fW02_BT01_XTemp:=INT_TO_LREAL(fb_s13_EL3214.iAI_1)/10; // s13: ch1: kf12 w02.bt01 temperature stepper X PT100
+stHWStatus.fW02_BT02_YTemp:=INT_TO_LREAL(fb_s13_EL3214.iAI_2)/10; // s13: ch2: kf12 w02.bt02 temperature stepper Y PT100
+stHWStatus.fW03_BT01_ZTemp:=INT_TO_LREAL(fb_s13_EL3214.iAI_3)/10; // s13: ch3: kf12 w03.bt01 temperature stepper Z PT100
+stHWStatus.fKF12_RotTemp:=INT_TO_LREAL(fb_s13_EL3214.iAI_4)/10;   // s13: ch4: kf12 Target Main motor Temperature (KTY) (in deg*10)
 
 // s14: Extra encoder (main rotation)
 fb_s14_EL5021(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=14);
@@ -211,17 +208,7 @@ fb_s21_IPOS8020(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=2
 
 // s22: Stepper 3
 fb_s22_IPOS8020(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=22);
-	
-// Below part will be broken out to separate PLC plus some rebuilds to the 
-// above (grease, monitoring, statemachine..)
-//fb_s22_EK1100(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=22);
-//fb_s23_EL1252(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=23);
-//fb_s24_EL3742(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=24);
-//fb_s25_EL3214(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=25);
-//fb_s26_EL3214(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=26);
-//fb_s27_EL3214(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=27);
-//fb_s28_EL2819(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=28);
-//Execute error system (not sure if should be used)
+
 fbErrorSystem(En:=TRUE);
 	]]></ST>
       </Implementation>
@@ -617,9 +604,6 @@ stcmdEpics.bReset:=FALSE;]]></ST>
       <LineId Id="86" Count="0" />
       <LineId Id="72" Count="0" />
       <LineId Id="14" Count="0" />
-      <LineId Id="156" Count="0" />
-      <LineId Id="155" Count="0" />
-      <LineId Id="154" Count="0" />
       <LineId Id="87" Count="0" />
       <LineId Id="66" Count="0" />
       <LineId Id="15" Count="0" />
@@ -654,13 +638,8 @@ stcmdEpics.bReset:=FALSE;]]></ST>
       <LineId Id="93" Count="0" />
       <LineId Id="79" Count="0" />
       <LineId Id="23" Count="0" />
-      <LineId Id="35" Count="1" />
-      <LineId Id="173" Count="0" />
-      <LineId Id="30" Count="1" />
-      <LineId Id="38" Count="0" />
-      <LineId Id="32" Count="2" />
-      <LineId Id="28" Count="0" />
-      <LineId Id="24" Count="1" />
+      <LineId Id="35" Count="0" />
+      <LineId Id="25" Count="0" />
       <LineId Id="2" Count="0" />
     </LineIds>
     <LineIds Name="MAIN.ACT_2_Temperature">
