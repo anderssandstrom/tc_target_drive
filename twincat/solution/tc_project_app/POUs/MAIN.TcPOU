@@ -270,12 +270,17 @@ END_IF
 stStatEpics.bEnabled:=stStatus.bAxisEnabled;
 stCommands.bCmd_ErrorReset:=stCmdEpics.bReset;
 
-
 stCommands.bCmd_DriveControlledHoming:=FALSE;
 
-// Only allow state change if execute is low and at standstill
-IF stCmdEpics.eTargetStateCmd <> stStatEpics.eTargetState AND NOT stCmdEpics.bexecute AND  main.stStatus.bAxisStandStillStatus THEN
-	stStatEpics.eTargetState:=stCmdEpics.eTargetStateCmd;
+// State change
+IF stCmdEpics.eTargetStateCmd <> stStatEpics.eTargetState THEN
+  IF stCmdEpics.eTargetStateCmd = TARGET_STATE_MACHINE.PARKING  AND NOT GVL_Parameters.bTargetRotorInstalled THEN
+	 // Always allow parking if no rotor 
+     stStatEpics.eTargetState:=stCmdEpics.eTargetStateCmd;
+  ELSIF NOT stCmdEpics.bexecute AND main.stStatus.bAxisStandStillStatus THEN
+    // Only allow state change if execute is low and at standstill
+    stStatEpics.eTargetState:=stCmdEpics.eTargetStateCmd;
+  END_IF
 END_IF
 
 IF stCmdEpics.fPhaseOffsetMM > GVL_Parameters.fMaxPhaseOffsetMM THEN
@@ -678,9 +683,18 @@ stcmdEpics.bReset:=FALSE;]]></ST>
       <LineId Id="207" Count="0" />
       <LineId Id="206" Count="0" />
       <LineId Id="119" Count="1" />
-      <LineId Id="124" Count="0" />
-      <LineId Id="127" Count="5" />
-      <LineId Id="113" Count="0" />
+      <LineId Id="127" Count="1" />
+      <LineId Id="277" Count="0" />
+      <LineId Id="274" Count="0" />
+      <LineId Id="273" Count="0" />
+      <LineId Id="279" Count="0" />
+      <LineId Id="294" Count="0" />
+      <LineId Id="281" Count="0" />
+      <LineId Id="283" Count="0" />
+      <LineId Id="295" Count="0" />
+      <LineId Id="284" Count="0" />
+      <LineId Id="291" Count="0" />
+      <LineId Id="276" Count="0" />
       <LineId Id="228" Count="0" />
       <LineId Id="225" Count="0" />
       <LineId Id="229" Count="1" />

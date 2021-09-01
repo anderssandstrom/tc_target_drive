@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.5">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
   <GVL Name="GVL_Parameters" Id="{5744ec71-fce0-400b-ae43-6b52add682c5}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
@@ -36,6 +36,10 @@ VAR_GLOBAL CONSTANT
   fCheckTimingPulseMinVel: LREAL:=2.0;
   fMaxPhaseOffsetMM : LREAL:=100;
   fMinPhaseOffsetMM : LREAL:=-100;
+  
+  // ESS-0127013 requirements
+  //   FR31 Starnge to require a setting like this for commisioning.. but OK.
+  bTargetRotorInstalled: BOOL:=FALSE;
   
 END_VAR]]></Declaration>
   </GVL>
