@@ -4,7 +4,7 @@
     <Declaration><![CDATA[PROGRAM Axis_1
 VAR
     bLimitPowerAxis1 AT %Q*: BOOL := TRUE;
-	bAxis1OverrideIL: BOOL:=FALSE;
+	bXOverrideIL: BOOL:=FALSE;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -33,6 +33,19 @@ gvl.astAxes[1].stInputs.bLimitFwd := TRUE;
                 <v n="NetworkListComment">""</v>
                 <v n="DefaultViewMode">"Fbd"</v>
                 <l2 n="NetworkList" cet="Network">
+                  <o>
+                    <v n="ILActive">false</v>
+                    <v n="FBDValid">false</v>
+                    <v n="ILValid">false</v>
+                    <l2 n="ILLines" />
+                    <v n="Comment">""</v>
+                    <v n="Title">""</v>
+                    <v n="Label">""</v>
+                    <v n="OutCommented">true</v>
+                    <l2 n="NetworkItems" />
+                    <l2 n="Connectors" />
+                    <v n="Id">76L</v>
+                  </o>
                   <o>
                     <v n="ILActive">false</v>
                     <v n="FBDValid">false</v>
@@ -472,7 +485,7 @@ gvl.astAxes[1].stInputs.bLimitFwd := TRUE;
                             </o>
                             <o t="BoxTreeOperand">
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"bAxis1OverrideIL"</v>
+                                <v n="Operand">"bXOverrideIL"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
