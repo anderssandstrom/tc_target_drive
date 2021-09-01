@@ -313,8 +313,8 @@ stCommands.bCmd_ErrorReset:=stCmdEpics.bReset;
 
 stCommands.bCmd_DriveControlledHoming:=FALSE;
 
-// Only allow state change if execute is low
-IF stCmdEpics.eTargetStateCmd <> stStatEpics.eTargetState AND NOT stCmdEpics.bexecute THEN
+// Only allow state change if execute is low and at standstill
+IF stCmdEpics.eTargetStateCmd <> stStatEpics.eTargetState AND NOT stCmdEpics.bexecute AND  main.stStatus.bAxisStandStillStatus THEN
 	stStatEpics.eTargetState:=stCmdEpics.eTargetStateCmd;
 END_IF
 
