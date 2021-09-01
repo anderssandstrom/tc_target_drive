@@ -998,8 +998,8 @@ gvl.astAxes[3].stInputs.bLimitFwd := main.stHWStatus.bBG01_ZLimitMax;
                                     </o>
                                     <o>
                                       <o n="Operand" t="Operand">
-                                        <v n="Operand">"100"</v>
-                                        <v n="Type">"INT"</v>
+                                        <v n="Operand">"GVL_Parameters.fStepperTempH2"</v>
+                                        <v n="Type">"LREAL"</v>
                                         <v n="Comment">""</v>
                                         <v n="SymbolComment">""</v>
                                         <v n="Address">""</v>

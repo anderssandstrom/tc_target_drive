@@ -56,6 +56,8 @@ VAR_GLOBAL CONSTANT
   fZRangeL2:LREAL:=-0.1;
   fZRangeParkL1:LREAL:=-1.0;
   fZRangeParkL2:LREAL:=-1.1;
+  
+  fStepperTempH2:LREAL:=100;  // Deg C
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
