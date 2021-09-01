@@ -10,8 +10,7 @@ TYPE TARGET_STATE_MACHINE :
 	POSITIONING       := 3,
 	PHASING           := 4,
 	HOMING            := 5,
-	TORQUE            := 6,
-	PARKING           := 7
+	TORQUE            := 6
 );
 END_TYPE
 ]]></Declaration>

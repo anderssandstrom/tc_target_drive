@@ -22,7 +22,7 @@ VAR
 	fbModePos                         : FB_ModePos;      // Positioning Mode
 	fbModeHome                        : FB_ModeHome;     // Homing Mode
 	fbIndraDrive                      : fbIndraDrive;    // Control of drive
-	stStatEpics                       : ST_STAT_EPICS;   // Status to EPICS
+	
 	stCmdEpics                        : ST_CMD_EPICS;    // Control to EPICS 
 	stCommands                        : ST_AXIS_COMMAND; // Control to drive
 	stStatus                          : ST_AXIS_STATUS;  // Status from drive
@@ -59,14 +59,10 @@ VAR
 	stHWStatus: ST_HW_STATUS;
 	stHWControl: ST_HW_CONTROL;
 	
-	//Steppers
-//    M1Link:FB_NcAxis;
-//	M2Link:FB_NcAxis;
-//	M3Link:FB_NcAxis;
-//	M1:FB_DriveVirtual;
-//	M2:FB_DriveVirtual;
-//	M3:FB_DriveVirtual;
-	
+END_VAR
+
+VAR_INPUT
+  stStatEpics                       : ST_STAT_EPICS;   // Status to EPICS
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Check hardware status
@@ -273,14 +269,9 @@ stCommands.bCmd_ErrorReset:=stCmdEpics.bReset;
 stCommands.bCmd_DriveControlledHoming:=FALSE;
 
 // State change
-IF stCmdEpics.eTargetStateCmd <> stStatEpics.eTargetState THEN
-  IF stCmdEpics.eTargetStateCmd = TARGET_STATE_MACHINE.PARKING  AND NOT GVL_Parameters.bTargetRotorInstalled THEN
-	 // Always allow parking if no rotor 
-     stStatEpics.eTargetState:=stCmdEpics.eTargetStateCmd;
-  ELSIF NOT stCmdEpics.bexecute AND main.stStatus.bAxisStandStillStatus THEN
+IF stCmdEpics.eTargetStateCmd <> stStatEpics.eTargetState AND NOT stCmdEpics.bexecute AND stStatus.bAxisStandStillStatus THEN
     // Only allow state change if execute is low and at standstill
     stStatEpics.eTargetState:=stCmdEpics.eTargetStateCmd;
-  END_IF
 END_IF
 
 IF stCmdEpics.fPhaseOffsetMM > GVL_Parameters.fMaxPhaseOffsetMM THEN
@@ -687,15 +678,10 @@ stcmdEpics.bReset:=FALSE;]]></ST>
       <LineId Id="277" Count="0" />
       <LineId Id="274" Count="0" />
       <LineId Id="273" Count="0" />
-      <LineId Id="279" Count="0" />
-      <LineId Id="294" Count="0" />
-      <LineId Id="281" Count="0" />
-      <LineId Id="283" Count="0" />
       <LineId Id="295" Count="0" />
       <LineId Id="284" Count="0" />
-      <LineId Id="291" Count="0" />
       <LineId Id="276" Count="0" />
-      <LineId Id="228" Count="0" />
+      <LineId Id="301" Count="0" />
       <LineId Id="225" Count="0" />
       <LineId Id="229" Count="1" />
       <LineId Id="233" Count="2" />
