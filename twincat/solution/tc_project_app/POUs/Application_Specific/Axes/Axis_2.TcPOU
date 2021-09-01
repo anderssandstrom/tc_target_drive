@@ -20,8 +20,7 @@ END_IF
 //Eg. Stop when temperature reaches certain values, reduce speed if  a signal is activated, etc.
 
 ACT_2_Interlock();
-gvl.astAxes[2].stInputs.bLimitBwd := main.stHWStatus.bBG06_YLimitMin;
-gvl.astAxes[2].stInputs.bLimitFwd := main.stHWStatus.bBG05_YLimitMax;]]></ST>
+]]></ST>
     </Implementation>
     <Action Name="ACT_2_Interlock" Id="{c949121c-9701-4c5f-8bc8-3c78316b1a11}">
       <Implementation>
@@ -600,6 +599,128 @@ gvl.astAxes[2].stInputs.bLimitFwd := main.stHWStatus.bBG05_YLimitMax;]]></ST>
                     <l2 n="Connectors" />
                     <v n="Id">1L</v>
                   </o>
+                  <o>
+                    <v n="ILActive">false</v>
+                    <v n="FBDValid">false</v>
+                    <v n="ILValid">false</v>
+                    <l2 n="ILLines" />
+                    <v n="Comment">""</v>
+                    <v n="Title">""</v>
+                    <v n="Label">""</v>
+                    <v n="OutCommented">false</v>
+                    <l2 n="NetworkItems" cet="BoxTreeAssign">
+                      <o>
+                        <o n="OutputItems" t="OutputItemList">
+                          <l2 n="OutputItems" cet="Operand">
+                            <o>
+                              <v n="Operand">"gvl.astAxes[2].stInputs.bLimitBwd"</v>
+                              <v n="Type">"BOOL"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">true</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">97L</v>
+                            </o>
+                          </l2>
+                        </o>
+                        <o n="Flags" t="Flags">
+                          <v n="Flags">0</v>
+                          <v n="Fixed">false</v>
+                          <v n="Extensible">false</v>
+                        </o>
+                        <o n="RValue" t="BoxTreeOperand">
+                          <o n="Operand" t="Operand">
+                            <v n="Operand">"main.stHWStatus.bBG06_YLimitMin"</v>
+                            <v n="Type">"BOOL"</v>
+                            <v n="Comment">""</v>
+                            <v n="SymbolComment">""</v>
+                            <v n="Address">""</v>
+                            <o n="Flags" t="Flags">
+                              <v n="Flags">0</v>
+                              <v n="Fixed">false</v>
+                              <v n="Extensible">false</v>
+                            </o>
+                            <v n="LValue">false</v>
+                            <v n="Boolean">false</v>
+                            <v n="IsInstance">false</v>
+                            <v n="Id">96L</v>
+                          </o>
+                          <v n="Id">95L</v>
+                        </o>
+                        <v n="Id">98L</v>
+                      </o>
+                    </l2>
+                    <l2 n="Connectors" />
+                    <v n="Id">94L</v>
+                  </o>
+                  <o>
+                    <v n="ILActive">false</v>
+                    <v n="FBDValid">false</v>
+                    <v n="ILValid">false</v>
+                    <l2 n="ILLines" />
+                    <v n="Comment">""</v>
+                    <v n="Title">""</v>
+                    <v n="Label">""</v>
+                    <v n="OutCommented">false</v>
+                    <l2 n="NetworkItems" cet="BoxTreeAssign">
+                      <o>
+                        <o n="OutputItems" t="OutputItemList">
+                          <l2 n="OutputItems" cet="Operand">
+                            <o>
+                              <v n="Operand">"gvl.astAxes[2].stInputs.bLimitFwd"</v>
+                              <v n="Type">"BOOL"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">true</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">92L</v>
+                            </o>
+                          </l2>
+                        </o>
+                        <o n="Flags" t="Flags">
+                          <v n="Flags">0</v>
+                          <v n="Fixed">false</v>
+                          <v n="Extensible">false</v>
+                        </o>
+                        <o n="RValue" t="BoxTreeOperand">
+                          <o n="Operand" t="Operand">
+                            <v n="Operand">"main.stHWStatus.bBG05_YLimitMax"</v>
+                            <v n="Type">"BOOL"</v>
+                            <v n="Comment">""</v>
+                            <v n="SymbolComment">""</v>
+                            <v n="Address">""</v>
+                            <o n="Flags" t="Flags">
+                              <v n="Flags">0</v>
+                              <v n="Fixed">false</v>
+                              <v n="Extensible">false</v>
+                            </o>
+                            <v n="LValue">false</v>
+                            <v n="Boolean">false</v>
+                            <v n="IsInstance">false</v>
+                            <v n="Id">91L</v>
+                          </o>
+                          <v n="Id">90L</v>
+                        </o>
+                        <v n="Id">93L</v>
+                      </o>
+                    </l2>
+                    <l2 n="Connectors" />
+                    <v n="Id">89L</v>
+                  </o>
                 </l2>
                 <v n="BranchCounter">0</v>
                 <v n="ValidIds">true</v>
@@ -630,7 +751,6 @@ gvl.astAxes[2].stInputs.bLimitFwd := main.stHWStatus.bBG05_YLimitMax;]]></ST>
       <LineId Id="29" Count="8" />
       <LineId Id="45" Count="0" />
       <LineId Id="44" Count="0" />
-      <LineId Id="38" Count="0" />
       <LineId Id="23" Count="0" />
     </LineIds>
   </POU>
