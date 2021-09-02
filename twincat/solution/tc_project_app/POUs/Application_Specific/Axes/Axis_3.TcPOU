@@ -5,8 +5,6 @@
 VAR
 	bLimitPowerAxis3 AT %Q*: BOOL := TRUE;
 	bZOverrideIL: BOOL := false;
-	temp: BOOL;
-	ACT_2_Interlock: INT;
 END_VAR
 ]]></Declaration>
     <Implementation>
