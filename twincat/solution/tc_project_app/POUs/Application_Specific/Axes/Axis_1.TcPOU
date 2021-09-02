@@ -20,6 +20,9 @@ END_IF
 //Eg. Stop when temperature reaches certain values, reduce speed if  a signal is activated, etc.
 
 ACT_1_Interlock();
+
+// Brake control from GUI
+main.stHWControl.bXBrakeReleaseCmd:=main.stCmdEpics.bXReleaseBreakCmd;
 ]]></ST>
     </Implementation>
     <Action Name="ACT_1_Interlock" Id="{ca43ea7f-b212-458e-a066-b237d81a70c7}">
@@ -198,6 +201,11 @@ ACT_1_Interlock();
                                 <o>
                                   <v n="Flags">0</v>
                                   <v n="Fixed">true</v>
+                                  <v n="Extensible">false</v>
+                                </o>
+                                <o>
+                                  <v n="Flags">0</v>
+                                  <v n="Fixed">false</v>
                                   <v n="Extensible">false</v>
                                 </o>
                               </l2>
@@ -532,6 +540,25 @@ ACT_1_Interlock();
                                   </o>
                                   <v n="Id">81L</v>
                                 </o>
+                                <o t="BoxTreeOperand">
+                                  <o n="Operand" t="Operand">
+                                    <v n="Operand">"main.stCmdEpics.bXAllowMotionGUI"</v>
+                                    <v n="Type">"BOOL"</v>
+                                    <v n="Comment">""</v>
+                                    <v n="SymbolComment">""</v>
+                                    <v n="Address">""</v>
+                                    <o n="Flags" t="Flags">
+                                      <v n="Flags">0</v>
+                                      <v n="Fixed">false</v>
+                                      <v n="Extensible">false</v>
+                                    </o>
+                                    <v n="LValue">false</v>
+                                    <v n="Boolean">false</v>
+                                    <v n="IsInstance">false</v>
+                                    <v n="Id">108L</v>
+                                  </o>
+                                  <v n="Id">107L</v>
+                                </o>
                               </l2>
                               <o n="InputParam" t="ParamList">
                                 <l2 n="Names" />
@@ -748,6 +775,9 @@ ACT_1_Interlock();
     </Action>
     <LineIds Name="Axis_1">
       <LineId Id="46" Count="11" />
+      <LineId Id="66" Count="0" />
+      <LineId Id="65" Count="0" />
+      <LineId Id="67" Count="0" />
       <LineId Id="41" Count="0" />
     </LineIds>
   </POU>

@@ -55,14 +55,13 @@ VAR
 	fb_s20_IPOS8020:iPOS8020;
 	fb_s21_IPOS8020:iPOS8020;
 	fb_s22_IPOS8020:iPOS8020;
-    
-	stHWStatus: ST_HW_STATUS;
-	stHWControl: ST_HW_CONTROL;
 	
 END_VAR
 
 VAR_INPUT
   stStatEpics                       : ST_STAT_EPICS;   // Status to EPICS
+  stHWStatus: ST_HW_STATUS;
+  stHWControl: ST_HW_CONTROL;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Check hardware status
