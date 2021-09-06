@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="FB_Bridge_Inputs_Integer" Id="{4ad2e447-b797-4ced-a1ba-f0e8a937e044}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Bridge_Inputs_Integer
+// Interface with 10 ports. Converts UINT to INT (16 bits).
+VAR_INPUT
+	I00 : UINT := 0;	// Input integer 0
+	I01 : UINT := 0;	// Input integer 1
+	I02 : UINT := 0;	// Input integer 2
+	I03 : UINT := 0;	// Input integer 3
+	I04 : UINT := 0;	// Input integer 4
+	I05 : UINT := 0;	// Input integer 5
+	I06 : UINT := 0;	// Input integer 6
+	I07 : UINT := 0;	// Input integer 7
+	I08 : UINT := 0;	// Input integer 8
+	I09 : UINT := 0;	// Input integer 9
+END_VAR
+VAR_OUTPUT
+	Q00 : INT;
+	Q01 : INT;
+	Q02 : INT;
+	Q03 : INT;
+	Q04 : INT;
+	Q05 : INT;
+	Q06 : INT;
+	Q07 : INT;
+	Q08 : INT;
+	Q09 : INT;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[Q00 := UINT_TO_INT(I00);
+Q01 := UINT_TO_INT(I01);
+Q02 := UINT_TO_INT(I02);
+Q03 := UINT_TO_INT(I03);
+Q04 := UINT_TO_INT(I04);
+Q05 := UINT_TO_INT(I05);
+Q06 := UINT_TO_INT(I06);
+Q07 := UINT_TO_INT(I07);
+Q08 := UINT_TO_INT(I08);
+Q09 := UINT_TO_INT(I09);]]></ST>
+    </Implementation>
+    <LineIds Name="FB_Bridge_Inputs_Integer">
+      <LineId Id="70" Count="0" />
+      <LineId Id="74" Count="8" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,2846 @@
+<?xml version="1.0"?>
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.12" ClassName="CNestedPlcProjDef">
+	<DataTypes>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-000000000041}" TcBaseType="true" HideSubItems="true" CName="AmsNetId">AMSNETID</Name>
+			<BitSize>48</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>6</Elements>
+			</ArrayInfo>
+			<Format>
+				<Printf>%d.%d.%d.%d.%d.%d</Printf>
+				<Parameter>[0]</Parameter>
+				<Parameter>[1]</Parameter>
+				<Parameter>[2]</Parameter>
+				<Parameter>[3]</Parameter>
+				<Parameter>[4]</Parameter>
+				<Parameter>[5]</Parameter>
+			</Format>
+		</DataType>
+		<DataType>
+			<Name GUID="{E8EE2899-4679-469C-BAC5-7318F329907D}" AutoDeleteType="true">ST_S135_DRIVESTATUSWORD</Name>
+			<BitSize>16</BitSize>
+			<SubItem>
+				<Name>bS135_CommandChange</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ 	Toggling bit to acknowledge that the Command status has changed ]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>5</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS135_ActualOperationMode_Bit0</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS135_ActualOperationMode_Bit1</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>9</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS135_ActualOperationMode_Bit2</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ 	(bS135_ActOpMode_B2 | bS135_ActOpMode_B2 | bS135_ActOpMode_B0)]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>10</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS135_Class3_Diag_Mess</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ 	TRUE: There is a Class 3 Diagnostic message present in the drive]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>11</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS135_Class2_Diag_Warn</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ 	TRUE: There is a Warning present in the drive]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>12</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS135_Class1_Diag_Err</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ 	TRUE: There is a Error present in the drive]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>13</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS135_ReadyForOperation_Bit0</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ 	(bS135_ReadyForOp_B1 | bS135_ReadyForOp_B0)]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>14</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS135_ReadyForOperation_Bit1</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ 	(bS135_ReadyForOp_B1 | bS135_ReadyForOp_B0)]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>15</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{8AD6E8B9-D3F6-4CE2-AA31-A4B86C802016}" AutoDeleteType="true">ST_S144_SIGNALSTATUSWORD</Name>
+			<BitSize>16</BitSize>
+			<SubItem>
+				<Name>bS424_DriveMode</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ FALSE: Operating mode]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS403_0_AxisHomedStatus</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ FALSE: Axis is NOT homed ]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>2</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS331_StandStillStatus</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ FALSE: Axis is moving]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>3</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS437_2_CommandPositionReached</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ FALSE: Axis is NOT not within command position]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>4</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bP115_3_StatusOfCmdValueProcessing</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ FALSE: Drive ignores external command value input ]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>7</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bP106_1_STO_ch1</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ FALSE: STO OK (motor can run)]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bP106_2_STO_ch2</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ FALSE: STO OK (motor can run)]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>9</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS419_0_PositioningCmdAck</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ Toggled as soon as the new Position Command value is accepted and effective]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>10</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS437_4_ConstantVelocity</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ TRUE: Axis in constant velocity]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>11</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS437_5_Acceleration</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ TRUE: Axis in acceleration]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>12</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS437_6_Deceleration</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ TRUE: Axis in deceleration]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>13</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS437_12_JogMode</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ TRUE: Axis in Axis in jog mode]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>14</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bP14_0_C1400_GetMarkerPositionDone</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[{attribute 'hide'}
+bS144_15_NotDefined					: BIT;	]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>15</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<Hides>
+				<Hide GUID="{1642AA04-0B3B-44CC-92AC-D98DCDBF8D53}"/>
+			</Hides>
+		</DataType>
+		<DataType>
+			<Name GUID="{87C0FCC2-5B94-C3C3-5793-F6875ECBE605}" AutoDeleteType="true">ST_Bridge_TSCS_INPUTS</Name>
+			<BitSize>1760</BitSize>
+			<SubItem>
+				<Name>TSCS_Byte</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>5</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ Boolean words from TSCS PLC (5x 8 Booleans)]]></Comment>
+				<BitSize>40</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_Integer</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>10</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ Integer signals from TSCS PLC (10x)	]]></Comment>
+				<BitSize>160</BitSize>
+				<BitOffs>48</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TSCS_Real</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>20</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ Real signals from TSCS PLC (20x)]]></Comment>
+				<BitSize>640</BitSize>
+				<BitOffs>224</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_Byte</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>5</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ Boolean words from TMS PLC (via TSCS) (5x 8 Booleans)]]></Comment>
+				<BitSize>40</BitSize>
+				<BitOffs>864</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_Integer</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>10</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ Integer signals from TMS PLC (via TSCS) (10x)]]></Comment>
+				<BitSize>160</BitSize>
+				<BitOffs>912</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TMS_Real</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>20</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ Real signals from TMS PLC (via TSCS) (20x)]]></Comment>
+				<BitSize>640</BitSize>
+				<BitOffs>1088</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_TestSignal_RB</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ Diagnostic signal readback TDU->TSCS->TDU]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>1728</BitOffs>
+			</SubItem>
+			<Hides>
+				<Hide GUID="{2D933307-2102-52D9-81B5-BA47BDBD19C3}"/>
+			</Hides>
+		</DataType>
+		<DataType>
+			<Name GUID="{CBC83B73-B816-4597-A9E5-2B03263CA131}" Namespace="MC" TcBaseType="true" HideType="true" IecDeclaration="DWORD;">NCTOPLC_AXIS_REF_STATE</Name>
+			<BitSize>32</BitSize>
+			<SubItem>
+				<Name>Operational</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Homed</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>1</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>NotMoving</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>2</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>InPositionArea</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>3</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>InTargetPosition</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>4</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Protected</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>5</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ErrorPropagationDelayed</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>6</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>HasBeenStopped</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>7</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>HasJob</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>PositiveDirection</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>9</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>NegativeDirection</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>10</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>HomingBusy</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>11</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ConstantVelocity</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>12</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Compensating</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>13</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ExtSetPointGenEnabled</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>14</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>PhasingActive</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>15</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ExternalLatchValid</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>NewTargetPos</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>17</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>IsDriveLimitActive</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>18</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ContinuousMotion</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>19</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ControlLoopClosed</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>20</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>CamTableQueued</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>21</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>CamDataQueued</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>22</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>CamScalingPending</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>23</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>CmdBuffered</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>24</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>PTPmode</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>25</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SoftLimitMinExceeded</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>26</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SoftLimitMaxExceeded</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>27</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>DriveDeviceError</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>28</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>MotionCommandsLocked</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>29</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>IoDataInvalid</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>30</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Error</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>31</BitOffs>
+			</SubItem>
+			<Format Name="Short">
+				<Printf>%08x</Printf>
+			</Format>
+			<Format Name="Cpp">
+				<Printf>0x%08x</Printf>
+			</Format>
+			<Format Name="IEC">
+				<Printf>16#%08X</Printf>
+			</Format>
+			<Relations>
+				<Relation Priority="100">
+					<Type>{4C3FC5AC-D5AA-44C6-AC5A-159774BA0F6D}</Type>
+				</Relation>
+			</Relations>
+		</DataType>
+		<DataType>
+			<Name GUID="{6EF49753-C72C-4F50-AA44-3C7498E76CFE}" Namespace="MC" TcBaseType="true" HideType="true" IecDeclaration="DWORD;">NCTOPLC_AXIS_REF_OPMODE</Name>
+			<BitSize>32</BitSize>
+			<SubItem>
+				<Name>OpModePosAreaMonitoring</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>OpModeTargetPosMonitoring</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>1</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>OpModeLoop</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>2</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>OpModeMotionMonitoring</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>3</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>OpModePEHTimeMonitoring</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>4</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>OpModeBacklashCompensation</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>5</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>OpModeDelayedErrorReaction</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>6</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>OpModeModulo</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>7</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>OpModeSimulationAxis</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>OpModePosLagMonitoring</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>OpModeVeloLagMonitoring</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>17</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>OpModeSoftLimitMinMonitoring</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>18</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>OpModeSoftLimitMaxMonitoring</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>19</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>OpModePosCorrection</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>20</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>OpModeAllowSlaveCommands</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>21</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>OpModeAllowExtSetAxisCommands</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>22</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ApplicationRequest</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>23</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{303D9411-849C-467F-8A4C-5C8CD0F3DD46}" Namespace="MC" TcBaseType="true" HideType="true">NCTOPLC_AXIS_REF_STATE2_FLAGS</Name>
+			<BitSize>32</BitSize>
+			<SubItem>
+				<Name>AvoidingCollision</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<Format Name="Short">
+				<Printf>%08x</Printf>
+			</Format>
+			<Format Name="Cpp">
+				<Printf>0x%08x</Printf>
+			</Format>
+			<Format Name="IEC">
+				<Printf>16#%08X</Printf>
+			</Format>
+		</DataType>
+		<DataType>
+			<Name GUID="{669F3788-48FD-42CF-8A59-2DA946853FB6}" Namespace="MC" TcBaseType="true" HideType="true">NCTOPLC_AXIS_REF_STATE2</Name>
+			<BitSize>32</BitSize>
+			<SubItem>
+				<Name>Value</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000007}">DWORD</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Flags</Name>
+				<Type GUID="{303D9411-849C-467F-8A4C-5C8CD0F3DD46}" Namespace="MC">NCTOPLC_AXIS_REF_STATE2_FLAGS</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<Format Name="Short">
+				<Printf>%08x</Printf>
+			</Format>
+			<Format Name="Cpp">
+				<Printf>0x%08x</Printf>
+			</Format>
+			<Format Name="IEC">
+				<Printf>16#%08X</Printf>
+			</Format>
+		</DataType>
+		<DataType>
+			<Name GUID="{BA9D9D0F-1A4A-4A27-A19F-3032626A8491}" Namespace="MC" TcBaseType="true" HideType="true">NCTOPLC_AXIS_REF_CAMCOUPLINGSTATE</Name>
+			<BitSize>8</BitSize>
+			<SubItem>
+				<Name>CamActivationPending</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>CamDeactivationPending</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>1</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>CamActive</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>2</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>CamDataQueued</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>6</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>CamScalingPending</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>7</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-000000000039}" TcBaseType="true" HideType="true">UINTARR8</Name>
+			<BitSize>128</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000005}">UINT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>8</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}" Namespace="MC" TcBaseType="true">NCTOPLC_AXIS_REF</Name>
+			<BitSize>2048</BitSize>
+			<SubItem>
+				<Name>StateDWord</Name>
+				<Type GUID="{CBC83B73-B816-4597-A9E5-2B03263CA131}" Namespace="MC">NCTOPLC_AXIS_REF_STATE</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ErrorCode</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>AxisState</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[Present State Of The Axis Movement (continuous axis):
+0  = INACTIVE:		axis has no job
+1  = RUNNING:		axis is executing a motion job
+2  = OVERRIDE_ZERO:	axis is executing a job but override is zero
+3  = PHASE_VELOCONST:	axis is moving at constant velocity
+4  = PHASE_ACCPOS:	axis is accelerating
+5  = PHASE_ACCNEG:	axis is decelerating
+Slaves only:
+11 = PREPHASE:		slave axis is in a motion pre-phase
+12 = SYNCHRONIZING:	slave axis is synchronizing
+13 = SYNCHRONOUS:	slave axis is moving synchronously
+External Setpoint Generation:
+41 = EXTSETGEN_MODE1:	external setpoint generation active
+42 = EXTSETGEN_MODE2:	internal and external setpoint gen. active
+]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>64</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>AxisModeConfirmation</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>96</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>HomingState</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[Axis Homing Status:
+0: idle
+1: start homing
+2: searching home switch
+3: stopping on home switch
+4: moving off home switch
+5: searching sync pulse
+6: stopping after homing
+]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>128</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>CoupleState</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[Axis Coupling Status:
+0: axis is a single axis (not coupled)
+1: axis is a master axis
+2: axis is master and slave
+3: axis is a slave axis
+]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>160</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SvbEntries</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>192</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SafEntries</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>224</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>AxisId</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>256</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>OpModeDWord</Name>
+				<Type GUID="{6EF49753-C72C-4F50-AA44-3C7498E76CFE}" Namespace="MC">NCTOPLC_AXIS_REF_OPMODE</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>288</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ActPos</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>320</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ModuloActPos</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>384</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ActiveControlLoopIndex</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>448</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ControlLoopIndex</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>464</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ModuloActTurns</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>480</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ActVelo</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>512</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>PosDiff</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>576</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SetPos</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>640</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SetVelo</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>704</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SetAcc</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>768</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TargetPos</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>832</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ModuloSetPos</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>896</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ModuloSetTurns</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>960</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>CmdNo</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>992</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>CmdState</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>1008</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SetJerk</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>1024</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SetTorque</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>1088</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ActTorque</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>1152</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>StateDWord2</Name>
+				<Type GUID="{669F3788-48FD-42CF-8A59-2DA946853FB6}" Namespace="MC">NCTOPLC_AXIS_REF_STATE2</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>1216</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>StateDWord3</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000007}">DWORD</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>1248</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TouchProbeState</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000007}">DWORD</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>1280</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TouchProbeCounter</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000007}">DWORD</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>1312</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>CamCouplingState</Name>
+				<Type GUID="{BA9D9D0F-1A4A-4A27-A19F-3032626A8491}" Namespace="MC">NCTOPLC_AXIS_REF_CAMCOUPLINGSTATE</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>8</Elements>
+				</ArrayInfo>
+				<BitSize>64</BitSize>
+				<BitOffs>1344</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>CamCouplingTableID</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000039}">UINTARR8</Type>
+				<BitSize>128</BitSize>
+				<BitOffs>1408</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ActTorqueDerivative</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>1536</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SetTorqueDerivative</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>1600</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>AbsPhasingPos</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>1664</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TorqueOffset</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>1728</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ActPosWithoutPosCorrection</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>1792</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ActAcc</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>1856</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>DcTimeStamp</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>1920</BitOffs>
+			</SubItem>
+			<Properties>
+				<Property>
+					<Name>NcStructType</Name>
+					<Value>2</Value>
+				</Property>
+			</Properties>
+			<Relations>
+				<Relation Priority="100">
+					<Type GUID="{429B767E-373B-40AE-BFA5-E1C08B444DF3}">NCAXLESTRUCT_TOPLC</Type>
+				</Relation>
+				<Relation Priority="100">
+					<Type GUID="{E8DA524A-605F-4879-82E6-B86EF6986572}">NCAXLESTRUCT_TOPLC2</Type>
+				</Relation>
+				<Relation Priority="100">
+					<Type GUID="{B507963E-69F3-4B64-BB8C-2BD7A560976D}">NCAXLESTRUCT_TOPLC3</Type>
+				</Relation>
+				<Relation Priority="100">
+					<Type GUID="{F794B740-82D7-4637-848E-4F74A711D038}">NCAXLESTRUCT_TOPLC4</Type>
+				</Relation>
+				<Relation Priority="100">
+					<Type GUID="{40BD39B0-C3EA-4F74-9F4F-5F1982786F7C}"></Type>
+				</Relation>
+				<Relation Priority="100">
+					<Type GUID="{40BD39B2-C3EA-4F74-9F4F-5F1982786F7C}"></Type>
+				</Relation>
+				<Relation Priority="100">
+					<Type GUID="{8CDE0C45-AB9D-42DB-BC94-1CF7521AB268}"></Type>
+				</Relation>
+				<Relation Priority="100">
+					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}"></Type>
+				</Relation>
+			</Relations>
+		</DataType>
+		<DataType>
+			<Name GUID="{4CCFD5CA-E676-474E-B42D-6A96C42819C9}" AutoDeleteType="true">ST_S134_MASTERCONTROLWORD</Name>
+			<BitSize>16</BitSize>
+			<SubItem>
+				<Name>bS134_CmdOperationMode_Bit0</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ 	(bS134_CmdOpMode_B2 | bS134_CmdOpMode_B2 | bS134_CmdOpMode_B0)]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS134_CmdOperationMode_Bit1</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ 	(bS134_CmdOpMode_B2 | bS134_CmdOpMode_B2 | bS134_CmdOpMode_B0)]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>9</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS134_IPOSYNC</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ 	Interpolator clock, toggles when new command values are to be transmitted ]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>10</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS134_CmdOperationMode_Bit2</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ 	(bS134_CmdOpMode_B2 | bS134_CmdOpMode_B2 | bS134_CmdOpMode_B0)]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>11</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS134_DriveHalt</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ 	1-0 change: deceleration of drive while maintaining the max. acceleration (S-0-0138) ]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>13</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS134_DriveEnable</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ 	TRUE -> FALSE transition: torque disable without delay (independent of bit bS134_DriveOn or bS134_DriveHalt)]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>14</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bS134_DriveOn</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ 	TRUE -> FALSE transition: best possible deceleration (only possible if bit bS134_DriveEnable = TRUE)]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>15</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{F0E5854A-EEDE-452D-9BB8-B565B2C7BFC3}" AutoDeleteType="true">ST_S145_SIGNALCONTROLWORD</Name>
+			<BitSize>16</BitSize>
+			<SubItem>
+				<Name>bS346_0_PosCtrlWord_CmdValueAccept</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ Toggle to execute Slave Axis command]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>0</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bP12_C300_SetAbsolutePosition</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ Sets the Absolute position (defined in S52) of the drive]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>1</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bS148_C600_DriveControlledHoming</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ Initiates the homing procedure defined in the drive]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>2</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bS346_3_PosCtrlWord_Abs_Rel</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ FALSE: Absolute ]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>3</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bS346_5_PosCtrlWord_ImmBlockChange</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ FALSE: Drive moves to current target position, before positioning at new target position]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>4</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bS99_DriveErrorReset</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ TRUE: Immediate block change, i.e., drive immediately moves to new target position]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>5</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bS346_1_PosCtrlWord_PosActivation</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ (bS346_2 | bS346_1) 00:	Positioning active, started by toggling of bit 0]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>6</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bS346_2_PosCtrlWord_PosActivation</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ (bS346_2 | bS346_1) 00:	Positioning active, started by toggling of bit 0]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>7</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bS159_C1300_Disable_Monitoring</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ TRUE: 	Monitoring of Position error, Position command error, Velocity error and Acceleration limit is disabled]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>8</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bS405_0_Probe1_Enabled</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ FALSE: 	Monitoring of Position error, Position command error, Velocity error and Acceleration limit is enabled ]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>9</BitOffs>
+				<Default>
+					<Value>1</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bS420_C0400_Activate_ParameterMode</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ Brings the drive into parameter mode]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>10</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bS422_C0200_Exit_ParameterMode</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ Brings the drive into parameter mode]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>11</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bP760_VM_PosCtrlWord_CmdValueAccept</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ Toggle to execute Virtual Master command]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>12</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bP760_VM_PosCtrlWord_1_PosActivation</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ (bP760_2 | bP760_1) 00:	Positioning active, started by toggling of bit 0]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>13</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bS407_0_HomingEnbale</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[ (bP760_2 | bP760_1) 01: 	Infinite travel in positive direction (jog+) (Positioning will be aborted)
+ (bP760_2 | bP760_1) 10: 	Infinite travel in negative direction (jog-) (Positioning will be aborted)
+ (bP760_2 | bP760_1) 11: 	Stopping the axis (positioning stop) (Positioning will be aborted)
+bP760_VM_PosCtrlWord_2_PosActivation	: BIT	:= FALSE;	// (bP760_2 | bP760_1) 00:	Positioning active, started by toggling of bit 0
+ (bP760_2 | bP760_1) 01: 	Infinite travel in positive direction (jog+) (Positioning will be aborted), started by toggling of bit 0
+ (bP760_2 | bP760_1) 10: 	Infinite travel in negative direction (jog-) (Positioning will be aborted), started by toggling of bit 0
+ (bP760_2 | bP760_1) 11: 	Stopping the axis (positioning stop) (Positioning will be aborted)
+{attribute 'hide'}
+bS145_15_NotDefined						: BIT	:= FALSE;
+Bit 15]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>14</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>bP14_0_C1400_GetMarkerPosition</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment><![CDATA[Bit 16]]></Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>15</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<Hides>
+				<Hide GUID="{C611E284-5D81-42D2-9EAA-1D349EB6D88D}"/>
+			</Hides>
+		</DataType>
+		<DataType>
+			<Name GUID="{155273E7-D90F-4E0A-DBD3-CADC6647405F}" AutoDeleteType="true">ST_Bridge_TSCS_OUTPUTS</Name>
+			<BitSize>896</BitSize>
+			<SubItem>
+				<Name>TDU_Byte</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>5</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ Boolean words from TDU PLC (5x 8 Booleans)]]></Comment>
+				<BitSize>40</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_Real</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>20</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ Real signals from TDU PLC (20x)]]></Comment>
+				<BitSize>640</BitSize>
+				<BitOffs>64</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_Integer</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>10</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ Real signals from TDU PLC (10x)]]></Comment>
+				<BitSize>160</BitSize>
+				<BitOffs>704</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TDU_TestSignal</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ Diagnostic signal (for readback: This PLC -> Other PLC -> This PLC)]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>864</BitOffs>
+			</SubItem>
+			<Hides>
+				<Hide GUID="{E242E054-4C82-FB43-73EB-168AF9666D1C}"/>
+			</Hides>
+		</DataType>
+		<DataType>
+			<Name GUID="{875D2B22-B7EB-497E-B933-0C004593CCF3}" Namespace="MC" TcBaseType="true" HideType="true" IecDeclaration="DWORD;">PLCTONC_AXIS_REF_CTRL</Name>
+			<BitSize>32</BitSize>
+			<SubItem>
+				<Name>Enable</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>FeedEnablePlus</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>1</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>FeedEnableMinus</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>2</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>HomingSensor</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>5</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>AcceptBlockedDrive</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>PlcDebugFlag</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>30</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>NcDebugFlag</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>31</BitOffs>
+			</SubItem>
+			<Format Name="Short">
+				<Printf>%08x</Printf>
+			</Format>
+			<Format Name="Cpp">
+				<Printf>0x%08x</Printf>
+			</Format>
+			<Format Name="IEC">
+				<Printf>16#%08X</Printf>
+			</Format>
+		</DataType>
+		<DataType>
+			<Name GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC" TcBaseType="true">PLCTONC_AXIS_REF</Name>
+			<BitSize>1024</BitSize>
+			<SubItem>
+				<Name>ControlDWord</Name>
+				<Type GUID="{875D2B22-B7EB-497E-B933-0C004593CCF3}" Namespace="MC">PLCTONC_AXIS_REF_CTRL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Override</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>AxisModeRequest</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>64</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>AxisModeDWord</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>96</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>AxisModeLReal</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>128</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>PositionCorrection</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>192</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ExtSetPos</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>256</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ExtSetVelo</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>320</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ExtSetAcc</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>384</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ExtSetDirection</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>448</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ExtControllerOutput</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>512</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>GearRatio1</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>576</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>GearRatio2</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>640</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>GearRatio3</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>704</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>GearRatio4</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>768</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>MapState</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>832</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>PlcCycleControl</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>840</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>PlcCycleCount</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>848</BitOffs>
+			</SubItem>
+			<Properties>
+				<Property>
+					<Name>NcStructType</Name>
+					<Value>1</Value>
+				</Property>
+			</Properties>
+			<Relations>
+				<Relation Priority="100">
+					<Type GUID="{60392271-8688-4F4C-B404-618DF106325D}">NCAXLESTRUCT_FROMPLC3</Type>
+				</Relation>
+			</Relations>
+		</DataType>
+	</DataTypes>
+	<Project GUID="{FB261665-FD20-4BF2-97F8-2854C82B752D}" Name="tc_project_app" PrjFilePath="..\..\tc_project_app\tc_project_app.plcproj" TmcFilePath="..\..\tc_project_app\tc_project_app.tmc" ReloadTmc="true" AmsPort="852" FileArchiveSettings="#x000e" SymbolicMapping="true">
+		<Instance Id="#x08502040" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="tc_project_app\tc_project_app.tmc">
+			<Name>tc_project_app Instance</Name>
+			<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+			<Vars VarGrpType="1">
+				<Name>PlcTask Inputs</Name>
+				<Var>
+					<Name>MAIN.stAmsNetId</Name>
+					<Type GUID="{18071995-0000-0000-0000-000000000041}">AMSNETID</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.nPort</Name>
+					<Type>WORD</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.dLatchedPosition</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbTemp.AI_RTD_Ch_1_Status</Name>
+					<Comment><![CDATA[Channels]]></Comment>
+					<Type>WORD</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbTemp.AI_RTD_Ch_1_Value</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbTemp.AI_RTD_Ch_2_Status</Name>
+					<Type>WORD</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbTemp.AI_RTD_Ch_2_Value</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbTemp.AI_RTD_Ch_3_Status</Name>
+					<Type>WORD</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbTemp.AI_RTD_Ch_3_Value</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbTemp.AI_RTD_Ch_4_Status</Name>
+					<Type>WORD</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbTemp.AI_RTD_Ch_4_Value</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbTemp.WcState_WcState</Name>
+					<Comment><![CDATA[Terminal status]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbTemp.InfoData_State</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveStatus.nS135_DriveStatusWord</Name>
+					<Type GUID="{E8EE2899-4679-469C-BAC5-7318F329907D}">ST_S135_DRIVESTATUSWORD</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveStatus.nS51_PositionFeedbackValue</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveStatus.nS386_ActivePositionFeedbackValue</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveStatus.nS40_VelocityFeedbackValue</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveStatus.nS390_DiagnosticMessageNumber</Name>
+					<Type>DWORD</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveStatus.stS144_SignalStatusWord</Name>
+					<Type GUID="{8AD6E8B9-D3F6-4CE2-AA31-A4B86C802016}">ST_S144_SIGNALSTATUSWORD</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveStatus.nS84_TorqueFeedback</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveStatus.nS189_PositionError</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveStatus.nP173_MarkerPosition</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s2_EL1809.bBI_1</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s2_EL1809.bBI_2</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s2_EL1809.bBI_3</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s2_EL1809.bBI_4</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s2_EL1809.bBI_5</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s2_EL1809.bBI_6</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s2_EL1809.bBI_7</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s2_EL1809.bBI_8</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s2_EL1809.bBI_9</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s2_EL1809.bBI_10</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s2_EL1809.bBI_11</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s2_EL1809.bBI_12</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s2_EL1809.bBI_13</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s2_EL1809.bBI_14</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s2_EL1809.bBI_15</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s2_EL1809.bBI_16</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s2_EL1809.WcState_WcState</Name>
+					<Comment><![CDATA[ invalid]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s2_EL1809.InfoData_State</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s3_EL1809.bBI_1</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s3_EL1809.bBI_2</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s3_EL1809.bBI_3</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s3_EL1809.bBI_4</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s3_EL1809.bBI_5</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s3_EL1809.bBI_6</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s3_EL1809.bBI_7</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s3_EL1809.bBI_8</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s3_EL1809.bBI_9</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s3_EL1809.bBI_10</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s3_EL1809.bBI_11</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s3_EL1809.bBI_12</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s3_EL1809.bBI_13</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s3_EL1809.bBI_14</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s3_EL1809.bBI_15</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s3_EL1809.bBI_16</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s3_EL1809.WcState_WcState</Name>
+					<Comment><![CDATA[ invalid]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s3_EL1809.InfoData_State</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s4_EL2819.wCH1_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s4_EL2819.wCH2_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s4_EL2819.wCH3_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s4_EL2819.wCH4_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s4_EL2819.wCH5_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s4_EL2819.wCH6_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s4_EL2819.wCH7_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s4_EL2819.wCH8_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s4_EL2819.wCH9_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s4_EL2819.wCH10_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s4_EL2819.wCH11_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s4_EL2819.wCH12_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s4_EL2819.wCH13_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s4_EL2819.wCH14_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s4_EL2819.wCH15_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s4_EL2819.wCH16_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s4_EL2819.bDev_CommonFault</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s4_EL2819.bDev_Overtemperature</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s4_EL2819.bDev_UnderVoltage</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s4_EL2819.bDev_MissingVoltage</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s4_EL2819.WcState_WcState</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s4_EL2819.InfoData_State</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s5_EL2819.wCH1_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s5_EL2819.wCH2_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s5_EL2819.wCH3_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s5_EL2819.wCH4_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s5_EL2819.wCH5_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s5_EL2819.wCH6_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s5_EL2819.wCH7_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s5_EL2819.wCH8_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s5_EL2819.wCH9_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s5_EL2819.wCH10_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s5_EL2819.wCH11_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s5_EL2819.wCH12_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s5_EL2819.wCH13_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s5_EL2819.wCH14_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s5_EL2819.wCH15_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s5_EL2819.wCH16_Diag</Name>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s5_EL2819.bDev_CommonFault</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s5_EL2819.bDev_Overtemperature</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s5_EL2819.bDev_UnderVoltage</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s5_EL2819.bDev_MissingVoltage</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s5_EL2819.WcState_WcState</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s5_EL2819.InfoData_State</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s6_EL9505.bUoPwr_OK</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s6_EL9505.bUo_Overload</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s6_EL9505.WcState_WcState</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s6_EL9505.InfoData_State</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s7_EL1252.bBI_1</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s7_EL1252.bBI_2</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s7_EL1252.WcState_WcState</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s7_EL1252.InfoData_State</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s8_EL9410.bUs_Undervoltage</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s8_EL9410.bUp_Undervoltage</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s8_EL9410.WcState_WcState</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s8_EL9410.InfoData_State</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s9_EL1252.bBI_1</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s9_EL1252.bBI_2</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s9_EL1252.WcState_WcState</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s9_EL1252.InfoData_State</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s10_EL7201.WcState_WcState</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s10_EL7201.InfoData_State</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s11_EL7201.WcState_WcState</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s11_EL7201.InfoData_State</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s12_EL7201.WcState_WcState</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s12_EL7201.InfoData_State</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s13_EL3214.iAI_1</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s13_EL3214.iAI_2</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s13_EL3214.iAI_3</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s13_EL3214.iAI_4</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s13_EL3214.wCh1_Status</Name>
+					<Comment><![CDATA[Channels]]></Comment>
+					<Type>WORD</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s13_EL3214.wCh2_Status</Name>
+					<Type>WORD</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s13_EL3214.wCh3_Status</Name>
+					<Type>WORD</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s13_EL3214.wCh4_Status</Name>
+					<Type>WORD</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s13_EL3214.WcState_WcState</Name>
+					<Comment><![CDATA[Terminal status]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s13_EL3214.InfoData_State</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s14_EL5021.InfoData_State</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s14_EL5021.WcState_WcState</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s15_EL6695.WcState_WcState</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s15_EL6695.InfoData_State</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s16_EL9410.bUs_Undervoltage</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s16_EL9410.bUp_Undervoltage</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s16_EL9410.WcState_WcState</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s16_EL9410.InfoData_State</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s17_EL2032.WcState_WcState</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s17_EL2032.InfoData_State</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s18_EK1110.InfoData_State</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s19_IndraDrive.WcState_WcState</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s19_IndraDrive.InfoData_State</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s20_IPOS8020.WcState_WcState</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s20_IPOS8020.InfoData_State</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s21_IPOS8020.WcState_WcState</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s21_IPOS8020.InfoData_State</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s22_IPOS8020.WcState_WcState</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s22_IPOS8020.InfoData_State</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Bridge_TSCS.INPUTS</Name>
+					<Comment><![CDATA[ Inputs]]></Comment>
+					<Type GUID="{87C0FCC2-5B94-C3C3-5793-F6875ECBE605}">ST_Bridge_TSCS_INPUTS</Type>
+				</Var>
+				<Var>
+					<Name>GVL.astAxes[1].stInputs.bLimitFwd</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL.astAxes[1].stInputs.bLimitBwd</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL.astAxes[1].stInputs.bHomeSensor</Name>
+					<Comment><![CDATA[Reference siganl for homing]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL.astAxes[1].Axis.NcToPlc</Name>
+					<Type GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>GVL.astAxes[2].stInputs.bLimitFwd</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL.astAxes[2].stInputs.bLimitBwd</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL.astAxes[2].stInputs.bHomeSensor</Name>
+					<Comment><![CDATA[Reference siganl for homing]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL.astAxes[2].Axis.NcToPlc</Name>
+					<Type GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>GVL.astAxes[3].stInputs.bLimitFwd</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL.astAxes[3].stInputs.bLimitBwd</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL.astAxes[3].stInputs.bHomeSensor</Name>
+					<Comment><![CDATA[Reference siganl for homing]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL.astAxes[3].Axis.NcToPlc</Name>
+					<Type GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+				</Var>
+			</Vars>
+			<Vars VarGrpType="2" AreaNo="1">
+				<Name>PlcTask Outputs</Name>
+				<Var>
+					<Name>MAIN.nAdditiveTorqueSetpoint</Name>
+					<Comment><![CDATA[ Unit 0.1%  (10=1%)]]></Comment>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveCommands.stS134_MasterControlWord</Name>
+					<Type GUID="{4CCFD5CA-E676-474E-B42D-6A96C42819C9}">ST_S134_MASTERCONTROLWORD</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveCommands.nS47_PositionCommandValue</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveCommands.nS258_TargetPosition</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveCommands.nS282_PositioningCommandValue</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveCommands.nS259_PositioningVelocity</Name>
+					<Type>UDINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveCommands.nS260_PositioningAcceleration</Name>
+					<Type>UDINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveCommands.nS359_PositioningDeceleration</Name>
+					<Type>UDINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveCommands.nS108_FeedrateOverride</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveCommands.stS145_SignalControlWord</Name>
+					<Type GUID="{F0E5854A-EEDE-452D-9BB8-B565B2C7BFC3}">ST_S145_SIGNALCONTROLWORD</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveCommands.nS92_BiPolarTorqueLimit</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveCommands.nS40_VelocityCommandValue</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.stHWControl.bRotOmronSensor1Feed</Name>
+					<Comment><![CDATA[ s4: ch1: Feed omron sensor 1]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.stHWControl.bRotOmronSensor2Feed</Name>
+					<Comment><![CDATA[ s4: ch2: Feed omron sensor 2]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.stHWControl.bXMinMaxFeed</Name>
+					<Comment><![CDATA[ s5: ch1: kf05: w02.bg01 w02.bg02 stepper x limit switch max, limit min]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.stHWControl.bXBrakeReleaseCmd</Name>
+					<Comment><![CDATA[ s5: ch2: kf05: w02.ql1: stepper x brake]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.stHWControl.bXMinMinMaxMaxFeed</Name>
+					<Comment><![CDATA[ s5: ch3: kf05: w02.bg03 w02.bg04 stepper x limit switch max max, limit min min]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.stHWControl.bYMinMaxFeed</Name>
+					<Comment><![CDATA[ s5: ch5: kf05: w02.bg05 w02.bg06 stepper y limit switch max, limit min]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.stHWControl.bYBrakeReleaseCmd</Name>
+					<Comment><![CDATA[ s5: ch6: kf05: w02.ql2: stepper y brake]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.stHWControl.bYMinMinMaxMaxFeed</Name>
+					<Comment><![CDATA[ s5: ch7: kf05: w02.bg07 w02.bg08 stepper y limit switch max max, limit min min]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.stHWControl.bZMinMaxFeed</Name>
+					<Comment><![CDATA[ s5: ch9: kf05: w03.bg01 w03.bg02 w03.bg03  stepper z limit switch max, limit min limit min min (service)]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.stHWControl.bZMinMinMaxMaxFeed</Name>
+					<Comment><![CDATA[ s5: ch10: kf05: w03.bg04 w03.bg05 w03.bg06  stepper z limit switch max max, limit min min]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Bridge_TSCS.OUTPUTS</Name>
+					<Comment><![CDATA[ Outputs]]></Comment>
+					<Type GUID="{155273E7-D90F-4E0A-DBD3-CADC6647405F}">ST_Bridge_TSCS_OUTPUTS</Type>
+				</Var>
+				<Var>
+					<Name>GVL.astAxes[1].Axis.PlcToNc</Name>
+					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>GVL.astAxes[2].Axis.PlcToNc</Name>
+					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>GVL.astAxes[3].Axis.PlcToNc</Name>
+					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+				</Var>
+			</Vars>
+			<Vars VarGrpType="1" ContextId="1" AreaNo="16">
+				<Name>PlcTaskCom Inputs</Name>
+				<Var>
+					<Name>MAIN.inputDigSens1</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.nMasterAxisPosition</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.nMainDriveMarkPosition</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.inputDigSens2</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_back.axes[1].stInputs.bLimitFwd</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_back.axes[1].stInputs.bLimitBwd</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_back.axes[1].stInputs.bHomeSensor</Name>
+					<Comment><![CDATA[Reference siganl for homing]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_back.axes[1].Axis.NcToPlc</Name>
+					<Type GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>GVL_back.axes[2].stInputs.bLimitFwd</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_back.axes[2].stInputs.bLimitBwd</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_back.axes[2].stInputs.bHomeSensor</Name>
+					<Comment><![CDATA[Reference siganl for homing]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_back.axes[2].Axis.NcToPlc</Name>
+					<Type GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>GVL_back.axes[3].stInputs.bLimitFwd</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_back.axes[3].stInputs.bLimitBwd</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_back.axes[3].stInputs.bHomeSensor</Name>
+					<Comment><![CDATA[Reference siganl for homing]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_back.axes[3].Axis.NcToPlc</Name>
+					<Type GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+				</Var>
+			</Vars>
+			<Vars VarGrpType="2" ContextId="1" AreaNo="17">
+				<Name>PlcTaskCom Outputs</Name>
+				<Var>
+					<Name>MAIN.iTorqueCommandValue</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>Axis_1.bLimitPowerAxis1</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Axis_2.bLimitPowerAxis2</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Axis_3.bLimitPowerAxis3</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_back.axes[1].Axis.PlcToNc</Name>
+					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>GVL_back.axes[2].Axis.PlcToNc</Name>
+					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>GVL_back.axes[3].Axis.PlcToNc</Name>
+					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+				</Var>
+			</Vars>
+			<UnrestoredVarLinks ImportTime="2020-01-29T12:37:59">
+				<OwnerA Name="InputDst" Prefix="TIPC^tc_project_app^tc_project_app Instance" Type="1">
+					<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 8 (EL9410)">
+						<Link VarA="MAIN.fb_s8_EL9505.InfoData_State" TypeA="UINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000005}" VarB="InfoData^State" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s8_EL9505.WcState_WcState" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="WcState^WcState" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s8_EL9505.bStatus_Up_UV" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Status Up^Undervoltage" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s8_EL9505.bStatus_Us_UV" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Status Us^Undervoltage" Size="1" RestoreInfo="ANotFound"/>
+					</OwnerB>
+				</OwnerA>
+			</UnrestoredVarLinks>
+			<UnrestoredVarLinks ImportTime="2020-01-29T15:36:45">
+				<OwnerA Name="InputDst" Prefix="TIPC^tc_project_app^tc_project_app Instance" Type="1">
+					<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 4 (EL2819)">
+						<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 1" Size="4" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 10" Size="4" OffsA="36" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 11" Size="4" OffsA="40" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 12" Size="4" OffsA="44" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 13" Size="4" OffsA="48" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 14" Size="4" OffsA="52" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 15" Size="4" OffsA="56" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 16" Size="4" OffsA="60" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 2" Size="4" OffsA="4" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 3" Size="4" OffsA="8" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 4" Size="4" OffsA="12" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 5" Size="4" OffsA="16" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 6" Size="4" OffsA="20" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 7" Size="4" OffsA="24" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 8" Size="4" OffsA="28" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 9" Size="4" OffsA="32" RestoreInfo="ANotFound"/>
+					</OwnerB>
+					<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 5 (EL2819)">
+						<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 1" Size="4" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 10" Size="4" OffsA="36" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 11" Size="4" OffsA="40" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 12" Size="4" OffsA="44" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 13" Size="4" OffsA="48" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 14" Size="4" OffsA="52" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 15" Size="4" OffsA="56" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 16" Size="4" OffsA="60" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 2" Size="4" OffsA="4" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 3" Size="4" OffsA="8" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 4" Size="4" OffsA="12" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 5" Size="4" OffsA="16" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 6" Size="4" OffsA="20" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 7" Size="4" OffsA="24" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 8" Size="4" OffsA="28" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChannelDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 9" Size="4" OffsA="32" RestoreInfo="ANotFound"/>
+					</OwnerB>
+				</OwnerA>
+			</UnrestoredVarLinks>
+			<UnrestoredVarLinks ImportTime="2020-02-04T08:57:12">
+				<OwnerA Name="InputDst" Prefix="TIPC^tc_project_app^tc_project_app Instance" Type="1">
+					<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 15 (EL9410)">
+						<Link VarA="MAIN.fb_s15_EL9410.bStatus_Up_UV" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Status Up^Undervoltage" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s15_EL9410.bStatus_Us_UV" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Status Us^Undervoltage" Size="1" RestoreInfo="ANotFound"/>
+					</OwnerB>
+					<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 2 (EL1809)">
+						<Link VarA="MAIN.fb_s2_EL1809.Channel_10_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 10^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.Channel_11_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 11^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.Channel_12_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 12^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.Channel_13_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 13^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.Channel_14_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 14^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.Channel_15_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 15^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.Channel_16_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 16^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.Channel_1_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 1^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.Channel_2_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 2^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.Channel_3_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 3^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.Channel_4_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 4^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.Channel_5_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 5^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.Channel_6_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 6^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.Channel_7_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 7^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.Channel_8_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 8^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.Channel_9_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 9^Input" Size="1" RestoreInfo="ANotFound"/>
+					</OwnerB>
+					<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 3 (EL1809)">
+						<Link VarA="MAIN.fb_s3_EL1809.Channel_10_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 10^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.Channel_11_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 11^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.Channel_12_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 12^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.Channel_13_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 13^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.Channel_14_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 14^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.Channel_15_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 15^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.Channel_16_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 16^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.Channel_1_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 1^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.Channel_2_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 2^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.Channel_3_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 3^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.Channel_4_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 4^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.Channel_5_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 5^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.Channel_6_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 6^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.Channel_7_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 7^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.Channel_8_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 8^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.Channel_9_Input" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 9^Input" Size="1" RestoreInfo="ANotFound"/>
+					</OwnerB>
+					<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 4 (EL2819)">
+						<Link VarA="MAIN.fb_s4_EL2819.Device_Common_Fault" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Inputs Device^Common Fault" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.Device_Common_Missing_Voltage" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Inputs Device^Missing Voltage" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.Device_Common_Under_Voltage" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Inputs Device^Undervoltage" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.Device_Overtemerature" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Inputs Device^Overtemperature Device" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 1" Size="4" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 10" Size="4" OffsA="36" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 11" Size="4" OffsA="40" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 12" Size="4" OffsA="44" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 13" Size="4" OffsA="48" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 14" Size="4" OffsA="52" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 15" Size="4" OffsA="56" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 16" Size="4" OffsA="60" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 2" Size="4" OffsA="4" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 3" Size="4" OffsA="8" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 4" Size="4" OffsA="12" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 5" Size="4" OffsA="16" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 6" Size="4" OffsA="20" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 7" Size="4" OffsA="24" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 8" Size="4" OffsA="28" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 9" Size="4" OffsA="32" RestoreInfo="ANotFound"/>
+					</OwnerB>
+					<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 5 (EL2819)">
+						<Link VarA="MAIN.fb_s5_EL2819.Device_Common_Fault" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Inputs Device^Common Fault" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.Device_Common_Missing_Voltage" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Inputs Device^Missing Voltage" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.Device_Common_Under_Voltage" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Inputs Device^Undervoltage" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.Device_Overtemerature" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Inputs Device^Overtemperature Device" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 1" Size="4" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 10" Size="4" OffsA="36" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 11" Size="4" OffsA="40" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 12" Size="4" OffsA="44" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 13" Size="4" OffsA="48" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 14" Size="4" OffsA="52" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 15" Size="4" OffsA="56" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 16" Size="4" OffsA="60" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 2" Size="4" OffsA="4" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 3" Size="4" OffsA="8" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 4" Size="4" OffsA="12" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 5" Size="4" OffsA="16" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 6" Size="4" OffsA="20" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 7" Size="4" OffsA="24" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 8" Size="4" OffsA="28" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.stChanneDiag" TypeA="DUT_EL2819_ChannelStatus" InOutA="0" GuidA="{733036A8-1BD3-4BDE-AFCE-D7DFB5F366A6}" VarB="DIG Diag Inputs^Channel 9" Size="4" OffsA="32" RestoreInfo="ANotFound"/>
+					</OwnerB>
+					<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 6 (EL9505)">
+						<Link VarA="MAIN.fb_s6_EL9505.bStatus_Uo_Overload" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Status Uo^Overload" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s6_EL9505.bStatus_Uo_Power_OK" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Status Uo^Power OK" Size="1" RestoreInfo="ANotFound"/>
+					</OwnerB>
+					<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 8 (EL9410)">
+						<Link VarA="MAIN.fb_s8_EL9410.bStatus_Up_UV" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Status Up^Undervoltage" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s8_EL9410.bStatus_Us_UV" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Status Us^Undervoltage" Size="1" RestoreInfo="ANotFound"/>
+					</OwnerB>
+				</OwnerA>
+				<OwnerA Name="OutputSrc" Prefix="TIPC^tc_project_app^tc_project_app Instance" Type="2">
+					<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 4 (EL2819)">
+						<Link VarA="MAIN.fb_s4_EL2819.Channel_10_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 10^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.Channel_11_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 11^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.Channel_12_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 12^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.Channel_13_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 13^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.Channel_14_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 14^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.Channel_15_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 15^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.Channel_16_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 16^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.Channel_1_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 1^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.Channel_2_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 2^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.Channel_3_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 3^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.Channel_4_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 4^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.Channel_5_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 5^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.Channel_6_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 6^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.Channel_7_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 7^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.Channel_8_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 8^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s4_EL2819.Channel_9_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 9^Output" Size="1" RestoreInfo="ANotFound"/>
+					</OwnerB>
+					<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 5 (EL2819)">
+						<Link VarA="MAIN.fb_s5_EL2819.Channel_10_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 10^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.Channel_11_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 11^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.Channel_12_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 12^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.Channel_13_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 13^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.Channel_14_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 14^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.Channel_15_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 15^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.Channel_16_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 16^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.Channel_1_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 1^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.Channel_2_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 2^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.Channel_3_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 3^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.Channel_4_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 4^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.Channel_5_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 5^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.Channel_6_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 6^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.Channel_7_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 7^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.Channel_8_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 8^Output" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s5_EL2819.Channel_9_Output" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="DIG Outputs^Channel 9^Output" Size="1" RestoreInfo="ANotFound"/>
+					</OwnerB>
+				</OwnerA>
+			</UnrestoredVarLinks>
+			<UnrestoredVarLinks ImportTime="2020-02-04T14:15:30">
+				<OwnerA Name="InputDst" Prefix="TIPC^tc_project_app^tc_project_app Instance" Type="1">
+					<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 2 (EL1809)">
+						<Link VarA="MAIN.fb_s2_EL1809.bi_1" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 1^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.bi_10" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 10^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.bi_11" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 11^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.bi_12" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 12^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.bi_13" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 13^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.bi_14" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 14^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.bi_15" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 15^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.bi_16" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 16^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.bi_2" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 2^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.bi_3" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 3^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.bi_4" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 4^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.bi_5" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 5^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.bi_6" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 6^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.bi_7" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 7^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.bi_8" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 8^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s2_EL1809.bi_9" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 9^Input" Size="1" RestoreInfo="ANotFound"/>
+					</OwnerB>
+					<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 3 (EL1809)">
+						<Link VarA="MAIN.fb_s3_EL1809.bi_1" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 1^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.bi_10" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 10^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.bi_11" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 11^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.bi_12" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 12^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.bi_13" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 13^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.bi_14" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 14^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.bi_15" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 15^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.bi_16" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 16^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.bi_2" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 2^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.bi_3" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 3^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.bi_4" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 4^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.bi_5" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 5^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.bi_6" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 6^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.bi_7" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 7^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.bi_8" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 8^Input" Size="1" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s3_EL1809.bi_9" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 9^Input" Size="1" RestoreInfo="ANotFound"/>
+					</OwnerB>
+				</OwnerA>
+			</UnrestoredVarLinks>
+			<UnrestoredVarLinks ImportTime="2020-02-07T14:39:02">
+				<OwnerA Name="InputDst" Prefix="TIPC^tc_project_app^tc_project_app Instance" Type="1">
+					<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 52 (EK1100)^Term 55 (EL3214)">
+						<Link VarA="MAIN.fb_s24_EL3214.InfoData_State" TypeA="UINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000005}" VarB="InfoData^State" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s24_EL3214.iAI_1" TypeA="INT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000006}" VarB="RTD Inputs Channel 1^Value" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s24_EL3214.iAI_2" TypeA="INT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000006}" VarB="RTD Inputs Channel 2^Value" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s24_EL3214.iAI_3" TypeA="INT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000006}" VarB="RTD Inputs Channel 3^Value" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s24_EL3214.iAI_4" TypeA="INT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000006}" VarB="RTD Inputs Channel 4^Value" RestoreInfo="ANotFound"/>
+					</OwnerB>
+					<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 52 (EK1100)^Term 56 (EL3214)">
+						<Link VarA="MAIN.fb_s24_EL3214.wCh1_Status" TypeA="WORD" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000004}" VarB="RTD Inputs Channel 1^Value" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s24_EL3214.wCh2_Status" TypeA="WORD" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000004}" VarB="RTD Inputs Channel 2^Value" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s24_EL3214.wCh3_Status" TypeA="WORD" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000004}" VarB="RTD Inputs Channel 3^Value" RestoreInfo="ANotFound"/>
+						<Link VarA="MAIN.fb_s24_EL3214.wCh4_Status" TypeA="WORD" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000004}" VarB="RTD Inputs Channel 4^Value" RestoreInfo="ANotFound"/>
+					</OwnerB>
+				</OwnerA>
+			</UnrestoredVarLinks>
+			<UnrestoredVarLinks ImportTime="2021-04-27T12:35:21">
+				<OwnerA Name="InputDst" Prefix="TIPC^tc_project_app^tc_project_app Instance" Type="1">
+					<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 10 (EL7201)">
+						<Link VarA="Axis_1.nResolverVal" TypeA="DINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="FB Position^Position" RestoreInfo="ANotFound"/>
+					</OwnerB>
+				</OwnerA>
+			</UnrestoredVarLinks>
+			<UnrestoredVarLinks ImportTime="2021-04-27T14:06:29">
+				<OwnerA Name="InputDst" Prefix="TIPC^tc_project_app^tc_project_app Instance" Type="1">
+					<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 1">
+						<Link VarA="MAIN.nTargetVel" TypeA="DINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="Drive^Outputs^Out^nDataOut2" RestoreInfo="ANotFound"/>
+					</OwnerB>
+				</OwnerA>
+			</UnrestoredVarLinks>
+			<Contexts>
+				<Context>
+					<Id NeedCalleeCall="true">0</Id>
+					<Name>PlcTask</Name>
+					<ManualConfig>
+						<OTCID>#x02010040</OTCID>
+					</ManualConfig>
+					<Priority>20</Priority>
+					<CycleTime>1000000</CycleTime>
+				</Context>
+				<Context>
+					<Id NeedCalleeCall="true">1</Id>
+					<Name>PlcTaskCom</Name>
+					<ManualConfig>
+						<OTCID>#x02010020</OTCID>
+					</ManualConfig>
+					<Priority>26</Priority>
+					<CycleTime>1000000</CycleTime>
+				</Context>
+			</Contexts>
+			<TaskPouOids>
+				<TaskPouOid Prio="20" OTCID="#x08502041"/>
+				<TaskPouOid Prio="26" OTCID="#x08502042"/>
+			</TaskPouOids>
+		</Instance>
+	</Project>
+	<Mappings>
+		<OwnerA Name="tc_project_app Instance">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Drive 10 (IndraDrive MPB18/19)">
+				<Link VarA="PlcTask Inputs^MAIN.dLatchedPosition" VarB="AT^Probe value 1 positive edge"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nP173_MarkerPosition" VarB="AT^Marker position A"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nS135_DriveStatusWord" VarB="AT^Drive status word"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nS189_PositionError" VarB="AT^Following distance"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nS386_ActivePositionFeedbackValue" VarB="AT^Active position feedback value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nS390_DiagnosticMessageNumber" VarB="AT^Diagnostic message number"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nS40_VelocityFeedbackValue" VarB="AT^Velocity feedback value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nS51_PositionFeedbackValue" VarB="AT^Position feedback value 1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.nS84_TorqueFeedback" VarB="AT^Torque/force feedback value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbIndraDrive.stDriveStatus.stS144_SignalStatusWord" VarB="AT^Signal status word"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s19_IndraDrive.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s19_IndraDrive.WcState_WcState" VarB="WcState^WcState" Size="1"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS108_FeedrateOverride" VarB="MDT^Feedrate override"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS258_TargetPosition" VarB="MDT^Target position"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS259_PositioningVelocity" VarB="MDT^Positioning velocity"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS260_PositioningAcceleration" VarB="MDT^Ramp 1 pitch"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS282_PositioningCommandValue" VarB="MDT^Positioning command value"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS359_PositioningDeceleration" VarB="MDT^Deceleration ramp 1"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS40_VelocityCommandValue" VarB="MDT^Velocity command value"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS47_PositionCommandValue" VarB="MDT^Position command value"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.nS92_BiPolarTorqueLimit" VarB="MDT^Bipolar torque/force limit value"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.stS134_MasterControlWord" VarB="MDT^Master control word"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbIndraDrive.stDriveCommands.stS145_SignalControlWord" VarB="MDT^Signal control word"/>
+				<Link VarA="PlcTask Outputs^MAIN.nAdditiveTorqueSetpoint" VarB="MDT^Additive torque/force command value"/>
+				<Link VarA="PlcTaskCom Outputs^MAIN.iTorqueCommandValue" VarB="MDT^Torque/force command value"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Drive 49 (iPOS8020 BX-CAT)">
+				<Link VarA="PlcTask Inputs^MAIN.fbTemp.InfoData_State" VarB="InfoData^State"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Drive 50 (iPOS8020 BX-CAT)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s21_IPOS8020.InfoData_State" VarB="InfoData^State"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Drive 51 (iPOS8020 BX-CAT)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s22_IPOS8020.InfoData_State" VarB="InfoData^State"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 10 (EL7201)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s10_EL7201.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s10_EL7201.WcState_WcState" VarB="WcState^WcState" Size="1"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 11 (EL7201)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s11_EL7201.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s11_EL7201.WcState_WcState" VarB="WcState^WcState" Size="1"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 12 (EL7201)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s12_EL7201.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s12_EL7201.WcState_WcState" VarB="WcState^WcState" Size="1"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 13 (EL3214)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s13_EL3214.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s13_EL3214.WcState_WcState" VarB="WcState^WcState" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s13_EL3214.iAI_1" VarB="RTD Inputs Channel 1^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s13_EL3214.iAI_2" VarB="RTD Inputs Channel 2^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s13_EL3214.iAI_3" VarB="RTD Inputs Channel 3^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s13_EL3214.iAI_4" VarB="RTD Inputs Channel 4^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s13_EL3214.wCh1_Status" VarB="RTD Inputs Channel 1^Status"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s13_EL3214.wCh2_Status" VarB="RTD Inputs Channel 2^Status"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s13_EL3214.wCh3_Status" VarB="RTD Inputs Channel 3^Status"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s13_EL3214.wCh4_Status" VarB="RTD Inputs Channel 4^Status"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 14 (EL6695)">
+				<Link VarA="PlcTask Inputs^GVL_Bridge_TSCS.INPUTS^TDU_TestSignal_RB" VarB="IO Inputs^TDU_TestSignal_RB"/>
+				<Link VarA="PlcTask Inputs^GVL_Bridge_TSCS.INPUTS^TMS_Byte" VarB="IO Inputs^TMS_Byte"/>
+				<Link VarA="PlcTask Inputs^GVL_Bridge_TSCS.INPUTS^TMS_Integer" VarB="IO Inputs^TMS_Integer"/>
+				<Link VarA="PlcTask Inputs^GVL_Bridge_TSCS.INPUTS^TMS_Real" VarB="IO Inputs^TMS_Real"/>
+				<Link VarA="PlcTask Inputs^GVL_Bridge_TSCS.INPUTS^TSCS_Byte" VarB="IO Inputs^TSCS_Byte"/>
+				<Link VarA="PlcTask Inputs^GVL_Bridge_TSCS.INPUTS^TSCS_Integer" VarB="IO Inputs^TSCS_Integer"/>
+				<Link VarA="PlcTask Inputs^GVL_Bridge_TSCS.INPUTS^TSCS_Real" VarB="IO Inputs^TSCS_Real"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s15_EL6695.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s15_EL6695.WcState_WcState" VarB="WcState^WcState" Size="1"/>
+				<Link VarA="PlcTask Outputs^GVL_Bridge_TSCS.OUTPUTS^TDU_Byte" VarB="IO Outputs^TDU_Byte"/>
+				<Link VarA="PlcTask Outputs^GVL_Bridge_TSCS.OUTPUTS^TDU_Integer" VarB="IO Outputs^TDU_Integer"/>
+				<Link VarA="PlcTask Outputs^GVL_Bridge_TSCS.OUTPUTS^TDU_Real" VarB="IO Outputs^TDU_Real"/>
+				<Link VarA="PlcTask Outputs^GVL_Bridge_TSCS.OUTPUTS^TDU_TestSignal" VarB="IO Outputs^TDU_TestSignal"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 15 (EL9410)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s16_EL9410.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s16_EL9410.WcState_WcState" VarB="WcState^WcState" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s16_EL9410.bUp_Undervoltage" VarB="Status Up^Undervoltage" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s16_EL9410.bUs_Undervoltage" VarB="Status Us^Undervoltage" Size="1"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 16 (EL2032)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s17_EL2032.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s17_EL2032.WcState_WcState" VarB="WcState^WcState" Size="1"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 18 (EL5021)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s14_EL5021.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s14_EL5021.WcState_WcState" VarB="WcState^WcState" Size="1"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 2 (EL1809)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.WcState_WcState" VarB="WcState^WcState" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.bBI_1" VarB="Channel 1^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.bBI_10" VarB="Channel 10^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.bBI_11" VarB="Channel 11^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.bBI_12" VarB="Channel 12^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.bBI_13" VarB="Channel 13^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.bBI_14" VarB="Channel 14^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.bBI_15" VarB="Channel 15^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.bBI_16" VarB="Channel 16^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.bBI_2" VarB="Channel 2^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.bBI_3" VarB="Channel 3^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.bBI_4" VarB="Channel 4^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.bBI_5" VarB="Channel 5^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.bBI_6" VarB="Channel 6^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.bBI_7" VarB="Channel 7^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.bBI_8" VarB="Channel 8^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.bBI_9" VarB="Channel 9^Input" Size="1"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 3 (EL1809)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.WcState_WcState" VarB="WcState^WcState" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.bBI_1" VarB="Channel 1^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.bBI_10" VarB="Channel 10^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.bBI_11" VarB="Channel 11^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.bBI_12" VarB="Channel 12^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.bBI_13" VarB="Channel 13^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.bBI_14" VarB="Channel 14^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.bBI_15" VarB="Channel 15^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.bBI_16" VarB="Channel 16^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.bBI_2" VarB="Channel 2^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.bBI_3" VarB="Channel 3^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.bBI_4" VarB="Channel 4^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.bBI_5" VarB="Channel 5^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.bBI_6" VarB="Channel 6^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.bBI_7" VarB="Channel 7^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.bBI_8" VarB="Channel 8^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s3_EL1809.bBI_9" VarB="Channel 9^Input" Size="1"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 4 (EL2819)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.WcState_WcState" VarB="WcState^WcState" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.bDev_CommonFault" VarB="DIG Inputs Device^Common Fault" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.bDev_MissingVoltage" VarB="DIG Inputs Device^Missing Voltage" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.bDev_Overtemperature" VarB="DIG Inputs Device^Overtemperature Device" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.bDev_UnderVoltage" VarB="DIG Inputs Device^Undervoltage" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.wCH10_Diag" VarB="DIG Diag Inputs^Channel 10" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.wCH11_Diag" VarB="DIG Diag Inputs^Channel 11" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.wCH12_Diag" VarB="DIG Diag Inputs^Channel 12" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.wCH13_Diag" VarB="DIG Diag Inputs^Channel 13" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.wCH14_Diag" VarB="DIG Diag Inputs^Channel 14" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.wCH15_Diag" VarB="DIG Diag Inputs^Channel 15" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.wCH16_Diag" VarB="DIG Diag Inputs^Channel 16" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.wCH1_Diag" VarB="DIG Diag Inputs^Channel 1" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.wCH2_Diag" VarB="DIG Diag Inputs^Channel 2" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.wCH3_Diag" VarB="DIG Diag Inputs^Channel 3" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.wCH4_Diag" VarB="DIG Diag Inputs^Channel 4" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.wCH5_Diag" VarB="DIG Diag Inputs^Channel 5" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.wCH6_Diag" VarB="DIG Diag Inputs^Channel 6" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.wCH7_Diag" VarB="DIG Diag Inputs^Channel 7" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.wCH8_Diag" VarB="DIG Diag Inputs^Channel 8" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.wCH9_Diag" VarB="DIG Diag Inputs^Channel 9" Size="4"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bRotOmronSensor1Feed" VarB="DIG Outputs^Channel 1^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bRotOmronSensor2Feed" VarB="DIG Outputs^Channel 2^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bXBrakeReleaseCmd" VarB="DIG Outputs^Channel 4^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bXMinMaxFeed" VarB="DIG Outputs^Channel 3^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bXMinMinMaxMaxFeed" VarB="DIG Outputs^Channel 5^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bYBrakeReleaseCmd" VarB="DIG Outputs^Channel 7^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bYMinMaxFeed" VarB="DIG Outputs^Channel 6^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bYMinMinMaxMaxFeed" VarB="DIG Outputs^Channel 8^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bZMinMaxFeed" VarB="DIG Outputs^Channel 9^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bZMinMinMaxMaxFeed" VarB="DIG Outputs^Channel 10^Output" Size="1"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 5 (EL2819)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.WcState_WcState" VarB="WcState^WcState" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.bDev_CommonFault" VarB="DIG Inputs Device^Common Fault" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.bDev_MissingVoltage" VarB="DIG Inputs Device^Missing Voltage" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.bDev_Overtemperature" VarB="DIG Inputs Device^Overtemperature Device" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.bDev_UnderVoltage" VarB="DIG Inputs Device^Undervoltage" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.wCH10_Diag" VarB="DIG Diag Inputs^Channel 10" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.wCH11_Diag" VarB="DIG Diag Inputs^Channel 11" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.wCH12_Diag" VarB="DIG Diag Inputs^Channel 12" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.wCH13_Diag" VarB="DIG Diag Inputs^Channel 13" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.wCH14_Diag" VarB="DIG Diag Inputs^Channel 14" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.wCH15_Diag" VarB="DIG Diag Inputs^Channel 15" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.wCH16_Diag" VarB="DIG Diag Inputs^Channel 16" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.wCH1_Diag" VarB="DIG Diag Inputs^Channel 1" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.wCH2_Diag" VarB="DIG Diag Inputs^Channel 2" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.wCH3_Diag" VarB="DIG Diag Inputs^Channel 3" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.wCH4_Diag" VarB="DIG Diag Inputs^Channel 4" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.wCH5_Diag" VarB="DIG Diag Inputs^Channel 5" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.wCH6_Diag" VarB="DIG Diag Inputs^Channel 6" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.wCH7_Diag" VarB="DIG Diag Inputs^Channel 7" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.wCH8_Diag" VarB="DIG Diag Inputs^Channel 8" Size="4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.wCH9_Diag" VarB="DIG Diag Inputs^Channel 9" Size="4"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 6 (EL9505)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s6_EL9505.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s6_EL9505.WcState_WcState" VarB="WcState^WcState" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s6_EL9505.bUoPwr_OK" VarB="Status Uo^Power OK" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s6_EL9505.bUo_Overload" VarB="Status Uo^Overload" Size="1"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 7 (EL1252-0050)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s7_EL1252.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s7_EL1252.WcState_WcState" VarB="WcState^WcState" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s7_EL1252.bBI_1" VarB="Channel 1^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s7_EL1252.bBI_2" VarB="Channel 2^Input" Size="1"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 8 (EL9410)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s8_EL9410.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s8_EL9410.WcState_WcState" VarB="WcState^WcState" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s8_EL9410.bUp_Undervoltage" VarB="Status Up^Undervoltage" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s8_EL9410.bUs_Undervoltage" VarB="Status Us^Undervoltage" Size="1"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 9 (EL1252)">
+				<Link VarA="PlcTask Inputs^MAIN.fb_s9_EL1252.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s9_EL1252.WcState_WcState" VarB="WcState^WcState" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s9_EL1252.bBI_1" VarB="Channel 1^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s9_EL1252.bBI_2" VarB="Channel 2^Input" Size="1"/>
+			</OwnerB>
+			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 1">
+				<Link VarA="PlcTask Inputs^GVL.astAxes[1].Axis.NcToPlc" VarB="Outputs^ToPlc"/>
+				<Link VarA="PlcTask Outputs^GVL.astAxes[1].Axis.PlcToNc" VarB="Inputs^FromPlc"/>
+			</OwnerB>
+		</OwnerA>
+	</Mappings>
+</TcSmItem>

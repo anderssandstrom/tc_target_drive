@@ -16,6 +16,15 @@ STRUCT
 	bBrakeLockOnCmd   : BOOL:=FALSE;
 	bFreeWheelOnOnCmd : BOOL:=TRUE;
 	fBrakeSpNm        : LREAL:=0;
+	
+	
+	//XYZ
+	bXAllowMotionGUI:BOOL:=FALSE;
+	bYAllowMotionGUI:BOOL:=FALSE;
+	bZAllowMotionGUI:BOOL:=FALSE;
+	bXReleaseBreakCmd:BOOL:=FALSE;
+	bYReleaseBreakCmd:BOOL:=FALSE;
+	
 END_STRUCT
 END_TYPE
 ]]></Declaration>

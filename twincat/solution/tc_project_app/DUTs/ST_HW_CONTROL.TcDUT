@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+  <DUT Name="ST_HW_CONTROL" Id="{c436dd72-748e-4f72-ae33-eced8f24179c}">
+    <Declaration><![CDATA[
+TYPE ST_HW_CONTROL :
+STRUCT
+	bRotOmronSensor1Feed AT %Q* :BOOL;  // s4: ch1: Feed omron sensor 1
+	bRotOmronSensor2Feed AT %Q* :BOOL;  // s4: ch2: Feed omron sensor 2
+	bXMinMaxFeed  AT %Q* :BOOL;         // s5: ch1: kf05: w02.bg01 w02.bg02 stepper x limit switch max, limit min
+	bXBrakeReleaseCmd  AT %Q* :BOOL;    // s5: ch2: kf05: w02.ql1: stepper x brake
+	bXMinMinMaxMaxFeed  AT %Q* :BOOL;   // s5: ch3: kf05: w02.bg03 w02.bg04 stepper x limit switch max max, limit min min
+	bYMinMaxFeed  AT %Q* :BOOL;         // s5: ch5: kf05: w02.bg05 w02.bg06 stepper y limit switch max, limit min
+	bYBrakeReleaseCmd  AT %Q* :BOOL;    // s5: ch6: kf05: w02.ql2: stepper y brake
+	bYMinMinMaxMaxFeed  AT %Q* :BOOL;   // s5: ch7: kf05: w02.bg07 w02.bg08 stepper y limit switch max max, limit min min
+	bZMinMaxFeed  AT %Q* :BOOL;         // s5: ch9: kf05: w03.bg01 w03.bg02 w03.bg03  stepper z limit switch max, limit min limit min min (service)
+	bZMinMinMaxMaxFeed  AT %Q* :BOOL;   // s5: ch10: kf05: w03.bg04 w03.bg05 w03.bg06  stepper z limit switch max max, limit min min
+	// Wheres the two other switches for Z?
+END_STRUCT
+END_TYPE
+
+
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

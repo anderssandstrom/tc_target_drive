@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.11" ClassName="CFlbTermDef" SubType="9099">
+	<Box Id="19" BoxType="9099" BoxFlags="#x00000020">
+		<Name>Drive 10 (IndraDrive MPB18/19)</Name>
+		<ImageId>38</ImageId>
+		<EtherCAT SlaveType="2" MboxDataLinkLayer="true" StateMBoxPolling="true" CfgModeSafeOp="true" DownloadPdoCfg="true" CycleMBoxPollingTime="0" EoeType="3" SoeChannels="1" VendorId="#x00000024" ProductCode="#x00242804" RevisionNo="#x00000002" InfoDataAddr="true" InfoDataSoeDS401="true" InfoDataDcTimes="true" EnableWdDivider0400="true" EnableWdTime0420="true" TimeoutStateChange1="5000" TimeoutStateChange2="25000" TimeoutStateChange4="500" PortPhys="17" IdentificationAdo="18" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="IndraDrive MPB18/19" Desc="IndraDrive MPB18/19">
+			<SyncMan>0018ea002600010001000000ea00ea00ea00001826010000</SyncMan>
+			<SyncMan>001aea002200010002000000ea00ea00ea00001a22010000</SyncMan>
+			<SyncMan>001028006400010003000000000000000000001064010000</SyncMan>
+			<SyncMan>001122006200010004000000000000000000001162010000</SyncMan>
+			<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
+			<Fmmu>0000000000000000001000020100000001000000000000000000000000000000</Fmmu>
+			<Fmmu>0000000000000000001100010100000002000000000000000000000000000000</Fmmu>
+			<SwitchPortData>01000000e903fea90000ffffc14cfea90000000044726976655f31305f5f496e6472610000000000000000000000000000000000000000000000000000000000</SwitchPortData>
+			<DcData>000500000000000020a107000000000001000000000000000000000000000000</DcData>
+			<DcMode>446353796e633530307573000000000044432d53796e6368726f6e202853796e633053686966742035303075732900000000000020a1070000000000000000050100000000000000000000000000000000000000000000000000000000000000</DcMode>
+			<DcMode>446353796e633235307573000000000044432d53796e6368726f6e202853796e633053686966742032353075732900000000000090d0030000000000000000050100000000000000000000000000000000000000000000000000000000000000</DcMode>
+			<DcMode>446353796e633130303075730000000044432d53796e6368726f6e202853796e633053686966742031303030757329000000000040420f0000000000000000050100000000000000000000000000000000000000000000000000000000000000</DcMode>
+			<DcMode>4672656552756e000000000000000000467265652052756e20286e6f2073796e6368726f6e697a6174696f6e29000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000</DcMode>
+			<MBoxUserCmdData>020005000a0000000d00000003000000000000000000000000000000000000000340010000000000e8034e43206379636c652074696d6500</MBoxUserCmdData>
+			<Pdo Name="AT" Index="#x0010" Flags="#x0001" SyncMan="3">
+				<Entry Name="Drive status word" Index="#x0087" Flags="#x00000800">
+					<Type>UINT</Type>
+				</Entry>
+				<Entry Name="Position feedback value 1" Index="#x0033">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Active position feedback value" Index="#x0182">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Velocity feedback value" Index="#x0028">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Probe value 1 positive edge" Index="#x0082">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Diagnostic message number" Index="#x0186">
+					<Type>DWORD</Type>
+				</Entry>
+				<Entry Name="Signal status word" Index="#x0090">
+					<Type>WORD</Type>
+				</Entry>
+				<Entry Name="Torque/force feedback value" Index="#x0054">
+					<Type>INT</Type>
+				</Entry>
+				<Entry Name="Following distance" Index="#x00bd">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Marker position A" Index="#x00ad">
+					<Type>DINT</Type>
+				</Entry>
+			</Pdo>
+			<Pdo Name="MDT" Index="#x0018" InOut="1" Flags="#x0001" SyncMan="2">
+				<Entry Name="Master control word" Index="#x0086" Flags="#x00000800">
+					<Type>UINT</Type>
+				</Entry>
+				<Entry Name="Bipolar torque/force limit value" Index="#x005c">
+					<Type>UINT</Type>
+				</Entry>
+				<Entry Name="Position command value" Index="#x002f">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Target position" Index="#x0102">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Positioning command value" Index="#x011a">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Signal control word" Index="#x0091">
+					<Type>WORD</Type>
+				</Entry>
+				<Entry Name="Positioning velocity" Index="#x0103">
+					<Type>UDINT</Type>
+				</Entry>
+				<Entry Name="Ramp 1 pitch" Index="#x84b1">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Deceleration ramp 1" Index="#x84bb">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Feedrate override" Index="#x006c">
+					<Type>UINT</Type>
+				</Entry>
+				<Entry Name="Velocity command value" Index="#x0024">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Additive torque/force command value" Index="#x0051">
+					<Type>INT</Type>
+				</Entry>
+				<Entry Name="Torque/force command value" Index="#x0050">
+					<Type>INT</Type>
+				</Entry>
+			</Pdo>
+		</EtherCAT>
+	</Box>
+</TcSmItem>

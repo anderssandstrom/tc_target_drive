@@ -1,0 +1,308 @@
+<?xml version="1.0"?>
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.11" ClassName="CFlbTermDef" SubType="9099">
+	<DataTypes>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-002000000004}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..3] OF BIT</Name>
+			<BitSize>4</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>4</Elements>
+			</ArrayInfo>
+		</DataType>
+	</DataTypes>
+	<ImageDatas>
+		<ImageData Id="1000">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000120b0000120b00000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ff808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000ffffc0c0c000ffff808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0ff0000c0c0c0ff0000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff0000ff0000ff0000ff0000ff0000ff0000ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff0000ff0000ff0000ff0000ff0000ff0000ffc0c0c00000ffc0c0c00000ff808080ff00ffff00ffff00ffff00ffff00ff0000ff0000ff0000ff0000ff0000ff0000ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff0000ff0000ff0000ff0000ff0000ff0000ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff0000ff0000ff0000ff0000ff0000ff0000ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff0000ff0000ff0000ff0000ff0000ff0000ffc0c0c0008000c0c0c0008000808080ff00ffff00ffff00ffff00ffff00ff0000ff0000ff0000ff0000ff0000ff0000ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff</ImageData>
+	</ImageDatas>
+	<Box Id="5" BoxType="9099" BoxFlags="#x00000020">
+		<Name>__FILENAME__</Name>
+		<ImageId>1000</ImageId>
+		<EtherCAT SlaveType="2" PdiType="#x0005" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="7" FoeType="1" VendorId="#x00000002" ProductCode="#x0b033052" RevisionNo="#x00120000" InfoDataAddr="true" TimeoutMailbox2="2000" CheckRevisionNoType="3" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL2819 16Ch. Dig. Output 24V, 0,5A, Diagnostic" Desc="EL2819">
+			<SyncMan>001080002600010001000000800080008000001026010000</SyncMan>
+			<SyncMan>801080002200010002000000800080008000801022010000</SyncMan>
+			<SyncMan>001102002400010003000000000000000200001124010000</SyncMan>
+			<SyncMan>801109002000010004000000000000000800801120010000</SyncMan>
+			<Fmmu>0000000000000000001100020100000001000000000000000000000000000000</Fmmu>
+			<Fmmu>0000000000000000801100010100000002000000000000000000000000000000</Fmmu>
+			<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
+			<BootStrapData>0010f400f410f400</BootStrapData>
+			<Pdo Name="DIG Diag Inputs" Index="#x1a00" Flags="#x0010" SyncMan="3">
+				<Entry Name="Channel 1__Overtemperature" Index="#x6001" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 1__Open Load" Index="#x6001" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 1__Overcurrent" Index="#x6001" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 1__Short Circuit to 24V" Index="#x6001" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 2__Overtemperature" Index="#x6011" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 2__Open Load" Index="#x6011" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 2__Overcurrent" Index="#x6011" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 2__Short Circuit to 24V" Index="#x6011" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 3__Overtemperature" Index="#x6021" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 3__Open Load" Index="#x6021" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 3__Overcurrent" Index="#x6021" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 3__Short Circuit to 24V" Index="#x6021" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 4__Overtemperature" Index="#x6031" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 4__Open Load" Index="#x6031" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 4__Overcurrent" Index="#x6031" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 4__Short Circuit to 24V" Index="#x6031" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 5__Overtemperature" Index="#x6041" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 5__Open Load" Index="#x6041" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 5__Overcurrent" Index="#x6041" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 5__Short Circuit to 24V" Index="#x6041" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 6__Overtemperature" Index="#x6051" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 6__Open Load" Index="#x6051" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 6__Overcurrent" Index="#x6051" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 6__Short Circuit to 24V" Index="#x6051" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 7__Overtemperature" Index="#x6061" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 7__Open Load" Index="#x6061" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 7__Overcurrent" Index="#x6061" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 7__Short Circuit to 24V" Index="#x6061" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 8__Overtemperature" Index="#x6071" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 8__Open Load" Index="#x6071" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 8__Overcurrent" Index="#x6071" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 8__Short Circuit to 24V" Index="#x6071" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 9__Overtemperature" Index="#x6081" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 9__Open Load" Index="#x6081" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 9__Overcurrent" Index="#x6081" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 9__Short Circuit to 24V" Index="#x6081" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 10__Overtemperature" Index="#x6091" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 10__Open Load" Index="#x6091" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 10__Overcurrent" Index="#x6091" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 10__Short Circuit to 24V" Index="#x6091" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 11__Overtemperature" Index="#x60a1" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 11__Open Load" Index="#x60a1" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 11__Overcurrent" Index="#x60a1" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 11__Short Circuit to 24V" Index="#x60a1" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 12__Overtemperature" Index="#x60b1" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 12__Open Load" Index="#x60b1" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 12__Overcurrent" Index="#x60b1" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 12__Short Circuit to 24V" Index="#x60b1" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 13__Overtemperature" Index="#x60c1" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 13__Open Load" Index="#x60c1" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 13__Overcurrent" Index="#x60c1" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 13__Short Circuit to 24V" Index="#x60c1" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 14__Overtemperature" Index="#x60d1" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 14__Open Load" Index="#x60d1" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 14__Overcurrent" Index="#x60d1" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 14__Short Circuit to 24V" Index="#x60d1" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 15__Overtemperature" Index="#x60e1" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 15__Open Load" Index="#x60e1" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 15__Overcurrent" Index="#x60e1" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 15__Short Circuit to 24V" Index="#x60e1" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 16__Overtemperature" Index="#x60f1" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 16__Open Load" Index="#x60f1" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 16__Overcurrent" Index="#x60f1" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 16__Short Circuit to 24V" Index="#x60f1" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+			</Pdo>
+			<Pdo Name="DIG Inputs Device" Index="#x1a02" Flags="#x0010" SyncMan="3">
+				<Entry Name="Common Fault" Index="#xf600" Sub="#x11">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Overtemperature Device" Index="#xf600" Sub="#x12">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Undervoltage" Index="#xf600" Sub="#x13">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Missing Voltage" Index="#xf600" Sub="#x14">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry>
+					<Type GUID="{18071995-0000-0000-0000-002000000004}">ARRAY [0..3] OF BIT</Type>
+				</Entry>
+			</Pdo>
+			<Pdo Name="DIG Outputs" Index="#x1600" InOut="1" Flags="#x0010" SyncMan="2">
+				<Entry Name="Channel 1__Output" Index="#x7000" Sub="#x01" Flags="#x00008020">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 2__Output" Index="#x7010" Sub="#x01" Flags="#x00008020">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 3__Output" Index="#x7020" Sub="#x01" Flags="#x00008020">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 4__Output" Index="#x7030" Sub="#x01" Flags="#x00008020">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 5__Output" Index="#x7040" Sub="#x01" Flags="#x00008020">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 6__Output" Index="#x7050" Sub="#x01" Flags="#x00008020">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 7__Output" Index="#x7060" Sub="#x01" Flags="#x00008020">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 8__Output" Index="#x7070" Sub="#x01" Flags="#x00008020">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 9__Output" Index="#x7080" Sub="#x01" Flags="#x00008020">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 10__Output" Index="#x7090" Sub="#x01" Flags="#x00008020">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 11__Output" Index="#x70a0" Sub="#x01" Flags="#x00008020">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 12__Output" Index="#x70b0" Sub="#x01" Flags="#x00008020">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 13__Output" Index="#x70c0" Sub="#x01" Flags="#x00008020">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 14__Output" Index="#x70d0" Sub="#x01" Flags="#x00008020">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 15__Output" Index="#x70e0" Sub="#x01" Flags="#x00008020">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Channel 16__Output" Index="#x70f0" Sub="#x01" Flags="#x00008020">
+					<Type>BIT</Type>
+				</Entry>
+			</Pdo>
+			<CoeProfile ProfileNo="18355081"/>
+			<CoeProfile ProfileNo="18355081"/>
+			<CoeProfile ProfileNo="18355081"/>
+			<CoeProfile ProfileNo="18355081"/>
+			<CoeProfile ProfileNo="18355081"/>
+			<CoeProfile ProfileNo="18355081"/>
+			<CoeProfile ProfileNo="18355081"/>
+			<CoeProfile ProfileNo="18355081"/>
+			<CoeProfile ProfileNo="18355081"/>
+			<CoeProfile ProfileNo="18355081"/>
+			<CoeProfile ProfileNo="18355081"/>
+			<CoeProfile ProfileNo="18355081"/>
+			<CoeProfile ProfileNo="18355081"/>
+			<CoeProfile ProfileNo="18355081"/>
+			<CoeProfile ProfileNo="18355081"/>
+			<CoeProfile ProfileNo="18355081"/>
+		</EtherCAT>
+	</Box>
+</TcSmItem>

@@ -1,8 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.5">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
   <POU Name="MAIN" Id="{40828a63-f1c1-40a3-a7c5-8a47be350a36}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
+	
+	hmiAxisSelection: INT := 1; //Not possible to use local hmi variables for array indexes
+    afbAxes: ARRAY [1..GVL_APP.nAXIS_NUM] OF FB_Axis;
+	
 	stAmsNetId	AT %I*	              : AMSNETID;
 	nPort	AT %I*                    : WORD;
 	nMasterAxisPosition AT %I*        : DINT;
@@ -18,7 +22,7 @@ VAR
 	fbModePos                         : FB_ModePos;      // Positioning Mode
 	fbModeHome                        : FB_ModeHome;     // Homing Mode
 	fbIndraDrive                      : fbIndraDrive;    // Control of drive
-	stStatEpics                       : ST_STAT_EPICS;   // Status to EPICS
+	
 	stCmdEpics                        : ST_CMD_EPICS;    // Control to EPICS 
 	stCommands                        : ST_AXIS_COMMAND; // Control to drive
 	stStatus                          : ST_AXIS_STATUS;  // Status from drive
@@ -51,28 +55,20 @@ VAR
 	fb_s20_IPOS8020:iPOS8020;
 	fb_s21_IPOS8020:iPOS8020;
 	fb_s22_IPOS8020:iPOS8020;
-    
-	//Steppers
-//    M1Link:FB_NcAxis;
-//	M2Link:FB_NcAxis;
-//	M3Link:FB_NcAxis;
-//	M1:FB_DriveVirtual;
-//	M2:FB_DriveVirtual;
-//	M3:FB_DriveVirtual;
-	bLimitFwd1 AT %I*: BOOL;
-	bLimitBwd1 AT %I*: BOOL;
-	bHomeSensor1 AT %I*: BOOL;
-	bLimitFwd2 AT %I*: BOOL;
-	bLimitBwd2 AT %I*: BOOL;
-	bHomeSensor2 AT %I*: BOOL;
-	bLimitFwd3 AT %I*: BOOL;
-	bLimitBwd3 AT %I*: BOOL;
-	bHomeSensor3 AT %I*: BOOL;
 	
+END_VAR
+
+VAR_INPUT
+  stStatEpics                       : ST_STAT_EPICS;   // Status to EPICS
+  stHWStatus: ST_HW_STATUS;
+  stHWControl: ST_HW_CONTROL;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Check hardware status
 ACT_1_Hardware();
+
+// Read Bridge Terminal Inputs
+TSCS_Bridge_Inputs();
 
 // Monitor temperature
 ACT_2_Temperature();
@@ -83,56 +79,66 @@ ACT_4_MainDrive();
 // Steppers
 ACT_5_Steppers();
 
+// Write Bridge Terminal Outputs (incl. test)
+TSCS_Bridge_Diagnostic();
+TSCS_Bridge_Outputs();
+
 // Error handling
 ACT_6_Error();
 
 // Post exe
 eTargetStateOld:=stStatEpics.eTargetState;
+
 ]]></ST>
     </Implementation>
     <Action Name="ACT_1_Hardware" Id="{713eae55-748e-42a3-b2f0-81f54e66f4bd}">
       <Implementation>
         <ST><![CDATA[// Check state of hardware
 
-// s2: ch1: emergency stop ok
-// s2: ch2: rf01 termal braking filter OK
-// s2: ch3: ta01 and ta02 24V power supply ok
-// s2: ch4: fc11 24V fuse OK
-// s2: ch5: fa01 and fa02 overvoltage protection OK
-// s2: ch6: fc01 fuse target wheel motor OK
-// s2: ch7: fc06 and fc07 ICS outlets fuse OK
-// s2: ch8: fc51, fc52 and fc53 UPS fuses OK (something wrong)
+// Slave 2 EL1809: General I/O, fuses...
 fb_s2_EL1809(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=2);
+stHWStatus.bEStopOK:=fb_s2_EL1809.bBI_1;                       // s2: ch1: emergency stop ok                 Verify: OK   
+stHWStatus.bRF02_MainDriveThermalFilterOK:=fb_s2_EL1809.bBI_2; // s2: ch2: rf01 termal braking filter OK..   Verify: Q to Markus: Maybe this should be rd02?
+stHWStatus.bTA01_TA02_24VSupplyOK:=fb_s2_EL1809.bBI_3;         // s2: ch3: ta01 and ta02 24V power supply OK Verify: OK  
+stHWStatus.bFC11_Fuse24VOK:=fb_s2_EL1809.bBI_4;                // s2: ch4: fc11 24V fuse OK                   Verify: OK
+stHWStatus.bFA01_FA02_OvervoltageOK:=fb_s2_EL1809.bBI_5;       // s2: ch5: fa01 and fa02 overvoltage protection OK
+stHWStatus.bFC01_FuseMainRotationOK:=fb_s2_EL1809.bBI_6;       // s2: ch6: fc01 fuse target wheel motor OK
+stHWStatus.bFC06_FC07_FuseICSOutletsOK:=fb_s2_EL1809.bBI_7;    // s2: ch7: fc06 and fc07 ICS outlets fuse OK
+stHWStatus.bFC51_FC52_FC53_FuseUPSOK:=fb_s2_EL1809.bBI_8;      // s2: ch8: fc51, fc52 and fc53 UPS fuses OK (something wrong)
 
-// s3: ch1: w02.bg01 stepper x limit max
-// s3: ch2: w02.bg02 stepper x limit min
-// s3: ch3: w02.bg03 stepper x limit max max
-// s3: ch4: w02.bg04 stepper x limit min min
-// s3: ch5: w02.bg05 stepper y limit max
-// s3: ch6: w02.bg06 stepper y limit min
-// s3: ch7: w02.bg07 stepper y limit max max
-// s3: ch8: w02.bg08 stepper y limit min min
-// s3: ch9: w03.bg01 stepper z limit max
-// s3: ch10: w03.bg02 stepper z limit min
-// s3: ch11: w03.bg03 stepper z limit min service (lowest switch)
-// s3: ch12: w03.bg04 stepper z limit max max
-// s3: ch13: w03.bg05 stepper z limit min min
-// s3: ch14: w03.bg06 stepper z limit min min service (lowest switch)
+// Slave 3 EL1809: Motion switches (limits)
 fb_s3_EL1809(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=3);
+main.stHWStatus.bBG01_XLimitMax :=fb_s3_EL1809.bBI_1;          // s3: ch1: w02.bg01 stepper x limit max
+main.stHWStatus.bBG02_XLimitMin :=fb_s3_EL1809.bBI_2;          // s3: ch2: w02.bg02 stepper x limit min
+main.stHWStatus.bBG03_XLimitMaxMax :=fb_s3_EL1809.bBI_3;       // s3: ch3: w02.bg03 stepper x limit max max
+main.stHWStatus.bBG04_XLimitMinMin :=fb_s3_EL1809.bBI_4;       // s3: ch4: w02.bg04 stepper x limit min min
+main.stHWStatus.bBG05_YLimitMax :=fb_s3_EL1809.bBI_5;          // s3: ch5: w02.bg05 stepper y limit max
+main.stHWStatus.bBG06_YLimitMin :=fb_s3_EL1809.bBI_6;          // s3: ch6: w02.bg06 stepper y limit min
+main.stHWStatus.bBG07_YLimitMaxMax :=fb_s3_EL1809.bBI_7;       // s3: ch7: w02.bg07 stepper y limit max max
+main.stHWStatus.bBG08_YLimitMinMin :=fb_s3_EL1809.bBI_8;       // s3: ch8: w02.bg08 stepper y limit min min
+main.stHWStatus.bBG01_ZLimitMax :=fb_s3_EL1809.bBI_9;          // s3: ch9: w03.bg01 stepper z limit max
+main.stHWStatus.bBG02_ZLimitMin :=fb_s3_EL1809.bBI_10;         // s3: ch10: w03.bg02 stepper z limit min
+main.stHWStatus.bBG03_ZLimitMinPark :=fb_s3_EL1809.bBI_11;     // s3: ch11: w03.bg03 stepper z limit min service (lowest switch)
+main.stHWStatus.bBG04_ZLimitMaxMax :=fb_s3_EL1809.bBI_12;      // s3: ch12: w03.bg04 stepper z limit max max
+main.stHWStatus.bBG05_ZLimitMinMin :=fb_s3_EL1809.bBI_13;      // s3: ch13: w03.bg05 stepper z limit min min
+main.stHWStatus.bBG06_ZLimitMinMinPark :=fb_s3_EL1809.bBI_14;  // s3: ch14: w03.bg06 stepper z limit min min service (lowest switch)
 
-// s4: ch1: Feed omron sensor 1
-// s4: ch2: Feed omron sensor 2
+// Slave 4 EL2809: Feed sensors
 fb_s4_EL2819(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=4);
+stHWControl.bRotOmronSensor1Feed:=TRUE;     // s4: ch1: Feed omron sensor 1
+stHWControl.bRotOmronSensor2Feed:=TRUE;     // s4: ch2: Feed omron sensor 2
 
-// s5: ch1: kf05: w02.bg01 w02.bg02 stepper x limit switch max, limit min
-// s5: ch2: kf05: w02.ql1: stepper x brake
-// s5: ch3: kf05: w02.bg03 w02.bg04 stepper x limit switch max max, limit min min
-// s5: ch5: kf05: w02.bg05 w02.bg06 stepper y limit switch max, limit min
-// s5: ch6: kf05: w02.ql2: stepper y brake
-// s5: ch7: kf05: w02.bg07 w02.bg08 stepper y limit switch max max, limit min min
-// s5: ch9: kf05: w03.bg01 w03.bg02 w03.bg03  stepper z limit switch max, limit min limit min min (service)
-// s5: ch10: kf05: w03.bg04 w03.bg05 w03.bg06  stepper z limit switch max max, limit min min
+// Slave 5 EL2809: Feed switches and brakes
 fb_s5_EL2819(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=5);
+stHWControl.bXMinMaxFeed:=TRUE;           // s5: ch1: kf05: w02.bg01 w02.bg02 stepper x limit switch max, limit min
+//stHWControl.bXBrakeReleaseCmd           // s5: ch2: kf05: w02.ql1: stepper x brake
+stHWControl.bXMinMinMaxMaxFeed:=TRUE;     // s5: ch3: kf05: w02.bg03 w02.bg04 stepper x limit switch max max, limit min min
+stHWControl.bYMinMaxFeed:=TRUE;           // s5: ch5: kf05: w02.bg05 w02.bg06 stepper y limit switch max, limit min
+//stHWControl.bYBrakeReleaseCmd           // s5: ch6: kf05: w02.ql2: stepper y brake
+stHWControl.bYMinMinMaxMaxFeed:=TRUE;     // s5: ch7: kf05: w02.bg07 w02.bg08 stepper y limit switch max max, limit min min
+stHWControl.bZMinMaxFeed:=TRUE;           // s5: ch9: kf05: w03.bg01 w03.bg02 w03.bg03  stepper z limit switch max, limit min limit min min (service)
+stHWControl.bZMinMinMaxMaxFeed:=TRUE;     // s5: ch10: kf05: w03.bg04 w03.bg05 w03.bg06  stepper z limit switch max max, limit min min
+// Note brakes needs control!!!
 
 // s6: 5V power supply
 fb_s6_EL9505(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=6);
@@ -158,11 +164,12 @@ fb_s11_EL7201(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=11)
 // s11 ch1: kf11 w03.bg21 Resolver Z
 fb_s12_EL7201(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=12);
 
-// s13: ch1: kf12 w02.bt01 temperature stepper X PT100
-// s13: ch2: kf12 w02.bt02 temperature stepper Y PT100
-// s13: ch3: kf12 w03.bt01 temperature stepper Z PT100
-// s13: ch4: kf12 Target Main motor Temperature (KTY) (in deg*10)
+// s13 EL3214: Temperature inputs X,Y,Z and rotation
 fb_s13_EL3214(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=13);
+stHWStatus.fW02_BT01_XTemp:=INT_TO_LREAL(fb_s13_EL3214.iAI_1)/10; // s13: ch1: kf12 w02.bt01 temperature stepper X PT100
+stHWStatus.fW02_BT02_YTemp:=INT_TO_LREAL(fb_s13_EL3214.iAI_2)/10; // s13: ch2: kf12 w02.bt02 temperature stepper Y PT100
+stHWStatus.fW03_BT01_ZTemp:=INT_TO_LREAL(fb_s13_EL3214.iAI_3)/10; // s13: ch3: kf12 w03.bt01 temperature stepper Z PT100
+stHWStatus.fKF12_RotTemp:=INT_TO_LREAL(fb_s13_EL3214.iAI_4)/10;   // s13: ch4: kf12 Target Main motor Temperature (KTY) (in deg*10)
 
 // s14: Extra encoder (main rotation)
 fb_s14_EL5021(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=14);
@@ -173,7 +180,7 @@ fb_s15_EL6695(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=15)
 // s15: 24V power supply
 fb_s16_EL9410(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=16);
 
-// s17: Grease system.. will be moved to ICS s..
+// s17: MPS com.
 fb_s17_EL2032(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=17);
 
 // s1?: Two EL2612 Relay for MPS not in system yet
@@ -196,17 +203,7 @@ fb_s21_IPOS8020(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=2
 
 // s22: Stepper 3
 fb_s22_IPOS8020(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=22);
-	
-// Below part will be broken out to separate PLC plus some rebuilds to the 
-// above (grease, monitoring, statemachine..)
-//fb_s22_EK1100(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=22);
-//fb_s23_EL1252(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=23);
-//fb_s24_EL3742(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=24);
-//fb_s25_EL3214(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=25);
-//fb_s26_EL3214(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=26);
-//fb_s27_EL3214(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=27);
-//fb_s28_EL2819(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=28);
-//Execute error system (not sure if should be used)
+
 fbErrorSystem(En:=TRUE);
 	]]></ST>
       </Implementation>
@@ -268,12 +265,12 @@ END_IF
 stStatEpics.bEnabled:=stStatus.bAxisEnabled;
 stCommands.bCmd_ErrorReset:=stCmdEpics.bReset;
 
-
 stCommands.bCmd_DriveControlledHoming:=FALSE;
 
-// Only allow state change if execute is low
-IF stCmdEpics.eTargetStateCmd <> stStatEpics.eTargetState AND NOT stCmdEpics.bexecute THEN
-	stStatEpics.eTargetState:=stCmdEpics.eTargetStateCmd;
+// State change
+IF stCmdEpics.eTargetStateCmd <> stStatEpics.eTargetState AND NOT stCmdEpics.bexecute AND stStatus.bAxisStandStillStatus THEN
+    // Only allow state change if execute is low and at standstill
+    stStatEpics.eTargetState:=stCmdEpics.eTargetStateCmd;
 END_IF
 
 IF stCmdEpics.fPhaseOffsetMM > GVL_Parameters.fMaxPhaseOffsetMM THEN
@@ -438,2407 +435,9 @@ stStatEpics.fActTorque:=stStatus.fActualTorque;
 stStatEpics.fActVel:=stStatus.fActualVelocity/10;]]></ST>
       </Implementation>
     </Action>
-    <Action Name="ACT_5_Steppers" Id="{e589f6cf-9d25-43b4-aced-84951b2c3aa4}">
+    <Action Name="ACT_5_Steppers" Id="{3a068380-4e98-46e5-9ef4-f9271d802bcf}">
       <Implementation>
-        <NWL>
-          <XmlArchive>
-            <Data>
-              <o xml:space="preserve" t="NWLImplementationObject">
-                <v n="NetworkListComment">""</v>
-                <v n="DefaultViewMode">"Fbd"</v>
-                <l2 n="NetworkList" cet="Network">
-                  <o>
-                    <v n="ILActive">false</v>
-                    <v n="FBDValid">false</v>
-                    <v n="ILValid">false</v>
-                    <l2 n="ILLines" />
-                    <v n="Comment">""</v>
-                    <v n="Title">""</v>
-                    <v n="Label">""</v>
-                    <v n="OutCommented">false</v>
-                    <l2 n="NetworkItems" />
-                    <l2 n="Connectors" />
-                    <v n="Id">1L</v>
-                  </o>
-                  <o>
-                    <v n="ILActive">false</v>
-                    <v n="FBDValid">false</v>
-                    <v n="ILValid">false</v>
-                    <l2 n="ILLines" />
-                    <v n="Comment">""</v>
-                    <v n="Title">""</v>
-                    <v n="Label">""</v>
-                    <v n="OutCommented">true</v>
-                    <l2 n="NetworkItems" cet="BoxTreeBox">
-                      <o>
-                        <v n="BoxType">"FB_DriveVirtual"</v>
-                        <o n="Instance" t="Operand">
-                          <v n="Operand">"m1"</v>
-                          <v n="Type">"FB_DriveVirtual"</v>
-                          <v n="Comment">""</v>
-                          <v n="SymbolComment">""</v>
-                          <v n="Address">""</v>
-                          <o n="Flags" t="Flags">
-                            <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                          <v n="LValue">false</v>
-                          <v n="Boolean">false</v>
-                          <v n="IsInstance">true</v>
-                          <v n="Id">3L</v>
-                        </o>
-                        <o n="OutputItems" t="OutputItemList">
-                          <l2 n="OutputItems" cet="Operand">
-                            <n />
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">5L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">6L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">7L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">8L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">9L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">10L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">11L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">12L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">13L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">14L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">15L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">16L</v>
-                            </o>
-                          </l2>
-                        </o>
-                        <o n="Flags" t="Flags">
-                          <v n="Flags">0</v>
-                          <v n="Fixed">true</v>
-                          <v n="Extensible">false</v>
-                        </o>
-                        <n n="InputFlags" />
-                        <l2 n="InputItems" cet="BoxTreeOperand">
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">"true"</v>
-                              <v n="Type">"BOOL"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">18L</v>
-                            </o>
-                            <v n="Id">17L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">20L</v>
-                            </o>
-                            <v n="Id">19L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">22L</v>
-                            </o>
-                            <v n="Id">21L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">24L</v>
-                            </o>
-                            <v n="Id">23L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">26L</v>
-                            </o>
-                            <v n="Id">25L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">28L</v>
-                            </o>
-                            <v n="Id">27L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">30L</v>
-                            </o>
-                            <v n="Id">29L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">32L</v>
-                            </o>
-                            <v n="Id">31L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">34L</v>
-                            </o>
-                            <v n="Id">33L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">36L</v>
-                            </o>
-                            <v n="Id">35L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">38L</v>
-                            </o>
-                            <v n="Id">37L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">40L</v>
-                            </o>
-                            <v n="Id">39L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">"bLimitFwd1"</v>
-                              <v n="Type">"BOOL"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">"%I*"</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">42L</v>
-                            </o>
-                            <v n="Id">41L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">"bLimitBwd1"</v>
-                              <v n="Type">"BOOL"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">"%I*"</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">44L</v>
-                            </o>
-                            <v n="Id">43L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">46L</v>
-                            </o>
-                            <v n="Id">45L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">"bHomeSensor1"</v>
-                              <v n="Type">"BOOL"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">48L</v>
-                            </o>
-                            <v n="Id">47L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">50L</v>
-                            </o>
-                            <v n="Id">49L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">52L</v>
-                            </o>
-                            <v n="Id">51L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">54L</v>
-                            </o>
-                            <v n="Id">53L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">"M1Link.Axis"</v>
-                              <v n="Type">"AXIS_REF[REF]"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">"%I*"</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">56L</v>
-                            </o>
-                            <v n="Id">55L</v>
-                          </o>
-                        </l2>
-                        <o n="InputParam" t="ParamList">
-                          <l2 n="Names" cet="String">
-                            <v>En</v>
-                            <v>bEnable</v>
-                            <v>bReset</v>
-                            <v>bExecute</v>
-                            <v>nCommand</v>
-                            <v>nCmdData</v>
-                            <v>fVelocity</v>
-                            <v>fPosition</v>
-                            <v>fAcceleration</v>
-                            <v>fDeceleration</v>
-                            <v>bJogFwd</v>
-                            <v>bJogBwd</v>
-                            <v>bLimitFwd</v>
-                            <v>bLimitBwd</v>
-                            <v>fOverride</v>
-                            <v>bHomeSensor</v>
-                            <v>fHomePosition</v>
-                            <v>nHomeRevOffset</v>
-                            <v>MasterAxis</v>
-                            <v>Axis</v>
-                          </l2>
-                          <l2 n="Types" cet="String">
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>UINT</v>
-                            <v>UINT</v>
-                            <v>LREAL</v>
-                            <v>LREAL</v>
-                            <v>LREAL</v>
-                            <v>LREAL</v>
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>LREAL</v>
-                            <v>BOOL</v>
-                            <v>LREAL</v>
-                            <v>UINT</v>
-                            <v>AXIS_REF</v>
-                            <v>AXIS_REF[REF]</v>
-                          </l2>
-                        </o>
-                        <o n="OutputParam" t="ParamList">
-                          <l2 n="Names" cet="String">
-                            <v>EnO</v>
-                            <v>bEnabled</v>
-                            <v>bBusy</v>
-                            <v>bDone</v>
-                            <v>bError</v>
-                            <v>bHomed</v>
-                            <v>nErrorId</v>
-                            <v>nMotionAxisID</v>
-                            <v>Status</v>
-                            <v>fActVelocity</v>
-                            <v>fActPosition</v>
-                            <v>fActDiff</v>
-                            <v>sErrorMessage</v>
-                          </l2>
-                          <l2 n="Types" cet="String">
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>UDINT</v>
-                            <v>UDINT</v>
-                            <v>ST_AxisStatus</v>
-                            <v>LREAL</v>
-                            <v>LREAL</v>
-                            <v>LREAL</v>
-                            <v>STRING</v>
-                          </l2>
-                        </o>
-                        <v n="CallType" t="Operator">FunctionBlock</v>
-                        <v n="EN">false</v>
-                        <v n="ENO">false</v>
-                        <n n="STSnippet" />
-                        <v n="ContainsExtensibleInputs">false</v>
-                        <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">4L</v>
-                      </o>
-                    </l2>
-                    <l2 n="Connectors" />
-                    <v n="Id">2L</v>
-                  </o>
-                  <o>
-                    <v n="ILActive">false</v>
-                    <v n="FBDValid">false</v>
-                    <v n="ILValid">false</v>
-                    <l2 n="ILLines" />
-                    <v n="Comment">""</v>
-                    <v n="Title">""</v>
-                    <v n="Label">""</v>
-                    <v n="OutCommented">true</v>
-                    <l2 n="NetworkItems" cet="BoxTreeBox">
-                      <o>
-                        <v n="BoxType">"FB_NcAxis"</v>
-                        <o n="Instance" t="Operand">
-                          <v n="Operand">"M2Link"</v>
-                          <v n="Type">"FB_NcAxis"</v>
-                          <v n="Comment">""</v>
-                          <v n="SymbolComment">""</v>
-                          <v n="Address">""</v>
-                          <o n="Flags" t="Flags">
-                            <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                          <v n="LValue">false</v>
-                          <v n="Boolean">false</v>
-                          <v n="IsInstance">true</v>
-                          <v n="Id">58L</v>
-                        </o>
-                        <o n="OutputItems" t="OutputItemList">
-                          <l2 n="OutputItems" cet="Operand">
-                            <n />
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">60L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">61L</v>
-                            </o>
-                          </l2>
-                        </o>
-                        <o n="Flags" t="Flags">
-                          <v n="Flags">0</v>
-                          <v n="Fixed">true</v>
-                          <v n="Extensible">false</v>
-                        </o>
-                        <n n="InputFlags" />
-                        <l2 n="InputItems" cet="BoxTreeOperand">
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">"true"</v>
-                              <v n="Type">"BOOL"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">63L</v>
-                            </o>
-                            <v n="Id">62L</v>
-                          </o>
-                        </l2>
-                        <o n="InputParam" t="ParamList">
-                          <l2 n="Names" cet="String">
-                            <v>En</v>
-                          </l2>
-                          <l2 n="Types" cet="String">
-                            <v>BOOL</v>
-                          </l2>
-                        </o>
-                        <o n="OutputParam" t="ParamList">
-                          <l2 n="Names" cet="String">
-                            <v>EnO</v>
-                            <v>bError</v>
-                            <v>Status</v>
-                          </l2>
-                          <l2 n="Types" cet="String">
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>ST_AxisStatus</v>
-                          </l2>
-                        </o>
-                        <v n="CallType" t="Operator">FunctionBlock</v>
-                        <v n="EN">false</v>
-                        <v n="ENO">false</v>
-                        <n n="STSnippet" />
-                        <v n="ContainsExtensibleInputs">false</v>
-                        <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">59L</v>
-                      </o>
-                    </l2>
-                    <l2 n="Connectors" />
-                    <v n="Id">57L</v>
-                  </o>
-                  <o>
-                    <v n="ILActive">false</v>
-                    <v n="FBDValid">false</v>
-                    <v n="ILValid">false</v>
-                    <l2 n="ILLines" />
-                    <v n="Comment">""</v>
-                    <v n="Title">""</v>
-                    <v n="Label">""</v>
-                    <v n="OutCommented">true</v>
-                    <l2 n="NetworkItems" cet="BoxTreeBox">
-                      <o>
-                        <v n="BoxType">"FB_DriveVirtual"</v>
-                        <o n="Instance" t="Operand">
-                          <v n="Operand">"m2"</v>
-                          <v n="Type">"FB_DriveVirtual"</v>
-                          <v n="Comment">""</v>
-                          <v n="SymbolComment">""</v>
-                          <v n="Address">""</v>
-                          <o n="Flags" t="Flags">
-                            <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                          <v n="LValue">false</v>
-                          <v n="Boolean">false</v>
-                          <v n="IsInstance">true</v>
-                          <v n="Id">65L</v>
-                        </o>
-                        <o n="OutputItems" t="OutputItemList">
-                          <l2 n="OutputItems" cet="Operand">
-                            <n />
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">67L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">68L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">69L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">70L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">71L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">72L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">73L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">74L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">75L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">76L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">77L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">78L</v>
-                            </o>
-                          </l2>
-                        </o>
-                        <o n="Flags" t="Flags">
-                          <v n="Flags">0</v>
-                          <v n="Fixed">true</v>
-                          <v n="Extensible">false</v>
-                        </o>
-                        <n n="InputFlags" />
-                        <l2 n="InputItems" cet="BoxTreeOperand">
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">"true"</v>
-                              <v n="Type">"BOOL"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">80L</v>
-                            </o>
-                            <v n="Id">79L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">82L</v>
-                            </o>
-                            <v n="Id">81L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">84L</v>
-                            </o>
-                            <v n="Id">83L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">86L</v>
-                            </o>
-                            <v n="Id">85L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">88L</v>
-                            </o>
-                            <v n="Id">87L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">90L</v>
-                            </o>
-                            <v n="Id">89L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">92L</v>
-                            </o>
-                            <v n="Id">91L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">94L</v>
-                            </o>
-                            <v n="Id">93L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">96L</v>
-                            </o>
-                            <v n="Id">95L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">98L</v>
-                            </o>
-                            <v n="Id">97L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">100L</v>
-                            </o>
-                            <v n="Id">99L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">102L</v>
-                            </o>
-                            <v n="Id">101L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">"bLimitFwd2"</v>
-                              <v n="Type">"BOOL"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">"%I*"</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">104L</v>
-                            </o>
-                            <v n="Id">103L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">"bLimitBwd2"</v>
-                              <v n="Type">"BOOL"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">"%I*"</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">106L</v>
-                            </o>
-                            <v n="Id">105L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">108L</v>
-                            </o>
-                            <v n="Id">107L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">"bHomeSensor2"</v>
-                              <v n="Type">"BOOL"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">110L</v>
-                            </o>
-                            <v n="Id">109L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">112L</v>
-                            </o>
-                            <v n="Id">111L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">114L</v>
-                            </o>
-                            <v n="Id">113L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">116L</v>
-                            </o>
-                            <v n="Id">115L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">"M2Link.Axis"</v>
-                              <v n="Type">"AXIS_REF[REF]"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">"%I*"</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">118L</v>
-                            </o>
-                            <v n="Id">117L</v>
-                          </o>
-                        </l2>
-                        <o n="InputParam" t="ParamList">
-                          <l2 n="Names" cet="String">
-                            <v>En</v>
-                            <v>bEnable</v>
-                            <v>bReset</v>
-                            <v>bExecute</v>
-                            <v>nCommand</v>
-                            <v>nCmdData</v>
-                            <v>fVelocity</v>
-                            <v>fPosition</v>
-                            <v>fAcceleration</v>
-                            <v>fDeceleration</v>
-                            <v>bJogFwd</v>
-                            <v>bJogBwd</v>
-                            <v>bLimitFwd</v>
-                            <v>bLimitBwd</v>
-                            <v>fOverride</v>
-                            <v>bHomeSensor</v>
-                            <v>fHomePosition</v>
-                            <v>nHomeRevOffset</v>
-                            <v>MasterAxis</v>
-                            <v>Axis</v>
-                          </l2>
-                          <l2 n="Types" cet="String">
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>UINT</v>
-                            <v>UINT</v>
-                            <v>LREAL</v>
-                            <v>LREAL</v>
-                            <v>LREAL</v>
-                            <v>LREAL</v>
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>LREAL</v>
-                            <v>BOOL</v>
-                            <v>LREAL</v>
-                            <v>UINT</v>
-                            <v>AXIS_REF</v>
-                            <v>AXIS_REF[REF]</v>
-                          </l2>
-                        </o>
-                        <o n="OutputParam" t="ParamList">
-                          <l2 n="Names" cet="String">
-                            <v>EnO</v>
-                            <v>bEnabled</v>
-                            <v>bBusy</v>
-                            <v>bDone</v>
-                            <v>bError</v>
-                            <v>bHomed</v>
-                            <v>nErrorId</v>
-                            <v>nMotionAxisID</v>
-                            <v>Status</v>
-                            <v>fActVelocity</v>
-                            <v>fActPosition</v>
-                            <v>fActDiff</v>
-                            <v>sErrorMessage</v>
-                          </l2>
-                          <l2 n="Types" cet="String">
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>UDINT</v>
-                            <v>UDINT</v>
-                            <v>ST_AxisStatus</v>
-                            <v>LREAL</v>
-                            <v>LREAL</v>
-                            <v>LREAL</v>
-                            <v>STRING</v>
-                          </l2>
-                        </o>
-                        <v n="CallType" t="Operator">FunctionBlock</v>
-                        <v n="EN">false</v>
-                        <v n="ENO">false</v>
-                        <n n="STSnippet" />
-                        <v n="ContainsExtensibleInputs">false</v>
-                        <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">66L</v>
-                      </o>
-                    </l2>
-                    <l2 n="Connectors" />
-                    <v n="Id">64L</v>
-                  </o>
-                  <o>
-                    <v n="ILActive">false</v>
-                    <v n="FBDValid">false</v>
-                    <v n="ILValid">false</v>
-                    <l2 n="ILLines" />
-                    <v n="Comment">""</v>
-                    <v n="Title">""</v>
-                    <v n="Label">""</v>
-                    <v n="OutCommented">true</v>
-                    <l2 n="NetworkItems" cet="BoxTreeBox">
-                      <o>
-                        <v n="BoxType">"FB_NcAxis"</v>
-                        <o n="Instance" t="Operand">
-                          <v n="Operand">"M3Link"</v>
-                          <v n="Type">"FB_NcAxis"</v>
-                          <v n="Comment">""</v>
-                          <v n="SymbolComment">""</v>
-                          <v n="Address">""</v>
-                          <o n="Flags" t="Flags">
-                            <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                          <v n="LValue">false</v>
-                          <v n="Boolean">false</v>
-                          <v n="IsInstance">true</v>
-                          <v n="Id">120L</v>
-                        </o>
-                        <o n="OutputItems" t="OutputItemList">
-                          <l2 n="OutputItems" cet="Operand">
-                            <n />
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">122L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">123L</v>
-                            </o>
-                          </l2>
-                        </o>
-                        <o n="Flags" t="Flags">
-                          <v n="Flags">0</v>
-                          <v n="Fixed">true</v>
-                          <v n="Extensible">false</v>
-                        </o>
-                        <n n="InputFlags" />
-                        <l2 n="InputItems" cet="BoxTreeOperand">
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">"true"</v>
-                              <v n="Type">"BOOL"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">125L</v>
-                            </o>
-                            <v n="Id">124L</v>
-                          </o>
-                        </l2>
-                        <o n="InputParam" t="ParamList">
-                          <l2 n="Names" cet="String">
-                            <v>En</v>
-                          </l2>
-                          <l2 n="Types" cet="String">
-                            <v>BOOL</v>
-                          </l2>
-                        </o>
-                        <o n="OutputParam" t="ParamList">
-                          <l2 n="Names" cet="String">
-                            <v>EnO</v>
-                            <v>bError</v>
-                            <v>Status</v>
-                          </l2>
-                          <l2 n="Types" cet="String">
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>ST_AxisStatus</v>
-                          </l2>
-                        </o>
-                        <v n="CallType" t="Operator">FunctionBlock</v>
-                        <v n="EN">false</v>
-                        <v n="ENO">false</v>
-                        <n n="STSnippet" />
-                        <v n="ContainsExtensibleInputs">false</v>
-                        <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">121L</v>
-                      </o>
-                    </l2>
-                    <l2 n="Connectors" />
-                    <v n="Id">119L</v>
-                  </o>
-                  <o>
-                    <v n="ILActive">false</v>
-                    <v n="FBDValid">false</v>
-                    <v n="ILValid">false</v>
-                    <l2 n="ILLines" />
-                    <v n="Comment">""</v>
-                    <v n="Title">""</v>
-                    <v n="Label">""</v>
-                    <v n="OutCommented">true</v>
-                    <l2 n="NetworkItems" cet="BoxTreeBox">
-                      <o>
-                        <v n="BoxType">"FB_DriveVirtual"</v>
-                        <o n="Instance" t="Operand">
-                          <v n="Operand">"m3"</v>
-                          <v n="Type">"FB_DriveVirtual"</v>
-                          <v n="Comment">""</v>
-                          <v n="SymbolComment">""</v>
-                          <v n="Address">""</v>
-                          <o n="Flags" t="Flags">
-                            <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                          <v n="LValue">false</v>
-                          <v n="Boolean">false</v>
-                          <v n="IsInstance">true</v>
-                          <v n="Id">127L</v>
-                        </o>
-                        <o n="OutputItems" t="OutputItemList">
-                          <l2 n="OutputItems" cet="Operand">
-                            <n />
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">129L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">130L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">131L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">132L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">133L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">134L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">135L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">136L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">137L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">138L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">139L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">140L</v>
-                            </o>
-                          </l2>
-                        </o>
-                        <o n="Flags" t="Flags">
-                          <v n="Flags">0</v>
-                          <v n="Fixed">true</v>
-                          <v n="Extensible">false</v>
-                        </o>
-                        <n n="InputFlags" />
-                        <l2 n="InputItems" cet="BoxTreeOperand">
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">"true"</v>
-                              <v n="Type">"BOOL"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">142L</v>
-                            </o>
-                            <v n="Id">141L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">144L</v>
-                            </o>
-                            <v n="Id">143L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">146L</v>
-                            </o>
-                            <v n="Id">145L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">148L</v>
-                            </o>
-                            <v n="Id">147L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">150L</v>
-                            </o>
-                            <v n="Id">149L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">152L</v>
-                            </o>
-                            <v n="Id">151L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">154L</v>
-                            </o>
-                            <v n="Id">153L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">156L</v>
-                            </o>
-                            <v n="Id">155L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">158L</v>
-                            </o>
-                            <v n="Id">157L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">160L</v>
-                            </o>
-                            <v n="Id">159L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">162L</v>
-                            </o>
-                            <v n="Id">161L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">164L</v>
-                            </o>
-                            <v n="Id">163L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">"bLimitFwd3"</v>
-                              <v n="Type">"BOOL"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">"%I*"</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">166L</v>
-                            </o>
-                            <v n="Id">165L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">"bLimitBwd3"</v>
-                              <v n="Type">"BOOL"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">"%I*"</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">168L</v>
-                            </o>
-                            <v n="Id">167L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">170L</v>
-                            </o>
-                            <v n="Id">169L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">"bHomeSensor3"</v>
-                              <v n="Type">"BOOL"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">172L</v>
-                            </o>
-                            <v n="Id">171L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">174L</v>
-                            </o>
-                            <v n="Id">173L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">176L</v>
-                            </o>
-                            <v n="Id">175L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">""</v>
-                              <n n="Type" />
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">178L</v>
-                            </o>
-                            <v n="Id">177L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">"M3Link.Axis"</v>
-                              <v n="Type">"AXIS_REF[REF]"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">"%I*"</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">180L</v>
-                            </o>
-                            <v n="Id">179L</v>
-                          </o>
-                        </l2>
-                        <o n="InputParam" t="ParamList">
-                          <l2 n="Names" cet="String">
-                            <v>En</v>
-                            <v>bEnable</v>
-                            <v>bReset</v>
-                            <v>bExecute</v>
-                            <v>nCommand</v>
-                            <v>nCmdData</v>
-                            <v>fVelocity</v>
-                            <v>fPosition</v>
-                            <v>fAcceleration</v>
-                            <v>fDeceleration</v>
-                            <v>bJogFwd</v>
-                            <v>bJogBwd</v>
-                            <v>bLimitFwd</v>
-                            <v>bLimitBwd</v>
-                            <v>fOverride</v>
-                            <v>bHomeSensor</v>
-                            <v>fHomePosition</v>
-                            <v>nHomeRevOffset</v>
-                            <v>MasterAxis</v>
-                            <v>Axis</v>
-                          </l2>
-                          <l2 n="Types" cet="String">
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>UINT</v>
-                            <v>UINT</v>
-                            <v>LREAL</v>
-                            <v>LREAL</v>
-                            <v>LREAL</v>
-                            <v>LREAL</v>
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>LREAL</v>
-                            <v>BOOL</v>
-                            <v>LREAL</v>
-                            <v>UINT</v>
-                            <v>AXIS_REF</v>
-                            <v>AXIS_REF[REF]</v>
-                          </l2>
-                        </o>
-                        <o n="OutputParam" t="ParamList">
-                          <l2 n="Names" cet="String">
-                            <v>EnO</v>
-                            <v>bEnabled</v>
-                            <v>bBusy</v>
-                            <v>bDone</v>
-                            <v>bError</v>
-                            <v>bHomed</v>
-                            <v>nErrorId</v>
-                            <v>nMotionAxisID</v>
-                            <v>Status</v>
-                            <v>fActVelocity</v>
-                            <v>fActPosition</v>
-                            <v>fActDiff</v>
-                            <v>sErrorMessage</v>
-                          </l2>
-                          <l2 n="Types" cet="String">
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>UDINT</v>
-                            <v>UDINT</v>
-                            <v>ST_AxisStatus</v>
-                            <v>LREAL</v>
-                            <v>LREAL</v>
-                            <v>LREAL</v>
-                            <v>STRING</v>
-                          </l2>
-                        </o>
-                        <v n="CallType" t="Operator">FunctionBlock</v>
-                        <v n="EN">false</v>
-                        <v n="ENO">false</v>
-                        <n n="STSnippet" />
-                        <v n="ContainsExtensibleInputs">false</v>
-                        <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">128L</v>
-                      </o>
-                    </l2>
-                    <l2 n="Connectors" />
-                    <v n="Id">126L</v>
-                  </o>
-                </l2>
-                <v n="BranchCounter">0</v>
-                <v n="ValidIds">true</v>
-              </o>
-            </Data>
-            <TypeList>
-              <Type n="Boolean">System.Boolean</Type>
-              <Type n="BoxTreeBox">{acfc6f68-8e3a-4af5-bf81-3dd512095a46}</Type>
-              <Type n="BoxTreeOperand">{9de7f100-1b87-424c-a62e-45b0cfc85ed2}</Type>
-              <Type n="Flags">{668066f2-6069-46b3-8962-8db8d13d7db2}</Type>
-              <Type n="Int32">System.Int32</Type>
-              <Type n="Int64">System.Int64</Type>
-              <Type n="Network">{d9a99d73-b633-47db-b876-a752acb25871}</Type>
-              <Type n="NWLImplementationObject">{25e509de-33d4-4447-93f8-c9e4ea381c8b}</Type>
-              <Type n="Operand">{c9b2f165-48a2-4a45-8326-3952d8a3d708}</Type>
-              <Type n="Operator">{bffb3c53-f105-4e85-aba2-e30df579d75f}</Type>
-              <Type n="OutputItemList">{f40d3e09-c02c-4522-a88c-dac23558cfc4}</Type>
-              <Type n="ParamList">{71496971-9e0c-4677-a832-b9583b571130}</Type>
-              <Type n="String">System.String</Type>
-            </TypeList>
-          </XmlArchive>
-        </NWL>
+        <ST><![CDATA[// Motion of stepeprs handled in MAIN_NORMAL_MOTION]]></ST>
       </Implementation>
     </Action>
     <Action Name="ACT_6_Error" Id="{6316e704-a716-4c28-824a-a22fe5448145}">
@@ -2891,7 +490,8 @@ IF stcmdEpics.bReset THEN
   stStatEpics.sErrorStr:=GVL_ErrorCodes.nErrorCodeOKStr;
   stStatEpics.bBrake1TempAlarm:=FALSE;
   stStatEpics.bBrake2TempAlarm:=FALSE;
-END_IF]]></ST>
+END_IF
+stcmdEpics.bReset:=FALSE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="ACT_X_Diag" Id="{2a0ea7d8-8ff8-4796-ae8a-6c3ebb6f7955}">
@@ -2926,7 +526,10 @@ END_IF]]></ST>
     </Action>
     <LineIds Name="MAIN">
       <LineId Id="1534" Count="0" />
-      <LineId Id="1532" Count="1" />
+      <LineId Id="1532" Count="0" />
+      <LineId Id="1745" Count="1" />
+      <LineId Id="1744" Count="0" />
+      <LineId Id="1533" Count="0" />
       <LineId Id="1383" Count="0" />
       <LineId Id="1146" Count="0" />
       <LineId Id="1529" Count="0" />
@@ -2935,38 +538,44 @@ END_IF]]></ST>
       <LineId Id="1612" Count="0" />
       <LineId Id="1388" Count="0" />
       <LineId Id="1611" Count="0" />
+      <LineId Id="1747" Count="2" />
       <LineId Id="1610" Count="0" />
+      <LineId Id="1750" Count="0" />
       <LineId Id="1386" Count="0" />
       <LineId Id="1001" Count="0" />
       <LineId Id="1536" Count="0" />
       <LineId Id="1390" Count="0" />
       <LineId Id="941" Count="0" />
+      <LineId Id="1680" Count="0" />
       <LineId Id="1389" Count="0" />
     </LineIds>
     <LineIds Name="MAIN.ACT_1_Hardware">
       <LineId Id="1" Count="0" />
-      <LineId Id="58" Count="7" />
+      <LineId Id="229" Count="0" />
       <LineId Id="57" Count="0" />
       <LineId Id="4" Count="0" />
-      <LineId Id="81" Count="0" />
-      <LineId Id="73" Count="0" />
-      <LineId Id="126" Count="2" />
-      <LineId Id="134" Count="3" />
-      <LineId Id="139" Count="3" />
-      <LineId Id="145" Count="0" />
+      <LineId Id="179" Count="0" />
+      <LineId Id="181" Count="6" />
+      <LineId Id="230" Count="0" />
       <LineId Id="138" Count="0" />
       <LineId Id="5" Count="0" />
-      <LineId Id="82" Count="0" />
+      <LineId Id="216" Count="12" />
+      <LineId Id="197" Count="0" />
       <LineId Id="67" Count="0" />
       <LineId Id="69" Count="0" />
       <LineId Id="6" Count="0" />
+      <LineId Id="209" Count="0" />
+      <LineId Id="188" Count="0" />
+      <LineId Id="231" Count="0" />
       <LineId Id="83" Count="0" />
-      <LineId Id="110" Count="0" />
-      <LineId Id="74" Count="0" />
-      <LineId Id="116" Count="0" />
-      <LineId Id="118" Count="3" />
-      <LineId Id="123" Count="0" />
       <LineId Id="7" Count="0" />
+      <LineId Id="203" Count="0" />
+      <LineId Id="232" Count="0" />
+      <LineId Id="204" Count="1" />
+      <LineId Id="233" Count="0" />
+      <LineId Id="206" Count="1" />
+      <LineId Id="202" Count="0" />
+      <LineId Id="210" Count="0" />
       <LineId Id="95" Count="0" />
       <LineId Id="94" Count="0" />
       <LineId Id="8" Count="0" />
@@ -2990,13 +599,12 @@ END_IF]]></ST>
       <LineId Id="86" Count="0" />
       <LineId Id="72" Count="0" />
       <LineId Id="14" Count="0" />
-      <LineId Id="156" Count="0" />
-      <LineId Id="155" Count="0" />
-      <LineId Id="154" Count="0" />
       <LineId Id="87" Count="0" />
       <LineId Id="66" Count="0" />
       <LineId Id="15" Count="0" />
-      <LineId Id="176" Count="1" />
+      <LineId Id="176" Count="0" />
+      <LineId Id="211" Count="3" />
+      <LineId Id="177" Count="0" />
       <LineId Id="88" Count="0" />
       <LineId Id="175" Count="0" />
       <LineId Id="75" Count="0" />
@@ -3025,13 +633,8 @@ END_IF]]></ST>
       <LineId Id="93" Count="0" />
       <LineId Id="79" Count="0" />
       <LineId Id="23" Count="0" />
-      <LineId Id="35" Count="1" />
-      <LineId Id="173" Count="0" />
-      <LineId Id="30" Count="1" />
-      <LineId Id="38" Count="0" />
-      <LineId Id="32" Count="2" />
-      <LineId Id="28" Count="0" />
-      <LineId Id="24" Count="1" />
+      <LineId Id="35" Count="0" />
+      <LineId Id="25" Count="0" />
       <LineId Id="2" Count="0" />
     </LineIds>
     <LineIds Name="MAIN.ACT_2_Temperature">
@@ -3070,10 +673,14 @@ END_IF]]></ST>
       <LineId Id="207" Count="0" />
       <LineId Id="206" Count="0" />
       <LineId Id="119" Count="1" />
-      <LineId Id="124" Count="0" />
-      <LineId Id="127" Count="5" />
-      <LineId Id="113" Count="0" />
-      <LineId Id="228" Count="0" />
+      <LineId Id="127" Count="1" />
+      <LineId Id="277" Count="0" />
+      <LineId Id="274" Count="0" />
+      <LineId Id="273" Count="0" />
+      <LineId Id="295" Count="0" />
+      <LineId Id="284" Count="0" />
+      <LineId Id="276" Count="0" />
+      <LineId Id="301" Count="0" />
       <LineId Id="225" Count="0" />
       <LineId Id="229" Count="1" />
       <LineId Id="233" Count="2" />
@@ -3123,6 +730,9 @@ END_IF]]></ST>
       <LineId Id="111" Count="0" />
       <LineId Id="1" Count="0" />
     </LineIds>
+    <LineIds Name="MAIN.ACT_5_Steppers">
+      <LineId Id="1" Count="0" />
+    </LineIds>
     <LineIds Name="MAIN.ACT_6_Error">
       <LineId Id="41" Count="0" />
       <LineId Id="2" Count="28" />
@@ -3135,6 +745,7 @@ END_IF]]></ST>
       <LineId Id="53" Count="0" />
       <LineId Id="33" Count="7" />
       <LineId Id="1" Count="0" />
+      <LineId Id="58" Count="0" />
     </LineIds>
     <LineIds Name="MAIN.ACT_X_Diag">
       <LineId Id="2" Count="0" />

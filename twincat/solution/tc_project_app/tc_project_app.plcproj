@@ -16,6 +16,12 @@
     <AutoUpdateVisuProfile>true</AutoUpdateVisuProfile>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DUTs\Bridge Terminal PDOs\ST_Bridge_TSCS_OUTPUTS.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\Bridge Terminal PDOs\ST_Bridge_TSCS_INPUTS.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DUTs\E_HOME_STATE.TcDUT">
       <SubType>Code</SubType>
     </Compile>
@@ -73,10 +79,19 @@
     <Compile Include="DUTs\ST_S145_SIGNALCONTROLWORD.TcDUT">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DUTs\ST_HW_STATUS.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\ST_HW_CONTROL.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DUTs\TARGET_STATE_MACHINE.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GlobalTextList.TcGTLO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\GVL_Bridge_TSCS.TcGVL">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GVLs\GVL_APP.TcGVL">
@@ -90,6 +105,57 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PlcTask.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PlcTaskCom.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Application_Specific\Applications\Application_Template.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Application_Specific\Axes\Axis_Template.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Application_Specific\Axes\Axis_1.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Application_Specific\Axes\Axis_2.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Application_Specific\Axes\Axis_3.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Bridge Terminal\FBs\FB_Bridge_Outputs_Integer.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Bridge Terminal\FBs\FB_Bridge_Outputs_Real.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Bridge Terminal\FBs\FB_Bridge_Inputs_Integer.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Bridge Terminal\FBs\FB_Bridge_Inputs_Real.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Bridge Terminal\FBs\OSCAT_BYTE_OF_BIT.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Bridge Terminal\FBs\OSCAT_BYTE_TO_BITS.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Bridge Terminal\FBs\OSCAT_DW_TO_REAL.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Bridge Terminal\FBs\OSCAT_REAL_TO_DW.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Bridge Terminal\TSCS_Bridge_Inputs.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Bridge Terminal\TSCS_Bridge_Outputs.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Bridge Terminal\TSCS_Bridge_Diagnostic.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Common\ChangeConfig\FB_ReadFloatParameter.TcPOU">
@@ -233,10 +299,10 @@
     <Compile Include="POUs\Common\Hardware\EtherCAT_Terminals\System\EL9505.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Common\VISUs\languageSupport.TcTLO">
+    <Compile Include="POUs\Data Type Conversion Functions\SCALE_REAL_TO_UDINT.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Common\VISUs\visuTextLinks.TcTLO">
+    <Compile Include="POUs\Data Type Conversion Functions\SCALE_UDINT_TO_REAL.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN_NORMAL_MOTION.TcPOU">
@@ -335,13 +401,88 @@
     <Compile Include="tc_mca_std_lib_real\POUs\Motion\Homing\FB_Homing.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tc_mca_std_lib_real\VISUs\Error_Log_Visu.TcVIS">
+    <Compile Include="tc_mca_std_lib_real\VISUs\languageSupport.TcTLO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_mca_std_lib_real\VISUs\MainVisu.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="tc_mca_std_lib_real\VISUs\visuTextLinks.TcTLO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_app_specific\GVLs\GVL_PILS.TcGVL">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_app_specific\POUs\PILS_DEVICES.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\E_Permission.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\E_PILS_ParamControl.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\E_PILS_State.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\ST_1201.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\ST_1202.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\ST_1204.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\ST_1602.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\ST_5008.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\ST_5010.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\ST_AxisParameters.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\ST_DeviceInfo.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\ST_Indexer.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\ST_Indexer_InfoTyp0.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\ST_ParamOutput.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\DUTs\U_IndexerData.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\POUs\COMM.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\POUs\PILS_device_types\FB_5008_Axis.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tc_pils\tc_pils_generic\POUs\PILS_device_types\FB_5010_Axis.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Visualization Manager.TcVMO">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DUTs" />
+    <Folder Include="DUTs\Bridge Terminal PDOs" />
     <Folder Include="GVLs" />
+    <Folder Include="POUs\Application_Specific\Applications" />
+    <Folder Include="POUs\Application_Specific\Axes" />
+    <Folder Include="POUs\Bridge Terminal" />
+    <Folder Include="POUs\Bridge Terminal\FBs" />
     <Folder Include="POUs\Common" />
     <Folder Include="POUs\Common\ChangeConfig" />
     <Folder Include="POUs\Common\ErrorHandling" />
@@ -357,6 +498,8 @@
     <Folder Include="POUs\Common\Hardware\EtherCAT_Terminals\Feedback_Terminals" />
     <Folder Include="POUs\Common\Hardware\EtherCAT_Terminals\System" />
     <Folder Include="POUs\Common\VISUs" />
+    <Folder Include="POUs\Application_Specific" />
+    <Folder Include="POUs\Data Type Conversion Functions" />
     <Folder Include="POUs\Target" />
     <Folder Include="tc_mca_std_lib_real" />
     <Folder Include="tc_mca_std_lib_real\DUTs" />
@@ -365,6 +508,14 @@
     <Folder Include="tc_mca_std_lib_real\POUs\Motion" />
     <Folder Include="tc_mca_std_lib_real\POUs\Motion\Homing" />
     <Folder Include="tc_mca_std_lib_real\VISUs" />
+    <Folder Include="tc_pils" />
+    <Folder Include="tc_pils\tc_pils_app_specific" />
+    <Folder Include="tc_pils\tc_pils_app_specific\GVLs" />
+    <Folder Include="tc_pils\tc_pils_app_specific\POUs" />
+    <Folder Include="tc_pils\tc_pils_generic" />
+    <Folder Include="tc_pils\tc_pils_generic\DUTs" />
+    <Folder Include="tc_pils\tc_pils_generic\POUs" />
+    <Folder Include="tc_pils\tc_pils_generic\POUs\PILS_device_types" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>
@@ -422,6 +573,10 @@
     <PlaceholderReference Include="Tc2_Standard">
       <DefaultResolution>Tc2_Standard, * (Beckhoff Automation GmbH)</DefaultResolution>
       <Namespace>Tc2_Standard</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc2_SUPS">
+      <DefaultResolution>Tc2_SUPS, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_SUPS</Namespace>
     </PlaceholderReference>
     <PlaceholderReference Include="Tc2_System">
       <DefaultResolution>Tc2_System, * (Beckhoff Automation GmbH)</DefaultResolution>

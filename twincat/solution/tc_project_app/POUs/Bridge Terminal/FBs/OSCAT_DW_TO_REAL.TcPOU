@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="OSCAT_DW_TO_REAL" Id="{71677e02-0b54-4fd8-8916-eae6a13cd55c}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION OSCAT_DW_TO_REAL : REAL
+// E. Foy (2021-08-30): Copied from OSCAT library.
+VAR_INPUT
+	X : DWORD;
+END_VAR
+VAR
+	pt : POINTER TO REAL;
+END_VAR
+
+(*
+version 1.0	18. apr. 2008
+programmer 	hugo
+tested by		tobias
+
+this function converts a DWORD to REAL in a bitwise manner.
+*)
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[pt := ADR(X);
+OSCAT_DW_TO_REAL := pt^;
+
+(* revision history
+hm	18. apr. 2008
+	original version
+
+*)]]></ST>
+    </Implementation>
+    <LineIds Name="OSCAT_DW_TO_REAL">
+      <LineId Id="22" Count="6" />
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
