@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Example To AVS</name>
+  <width>2140</width>
+  <height>1440</height>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_1</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(pv_name)</pv_name>
+        <value>1</value>
+        <description>WritePV</description>
+      </action>
+    </actions>
+    <pv_name>loc://triggWrite&lt;VLong&gt;(0)</pv_name>
+    <text>Transfer srcValue to destValue</text>
+    <x>60</x>
+    <y>80</y>
+    <width>330</width>
+    <scripts>
+      <script file="EmbeddedPy">
+        <text><![CDATA[# Embedded python script
+from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
+print 'Hello'
+# widget.setPropertyValue('text', PVUtil.getString(pvs[0]))
+
+do_it = PVUtil.getInt(pvs[0])
+
+if do_it:
+    # read source value
+    srcValue = PVUtil.getDouble(pvs[1])
+    # Write source value to dest value
+    pvs[2].write(srcValue)
+    # Reset trigger
+    pvs[0].write(0)
+]]></text>
+        <pv_name>loc://triggWrite&lt;VLong&gt;(0)</pv_name>
+        <pv_name trigger="false">loc://srcValue&lt;VDouble&gt;(0.123456789)</pv_name>
+        <pv_name trigger="false">loc://destValue&lt;VDouble&gt;(0)</pv_name>
+      </script>
+    </scripts>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_1</name>
+    <pv_name>loc://destValue&lt;VDouble&gt;(0)</pv_name>
+    <x>70</x>
+    <y>130</y>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry</name>
+    <pv_name>loc://srcValue&lt;VDouble&gt;(0.123456789)</pv_name>
+    <x>70</x>
+    <y>40</y>
+  </widget>
+</display>
