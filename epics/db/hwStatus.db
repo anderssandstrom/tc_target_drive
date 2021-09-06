@@ -1,0 +1,85 @@
+
+record(bi,"$(P)Dev-EStop-OK"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stHwStatus.bEstopOK?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "NOT OK")
+  field(ONAM, "OK")
+  field(DESC, "Emergency stop OK")
+}
+
+record(bi,"$(P)Rotation-Thermal-Filter-OK"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stHwStatus.bRF02_MainDriveThermalFilterOK?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "NOT OK")
+  field(ONAM, "OK")
+  field(DESC, "Rotation: thermal filter OK")
+}
+
+record(bi,"$(P)Dev-Power-24V-OK"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stHwStatus.bTA01_TA02_24VSupplyOK?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "NOT OK")
+  field(ONAM, "OK")
+  field(DESC, "Power supply 24V OK")
+}
+
+record(bi,"$(P)Dev-Fuse-24V-OK"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stHwStatus.bFC11_Fuse24VOK?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "NOT OK")
+  field(ONAM, "OK")
+  field(DESC, "Power supply 24V fuse OK")
+}
+
+record(bi,"$(P)Dev-Over-Volt-OK"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stHwStatus.bFA01_FA02_OvervoltageOK?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "NOT OK")
+  field(ONAM, "OK")
+  field(DESC, "Over voltage OK")
+}
+
+record(bi,"$(P)Rotation-Fuse-OK"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stHwStatus.bFC01_FuseMainRotationOK?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "NOT OK")
+  field(ONAM, "OK")
+  field(DESC, "Power supply main rotation OK")
+}
+
+record(bi,"$(P)Dev-Fuse-OK"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stHwStatus.bFC01_FuseMainRotationOK?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "NOT OK")
+  field(ONAM, "OK")
+  field(DESC, "Power supply main rotation OK")
+}
+
+
+
+
+
+
+record(ai,"$(P)Rotation-ActPos"){
+  field(PINI, "1")
+  field(DTYP, "asynFloat64")
+  field(INP,  "@asyn($(PORT),0,1)TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.stStatEpics.fActPos?")
+  field(PREC, "3")
+  field(SCAN, "I/O Intr")
+  field(DESC, "Rotation: Motor Position [deg]")
+}
+
