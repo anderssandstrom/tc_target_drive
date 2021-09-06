@@ -20,6 +20,9 @@ END_IF
 //Eg. Stop when temperature reaches certain values, reduce speed if  a signal is activated, etc.
 
 ACT_3_Interlock();
+
+main.stHWStatusZ.bBrakeReleased:=FALSE;  // Not used
+main.stHWControlZ.bBrakeReleaseCmd:=FALSE; // Not used
 ]]></ST>
     </Implementation>
     <Action Name="ACT_3_Interlock" Id="{9a8d4546-6892-40d1-9370-4b045bf9101e}">
@@ -45,7 +48,7 @@ ACT_3_Interlock();
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
                             <o>
-                              <v n="Operand">"main.stStatEpics.bZParkingRangeEnabled"</v>
+                              <v n="Operand">"main.stHWStatusZ.bParkingRangeEnabled"</v>
                               <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -797,7 +800,7 @@ ACT_3_Interlock();
                               <l2 n="InputItems">
                                 <o t="BoxTreeOperand">
                                   <o n="Operand" t="Operand">
-                                    <v n="Operand">"Main.stHWStatus.bEStopOK"</v>
+                                    <v n="Operand">"Main.stHWStatusDev.bEStopOK"</v>
                                     <v n="Type">"BOOL"</v>
                                     <v n="Comment">""</v>
                                     <v n="SymbolComment">""</v>
@@ -816,7 +819,7 @@ ACT_3_Interlock();
                                 </o>
                                 <o t="BoxTreeOperand">
                                   <o n="Operand" t="Operand">
-                                    <v n="Operand">"main.stHWStatus.bFC11_Fuse24VOK"</v>
+                                    <v n="Operand">"main.stHWStatusDev.bFC11_Fuse24VOK"</v>
                                     <v n="Type">"BOOL"</v>
                                     <v n="Comment">""</v>
                                     <v n="SymbolComment">""</v>
@@ -835,7 +838,7 @@ ACT_3_Interlock();
                                 </o>
                                 <o t="BoxTreeOperand">
                                   <o n="Operand" t="Operand">
-                                    <v n="Operand">"main.stHWStatus.bTA01_TA02_24VSupplyOK"</v>
+                                    <v n="Operand">"main.stHWStatusDev.bTA01_TA02_24VSupplyOK"</v>
                                     <v n="Type">"BOOL"</v>
                                     <v n="Comment">""</v>
                                     <v n="SymbolComment">""</v>
@@ -884,7 +887,7 @@ ACT_3_Interlock();
                                   <l2 n="InputItems" cet="BoxTreeOperand">
                                     <o>
                                       <o n="Operand" t="Operand">
-                                        <v n="Operand">"main.stHWStatus.fW03_BT01_ZTemp"</v>
+                                        <v n="Operand">"main.stHWStatusZ.fStepperTemp"</v>
                                         <v n="Type">"LREAL"</v>
                                         <v n="Comment">""</v>
                                         <v n="SymbolComment">""</v>
@@ -973,7 +976,7 @@ ACT_3_Interlock();
                                   <l2 n="InputItems" cet="BoxTreeOperand">
                                     <o>
                                       <o n="Operand" t="Operand">
-                                        <v n="Operand">"main.stHWStatus.fW03_BT01_ZTemp"</v>
+                                        <v n="Operand">"main.stHWStatusZ.fStepperTemp"</v>
                                         <v n="Type">"LREAL"</v>
                                         <v n="Comment">""</v>
                                         <v n="SymbolComment">""</v>
@@ -1051,7 +1054,7 @@ ACT_3_Interlock();
                                 </o>
                                 <o t="BoxTreeOperand">
                                   <o n="Operand" t="Operand">
-                                    <v n="Operand">"main.stHWStatus.bBG04_ZLimitMaxMax"</v>
+                                    <v n="Operand">"main.stHWStatusZ.bLimitMaxMax"</v>
                                     <v n="Type">"BOOL"</v>
                                     <v n="Comment">""</v>
                                     <v n="SymbolComment">""</v>
@@ -1100,7 +1103,7 @@ ACT_3_Interlock();
                                   <l2 n="InputItems" cet="BoxTreeOperand">
                                     <o>
                                       <o n="Operand" t="Operand">
-                                        <v n="Operand">"main.stStatEpics.bZParkingRangeEnabled"</v>
+                                        <v n="Operand">"main.stHWStatusZ.bParkingRangeEnabled"</v>
                                         <v n="Type">"BOOL"</v>
                                         <v n="Comment">""</v>
                                         <v n="SymbolComment">""</v>
@@ -1119,7 +1122,7 @@ ACT_3_Interlock();
                                     </o>
                                     <o>
                                       <o n="Operand" t="Operand">
-                                        <v n="Operand">"main.stHWStatus.bBG05_ZLimitMinMin"</v>
+                                        <v n="Operand">"main.stHWStatusZ.bLimitMinMin"</v>
                                         <v n="Type">"BOOL"</v>
                                         <v n="Comment">""</v>
                                         <v n="SymbolComment">""</v>
@@ -1138,7 +1141,7 @@ ACT_3_Interlock();
                                     </o>
                                     <o>
                                       <o n="Operand" t="Operand">
-                                        <v n="Operand">"main.stHWStatus.bBG06_ZLimitMinMinPark"</v>
+                                        <v n="Operand">"main.stHWStatusZ.bLimitMinMinPark"</v>
                                         <v n="Type">"BOOL"</v>
                                         <v n="Comment">""</v>
                                         <v n="SymbolComment">""</v>
@@ -1178,7 +1181,7 @@ ACT_3_Interlock();
                                 </o>
                                 <o t="BoxTreeOperand">
                                   <o n="Operand" t="Operand">
-                                    <v n="Operand">"main.stHWStatus.bBeamOff"</v>
+                                    <v n="Operand">"main.stHWStatusDev.bBeamOff"</v>
                                     <v n="Type">"BOOL"</v>
                                     <v n="Comment">""</v>
                                     <v n="SymbolComment">""</v>
@@ -1349,7 +1352,7 @@ ACT_3_Interlock();
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"main.stStatEpics.bZParkingRangeEnabled"</v>
+                                <v n="Operand">"main.stHWStatusZ.bParkingRangeEnabled"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1368,7 +1371,7 @@ ACT_3_Interlock();
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"main.stHWStatus.bBG02_ZLimitMin"</v>
+                                <v n="Operand">"main.stHWStatusZ.bLimitMin"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1387,7 +1390,7 @@ ACT_3_Interlock();
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"main.stHWStatus.bBG03_ZLimitMinPark"</v>
+                                <v n="Operand">"main.stHWStatusZ.bLimitMinPark"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1469,7 +1472,7 @@ ACT_3_Interlock();
                         </o>
                         <o n="RValue" t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
-                            <v n="Operand">"main.stHWStatus.bBG01_ZLimitMax"</v>
+                            <v n="Operand">"main.stHWStatusZ.bLimitMax"</v>
                             <v n="Type">"BOOL"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -1522,7 +1525,10 @@ ACT_3_Interlock();
       <LineId Id="29" Count="8" />
       <LineId Id="60" Count="0" />
       <LineId Id="44" Count="0" />
-      <LineId Id="57" Count="0" />
+      <LineId Id="63" Count="0" />
+      <LineId Id="62" Count="0" />
+      <LineId Id="65" Count="0" />
+      <LineId Id="64" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

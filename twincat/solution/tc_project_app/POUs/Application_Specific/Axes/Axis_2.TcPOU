@@ -22,7 +22,8 @@ END_IF
 ACT_2_Interlock();
 
 // Brake control from GUI
-main.stHWControl.bYBrakeReleaseCmd:=main.stCmdEpics.bYReleaseBreakCmd;
+main.stHWControlY.bBrakeReleaseCmd:=main.stCmdEpics.bYReleaseBreakCmd;
+main.stHWStatusY.bBrakeReleased:=main.stHWControlY.bBrakeReleaseCmd;
 ]]></ST>
     </Implementation>
     <Action Name="ACT_2_Interlock" Id="{c949121c-9701-4c5f-8bc8-3c78316b1a11}">
@@ -212,7 +213,7 @@ main.stHWControl.bYBrakeReleaseCmd:=main.stCmdEpics.bYReleaseBreakCmd;
                               <l2 n="InputItems">
                                 <o t="BoxTreeOperand">
                                   <o n="Operand" t="Operand">
-                                    <v n="Operand">"Main.stHWStatus.bEStopOK"</v>
+                                    <v n="Operand">"Main.stHWStatusDev.bEStopOK"</v>
                                     <v n="Type">"BOOL"</v>
                                     <v n="Comment">""</v>
                                     <v n="SymbolComment">""</v>
@@ -231,7 +232,7 @@ main.stHWControl.bYBrakeReleaseCmd:=main.stCmdEpics.bYReleaseBreakCmd;
                                 </o>
                                 <o t="BoxTreeOperand">
                                   <o n="Operand" t="Operand">
-                                    <v n="Operand">"main.stHWStatus.bFC11_Fuse24VOK"</v>
+                                    <v n="Operand">"main.stHWStatusDev.bFC11_Fuse24VOK"</v>
                                     <v n="Type">"BOOL"</v>
                                     <v n="Comment">""</v>
                                     <v n="SymbolComment">""</v>
@@ -250,7 +251,7 @@ main.stHWControl.bYBrakeReleaseCmd:=main.stCmdEpics.bYReleaseBreakCmd;
                                 </o>
                                 <o t="BoxTreeOperand">
                                   <o n="Operand" t="Operand">
-                                    <v n="Operand">"main.stHWStatus.bTA01_TA02_24VSupplyOK"</v>
+                                    <v n="Operand">"main.stHWStatusDev.bTA01_TA02_24VSupplyOK"</v>
                                     <v n="Type">"BOOL"</v>
                                     <v n="Comment">""</v>
                                     <v n="SymbolComment">""</v>
@@ -269,7 +270,7 @@ main.stHWControl.bYBrakeReleaseCmd:=main.stCmdEpics.bYReleaseBreakCmd;
                                 </o>
                                 <o t="BoxTreeOperand">
                                   <o n="Operand" t="Operand">
-                                    <v n="Operand">"main.stHWControl.bYBrakeReleaseCmd"</v>
+                                    <v n="Operand">"main.stHWStatusY.bBrakeReleased"</v>
                                     <v n="Type">"BOOL"</v>
                                     <v n="Comment">""</v>
                                     <v n="SymbolComment">""</v>
@@ -318,7 +319,7 @@ main.stHWControl.bYBrakeReleaseCmd:=main.stCmdEpics.bYReleaseBreakCmd;
                                   <l2 n="InputItems" cet="BoxTreeOperand">
                                     <o>
                                       <o n="Operand" t="Operand">
-                                        <v n="Operand">"main.stHWStatus.fW02_BT02_YTemp"</v>
+                                        <v n="Operand">"main.stHWStatusY.fStepperTemp"</v>
                                         <v n="Type">"LREAL"</v>
                                         <v n="Comment">""</v>
                                         <v n="SymbolComment">""</v>
@@ -407,7 +408,7 @@ main.stHWControl.bYBrakeReleaseCmd:=main.stCmdEpics.bYReleaseBreakCmd;
                                   <l2 n="InputItems" cet="BoxTreeOperand">
                                     <o>
                                       <o n="Operand" t="Operand">
-                                        <v n="Operand">"main.stHWStatus.fW02_BT02_YTemp"</v>
+                                        <v n="Operand">"main.stHWStatusY.fStepperTemp"</v>
                                         <v n="Type">"LREAL"</v>
                                         <v n="Comment">""</v>
                                         <v n="SymbolComment">""</v>
@@ -485,7 +486,7 @@ main.stHWControl.bYBrakeReleaseCmd:=main.stCmdEpics.bYReleaseBreakCmd;
                                 </o>
                                 <o t="BoxTreeOperand">
                                   <o n="Operand" t="Operand">
-                                    <v n="Operand">"main.stHWStatus.bBG07_YLimitMaxMax"</v>
+                                    <v n="Operand">"main.stHWStatusY.bLimitMaxMax"</v>
                                     <v n="Type">"BOOL"</v>
                                     <v n="Comment">""</v>
                                     <v n="SymbolComment">""</v>
@@ -504,7 +505,7 @@ main.stHWControl.bYBrakeReleaseCmd:=main.stCmdEpics.bYReleaseBreakCmd;
                                 </o>
                                 <o t="BoxTreeOperand">
                                   <o n="Operand" t="Operand">
-                                    <v n="Operand">"main.stHWStatus.bBG08_YLimitMinMin"</v>
+                                    <v n="Operand">"main.stHWStatusY.bLimitMinMin"</v>
                                     <v n="Type">"BOOL"</v>
                                     <v n="Comment">""</v>
                                     <v n="SymbolComment">""</v>
@@ -523,7 +524,7 @@ main.stHWControl.bYBrakeReleaseCmd:=main.stCmdEpics.bYReleaseBreakCmd;
                                 </o>
                                 <o t="BoxTreeOperand">
                                   <o n="Operand" t="Operand">
-                                    <v n="Operand">"main.stHWStatus.bBeamOff"</v>
+                                    <v n="Operand">"main.stHWStatusDev.bBeamOff"</v>
                                     <v n="Type">"BOOL"</v>
                                     <v n="Comment">""</v>
                                     <v n="SymbolComment">""</v>
@@ -664,7 +665,7 @@ main.stHWControl.bYBrakeReleaseCmd:=main.stCmdEpics.bYReleaseBreakCmd;
                         </o>
                         <o n="RValue" t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
-                            <v n="Operand">"main.stHWStatus.bBG06_YLimitMin"</v>
+                            <v n="Operand">"main.stHWStatusY.bLimitMin"</v>
                             <v n="Type">"BOOL"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -725,7 +726,7 @@ main.stHWControl.bYBrakeReleaseCmd:=main.stCmdEpics.bYReleaseBreakCmd;
                         </o>
                         <o n="RValue" t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
-                            <v n="Operand">"main.stHWStatus.bBG05_YLimitMax"</v>
+                            <v n="Operand">"main.stHWStatusY.bLimitMax"</v>
                             <v n="Type">"BOOL"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -781,6 +782,7 @@ main.stHWControl.bYBrakeReleaseCmd:=main.stCmdEpics.bYReleaseBreakCmd;
       <LineId Id="49" Count="0" />
       <LineId Id="47" Count="0" />
       <LineId Id="23" Count="0" />
+      <LineId Id="50" Count="0" />
       <LineId Id="48" Count="0" />
     </LineIds>
   </POU>

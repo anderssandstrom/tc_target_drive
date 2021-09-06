@@ -58,6 +58,18 @@
     <Compile Include="DUTs\ST_CMD_EPICS.TcDUT">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DUTs\ST_HW_CONTROL_DEV.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\ST_HW_CONTROL_XYZ.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\ST_HW_STATUS_DEV.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\ST_HW_STATUS_XYZ.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DUTs\ST_STAT_EPICS.TcDUT">
       <SubType>Code</SubType>
     </Compile>
@@ -77,12 +89,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\ST_S145_SIGNALCONTROLWORD.TcDUT">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DUTs\ST_HW_STATUS.TcDUT">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DUTs\ST_HW_CONTROL.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\TARGET_STATE_MACHINE.TcDUT">
