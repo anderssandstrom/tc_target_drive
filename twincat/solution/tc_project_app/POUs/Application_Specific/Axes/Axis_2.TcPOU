@@ -23,6 +23,7 @@ ACT_2_Interlock();
 
 // Brake control from GUI
 main.stHWControl.bYBrakeReleaseCmd:=main.stCmdEpics.bYReleaseBreakCmd;
+main.stHWStatus.bYBrakeReleased:=main.stHWControl.bYBrakeReleaseCmd;
 ]]></ST>
     </Implementation>
     <Action Name="ACT_2_Interlock" Id="{c949121c-9701-4c5f-8bc8-3c78316b1a11}">
@@ -269,7 +270,7 @@ main.stHWControl.bYBrakeReleaseCmd:=main.stCmdEpics.bYReleaseBreakCmd;
                                 </o>
                                 <o t="BoxTreeOperand">
                                   <o n="Operand" t="Operand">
-                                    <v n="Operand">"main.stHWControl.bYBrakeReleaseCmd"</v>
+                                    <v n="Operand">"main.stHWStatus.bYBrakeReleased"</v>
                                     <v n="Type">"BOOL"</v>
                                     <v n="Comment">""</v>
                                     <v n="SymbolComment">""</v>
@@ -781,6 +782,7 @@ main.stHWControl.bYBrakeReleaseCmd:=main.stCmdEpics.bYReleaseBreakCmd;
       <LineId Id="49" Count="0" />
       <LineId Id="47" Count="0" />
       <LineId Id="23" Count="0" />
+      <LineId Id="50" Count="0" />
       <LineId Id="48" Count="0" />
     </LineIds>
   </POU>

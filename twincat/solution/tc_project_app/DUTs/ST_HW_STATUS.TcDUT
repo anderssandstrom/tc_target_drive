@@ -32,7 +32,9 @@ STRUCT
 	bBG03_ZLimitMinPark:BOOL;            // s3: ch11: w03.bg03 stepper z limit min service (lowest switch)
 	bBG04_ZLimitMaxMax:BOOL;             // s3: ch12: w03.bg04 stepper z limit max max
 	bBG05_ZLimitMinMin:BOOL;	         // s3: ch13: w03.bg05 stepper z limit min min
-	bBG06_ZLimitMinMinPark:BOOL;         // s3: ch14: w03.bg06 stepper z limit min min service (lowest switch)	
+	bBG06_ZLimitMinMinPark:BOOL;         // s3: ch14: w03.bg06 stepper z limit min min service (lowest switch)
+	bXBrakeReleased: BOOL; 
+	bYBrakeReleased:BOOL;
 	
 	// Bridge terminal EL6695
 	bBeamOff:BOOL;                       // Need to link to hardware (check with evan)
