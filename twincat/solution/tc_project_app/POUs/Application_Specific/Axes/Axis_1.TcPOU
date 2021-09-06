@@ -22,8 +22,11 @@ END_IF
 ACT_1_Interlock();
 
 // Brake control from GUI
-main.stHWControl.bXBrakeReleaseCmd:=main.stCmdEpics.bXReleaseBreakCmd;
-main.stHWStatus.bXBrakeReleased:=main.stHWControl.bXBrakeReleaseCmd;
+main.stHWControlX.bBrakeReleaseCmd:=main.stCmdEpics.bXReleaseBreakCmd;
+main.stHWStatusX.bBrakeReleased:=main.stHWControlX.bBrakeReleaseCmd;
+
+main.stHWStatusX.bParkingRangeEnabled:=FALSE; // Not used;
+
 ]]></ST>
     </Implementation>
     <Action Name="ACT_1_Interlock" Id="{ca43ea7f-b212-458e-a066-b237d81a70c7}">
@@ -213,7 +216,7 @@ main.stHWStatus.bXBrakeReleased:=main.stHWControl.bXBrakeReleaseCmd;
                               <l2 n="InputItems">
                                 <o t="BoxTreeOperand">
                                   <o n="Operand" t="Operand">
-                                    <v n="Operand">"Main.stHWStatus.bEStopOK"</v>
+                                    <v n="Operand">"Main.stHWStatusDev.bEStopOK"</v>
                                     <v n="Type">"BOOL"</v>
                                     <v n="Comment">""</v>
                                     <v n="SymbolComment">""</v>
@@ -232,7 +235,7 @@ main.stHWStatus.bXBrakeReleased:=main.stHWControl.bXBrakeReleaseCmd;
                                 </o>
                                 <o t="BoxTreeOperand">
                                   <o n="Operand" t="Operand">
-                                    <v n="Operand">"main.stHWStatus.bFC11_Fuse24VOK"</v>
+                                    <v n="Operand">"main.stHWStatusDev.bFC11_Fuse24VOK"</v>
                                     <v n="Type">"BOOL"</v>
                                     <v n="Comment">""</v>
                                     <v n="SymbolComment">""</v>
@@ -251,7 +254,7 @@ main.stHWStatus.bXBrakeReleased:=main.stHWControl.bXBrakeReleaseCmd;
                                 </o>
                                 <o t="BoxTreeOperand">
                                   <o n="Operand" t="Operand">
-                                    <v n="Operand">"main.stHWStatus.bTA01_TA02_24VSupplyOK"</v>
+                                    <v n="Operand">"main.stHWStatusDev.bTA01_TA02_24VSupplyOK"</v>
                                     <v n="Type">"BOOL"</v>
                                     <v n="Comment">""</v>
                                     <v n="SymbolComment">""</v>
@@ -270,7 +273,7 @@ main.stHWStatus.bXBrakeReleased:=main.stHWControl.bXBrakeReleaseCmd;
                                 </o>
                                 <o t="BoxTreeOperand">
                                   <o n="Operand" t="Operand">
-                                    <v n="Operand">"main.stHWStatus.bXBrakeReleased"</v>
+                                    <v n="Operand">"main.stHWStatusX.bBrakeReleased"</v>
                                     <v n="Type">"BOOL"</v>
                                     <v n="Comment">""</v>
                                     <v n="SymbolComment">""</v>
@@ -319,7 +322,7 @@ main.stHWStatus.bXBrakeReleased:=main.stHWControl.bXBrakeReleaseCmd;
                                   <l2 n="InputItems" cet="BoxTreeOperand">
                                     <o>
                                       <o n="Operand" t="Operand">
-                                        <v n="Operand">"main.stHWStatus.fW02_BT01_XTemp"</v>
+                                        <v n="Operand">"main.stHWStatusX.fStepperTemp"</v>
                                         <v n="Type">"LREAL"</v>
                                         <v n="Comment">""</v>
                                         <v n="SymbolComment">""</v>
@@ -408,7 +411,7 @@ main.stHWStatus.bXBrakeReleased:=main.stHWControl.bXBrakeReleaseCmd;
                                   <l2 n="InputItems" cet="BoxTreeOperand">
                                     <o>
                                       <o n="Operand" t="Operand">
-                                        <v n="Operand">"main.stHWStatus.fW02_BT01_XTemp"</v>
+                                        <v n="Operand">"main.stHWStatusX.fStepperTemp"</v>
                                         <v n="Type">"LREAL"</v>
                                         <v n="Comment">""</v>
                                         <v n="SymbolComment">""</v>
@@ -486,7 +489,7 @@ main.stHWStatus.bXBrakeReleased:=main.stHWControl.bXBrakeReleaseCmd;
                                 </o>
                                 <o t="BoxTreeOperand">
                                   <o n="Operand" t="Operand">
-                                    <v n="Operand">"main.stHWStatus.bBG03_XLimitMaxMax"</v>
+                                    <v n="Operand">"main.stHWStatusX.bLimitMaxMax"</v>
                                     <v n="Type">"BOOL"</v>
                                     <v n="Comment">""</v>
                                     <v n="SymbolComment">""</v>
@@ -505,7 +508,7 @@ main.stHWStatus.bXBrakeReleased:=main.stHWControl.bXBrakeReleaseCmd;
                                 </o>
                                 <o t="BoxTreeOperand">
                                   <o n="Operand" t="Operand">
-                                    <v n="Operand">"main.stHWStatus.bBG04_XLimitMinMin"</v>
+                                    <v n="Operand">"main.stHWStatusX.bLimitMinMin"</v>
                                     <v n="Type">"BOOL"</v>
                                     <v n="Comment">""</v>
                                     <v n="SymbolComment">""</v>
@@ -524,7 +527,7 @@ main.stHWStatus.bXBrakeReleased:=main.stHWControl.bXBrakeReleaseCmd;
                                 </o>
                                 <o t="BoxTreeOperand">
                                   <o n="Operand" t="Operand">
-                                    <v n="Operand">"main.stHWStatus.bBeamOff"</v>
+                                    <v n="Operand">"main.stHWStatusDev.bBeamOff"</v>
                                     <v n="Type">"BOOL"</v>
                                     <v n="Comment">""</v>
                                     <v n="SymbolComment">""</v>
@@ -665,7 +668,7 @@ main.stHWStatus.bXBrakeReleased:=main.stHWControl.bXBrakeReleaseCmd;
                         </o>
                         <o n="RValue" t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
-                            <v n="Operand">"main.stHWStatus.bBG02_XLimitMin"</v>
+                            <v n="Operand">"main.stHWStatusX.bLimitMin"</v>
                             <v n="Type">"BOOL"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -726,7 +729,7 @@ main.stHWStatus.bXBrakeReleased:=main.stHWControl.bXBrakeReleaseCmd;
                         </o>
                         <o n="RValue" t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
-                            <v n="Operand">"main.stHWStatus.bBG01_XLimitMax"</v>
+                            <v n="Operand">"main.stHWStatusX.bLimitMax"</v>
                             <v n="Type">"BOOL"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -780,6 +783,9 @@ main.stHWStatus.bXBrakeReleased:=main.stHWControl.bXBrakeReleaseCmd;
       <LineId Id="65" Count="0" />
       <LineId Id="67" Count="0" />
       <LineId Id="71" Count="0" />
+      <LineId Id="73" Count="0" />
+      <LineId Id="72" Count="0" />
+      <LineId Id="74" Count="0" />
       <LineId Id="41" Count="0" />
     </LineIds>
   </POU>

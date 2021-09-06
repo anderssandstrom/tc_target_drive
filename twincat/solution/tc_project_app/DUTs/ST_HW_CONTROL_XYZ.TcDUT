@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+  <DUT Name="ST_HW_CONTROL_XYZ" Id="{147542d5-7cc4-4436-8a58-4f12c804bd47}">
+    <Declaration><![CDATA[
+TYPE ST_HW_CONTROL_XYZ :
+STRUCT
+	
+	bMinMaxFeed  AT %Q* :BOOL;         // s5: ch1: kf05: w02.bg01 w02.bg02 stepper x limit switch max, limit min
+	bBrakeReleaseCmd  AT %Q* :BOOL;    // s5: ch2: kf05: w02.ql1: stepper x brake
+	bMinMinMaxMaxFeed  AT %Q* :BOOL;   // s5: ch3: kf05: w02.bg03 w02.bg04 stepper x limit switch max max, limit min min
+    
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

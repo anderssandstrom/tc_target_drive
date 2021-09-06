@@ -2175,53 +2175,48 @@ Bit 15]]></Comment>
 					<Type>DINT</Type>
 				</Var>
 				<Var>
-					<Name>MAIN.stHWControl.bRotOmronSensor1Feed</Name>
-					<Comment><![CDATA[ s4: ch1: Feed omron sensor 1]]></Comment>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.stHWControl.bRotOmronSensor2Feed</Name>
-					<Comment><![CDATA[ s4: ch2: Feed omron sensor 2]]></Comment>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.stHWControl.bXMinMaxFeed</Name>
+					<Name>MAIN.stHWControlX.bMinMaxFeed</Name>
 					<Comment><![CDATA[ s5: ch1: kf05: w02.bg01 w02.bg02 stepper x limit switch max, limit min]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>MAIN.stHWControl.bXBrakeReleaseCmd</Name>
+					<Name>MAIN.stHWControlX.bBrakeReleaseCmd</Name>
 					<Comment><![CDATA[ s5: ch2: kf05: w02.ql1: stepper x brake]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>MAIN.stHWControl.bXMinMinMaxMaxFeed</Name>
+					<Name>MAIN.stHWControlX.bMinMinMaxMaxFeed</Name>
 					<Comment><![CDATA[ s5: ch3: kf05: w02.bg03 w02.bg04 stepper x limit switch max max, limit min min]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>MAIN.stHWControl.bYMinMaxFeed</Name>
-					<Comment><![CDATA[ s5: ch5: kf05: w02.bg05 w02.bg06 stepper y limit switch max, limit min]]></Comment>
+					<Name>MAIN.stHWControlY.bMinMaxFeed</Name>
+					<Comment><![CDATA[ s5: ch1: kf05: w02.bg01 w02.bg02 stepper x limit switch max, limit min]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>MAIN.stHWControl.bYBrakeReleaseCmd</Name>
-					<Comment><![CDATA[ s5: ch6: kf05: w02.ql2: stepper y brake]]></Comment>
+					<Name>MAIN.stHWControlY.bBrakeReleaseCmd</Name>
+					<Comment><![CDATA[ s5: ch2: kf05: w02.ql1: stepper x brake]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>MAIN.stHWControl.bYMinMinMaxMaxFeed</Name>
-					<Comment><![CDATA[ s5: ch7: kf05: w02.bg07 w02.bg08 stepper y limit switch max max, limit min min]]></Comment>
+					<Name>MAIN.stHWControlY.bMinMinMaxMaxFeed</Name>
+					<Comment><![CDATA[ s5: ch3: kf05: w02.bg03 w02.bg04 stepper x limit switch max max, limit min min]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>MAIN.stHWControl.bZMinMaxFeed</Name>
-					<Comment><![CDATA[ s5: ch9: kf05: w03.bg01 w03.bg02 w03.bg03  stepper z limit switch max, limit min limit min min (service)]]></Comment>
+					<Name>MAIN.stHWControlZ.bMinMaxFeed</Name>
+					<Comment><![CDATA[ s5: ch1: kf05: w02.bg01 w02.bg02 stepper x limit switch max, limit min]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>MAIN.stHWControl.bZMinMinMaxMaxFeed</Name>
-					<Comment><![CDATA[ s5: ch10: kf05: w03.bg04 w03.bg05 w03.bg06  stepper z limit switch max max, limit min min]]></Comment>
+					<Name>MAIN.stHWControlZ.bBrakeReleaseCmd</Name>
+					<Comment><![CDATA[ s5: ch2: kf05: w02.ql1: stepper x brake]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.stHWControlZ.bMinMinMaxMaxFeed</Name>
+					<Comment><![CDATA[ s5: ch3: kf05: w02.bg03 w02.bg04 stepper x limit switch max max, limit min min]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
@@ -2240,6 +2235,16 @@ Bit 15]]></Comment>
 				<Var>
 					<Name>GVL.astAxes[3].Axis.PlcToNc</Name>
 					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.stHWControlDev.bRotOmronSensor1Feed</Name>
+					<Comment><![CDATA[ s4: ch1: Feed omron sensor 1]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.stHWControlDev.bRotOmronSensor2Feed</Name>
+					<Comment><![CDATA[ s4: ch2: Feed omron sensor 2]]></Comment>
+					<Type>BOOL</Type>
 				</Var>
 			</Vars>
 			<Vars VarGrpType="1" ContextId="1" AreaNo="16">
@@ -2778,16 +2783,16 @@ Bit 15]]></Comment>
 				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.wCH7_Diag" VarB="DIG Diag Inputs^Channel 7" Size="4"/>
 				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.wCH8_Diag" VarB="DIG Diag Inputs^Channel 8" Size="4"/>
 				<Link VarA="PlcTask Inputs^MAIN.fb_s4_EL2819.wCH9_Diag" VarB="DIG Diag Inputs^Channel 9" Size="4"/>
-				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bRotOmronSensor1Feed" VarB="DIG Outputs^Channel 1^Output" Size="1"/>
-				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bRotOmronSensor2Feed" VarB="DIG Outputs^Channel 2^Output" Size="1"/>
-				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bXBrakeReleaseCmd" VarB="DIG Outputs^Channel 4^Output" Size="1"/>
-				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bXMinMaxFeed" VarB="DIG Outputs^Channel 3^Output" Size="1"/>
-				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bXMinMinMaxMaxFeed" VarB="DIG Outputs^Channel 5^Output" Size="1"/>
-				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bYBrakeReleaseCmd" VarB="DIG Outputs^Channel 7^Output" Size="1"/>
-				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bYMinMaxFeed" VarB="DIG Outputs^Channel 6^Output" Size="1"/>
-				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bYMinMinMaxMaxFeed" VarB="DIG Outputs^Channel 8^Output" Size="1"/>
-				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bZMinMaxFeed" VarB="DIG Outputs^Channel 9^Output" Size="1"/>
-				<Link VarA="PlcTask Outputs^MAIN.stHWControl.bZMinMinMaxMaxFeed" VarB="DIG Outputs^Channel 10^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControlDev.bRotOmronSensor1Feed" VarB="DIG Outputs^Channel 1^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControlDev.bRotOmronSensor2Feed" VarB="DIG Outputs^Channel 2^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControlX.bBrakeReleaseCmd" VarB="DIG Outputs^Channel 4^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControlX.bMinMaxFeed" VarB="DIG Outputs^Channel 3^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControlX.bMinMinMaxMaxFeed" VarB="DIG Outputs^Channel 5^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControlY.bBrakeReleaseCmd" VarB="DIG Outputs^Channel 7^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControlY.bMinMaxFeed" VarB="DIG Outputs^Channel 6^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControlY.bMinMinMaxMaxFeed" VarB="DIG Outputs^Channel 8^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControlZ.bMinMaxFeed" VarB="DIG Outputs^Channel 9^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^MAIN.stHWControlZ.bMinMinMaxMaxFeed" VarB="DIG Outputs^Channel 10^Output" Size="1"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 5 (EL2819)">
 				<Link VarA="PlcTask Inputs^MAIN.fb_s5_EL2819.InfoData_State" VarB="InfoData^State"/>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+  <DUT Name="ST_HW_STATUS_XYZ" Id="{0c896078-d474-44e5-911d-70505f51c1b8}">
+    <Declaration><![CDATA[// HW status for XYZ axis
+TYPE ST_HW_STATUS_XYZ :
+STRUCT
+	fStepperTemp: LREAL;
+	bLimitMax:BOOL;
+	bLimitMin:BOOL;
+	bLimitMaxMax:BOOL;
+	bLimitMinMin:BOOL;
+	bSumILOK:BOOL;
+	
+	//Only X and Y
+	bBrakeReleased: BOOL;
+	
+	//Only for Z
+    bLimitMinPark:BOOL;
+	bLimitMinMinPark:BOOL;	
+	bParkingRangeEnabled:BOOL;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>
