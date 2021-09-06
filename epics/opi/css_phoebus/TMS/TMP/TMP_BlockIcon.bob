@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>TMP_BlockIcon</name>
+  <class>CUSTOM</class>
+  <width>150</width>
+  <height>170</height>
+  <background_color>
+    <color red="220" green="225" blue="221" alpha="0">
+    </color>
+  </background_color>
+  <widget type="rectangle" version="2.0.0">
+    <name>WID_Rect</name>
+    <width>150</width>
+    <height>170</height>
+    <line_width>0</line_width>
+    <background_color>
+      <color red="0" green="0" blue="0" alpha="18">
+      </color>
+    </background_color>
+    <corner_width>20</corner_width>
+    <corner_height>20</corner_height>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>WID_TitleLBL_1</name>
+    <text>TMP</text>
+    <width>150</width>
+    <height>30</height>
+    <font>
+      <font family="Source Sans Pro" style="BOLD" size="18.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+    <tooltip>Device name</tooltip>
+  </widget>
+  <widget type="symbol" version="2.0.0">
+    <name>Symbol</name>
+    <symbols>
+      <symbol>TMP_Grey.png</symbol>
+    </symbols>
+    <x>40</x>
+    <y>25</y>
+    <width>60</width>
+    <height>140</height>
+  </widget>
+  <widget type="led" version="2.0.0">
+    <name>LED</name>
+    <x>90</x>
+    <y>140</y>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_1</name>
+    <text>OK</text>
+    <x>113</x>
+    <y>140</y>
+    <width>29</width>
+    <font>
+      <font family="Source Sans Pro" style="BOLD" size="16.0">
+      </font>
+    </font>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>WID_OpenFaceplate</name>
+    <actions>
+      <action type="open_display">
+        <file>TMP_Faceplate.bob</file>
+        <target>replace</target>
+        <description>Open Display</description>
+      </action>
+    </actions>
+    <text></text>
+    <width>150</width>
+    <height>170</height>
+    <transparent>true</transparent>
+    <tooltip>Open faceplate</tooltip>
+  </widget>
+</display>

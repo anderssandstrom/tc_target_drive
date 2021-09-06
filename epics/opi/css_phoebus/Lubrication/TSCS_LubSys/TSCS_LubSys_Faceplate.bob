@@ -1,0 +1,2179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>TSCS_LubSys_Faceplate</name>
+  <width>1450</width>
+  <height>950</height>
+  <widget type="tabs" version="2.0.0">
+    <name>Tabs</name>
+    <tabs>
+      <tab>
+        <name>Status</name>
+        <children>
+          <widget type="group" version="2.0.0">
+            <name>group.System</name>
+            <x>20</x>
+            <y>13</y>
+            <width>1390</width>
+            <height>210</height>
+            <style>3</style>
+            <widget type="rectangle" version="2.0.0">
+              <name>group.status.background</name>
+              <width>1390</width>
+              <height>210</height>
+              <line_width>0</line_width>
+              <line_color>
+                <color name="PRIMARY-GROUP-BORDER" red="151" green="188" blue="202">
+                </color>
+              </line_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+              <corner_width>10</corner_width>
+              <corner_height>10</corner_height>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_Status</name>
+              <class>HEADER2</class>
+              <text>System</text>
+              <width>1370</width>
+              <height>35</height>
+              <font use_class="true">
+                <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                </font>
+              </font>
+              <foreground_color>
+                <color name="HEADER-TEXT" red="0" green="0" blue="0">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="group" version="2.0.0">
+              <name>Group</name>
+              <x>290</x>
+              <y>35</y>
+              <width>200</width>
+              <height>155</height>
+              <style>3</style>
+              <transparent>true</transparent>
+              <widget type="rectangle" version="2.0.0">
+                <name>Background_3</name>
+                <width>200</width>
+                <height>155</height>
+                <line_width>1</line_width>
+                <line_color>
+                  <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                  </color>
+                </line_color>
+                <background_color>
+                  <color name="BACKGROUND" red="220" green="225" blue="221">
+                  </color>
+                </background_color>
+                <corner_width>10</corner_width>
+                <corner_height>10</corner_height>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>LB_Header_3</name>
+                <class>HEADER2</class>
+                <text>Operation Mode</text>
+                <width>200</width>
+                <height>37</height>
+                <font use_class="true">
+                  <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                  </font>
+                </font>
+                <foreground_color>
+                  <color name="HEADER-TEXT" red="0" green="0" blue="0">
+                  </color>
+                </foreground_color>
+                <background_color>
+                  <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                  </color>
+                </background_color>
+                <horizontal_alignment>1</horizontal_alignment>
+                <vertical_alignment>1</vertical_alignment>
+              </widget>
+              <widget type="action_button" version="3.0.0">
+                <name>BTN_AUTO</name>
+                <actions>
+                  <action type="write_pv">
+                    <pv_name>$(pv_name)</pv_name>
+                    <value>1</value>
+                    <description>Write PV</description>
+                  </action>
+                </actions>
+                <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Cmd_Auto</pv_name>
+                <text>AUTO</text>
+                <x>30</x>
+                <y>45</y>
+                <width>90</width>
+                <tooltip>AUTO operation mode</tooltip>
+              </widget>
+              <widget type="action_button" version="3.0.0">
+                <name>BTN_MANUAL</name>
+                <actions>
+                  <action type="write_pv">
+                    <pv_name>$(pv_name)</pv_name>
+                    <value>1</value>
+                    <description>Write PV</description>
+                  </action>
+                </actions>
+                <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Cmd_Manual</pv_name>
+                <text>MANUAL</text>
+                <x>30</x>
+                <y>85</y>
+                <width>90</width>
+                <tooltip>MANUAL operation mode</tooltip>
+              </widget>
+              <widget type="led" version="2.0.0">
+                <name>LED_Auto</name>
+                <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OpMode_Auto</pv_name>
+                <x>140</x>
+                <y>45</y>
+                <width>25</width>
+                <height>25</height>
+                <off_color>
+                  <color name="Grid" red="169" green="169" blue="169">
+                  </color>
+                </off_color>
+                <tooltip>Operation mode</tooltip>
+              </widget>
+              <widget type="led" version="2.0.0">
+                <name>LED_Manual</name>
+                <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OpMode_Manual</pv_name>
+                <x>140</x>
+                <y>85</y>
+                <width>25</width>
+                <height>25</height>
+                <off_color>
+                  <color name="Grid" red="169" green="169" blue="169">
+                  </color>
+                </off_color>
+                <tooltip>Operation mode</tooltip>
+              </widget>
+            </widget>
+            <widget type="group" version="2.0.0">
+              <name>Group</name>
+              <x>510</x>
+              <y>35</y>
+              <width>268</width>
+              <height>155</height>
+              <style>3</style>
+              <transparent>true</transparent>
+              <widget type="rectangle" version="2.0.0">
+                <name>Background_4</name>
+                <width>268</width>
+                <height>155</height>
+                <line_width>1</line_width>
+                <line_color>
+                  <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                  </color>
+                </line_color>
+                <background_color>
+                  <color name="BACKGROUND" red="220" green="225" blue="221">
+                  </color>
+                </background_color>
+                <corner_width>10</corner_width>
+                <corner_height>10</corner_height>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>LB_Header_4</name>
+                <class>HEADER2</class>
+                <text>Process Manual Actions</text>
+                <width>268</width>
+                <height>37</height>
+                <font use_class="true">
+                  <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                  </font>
+                </font>
+                <foreground_color>
+                  <color name="HEADER-TEXT" red="0" green="0" blue="0">
+                  </color>
+                </foreground_color>
+                <background_color>
+                  <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                  </color>
+                </background_color>
+                <horizontal_alignment>1</horizontal_alignment>
+                <vertical_alignment>1</vertical_alignment>
+              </widget>
+              <widget type="action_button" version="3.0.0">
+                <name>BTN_FORCE_TRANS</name>
+                <actions>
+                  <action type="write_pv">
+                    <pv_name>$(pv_name)</pv_name>
+                    <value>1</value>
+                    <description>Write PV</description>
+                  </action>
+                </actions>
+                <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:SqCmdAdv</pv_name>
+                <text>FORCE TRANSITION</text>
+                <x>39</x>
+                <y>41</y>
+                <width>190</width>
+                <tooltip>Force CLOSE</tooltip>
+              </widget>
+              <widget type="action_button" version="3.0.0">
+                <name>BTN_ABORT_LUBE</name>
+                <actions>
+                  <action type="write_pv">
+                    <pv_name>$(pv_name)</pv_name>
+                    <value>1</value>
+                    <description>Write PV</description>
+                  </action>
+                </actions>
+                <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:SqCmdAbort</pv_name>
+                <text>ABORT</text>
+                <x>39</x>
+                <y>81</y>
+                <width>190</width>
+                <rules>
+                  <rule name="EnableRule" prop_id="enabled" out_exp="false">
+                    <exp bool_exp="pv0 == 1">
+                      <value>true</value>
+                    </exp>
+                    <exp bool_exp="pv0 == 0">
+                      <value>false</value>
+                    </exp>
+                    <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPIEnSqCmdAbort_Btn</pv_name>
+                  </rule>
+                </rules>
+                <tooltip>Force CLOSE</tooltip>
+              </widget>
+            </widget>
+            <widget type="group" version="2.0.0">
+              <name>Group</name>
+              <x>18</x>
+              <y>36</y>
+              <width>250</width>
+              <height>155</height>
+              <style>3</style>
+              <transparent>true</transparent>
+              <widget type="rectangle" version="2.0.0">
+                <name>Background_5</name>
+                <width>250</width>
+                <height>155</height>
+                <line_width>1</line_width>
+                <line_color>
+                  <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                  </color>
+                </line_color>
+                <background_color>
+                  <color name="BACKGROUND" red="220" green="225" blue="221">
+                  </color>
+                </background_color>
+                <corner_width>10</corner_width>
+                <corner_height>10</corner_height>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>LB_Header_5</name>
+                <class>HEADER2</class>
+                <text>Process Overview</text>
+                <width>250</width>
+                <height>37</height>
+                <font use_class="true">
+                  <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                  </font>
+                </font>
+                <foreground_color>
+                  <color name="HEADER-TEXT" red="0" green="0" blue="0">
+                  </color>
+                </foreground_color>
+                <background_color>
+                  <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                  </color>
+                </background_color>
+                <horizontal_alignment>1</horizontal_alignment>
+                <vertical_alignment>1</vertical_alignment>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>Label_1</name>
+                <text>State</text>
+                <x>10</x>
+                <y>55</y>
+                <width>90</width>
+              </widget>
+              <widget type="textupdate" version="2.0.0">
+                <name>Text Update_2</name>
+                <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:ProcessCurrStep</pv_name>
+                <x>110</x>
+                <y>85</y>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>Label_2</name>
+                <text>Step</text>
+                <x>10</x>
+                <y>85</y>
+                <width>90</width>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>MSG_InhibitForce</name>
+                <text>Text</text>
+                <x>110</x>
+                <y>32</y>
+                <width>130</width>
+                <height>42</height>
+                <background_color>
+                  <color name="Read_Background" red="230" green="235" blue="232">
+                  </color>
+                </background_color>
+                <transparent>false</transparent>
+                <vertical_alignment>1</vertical_alignment>
+                <rules>
+                  <rule name="Display State" prop_id="text" out_exp="false">
+                    <exp bool_exp="pv0 == 0">
+                      <value>IDLE</value>
+                    </exp>
+                    <exp bool_exp="pv0 == 1">
+                      <value>XY Trans Sys Lubricaton</value>
+                    </exp>
+                    <exp bool_exp="pv0 == 2">
+                      <value>Z Trans Sys Lubricaton</value>
+                    </exp>
+                    <exp bool_exp="pv0 == 3">
+                      <value>Torq Motor Group Lubricaton</value>
+                    </exp>
+                    <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:ProcessState_Int</pv_name>
+                  </rule>
+                </rules>
+              </widget>
+              <widget type="textupdate" version="2.0.0">
+                <name>Text Update_3</name>
+                <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:CurrStepElapsedTime</pv_name>
+                <x>110</x>
+                <y>114</y>
+                <show_units>false</show_units>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>Label_3</name>
+                <text>Elapsed Time</text>
+                <x>10</x>
+                <y>114</y>
+                <width>90</width>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>Units_20</name>
+                <text>[s]</text>
+                <x>220</x>
+                <y>114</y>
+                <width>20</width>
+              </widget>
+            </widget>
+            <widget type="group" version="2.0.0">
+              <name>Group_14</name>
+              <x>798</x>
+              <y>36</y>
+              <width>268</width>
+              <height>155</height>
+              <style>3</style>
+              <transparent>true</transparent>
+              <widget type="rectangle" version="2.0.0">
+                <name>Background_6</name>
+                <width>268</width>
+                <height>155</height>
+                <line_width>1</line_width>
+                <line_color>
+                  <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                  </color>
+                </line_color>
+                <background_color>
+                  <color name="BACKGROUND" red="220" green="225" blue="221">
+                  </color>
+                </background_color>
+                <corner_width>10</corner_width>
+                <corner_height>10</corner_height>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>LB_Header_6</name>
+                <class>HEADER2</class>
+                <text>Grease System 01</text>
+                <width>268</width>
+                <height>37</height>
+                <font use_class="true">
+                  <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                  </font>
+                </font>
+                <foreground_color>
+                  <color name="HEADER-TEXT" red="0" green="0" blue="0">
+                  </color>
+                </foreground_color>
+                <background_color>
+                  <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                  </color>
+                </background_color>
+                <horizontal_alignment>1</horizontal_alignment>
+                <vertical_alignment>1</vertical_alignment>
+              </widget>
+              <widget type="group" version="2.0.0">
+                <name>Group</name>
+                <x>149</x>
+                <y>50</y>
+                <width>98</width>
+                <height>25</height>
+                <style>3</style>
+                <transparent>true</transparent>
+                <widget type="led" version="2.0.0">
+                  <name>LED_Auto_1</name>
+                  <pv_name>${SecSub}:Proc-YSV-013a:SelectedCmd</pv_name>
+                  <x>73</x>
+                  <width>25</width>
+                  <height>25</height>
+                  <off_color>
+                    <color name="Grid" red="169" green="169" blue="169">
+                    </color>
+                  </off_color>
+                  <tooltip>Operation mode</tooltip>
+                </widget>
+                <widget type="label" version="2.0.0">
+                  <name>Label_4</name>
+                  <text>YSV-013a</text>
+                  <y>2</y>
+                  <width>80</width>
+                </widget>
+              </widget>
+              <widget type="group" version="2.0.0">
+                <name>Group_1</name>
+                <x>149</x>
+                <y>82</y>
+                <width>98</width>
+                <height>25</height>
+                <style>3</style>
+                <transparent>true</transparent>
+                <widget type="led" version="2.0.0">
+                  <name>LED_Auto_2</name>
+                  <pv_name>${SecSub}:Proc-YSV-013b:SelectedCmd</pv_name>
+                  <x>73</x>
+                  <width>25</width>
+                  <height>25</height>
+                  <off_color>
+                    <color name="Grid" red="169" green="169" blue="169">
+                    </color>
+                  </off_color>
+                  <tooltip>Operation mode</tooltip>
+                </widget>
+                <widget type="label" version="2.0.0">
+                  <name>Label_5</name>
+                  <text>YSV-013b</text>
+                  <y>2</y>
+                  <width>80</width>
+                </widget>
+              </widget>
+              <widget type="group" version="2.0.0">
+                <name>Group_2</name>
+                <x>149</x>
+                <y>116</y>
+                <width>98</width>
+                <height>25</height>
+                <style>3</style>
+                <transparent>true</transparent>
+                <widget type="led" version="2.0.0">
+                  <name>LED_Auto_3</name>
+                  <pv_name>${SecSub}:Proc-YSV-013c:SelectedCmd</pv_name>
+                  <x>73</x>
+                  <width>25</width>
+                  <height>25</height>
+                  <off_color>
+                    <color name="Grid" red="169" green="169" blue="169">
+                    </color>
+                  </off_color>
+                  <tooltip>Operation mode</tooltip>
+                </widget>
+                <widget type="label" version="2.0.0">
+                  <name>Label_6</name>
+                  <text>YSV-013c</text>
+                  <y>2</y>
+                  <width>80</width>
+                </widget>
+              </widget>
+              <widget type="group" version="2.0.0">
+                <name>Group_12</name>
+                <x>19</x>
+                <y>52</y>
+                <width>98</width>
+                <height>25</height>
+                <style>3</style>
+                <transparent>true</transparent>
+                <widget type="led" version="2.0.0">
+                  <name>LED_Auto_7</name>
+                  <pv_name>${SecSub}:Proc-P-013:SelectedCmd</pv_name>
+                  <x>73</x>
+                  <width>25</width>
+                  <height>25</height>
+                  <off_color>
+                    <color name="Grid" red="169" green="169" blue="169">
+                    </color>
+                  </off_color>
+                  <tooltip>Operation mode</tooltip>
+                </widget>
+                <widget type="label" version="2.0.0">
+                  <name>Label_10</name>
+                  <text>P-013</text>
+                  <y>2</y>
+                  <width>80</width>
+                </widget>
+              </widget>
+            </widget>
+            <widget type="group" version="2.0.0">
+              <name>Group_15</name>
+              <x>1088</x>
+              <y>36</y>
+              <width>268</width>
+              <height>155</height>
+              <style>3</style>
+              <transparent>true</transparent>
+              <widget type="rectangle" version="2.0.0">
+                <name>Background_7</name>
+                <width>268</width>
+                <height>155</height>
+                <line_width>1</line_width>
+                <line_color>
+                  <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                  </color>
+                </line_color>
+                <background_color>
+                  <color name="BACKGROUND" red="220" green="225" blue="221">
+                  </color>
+                </background_color>
+                <corner_width>10</corner_width>
+                <corner_height>10</corner_height>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>LB_Header_7</name>
+                <class>HEADER2</class>
+                <text>Grease System 02</text>
+                <width>268</width>
+                <height>37</height>
+                <font use_class="true">
+                  <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                  </font>
+                </font>
+                <foreground_color>
+                  <color name="HEADER-TEXT" red="0" green="0" blue="0">
+                  </color>
+                </foreground_color>
+                <background_color>
+                  <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                  </color>
+                </background_color>
+                <horizontal_alignment>1</horizontal_alignment>
+                <vertical_alignment>1</vertical_alignment>
+              </widget>
+              <widget type="group" version="2.0.0">
+                <name>Group_13</name>
+                <x>20</x>
+                <y>50</y>
+                <width>98</width>
+                <height>25</height>
+                <style>3</style>
+                <transparent>true</transparent>
+                <widget type="led" version="2.0.0">
+                  <name>LED_Auto_8</name>
+                  <pv_name>${SecSub}:Proc-P-014:SelectedCmd</pv_name>
+                  <x>73</x>
+                  <width>25</width>
+                  <height>25</height>
+                  <off_color>
+                    <color name="Grid" red="169" green="169" blue="169">
+                    </color>
+                  </off_color>
+                  <tooltip>Operation mode</tooltip>
+                </widget>
+                <widget type="label" version="2.0.0">
+                  <name>Label_11</name>
+                  <text>P-014</text>
+                  <y>2</y>
+                  <width>80</width>
+                </widget>
+              </widget>
+              <widget type="group" version="2.0.0">
+                <name>Group_3</name>
+                <x>150</x>
+                <y>50</y>
+                <width>98</width>
+                <height>25</height>
+                <style>3</style>
+                <transparent>true</transparent>
+                <widget type="led" version="2.0.0">
+                  <name>LED_Auto_4</name>
+                  <pv_name>${SecSub}:Proc-YSV-014a:SelectedCmd</pv_name>
+                  <x>73</x>
+                  <width>25</width>
+                  <height>25</height>
+                  <off_color>
+                    <color name="Grid" red="169" green="169" blue="169">
+                    </color>
+                  </off_color>
+                  <tooltip>Operation mode</tooltip>
+                </widget>
+                <widget type="label" version="2.0.0">
+                  <name>Label_7</name>
+                  <text>YSV-014a</text>
+                  <y>2</y>
+                  <width>80</width>
+                </widget>
+              </widget>
+              <widget type="group" version="2.0.0">
+                <name>Group_4</name>
+                <x>150</x>
+                <y>82</y>
+                <width>98</width>
+                <height>25</height>
+                <style>3</style>
+                <transparent>true</transparent>
+                <widget type="led" version="2.0.0">
+                  <name>LED_Auto_5</name>
+                  <pv_name>${SecSub}:Proc-YSV-014b:SelectedCmd</pv_name>
+                  <x>73</x>
+                  <width>25</width>
+                  <height>25</height>
+                  <off_color>
+                    <color name="Grid" red="169" green="169" blue="169">
+                    </color>
+                  </off_color>
+                  <tooltip>Operation mode</tooltip>
+                </widget>
+                <widget type="label" version="2.0.0">
+                  <name>Label_8</name>
+                  <text>YSV-014b</text>
+                  <y>2</y>
+                  <width>80</width>
+                </widget>
+              </widget>
+              <widget type="group" version="2.0.0">
+                <name>Group_11</name>
+                <x>150</x>
+                <y>116</y>
+                <width>98</width>
+                <height>25</height>
+                <style>3</style>
+                <transparent>true</transparent>
+                <widget type="led" version="2.0.0">
+                  <name>LED_Auto_6</name>
+                  <pv_name>${SecSub}:Proc-YSV-014c:SelectedCmd</pv_name>
+                  <x>73</x>
+                  <width>25</width>
+                  <height>25</height>
+                  <off_color>
+                    <color name="Grid" red="169" green="169" blue="169">
+                    </color>
+                  </off_color>
+                  <tooltip>Operation mode</tooltip>
+                </widget>
+                <widget type="label" version="2.0.0">
+                  <name>Label_9</name>
+                  <text>YSV-014c</text>
+                  <y>2</y>
+                  <width>80</width>
+                </widget>
+              </widget>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>group.Z</name>
+            <x>488</x>
+            <y>239</y>
+            <width>450</width>
+            <height>520</height>
+            <style>3</style>
+            <transparent>true</transparent>
+            <widget type="rectangle" version="2.0.0">
+              <name>Background_12</name>
+              <width>450</width>
+              <height>590</height>
+              <line_width>0</line_width>
+              <line_color>
+                <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                </color>
+              </line_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+              <corner_width>10</corner_width>
+              <corner_height>10</corner_height>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_Header_12</name>
+              <class>HEADER2</class>
+              <text>Z Translation System Lubrication</text>
+              <x>83</x>
+              <width>285</width>
+              <height>70</height>
+              <font use_class="true">
+                <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                </font>
+              </font>
+              <foreground_color>
+                <color name="HEADER-TEXT" red="0" green="0" blue="0">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="group" version="2.0.0">
+              <name>Group_5</name>
+              <x>10</x>
+              <y>70</y>
+              <width>430</width>
+              <height>250</height>
+              <style>3</style>
+              <transparent>true</transparent>
+              <widget type="rectangle" version="2.0.0">
+                <name>Background_13</name>
+                <width>430</width>
+                <height>250</height>
+                <line_width>1</line_width>
+                <line_color>
+                  <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                  </color>
+                </line_color>
+                <background_color>
+                  <color name="BACKGROUND" red="220" green="225" blue="221">
+                  </color>
+                </background_color>
+                <corner_width>10</corner_width>
+                <corner_height>10</corner_height>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>LB_Header_13</name>
+                <class>HEADER2</class>
+                <text>Control</text>
+                <width>430</width>
+                <height>37</height>
+                <font use_class="true">
+                  <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                  </font>
+                </font>
+                <foreground_color>
+                  <color name="HEADER-TEXT" red="0" green="0" blue="0">
+                  </color>
+                </foreground_color>
+                <background_color>
+                  <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                  </color>
+                </background_color>
+                <horizontal_alignment>1</horizontal_alignment>
+                <vertical_alignment>1</vertical_alignment>
+              </widget>
+              <widget type="action_button" version="3.0.0">
+                <name>BTN_MAN_START_1</name>
+                <actions>
+                  <action type="write_pv">
+                    <pv_name>$(pv_name)</pv_name>
+                    <value>1</value>
+                    <description>Write PV</description>
+                  </action>
+                </actions>
+                <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:ZBrSq_CmdSt</pv_name>
+                <text>MANUAL START</text>
+                <x>140</x>
+                <y>208</y>
+                <width>150</width>
+                <height>33</height>
+                <rules>
+                  <rule name="EnableRule" prop_id="enabled" out_exp="false">
+                    <exp bool_exp="pv0 == 1">
+                      <value>true</value>
+                    </exp>
+                    <exp bool_exp="pv0 == 0">
+                      <value>false</value>
+                    </exp>
+                    <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPIEnZBrSq_Btn</pv_name>
+                  </rule>
+                </rules>
+                <tooltip>Manual START</tooltip>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>VolDesc_17</name>
+                <text>Setpoint</text>
+                <x>205</x>
+                <y>35</y>
+                <width>73</width>
+                <horizontal_alignment>2</horizontal_alignment>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>VolDesc_18</name>
+                <text>Readback</text>
+                <x>291</x>
+                <y>35</y>
+                <width>73</width>
+                <horizontal_alignment>2</horizontal_alignment>
+              </widget>
+            </widget>
+            <widget type="group" version="2.0.0">
+              <name>Group_6</name>
+              <x>10</x>
+              <y>340</y>
+              <width>430</width>
+              <height>165</height>
+              <style>3</style>
+              <transparent>true</transparent>
+              <widget type="rectangle" version="2.0.0">
+                <name>Background_14</name>
+                <width>430</width>
+                <height>230</height>
+                <line_width>1</line_width>
+                <line_color>
+                  <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                  </color>
+                </line_color>
+                <background_color>
+                  <color name="BACKGROUND" red="220" green="225" blue="221">
+                  </color>
+                </background_color>
+                <corner_width>10</corner_width>
+                <corner_height>10</corner_height>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>LB_Header_14</name>
+                <class>HEADER2</class>
+                <text>Volume Meters</text>
+                <width>430</width>
+                <height>37</height>
+                <font use_class="true">
+                  <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                  </font>
+                </font>
+                <foreground_color>
+                  <color name="HEADER-TEXT" red="0" green="0" blue="0">
+                  </color>
+                </foreground_color>
+                <background_color>
+                  <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                  </color>
+                </background_color>
+                <horizontal_alignment>1</horizontal_alignment>
+                <vertical_alignment>1</vertical_alignment>
+              </widget>
+              <widget type="group" version="2.0.0">
+                <name>VolumeMeter</name>
+                <x>10</x>
+                <y>70</y>
+                <width>402</width>
+                <height>30</height>
+                <style>3</style>
+                <transparent>true</transparent>
+                <widget type="textupdate" version="2.0.0">
+                  <name>Monitor_10</name>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:VolLubLiftGrp_Meas</pv_name>
+                  <x>235</x>
+                  <y>5</y>
+                  <width>60</width>
+                  <precision>1</precision>
+                  <show_units>false</show_units>
+                </widget>
+                <widget type="label" version="2.0.0">
+                  <name>Units_1</name>
+                  <text>[cm3]</text>
+                  <x>300</x>
+                  <y>5</y>
+                  <width>40</width>
+                </widget>
+                <widget type="action_button" version="3.0.0">
+                  <name>BTN_Reset</name>
+                  <actions>
+                    <action type="write_pv">
+                      <pv_name>$(pv_name)</pv_name>
+                      <value>1</value>
+                      <description>Write PV</description>
+                    </action>
+                  </actions>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:LiftGrpLubInt_CmdR</pv_name>
+                  <text>Reset</text>
+                  <x>352</x>
+                  <width>50</width>
+                  <tooltip>Reset meter to zero</tooltip>
+                </widget>
+                <widget type="textupdate" version="2.0.0">
+                  <name>Monitor_26</name>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:VolLubLiftGrp_Model</pv_name>
+                  <x>150</x>
+                  <y>5</y>
+                  <width>60</width>
+                  <precision>1</precision>
+                  <show_units>false</show_units>
+                </widget>
+                <widget type="label" version="2.0.0">
+                  <name>VolDesc_1</name>
+                  <text>Lifting Group</text>
+                  <y>5</y>
+                  <width>150</width>
+                </widget>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>VolDesc_11</name>
+                <text>Modelled</text>
+                <x>150</x>
+                <y>40</y>
+                <width>73</width>
+                <horizontal_alignment>2</horizontal_alignment>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>VolDesc_12</name>
+                <text>Measured</text>
+                <x>236</x>
+                <y>40</y>
+                <width>73</width>
+                <horizontal_alignment>2</horizontal_alignment>
+              </widget>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>group.X</name>
+            <x>18</x>
+            <y>239</y>
+            <width>450</width>
+            <height>520</height>
+            <style>3</style>
+            <transparent>true</transparent>
+            <widget type="rectangle" version="2.0.0">
+              <name>Background_15</name>
+              <width>450</width>
+              <height>590</height>
+              <line_width>0</line_width>
+              <line_color>
+                <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                </color>
+              </line_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+              <corner_width>10</corner_width>
+              <corner_height>10</corner_height>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_Header_15</name>
+              <class>HEADER2</class>
+              <text>X Translation System Lubrication</text>
+              <x>83</x>
+              <width>285</width>
+              <height>70</height>
+              <font use_class="true">
+                <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                </font>
+              </font>
+              <foreground_color>
+                <color name="HEADER-TEXT" red="0" green="0" blue="0">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="group" version="2.0.0">
+              <name>Group_7</name>
+              <x>10</x>
+              <y>70</y>
+              <width>430</width>
+              <height>250</height>
+              <style>3</style>
+              <transparent>true</transparent>
+              <widget type="rectangle" version="2.0.0">
+                <name>Background_16</name>
+                <width>430</width>
+                <height>250</height>
+                <line_width>1</line_width>
+                <line_color>
+                  <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                  </color>
+                </line_color>
+                <background_color>
+                  <color name="BACKGROUND" red="220" green="225" blue="221">
+                  </color>
+                </background_color>
+                <corner_width>10</corner_width>
+                <corner_height>10</corner_height>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>LB_Header_16</name>
+                <class>HEADER2</class>
+                <text>Control</text>
+                <width>430</width>
+                <height>37</height>
+                <font use_class="true">
+                  <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                  </font>
+                </font>
+                <foreground_color>
+                  <color name="HEADER-TEXT" red="0" green="0" blue="0">
+                  </color>
+                </foreground_color>
+                <background_color>
+                  <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                  </color>
+                </background_color>
+                <horizontal_alignment>1</horizontal_alignment>
+                <vertical_alignment>1</vertical_alignment>
+              </widget>
+              <widget type="action_button" version="3.0.0">
+                <name>BTN_MAN_START_2</name>
+                <actions>
+                  <action type="write_pv">
+                    <pv_name>$(pv_name)</pv_name>
+                    <value>1</value>
+                    <description>Write PV</description>
+                  </action>
+                </actions>
+                <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:XYBrSq_CmdSt</pv_name>
+                <text>MANUAL START</text>
+                <x>140</x>
+                <y>208</y>
+                <width>150</width>
+                <height>33</height>
+                <rules>
+                  <rule name="EnableRule" prop_id="enabled" out_exp="false">
+                    <exp bool_exp="pv0 == 1">
+                      <value>true</value>
+                    </exp>
+                    <exp bool_exp="pv0 == 0">
+                      <value>false</value>
+                    </exp>
+                    <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPIEnXYBrSq_Btn</pv_name>
+                  </rule>
+                </rules>
+                <tooltip>Manual START</tooltip>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>VolDesc_15</name>
+                <text>Setpoint</text>
+                <x>205</x>
+                <y>35</y>
+                <width>73</width>
+                <horizontal_alignment>2</horizontal_alignment>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>VolDesc_16</name>
+                <text>Readback</text>
+                <x>296</x>
+                <y>35</y>
+                <width>73</width>
+                <horizontal_alignment>2</horizontal_alignment>
+              </widget>
+            </widget>
+            <widget type="group" version="2.0.0">
+              <name>Group_8</name>
+              <x>10</x>
+              <y>340</y>
+              <width>430</width>
+              <height>165</height>
+              <style>3</style>
+              <transparent>true</transparent>
+              <widget type="rectangle" version="2.0.0">
+                <name>Background_17</name>
+                <width>430</width>
+                <height>230</height>
+                <line_width>1</line_width>
+                <line_color>
+                  <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                  </color>
+                </line_color>
+                <background_color>
+                  <color name="BACKGROUND" red="220" green="225" blue="221">
+                  </color>
+                </background_color>
+                <corner_width>10</corner_width>
+                <corner_height>10</corner_height>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>LB_Header_17</name>
+                <class>HEADER2</class>
+                <text>Volume Meters</text>
+                <width>430</width>
+                <height>37</height>
+                <font use_class="true">
+                  <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                  </font>
+                </font>
+                <foreground_color>
+                  <color name="HEADER-TEXT" red="0" green="0" blue="0">
+                  </color>
+                </foreground_color>
+                <background_color>
+                  <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                  </color>
+                </background_color>
+                <horizontal_alignment>1</horizontal_alignment>
+                <vertical_alignment>1</vertical_alignment>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>VolDesc_10</name>
+                <text>Measured</text>
+                <x>232</x>
+                <y>40</y>
+                <width>73</width>
+                <horizontal_alignment>2</horizontal_alignment>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>VolDesc_8</name>
+                <text>Modelled</text>
+                <x>146</x>
+                <y>40</y>
+                <width>73</width>
+                <horizontal_alignment>2</horizontal_alignment>
+              </widget>
+              <widget type="group" version="2.0.0">
+                <name>VolumeMeter_2</name>
+                <x>10</x>
+                <y>70</y>
+                <width>402</width>
+                <height>30</height>
+                <style>3</style>
+                <transparent>true</transparent>
+                <widget type="textupdate" version="2.0.0">
+                  <name>Monitor_21</name>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:VolLubCarr1_Meas</pv_name>
+                  <x>235</x>
+                  <y>5</y>
+                  <width>60</width>
+                  <precision>1</precision>
+                  <show_units>false</show_units>
+                </widget>
+                <widget type="label" version="2.0.0">
+                  <name>Units_21</name>
+                  <text>[cm3]</text>
+                  <x>300</x>
+                  <y>5</y>
+                  <width>40</width>
+                </widget>
+                <widget type="action_button" version="3.0.0">
+                  <name>BTN_Reset_5</name>
+                  <actions>
+                    <action type="write_pv">
+                      <pv_name>$(pv_name)</pv_name>
+                      <value>1</value>
+                      <description>Write PV</description>
+                    </action>
+                  </actions>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Carr1LubInt_CmdR</pv_name>
+                  <text>Reset</text>
+                  <x>352</x>
+                  <width>50</width>
+                  <rules>
+                    <rule name="EnableRule" prop_id="enabled" out_exp="false">
+                      <exp bool_exp="pv0 == 1">
+                        <value>true</value>
+                      </exp>
+                      <exp bool_exp="pv0 == 0">
+                        <value>false</value>
+                      </exp>
+                    </rule>
+                  </rules>
+                  <tooltip>Reset meter to zero</tooltip>
+                </widget>
+                <widget type="label" version="2.0.0">
+                  <name>VolDesc_5</name>
+                  <text>Carriage 1</text>
+                  <y>5</y>
+                  <width>200</width>
+                </widget>
+                <widget type="textupdate" version="2.0.0">
+                  <name>Monitor_30</name>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:VolLubCarr1_Model</pv_name>
+                  <x>150</x>
+                  <y>5</y>
+                  <width>60</width>
+                  <precision>1</precision>
+                  <show_units>false</show_units>
+                </widget>
+              </widget>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>group.TorqMotor</name>
+            <x>958</x>
+            <y>239</y>
+            <width>450</width>
+            <height>520</height>
+            <style>3</style>
+            <transparent>true</transparent>
+            <widget type="rectangle" version="2.0.0">
+              <name>Background_18</name>
+              <width>450</width>
+              <height>590</height>
+              <line_width>0</line_width>
+              <line_color>
+                <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                </color>
+              </line_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+              <corner_width>10</corner_width>
+              <corner_height>10</corner_height>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_Header_18</name>
+              <class>HEADER2</class>
+              <text>Torque Motor Group Lubrication</text>
+              <x>83</x>
+              <width>285</width>
+              <height>70</height>
+              <font use_class="true">
+                <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                </font>
+              </font>
+              <foreground_color>
+                <color name="HEADER-TEXT" red="0" green="0" blue="0">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="group" version="2.0.0">
+              <name>Group_9</name>
+              <x>10</x>
+              <y>70</y>
+              <width>430</width>
+              <height>250</height>
+              <style>3</style>
+              <transparent>true</transparent>
+              <widget type="rectangle" version="2.0.0">
+                <name>Background_19</name>
+                <width>430</width>
+                <height>250</height>
+                <line_width>1</line_width>
+                <line_color>
+                  <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                  </color>
+                </line_color>
+                <background_color>
+                  <color name="BACKGROUND" red="220" green="225" blue="221">
+                  </color>
+                </background_color>
+                <corner_width>10</corner_width>
+                <corner_height>10</corner_height>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>LB_Header_19</name>
+                <class>HEADER2</class>
+                <text>Control</text>
+                <width>430</width>
+                <height>37</height>
+                <font use_class="true">
+                  <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                  </font>
+                </font>
+                <foreground_color>
+                  <color name="HEADER-TEXT" red="0" green="0" blue="0">
+                  </color>
+                </foreground_color>
+                <background_color>
+                  <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                  </color>
+                </background_color>
+                <horizontal_alignment>1</horizontal_alignment>
+                <vertical_alignment>1</vertical_alignment>
+              </widget>
+              <widget type="action_button" version="3.0.0">
+                <name>BTN_MAN_START_3</name>
+                <actions>
+                  <action type="write_pv">
+                    <pv_name>$(pv_name)</pv_name>
+                    <value>1</value>
+                    <description>Write PV</description>
+                  </action>
+                </actions>
+                <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:MainBrSq_CmdSt</pv_name>
+                <text>MANUAL START</text>
+                <x>140</x>
+                <y>208</y>
+                <width>150</width>
+                <height>33</height>
+                <rules>
+                  <rule name="EnableRule" prop_id="enabled" out_exp="false">
+                    <exp bool_exp="pv0 == 1">
+                      <value>true</value>
+                    </exp>
+                    <exp bool_exp="pv0 == 0">
+                      <value>false</value>
+                    </exp>
+                    <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPIEnMainBrSq_Btn</pv_name>
+                  </rule>
+                </rules>
+                <tooltip>Manual START</tooltip>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>VolDesc_19</name>
+                <text>Setpoint</text>
+                <x>205</x>
+                <y>35</y>
+                <width>73</width>
+                <horizontal_alignment>2</horizontal_alignment>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>VolDesc_20</name>
+                <text>Readback</text>
+                <x>296</x>
+                <y>35</y>
+                <width>73</width>
+                <horizontal_alignment>2</horizontal_alignment>
+              </widget>
+            </widget>
+            <widget type="group" version="2.0.0">
+              <name>Group_10</name>
+              <x>10</x>
+              <y>340</y>
+              <width>430</width>
+              <height>165</height>
+              <style>3</style>
+              <transparent>true</transparent>
+              <widget type="rectangle" version="2.0.0">
+                <name>Background_20</name>
+                <width>430</width>
+                <height>230</height>
+                <line_width>1</line_width>
+                <line_color>
+                  <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                  </color>
+                </line_color>
+                <background_color>
+                  <color name="BACKGROUND" red="220" green="225" blue="221">
+                  </color>
+                </background_color>
+                <corner_width>10</corner_width>
+                <corner_height>10</corner_height>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>LB_Header_20</name>
+                <class>HEADER2</class>
+                <text>Volume Meters</text>
+                <width>430</width>
+                <height>37</height>
+                <font use_class="true">
+                  <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                  </font>
+                </font>
+                <foreground_color>
+                  <color name="HEADER-TEXT" red="0" green="0" blue="0">
+                  </color>
+                </foreground_color>
+                <background_color>
+                  <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                  </color>
+                </background_color>
+                <horizontal_alignment>1</horizontal_alignment>
+                <vertical_alignment>1</vertical_alignment>
+              </widget>
+              <widget type="group" version="2.0.0">
+                <name>VolumeMeter_4</name>
+                <x>10</x>
+                <y>70</y>
+                <width>402</width>
+                <height>30</height>
+                <style>3</style>
+                <transparent>true</transparent>
+                <widget type="textupdate" version="2.0.0">
+                  <name>Monitor_28</name>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:VolLubTorqM_Meas</pv_name>
+                  <x>235</x>
+                  <y>5</y>
+                  <width>60</width>
+                  <precision>1</precision>
+                  <show_units>false</show_units>
+                </widget>
+                <widget type="label" version="2.0.0">
+                  <name>Units_28</name>
+                  <text>[cm3]</text>
+                  <x>300</x>
+                  <y>5</y>
+                  <width>40</width>
+                </widget>
+                <widget type="action_button" version="3.0.0">
+                  <name>BTN_Reset_7</name>
+                  <actions>
+                    <action type="write_pv">
+                      <pv_name>$(pv_name)</pv_name>
+                      <value>1</value>
+                      <description>Write PV</description>
+                    </action>
+                  </actions>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:TorqMLubInt_CmdR</pv_name>
+                  <text>Reset</text>
+                  <x>352</x>
+                  <width>50</width>
+                  <tooltip>Reset meter to zero</tooltip>
+                </widget>
+                <widget type="label" version="2.0.0">
+                  <name>VolDesc_7</name>
+                  <text>Torque Motor Group</text>
+                  <y>5</y>
+                  <width>200</width>
+                </widget>
+                <widget type="textupdate" version="2.0.0">
+                  <name>Monitor_31</name>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:VolLubTorqM_Model</pv_name>
+                  <x>150</x>
+                  <y>5</y>
+                  <width>60</width>
+                  <precision>1</precision>
+                  <show_units>false</show_units>
+                </widget>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>VolDesc_13</name>
+                <text>Modelled</text>
+                <x>150</x>
+                <y>40</y>
+                <width>73</width>
+                <horizontal_alignment>2</horizontal_alignment>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>VolDesc_14</name>
+                <text>Measured</text>
+                <x>236</x>
+                <y>40</y>
+                <width>73</width>
+                <horizontal_alignment>2</horizontal_alignment>
+              </widget>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>VolumeMeter_6</name>
+            <x>508</x>
+            <y>733</y>
+            <width>402</width>
+            <height>30</height>
+            <style>3</style>
+            <transparent>true</transparent>
+            <widget type="textupdate" version="2.0.0">
+              <name>Monitor_19</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:VolLubWormG_Meas</pv_name>
+              <x>235</x>
+              <y>5</y>
+              <width>60</width>
+              <precision>1</precision>
+              <show_units>false</show_units>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Units_19</name>
+              <text>[cm3]</text>
+              <x>300</x>
+              <y>5</y>
+              <width>40</width>
+            </widget>
+            <widget type="action_button" version="3.0.0">
+              <name>BTN_Reset_9</name>
+              <actions>
+                <action type="write_pv">
+                  <pv_name>$(pv_name)</pv_name>
+                  <value>1</value>
+                  <description>Write PV</description>
+                </action>
+              </actions>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:WormGLubInt_CmdR</pv_name>
+              <text>Reset</text>
+              <x>352</x>
+              <width>50</width>
+              <tooltip>Reset meter to zero</tooltip>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>VolDesc_9</name>
+              <text>Worm Gear</text>
+              <y>5</y>
+              <width>150</width>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Monitor_29</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:VolLubWormG_Model</pv_name>
+              <x>150</x>
+              <y>5</y>
+              <width>60</width>
+              <precision>1</precision>
+              <show_units>false</show_units>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>VolumeMeter_1</name>
+            <x>508</x>
+            <y>691</y>
+            <width>402</width>
+            <height>30</height>
+            <style>3</style>
+            <transparent>true</transparent>
+            <widget type="textupdate" version="2.0.0">
+              <name>Monitor_15</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:VolLubWormGGrp_Meas</pv_name>
+              <x>235</x>
+              <y>5</y>
+              <width>60</width>
+              <precision>1</precision>
+              <show_units>false</show_units>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Units_15</name>
+              <text>[cm3]</text>
+              <x>300</x>
+              <y>5</y>
+              <width>40</width>
+            </widget>
+            <widget type="action_button" version="3.0.0">
+              <name>BTN_Reset_4</name>
+              <actions>
+                <action type="write_pv">
+                  <pv_name>$(pv_name)</pv_name>
+                  <value>1</value>
+                  <description>Write PV</description>
+                </action>
+              </actions>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:WormGGrpLubInt_CmdR</pv_name>
+              <text>Reset</text>
+              <x>352</x>
+              <width>50</width>
+              <tooltip>Reset meter to zero</tooltip>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>VolDesc_4</name>
+              <text>Worm Gear Group</text>
+              <y>5</y>
+              <width>150</width>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Monitor_27</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:VolLubWormGGrp_Model</pv_name>
+              <x>150</x>
+              <y>5</y>
+              <width>60</width>
+              <precision>1</precision>
+              <show_units>false</show_units>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>VolumeMeter_3</name>
+            <x>38</x>
+            <y>691</y>
+            <width>402</width>
+            <height>30</height>
+            <style>3</style>
+            <transparent>true</transparent>
+            <widget type="textupdate" version="2.0.0">
+              <name>Monitor_22</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:VolLubCarr2_Meas</pv_name>
+              <x>235</x>
+              <y>5</y>
+              <width>60</width>
+              <precision>1</precision>
+              <show_units>false</show_units>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Units_22</name>
+              <text>[cm3]</text>
+              <x>300</x>
+              <y>5</y>
+              <width>40</width>
+            </widget>
+            <widget type="action_button" version="3.0.0">
+              <name>BTN_Reset_6</name>
+              <actions>
+                <action type="write_pv">
+                  <pv_name>$(pv_name)</pv_name>
+                  <value>1</value>
+                  <description>Write PV</description>
+                </action>
+              </actions>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Carr2LubInt_CmdR</pv_name>
+              <text>Reset</text>
+              <x>352</x>
+              <width>50</width>
+              <tooltip>Reset meter to zero</tooltip>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>VolDesc_6</name>
+              <text>Carriage 2</text>
+              <y>5</y>
+              <width>200</width>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Monitor_25</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:VolLubCarr2_Model</pv_name>
+              <x>150</x>
+              <y>5</y>
+              <width>60</width>
+              <precision>1</precision>
+              <show_units>false</show_units>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>ControlParam_1</name>
+            <x>508</x>
+            <y>370</y>
+            <width>410</width>
+            <height>20</height>
+            <style>3</style>
+            <transparent>true</transparent>
+            <widget type="label" version="2.0.0">
+              <name>ParamDesc_7</name>
+              <text>Pump Start-up Time</text>
+              <width>210</width>
+            </widget>
+            <widget type="spinner" version="2.0.0">
+              <name>Control_7</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:P_ZBrSq_TPumpsOn</pv_name>
+              <x>210</x>
+              <width>80</width>
+              <precision>0</precision>
+              <scripts>
+                <script file="EmbeddedPy">
+                  <text><![CDATA[# Embedded python script
+from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
+
+RB_Value = PVUtil.getDouble(pvs[0])
+P_Value = PVUtil.getDouble(pvs[1])
+
+# If parameter value is 0, assume the IOC is not initialized, therefore initialize to the readback value from the PLC (status parameter). 
+# The PLC is programmed to readback the local variable value when EPICS parameter value is 0. 
+# The value of the local variable in the PLC is defined in the declaration as initial value).
+if P_Value == 0:
+    PVUtil.writePV(pvs[1].getName(), RB_Value, 5000)]]></text>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:RB_ZBrSq_TPumpsOn</pv_name>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:P_ZBrSq_TPumpsOn</pv_name>
+                </script>
+              </scripts>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Monitor_8</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:RB_ZBrSq_TPumpsOn</pv_name>
+              <x>300</x>
+              <width>60</width>
+              <precision>0</precision>
+              <show_units>false</show_units>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Units_8</name>
+              <text>[s]</text>
+              <x>370</x>
+              <width>40</width>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>ControlParam_2</name>
+            <x>508</x>
+            <y>400</y>
+            <width>410</width>
+            <height>20</height>
+            <style>3</style>
+            <transparent>true</transparent>
+            <widget type="label" version="2.0.0">
+              <name>ParamDesc_8</name>
+              <text>Grease Time Lifting Grp</text>
+              <width>210</width>
+            </widget>
+            <widget type="spinner" version="2.0.0">
+              <name>Control_8</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:P_ZBrSq_TLiftGrp</pv_name>
+              <x>210</x>
+              <width>80</width>
+              <precision>0</precision>
+              <scripts>
+                <script file="EmbeddedPy">
+                  <text><![CDATA[# Embedded python script
+from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
+
+RB_Value = PVUtil.getDouble(pvs[0])
+P_Value = PVUtil.getDouble(pvs[1])
+
+# If parameter value is 0, assume the IOC is not initialized, therefore initialize to the readback value from the PLC (status parameter). 
+# The PLC is programmed to readback the local variable value when EPICS parameter value is 0. 
+# The value of the local variable in the PLC is defined in the declaration as initial value).
+if P_Value == 0:
+    PVUtil.writePV(pvs[1].getName(), RB_Value, 5000)]]></text>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:RB_ZBrSq_TLiftGrp</pv_name>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:P_ZBrSq_TLiftGrp</pv_name>
+                </script>
+              </scripts>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Monitor_9</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:RB_ZBrSq_TLiftGrp</pv_name>
+              <x>300</x>
+              <width>60</width>
+              <precision>0</precision>
+              <show_units>false</show_units>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Units_9</name>
+              <text>[s]</text>
+              <x>370</x>
+              <width>40</width>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>ControlParam_3</name>
+            <x>508</x>
+            <y>430</y>
+            <width>410</width>
+            <height>20</height>
+            <style>3</style>
+            <transparent>true</transparent>
+            <widget type="label" version="2.0.0">
+              <name>ParamDesc_9</name>
+              <text>Grease Time Worm Gear Group</text>
+              <width>210</width>
+            </widget>
+            <widget type="spinner" version="2.0.0">
+              <name>Control_9</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:P_ZBrSq_TWormGGrp</pv_name>
+              <x>210</x>
+              <width>80</width>
+              <precision>0</precision>
+              <scripts>
+                <script file="EmbeddedPy">
+                  <text><![CDATA[# Embedded python script
+from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
+
+RB_Value = PVUtil.getDouble(pvs[0])
+P_Value = PVUtil.getDouble(pvs[1])
+
+# If parameter value is 0, assume the IOC is not initialized, therefore initialize to the readback value from the PLC (status parameter). 
+# The PLC is programmed to readback the local variable value when EPICS parameter value is 0. 
+# The value of the local variable in the PLC is defined in the declaration as initial value).
+if P_Value == 0:
+    PVUtil.writePV(pvs[1].getName(), RB_Value, 5000)]]></text>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:RB_ZBrSq_TWormGGrp</pv_name>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:P_ZBrSq_TWormGGrp</pv_name>
+                </script>
+              </scripts>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Monitor_11</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:RB_ZBrSq_TWormGGrp</pv_name>
+              <x>300</x>
+              <width>60</width>
+              <precision>0</precision>
+              <show_units>false</show_units>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Units_11</name>
+              <text>[s]</text>
+              <x>370</x>
+              <width>40</width>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>ControlParam_4</name>
+            <x>508</x>
+            <y>460</y>
+            <width>410</width>
+            <height>20</height>
+            <style>3</style>
+            <transparent>true</transparent>
+            <widget type="label" version="2.0.0">
+              <name>ParamDesc_10</name>
+              <text>Grease Time Worm Gear</text>
+              <width>210</width>
+            </widget>
+            <widget type="spinner" version="2.0.0">
+              <name>Control_10</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:P_ZBrSq_TWormG</pv_name>
+              <x>210</x>
+              <width>80</width>
+              <precision>0</precision>
+              <scripts>
+                <script file="EmbeddedPy">
+                  <text><![CDATA[# Embedded python script
+from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
+
+RB_Value = PVUtil.getDouble(pvs[0])
+P_Value = PVUtil.getDouble(pvs[1])
+
+# If parameter value is 0, assume the IOC is not initialized, therefore initialize to the readback value from the PLC (status parameter). 
+# The PLC is programmed to readback the local variable value when EPICS parameter value is 0. 
+# The value of the local variable in the PLC is defined in the declaration as initial value).
+if P_Value == 0:
+    PVUtil.writePV(pvs[1].getName(), RB_Value, 5000)]]></text>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:RB_ZBrSq_TWormG</pv_name>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:P_ZBrSq_TWormG</pv_name>
+                </script>
+              </scripts>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Monitor_12</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:RB_ZBrSq_TWormG</pv_name>
+              <x>300</x>
+              <width>60</width>
+              <precision>0</precision>
+              <show_units>false</show_units>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Units_12</name>
+              <text>[s]</text>
+              <x>370</x>
+              <width>40</width>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>ControlParam_5</name>
+            <x>508</x>
+            <y>490</y>
+            <width>410</width>
+            <height>20</height>
+            <style>3</style>
+            <transparent>true</transparent>
+            <widget type="label" version="2.0.0">
+              <name>ParamDesc_11</name>
+              <text>Pump Shut-down Time</text>
+              <width>210</width>
+            </widget>
+            <widget type="spinner" version="2.0.0">
+              <name>Control_11</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:P_ZBrSq_TPumpOnEnd</pv_name>
+              <x>210</x>
+              <width>80</width>
+              <precision>0</precision>
+              <scripts>
+                <script file="EmbeddedPy">
+                  <text><![CDATA[# Embedded python script
+from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
+
+RB_Value = PVUtil.getDouble(pvs[0])
+P_Value = PVUtil.getDouble(pvs[1])
+
+# If parameter value is 0, assume the IOC is not initialized, therefore initialize to the readback value from the PLC (status parameter). 
+# The PLC is programmed to readback the local variable value when EPICS parameter value is 0. 
+# The value of the local variable in the PLC is defined in the declaration as initial value).
+if P_Value == 0:
+    PVUtil.writePV(pvs[1].getName(), RB_Value, 5000)]]></text>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:RB_ZBrSq_TPumpOnEnd</pv_name>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:P_ZBrSq_TPumpOnEnd</pv_name>
+                </script>
+              </scripts>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Monitor_13</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:RB_ZBrSq_TPumpOnEnd</pv_name>
+              <x>300</x>
+              <width>60</width>
+              <precision>0</precision>
+              <show_units>false</show_units>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Units_13</name>
+              <text>[s]</text>
+              <x>370</x>
+              <width>40</width>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>ControlParam_6</name>
+            <x>38</x>
+            <y>370</y>
+            <width>410</width>
+            <height>20</height>
+            <style>3</style>
+            <transparent>true</transparent>
+            <widget type="label" version="2.0.0">
+              <name>ParamDesc_12</name>
+              <text>Pump Start-up Time</text>
+              <width>210</width>
+            </widget>
+            <widget type="spinner" version="2.0.0">
+              <name>Control_12</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:P_XYBrSq_TPumpOn</pv_name>
+              <x>210</x>
+              <width>80</width>
+              <actions>
+              </actions>
+              <scripts>
+                <script file="EmbeddedPy">
+                  <text><![CDATA[# Embedded python script
+from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
+
+RB_Value = PVUtil.getDouble(pvs[0])
+P_Value = PVUtil.getDouble(pvs[1])
+
+# If parameter value is 0, assume the IOC is not initialized, therefore initialize to the readback value from the PLC (status parameter). 
+# The PLC is programmed to readback the local variable value when EPICS parameter value is 0. 
+# The value of the local variable in the PLC is defined in the declaration as initial value).
+if P_Value == 0:
+    PVUtil.writePV(pvs[1].getName(), RB_Value, 5000)
+    ]]></text>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:RB_XYBrSq_TPumpOn</pv_name>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:P_XYBrSq_TPumpOn</pv_name>
+                </script>
+              </scripts>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Monitor_16</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:RB_XYBrSq_TPumpOn</pv_name>
+              <x>300</x>
+              <width>60</width>
+              <precision>0</precision>
+              <show_units>false</show_units>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Units_16</name>
+              <text>[s]</text>
+              <x>370</x>
+              <width>40</width>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>Grease Time Carriage 1</name>
+            <x>38</x>
+            <y>400</y>
+            <width>410</width>
+            <height>20</height>
+            <style>3</style>
+            <transparent>true</transparent>
+            <widget type="label" version="2.0.0">
+              <name>ParamDesc_13</name>
+              <text>Grease Time Carriage 1</text>
+              <width>210</width>
+            </widget>
+            <widget type="spinner" version="2.0.0">
+              <name>Control_13</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:P_XYBrSq_TCarr1</pv_name>
+              <x>210</x>
+              <width>80</width>
+              <scripts>
+                <script file="EmbeddedPy">
+                  <text><![CDATA[# Embedded python script
+from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
+
+RB_Value = PVUtil.getDouble(pvs[0])
+P_Value = PVUtil.getDouble(pvs[1])
+
+# If parameter value is 0, assume the IOC is not initialized, therefore initialize to the readback value from the PLC (status parameter). 
+# The PLC is programmed to readback the local variable value when EPICS parameter value is 0. 
+# The value of the local variable in the PLC is defined in the declaration as initial value).
+if P_Value == 0:
+    PVUtil.writePV(pvs[1].getName(), RB_Value, 5000)]]></text>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:RB_XYBrSq_TCarr1</pv_name>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:P_XYBrSq_TCarr1</pv_name>
+                </script>
+              </scripts>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Monitor_17</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:RB_XYBrSq_TCarr1</pv_name>
+              <x>300</x>
+              <width>60</width>
+              <precision>0</precision>
+              <show_units>false</show_units>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Units_17</name>
+              <text>[s]</text>
+              <x>370</x>
+              <width>40</width>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>ControlParam_8</name>
+            <x>38</x>
+            <y>430</y>
+            <width>410</width>
+            <height>20</height>
+            <style>3</style>
+            <transparent>true</transparent>
+            <widget type="label" version="2.0.0">
+              <name>ParamDesc_14</name>
+              <text>Grease Time Carriage 2</text>
+              <width>210</width>
+            </widget>
+            <widget type="spinner" version="2.0.0">
+              <name>Control_14</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:P_XYBrSq_TCarr2</pv_name>
+              <x>210</x>
+              <width>80</width>
+              <precision>0</precision>
+              <scripts>
+                <script file="EmbeddedPy">
+                  <text><![CDATA[# Embedded python script
+from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
+
+RB_Value = PVUtil.getDouble(pvs[0])
+P_Value = PVUtil.getDouble(pvs[1])
+
+# If parameter value is 0, assume the IOC is not initialized, therefore initialize to the readback value from the PLC (status parameter). 
+# The PLC is programmed to readback the local variable value when EPICS parameter value is 0. 
+# The value of the local variable in the PLC is defined in the declaration as initial value).
+if P_Value == 0:
+    PVUtil.writePV(pvs[1].getName(), RB_Value, 5000)]]></text>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:RB_XYBrSq_TCarr2</pv_name>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:P_XYBrSq_TCarr2</pv_name>
+                </script>
+              </scripts>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Monitor_18</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:RB_XYBrSq_TCarr2</pv_name>
+              <x>300</x>
+              <width>60</width>
+              <precision>0</precision>
+              <show_units>false</show_units>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Units_18</name>
+              <text>[s]</text>
+              <x>370</x>
+              <width>40</width>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>ControlParam_11</name>
+            <x>978</x>
+            <y>370</y>
+            <width>410</width>
+            <height>20</height>
+            <style>3</style>
+            <transparent>true</transparent>
+            <widget type="label" version="2.0.0">
+              <name>ParamDesc_17</name>
+              <text>Pump Start-up Time</text>
+              <width>210</width>
+            </widget>
+            <widget type="spinner" version="2.0.0">
+              <name>Control_17</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:P_MainBrSq_TPumpOn</pv_name>
+              <x>210</x>
+              <width>80</width>
+              <precision>0</precision>
+              <scripts>
+                <script file="EmbeddedPy">
+                  <text><![CDATA[# Embedded python script
+from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
+
+RB_Value = PVUtil.getDouble(pvs[0])
+P_Value = PVUtil.getDouble(pvs[1])
+
+# If parameter value is 0, assume the IOC is not initialized, therefore initialize to the readback value from the PLC (status parameter). 
+# The PLC is programmed to readback the local variable value when EPICS parameter value is 0. 
+# The value of the local variable in the PLC is defined in the declaration as initial value).
+if P_Value == 0:
+    PVUtil.writePV(pvs[1].getName(), RB_Value, 5000)]]></text>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:RB_MainBrSq_TPumpOn</pv_name>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:P_MainBrSq_TPumpOn</pv_name>
+                </script>
+              </scripts>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Monitor_23</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:RB_MainBrSq_TPumpOn</pv_name>
+              <x>300</x>
+              <width>60</width>
+              <precision>0</precision>
+              <show_units>false</show_units>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Units_23</name>
+              <text>[s]</text>
+              <x>370</x>
+              <width>40</width>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>ControlParam_12</name>
+            <x>978</x>
+            <y>400</y>
+            <width>410</width>
+            <height>20</height>
+            <style>3</style>
+            <transparent>true</transparent>
+            <widget type="label" version="2.0.0">
+              <name>ParamDesc_18</name>
+              <text>Grease Time Torq Motor Grp</text>
+              <width>210</width>
+            </widget>
+            <widget type="spinner" version="2.0.0">
+              <name>Control_18</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:P_MainBrSq_TTorqM</pv_name>
+              <x>210</x>
+              <width>80</width>
+              <precision>0</precision>
+              <scripts>
+                <script file="EmbeddedPy">
+                  <text><![CDATA[# Embedded python script
+from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
+
+RB_Value = PVUtil.getDouble(pvs[0])
+P_Value = PVUtil.getDouble(pvs[1])
+
+# If parameter value is 0, assume the IOC is not initialized, therefore initialize to the readback value from the PLC (status parameter). 
+# The PLC is programmed to readback the local variable value when EPICS parameter value is 0. 
+# The value of the local variable in the PLC is defined in the declaration as initial value).
+if P_Value == 0:
+    PVUtil.writePV(pvs[1].getName(), RB_Value, 5000)]]></text>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:RB_MainBrSq_TTorqM</pv_name>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:P_MainBrSq_TTorqM</pv_name>
+                </script>
+              </scripts>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Monitor_24</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:RB_MainBrSq_TTorqM</pv_name>
+              <x>300</x>
+              <width>60</width>
+              <precision>0</precision>
+              <show_units>false</show_units>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Units_24</name>
+              <text>[s]</text>
+              <x>370</x>
+              <width>40</width>
+            </widget>
+          </widget>
+        </children>
+      </tab>
+      <tab>
+        <name>Trend</name>
+        <children>
+          <widget type="databrowser" version="2.0.0">
+            <name>DataBrowser</name>
+            <file>TSCS_LubSys_Faceplate_Trend.plt</file>
+            <width>1418</width>
+            <height>463</height>
+          </widget>
+        </children>
+      </tab>
+    </tabs>
+    <x>10</x>
+    <y>60</y>
+    <width>1430</width>
+    <height>880</height>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Header Bar</name>
+    <width>1450</width>
+    <height>50</height>
+    <line_width>0</line_width>
+    <line_color>
+      <color red="0" green="0" blue="255" alpha="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="PRIMARY-HEADER-BACKGROUND" red="151" green="188" blue="202">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>LB_HeaderPVName</name>
+    <text>${SecSub}:${Dis}-${Dev}-${Index}</text>
+    <x>20</x>
+    <width>715</width>
+    <height>50</height>
+    <font>
+      <font name="Header 1" family="Source Sans Pro" style="BOLD_ITALIC" size="36.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+</display>

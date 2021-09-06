@@ -1,0 +1,959 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>TSCS_LubPump_Faceplate</name>
+  <width>965</width>
+  <height>560</height>
+  <widget type="tabs" version="2.0.0">
+    <name>Tabs</name>
+    <tabs>
+      <tab>
+        <name>Status</name>
+        <children>
+          <widget type="group" version="2.0.0">
+            <name>group.status</name>
+            <x>10</x>
+            <y>10</y>
+            <height>340</height>
+            <style>3</style>
+            <widget type="rectangle" version="2.0.0">
+              <name>group.status.border</name>
+              <width>300</width>
+              <height>330</height>
+              <line_width>0</line_width>
+              <line_color>
+                <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                </color>
+              </line_color>
+              <background_color>
+                <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                </color>
+              </background_color>
+            </widget>
+            <widget type="rectangle" version="2.0.0">
+              <name>group.status.background</name>
+              <x>5</x>
+              <y>35</y>
+              <width>290</width>
+              <height>289</height>
+              <line_width>0</line_width>
+              <line_color>
+                <color name="PRIMARY-GROUP-BORDER" red="151" green="188" blue="202">
+                </color>
+              </line_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_Status</name>
+              <text>STATUS</text>
+              <width>300</width>
+              <height>35</height>
+              <font>
+                <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                </font>
+              </font>
+              <foreground_color>
+                <color name="GRAY-TEXT" red="255" green="255" blue="255">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_Status_Command</name>
+              <text>Command</text>
+              <x>18</x>
+              <y>51</y>
+              <width>270</width>
+              <height>25</height>
+              <font>
+                <font name="Default Bold" family="Source Sans Pro" style="BOLD" size="16.0">
+                </font>
+              </font>
+              <foreground_color>
+                <color name="TEXT" red="25" green="25" blue="25">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+              <transparent>false</transparent>
+            </widget>
+            <widget type="led" version="2.0.0">
+              <name>LED_SelectedCmd</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:SelectedCmd</pv_name>
+              <x>103</x>
+              <y>75</y>
+              <width>25</width>
+              <height>25</height>
+              <off_color>
+                <color name="Grid" red="169" green="169" blue="169">
+                </color>
+              </off_color>
+              <tooltip>Valve solenoid state</tooltip>
+            </widget>
+            <widget type="led" version="2.0.0">
+              <name>LED_LowLevel</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:LevelSensor</pv_name>
+              <x>103</x>
+              <y>256</y>
+              <width>25</width>
+              <height>25</height>
+              <off_color>
+                <color name="Grid" red="169" green="169" blue="169">
+                </color>
+              </off_color>
+              <tooltip>Low Level Sensor Grease Resevoir</tooltip>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_LowLevel</name>
+              <text>LOW LEVEL</text>
+              <x>138</x>
+              <y>256</y>
+              <width>110</width>
+              <height>25</height>
+              <background_color>
+                <color name="BLUE-BACKGROUND" red="195" green="226" blue="225">
+                </color>
+              </background_color>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_Status_Position_1</name>
+              <text>Grease Tank Level Sensor</text>
+              <x>18</x>
+              <y>221</y>
+              <width>270</width>
+              <height>25</height>
+              <font>
+                <font name="Default Bold" family="Source Sans Pro" style="BOLD" size="16.0">
+                </font>
+              </font>
+              <foreground_color>
+                <color name="TEXT" red="25" green="25" blue="25">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+              <transparent>false</transparent>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>MSG_InhibitMan_1</name>
+              <text>ON</text>
+              <x>138</x>
+              <y>81</y>
+              <width>42</width>
+              <foreground_color>
+                <color name="TEXT" red="25" green="25" blue="25">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="Visibility rule" prop_id="visible" out_exp="false">
+                  <exp bool_exp="pv0 == 0">
+                    <value>false</value>
+                  </exp>
+                  <exp bool_exp="pv0 == 1">
+                    <value>true</value>
+                  </exp>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:SelectedCmd</pv_name>
+                </rule>
+              </rules>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>MSG_InhibitMan_2</name>
+              <text>OFF</text>
+              <x>168</x>
+              <y>81</y>
+              <width>42</width>
+              <foreground_color>
+                <color name="TEXT" red="25" green="25" blue="25">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="Visibility rule" prop_id="visible" out_exp="false">
+                  <exp bool_exp="pv0 == 0">
+                    <value>true</value>
+                  </exp>
+                  <exp bool_exp="pv0 == 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:SelectedCmd</pv_name>
+                </rule>
+              </rules>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>group.op.modes</name>
+            <x>320</x>
+            <y>10</y>
+            <height>340</height>
+            <style>3</style>
+            <widget type="rectangle" version="2.0.0">
+              <name>group.op.modes.border</name>
+              <width>300</width>
+              <height>330</height>
+              <line_width>0</line_width>
+              <line_color>
+                <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                </color>
+              </line_color>
+              <background_color>
+                <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                </color>
+              </background_color>
+            </widget>
+            <widget type="rectangle" version="2.0.0">
+              <name>group.op.modes.background</name>
+              <x>5</x>
+              <y>35</y>
+              <width>289</width>
+              <height>289</height>
+              <line_width>0</line_width>
+              <line_color>
+                <color name="PRIMARY-GROUP-BORDER" red="151" green="188" blue="202">
+                </color>
+              </line_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_OP_MODES</name>
+              <text>OP MODES</text>
+              <width>300</width>
+              <height>35</height>
+              <font>
+                <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                </font>
+              </font>
+              <foreground_color>
+                <color name="GRAY-TEXT" red="255" green="255" blue="255">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="led" version="2.0.0">
+              <name>LED_Auto</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OpMode_Auto</pv_name>
+              <x>100</x>
+              <y>50</y>
+              <width>25</width>
+              <height>25</height>
+              <off_color>
+                <color name="Grid" red="169" green="169" blue="169">
+                </color>
+              </off_color>
+              <tooltip>Operation mode</tooltip>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_STAT_AUTO</name>
+              <text>AUTO</text>
+              <x>135</x>
+              <y>50</y>
+              <width>60</width>
+              <height>25</height>
+              <background_color>
+                <color name="BLUE-BACKGROUND" red="195" green="226" blue="225">
+                </color>
+              </background_color>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="led" version="2.0.0">
+              <name>LED_Manual</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OpMode_Manual</pv_name>
+              <x>100</x>
+              <y>85</y>
+              <width>25</width>
+              <height>25</height>
+              <off_color>
+                <color name="Grid" red="169" green="169" blue="169">
+                </color>
+              </off_color>
+              <tooltip>Operation mode</tooltip>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_STAT_MANUAL</name>
+              <text>MANUAL</text>
+              <x>135</x>
+              <y>85</y>
+              <width>60</width>
+              <height>25</height>
+              <background_color>
+                <color name="BLUE-BACKGROUND" red="195" green="226" blue="225">
+                </color>
+              </background_color>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="led" version="2.0.0">
+              <name>LED_Forced</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OpMode_Forced</pv_name>
+              <x>100</x>
+              <y>120</y>
+              <width>25</width>
+              <height>25</height>
+              <off_color>
+                <color name="Grid" red="169" green="169" blue="169">
+                </color>
+              </off_color>
+              <tooltip>Operation mode</tooltip>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_STAT_FORCED</name>
+              <text>FORCED</text>
+              <x>135</x>
+              <y>120</y>
+              <width>60</width>
+              <height>25</height>
+              <background_color>
+                <color name="BLUE-BACKGROUND" red="195" green="226" blue="225">
+                </color>
+              </background_color>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_MESSAGES</name>
+              <text>MESSAGES</text>
+              <x>5</x>
+              <y>160</y>
+              <width>290</width>
+              <font>
+                <font family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                </font>
+              </font>
+              <foreground_color>
+                <color name="GRAY-TEXT" red="255" green="255" blue="255">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                </color>
+              </background_color>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>MSG_InhibitMan</name>
+              <text>- Manual mode inhibited</text>
+              <x>15</x>
+              <y>205</y>
+              <width>270</width>
+              <foreground_color>
+                <color name="PRIMARY-DARK" red="31" green="83" blue="102">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="Visibility rule" prop_id="visible" out_exp="false">
+                  <exp bool_exp="pv0 == 0">
+                    <value>false</value>
+                  </exp>
+                  <exp bool_exp="pv0 == 1">
+                    <value>true</value>
+                  </exp>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Inhibit_Manual</pv_name>
+                </rule>
+              </rules>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>MSG_InhibitForce</name>
+              <text>- Force mode inhibited</text>
+              <x>15</x>
+              <y>225</y>
+              <width>270</width>
+              <foreground_color>
+                <color name="PRIMARY-DARK" red="31" green="83" blue="102">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="Visibility rule" prop_id="visible" out_exp="false">
+                  <exp bool_exp="pv0 == 0">
+                    <value>false</value>
+                  </exp>
+                  <exp bool_exp="pv0 == 1">
+                    <value>true</value>
+                  </exp>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Inhibit_Force</pv_name>
+                </rule>
+              </rules>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>group.alarms</name>
+            <x>630</x>
+            <y>10</y>
+            <height>341</height>
+            <style>3</style>
+            <widget type="rectangle" version="2.0.0">
+              <name>group.alarms.border</name>
+              <width>300</width>
+              <height>330</height>
+              <line_width>0</line_width>
+              <line_color>
+                <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                </color>
+              </line_color>
+              <background_color>
+                <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                </color>
+              </background_color>
+            </widget>
+            <widget type="rectangle" version="2.0.0">
+              <name>group.alarms.background</name>
+              <x>5</x>
+              <y>35</y>
+              <width>290</width>
+              <height>288</height>
+              <line_width>0</line_width>
+              <line_color>
+                <color name="PRIMARY-GROUP-BORDER" red="151" green="188" blue="202">
+                </color>
+              </line_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_ALARMS</name>
+              <text>ALARMS</text>
+              <width>300</width>
+              <height>35</height>
+              <font>
+                <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                </font>
+              </font>
+              <foreground_color>
+                <color name="GRAY-TEXT" red="255" green="255" blue="255">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                </color>
+              </background_color>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="BackgroundColor" prop_id="background_color" out_exp="false">
+                  <exp bool_exp="pv0 == 1">
+                    <value>
+                      <color name="MAJOR" red="252" green="13" blue="27">
+                      </color>
+                    </value>
+                  </exp>
+                  <exp bool_exp="pv0 == 0">
+                    <value>
+                      <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:GroupAlarm</pv_name>
+                </rule>
+              </rules>
+              <tooltip>Group alarm</tooltip>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_INTERLOCKS</name>
+              <text>INTERLOCKS</text>
+              <x>5</x>
+              <y>218</y>
+              <width>290</width>
+              <height>25</height>
+              <font>
+                <font family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                </font>
+              </font>
+              <foreground_color>
+                <color name="GRAY-TEXT" red="255" green="255" blue="255">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                </color>
+              </background_color>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="BackgroundColor" prop_id="background_color" out_exp="false">
+                  <exp bool_exp="pv0 == 1">
+                    <value>
+                      <color name="MINOR" red="252" green="242" blue="17">
+                      </color>
+                    </value>
+                  </exp>
+                  <exp bool_exp="pv0 == 0">
+                    <value>
+                      <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:StartInterlock</pv_name>
+                </rule>
+              </rules>
+              <tooltip>Group interlock</tooltip>
+            </widget>
+            <widget type="led" version="2.0.0">
+              <name>LED_ALM_Module_Error</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Input_Module_Error</pv_name>
+              <x>25</x>
+              <y>151</y>
+              <width>25</width>
+              <height>25</height>
+              <off_color>
+                <color name="Grid" red="169" green="169" blue="169">
+                </color>
+              </off_color>
+              <on_color>
+                <color name="MAJOR" red="252" green="13" blue="27">
+                </color>
+              </on_color>
+              <tooltip>Module error</tooltip>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_ALM_Module_Error</name>
+              <text>Digital Input Terminal Fault</text>
+              <x>59</x>
+              <y>151</y>
+              <width>188</width>
+              <height>25</height>
+              <foreground_color>
+                <color name="TEXT" red="25" green="25" blue="25">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="BLUE-BACKGROUND" red="195" green="226" blue="225">
+                </color>
+              </background_color>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="led" version="2.0.0">
+              <name>LED_ILOCK_START</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:StartInterlock</pv_name>
+              <x>25</x>
+              <y>253</y>
+              <width>25</width>
+              <height>25</height>
+              <off_color>
+                <color name="Grid" red="169" green="169" blue="169">
+                </color>
+              </off_color>
+              <on_color>
+                <color name="MINOR" red="252" green="242" blue="17">
+                </color>
+              </on_color>
+              <tooltip>Start interlock</tooltip>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_ILOCK_START</name>
+              <text>Start Interlock</text>
+              <x>60</x>
+              <y>251</y>
+              <width>155</width>
+              <height>25</height>
+              <foreground_color>
+                <color name="TEXT" red="25" green="25" blue="25">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="BLUE-BACKGROUND" red="195" green="226" blue="225">
+                </color>
+              </background_color>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="led" version="2.0.0">
+              <name>LED_ALM_Module_Error_1</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Output_Module_Error</pv_name>
+              <x>25</x>
+              <y>184</y>
+              <width>25</width>
+              <height>25</height>
+              <off_color>
+                <color name="Grid" red="169" green="169" blue="169">
+                </color>
+              </off_color>
+              <on_color>
+                <color name="MAJOR" red="252" green="13" blue="27">
+                </color>
+              </on_color>
+              <tooltip>Module error</tooltip>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_ALM_Module_Error_1</name>
+              <text>Digital Output Terminal Fault</text>
+              <x>59</x>
+              <y>184</y>
+              <width>189</width>
+              <height>25</height>
+              <foreground_color>
+                <color name="TEXT" red="25" green="25" blue="25">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="BLUE-BACKGROUND" red="195" green="226" blue="225">
+                </color>
+              </background_color>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="led" version="2.0.0">
+              <name>LED_ILOCK_START_1</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:TankLevelLow</pv_name>
+              <x>28</x>
+              <y>63</y>
+              <width>25</width>
+              <height>25</height>
+              <off_color>
+                <color name="Grid" red="169" green="169" blue="169">
+                </color>
+              </off_color>
+              <on_color>
+                <color name="MINOR" red="252" green="242" blue="17">
+                </color>
+              </on_color>
+              <tooltip>Start interlock</tooltip>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_ILOCK_START_1</name>
+              <text>Tank Level Low (Latched)</text>
+              <x>63</x>
+              <y>61</y>
+              <width>195</width>
+              <height>25</height>
+              <foreground_color>
+                <color name="TEXT" red="25" green="25" blue="25">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="BLUE-BACKGROUND" red="195" green="226" blue="225">
+                </color>
+              </background_color>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+          </widget>
+          <widget type="rectangle" version="2.0.0">
+            <name>buttons.bar</name>
+            <x>8</x>
+            <y>361</y>
+            <width>920</width>
+            <height>80</height>
+            <line_width>0</line_width>
+            <line_color>
+              <color name="GROUP-BORDER" red="150" green="155" blue="151">
+              </color>
+            </line_color>
+            <background_color>
+              <color name="GROUP-BORDER" red="150" green="155" blue="151">
+              </color>
+            </background_color>
+          </widget>
+          <widget type="action_button" version="3.0.0">
+            <name>BTN_AUTO</name>
+            <actions>
+              <action type="write_pv">
+                <pv_name>$(pv_name)</pv_name>
+                <value>1</value>
+                <description>Write PV</description>
+              </action>
+            </actions>
+            <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Cmd_Auto</pv_name>
+            <text>AUTO</text>
+            <x>12</x>
+            <y>402</y>
+            <width>200</width>
+            <height>33</height>
+            <rules>
+              <rule name="EnableRule" prop_id="enabled" out_exp="false">
+                <exp bool_exp="pv0 == 0">
+                  <value>false</value>
+                </exp>
+                <exp bool_exp="pv0 == 1">
+                  <value>true</value>
+                </exp>
+                <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPIEnAutoBtn</pv_name>
+              </rule>
+            </rules>
+            <tooltip>AUTO operation mode</tooltip>
+          </widget>
+          <widget type="action_button" version="3.0.0">
+            <name>BTN_MANUAL</name>
+            <actions>
+              <action type="write_pv">
+                <pv_name>$(pv_name)</pv_name>
+                <value>1</value>
+                <description>Write PV</description>
+              </action>
+            </actions>
+            <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Cmd_Manual</pv_name>
+            <text>MANUAL</text>
+            <x>217</x>
+            <y>403</y>
+            <width>200</width>
+            <height>33</height>
+            <rules>
+              <rule name="Enable Rule" prop_id="enabled" out_exp="false">
+                <exp bool_exp="pv0 == 0">
+                  <value>false</value>
+                </exp>
+                <exp bool_exp="pv0 == 1">
+                  <value>true</value>
+                </exp>
+                <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPIEnManuBtn</pv_name>
+              </rule>
+            </rules>
+            <tooltip>MANUAL operation mode</tooltip>
+          </widget>
+          <widget type="action_button" version="3.0.0">
+            <name>BTN_MAN_ON</name>
+            <actions>
+              <action type="write_pv">
+                <pv_name>$(pv_name)</pv_name>
+                <value>1</value>
+                <description>Write PV</description>
+              </action>
+            </actions>
+            <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Cmd_ManuStart</pv_name>
+            <text>START</text>
+            <x>217</x>
+            <y>367</y>
+            <width>99</width>
+            <height>33</height>
+            <rules>
+              <rule name="EnableRule" prop_id="enabled" out_exp="false">
+                <exp bool_exp="pv0 == 0">
+                  <value>false</value>
+                </exp>
+                <exp bool_exp="pv0 == 1">
+                  <value>true</value>
+                </exp>
+                <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPIEnManuStartnBtn</pv_name>
+              </rule>
+            </rules>
+            <tooltip>Manual OPEN</tooltip>
+          </widget>
+          <widget type="action_button" version="3.0.0">
+            <name>BTN_MAN_OFF</name>
+            <actions>
+              <action type="write_pv">
+                <pv_name>$(pv_name)</pv_name>
+                <value>1</value>
+                <description>Write PV</description>
+              </action>
+            </actions>
+            <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Cmd_ManuStop</pv_name>
+            <text>STOP</text>
+            <x>318</x>
+            <y>367</y>
+            <width>99</width>
+            <height>33</height>
+            <rules>
+              <rule name="EnableRule" prop_id="enabled" out_exp="false">
+                <exp bool_exp="pv0 == 0">
+                  <value>false</value>
+                </exp>
+                <exp bool_exp="pv0 == 1">
+                  <value>true</value>
+                </exp>
+                <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPIEnManuStopBtn</pv_name>
+              </rule>
+            </rules>
+            <tooltip>Manual CLOSE</tooltip>
+          </widget>
+          <widget type="action_button" version="3.0.0">
+            <name>BTN_FORCE</name>
+            <actions>
+              <action type="write_pv">
+                <pv_name>$(pv_name)</pv_name>
+                <value>1</value>
+                <description>Write PV</description>
+              </action>
+            </actions>
+            <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Cmd_Force</pv_name>
+            <text>FORCE</text>
+            <x>422</x>
+            <y>403</y>
+            <width>200</width>
+            <height>33</height>
+            <rules>
+              <rule name="EnableRule" prop_id="enabled" out_exp="false">
+                <exp bool_exp="pv0 == 0">
+                  <value>false</value>
+                </exp>
+                <exp bool_exp="pv0 == 1">
+                  <value>true</value>
+                </exp>
+                <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPIEnForceBtn</pv_name>
+              </rule>
+            </rules>
+            <tooltip>FORCE operation mode</tooltip>
+          </widget>
+          <widget type="action_button" version="3.0.0">
+            <name>BTN_FORCE_ON</name>
+            <actions>
+              <action type="write_pv">
+                <pv_name>$(pv_name)</pv_name>
+                <value>1</value>
+                <description>Write PV</description>
+              </action>
+            </actions>
+            <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Cmd_ForceStart</pv_name>
+            <text>START</text>
+            <x>422</x>
+            <y>367</y>
+            <width>99</width>
+            <height>33</height>
+            <rules>
+              <rule name="EnableRule" prop_id="enabled" out_exp="false">
+                <exp bool_exp="pv0 == 0">
+                  <value>false</value>
+                </exp>
+                <exp bool_exp="pv0 == 1">
+                  <value>true</value>
+                </exp>
+                <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPIEnForceStartBtn</pv_name>
+              </rule>
+            </rules>
+            <tooltip>Force OPEN</tooltip>
+          </widget>
+          <widget type="action_button" version="3.0.0">
+            <name>BTN_FORCE_OFF</name>
+            <actions>
+              <action type="write_pv">
+                <pv_name>$(pv_name)</pv_name>
+                <value>1</value>
+                <description>Write PV</description>
+              </action>
+            </actions>
+            <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Cmd_ForceStop</pv_name>
+            <text>STOP</text>
+            <x>523</x>
+            <y>367</y>
+            <width>99</width>
+            <height>33</height>
+            <rules>
+              <rule name="EnableRule" prop_id="enabled" out_exp="false">
+                <exp bool_exp="pv0 == 0">
+                  <value>false</value>
+                </exp>
+                <exp bool_exp="pv0 == 1">
+                  <value>true</value>
+                </exp>
+                <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPIEnForceStopBtn</pv_name>
+              </rule>
+            </rules>
+            <tooltip>Force CLOSE</tooltip>
+          </widget>
+          <widget type="action_button" version="3.0.0">
+            <name>BTN_ACK</name>
+            <actions>
+              <action type="write_pv">
+                <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Cmd_AckAlarm</pv_name>
+                <value>1</value>
+                <description>Acknowledge alarms</description>
+              </action>
+            </actions>
+            <text>Acknowledge Alarm</text>
+            <x>722</x>
+            <y>403</y>
+            <width>200</width>
+            <height>33</height>
+            <background_color>
+              <color name="ORANGE" red="254" green="194" blue="81">
+              </color>
+            </background_color>
+            <rules>
+              <rule name="EnableRule" prop_id="enabled" out_exp="false">
+                <exp bool_exp="pv0 == 0">
+                  <value>false</value>
+                </exp>
+                <exp bool_exp="pv0 == 1">
+                  <value>true</value>
+                </exp>
+                <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:GroupAlarm</pv_name>
+              </rule>
+            </rules>
+            <tooltip>Acknowledge alarms</tooltip>
+          </widget>
+        </children>
+      </tab>
+      <tab>
+        <name>Trend</name>
+        <children>
+          <widget type="databrowser" version="2.0.0">
+            <name>DataBrowser</name>
+            <file>TSCS_LubPump_Faceplate_Trend.plt</file>
+            <width>940</width>
+            <height>441</height>
+          </widget>
+        </children>
+      </tab>
+    </tabs>
+    <x>10</x>
+    <y>60</y>
+    <width>943</width>
+    <height>490</height>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Header Bar</name>
+    <width>963</width>
+    <height>50</height>
+    <line_width>0</line_width>
+    <line_color>
+      <color red="0" green="0" blue="255" alpha="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="PRIMARY-HEADER-BACKGROUND" red="151" green="188" blue="202">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>LB_HeaderPVName</name>
+    <text>${SecSub}:${Dis}-${Dev}-${Index}</text>
+    <x>20</x>
+    <width>715</width>
+    <height>50</height>
+    <font>
+      <font name="Header 1" family="Source Sans Pro" style="BOLD_ITALIC" size="36.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+</display>

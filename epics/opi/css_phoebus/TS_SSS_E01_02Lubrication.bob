@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Lubrication System</name>
+  <class></class>
+  <width>2560</width>
+  <height>1440</height>
+  <background_color>
+    <color name="BACKGROUND" red="220" green="225" blue="221">
+    </color>
+  </background_color>
+  <widget type="symbol" version="2.0.0">
+    <name>Symbol</name>
+    <symbols>
+      <symbol>Lubrication/images/G01 Lubrication System_v07.svg</symbol>
+    </symbols>
+    <x>51</x>
+    <y>263</y>
+    <width>1685</width>
+    <height>670</height>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>title bg</name>
+    <class>TITLE-BAR</class>
+    <x use_class="true">0</x>
+    <y use_class="true">0</y>
+    <width>2560</width>
+    <height use_class="true">50</height>
+    <line_width use_class="true">0</line_width>
+    <line_color>
+      <color name="BLUE-GROUP-BORDER" red="138" green="167" blue="167">
+      </color>
+    </line_color>
+    <background_color use_class="true">
+      <color name="PRIMARY-HEADER-BACKGROUND" red="151" green="188" blue="202">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_5</name>
+    <class>TITLE</class>
+    <text>Target System - Lubrication</text>
+    <x use_class="true">20</x>
+    <y use_class="true">0</y>
+    <width>780</width>
+    <height use_class="true">50</height>
+    <font use_class="true">
+      <font name="Header 1" family="Source Sans Pro" style="BOLD_ITALIC" size="36.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="HEADER-TEXT" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <transparent use_class="true">true</transparent>
+    <horizontal_alignment use_class="true">0</horizontal_alignment>
+    <vertical_alignment use_class="true">1</vertical_alignment>
+    <wrap_words use_class="true">false</wrap_words>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>WID_TitleLBL_9</name>
+    <text>Carriage 1</text>
+    <x>273</x>
+    <y>252</y>
+    <width>136</width>
+    <height>40</height>
+    <font>
+      <font family="Source Sans Pro" style="BOLD" size="18.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+    <tooltip>Device name</tooltip>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>WID_TitleLBL_10</name>
+    <text>Carriage 2</text>
+    <x>468</x>
+    <y>252</y>
+    <width>140</width>
+    <height>40</height>
+    <font>
+      <font family="Source Sans Pro" style="BOLD" size="18.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+    <tooltip>Device name</tooltip>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>WID_TitleLBL_11</name>
+    <text>Lifting Group</text>
+    <x>656</x>
+    <y>252</y>
+    <width>154</width>
+    <height>40</height>
+    <font>
+      <font family="Source Sans Pro" style="BOLD" size="18.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+    <tooltip>Device name</tooltip>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>WID_TitleLBL_12</name>
+    <text>Worm Gear Group</text>
+    <x>1095</x>
+    <y>252</y>
+    <width>190</width>
+    <height>40</height>
+    <font>
+      <font family="Source Sans Pro" style="BOLD" size="18.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+    <tooltip>Device name</tooltip>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>WID_TitleLBL_13</name>
+    <text>Torque Motor Group</text>
+    <x>1496</x>
+    <y>252</y>
+    <width>190</width>
+    <height>40</height>
+    <font>
+      <font family="Source Sans Pro" style="BOLD" size="18.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+    <tooltip>Device name</tooltip>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>WID_TitleLBL_14</name>
+    <text>1</text>
+    <x>323</x>
+    <y>792</y>
+    <width>23</width>
+    <height>25</height>
+    <font>
+      <font family="Source Sans Pro" style="BOLD" size="18.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+    <tooltip>Device name</tooltip>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>WID_TitleLBL_15</name>
+    <text>2</text>
+    <x>524</x>
+    <y>792</y>
+    <width>23</width>
+    <height>25</height>
+    <font>
+      <font family="Source Sans Pro" style="BOLD" size="18.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+    <tooltip>Device name</tooltip>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>WID_TitleLBL_16</name>
+    <text>3</text>
+    <x>722</x>
+    <y>792</y>
+    <width>23</width>
+    <height>25</height>
+    <font>
+      <font family="Source Sans Pro" style="BOLD" size="18.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+    <tooltip>Device name</tooltip>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>WID_TitleLBL_17</name>
+    <text>1</text>
+    <x>1202</x>
+    <y>791</y>
+    <width>23</width>
+    <height>25</height>
+    <font>
+      <font family="Source Sans Pro" style="BOLD" size="18.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+    <tooltip>Device name</tooltip>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>WID_TitleLBL_18</name>
+    <text>2</text>
+    <x>1402</x>
+    <y>792</y>
+    <width>23</width>
+    <height>25</height>
+    <font>
+      <font family="Source Sans Pro" style="BOLD" size="18.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+    <tooltip>Device name</tooltip>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>WID_TitleLBL_19</name>
+    <text>3</text>
+    <x>1603</x>
+    <y>791</y>
+    <width>23</width>
+    <height>25</height>
+    <font>
+      <font family="Source Sans Pro" style="BOLD" size="18.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+    <tooltip>Device name</tooltip>
+  </widget>
+  <widget type="symbol" version="2.0.0">
+    <name>Symbol_26</name>
+    <symbols>
+      <symbol>Lubrication/images/VG_2-way-valves-checking_right_BLACK.svg</symbol>
+    </symbols>
+    <x>175</x>
+    <y>785</y>
+    <width>58</width>
+    <height>33</height>
+  </widget>
+  <widget type="symbol" version="2.0.0">
+    <name>Symbol_28</name>
+    <symbols>
+      <symbol>Lubrication/images/VG_2-way-valves-checking_right_BLACK.svg</symbol>
+    </symbols>
+    <x>786</x>
+    <y>785</y>
+    <width>58</width>
+    <height>33</height>
+  </widget>
+  <widget type="symbol" version="2.0.0">
+    <name>Symbol_29</name>
+    <symbols>
+      <symbol>Lubrication/images/VG_2-way-valves-checking_right_BLACK.svg</symbol>
+    </symbols>
+    <x>1051</x>
+    <y>785</y>
+    <width>58</width>
+    <height>33</height>
+  </widget>
+  <widget type="symbol" version="2.0.0">
+    <name>Symbol_31</name>
+    <symbols>
+      <symbol>Lubrication/images/VG_2-way-valves-checking_right_BLACK.svg</symbol>
+    </symbols>
+    <x>1661</x>
+    <y>785</y>
+    <width>58</width>
+    <height>33</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>YSV-013a</name>
+    <file>Lubrication/TSCS_LubSV/TSCS_LubSV_BlockIcon.bob</file>
+    <macros>
+      <WIDDev>YSV</WIDDev>
+      <WIDDis>Proc</WIDDis>
+      <WIDIndex>013a</WIDIndex>
+      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+    </macros>
+    <x>228</x>
+    <y>630</y>
+    <width>190</width>
+    <height>110</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>YSV-013b</name>
+    <file>Lubrication/TSCS_LubSV/TSCS_LubSV_BlockIcon.bob</file>
+    <macros>
+      <WIDDev>YSV</WIDDev>
+      <WIDDis>Proc</WIDDis>
+      <WIDIndex>013b</WIDIndex>
+      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+    </macros>
+    <x>425</x>
+    <y>630</y>
+    <width>190</width>
+    <height>110</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>YSV-013c</name>
+    <file>Lubrication/TSCS_LubSV/TSCS_LubSV_BlockIcon.bob</file>
+    <macros>
+      <WIDDev>YSV</WIDDev>
+      <WIDDis>Proc</WIDDis>
+      <WIDIndex>013c</WIDIndex>
+      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+    </macros>
+    <x>625</x>
+    <y>630</y>
+    <width>190</width>
+    <height>110</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>YSV-014a</name>
+    <file>Lubrication/TSCS_LubSV/TSCS_LubSV_BlockIcon.bob</file>
+    <macros>
+      <WIDDev>YSV</WIDDev>
+      <WIDDis>Proc</WIDDis>
+      <WIDIndex>014a</WIDIndex>
+      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+    </macros>
+    <x>1102</x>
+    <y>630</y>
+    <width>190</width>
+    <height>110</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>YSV-014b</name>
+    <file>Lubrication/TSCS_LubSV/TSCS_LubSV_BlockIcon.bob</file>
+    <macros>
+      <WIDDev>YSV</WIDDev>
+      <WIDDis>Proc</WIDDis>
+      <WIDIndex>014b</WIDIndex>
+      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+    </macros>
+    <x>1299</x>
+    <y>630</y>
+    <width>190</width>
+    <height>110</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>YSV-014c</name>
+    <file>Lubrication/TSCS_LubSV/TSCS_LubSV_BlockIcon.bob</file>
+    <macros>
+      <WIDDev>YSV</WIDDev>
+      <WIDDis>Proc</WIDDis>
+      <WIDIndex>014c</WIDIndex>
+      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+    </macros>
+    <x>1499</x>
+    <y>630</y>
+    <width>190</width>
+    <height>110</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>VSV-113a</name>
+    <file>Lubrication/TSCS_LubPD/TSCS_LubPD_BlockIcon.bob</file>
+    <macros>
+      <WIDDev>VSV</WIDDev>
+      <WIDDis>Proc</WIDDis>
+      <WIDIndex>113a</WIDIndex>
+      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+    </macros>
+    <x>228</x>
+    <y>474</y>
+    <width>190</width>
+    <height>110</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>VSV-113b</name>
+    <file>Lubrication/TSCS_LubPD/TSCS_LubPD_BlockIcon.bob</file>
+    <macros>
+      <WIDDev>VSV</WIDDev>
+      <WIDDis>Proc</WIDDis>
+      <WIDIndex>113b</WIDIndex>
+      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+    </macros>
+    <x>425</x>
+    <y>474</y>
+    <width>190</width>
+    <height>110</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>VSV-113c</name>
+    <file>Lubrication/TSCS_LubPD/TSCS_LubPD_BlockIcon.bob</file>
+    <macros>
+      <WIDDev>VSV</WIDDev>
+      <WIDDis>Proc</WIDDis>
+      <WIDIndex>113c</WIDIndex>
+      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+    </macros>
+    <x>625</x>
+    <y>474</y>
+    <width>190</width>
+    <height>110</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>VSV-114a</name>
+    <file>Lubrication/TSCS_LubPD/TSCS_LubPD_BlockIcon.bob</file>
+    <macros>
+      <WIDDev>VSV</WIDDev>
+      <WIDDis>Proc</WIDDis>
+      <WIDIndex>114a</WIDIndex>
+      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+    </macros>
+    <x>1102</x>
+    <y>474</y>
+    <width>190</width>
+    <height>110</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>VSV-114b</name>
+    <file>Lubrication/TSCS_LubPD/TSCS_LubPD_BlockIcon.bob</file>
+    <macros>
+      <WIDDev>VSV</WIDDev>
+      <WIDDis>Proc</WIDDis>
+      <WIDIndex>114b</WIDIndex>
+      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+    </macros>
+    <x>1299</x>
+    <y>474</y>
+    <width>190</width>
+    <height>110</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>VSV-114c</name>
+    <file>Lubrication/TSCS_LubPD/TSCS_LubPD_BlockIcon.bob</file>
+    <macros>
+      <WIDDev>VSV</WIDDev>
+      <WIDDis>Proc</WIDDis>
+      <WIDIndex>114c</WIDIndex>
+      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+    </macros>
+    <x>1499</x>
+    <y>474</y>
+    <width>190</width>
+    <height>110</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>P-013</name>
+    <file>Lubrication/TSCS_LubPump/TSCS_LubPump_BlockIcon.bob</file>
+    <macros>
+      <WIDDev>P</WIDDev>
+      <WIDDis>Proc</WIDDis>
+      <WIDIndex>013</WIDIndex>
+      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+    </macros>
+    <x>46</x>
+    <y>600</y>
+    <width>120</width>
+    <height>270</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>P-114</name>
+    <file>Lubrication/TSCS_LubPump/TSCS_LubPump_BlockIcon.bob</file>
+    <macros>
+      <WIDDev>P</WIDDev>
+      <WIDDis>Proc</WIDDis>
+      <WIDIndex>014</WIDIndex>
+      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+    </macros>
+    <x>922</x>
+    <y>600</y>
+    <width>120</width>
+    <height>270</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>YSV-013a_1</name>
+    <file>Lubrication/TSCS_LubSys/TSCS_LubSys_BlockIcon.bob</file>
+    <macros>
+      <WIDDev>POU</WIDDev>
+      <WIDDis>Ctrl</WIDDis>
+      <WIDIndex>LubSys</WIDIndex>
+      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+    </macros>
+    <x>46</x>
+    <y>70</y>
+    <width>370</width>
+    <height>170</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>WID_TitleLBL_20</name>
+    <text>Worm Gear</text>
+    <x>1282</x>
+    <y>252</y>
+    <width>190</width>
+    <height>40</height>
+    <font>
+      <font family="Source Sans Pro" style="BOLD" size="18.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+    <tooltip>Device name</tooltip>
+  </widget>
+</display>

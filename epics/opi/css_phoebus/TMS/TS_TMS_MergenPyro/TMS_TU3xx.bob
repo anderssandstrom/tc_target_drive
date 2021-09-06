@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Mech $(UNIT)</name>
+  <x>300</x>
+  <y>200</y>
+  <width>420</width>
+  <height>310</height>
+  <background_color>
+    <color red="179" green="209" blue="209">
+    </color>
+  </background_color>
+  <widget type="group" version="2.0.0">
+    <x>10</x>
+    <y>40</y>
+    <width>400</width>
+    <foreground_color>
+      <color name="TEXT" red="25" green="25" blue="25">
+      </color>
+    </foreground_color>
+    <widget type="label" version="2.0.0">
+      <name>lblCurrentTripTimeR</name>
+      <text>Controller On:</text>
+      <x>44</x>
+      <y>29</y>
+      <width>150</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="12.0">
+        </font>
+      </font>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>txtCurrentTripTimeR</name>
+      <pv_name>$(PREFIX):$(UNIT):Ctrl_On</pv_name>
+      <x>234</x>
+      <y>26</y>
+      <font>
+        <font family="Source Sans Pro" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <labels_from_pv>true</labels_from_pv>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>lblSupervisionMaxCurrentR_2</name>
+      <text>Temperature raw value:</text>
+      <x>44</x>
+      <y>4</y>
+      <width>150</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="12.0">
+        </font>
+      </font>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>txtOutputSwitchR</name>
+      <pv_name>$(PREFIX):$(UNIT):T_Raw_MV</pv_name>
+      <x>206</x>
+      <y>4</y>
+      <width>85</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <precision>3</precision>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>lblConfigMaxTerminalVoltageR</name>
+      <text>Network error:</text>
+      <x>44</x>
+      <y>79</y>
+      <width>150</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="12.0">
+        </font>
+      </font>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>txtConfigMaxTerminalVoltageR</name>
+      <pv_name>$(PREFIX):$(UNIT):Ctrl_NetworkErr</pv_name>
+      <x>234</x>
+      <y>76</y>
+      <font>
+        <font family="Source Sans Pro" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <labels_from_pv>true</labels_from_pv>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>lblConfigMaxSenseVoltageR</name>
+      <text>Controller OK:</text>
+      <x>44</x>
+      <y>54</y>
+      <width>150</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="12.0">
+        </font>
+      </font>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>txtConfigMaxSenseVoltageR</name>
+      <pv_name>$(PREFIX):$(UNIT):Ctrl_OK</pv_name>
+      <x>234</x>
+      <y>51</y>
+      <font>
+        <font family="Source Sans Pro" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <labels_from_pv>true</labels_from_pv>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>lblConfigMaxTerminalVoltageR_1</name>
+      <text>General fault:</text>
+      <x>44</x>
+      <y>103</y>
+      <width>150</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="12.0">
+        </font>
+      </font>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>txtConfigMaxTerminalVoltageR_1</name>
+      <pv_name>$(PREFIX):$(UNIT):Ctrl_GenErr</pv_name>
+      <x>234</x>
+      <y>100</y>
+      <font>
+        <font family="Source Sans Pro" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <labels_from_pv>true</labels_from_pv>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>butController_CmdInit</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(pv_name)</pv_name>
+          <value>1</value>
+          <description>Initialize controller</description>
+        </action>
+      </actions>
+      <pv_name>$(PREFIX):$(UNIT):Controller_CmdInit</pv_name>
+      <x>22</x>
+      <y>132</y>
+      <width>140</width>
+      <height>25</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="12.0">
+        </font>
+      </font>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>butController_Cmd_AckAlarm</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(pv_name)</pv_name>
+          <value>1</value>
+          <description>Acknowledge alarm</description>
+        </action>
+      </actions>
+      <pv_name>$(PREFIX):$(UNIT):Cmd_AckAlarm</pv_name>
+      <x>203</x>
+      <y>132</y>
+      <width>140</width>
+      <height>25</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="12.0">
+        </font>
+      </font>
+    </widget>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle</name>
+    <class>TITLE-BAR</class>
+    <width>420</width>
+    <height>30</height>
+    <line_width>0</line_width>
+    <background_color>
+      <color name="PRIMARY-HEADER-BACKGROUND" red="151" green="188" blue="202">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_1</name>
+    <text>$(UNIT) status</text>
+    <width>190</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+    <wrap_words>false</wrap_words>
+  </widget>
+</display>

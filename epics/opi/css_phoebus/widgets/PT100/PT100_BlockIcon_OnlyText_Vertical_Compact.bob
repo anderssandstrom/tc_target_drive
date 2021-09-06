@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>BlockIcon_AnalogInput</name>
+  <width>165</width>
+  <height>65</height>
+  <widget type="label" version="2.0.0">
+    <name>WID_TitleLBL</name>
+    <text>${WIDDev}-${WIDIndex}</text>
+    <x>40</x>
+    <width>125</width>
+    <height>40</height>
+    <font>
+      <font family="Source Sans Pro" style="BOLD" size="28.0">
+      </font>
+    </font>
+    <background_color>
+      <color name="BLUE-BACKGROUND" red="195" green="226" blue="225">
+      </color>
+    </background_color>
+    <vertical_alignment>1</vertical_alignment>
+    <scripts>
+      <script file="EmbeddedJs">
+        <text><![CDATA[/* Embedded javascript */
+/* Author: Miklos Boros*/
+/* Function: check if locking is allowed is yes then generate the LockID, after that it opens the Faceplate*/
+
+
+PVUtil = org.csstudio.display.builder.runtime.script.PVUtil;
+logger = org.csstudio.display.builder.runtime.script.ScriptUtil.getLogger();
+PVFactory = org.csstudio.display.builder.runtime.pv.PVFactory;
+WidgetColorService  = org.csstudio.display.builder.model.persist.WidgetColorService;
+
+
+macros = widget.getEffectiveMacros();
+WIDDev = macros.getValue("WIDDev");
+
+color = WidgetColorService.getColor("Background");
+if (WIDDev == "PT")
+{
+    color = WidgetColorService.getColor("GREEN-BACKGROUND");  
+}
+if (WIDDev == "TT")
+{
+    color = WidgetColorService.getColor("YELLOW-BACKGROUND");  
+}
+if (WIDDev == "FT")
+{
+    color = WidgetColorService.getColor("BLUE-BACKGROUND");  
+}
+
+    widget.setPropertyValue("background_color",color);	
+]]></text>
+        <pv_name>${WIDSecSub}:${WIDDis}-${WIDDev}-${WIDIndex}:MeasValue.EGU</pv_name>
+      </script>
+    </scripts>
+    <tooltip>Device name</tooltip>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>WID_MeasValue</name>
+    <pv_name>${WIDSecSub}:${WIDDis}-${WIDDev}-${WIDIndex}:MeasValue</pv_name>
+    <x>40</x>
+    <y>30</y>
+    <width>125</width>
+    <height>35</height>
+    <font>
+      <font family="Source Sans Pro" style="REGULAR" size="24.0">
+      </font>
+    </font>
+    <transparent>true</transparent>
+    <precision>1</precision>
+    <vertical_alignment>1</vertical_alignment>
+    <wrap_words>false</wrap_words>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>WID_OpenFaceplate_1</name>
+    <actions>
+      <action type="open_display">
+        <file>PT100_Faceplate.bob</file>
+        <macros>
+          <Dev>${WIDDev}</Dev>
+          <Dis>${WIDDis}</Dis>
+          <Index>${WIDIndex}</Index>
+          <SecSub>${WIDSecSub}</SecSub>
+        </macros>
+        <target>window</target>
+        <description>OpenFaceplate</description>
+      </action>
+    </actions>
+    <text></text>
+    <x>35</x>
+    <width>130</width>
+    <height>65</height>
+    <transparent>true</transparent>
+    <tooltip>${WIDSecSub}:${WIDDis}-${WIDDev}-${WIDIndex}
+Open faceplate</tooltip>
+  </widget>
+  <widget type="symbol" version="2.0.0">
+    <name>Symbol</name>
+    <pv_name>${WIDSecSub}:${WIDDis}-${WIDDev}-${WIDIndex}:Invalid_Act</pv_name>
+    <symbols>
+      <symbol>../../symbols/OK.png</symbol>
+      <symbol>../../symbols/error@32.png</symbol>
+    </symbols>
+    <x>5</x>
+    <y>8</y>
+    <width>20</width>
+    <height>20</height>
+    <tooltip>$(pv_name)</tooltip>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="text-symbol" version="2.0.0">
+    <name>Text Symbol</name>
+    <pv_name>${WIDSecSub}:${WIDDis}-${WIDDev}-${WIDIndex}:Force_Mode_Act</pv_name>
+    <symbols>
+      <symbol></symbol>
+      <symbol>F</symbol>
+    </symbols>
+    <y>25</y>
+    <width>30</width>
+    <height>40</height>
+    <font>
+      <font family="Source Sans Pro" style="BOLD" size="29.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="BLACK" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <vertical_alignment>0</vertical_alignment>
+    <tooltip>$(pv_name)</tooltip>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+</display>

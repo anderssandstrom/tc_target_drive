@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>TS_TMS_MergenPyro_Faceplate</name>
+  <width>920</width>
+  <height>580</height>
+  <widget type="tabs" version="2.0.0">
+    <name>Tabs</name>
+    <tabs>
+      <tab>
+        <name>Status</name>
+        <children>
+          <widget type="rectangle" version="2.0.0">
+            <name>group.status.background</name>
+            <x>19</x>
+            <y>181</y>
+            <width>330</width>
+            <height>170</height>
+            <line_width>0</line_width>
+            <line_color>
+              <color name="PRIMARY-GROUP-BORDER" red="151" green="188" blue="202">
+              </color>
+            </line_color>
+            <background_color>
+              <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+              </color>
+            </background_color>
+            <corner_width>10</corner_width>
+            <corner_height>10</corner_height>
+          </widget>
+          <widget type="rectangle" version="2.0.0">
+            <name>Background_23</name>
+            <x>27</x>
+            <y>219</y>
+            <width>310</width>
+            <height>122</height>
+            <line_width>1</line_width>
+            <line_color>
+              <color name="GROUP-BORDER" red="150" green="155" blue="151">
+              </color>
+            </line_color>
+            <background_color>
+              <color name="BACKGROUND" red="220" green="225" blue="221">
+              </color>
+            </background_color>
+            <corner_width>10</corner_width>
+            <corner_height>10</corner_height>
+          </widget>
+          <widget type="rectangle" version="2.0.0">
+            <name>Background_15</name>
+            <x>578</x>
+            <y>21</y>
+            <width>278</width>
+            <height>430</height>
+            <line_width>0</line_width>
+            <line_color>
+              <color name="GROUP-BORDER" red="150" green="155" blue="151">
+              </color>
+            </line_color>
+            <background_color>
+              <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+              </color>
+            </background_color>
+            <corner_width>10</corner_width>
+            <corner_height>10</corner_height>
+          </widget>
+          <widget type="label" version="2.0.0">
+            <name>LB_Header_15</name>
+            <class>HEADER2</class>
+            <text>Alarms</text>
+            <x>606</x>
+            <y>21</y>
+            <width>250</width>
+            <height>32</height>
+            <font use_class="true">
+              <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color name="HEADER-TEXT" red="0" green="0" blue="0">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+              </color>
+            </background_color>
+            <horizontal_alignment>1</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="action_button" version="3.0.0">
+            <name>Action Button_5</name>
+            <actions execute_as_one="true">
+              <action type="write_pv">
+                <pv_name>$(PREFIX):$(MECH):Cmd_AckAlarm</pv_name>
+                <value>1</value>
+                <description>Write PV</description>
+              </action>
+              <action type="write_pv">
+                <pv_name>$(PREFIX):$(DEV):Cmd_AckAlarm</pv_name>
+                <value>1</value>
+                <description>Write PV</description>
+              </action>
+            </actions>
+            <text>ACKNOWLEDGE</text>
+            <x>666</x>
+            <y>401</y>
+            <width>130</width>
+            <height>25</height>
+            <tooltip>$(actions)</tooltip>
+          </widget>
+          <widget type="label" version="2.0.0">
+            <name>Label_18</name>
+            <text>On</text>
+            <x>38</x>
+            <y>231</y>
+            <width>140</width>
+            <horizontal_alignment>2</horizontal_alignment>
+          </widget>
+          <widget type="label" version="2.0.0">
+            <name>Label_21</name>
+            <text>OK</text>
+            <x>38</x>
+            <y>261</y>
+            <width>140</width>
+            <horizontal_alignment>2</horizontal_alignment>
+          </widget>
+          <widget type="led" version="2.0.0">
+            <name>LED</name>
+            <pv_name>$(PREFIX):$(DEV):FB_Ch1_On</pv_name>
+            <x>188</x>
+            <y>231</y>
+            <off_color>
+              <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
+              </color>
+            </off_color>
+            <on_color>
+              <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+              </color>
+            </on_color>
+            <font>
+              <font family="Source Sans Pro" style="REGULAR" size="12.0">
+              </font>
+            </font>
+            <square>true</square>
+            <border_alarm_sensitive>false</border_alarm_sensitive>
+          </widget>
+          <widget type="led" version="2.0.0">
+            <name>LED_1</name>
+            <pv_name>$(PREFIX):$(DEV):FB_Ch1_OK</pv_name>
+            <x>188</x>
+            <y>261</y>
+            <off_color>
+              <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
+              </color>
+            </off_color>
+            <on_color>
+              <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+              </color>
+            </on_color>
+            <font>
+              <font family="Source Sans Pro" style="REGULAR" size="12.0">
+              </font>
+            </font>
+            <square>true</square>
+            <border_alarm_sensitive>false</border_alarm_sensitive>
+          </widget>
+          <widget type="label" version="2.0.0">
+            <name>LB_Status</name>
+            <class>HEADER2</class>
+            <text>Status</text>
+            <x>19</x>
+            <y>181</y>
+            <width>328</width>
+            <height>35</height>
+            <font use_class="true">
+              <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color name="HEADER-TEXT" red="0" green="0" blue="0">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+              </color>
+            </background_color>
+            <horizontal_alignment>1</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="label" version="2.0.0">
+            <name>Label_12</name>
+            <text>Temperature Raw</text>
+            <x>38</x>
+            <y>291</y>
+            <width>140</width>
+            <horizontal_alignment>2</horizontal_alignment>
+          </widget>
+          <widget type="textupdate" version="2.0.0">
+            <name>Text Update</name>
+            <pv_name>$(PREFIX):$(DEV):X_Pos_Raw</pv_name>
+            <x>188</x>
+            <y>291</y>
+            <width>80</width>
+          </widget>
+          <widget type="label" version="2.0.0">
+            <name>Label_46</name>
+            <text>degC</text>
+            <x>278</x>
+            <y>291</y>
+            <width>40</width>
+          </widget>
+          <widget type="symbol" version="2.0.0">
+            <name>Symbol</name>
+            <symbols>
+              <symbol>MergenthalerPyro2.png</symbol>
+            </symbols>
+            <x>19</x>
+            <y>21</y>
+            <width>279</width>
+            <height>150</height>
+          </widget>
+          <widget type="rectangle" version="2.0.0">
+            <name>Background_16</name>
+            <x>18</x>
+            <y>361</y>
+            <width>330</width>
+            <height>80</height>
+            <line_width>0</line_width>
+            <line_color>
+              <color name="GROUP-BORDER" red="150" green="155" blue="151">
+              </color>
+            </line_color>
+            <background_color>
+              <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+              </color>
+            </background_color>
+            <corner_width>10</corner_width>
+            <corner_height>10</corner_height>
+          </widget>
+          <widget type="label" version="2.0.0">
+            <name>LB_Header_23</name>
+            <class>HEADER2</class>
+            <text>Commands</text>
+            <x>18</x>
+            <y>361</y>
+            <width>330</width>
+            <height>30</height>
+            <font use_class="true">
+              <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+              </font>
+            </font>
+            <background_color>
+              <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+              </color>
+            </background_color>
+            <horizontal_alignment>1</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="action_button" version="3.0.0">
+            <name>Action Button_8</name>
+            <actions execute_as_one="true">
+              <action type="write_pv">
+                <pv_name>$(PREFIX):$(DEV):Cmd_Calib</pv_name>
+                <value>1</value>
+                <description>Write PV</description>
+              </action>
+            </actions>
+            <text>INITIALIZE</text>
+            <x>118</x>
+            <y>401</y>
+            <width>130</width>
+            <height>25</height>
+            <tooltip>$(actions)</tooltip>
+          </widget>
+          <widget type="rectangle" version="2.0.0">
+            <name>Background_24</name>
+            <x>598</x>
+            <y>61</y>
+            <width>240</width>
+            <height>320</height>
+            <line_width>1</line_width>
+            <line_color>
+              <color name="GROUP-BORDER" red="150" green="155" blue="151">
+              </color>
+            </line_color>
+            <background_color>
+              <color name="BACKGROUND" red="220" green="225" blue="221">
+              </color>
+            </background_color>
+            <corner_width>10</corner_width>
+            <corner_height>10</corner_height>
+          </widget>
+          <widget type="label" version="2.0.0">
+            <name>Label_36</name>
+            <text>Error: Network</text>
+            <x>608</x>
+            <y>81</y>
+            <width>160</width>
+            <horizontal_alignment>2</horizontal_alignment>
+          </widget>
+          <widget type="led" version="2.0.0">
+            <name>LED_8</name>
+            <pv_name>$(PREFIX):$(DEV):Err_Network</pv_name>
+            <x>778</x>
+            <y>81</y>
+            <off_color>
+              <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+              </color>
+            </off_color>
+            <on_color>
+              <color name="LED-RED-ON" red="255" green="60" blue="46">
+              </color>
+            </on_color>
+            <font>
+              <font family="Source Sans Pro" style="REGULAR" size="12.0">
+              </font>
+            </font>
+            <square>true</square>
+            <border_alarm_sensitive>false</border_alarm_sensitive>
+          </widget>
+          <widget type="label" version="2.0.0">
+            <name>Label_42</name>
+            <text>Error: General</text>
+            <x>608</x>
+            <y>111</y>
+            <width>160</width>
+            <horizontal_alignment>2</horizontal_alignment>
+          </widget>
+          <widget type="led" version="2.0.0">
+            <name>LED_10</name>
+            <pv_name>$(PREFIX):$(DEV):Err_General</pv_name>
+            <x>778</x>
+            <y>111</y>
+            <off_color>
+              <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+              </color>
+            </off_color>
+            <on_color>
+              <color name="LED-RED-ON" red="255" green="60" blue="46">
+              </color>
+            </on_color>
+            <font>
+              <font family="Source Sans Pro" style="REGULAR" size="12.0">
+              </font>
+            </font>
+            <square>true</square>
+            <border_alarm_sensitive>false</border_alarm_sensitive>
+          </widget>
+        </children>
+      </tab>
+      <tab>
+        <name>Trend</name>
+        <children>
+          <widget type="databrowser" version="2.0.0">
+            <name>DataBrowser</name>
+            <file>TS_TMS_MergenPyro_Faceplate_Trend.plt</file>
+            <width>869</width>
+            <height>463</height>
+          </widget>
+        </children>
+      </tab>
+    </tabs>
+    <x>10</x>
+    <y>60</y>
+    <width>890</width>
+    <height>510</height>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Header Bar</name>
+    <width>920</width>
+    <height>50</height>
+    <line_width>0</line_width>
+    <line_color>
+      <color red="0" green="0" blue="255" alpha="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="PRIMARY-HEADER-BACKGROUND" red="151" green="188" blue="202">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>LB_HeaderPVName</name>
+    <text>${SecSub}:${Dis}-${Dev}-${Index} - ${Desc}</text>
+    <x>20</x>
+    <width>900</width>
+    <height>50</height>
+    <font>
+      <font name="Header 1" family="Source Sans Pro" style="BOLD_ITALIC" size="36.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label</name>
+    <class>SUBTITLE</class>
+    <text>Mergenthaler Pyrometer Controller Faceplate</text>
+    <x>470</x>
+    <y use_class="true">20</y>
+    <width>450</width>
+    <height use_class="true">30</height>
+    <font use_class="true">
+      <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="HEADER-TEXT" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <horizontal_alignment use_class="true">2</horizontal_alignment>
+    <vertical_alignment use_class="true">2</vertical_alignment>
+    <wrap_words use_class="true">false</wrap_words>
+  </widget>
+</display>

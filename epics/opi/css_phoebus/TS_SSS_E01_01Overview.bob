@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Target System Overview</name>
+  <width>2140</width>
+  <height>1440</height>
+  <widget type="rectangle" version="2.0.0">
+    <name>title bg</name>
+    <class>TITLE-BAR</class>
+    <x use_class="true">0</x>
+    <y use_class="true">0</y>
+    <width>2140</width>
+    <height use_class="true">50</height>
+    <line_width use_class="true">0</line_width>
+    <line_color>
+      <color name="BLUE-GROUP-BORDER" red="138" green="167" blue="167">
+      </color>
+    </line_color>
+    <background_color use_class="true">
+      <color name="PRIMARY-HEADER-BACKGROUND" red="151" green="188" blue="202">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_5</name>
+    <class>TITLE</class>
+    <text>Target System</text>
+    <x use_class="true">20</x>
+    <y use_class="true">0</y>
+    <width>1930</width>
+    <height use_class="true">50</height>
+    <font use_class="true">
+      <font name="Header 1" family="Source Sans Pro" style="BOLD_ITALIC" size="36.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="HEADER-TEXT" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <transparent use_class="true">true</transparent>
+    <horizontal_alignment use_class="true">0</horizontal_alignment>
+    <vertical_alignment use_class="true">1</vertical_alignment>
+    <wrap_words use_class="true">false</wrap_words>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>MGGrey03-background_4</name>
+    <x>1060</x>
+    <y>70</y>
+    <width>670</width>
+    <height>550</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color name="GROUP-BORDER" red="150" green="155" blue="151">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+      </color>
+    </background_color>
+    <corner_width>10</corner_width>
+    <corner_height>10</corner_height>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>MGGrey03-background_5</name>
+    <x>1060</x>
+    <y>640</y>
+    <width>670</width>
+    <height>260</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color name="GROUP-BORDER" red="150" green="155" blue="151">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+      </color>
+    </background_color>
+    <corner_width>10</corner_width>
+    <corner_height>10</corner_height>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_7</name>
+    <class>GROUP-TITLE</class>
+    <text>Target  Monitoring System</text>
+    <x>1060</x>
+    <y>640</y>
+    <width>670</width>
+    <height use_class="true">30</height>
+    <font use_class="true">
+      <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="GROUP-TEXT" red="25" green="25" blue="25">
+      </color>
+    </foreground_color>
+    <horizontal_alignment use_class="true">1</horizontal_alignment>
+    <vertical_alignment use_class="true">1</vertical_alignment>
+    <wrap_words use_class="true">false</wrap_words>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_8</name>
+    <class>GROUP-TITLE</class>
+    <text>Target Drive Unit</text>
+    <x>1060</x>
+    <y>70</y>
+    <width>670</width>
+    <height use_class="true">30</height>
+    <font use_class="true">
+      <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="GROUP-TEXT" red="25" green="25" blue="25">
+      </color>
+    </foreground_color>
+    <horizontal_alignment use_class="true">1</horizontal_alignment>
+    <vertical_alignment use_class="true">1</vertical_alignment>
+    <wrap_words use_class="true">false</wrap_words>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>YSV-034a_1</name>
+    <file>TMS/TS_TMS_MergenPyro/TS_TMS_MergenPyro_BlockIcon.bob</file>
+    <macros>
+      <Desc>Shroud</Desc>
+      <Dev>TU</Dev>
+      <Dis>Mech</Dis>
+      <Index>301</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+    </macros>
+    <x>1400</x>
+    <y>690</y>
+    <width>150</width>
+    <height>170</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>YSV-034a_3</name>
+    <file>TMS/TS_TMS_MergenPyro/TS_TMS_MergenPyro_BlockIcon.bob</file>
+    <macros>
+      <Desc>Cup</Desc>
+      <Dev>TU</Dev>
+      <Dis>Mech</Dis>
+      <Index>302</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+    </macros>
+    <x>1560</x>
+    <y>690</y>
+    <width>150</width>
+    <height>170</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>YSV-034a_4</name>
+    <file>TMS/TS_TMS_Chrocodile/TS_TMS_Chrocodile_BlockIcon.bob</file>
+    <macros>
+      <WIDDesc></WIDDesc>
+      <WIDDev>GU</WIDDev>
+      <WIDDis>Mech</WIDDis>
+      <WIDIndex>102</WIDIndex>
+      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+    </macros>
+    <x>1080</x>
+    <y>690</y>
+    <width>150</width>
+    <height>170</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>YSV-034a_5</name>
+    <file>TMS/TS_TMS_MicroEps/TS_TMS_MicroEps_BlockIcon.bob</file>
+    <macros>
+      <WIDDev>GU</WIDDev>
+      <WIDDis>Mech</WIDDis>
+      <WIDIndex>201</WIDIndex>
+      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+    </macros>
+    <x>1240</x>
+    <y>690</y>
+    <width>150</width>
+    <height>170</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="symbol" version="2.0.0">
+    <name>Symbol</name>
+    <symbols>
+      <symbol>images/TargetWheel_and_TMP_Grey.png</symbol>
+    </symbols>
+    <y>50</y>
+    <width>300</width>
+    <height>680</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>YSV-034a_6</name>
+    <file>StateMachine/TS_State.bob</file>
+    <macros>
+      <Dev>POU</Dev>
+      <Dis>Ctrl</Dis>
+      <Index>State</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+    </macros>
+    <x>370</x>
+    <y>70</y>
+    <width>670</width>
+    <height>660</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Active_State</name>
+    <pv_name>Tgt-TWDS1000:Ctrl-POU-State:ActiveState_STR</pv_name>
+    <x>1090</x>
+    <y>570</y>
+    <width>140</width>
+    <height>22</height>
+  </widget>
+</display>

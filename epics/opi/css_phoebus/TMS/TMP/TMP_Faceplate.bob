@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>TMP_Faceplate</name>
+  <width>920</width>
+  <height>620</height>
+  <widget type="tabs" version="2.0.0">
+    <name>Tabs</name>
+    <tabs>
+      <tab>
+        <name>Status</name>
+        <children>
+          <widget type="rectangle" version="2.0.0">
+            <name>group.status.background_2</name>
+            <x>218</x>
+            <y>281</y>
+            <width>650</width>
+            <height>200</height>
+            <line_width>0</line_width>
+            <line_color>
+              <color name="PRIMARY-GROUP-BORDER" red="151" green="188" blue="202">
+              </color>
+            </line_color>
+            <background_color>
+              <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+              </color>
+            </background_color>
+            <corner_width>10</corner_width>
+            <corner_height>10</corner_height>
+          </widget>
+          <widget type="rectangle" version="2.0.0">
+            <name>Background_24</name>
+            <x>228</x>
+            <y>321</y>
+            <width>310</width>
+            <height>120</height>
+            <line_width>1</line_width>
+            <line_color>
+              <color name="GROUP-BORDER" red="150" green="155" blue="151">
+              </color>
+            </line_color>
+            <background_color>
+              <color name="BACKGROUND" red="220" green="225" blue="221">
+              </color>
+            </background_color>
+            <corner_width>10</corner_width>
+            <corner_height>10</corner_height>
+          </widget>
+          <widget type="rectangle" version="2.0.0">
+            <name>group.status.background</name>
+            <x>218</x>
+            <y>21</y>
+            <width>650</width>
+            <height>200</height>
+            <line_width>0</line_width>
+            <line_color>
+              <color name="PRIMARY-GROUP-BORDER" red="151" green="188" blue="202">
+              </color>
+            </line_color>
+            <background_color>
+              <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+              </color>
+            </background_color>
+            <corner_width>10</corner_width>
+            <corner_height>10</corner_height>
+          </widget>
+          <widget type="rectangle" version="2.0.0">
+            <name>Background_23</name>
+            <x>226</x>
+            <y>59</y>
+            <width>310</width>
+            <height>70</height>
+            <line_width>1</line_width>
+            <line_color>
+              <color name="GROUP-BORDER" red="150" green="155" blue="151">
+              </color>
+            </line_color>
+            <background_color>
+              <color name="BACKGROUND" red="220" green="225" blue="221">
+              </color>
+            </background_color>
+            <corner_width>10</corner_width>
+            <corner_height>10</corner_height>
+          </widget>
+          <widget type="label" version="2.0.0">
+            <name>LB_Status</name>
+            <class>HEADER2</class>
+            <text>TMP Lump Temperature - TE-701</text>
+            <x>218</x>
+            <y>21</y>
+            <width>650</width>
+            <height>35</height>
+            <font use_class="true">
+              <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color name="HEADER-TEXT" red="0" green="0" blue="0">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+              </color>
+            </background_color>
+            <horizontal_alignment>1</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="label" version="2.0.0">
+            <name>Label_12</name>
+            <text>Measaured Value</text>
+            <x>228</x>
+            <y>69</y>
+            <width>140</width>
+            <horizontal_alignment>2</horizontal_alignment>
+          </widget>
+          <widget type="textupdate" version="2.0.0">
+            <name>Text Update</name>
+            <pv_name>$(PREFIX):Mech-TE-401:MeasValue</pv_name>
+            <x>386</x>
+            <y>69</y>
+            <width>80</width>
+          </widget>
+          <widget type="label" version="2.0.0">
+            <name>Label_46</name>
+            <text>degC</text>
+            <x>476</x>
+            <y>69</y>
+            <width>40</width>
+          </widget>
+          <widget type="label" version="2.0.0">
+            <name>LB_Status_1</name>
+            <class>HEADER2</class>
+            <text>Scintillator Plug Temperature - TE-401</text>
+            <x>218</x>
+            <y>282</y>
+            <width>650</width>
+            <height>35</height>
+            <font use_class="true">
+              <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color name="HEADER-TEXT" red="0" green="0" blue="0">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+              </color>
+            </background_color>
+            <horizontal_alignment>1</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="symbol" version="2.0.0">
+            <name>Symbol</name>
+            <symbols>
+              <symbol>TMP.png</symbol>
+            </symbols>
+            <x>19</x>
+            <y>21</y>
+            <width>210</width>
+            <height>460</height>
+          </widget>
+        </children>
+      </tab>
+      <tab>
+        <name>Trend</name>
+        <children>
+          <widget type="databrowser" version="2.0.0">
+            <name>DataBrowser</name>
+            <file>TS_TMS_Chrocodile_Faceplate_Trend.plt</file>
+            <width>869</width>
+            <height>463</height>
+          </widget>
+        </children>
+      </tab>
+    </tabs>
+    <x>10</x>
+    <y>60</y>
+    <width>890</width>
+    <height>540</height>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Header Bar</name>
+    <width>920</width>
+    <height>50</height>
+    <line_width>0</line_width>
+    <line_color>
+      <color red="0" green="0" blue="255" alpha="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="PRIMARY-HEADER-BACKGROUND" red="151" green="188" blue="202">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>LB_HeaderPVName</name>
+    <text>Target Monitoring Plug</text>
+    <x>20</x>
+    <width>900</width>
+    <height>50</height>
+    <font>
+      <font name="Header 1" family="Source Sans Pro" style="BOLD_ITALIC" size="36.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+</display>

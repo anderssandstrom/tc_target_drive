@@ -1,0 +1,1236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>PT100_AnalogInput_Faceplate</name>
+  <width>965</width>
+  <height>780</height>
+  <widget type="tabs" version="2.0.0">
+    <name>Tabs</name>
+    <tabs>
+      <tab>
+        <name>Status</name>
+        <children>
+          <widget type="group" version="2.0.0">
+            <name>Group_Limits</name>
+            <x>468</x>
+            <y>340</y>
+            <width>400</width>
+            <height>300</height>
+            <style>3</style>
+            <transparent>true</transparent>
+            <widget type="rectangle" version="2.0.0">
+              <name>group.alarms.border</name>
+              <width>400</width>
+              <height>300</height>
+              <line_width>0</line_width>
+              <line_color>
+                <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                </color>
+              </line_color>
+              <background_color>
+                <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                </color>
+              </background_color>
+            </widget>
+            <widget type="rectangle" version="2.0.0">
+              <name>group.alarms.background</name>
+              <x>320</x>
+              <y>35</y>
+              <width>70</width>
+              <height>200</height>
+              <line_width>0</line_width>
+              <line_color>
+                <color name="PRIMARY-GROUP-BORDER" red="151" green="188" blue="202">
+                </color>
+              </line_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_ALARMS</name>
+              <text>LIMITS</text>
+              <width>400</width>
+              <height>35</height>
+              <font>
+                <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                </font>
+              </font>
+              <foreground_color>
+                <color name="GRAY-TEXT" red="255" green="255" blue="255">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                </color>
+              </background_color>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <tooltip>Group alarm</tooltip>
+            </widget>
+            <widget type="led" version="2.0.0">
+              <name>LED_ALM_HIHI</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:HIHI_Act</pv_name>
+              <x>343</x>
+              <y>80</y>
+              <width>25</width>
+              <height>25</height>
+              <off_color>
+                <color name="Grid" red="169" green="169" blue="169">
+                </color>
+              </off_color>
+              <on_color>
+                <color name="MAJOR" red="252" green="13" blue="27">
+                </color>
+              </on_color>
+              <rules>
+                <rule name="Border Rule" prop_id="line_color" out_exp="false">
+                  <exp bool_exp="pv0 == 0">
+                    <value>
+                      <color name="LED-RED-OFF" red="110" green="101" blue="90">
+                      </color>
+                    </value>
+                  </exp>
+                  <exp bool_exp="pv0 == 1">
+                    <value>
+                      <color name="LED-RED-ON" red="255" green="60" blue="46">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:HIHI_Lchd</pv_name>
+                </rule>
+              </rules>
+              <tooltip>$(pv_name)</tooltip>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="led" version="2.0.0">
+              <name>LED_ALM_HI</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:HIGH_Act</pv_name>
+              <x>343</x>
+              <y>120</y>
+              <width>25</width>
+              <height>25</height>
+              <off_color>
+                <color name="Grid" red="169" green="169" blue="169">
+                </color>
+              </off_color>
+              <on_color>
+                <color name="WARNING" red="252" green="242" blue="17">
+                </color>
+              </on_color>
+              <rules>
+                <rule name="Border Rule" prop_id="line_color" out_exp="false">
+                  <exp bool_exp="pv0 == 0">
+                    <value>
+                      <color name="LED-RED-OFF" red="110" green="101" blue="90">
+                      </color>
+                    </value>
+                  </exp>
+                  <exp bool_exp="pv0 == 1">
+                    <value>
+                      <color name="LED-ORANGE-ON" red="255" green="175" blue="81">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:HIGH_Lchd</pv_name>
+                </rule>
+              </rules>
+              <tooltip>$(pv_name)</tooltip>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="led" version="2.0.0">
+              <name>LED_ALM_LOW</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:LOW_Act</pv_name>
+              <x>343</x>
+              <y>160</y>
+              <width>25</width>
+              <height>25</height>
+              <off_color>
+                <color name="Grid" red="169" green="169" blue="169">
+                </color>
+              </off_color>
+              <on_color>
+                <color name="WARNING" red="252" green="242" blue="17">
+                </color>
+              </on_color>
+              <rules>
+                <rule name="Border Rule" prop_id="line_color" out_exp="false">
+                  <exp bool_exp="pv0 == 0">
+                    <value>
+                      <color name="LED-RED-OFF" red="110" green="101" blue="90">
+                      </color>
+                    </value>
+                  </exp>
+                  <exp bool_exp="pv0 == 1">
+                    <value>
+                      <color name="LED-ORANGE-ON" red="255" green="175" blue="81">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:LOW_Lchd</pv_name>
+                </rule>
+              </rules>
+              <tooltip>$(pv_name)</tooltip>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="led" version="2.0.0">
+              <name>LED_ALM_LOWLOW</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:LOLO_Act</pv_name>
+              <x>343</x>
+              <y>200</y>
+              <width>25</width>
+              <height>25</height>
+              <off_color>
+                <color name="Grid" red="169" green="169" blue="169">
+                </color>
+              </off_color>
+              <on_color>
+                <color name="MAJOR" red="252" green="13" blue="27">
+                </color>
+              </on_color>
+              <rules>
+                <rule name="Border Rule" prop_id="line_color" out_exp="false">
+                  <exp bool_exp="pv0 == 0">
+                    <value>
+                      <color name="LED-RED-OFF" red="110" green="101" blue="90">
+                      </color>
+                    </value>
+                  </exp>
+                  <exp bool_exp="pv0 == 1">
+                    <value>
+                      <color name="LED-RED-ON" red="255" green="60" blue="46">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:LOLO_Lchd</pv_name>
+                </rule>
+              </rules>
+              <tooltip>$(pv_name)</tooltip>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="rectangle" version="2.0.0">
+              <name>group.limits.background</name>
+              <x>10</x>
+              <y>35</y>
+              <width>300</width>
+              <height>200</height>
+              <line_width>0</line_width>
+              <line_color>
+                <color name="PRIMARY-GROUP-BORDER" red="151" green="188" blue="202">
+                </color>
+              </line_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_HIHI</name>
+              <text>HIHI</text>
+              <x>20</x>
+              <y>76</y>
+              <width>55</width>
+              <height>30</height>
+              <foreground_color>
+                <color name="TEXT" red="25" green="25" blue="25">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="BLUE-BACKGROUND" red="195" green="226" blue="225">
+                </color>
+              </background_color>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>TU_FB_HIHI</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:HIHI_RB</pv_name>
+              <x>195</x>
+              <y>77</y>
+              <width>95</width>
+              <height>30</height>
+              <precision>2</precision>
+              <vertical_alignment>1</vertical_alignment>
+              <tooltip>$(pv_name)</tooltip>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="spinner" version="2.0.0">
+              <name>INP_HIHI</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:HIHI_S</pv_name>
+              <x>85</x>
+              <y>77</y>
+              <height>30</height>
+              <format>0</format>
+              <precision>2</precision>
+              <rules>
+                <rule name="Enable Rule" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pv0==1">
+                    <value>true</value>
+                  </exp>
+                  <exp bool_exp="pv0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:HIHI_Monitor_En</pv_name>
+                </rule>
+              </rules>
+              <tooltip>$(pv_name)</tooltip>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <minimum>${SecSub}:${Dis}-${Dev}-${Index}:ScaleLOW</minimum>
+              <maximum>${SecSub}:${Dis}-${Dev}-${Index}:ScaleHIGH</maximum>
+              <limits_from_pv>false</limits_from_pv>
+            </widget>
+            <widget type="spinner" version="2.0.0">
+              <name>INP_HIGH</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:HIGH_S</pv_name>
+              <x>85</x>
+              <y>117</y>
+              <height>30</height>
+              <format>0</format>
+              <precision>2</precision>
+              <rules>
+                <rule name="Enable Rule" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pv0==1">
+                    <value>true</value>
+                  </exp>
+                  <exp bool_exp="pv0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:HIGH_Monitor_En</pv_name>
+                </rule>
+              </rules>
+              <tooltip>$(pv_name)</tooltip>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <minimum>${SecSub}:${Dis}-${Dev}-${Index}:ScaleLOW</minimum>
+              <maximum>${SecSub}:${Dis}-${Dev}-${Index}:ScaleHIGH</maximum>
+              <limits_from_pv>false</limits_from_pv>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_HIGH</name>
+              <text>HIGH</text>
+              <x>20</x>
+              <y>116</y>
+              <width>55</width>
+              <height>30</height>
+              <foreground_color>
+                <color name="TEXT" red="25" green="25" blue="25">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="BLUE-BACKGROUND" red="195" green="226" blue="225">
+                </color>
+              </background_color>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>TU_FB_HIGH</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:HIGH_RB</pv_name>
+              <x>195</x>
+              <y>117</y>
+              <width>95</width>
+              <height>30</height>
+              <precision>2</precision>
+              <vertical_alignment>1</vertical_alignment>
+              <tooltip>$(pv_name)</tooltip>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_LOW</name>
+              <text>LOW</text>
+              <x>20</x>
+              <y>156</y>
+              <width>55</width>
+              <height>30</height>
+              <foreground_color>
+                <color name="TEXT" red="25" green="25" blue="25">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="BLUE-BACKGROUND" red="195" green="226" blue="225">
+                </color>
+              </background_color>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="spinner" version="2.0.0">
+              <name>INP_LOW</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:LOW_S</pv_name>
+              <x>85</x>
+              <y>157</y>
+              <height>30</height>
+              <format>0</format>
+              <precision>2</precision>
+              <rules>
+                <rule name="Enable Rule" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pv0==1">
+                    <value>true</value>
+                  </exp>
+                  <exp bool_exp="pv0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:LOW_Monitor_En</pv_name>
+                </rule>
+              </rules>
+              <tooltip>$(pv_name)</tooltip>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <minimum>${SecSub}:${Dis}-${Dev}-${Index}:ScaleLOW</minimum>
+              <maximum>${SecSub}:${Dis}-${Dev}-${Index}:ScaleHIGH</maximum>
+              <limits_from_pv>false</limits_from_pv>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>TU_FB_LOW</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:LOW_RB</pv_name>
+              <x>195</x>
+              <y>157</y>
+              <width>95</width>
+              <height>30</height>
+              <precision>2</precision>
+              <vertical_alignment>1</vertical_alignment>
+              <tooltip>$(pv_name)</tooltip>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_LOLO</name>
+              <text>LOLO</text>
+              <x>20</x>
+              <y>196</y>
+              <width>55</width>
+              <height>30</height>
+              <foreground_color>
+                <color name="TEXT" red="25" green="25" blue="25">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="BLUE-BACKGROUND" red="195" green="226" blue="225">
+                </color>
+              </background_color>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="spinner" version="2.0.0">
+              <name>INP_LOLO</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:LOLO_S</pv_name>
+              <x>85</x>
+              <y>197</y>
+              <height>30</height>
+              <format>0</format>
+              <precision>2</precision>
+              <rules>
+                <rule name="Enable Rule" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pv0==1">
+                    <value>true</value>
+                  </exp>
+                  <exp bool_exp="pv0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:LOLO_Monitor_En</pv_name>
+                </rule>
+              </rules>
+              <tooltip>$(pv_name)</tooltip>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <minimum>${SecSub}:${Dis}-${Dev}-${Index}:ScaleLOW</minimum>
+              <maximum>${SecSub}:${Dis}-${Dev}-${Index}:ScaleHIGH</maximum>
+              <limits_from_pv>false</limits_from_pv>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>TU_FB_LOLO</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:LOLO_RB</pv_name>
+              <x>195</x>
+              <y>197</y>
+              <width>95</width>
+              <height>30</height>
+              <precision>2</precision>
+              <vertical_alignment>1</vertical_alignment>
+              <tooltip>$(pv_name)</tooltip>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="action_button" version="3.0.0">
+              <name>BTN_ACK_1</name>
+              <actions>
+                <action type="write_pv">
+                  <pv_name>$(pv_name)</pv_name>
+                  <value>1</value>
+                  <description>Acknowledge</description>
+                </action>
+              </actions>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Cmd_RS_HiLoLimLch</pv_name>
+              <text>ACKNOWLEDGE</text>
+              <x>250</x>
+              <y>250</y>
+              <width>140</width>
+              <height>40</height>
+              <tooltip>$(pv_name)</tooltip>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Label_7</name>
+              <text>Settings</text>
+              <x>10</x>
+              <y>36</y>
+              <width>300</width>
+              <height>35</height>
+              <font>
+                <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                </font>
+              </font>
+              <foreground_color>
+                <color name="GROUP-TEXT" red="25" green="25" blue="25">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Label_8</name>
+              <text>Status</text>
+              <x>320</x>
+              <y>36</y>
+              <width>70</width>
+              <height>35</height>
+              <font>
+                <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                </font>
+              </font>
+              <foreground_color>
+                <color name="GROUP-TEXT" red="25" green="25" blue="25">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>Group_Force</name>
+            <x>8</x>
+            <y>340</y>
+            <width>450</width>
+            <height>300</height>
+            <style>3</style>
+            <transparent>true</transparent>
+            <widget type="rectangle" version="2.0.0">
+              <name>Rectangle_Forcegroup</name>
+              <width>450</width>
+              <height>300</height>
+              <line_width>0</line_width>
+              <line_color>
+                <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                </color>
+              </line_color>
+              <background_color>
+                <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                </color>
+              </background_color>
+            </widget>
+            <widget type="rectangle" version="2.0.0">
+              <name>group.op.modes.background_1</name>
+              <x>10</x>
+              <y>35</y>
+              <width>190</width>
+              <height>200</height>
+              <line_width>0</line_width>
+              <line_color>
+                <color name="PRIMARY-GROUP-BORDER" red="151" green="188" blue="202">
+                </color>
+              </line_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Label_ForceGroup</name>
+              <text>FORCE</text>
+              <width>450</width>
+              <height>35</height>
+              <font>
+                <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                </font>
+              </font>
+              <foreground_color>
+                <color name="GRAY-TEXT" red="255" green="255" blue="255">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_OP_MODES</name>
+              <text>Mode</text>
+              <x>10</x>
+              <y>35</y>
+              <width>190</width>
+              <height>35</height>
+              <font>
+                <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                </font>
+              </font>
+              <foreground_color>
+                <color name="GROUP-TEXT" red="25" green="25" blue="25">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="rectangle" version="2.0.0">
+              <name>Rectangle</name>
+              <x>210</x>
+              <y>35</y>
+              <width>230</width>
+              <height>200</height>
+              <line_width>0</line_width>
+              <line_color>
+                <color name="PRIMARY-GROUP-BORDER" red="151" green="188" blue="202">
+                </color>
+              </line_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Label_1</name>
+              <text>Value</text>
+              <x>210</x>
+              <y>35</y>
+              <width>230</width>
+              <height>35</height>
+              <font>
+                <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                </font>
+              </font>
+              <foreground_color>
+                <color name="GROUP-TEXT" red="25" green="25" blue="25">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="action_button" version="3.0.0">
+              <name>BTN_FORCE_APPLY</name>
+              <actions>
+                <action type="write_pv">
+                  <pv_name>$(pv_name)</pv_name>
+                  <value>1</value>
+                  <description>Write PV</description>
+                </action>
+              </actions>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Cmd_ForceValueAct</pv_name>
+              <text>ACTIVATE FORCE VALUE</text>
+              <x>230</x>
+              <y>250</y>
+              <width>210</width>
+              <height>40</height>
+              <rules>
+                <rule name="EnableRule" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pv0 == 0">
+                    <value>false</value>
+                  </exp>
+                  <exp bool_exp="pv0 == 1">
+                    <value>true</value>
+                  </exp>
+                  <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Force_Mode_Act</pv_name>
+                </rule>
+              </rules>
+              <tooltip>$(pv_name)</tooltip>
+            </widget>
+            <widget type="group" version="2.0.0">
+              <name>Group</name>
+              <x>220</x>
+              <y>110</y>
+              <width>210</width>
+              <height>30</height>
+              <style>3</style>
+              <transparent>true</transparent>
+              <widget type="label" version="2.0.0">
+                <name>Label_2</name>
+                <text>Active Value</text>
+                <y>5</y>
+                <horizontal_alignment>2</horizontal_alignment>
+              </widget>
+              <widget type="textupdate" version="2.0.0">
+                <name>TU_FeedbackForceVal</name>
+                <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:ForceValue_RB</pv_name>
+                <x>110</x>
+                <height>30</height>
+                <precision>1</precision>
+                <vertical_alignment>1</vertical_alignment>
+                <tooltip>$(pv_name)</tooltip>
+                <border_alarm_sensitive>false</border_alarm_sensitive>
+              </widget>
+            </widget>
+            <widget type="action_button" version="3.0.0">
+              <name>BTN_FORCE</name>
+              <actions>
+                <action type="write_pv">
+                  <pv_name>$(pv_name)</pv_name>
+                  <value>1</value>
+                  <description>Write PV</description>
+                </action>
+              </actions>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Cmd_Force</pv_name>
+              <text>FORCE</text>
+              <x>120</x>
+              <y>250</y>
+              <height>40</height>
+              <tooltip>$(pv_name)</tooltip>
+            </widget>
+            <widget type="led" version="2.0.0">
+              <name>LED_Forced</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Force_Mode_Act</pv_name>
+              <x>50</x>
+              <y>113</y>
+              <width>25</width>
+              <height>25</height>
+              <off_color>
+                <color name="Grid" red="169" green="169" blue="169">
+                </color>
+              </off_color>
+              <tooltip>$(pv_name)</tooltip>
+            </widget>
+            <widget type="action_button" version="3.0.0">
+              <name>BTN_AUTO</name>
+              <actions>
+                <action type="write_pv">
+                  <pv_name>$(pv_name)</pv_name>
+                  <value>1</value>
+                  <description>Write PV</description>
+                </action>
+              </actions>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Cmd_Freerun</pv_name>
+              <text>FREERUN</text>
+              <x>10</x>
+              <y>250</y>
+              <height>40</height>
+              <tooltip>$(pv_name)</tooltip>
+            </widget>
+            <widget type="led" version="2.0.0">
+              <name>LED_FreeRun</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Freerun_Act</pv_name>
+              <x>50</x>
+              <y>75</y>
+              <width>25</width>
+              <height>25</height>
+              <off_color>
+                <color name="Grid" red="169" green="169" blue="169">
+                </color>
+              </off_color>
+              <tooltip>$(pv_name)</tooltip>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Label_5</name>
+              <text>FREERUN</text>
+              <x>90</x>
+              <y>77</y>
+              <width>85</width>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Label_6</name>
+              <text>FORCED</text>
+              <x>90</x>
+              <y>115</y>
+              <width>85</width>
+            </widget>
+            <widget type="group" version="2.0.0">
+              <name>Group</name>
+              <x>220</x>
+              <y>70</y>
+              <width>210</width>
+              <height>30</height>
+              <style>3</style>
+              <transparent>true</transparent>
+              <widget type="spinner" version="2.0.0">
+                <name>Spinner</name>
+                <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:ForceValue_S</pv_name>
+                <x>110</x>
+                <height>30</height>
+                <precision>1</precision>
+                <rules>
+                  <rule name="Enable Rule" prop_id="enabled" out_exp="false">
+                    <exp bool_exp="pv0 == 0">
+                      <value>false</value>
+                    </exp>
+                    <exp bool_exp="pv0 == 1">
+                      <value>true</value>
+                    </exp>
+                    <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Force_Mode_Act</pv_name>
+                  </rule>
+                </rules>
+                <tooltip>$(pv_name)</tooltip>
+                <minimum>${SecSub}:${Dis}-${Dev}-${Index}:ScaleLOW</minimum>
+                <maximum>${SecSub}:${Dis}-${Dev}-${Index}:ScaleHIGH</maximum>
+                <limits_from_pv>false</limits_from_pv>
+                <increment>0.1</increment>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>Label</name>
+                <text>Force Value</text>
+                <y>5</y>
+                <horizontal_alignment>2</horizontal_alignment>
+              </widget>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>Group_DAQ</name>
+            <x>468</x>
+            <y>21</y>
+            <width>400</width>
+            <height>310</height>
+            <style>3</style>
+            <transparent>true</transparent>
+            <widget type="rectangle" version="2.0.0">
+              <name>Rectangle_Status</name>
+              <width>400</width>
+              <height>310</height>
+              <line_width>0</line_width>
+              <line_color>
+                <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                </color>
+              </line_color>
+              <background_color>
+                <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                </color>
+              </background_color>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Label_Status</name>
+              <text>DATA ACQUISITION STATUS</text>
+              <width>400</width>
+              <height>35</height>
+              <font>
+                <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                </font>
+              </font>
+              <foreground_color>
+                <color name="GRAY-TEXT" red="255" green="255" blue="255">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                </color>
+              </background_color>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <tooltip>Group alarm</tooltip>
+            </widget>
+            <widget type="action_button" version="3.0.0">
+              <name>BTN_ACK_2</name>
+              <actions>
+                <action type="write_pv">
+                  <pv_name>$(pv_name)</pv_name>
+                  <value>1</value>
+                  <description>Acknowledge</description>
+                </action>
+              </actions>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Cmd_RS_ValidityLch</pv_name>
+              <text>ACKNOWLEDGE</text>
+              <x>250</x>
+              <y>260</y>
+              <width>140</width>
+              <height>40</height>
+              <tooltip>$(pv_name)</tooltip>
+            </widget>
+            <widget type="rectangle" version="2.0.0">
+              <name>Rectangle_Status1</name>
+              <x>320</x>
+              <y>36</y>
+              <width>70</width>
+              <height>215</height>
+              <line_width>0</line_width>
+              <line_color>
+                <color name="PRIMARY-GROUP-BORDER" red="151" green="188" blue="202">
+                </color>
+              </line_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Label_9</name>
+              <text>Status</text>
+              <x>320</x>
+              <y>36</y>
+              <width>70</width>
+              <height>35</height>
+              <font>
+                <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                </font>
+              </font>
+              <foreground_color>
+                <color name="GROUP-TEXT" red="25" green="25" blue="25">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="rectangle" version="2.0.0">
+              <name>Background_2</name>
+              <x>10</x>
+              <y>36</y>
+              <width>300</width>
+              <height>215</height>
+              <line_width>0</line_width>
+              <line_color>
+                <color name="PRIMARY-GROUP-BORDER" red="151" green="188" blue="202">
+                </color>
+              </line_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Text Update_1</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:TerminalName</pv_name>
+              <x>10</x>
+              <y>36</y>
+              <width>245</width>
+              <height>35</height>
+              <font>
+                <font family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                </font>
+              </font>
+              <background_color>
+                <color red="230" green="235" blue="232" alpha="0">
+                </color>
+              </background_color>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Text Update_2</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:ChannelNum</pv_name>
+              <x>255</x>
+              <y>36</y>
+              <width>50</width>
+              <height>35</height>
+              <font>
+                <font family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                </font>
+              </font>
+              <background_color>
+                <color red="230" green="235" blue="232" alpha="0">
+                </color>
+              </background_color>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="group" version="2.0.0">
+              <name>Group</name>
+              <x>20</x>
+              <y>80</y>
+              <width>348</width>
+              <height>30</height>
+              <style>3</style>
+              <transparent>true</transparent>
+              <widget type="label" version="2.0.0">
+                <name>Label_12</name>
+                <text>Terminal Error</text>
+                <width>280</width>
+                <height>30</height>
+                <horizontal_alignment>2</horizontal_alignment>
+                <vertical_alignment>1</vertical_alignment>
+                <tooltip>WC State</tooltip>
+              </widget>
+              <widget type="led" version="2.0.0">
+                <name>LED_1</name>
+                <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:HWIO_Stat_AI_TermEr</pv_name>
+                <x>323</x>
+                <y>3</y>
+                <width>25</width>
+                <height>25</height>
+                <off_color>
+                  <color name="Grid" red="169" green="169" blue="169">
+                  </color>
+                </off_color>
+                <on_color>
+                  <color name="MAJOR" red="252" green="13" blue="27">
+                  </color>
+                </on_color>
+                <tooltip>$(pv_name)</tooltip>
+                <border_alarm_sensitive>false</border_alarm_sensitive>
+              </widget>
+            </widget>
+            <widget type="group" version="2.0.0">
+              <name>Group</name>
+              <x>20</x>
+              <y>110</y>
+              <width>348</width>
+              <height>30</height>
+              <style>3</style>
+              <transparent>true</transparent>
+              <widget type="led" version="2.0.0">
+                <name>LED_2</name>
+                <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:HWIO_Stat_AI_ChanEr</pv_name>
+                <x>323</x>
+                <y>3</y>
+                <width>25</width>
+                <height>25</height>
+                <off_color>
+                  <color name="Grid" red="169" green="169" blue="169">
+                  </color>
+                </off_color>
+                <on_color>
+                  <color name="MAJOR" red="252" green="13" blue="27">
+                  </color>
+                </on_color>
+                <tooltip>$(pv_name)</tooltip>
+                <border_alarm_sensitive>false</border_alarm_sensitive>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>Label_13</name>
+                <text>Channel Error</text>
+                <width>280</width>
+                <height>30</height>
+                <horizontal_alignment>2</horizontal_alignment>
+                <vertical_alignment>1</vertical_alignment>
+              </widget>
+            </widget>
+            <widget type="group" version="2.0.0">
+              <name>Group</name>
+              <x>20</x>
+              <y>140</y>
+              <width>348</width>
+              <height>30</height>
+              <style>3</style>
+              <transparent>true</transparent>
+              <widget type="label" version="2.0.0">
+                <name>Label_14</name>
+                <text>Overrange</text>
+                <width>280</width>
+                <height>30</height>
+                <horizontal_alignment>2</horizontal_alignment>
+                <vertical_alignment>1</vertical_alignment>
+              </widget>
+              <widget type="led" version="2.0.0">
+                <name>LED_3</name>
+                <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:HWIO_Stat_AI_ChanOR</pv_name>
+                <x>323</x>
+                <y>3</y>
+                <width>25</width>
+                <height>25</height>
+                <off_color>
+                  <color name="Grid" red="169" green="169" blue="169">
+                  </color>
+                </off_color>
+                <on_color>
+                  <color name="MAJOR" red="252" green="13" blue="27">
+                  </color>
+                </on_color>
+                <tooltip>$(pv_name)</tooltip>
+                <border_alarm_sensitive>false</border_alarm_sensitive>
+              </widget>
+            </widget>
+            <widget type="group" version="2.0.0">
+              <name>Group</name>
+              <x>20</x>
+              <y>170</y>
+              <width>348</width>
+              <height>30</height>
+              <style>3</style>
+              <transparent>true</transparent>
+              <widget type="label" version="2.0.0">
+                <name>Label_11</name>
+                <text>Underrange</text>
+                <width>280</width>
+                <height>30</height>
+                <horizontal_alignment>2</horizontal_alignment>
+                <vertical_alignment>1</vertical_alignment>
+              </widget>
+              <widget type="led" version="2.0.0">
+                <name>LED_4</name>
+                <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:HWIO_Stat_AI_ChanUR</pv_name>
+                <x>323</x>
+                <y>3</y>
+                <width>25</width>
+                <height>25</height>
+                <off_color>
+                  <color name="Grid" red="169" green="169" blue="169">
+                  </color>
+                </off_color>
+                <on_color>
+                  <color name="MAJOR" red="252" green="13" blue="27">
+                  </color>
+                </on_color>
+                <tooltip>$(pv_name)</tooltip>
+                <border_alarm_sensitive>false</border_alarm_sensitive>
+              </widget>
+            </widget>
+            <widget type="group" version="2.0.0">
+              <name>Group_1</name>
+              <x>20</x>
+              <y>200</y>
+              <width>348</width>
+              <height>30</height>
+              <style>3</style>
+              <transparent>true</transparent>
+              <widget type="label" version="2.0.0">
+                <name>Label_15</name>
+                <text>Signal Invalid</text>
+                <width>280</width>
+                <height>30</height>
+                <horizontal_alignment>2</horizontal_alignment>
+                <vertical_alignment>1</vertical_alignment>
+              </widget>
+              <widget type="led" version="2.0.0">
+                <name>LED_5</name>
+                <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Invalid_Act</pv_name>
+                <x>323</x>
+                <y>3</y>
+                <width>25</width>
+                <height>25</height>
+                <off_color>
+                  <color name="Grid" red="169" green="169" blue="169">
+                  </color>
+                </off_color>
+                <on_color>
+                  <color name="MAJOR" red="252" green="13" blue="27">
+                  </color>
+                </on_color>
+                <rules>
+                  <rule name="Border rule" prop_id="line_color" out_exp="false">
+                    <exp bool_exp="pv0 == 0">
+                      <value>
+                        <color name="LED-RED-OFF" red="110" green="101" blue="90">
+                        </color>
+                      </value>
+                    </exp>
+                    <exp bool_exp="pv0 == 1">
+                      <value>
+                        <color name="LED-RED-ON" red="255" green="60" blue="46">
+                        </color>
+                      </value>
+                    </exp>
+                    <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Invalid_Lchd</pv_name>
+                  </rule>
+                </rules>
+                <tooltip>$(pv_name)</tooltip>
+                <border_alarm_sensitive>false</border_alarm_sensitive>
+              </widget>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>Group_MV</name>
+            <x>8</x>
+            <y>21</y>
+            <width>450</width>
+            <height>310</height>
+            <style>3</style>
+            <transparent>true</transparent>
+            <widget type="rectangle" version="2.0.0">
+              <name>group.border</name>
+              <width>450</width>
+              <height>310</height>
+              <line_width>0</line_width>
+              <line_color>
+                <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                </color>
+              </line_color>
+              <background_color>
+                <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                </color>
+              </background_color>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_Temperature</name>
+              <text>MEASURED VALUE</text>
+              <width>450</width>
+              <height>35</height>
+              <font>
+                <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                </font>
+              </font>
+              <foreground_color>
+                <color name="GRAY-TEXT" red="255" green="255" blue="255">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="meter" version="3.0.0">
+              <name>Meter</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:MeasValue</pv_name>
+              <x>10</x>
+              <y>35</y>
+              <width>430</width>
+              <height>215</height>
+              <precision>1</precision>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <limits_from_pv>false</limits_from_pv>
+              <minimum>${SecSub}:${Dis}-${Dev}-${Index}:RangeMin_RB</minimum>
+              <maximum>${SecSub}:${Dis}-${Dev}-${Index}:RangeMax_RB</maximum>
+            </widget>
+          </widget>
+        </children>
+      </tab>
+      <tab>
+        <name>Trend</name>
+        <children>
+          <widget type="databrowser" version="2.0.0">
+            <name>DataBrowser</name>
+            <file>PT100_Faceplate_Trend.plt</file>
+            <width>940</width>
+            <height>651</height>
+          </widget>
+        </children>
+      </tab>
+    </tabs>
+    <x>10</x>
+    <y>60</y>
+    <width>943</width>
+    <height>707</height>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Header Bar</name>
+    <width>963</width>
+    <height>50</height>
+    <line_width>0</line_width>
+    <line_color>
+      <color red="0" green="0" blue="255" alpha="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="PRIMARY-HEADER-BACKGROUND" red="151" green="188" blue="202">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>LB_HeaderPVName</name>
+    <text>${SecSub}:${Dis}-${Dev}-${Index}</text>
+    <x>20</x>
+    <width>715</width>
+    <height>50</height>
+    <font>
+      <font name="Header 1" family="Source Sans Pro" style="BOLD_ITALIC" size="36.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+</display>

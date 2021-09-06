@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Section $(UNIT)</name>
+  <x>300</x>
+  <y>200</y>
+  <width>420</width>
+  <height>310</height>
+  <background_color>
+    <color red="179" green="209" blue="209">
+    </color>
+  </background_color>
+  <widget type="group" version="2.0.0">
+    <x>10</x>
+    <y>40</y>
+    <width>400</width>
+    <foreground_color>
+      <color name="TEXT" red="25" green="25" blue="25">
+      </color>
+    </foreground_color>
+    <widget type="label" version="2.0.0">
+      <name>Label</name>
+      <text>Shroud temperature</text>
+      <x>44</x>
+      <y>29</y>
+      <width>150</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="12.0">
+        </font>
+      </font>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_1</name>
+      <text>Cup temperature</text>
+      <x>44</x>
+      <y>4</y>
+      <width>150</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="12.0">
+        </font>
+      </font>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update</name>
+      <pv_name>$(PREFIX):$(DEV)$(UNIT):Cup_T</pv_name>
+      <x>206</x>
+      <y>4</y>
+      <width>85</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <precision>3</precision>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_1</name>
+      <pv_name>$(PREFIX):$(DEV)$(UNIT):Shroud_T</pv_name>
+      <x>206</x>
+      <y>29</y>
+      <width>85</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <precision>3</precision>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(pv_name)</pv_name>
+          <value>1</value>
+          <description>Acknowledge alarm</description>
+        </action>
+      </actions>
+      <pv_name>$(PREFIX):$(DEV)$(UNIT):Cmd_AckAlarm</pv_name>
+      <x>109</x>
+      <y>139</y>
+      <width>140</width>
+      <height>25</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="12.0">
+        </font>
+      </font>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_2</name>
+      <text>Shroud delta temperature</text>
+      <x>44</x>
+      <y>84</y>
+      <width>150</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="12.0">
+        </font>
+      </font>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_3</name>
+      <text>Cup delta temperature</text>
+      <x>44</x>
+      <y>59</y>
+      <width>150</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="12.0">
+        </font>
+      </font>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_2</name>
+      <pv_name>$(PREFIX):$(DEV)$(UNIT):Cup_DT</pv_name>
+      <x>206</x>
+      <y>59</y>
+      <width>85</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <precision>3</precision>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_3</name>
+      <pv_name>$(PREFIX):$(DEV)$(UNIT):Shroud_DT</pv_name>
+      <x>206</x>
+      <y>84</y>
+      <width>85</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <precision>3</precision>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle</name>
+    <class>TITLE-BAR</class>
+    <x use_class="true">0</x>
+    <y use_class="true">0</y>
+    <width>420</width>
+    <height use_class="true">50</height>
+    <line_width use_class="true">0</line_width>
+    <background_color use_class="true">
+      <color name="PRIMARY-HEADER-BACKGROUND" red="151" green="188" blue="202">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_100</name>
+    <text>Section $(UNIT) status</text>
+    <width>190</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Source Sans Pro" style="BOLD" size="16.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+    <wrap_words>false</wrap_words>
+  </widget>
+</display>

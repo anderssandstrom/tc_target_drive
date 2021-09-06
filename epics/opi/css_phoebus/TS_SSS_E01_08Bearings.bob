@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Bearings</name>
+  <width>2140</width>
+  <height>1080</height>
+  <widget type="rectangle" version="2.0.0">
+    <name>title bg</name>
+    <class>TITLE-BAR</class>
+    <x use_class="true">0</x>
+    <y use_class="true">0</y>
+    <width>2140</width>
+    <height use_class="true">50</height>
+    <line_width use_class="true">0</line_width>
+    <line_color>
+      <color name="BLUE-GROUP-BORDER" red="138" green="167" blue="167">
+      </color>
+    </line_color>
+    <background_color use_class="true">
+      <color name="PRIMARY-HEADER-BACKGROUND" red="151" green="188" blue="202">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_5</name>
+    <class>TITLE</class>
+    <text>Target System - Bearings</text>
+    <x use_class="true">20</x>
+    <y use_class="true">0</y>
+    <width>1930</width>
+    <height use_class="true">50</height>
+    <font use_class="true">
+      <font name="Header 1" family="Source Sans Pro" style="BOLD_ITALIC" size="36.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="HEADER-TEXT" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <transparent use_class="true">true</transparent>
+    <horizontal_alignment use_class="true">0</horizontal_alignment>
+    <vertical_alignment use_class="true">1</vertical_alignment>
+    <wrap_words use_class="true">false</wrap_words>
+  </widget>
+  <widget type="symbol" version="2.0.0">
+    <name>Symbol_2</name>
+    <symbols>
+      <symbol>images/Bearings.png</symbol>
+    </symbols>
+    <x>40</x>
+    <y>100</y>
+    <width>440</width>
+    <height>980</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>PT100_BlockIcon1</name>
+    <macros>
+      <WIDDev>TE</WIDDev>
+      <WIDDis>Proc</WIDDis>
+      <WIDIndex>011</WIDIndex>
+      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+    </macros>
+    <file>widgets/PT100/PT100_BlockIcon_OnlyText_Vertical_Compact.bob</file>
+    <x>470</x>
+    <y>395</y>
+    <width>165</width>
+    <height>65</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>PT100_BlockIcon1_1</name>
+    <macros>
+      <WIDDev>TE</WIDDev>
+      <WIDDis>Proc</WIDDis>
+      <WIDIndex>021</WIDIndex>
+      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+    </macros>
+    <file>widgets/PT100/PT100_BlockIcon_OnlyText_Vertical_Compact.bob</file>
+    <x>470</x>
+    <y>100</y>
+    <width>165</width>
+    <height>65</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>PT100_BlockIcon1_2</name>
+    <macros>
+      <WIDDev>TE</WIDDev>
+      <WIDDis>Proc</WIDDis>
+      <WIDIndex>022</WIDIndex>
+      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+    </macros>
+    <file>widgets/PT100/PT100_BlockIcon_OnlyText_Vertical_Compact.bob</file>
+    <x>470</x>
+    <y>196</y>
+    <width>165</width>
+    <height>65</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>PT100_BlockIcon1_3</name>
+    <macros>
+      <WIDDev>TE</WIDDev>
+      <WIDDis>Proc</WIDDis>
+      <WIDIndex>025</WIDIndex>
+      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+    </macros>
+    <file>widgets/PT100/PT100_BlockIcon_OnlyText_Vertical_Compact.bob</file>
+    <x>470</x>
+    <y>296</y>
+    <width>165</width>
+    <height>65</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>PT100_BlockIcon1_4</name>
+    <macros>
+      <WIDDev>TE</WIDDev>
+      <WIDDis>Proc</WIDDis>
+      <WIDIndex>012</WIDIndex>
+      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+    </macros>
+    <file>widgets/PT100/PT100_BlockIcon_OnlyText_Vertical_Compact.bob</file>
+    <x>470</x>
+    <y>493</y>
+    <width>165</width>
+    <height>65</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>PT100_BlockIcon1_5</name>
+    <macros>
+      <WIDDev>TE</WIDDev>
+      <WIDDis>Proc</WIDDis>
+      <WIDIndex>023</WIDIndex>
+      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+    </macros>
+    <file>widgets/PT100/PT100_BlockIcon_OnlyText_Vertical_Compact.bob</file>
+    <x>470</x>
+    <y>595</y>
+    <width>165</width>
+    <height>65</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>PT100_BlockIcon1_6</name>
+    <macros>
+      <WIDDev>TE</WIDDev>
+      <WIDDis>Proc</WIDDis>
+      <WIDIndex>024</WIDIndex>
+      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+    </macros>
+    <file>widgets/PT100/PT100_BlockIcon_OnlyText_Vertical_Compact.bob</file>
+    <x>470</x>
+    <y>696</y>
+    <width>165</width>
+    <height>65</height>
+    <resize>2</resize>
+  </widget>
+</display>

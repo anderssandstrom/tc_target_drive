@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Z Translation Control Faceplate</name>
+  <widget type="rectangle" version="2.0.0">
+    <name>Header Bar</name>
+    <width>1450</width>
+    <height>50</height>
+    <line_width>0</line_width>
+    <line_color>
+      <color red="0" green="0" blue="255" alpha="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="PRIMARY-HEADER-BACKGROUND" red="151" green="188" blue="202">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>LB_HeaderPVName</name>
+    <text>${SecSub} Axis Translation</text>
+    <x>20</x>
+    <width>715</width>
+    <height>50</height>
+    <font>
+      <font name="Header 1" family="Source Sans Pro" style="BOLD_ITALIC" size="36.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_4</name>
+    <actions>
+      <action type="open_display">
+        <file>faceplates/MotorRecord1.bob</file>
+        <macros>
+          <DEV>MC-M032</DEV>
+          <PREFIX>Tgt-TWDS1000</PREFIX>
+        </macros>
+        <target>window</target>
+        <description>Open Display</description>
+      </action>
+    </actions>
+    <text>Set Current Pos to Ref Val</text>
+    <x>10</x>
+    <y>250</y>
+    <width>220</width>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="spinner" version="2.0.0">
+    <name>Spinner_1</name>
+    <x>246</x>
+    <y>255</y>
+    <width>80</width>
+    <minimum>-10.0</minimum>
+    <maximum>10.0</maximum>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_48</name>
+    <text>[mm]</text>
+    <x>335</x>
+    <y>255</y>
+    <width>45</width>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_5</name>
+    <actions>
+      <action type="open_display">
+        <file>faceplates/MotorRecord1.bob</file>
+        <macros>
+          <DEV>MC-M032</DEV>
+          <PREFIX>Tgt-TWDS1000</PREFIX>
+        </macros>
+        <target>window</target>
+        <description>Open Display</description>
+      </action>
+    </actions>
+    <text>Run Referencing Sequence</text>
+    <x>10</x>
+    <y>210</y>
+    <width>220</width>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_6</name>
+    <actions>
+      <action type="open_display">
+        <file>faceplates/MotorRecord1.bob</file>
+        <macros>
+          <DEV>MC-M032</DEV>
+          <PREFIX>Tgt-TWDS1000</PREFIX>
+        </macros>
+        <target>window</target>
+        <description>Open Display</description>
+      </action>
+    </actions>
+    <text>Store Current Pos As Neutral</text>
+    <x>10</x>
+    <y>290</y>
+    <width>220</width>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>TxtUpd_1</name>
+    <x>246</x>
+    <y>295</y>
+    <width>80</width>
+    <precision>3</precision>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_51</name>
+    <text>[mm]</text>
+    <x>335</x>
+    <y>295</y>
+    <width>45</width>
+  </widget>
+  <widget type="symbol" version="2.0.0">
+    <name>Symbol</name>
+    <symbols>
+      <symbol>Z-Translation - WormGear.png</symbol>
+    </symbols>
+    <x>10</x>
+    <y>60</y>
+    <width>200</width>
+    <height>140</height>
+  </widget>
+</display>
