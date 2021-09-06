@@ -24,8 +24,6 @@ ACT_2_Interlock();
 // Brake control from GUI
 main.stHWControlY.bBrakeReleaseCmd:=main.stCmdEpics.bYReleaseBreakCmd;
 main.stHWStatusY.bBrakeReleased:=main.stHWControlY.bBrakeReleaseCmd;
-
-main.stHWStatusY.bParkingRangeEnabled:=FALSE; // Not used
 ]]></ST>
     </Implementation>
     <Action Name="ACT_2_Interlock" Id="{c949121c-9701-4c5f-8bc8-3c78316b1a11}">
@@ -785,8 +783,6 @@ main.stHWStatusY.bParkingRangeEnabled:=FALSE; // Not used
       <LineId Id="47" Count="0" />
       <LineId Id="23" Count="0" />
       <LineId Id="50" Count="0" />
-      <LineId Id="52" Count="0" />
-      <LineId Id="51" Count="0" />
       <LineId Id="48" Count="0" />
     </LineIds>
   </POU>

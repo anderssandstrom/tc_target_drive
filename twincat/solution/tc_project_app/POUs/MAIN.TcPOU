@@ -130,8 +130,10 @@ main.stHWStatusZ.bLimitMinMin :=fb_s3_EL1809.bBI_13;      // s3: ch13: w03.bg05 
 main.stHWStatusZ.bLimitMinMinPark :=fb_s3_EL1809.bBI_14;  // s3: ch14: w03.bg06 stepper z limit min min service (lowest switch)
 main.stHWStatusX.bLimitMinPark:=FALSE;                    // Not used
 main.stHWStatusX.bLimitMinMinPark:=FALSE;                 // Not used
+main.stHWStatusX.bParkingRangeEnabled:=FALSE;             // Not used;
 main.stHWStatusY.bLimitMinPark:=FALSE;                    // Not used
 main.stHWStatusY.bLimitMinMinPark:=FALSE;                 // Not used
+main.stHWStatusY.bParkingRangeEnabled:=FALSE;             // Not used;
 
 // Slave 4 EL2809: Feed sensors
 fb_s4_EL2819(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=4);
@@ -572,7 +574,10 @@ stcmdEpics.bReset:=FALSE;]]></ST>
       <LineId Id="216" Count="12" />
       <LineId Id="197" Count="0" />
       <LineId Id="235" Count="0" />
-      <LineId Id="237" Count="2" />
+      <LineId Id="237" Count="0" />
+      <LineId Id="242" Count="0" />
+      <LineId Id="238" Count="1" />
+      <LineId Id="241" Count="0" />
       <LineId Id="67" Count="0" />
       <LineId Id="69" Count="0" />
       <LineId Id="6" Count="0" />
