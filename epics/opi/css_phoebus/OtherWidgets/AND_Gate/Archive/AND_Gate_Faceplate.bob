@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>AND_Gate_Faceplate</name>
+  <width>900</width>
+  <height>420</height>
+  <background_color>
+    <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+    </color>
+  </background_color>
+  <widget type="group" version="2.0.0">
+    <name>GroupWhole</name>
+    <x>60</x>
+    <y>60</y>
+    <width>780</width>
+    <height>340</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="embedded" version="2.0.0">
+      <name>OR_In1</name>
+      <file>LogicalInput.bob</file>
+      <macros>
+        <InputNum>1</InputNum>
+        <LogicalOp>OR</LogicalOp>
+      </macros>
+      <y>10</y>
+      <width>350</width>
+      <height>20</height>
+      <resize>2</resize>
+      <transparent>true</transparent>
+      <scripts>
+        <script file="OR_Input_Behaviour.py">
+          <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_OR_nIn</pv_name>
+          <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_AND_nIn</pv_name>
+        </script>
+      </scripts>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>AND_In1</name>
+      <file>LogicalInput.bob</file>
+      <macros>
+        <InputNum>1</InputNum>
+        <LogicalOp>AND</LogicalOp>
+      </macros>
+      <y>183</y>
+      <width>350</width>
+      <height>20</height>
+      <resize>2</resize>
+      <transparent>true</transparent>
+      <scripts>
+        <script file="AND_Input_Behaviour.py">
+          <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_OR_nIn</pv_name>
+          <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_AND_nIn</pv_name>
+        </script>
+      </scripts>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Group_LogicalOperator</name>
+      <x>350</x>
+      <width>100</width>
+      <height>340</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="label" version="2.0.0">
+        <name>AND_Block_Label</name>
+        <text>AND</text>
+        <y>170</y>
+        <width>50</width>
+        <height>170</height>
+        <font>
+          <font family="Source Sans Pro" style="REGULAR" size="20.0">
+          </font>
+        </font>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+        <scripts>
+          <script file="AND_Block_Behaviour.py">
+            <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_OR_nIn</pv_name>
+            <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_AND_nIn</pv_name>
+          </script>
+        </scripts>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>AND_BlockRectangle</name>
+        <y>170</y>
+        <width>50</width>
+        <height>170</height>
+        <background_color>
+          <color red="220" green="225" blue="221" alpha="0">
+          </color>
+        </background_color>
+        <scripts>
+          <script file="AND_Block_Behaviour.py">
+            <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_OR_nIn</pv_name>
+            <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_AND_nIn</pv_name>
+          </script>
+        </scripts>
+      </widget>
+      <widget type="led" version="2.0.0">
+        <name>LED_1</name>
+        <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_AND_O</pv_name>
+        <x>35</x>
+        <y>325</y>
+        <width>15</width>
+        <height>15</height>
+        <off_color>
+          <color name="Grid" red="169" green="169" blue="169">
+          </color>
+        </off_color>
+        <square>true</square>
+        <scripts>
+          <script file="ReleaseLED_Behaviour.py">
+            <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_OR_nIn</pv_name>
+            <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_AND_nIn</pv_name>
+          </script>
+        </scripts>
+        <tooltip>$(pv_name)</tooltip>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>OR_Block_Rectangle</name>
+        <width>50</width>
+        <height>170</height>
+        <background_color>
+          <color red="220" green="225" blue="221" alpha="0">
+          </color>
+        </background_color>
+        <scripts>
+          <script file="OR_Block_Behaviour.py">
+            <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_OR_nIn</pv_name>
+          </script>
+        </scripts>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>OR_Block_Label</name>
+        <text>OR</text>
+        <width>50</width>
+        <height>170</height>
+        <font>
+          <font family="Source Sans Pro" style="REGULAR" size="20.0">
+          </font>
+        </font>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+        <scripts>
+          <script file="OR_Block_Behaviour.py">
+            <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_OR_nIn</pv_name>
+          </script>
+        </scripts>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>SUM_Block_Rectangle</name>
+        <x>50</x>
+        <width>50</width>
+        <height>340</height>
+        <background_color>
+          <color red="220" green="225" blue="221" alpha="0">
+          </color>
+        </background_color>
+        <scripts>
+          <script file="SUM_Block_Behaviour.py">
+            <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_OR_nIn</pv_name>
+            <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_AND_nIn</pv_name>
+          </script>
+        </scripts>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>SUM_Block_Label</name>
+        <text>AND</text>
+        <x>50</x>
+        <width>50</width>
+        <height>340</height>
+        <font>
+          <font family="Source Sans Pro" style="REGULAR" size="20.0">
+          </font>
+        </font>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+        <scripts>
+          <script file="SUM_Block_Behaviour.py">
+            <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_OR_nIn</pv_name>
+            <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_AND_nIn</pv_name>
+          </script>
+          <script file="SUM_Text_Behaviour.py">
+            <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_OR_nIn</pv_name>
+            <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_AND_nIn</pv_name>
+          </script>
+        </scripts>
+      </widget>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>OR_In2</name>
+      <file>LogicalInput.bob</file>
+      <macros>
+        <InputNum>2</InputNum>
+        <LogicalOp>OR</LogicalOp>
+      </macros>
+      <y>40</y>
+      <width>350</width>
+      <height>20</height>
+      <resize>2</resize>
+      <transparent>true</transparent>
+      <scripts>
+        <script file="OR_Input_Behaviour.py">
+          <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_OR_nIn</pv_name>
+        </script>
+      </scripts>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>OR_In3</name>
+      <file>LogicalInput.bob</file>
+      <macros>
+        <InputNum>3</InputNum>
+        <LogicalOp>OR</LogicalOp>
+      </macros>
+      <y>70</y>
+      <width>350</width>
+      <height>20</height>
+      <resize>2</resize>
+      <transparent>true</transparent>
+      <scripts>
+        <script file="OR_Input_Behaviour.py">
+          <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_OR_nIn</pv_name>
+        </script>
+      </scripts>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>OR_In4</name>
+      <file>LogicalInput.bob</file>
+      <macros>
+        <InputNum>4</InputNum>
+        <LogicalOp>OR</LogicalOp>
+      </macros>
+      <y>100</y>
+      <width>350</width>
+      <height>20</height>
+      <resize>2</resize>
+      <transparent>true</transparent>
+      <scripts>
+        <script file="OR_Input_Behaviour.py">
+          <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_OR_nIn</pv_name>
+        </script>
+      </scripts>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>OR_In5</name>
+      <file>LogicalInput.bob</file>
+      <macros>
+        <InputNum>5</InputNum>
+        <LogicalOp>OR</LogicalOp>
+      </macros>
+      <y>130</y>
+      <width>350</width>
+      <height>20</height>
+      <resize>2</resize>
+      <transparent>true</transparent>
+      <scripts>
+        <script file="OR_Input_Behaviour.py">
+          <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_OR_nIn</pv_name>
+        </script>
+      </scripts>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>AND_In2</name>
+      <file>LogicalInput.bob</file>
+      <macros>
+        <InputNum>2</InputNum>
+        <LogicalOp>AND</LogicalOp>
+      </macros>
+      <y>212</y>
+      <width>350</width>
+      <height>20</height>
+      <resize>2</resize>
+      <transparent>true</transparent>
+      <scripts>
+        <script file="AND_Input_Behaviour.py">
+          <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_OR_nIn</pv_name>
+          <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_AND_nIn</pv_name>
+        </script>
+      </scripts>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>AND_In3</name>
+      <file>LogicalInput.bob</file>
+      <macros>
+        <InputNum>3</InputNum>
+        <LogicalOp>AND</LogicalOp>
+      </macros>
+      <y>241</y>
+      <width>350</width>
+      <height>20</height>
+      <resize>2</resize>
+      <transparent>true</transparent>
+      <scripts>
+        <script file="AND_Input_Behaviour.py">
+          <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_OR_nIn</pv_name>
+          <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_AND_nIn</pv_name>
+        </script>
+      </scripts>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>AND_In4</name>
+      <file>LogicalInput.bob</file>
+      <macros>
+        <InputNum>4</InputNum>
+        <LogicalOp>AND</LogicalOp>
+      </macros>
+      <y>270</y>
+      <width>350</width>
+      <height>20</height>
+      <resize>2</resize>
+      <transparent>true</transparent>
+      <scripts>
+        <script file="AND_Input_Behaviour.py">
+          <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_OR_nIn</pv_name>
+          <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_AND_nIn</pv_name>
+        </script>
+      </scripts>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>AND_In5</name>
+      <file>LogicalInput.bob</file>
+      <macros>
+        <InputNum>5</InputNum>
+        <LogicalOp>AND</LogicalOp>
+      </macros>
+      <y>300</y>
+      <width>350</width>
+      <height>20</height>
+      <resize>2</resize>
+      <transparent>true</transparent>
+      <scripts>
+        <script file="AND_Input_Behaviour.py">
+          <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_OR_nIn</pv_name>
+          <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_AND_nIn</pv_name>
+        </script>
+      </scripts>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>SUM_Out</name>
+      <file>LogicalOutput.bob</file>
+      <x>450</x>
+      <y>160</y>
+      <width>330</width>
+      <height>20</height>
+      <resize>2</resize>
+      <transparent>true</transparent>
+      <scripts>
+        <script file="SUM_Ouput_Behaviour.py">
+          <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_OR_nIn</pv_name>
+          <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_AND_nIn</pv_name>
+        </script>
+      </scripts>
+    </widget>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Title</name>
+    <class>HEADER3</class>
+    <text>Script</text>
+    <width>900</width>
+    <height>30</height>
+    <font use_class="true">
+      <font name="Header 3" family="Source Sans Pro" style="BOLD_ITALIC" size="18.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="Text" red="25" green="25" blue="25">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+    <scripts>
+      <script file="EmbeddedPy">
+        <text><![CDATA[# Embedded python script
+from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
+
+Title_Text=PVUtil.getString(pvs[0])
+
+widget.setPropertyValue('text', Title_Text)]]></text>
+        <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_SUM_OL</pv_name>
+      </script>
+    </scripts>
+  </widget>
+</display>

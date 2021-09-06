@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Target System XY Pos</name>
+  <width>2140</width>
+  <height>1440</height>
+  <widget type="rectangle" version="2.0.0">
+    <name>MGGrey03-background_4</name>
+    <x>10</x>
+    <y>70</y>
+    <width>650</width>
+    <height>850</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color name="GROUP-BORDER" red="150" green="155" blue="151">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+      </color>
+    </background_color>
+    <corner_width>10</corner_width>
+    <corner_height>10</corner_height>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>MGGrey03-background_3</name>
+    <x>1265</x>
+    <y>70</y>
+    <width>650</width>
+    <height>850</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color name="GROUP-BORDER" red="150" green="155" blue="151">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+      </color>
+    </background_color>
+    <corner_width>10</corner_width>
+    <corner_height>10</corner_height>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>title bg</name>
+    <class>TITLE-BAR</class>
+    <x use_class="true">0</x>
+    <y use_class="true">0</y>
+    <width>2140</width>
+    <height use_class="true">50</height>
+    <line_width use_class="true">0</line_width>
+    <line_color>
+      <color name="BLUE-GROUP-BORDER" red="138" green="167" blue="167">
+      </color>
+    </line_color>
+    <background_color use_class="true">
+      <color name="PRIMARY-HEADER-BACKGROUND" red="151" green="188" blue="202">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_5</name>
+    <class>TITLE</class>
+    <text>Target System - XY Position</text>
+    <x use_class="true">20</x>
+    <y use_class="true">0</y>
+    <width>1930</width>
+    <height use_class="true">50</height>
+    <font use_class="true">
+      <font name="Header 1" family="Source Sans Pro" style="BOLD_ITALIC" size="36.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="HEADER-TEXT" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <transparent use_class="true">true</transparent>
+    <horizontal_alignment use_class="true">0</horizontal_alignment>
+    <vertical_alignment use_class="true">1</vertical_alignment>
+    <wrap_words use_class="true">false</wrap_words>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>TMSDisplay</name>
+    <file>TS_SSS_E01_B01_XYPos.bob</file>
+    <x>1265</x>
+    <y>110</y>
+    <width>650</width>
+    <height>800</height>
+    <resize>2</resize>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_7</name>
+    <class>GROUP-TITLE</class>
+    <text>Target  Monitoring System</text>
+    <x>1275</x>
+    <y>70</y>
+    <width>640</width>
+    <height use_class="true">30</height>
+    <font use_class="true">
+      <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="GROUP-TEXT" red="25" green="25" blue="25">
+      </color>
+    </foreground_color>
+    <horizontal_alignment use_class="true">1</horizontal_alignment>
+    <vertical_alignment use_class="true">1</vertical_alignment>
+    <wrap_words use_class="true">false</wrap_words>
+  </widget>
+  <widget type="symbol" version="2.0.0">
+    <name>Symbol_TDU_Shaft_Wheel</name>
+    <symbols>
+      <symbol>images/TargetWheelDriveAndShaft.png</symbol>
+    </symbols>
+    <x>775</x>
+    <y>80</y>
+    <width>480</width>
+    <height>750</height>
+  </widget>
+  <widget type="symbol" version="2.0.0">
+    <name>Symbol</name>
+    <symbols>
+      <symbol>images/TMP2.png</symbol>
+    </symbols>
+    <x>1005</x>
+    <y>389</y>
+    <width>260</width>
+    <height>408</height>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>Polyline_13</name>
+    <x>675</x>
+    <y>820</y>
+    <height>1</height>
+    <line_color>
+      <color name="ERROR" red="252" green="13" blue="27">
+      </color>
+    </line_color>
+    <arrows>2</arrows>
+    <points>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="100.0" y="0.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_36</name>
+    <text>Proton Beam</text>
+    <x>670</x>
+    <y>780</y>
+    <width>104</width>
+    <height>24</height>
+    <font>
+      <font family="Source Sans Pro" style="BOLD" size="18.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_6</name>
+    <class>GROUP-TITLE</class>
+    <text>Target Drive Unit</text>
+    <x>17</x>
+    <y>70</y>
+    <width>640</width>
+    <height use_class="true">30</height>
+    <font use_class="true">
+      <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="GROUP-TEXT" red="25" green="25" blue="25">
+      </color>
+    </foreground_color>
+    <horizontal_alignment use_class="true">1</horizontal_alignment>
+    <vertical_alignment use_class="true">1</vertical_alignment>
+    <wrap_words use_class="true">false</wrap_words>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>TMSDisplay_1</name>
+    <file>TS_SSS_E01_TDU_XYControl.bob</file>
+    <x>10</x>
+    <y>120</y>
+    <width>650</width>
+    <height>800</height>
+    <resize>2</resize>
+    <transparent>true</transparent>
+  </widget>
+</display>

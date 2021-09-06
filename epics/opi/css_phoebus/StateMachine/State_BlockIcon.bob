@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>StateIcon</name>
+  <width>140</width>
+  <height>40</height>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle</name>
+    <width>140</width>
+    <height>40</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color name="BLACK-BORDER" red="121" green="121" blue="121">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
+      </color>
+    </background_color>
+    <corner_width>10</corner_width>
+    <corner_height>10</corner_height>
+    <rules>
+      <rule name="ColorRule" prop_id="background_color" out_exp="false">
+        <exp bool_exp="pv0==1">
+          <value>
+            <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+            </color>
+          </value>
+        </exp>
+        <exp bool_exp="pv0==0">
+          <value>
+            <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
+            </color>
+          </value>
+        </exp>
+        <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:$(StateName)_Act</pv_name>
+      </rule>
+      <rule name="BorderRule" prop_id="line_color" out_exp="false">
+        <exp bool_exp="pv0==1">
+          <value>
+            <color red="0" green="0" blue="255">
+            </color>
+          </value>
+        </exp>
+        <exp bool_exp="pv0==0">
+          <value>
+            <color name="BLACK-BORDER" red="121" green="121" blue="121">
+            </color>
+          </value>
+        </exp>
+        <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:$(StateName)_Act</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_12</name>
+    <text>$(StateName)</text>
+    <width>140</width>
+    <height>40</height>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+    <rules>
+      <rule name="TextColorRule" prop_id="foreground_color" out_exp="false">
+        <exp bool_exp="pv0==0">
+          <value>
+            <color name="WHITE" red="255" green="255" blue="255">
+            </color>
+          </value>
+        </exp>
+        <exp bool_exp="pv0==1">
+          <value>
+            <color name="Text" red="25" green="25" blue="25">
+            </color>
+          </value>
+        </exp>
+        <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:$(StateName)_Act</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Cmd_$(StateName)</pv_name>
+        <value>1</value>
+        <description>Write PV</description>
+      </action>
+    </actions>
+    <text></text>
+    <width>140</width>
+    <height>40</height>
+    <transparent>true</transparent>
+    <tooltip>Select state</tooltip>
+  </widget>
+</display>

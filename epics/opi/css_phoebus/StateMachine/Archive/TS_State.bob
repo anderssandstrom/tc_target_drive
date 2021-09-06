@@ -1,0 +1,970 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>StateMachine</name>
+  <width>670</width>
+  <height>550</height>
+  <widget type="rectangle" version="2.0.0">
+    <name>MGGrey03-background_8</name>
+    <width>670</width>
+    <height>550</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color name="GROUP-BORDER" red="150" green="155" blue="151">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="200" green="205" blue="201">
+      </color>
+    </background_color>
+    <corner_width>10</corner_width>
+    <corner_height>10</corner_height>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_9</name>
+    <class>HEADER2</class>
+    <text>Operation State</text>
+    <width>670</width>
+    <height>30</height>
+    <font use_class="true">
+      <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="GROUP-TEXT" red="25" green="25" blue="25">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+    <wrap_words>false</wrap_words>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>Polyline_1</name>
+    <x>304</x>
+    <y>450</y>
+    <width>1</width>
+    <height>50</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="BLACK-BORDER" red="121" green="121" blue="121">
+      </color>
+    </line_color>
+    <arrows>2</arrows>
+    <arrow_length>10</arrow_length>
+    <points>
+      <point x="0.0" y="50.0">
+      </point>
+      <point x="0.0" y="0.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>Polyline_2</name>
+    <x>345</x>
+    <y>450</y>
+    <width>1</width>
+    <height>50</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="BLACK-BORDER" red="121" green="121" blue="121">
+      </color>
+    </line_color>
+    <arrows>2</arrows>
+    <arrow_length>10</arrow_length>
+    <points>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="0.0" y="50.0">
+      </point>
+    </points>
+    <rules>
+      <rule name="ColorRule" prop_id="line_color" out_exp="false">
+        <exp bool_exp="pv0==1 &amp;&amp; pv1==1">
+          <value>
+            <color red="0" green="0" blue="255">
+            </color>
+          </value>
+        </exp>
+        <exp bool_exp="pv0==0 || pv1==0">
+          <value>
+            <color name="BLACK-BORDER" red="121" green="121" blue="121">
+            </color>
+          </value>
+        </exp>
+        <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_TC_MAINT_AND_O</pv_name>
+        <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:IDLE_Act</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>Polyline_3</name>
+    <x>324</x>
+    <y>360</y>
+    <width>1</width>
+    <height>50</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="BLACK-BORDER" red="121" green="121" blue="121">
+      </color>
+    </line_color>
+    <arrows>2</arrows>
+    <arrow_length>10</arrow_length>
+    <points>
+      <point x="0.0" y="50.0">
+      </point>
+      <point x="0.0" y="0.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>Polyline_5</name>
+    <x>290</x>
+    <y>270</y>
+    <width>1</width>
+    <height>50</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="BLACK-BORDER" red="121" green="121" blue="121">
+      </color>
+    </line_color>
+    <arrows>2</arrows>
+    <arrow_length>10</arrow_length>
+    <points>
+      <point x="0.0" y="50.0">
+      </point>
+      <point x="0.0" y="0.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>Polyline_6</name>
+    <x>350</x>
+    <y>270</y>
+    <width>1</width>
+    <height>50</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="BLACK-BORDER" red="121" green="121" blue="121">
+      </color>
+    </line_color>
+    <arrows>2</arrows>
+    <arrow_length>10</arrow_length>
+    <points>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="0.0" y="50.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>Polyline_7</name>
+    <x>290</x>
+    <y>180</y>
+    <width>1</width>
+    <height>50</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="BLACK-BORDER" red="121" green="121" blue="121">
+      </color>
+    </line_color>
+    <arrows>2</arrows>
+    <arrow_length>10</arrow_length>
+    <points>
+      <point x="0.0" y="50.0">
+      </point>
+      <point x="0.0" y="0.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>Polyline_8</name>
+    <x>350</x>
+    <y>180</y>
+    <width>1</width>
+    <height>50</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="BLACK-BORDER" red="121" green="121" blue="121">
+      </color>
+    </line_color>
+    <arrows>2</arrows>
+    <arrow_length>10</arrow_length>
+    <points>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="0.0" y="50.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>Polyline_9</name>
+    <x>290</x>
+    <y>90</y>
+    <width>1</width>
+    <height>50</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="BLACK-BORDER" red="121" green="121" blue="121">
+      </color>
+    </line_color>
+    <arrows>2</arrows>
+    <arrow_length>10</arrow_length>
+    <points>
+      <point x="0.0" y="50.0">
+      </point>
+      <point x="0.0" y="0.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>Polyline_10</name>
+    <x>350</x>
+    <y>90</y>
+    <width>1</width>
+    <height>50</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="BLACK-BORDER" red="121" green="121" blue="121">
+      </color>
+    </line_color>
+    <arrows>2</arrows>
+    <arrow_length>10</arrow_length>
+    <points>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="0.0" y="50.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>Polyline_11</name>
+    <x>394</x>
+    <y>340</y>
+    <width>80</width>
+    <height>1</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="BLACK-BORDER" red="121" green="121" blue="121">
+      </color>
+    </line_color>
+    <arrows>2</arrows>
+    <arrow_length>10</arrow_length>
+    <points>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="80.0" y="0.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>Polyline_12</name>
+    <x>160</x>
+    <y>340</y>
+    <width>90</width>
+    <height>1</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="BLACK-BORDER" red="121" green="121" blue="121">
+      </color>
+    </line_color>
+    <arrows>2</arrows>
+    <arrow_length>10</arrow_length>
+    <points>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="90.0" y="0.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>Polyline_14</name>
+    <x>394</x>
+    <y>70</y>
+    <width>196</width>
+    <height>250</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="BLACK-BORDER" red="121" green="121" blue="121">
+      </color>
+    </line_color>
+    <arrows>2</arrows>
+    <arrow_length>10</arrow_length>
+    <points>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="196.0" y="0.0">
+      </point>
+      <point x="196.0" y="250.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>Polyline_15</name>
+    <x>394</x>
+    <y>160</y>
+    <width>156</width>
+    <height>160</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="BLACK-BORDER" red="121" green="121" blue="121">
+      </color>
+    </line_color>
+    <arrows>2</arrows>
+    <arrow_length>10</arrow_length>
+    <points>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="156.0" y="0.0">
+      </point>
+      <point x="156.0" y="160.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>Polyline_16</name>
+    <x>394</x>
+    <y>250</y>
+    <width>116</width>
+    <height>70</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="BLACK-BORDER" red="121" green="121" blue="121">
+      </color>
+    </line_color>
+    <arrows>2</arrows>
+    <arrow_length>10</arrow_length>
+    <points>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="116.0" y="0.0">
+      </point>
+      <point x="116.0" y="70.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>Polyline_17</name>
+    <x>394</x>
+    <y>360</y>
+    <width>166</width>
+    <height>60</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="BLACK-BORDER" red="121" green="121" blue="121">
+      </color>
+    </line_color>
+    <arrows>2</arrows>
+    <arrow_length>10</arrow_length>
+    <points>
+      <point x="166.0" y="0.0">
+      </point>
+      <point x="166.0" y="60.0">
+      </point>
+      <point x="0.0" y="60.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>Polyline_18</name>
+    <x>100</x>
+    <y>360</y>
+    <width>154</width>
+    <height>60</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="BLACK-BORDER" red="121" green="121" blue="121">
+      </color>
+    </line_color>
+    <arrows>2</arrows>
+    <arrow_length>10</arrow_length>
+    <points>
+      <point x="154.0" y="60.0">
+      </point>
+      <point x="0.0" y="60.0">
+      </point>
+      <point x="0.0" y="0.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>Polyline_19</name>
+    <x>130</x>
+    <y>70</y>
+    <width>124</width>
+    <height>180</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="BLACK-BORDER" red="121" green="121" blue="121">
+      </color>
+    </line_color>
+    <arrows>2</arrows>
+    <arrow_length>10</arrow_length>
+    <points>
+      <point x="124.0" y="0.0">
+      </point>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="0.0" y="180.0">
+      </point>
+      <point x="124.0" y="180.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>st_ROTATION</name>
+    <file>State_BlockIcon.bob</file>
+    <macros>
+      <Dev>POU</Dev>
+      <Dis>Ctrl</Dis>
+      <Index>State</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+      <StateName>ROTATION</StateName>
+    </macros>
+    <x>254</x>
+    <y>320</y>
+    <width>140</width>
+    <height>40</height>
+    <resize>2</resize>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>st_MAINTENANCE</name>
+    <file>State_BlockIcon.bob</file>
+    <macros>
+      <Dev>POU</Dev>
+      <Dis>Ctrl</Dis>
+      <Index>State</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+      <StateName>MAINTENANCE</StateName>
+    </macros>
+    <x>254</x>
+    <y>500</y>
+    <width>140</width>
+    <height>40</height>
+    <resize>2</resize>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>st_IDLE</name>
+    <file>State_BlockIcon.bob</file>
+    <macros>
+      <Dev>POU</Dev>
+      <Dis>Ctrl</Dis>
+      <Index>State</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+      <StateName>IDLE</StateName>
+    </macros>
+    <x>254</x>
+    <y>410</y>
+    <width>140</width>
+    <height>40</height>
+    <resize>2</resize>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>st_ALIGNMENT</name>
+    <file>State_BlockIcon.bob</file>
+    <macros>
+      <Dev>POU</Dev>
+      <Dis>Ctrl</Dis>
+      <Index>State</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+      <StateName>ALIGNMENT</StateName>
+    </macros>
+    <x>20</x>
+    <y>320</y>
+    <width>140</width>
+    <height>40</height>
+    <resize>2</resize>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>st_SHUTDOWN</name>
+    <file>State_BlockIcon.bob</file>
+    <macros>
+      <Dev>POU</Dev>
+      <Dis>Ctrl</Dis>
+      <Index>State</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+      <StateName>SHUTDOWN</StateName>
+    </macros>
+    <x>475</x>
+    <y>320</y>
+    <width>140</width>
+    <height>40</height>
+    <resize>2</resize>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>st_NOMINAL_SPEED</name>
+    <file>State_BlockIcon.bob</file>
+    <macros>
+      <Dev>POU</Dev>
+      <Dis>Ctrl</Dis>
+      <Index>State</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+      <StateName>NOMINAL_SPEED</StateName>
+    </macros>
+    <x>254</x>
+    <y>230</y>
+    <width>140</width>
+    <height>40</height>
+    <resize>2</resize>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>st_SYNCHRONIZATION</name>
+    <file>State_BlockIcon.bob</file>
+    <macros>
+      <Dev>POU</Dev>
+      <Dis>Ctrl</Dis>
+      <Index>State</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+      <StateName>SYNCHRONIZATION</StateName>
+    </macros>
+    <x>254</x>
+    <y>140</y>
+    <width>140</width>
+    <height>40</height>
+    <resize>2</resize>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>st_TDU_READY</name>
+    <file>State_BlockIcon.bob</file>
+    <macros>
+      <Dev>POU</Dev>
+      <Dis>Ctrl</Dis>
+      <Index>State</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+      <StateName>TDU_READY</StateName>
+    </macros>
+    <x>254</x>
+    <y>50</y>
+    <width>140</width>
+    <height>40</height>
+    <resize>2</resize>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>tr_1</name>
+    <file>../OtherWidgets/AND_Gate/AND_Gate_BlockIcon.bob</file>
+    <macros>
+      <Dev>POU</Dev>
+      <Dis>Ctrl</Dis>
+      <Index>State</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+      <tcName>MAINT</tcName>
+    </macros>
+    <x>355</x>
+    <y>460</y>
+    <width>40</width>
+    <height>20</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>Polyline_20</name>
+    <x>60</x>
+    <y>360</y>
+    <width>194</width>
+    <height>80</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="BLACK-BORDER" red="121" green="121" blue="121">
+      </color>
+    </line_color>
+    <arrows>2</arrows>
+    <arrow_length>10</arrow_length>
+    <points>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="0.0" y="80.0">
+      </point>
+      <point x="194.0" y="80.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>Polyline_32</name>
+    <x>430</x>
+    <y>240</y>
+    <width>1</width>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="BLACK-BORDER" red="121" green="121" blue="121">
+      </color>
+    </line_color>
+    <points>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="0.0" y="20.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>st_RESID_COOLING</name>
+    <file>State_BlockIcon.bob</file>
+    <macros>
+      <Dev>POU</Dev>
+      <Dis>Ctrl</Dis>
+      <Index>State</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+      <StateName>RESID_COOLING</StateName>
+    </macros>
+    <x>475</x>
+    <y>500</y>
+    <width>140</width>
+    <height>40</height>
+    <resize>2</resize>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>Polyline_36</name>
+    <x>394</x>
+    <y>430</y>
+    <width>166</width>
+    <height>70</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="BLACK-BORDER" red="121" green="121" blue="121">
+      </color>
+    </line_color>
+    <arrows>2</arrows>
+    <arrow_length>10</arrow_length>
+    <points>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="166.0" y="0.0">
+      </point>
+      <point x="166.0" y="70.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>Polyline_38</name>
+    <x>394</x>
+    <y>440</y>
+    <width>116</width>
+    <height>60</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="BLACK-BORDER" red="121" green="121" blue="121">
+      </color>
+    </line_color>
+    <arrows>2</arrows>
+    <arrow_length>10</arrow_length>
+    <points>
+      <point x="116.0" y="60.0">
+      </point>
+      <point x="116.0" y="0.0">
+      </point>
+      <point x="0.0" y="0.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>Polyline_39</name>
+    <x>500</x>
+    <y>470</y>
+    <width>20</width>
+    <height>1</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="BLACK-BORDER" red="121" green="121" blue="121">
+      </color>
+    </line_color>
+    <points>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="20.0" y="0.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>tr_2</name>
+    <file>../OtherWidgets/AND_Gate/AND_Gate_BlockIcon.bob</file>
+    <macros>
+      <Dev>POU</Dev>
+      <Dis>Ctrl</Dis>
+      <Index>State</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+      <tcName>IDLE</tcName>
+    </macros>
+    <x>254</x>
+    <y>460</y>
+    <width>40</width>
+    <height>20</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>tr_3</name>
+    <file>../OtherWidgets/AND_Gate/AND_Gate_BlockIcon.bob</file>
+    <macros>
+      <Dev>POU</Dev>
+      <Dis>Ctrl</Dis>
+      <Index>State</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+      <tcName>ALIGN</tcName>
+    </macros>
+    <x>110</x>
+    <y>380</y>
+    <width>40</width>
+    <height>20</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>tr_4</name>
+    <file>../OtherWidgets/AND_Gate/AND_Gate_BlockIcon.bob</file>
+    <macros>
+      <Dev>POU</Dev>
+      <Dis>Ctrl</Dis>
+      <Index>State</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+      <tcName>IDLE</tcName>
+    </macros>
+    <x>10</x>
+    <y>380</y>
+    <width>40</width>
+    <height>20</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>tr_5</name>
+    <file>../OtherWidgets/AND_Gate/AND_Gate_BlockIcon.bob</file>
+    <macros>
+      <Dev>POU</Dev>
+      <Dis>Ctrl</Dis>
+      <Index>State</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+      <tcName>ROTAT</tcName>
+    </macros>
+    <x>180</x>
+    <y>350</y>
+    <width>40</width>
+    <height>20</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>tr_6</name>
+    <file>../OtherWidgets/AND_Gate/AND_Gate_BlockIcon.bob</file>
+    <macros>
+      <Dev>POU</Dev>
+      <Dis>Ctrl</Dis>
+      <Index>State</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+      <tcName>ROTAT</tcName>
+    </macros>
+    <x>335</x>
+    <y>380</y>
+    <width>40</width>
+    <height>20</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>tr_7</name>
+    <file>../OtherWidgets/AND_Gate/AND_Gate_BlockIcon.bob</file>
+    <macros>
+      <Dev>POU</Dev>
+      <Dis>Ctrl</Dis>
+      <Index>State</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+      <tcName>IDLE</tcName>
+    </macros>
+    <x>570</x>
+    <y>380</y>
+    <width>40</width>
+    <height>20</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>tr_8</name>
+    <file>../OtherWidgets/AND_Gate/AND_Gate_BlockIcon.bob</file>
+    <macros>
+      <Dev>POU</Dev>
+      <Dis>Ctrl</Dis>
+      <Index>State</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+      <tcName>RCOOL</tcName>
+    </macros>
+    <x>540</x>
+    <y>460</y>
+    <width>40</width>
+    <height>20</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>tr_9</name>
+    <file>../OtherWidgets/AND_Gate/AND_Gate_BlockIcon.bob</file>
+    <macros>
+      <Dev>POU</Dev>
+      <Dis>Ctrl</Dis>
+      <Index>State</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+      <tcName>SHUTD</tcName>
+    </macros>
+    <x>410</x>
+    <y>350</y>
+    <width>40</width>
+    <height>20</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>tr_10</name>
+    <file>../OtherWidgets/AND_Gate/AND_Gate_BlockIcon.bob</file>
+    <macros>
+      <Dev>POU</Dev>
+      <Dis>Ctrl</Dis>
+      <Index>State</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+      <tcName>SHUTD</tcName>
+    </macros>
+    <x>410</x>
+    <y>260</y>
+    <width>40</width>
+    <height>20</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>tr_11</name>
+    <file>../OtherWidgets/AND_Gate/AND_Gate_BlockIcon.bob</file>
+    <macros>
+      <Dev>POU</Dev>
+      <Dis>Ctrl</Dis>
+      <Index>State</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+      <tcName>SHUTD</tcName>
+    </macros>
+    <x>410</x>
+    <y>170</y>
+    <width>40</width>
+    <height>20</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>tr_12</name>
+    <file>../OtherWidgets/AND_Gate/AND_Gate_BlockIcon.bob</file>
+    <macros>
+      <Dev>POU</Dev>
+      <Dis>Ctrl</Dis>
+      <Index>State</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+      <tcName>SHUTD</tcName>
+    </macros>
+    <x>410</x>
+    <y>80</y>
+    <width>40</width>
+    <height>20</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>tr_13</name>
+    <file>../OtherWidgets/AND_Gate/AND_Gate_BlockIcon.bob</file>
+    <macros>
+      <Dev>POU</Dev>
+      <Dis>Ctrl</Dis>
+      <Index>State</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+      <tcName>SPEED</tcName>
+    </macros>
+    <x>240</x>
+    <y>283</y>
+    <width>40</width>
+    <height>20</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>tr_14</name>
+    <file>../OtherWidgets/AND_Gate/AND_Gate_BlockIcon.bob</file>
+    <macros>
+      <Dev>POU</Dev>
+      <Dis>Ctrl</Dis>
+      <Index>State</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+      <tcName>NSOFF</tcName>
+    </macros>
+    <x>360</x>
+    <y>283</y>
+    <width>40</width>
+    <height>20</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>tr_15</name>
+    <file>../OtherWidgets/AND_Gate/AND_Gate_BlockIcon.bob</file>
+    <macros>
+      <Dev>POU</Dev>
+      <Dis>Ctrl</Dis>
+      <Index>State</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+      <tcName>SYNCH</tcName>
+    </macros>
+    <x>240</x>
+    <y>195</y>
+    <width>40</width>
+    <height>20</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>tr_16</name>
+    <file>../OtherWidgets/AND_Gate/AND_Gate_BlockIcon.bob</file>
+    <macros>
+      <Dev>POU</Dev>
+      <Dis>Ctrl</Dis>
+      <Index>State</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+      <tcName>PCOFF</tcName>
+    </macros>
+    <x>360</x>
+    <y>195</y>
+    <width>40</width>
+    <height>20</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>tr_17</name>
+    <file>../OtherWidgets/AND_Gate/AND_Gate_BlockIcon.bob</file>
+    <macros>
+      <Dev>POU</Dev>
+      <Dis>Ctrl</Dis>
+      <Index>State</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+      <tcName>PCOFF</tcName>
+    </macros>
+    <x>180</x>
+    <y>80</y>
+    <width>40</width>
+    <height>20</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>tr_18</name>
+    <file>../OtherWidgets/AND_Gate/AND_Gate_BlockIcon.bob</file>
+    <macros>
+      <Dev>POU</Dev>
+      <Dis>Ctrl</Dis>
+      <Index>State</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+      <tcName>READY</tcName>
+    </macros>
+    <x>240</x>
+    <y>102</y>
+    <width>40</width>
+    <height>20</height>
+    <resize>2</resize>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>tr_19</name>
+    <file>../OtherWidgets/AND_Gate/AND_Gate_BlockIcon.bob</file>
+    <macros>
+      <Dev>POU</Dev>
+      <Dis>Ctrl</Dis>
+      <Index>State</Index>
+      <SecSub>Tgt-TWDS1000</SecSub>
+      <tcName>DRIFT</tcName>
+    </macros>
+    <x>360</x>
+    <y>102</y>
+    <width>40</width>
+    <height>20</height>
+    <resize>2</resize>
+  </widget>
+</display>

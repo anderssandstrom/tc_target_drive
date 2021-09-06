@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Target System</name>
+  <width>2310</width>
+  <height>1330</height>
+  <widget type="group" version="2.0.0">
+    <name>Group</name>
+    <width>2310</width>
+    <height>1330</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="navtabs" version="2.0.0">
+      <name>Navigation Tabs</name>
+      <tabs>
+        <tab>
+          <name>Overview</name>
+          <file>TS_SSS_E01_01Overview.bob</file>
+          <macros>
+          </macros>
+          <group_name></group_name>
+        </tab>
+        <tab>
+          <name>Lubrication</name>
+          <file>TS_SSS_E01_02Lubrication.bob</file>
+          <macros>
+          </macros>
+          <group_name></group_name>
+        </tab>
+        <tab>
+          <name>Z Position</name>
+          <file>TS_SSS_E01_03ZPosition.bob</file>
+          <macros>
+          </macros>
+          <group_name></group_name>
+        </tab>
+        <tab>
+          <name>XY Position</name>
+          <file>TS_SSS_E01_04XYPosition.bob</file>
+          <macros>
+          </macros>
+          <group_name></group_name>
+        </tab>
+        <tab>
+          <name>Rotation</name>
+          <file>TS_SSS_E01_05Rotation.bob</file>
+          <macros>
+          </macros>
+          <group_name></group_name>
+        </tab>
+        <tab>
+          <name>Phase</name>
+          <file>TS_SSS_E01_06Phase.bob</file>
+          <macros>
+          </macros>
+          <group_name></group_name>
+        </tab>
+        <tab>
+          <name>Wheel &amp; Sectors</name>
+          <file>TS_SSS_E01_07Wheel.bob</file>
+          <macros>
+          </macros>
+          <group_name></group_name>
+        </tab>
+        <tab>
+          <name>Bearings</name>
+          <file>TS_SSS_E01_08Bearings.bob</file>
+          <macros>
+          </macros>
+          <group_name></group_name>
+        </tab>
+        <tab>
+          <name>TMP</name>
+          <file>TS_SSS_E01_09TMP.bob</file>
+          <macros>
+          </macros>
+          <group_name></group_name>
+        </tab>
+        <tab>
+          <name>Ground Current</name>
+          <file></file>
+          <macros>
+          </macros>
+          <group_name></group_name>
+        </tab>
+        <tab>
+          <name>Scintillator</name>
+          <file></file>
+          <macros>
+          </macros>
+          <group_name></group_name>
+        </tab>
+      </tabs>
+      <width>2310</width>
+      <height>1330</height>
+      <tab_width>150</tab_width>
+      <tab_spacing>0</tab_spacing>
+    </widget>
+  </widget>
+</display>

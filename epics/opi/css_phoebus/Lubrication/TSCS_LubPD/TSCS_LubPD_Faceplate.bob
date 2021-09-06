@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>TSCS_LubPD_Faceplate</name>
+  <class>CUSTOM</class>
+  <height>520</height>
+  <widget type="tabs" version="2.0.0">
+    <name>Tabs</name>
+    <tabs>
+      <tab>
+        <name>Status</name>
+        <children>
+          <widget type="group" version="2.0.0">
+            <name>group.alarms</name>
+            <x>428</x>
+            <y>13</y>
+            <width>250</width>
+            <style>3</style>
+            <background_color>
+              <color name="Transparent" red="255" green="255" blue="255" alpha="0">
+              </color>
+            </background_color>
+            <widget type="rectangle" version="2.0.0">
+              <name>group.Aalrms.border</name>
+              <class>GROUP</class>
+              <width>250</width>
+              <height>200</height>
+              <line_width>0</line_width>
+              <line_color use_class="true">
+                <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                </color>
+              </line_color>
+              <background_color use_class="true">
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+              <corner_width>10</corner_width>
+              <corner_height>10</corner_height>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_GroupHeader</name>
+              <class>HEADER2</class>
+              <text>Alarms</text>
+              <width>250</width>
+              <height>35</height>
+              <font use_class="true">
+                <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                </font>
+              </font>
+              <foreground_color>
+                <color name="GROUP-TEXT" red="25" green="25" blue="25">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_ALM_IO_Error</name>
+              <text>I/O Error</text>
+              <x>10</x>
+              <y>44</y>
+              <width>180</width>
+              <height>25</height>
+              <foreground_color>
+                <color name="TEXT" red="25" green="25" blue="25">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="BLUE-BACKGROUND" red="195" green="226" blue="225">
+                </color>
+              </background_color>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="led" version="2.0.0">
+              <name>LED_ALM_IO_Error</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:HWIO_Err</pv_name>
+              <x>200</x>
+              <y>44</y>
+              <width>25</width>
+              <height>25</height>
+              <off_color>
+                <color name="Grid" red="169" green="169" blue="169">
+                </color>
+              </off_color>
+              <on_color>
+                <color name="MAJOR" red="252" green="13" blue="27">
+                </color>
+              </on_color>
+              <tooltip>I/O error</tooltip>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="action_button" version="3.0.0">
+              <name>BTN_ACK</name>
+              <actions>
+                <action type="write_pv">
+                  <pv_name>$(pv_name)</pv_name>
+                  <value>1</value>
+                  <description>Write PV</description>
+                </action>
+              </actions>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Cmd_AckAlarm</pv_name>
+              <text>Acknowledge Alarm</text>
+              <x>30</x>
+              <y>120</y>
+              <width>200</width>
+              <height>33</height>
+              <tooltip>Acknowledge alarms</tooltip>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Label5</name>
+              <text>Response TimeOut</text>
+              <x>10</x>
+              <y>76</y>
+              <width>180</width>
+              <height>25</height>
+              <foreground_color>
+                <color name="TEXT" red="25" green="25" blue="25">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="BLUE-BACKGROUND" red="195" green="226" blue="225">
+                </color>
+              </background_color>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="led" version="2.0.0">
+              <name>LED_Timeout</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:Monitor_TimeOut</pv_name>
+              <x>200</x>
+              <y>76</y>
+              <width>25</width>
+              <height>25</height>
+              <off_color>
+                <color name="Grid" red="169" green="169" blue="169">
+                </color>
+              </off_color>
+              <on_color>
+                <color name="MAJOR" red="252" green="13" blue="27">
+                </color>
+              </on_color>
+              <tooltip>I/O error</tooltip>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>group.status</name>
+            <x>8</x>
+            <y>13</y>
+            <width>380</width>
+            <style>3</style>
+            <background_color>
+              <color name="Transparent" red="255" green="255" blue="255" alpha="0">
+              </color>
+            </background_color>
+            <widget type="rectangle" version="2.0.0">
+              <name>group.status.border</name>
+              <class>GROUP</class>
+              <width>380</width>
+              <height>200</height>
+              <line_width>0</line_width>
+              <line_color use_class="true">
+                <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                </color>
+              </line_color>
+              <background_color use_class="true">
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+              <corner_width>10</corner_width>
+              <corner_height>10</corner_height>
+            </widget>
+            <widget type="led" version="2.0.0">
+              <name>LED_Opened</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:MonitorSignal</pv_name>
+              <x>238</x>
+              <y>42</y>
+              <width>25</width>
+              <height>25</height>
+              <off_color>
+                <color name="Grid" red="169" green="169" blue="169">
+                </color>
+              </off_color>
+              <tooltip>Valve position</tooltip>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB1</name>
+              <text>Monitor Signal</text>
+              <x>12</x>
+              <y>42</y>
+              <width>220</width>
+              <height>25</height>
+              <background_color>
+                <color name="BLUE-BACKGROUND" red="195" green="226" blue="225">
+                </color>
+              </background_color>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_GroupHeader</name>
+              <class>HEADER2</class>
+              <text>Stroke Monitor Status</text>
+              <width>380</width>
+              <height>35</height>
+              <font use_class="true">
+                <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                </font>
+              </font>
+              <foreground_color>
+                <color name="GROUP-TEXT" red="25" green="25" blue="25">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="led" version="2.0.0">
+              <name>LED_Closed</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:MonitorStrokeAct</pv_name>
+              <x>238</x>
+              <y>78</y>
+              <width>25</width>
+              <height>25</height>
+              <off_color>
+                <color name="Grid" red="169" green="169" blue="169">
+                </color>
+              </off_color>
+              <tooltip>Valve position</tooltip>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_Opened_9</name>
+              <text>Monitor Stroke Active</text>
+              <x>10</x>
+              <y>78</y>
+              <width>220</width>
+              <height>25</height>
+              <background_color>
+                <color name="BLUE-BACKGROUND" red="195" green="226" blue="225">
+                </color>
+              </background_color>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>group.VolMeter</name>
+            <x>8</x>
+            <y>223</y>
+            <width>380</width>
+            <height>170</height>
+            <style>3</style>
+            <background_color>
+              <color name="Transparent" red="255" green="255" blue="255" alpha="0">
+              </color>
+            </background_color>
+            <widget type="rectangle" version="2.0.0">
+              <name>group.status.border_3</name>
+              <class>GROUP</class>
+              <width>380</width>
+              <height>170</height>
+              <line_width>0</line_width>
+              <line_color use_class="true">
+                <color name="GROUP-BORDER" red="150" green="155" blue="151">
+                </color>
+              </line_color>
+              <background_color use_class="true">
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+              <corner_width>10</corner_width>
+              <corner_height>10</corner_height>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_GroupHeader_1</name>
+              <class>HEADER2</class>
+              <text>Stroke Timing</text>
+              <width>380</width>
+              <height>35</height>
+              <font use_class="true">
+                <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+                </font>
+              </font>
+              <foreground_color>
+                <color name="GROUP-TEXT" red="25" green="25" blue="25">
+                </color>
+              </foreground_color>
+              <background_color>
+                <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+                </color>
+              </background_color>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Text Update_2</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:MonitorStrokeTime</pv_name>
+              <x>238</x>
+              <y>73</y>
+              <width>60</width>
+              <precision>1</precision>
+              <show_units>false</show_units>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_Opened_3</name>
+              <text>Measured Stroke Period</text>
+              <x>10</x>
+              <y>71</y>
+              <width>220</width>
+              <height>25</height>
+              <background_color>
+                <color name="BLUE-BACKGROUND" red="195" green="226" blue="225">
+                </color>
+              </background_color>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_units2</name>
+              <text>s</text>
+              <x>308</x>
+              <y>71</y>
+              <width>65</width>
+              <height>25</height>
+              <background_color>
+                <color name="BLUE-BACKGROUND" red="195" green="226" blue="225">
+                </color>
+              </background_color>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Text Update_3</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:MonitorStrokeRate</pv_name>
+              <x>238</x>
+              <y>104</y>
+              <width>60</width>
+              <precision>1</precision>
+              <show_units>false</show_units>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_Opened_5</name>
+              <text>Monitor Stroke Rate</text>
+              <x>10</x>
+              <y>102</y>
+              <width>220</width>
+              <height>25</height>
+              <background_color>
+                <color name="BLUE-BACKGROUND" red="195" green="226" blue="225">
+                </color>
+              </background_color>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_units3</name>
+              <text>strk/min</text>
+              <x>308</x>
+              <y>102</y>
+              <width>65</width>
+              <height>25</height>
+              <background_color>
+                <color name="BLUE-BACKGROUND" red="195" green="226" blue="225">
+                </color>
+              </background_color>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Text Update_1</name>
+              <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:MonStrkTimeExpect</pv_name>
+              <x>238</x>
+              <y>42</y>
+              <width>60</width>
+              <precision>1</precision>
+              <show_units>false</show_units>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Label3</name>
+              <text>Expected Stroke Period</text>
+              <x>10</x>
+              <y>40</y>
+              <width>220</width>
+              <height>25</height>
+              <background_color>
+                <color name="BLUE-BACKGROUND" red="195" green="226" blue="225">
+                </color>
+              </background_color>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>LB_units1</name>
+              <text>s</text>
+              <x>308</x>
+              <y>40</y>
+              <width>65</width>
+              <height>25</height>
+              <background_color>
+                <color name="BLUE-BACKGROUND" red="195" green="226" blue="225">
+                </color>
+              </background_color>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+          </widget>
+        </children>
+      </tab>
+      <tab>
+        <name>Trend</name>
+        <children>
+          <widget type="databrowser" version="2.0.0">
+            <name>DataBrowser</name>
+            <file>TSCS_LubPD_Faceplate_Trend.plt</file>
+            <width>778</width>
+            <height>441</height>
+          </widget>
+        </children>
+      </tab>
+    </tabs>
+    <x>10</x>
+    <y>60</y>
+    <width>780</width>
+    <height>450</height>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Header Bar</name>
+    <width>800</width>
+    <height>50</height>
+    <line_width>0</line_width>
+    <line_color>
+      <color red="0" green="0" blue="255" alpha="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="PRIMARY-HEADER-BACKGROUND" red="151" green="188" blue="202">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>LB_HeaderPVName</name>
+    <text>${SecSub}:${Dis}-${Dev}-${Index}</text>
+    <x>20</x>
+    <width>715</width>
+    <height>50</height>
+    <font>
+      <font name="Header 1" family="Source Sans Pro" style="BOLD_ITALIC" size="36.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label</name>
+    <class>SUBTITLE</class>
+    <text>Monitor</text>
+    <x>690</x>
+    <y use_class="true">20</y>
+    <height use_class="true">30</height>
+    <font use_class="true">
+      <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="HEADER-TEXT" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <horizontal_alignment use_class="true">2</horizontal_alignment>
+    <vertical_alignment use_class="true">2</vertical_alignment>
+    <wrap_words use_class="true">false</wrap_words>
+  </widget>
+</display>

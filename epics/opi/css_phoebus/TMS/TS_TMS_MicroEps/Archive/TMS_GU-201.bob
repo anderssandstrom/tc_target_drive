@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Advanced instrument</name>
+  <width>765</width>
+  <height>670</height>
+  <background_color>
+    <color red="179" green="209" blue="209" alpha="0">
+    </color>
+  </background_color>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle</name>
+    <class>TITLE-BAR</class>
+    <x use_class="true">0</x>
+    <y use_class="true">0</y>
+    <width>765</width>
+    <height use_class="true">50</height>
+    <line_width use_class="true">0</line_width>
+    <background_color use_class="true">
+      <color name="PRIMARY-HEADER-BACKGROUND" red="151" green="188" blue="202">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_1</name>
+    <class>TITLE</class>
+    <text>$(PREFIX):$(DEV):</text>
+    <x use_class="true">20</x>
+    <y use_class="true">0</y>
+    <width>550</width>
+    <height use_class="true">50</height>
+    <font use_class="true">
+      <font name="Header 1" family="Source Sans Pro" style="BOLD_ITALIC" size="36.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="HEADER-TEXT" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <transparent use_class="true">true</transparent>
+    <horizontal_alignment use_class="true">0</horizontal_alignment>
+    <vertical_alignment use_class="true">1</vertical_alignment>
+    <wrap_words use_class="true">false</wrap_words>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label</name>
+    <class>SUBTITLE</class>
+    <text>Advanced instrument control</text>
+    <x>460</x>
+    <y use_class="true">20</y>
+    <width>290</width>
+    <height use_class="true">30</height>
+    <font use_class="true">
+      <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="HEADER-TEXT" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <horizontal_alignment use_class="true">2</horizontal_alignment>
+    <vertical_alignment use_class="true">2</vertical_alignment>
+    <wrap_words use_class="true">false</wrap_words>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Instrument status</name>
+    <x>10</x>
+    <y>60</y>
+    <width>405</width>
+    <height>201</height>
+    <foreground_color>
+      <color name="TEXT" red="25" green="25" blue="25">
+      </color>
+    </foreground_color>
+    <widget type="label" version="2.0.0">
+      <name>Label_2</name>
+      <text>Z Position raw</text>
+      <y>19</y>
+      <width>210</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="16.0">
+        </font>
+      </font>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_9</name>
+      <text>Calculated position</text>
+      <y>49</y>
+      <width>210</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="16.0">
+        </font>
+      </font>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_43</name>
+      <text>Sector Cup Temp Average</text>
+      <y>79</y>
+      <width>210</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="16.0">
+        </font>
+      </font>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_44</name>
+      <text>Sector Shroud Temp Average</text>
+      <y>109</y>
+      <width>210</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="16.0">
+        </font>
+      </font>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update</name>
+      <pv_name>$(PREFIX):$(DEV):Z_Pos_Raw</pv_name>
+      <x>210</x>
+      <y>19</y>
+      <width>50</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_1</name>
+      <pv_name>$(PREFIX):$(MECH):CALC210_ZPos</pv_name>
+      <x>210</x>
+      <y>49</y>
+      <width>50</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_16</name>
+      <pv_name>$(PREFIX):$(MECH):SecCup_T_Ave</pv_name>
+      <x>210</x>
+      <y>79</y>
+      <width>50</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_17</name>
+      <pv_name>$(PREFIX):$(MECH):SecShroud_T_Ave</pv_name>
+      <x>210</x>
+      <y>109</y>
+      <width>50</width>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Position settings and readback</name>
+    <x>10</x>
+    <y>271</y>
+    <width>405</width>
+    <height>213</height>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_4</name>
+      <pv_name>$(PREFIX):$(MECH):FB_ZPos_HiHi</pv_name>
+      <x>191</x>
+      <y>1</y>
+      <width>50</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_5</name>
+      <pv_name>$(PREFIX):$(MECH):FB_ZPos_High</pv_name>
+      <x>191</x>
+      <y>31</y>
+      <width>50</width>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Entry</name>
+      <pv_name>$(PREFIX):$(MECH):P_ZPos_HiHi</pv_name>
+      <x>271</x>
+      <width>50</width>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Entry_1</name>
+      <pv_name>$(PREFIX):$(MECH):P_ZPos_High</pv_name>
+      <x>271</x>
+      <y>31</y>
+      <width>50</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_6</name>
+      <pv_name>$(PREFIX):$(MECH):FB_ZPos_Low</pv_name>
+      <x>191</x>
+      <y>61</y>
+      <width>50</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_7</name>
+      <pv_name>$(PREFIX):$(MECH):FB_ZPos_LoLo</pv_name>
+      <x>191</x>
+      <y>91</y>
+      <width>50</width>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Entry_2</name>
+      <pv_name>$(PREFIX):$(MECH):P_ZPos_Low</pv_name>
+      <x>271</x>
+      <y>60</y>
+      <width>50</width>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Entry_3</name>
+      <pv_name>$(PREFIX):$(MECH):P_ZPos_LoLo</pv_name>
+      <x>271</x>
+      <y>91</y>
+      <width>50</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_8</name>
+      <pv_name>$(PREFIX):$(MECH):FB_ZPos_Parking</pv_name>
+      <x>191</x>
+      <y>122</y>
+      <width>50</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_9</name>
+      <pv_name>$(PREFIX):$(MECH):FB_ZPos_Parked</pv_name>
+      <x>191</x>
+      <y>152</y>
+      <width>50</width>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Entry_4</name>
+      <pv_name>$(PREFIX):$(MECH):P_ZPos_Parking</pv_name>
+      <x>271</x>
+      <y>121</y>
+      <width>50</width>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Entry_5</name>
+      <pv_name>$(PREFIX):$(MECH):P_ZPos_Parked</pv_name>
+      <x>271</x>
+      <y>152</y>
+      <width>50</width>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_31</name>
+      <text>FB Z Pos HiHi Setting</text>
+      <y>1</y>
+      <width>200</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="16.0">
+        </font>
+      </font>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_32</name>
+      <text>FB Z Pos High Setting</text>
+      <y>31</y>
+      <width>200</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="16.0">
+        </font>
+      </font>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_33</name>
+      <text>FB Z Pos Low Setting</text>
+      <y>61</y>
+      <width>200</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="16.0">
+        </font>
+      </font>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_34</name>
+      <text>FB Z Pos LoLo Setting</text>
+      <y>91</y>
+      <width>200</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="16.0">
+        </font>
+      </font>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_35</name>
+      <text>FB Z Pos Parking Setting</text>
+      <y>122</y>
+      <width>200</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="16.0">
+        </font>
+      </font>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_36</name>
+      <text>FB Z Pos Parked Setting</text>
+      <y>152</y>
+      <width>200</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="16.0">
+        </font>
+      </font>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Instrument commands</name>
+    <x>430</x>
+    <y>60</y>
+    <width>324</width>
+    <height>201</height>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_1</name>
+      <actions execute_as_one="true">
+        <action type="write_pv">
+          <pv_name>$(PREFIX):$(DEV):Cmd_AckAlarm</pv_name>
+          <value>1</value>
+          <description>Write PV</description>
+        </action>
+        <action type="write_pv">
+          <pv_name>$(PREFIX):$(MECH):Cmd_AckAlarm</pv_name>
+          <value>0</value>
+          <description>Write PV</description>
+        </action>
+      </actions>
+      <text>CMD ACK</text>
+      <x>191</x>
+      <y>92</y>
+      <width>90</width>
+      <height>25</height>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_4</name>
+      <text>CMD: Acknowledge Alarm</text>
+      <x>2</x>
+      <y>94</y>
+      <width>190</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="16.0">
+        </font>
+      </font>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_2</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(PREFIX):$(DEV):CmdCalib</pv_name>
+          <value>1</value>
+          <description>Write PV</description>
+        </action>
+      </actions>
+      <text>CMD CAL</text>
+      <x>191</x>
+      <y>47</y>
+      <width>90</width>
+      <height>25</height>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_5</name>
+      <text>CMD: Calibrate Controller</text>
+      <x>2</x>
+      <y>49</y>
+      <width>190</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="16.0">
+        </font>
+      </font>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>System status</name>
+    <x>430</x>
+    <y>271</y>
+    <width>324</width>
+    <height>213</height>
+    <font>
+      <font family="Source Sans Pro" style="BOLD" size="16.0">
+      </font>
+    </font>
+    <widget type="label" version="2.0.0">
+      <name>Label_18</name>
+      <text>FB Controller On:</text>
+      <x>20</x>
+      <width>150</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="12.0">
+        </font>
+      </font>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_21</name>
+      <text>FB Controller OK:</text>
+      <x>20</x>
+      <y>20</y>
+      <width>150</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="12.0">
+        </font>
+      </font>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_22</name>
+      <text>Error: Profibus connection:</text>
+      <x>20</x>
+      <y>40</y>
+      <width>150</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="12.0">
+        </font>
+      </font>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_25</name>
+      <text>Error: Instrument:</text>
+      <x>20</x>
+      <y>60</y>
+      <width>150</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="12.0">
+        </font>
+      </font>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_26</name>
+      <text>Error: Temperature Hi:</text>
+      <x>2</x>
+      <y>80</y>
+      <width>169</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="12.0">
+        </font>
+      </font>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_29</name>
+      <text>Warning: Weak Reflex:</text>
+      <x>2</x>
+      <y>100</y>
+      <width>168</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="12.0">
+        </font>
+      </font>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_30</name>
+      <text>Warning: Strong Reflex:</text>
+      <x>31</x>
+      <y>120</y>
+      <width>140</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="12.0">
+        </font>
+      </font>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_41</name>
+      <text>Warning: Backlight:</text>
+      <x>2</x>
+      <y>140</y>
+      <width>168</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="12.0">
+        </font>
+      </font>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_42</name>
+      <text>Warning: Other:</text>
+      <x>51</x>
+      <y>160</y>
+      <width>123</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="12.0">
+        </font>
+      </font>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED</name>
+      <pv_name>$(PREFIX):$(DEV):FB_Controller_On</pv_name>
+      <x>191</x>
+      <width>18</width>
+      <height>18</height>
+      <off_color>
+        <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+        </color>
+      </on_color>
+      <font>
+        <font family="Source Sans Pro" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <square>true</square>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_1</name>
+      <pv_name>$(PREFIX):$(DEV):FB_Controller_OK</pv_name>
+      <x>191</x>
+      <y>20</y>
+      <width>18</width>
+      <height>18</height>
+      <off_color>
+        <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+        </color>
+      </on_color>
+      <font>
+        <font family="Source Sans Pro" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <square>true</square>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_2</name>
+      <pv_name>$(PREFIX):$(DEV):Err_Profibus</pv_name>
+      <x>191</x>
+      <y>40</y>
+      <width>18</width>
+      <height>18</height>
+      <off_color>
+        <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="LED-RED-ON" red="255" green="60" blue="46">
+        </color>
+      </on_color>
+      <font>
+        <font family="Source Sans Pro" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <square>true</square>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_3</name>
+      <pv_name>$(PREFIX):$(DEV):Err_Instr</pv_name>
+      <x>191</x>
+      <y>60</y>
+      <width>18</width>
+      <height>18</height>
+      <off_color>
+        <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="LED-RED-ON" red="255" green="60" blue="46">
+        </color>
+      </on_color>
+      <font>
+        <font family="Source Sans Pro" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <square>true</square>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_4</name>
+      <pv_name>$(PREFIX):$(DEV):Err_Temperature</pv_name>
+      <x>191</x>
+      <y>80</y>
+      <width>18</width>
+      <height>18</height>
+      <off_color>
+        <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="LED-RED-ON" red="255" green="60" blue="46">
+        </color>
+      </on_color>
+      <font>
+        <font family="Source Sans Pro" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <square>true</square>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_5</name>
+      <pv_name>$(PREFIX):$(DEV):Warn_WeakReflex</pv_name>
+      <x>191</x>
+      <y>100</y>
+      <width>18</width>
+      <height>18</height>
+      <off_color>
+        <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="LED-ORANGE-ON" red="255" green="175" blue="81">
+        </color>
+      </on_color>
+      <font>
+        <font family="Source Sans Pro" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <square>true</square>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_6</name>
+      <pv_name>$(PREFIX):$(DEV):Warn_StrongReflex</pv_name>
+      <x>191</x>
+      <y>120</y>
+      <width>18</width>
+      <height>18</height>
+      <off_color>
+        <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="LED-ORANGE-ON" red="255" green="175" blue="81">
+        </color>
+      </on_color>
+      <font>
+        <font family="Source Sans Pro" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <square>true</square>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_7</name>
+      <pv_name>$(PREFIX):$(DEV):Warn_Backlight</pv_name>
+      <x>191</x>
+      <y>140</y>
+      <width>18</width>
+      <height>18</height>
+      <off_color>
+        <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="LED-ORANGE-ON" red="255" green="175" blue="81">
+        </color>
+      </on_color>
+      <font>
+        <font family="Source Sans Pro" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <square>true</square>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_8</name>
+      <pv_name>$(PREFIX):$(DEV):Warn_Other</pv_name>
+      <x>191</x>
+      <y>160</y>
+      <width>18</width>
+      <height>18</height>
+      <off_color>
+        <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="LED-ORANGE-ON" red="255" green="175" blue="81">
+        </color>
+      </on_color>
+      <font>
+        <font family="Source Sans Pro" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <square>true</square>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+  </widget>
+</display>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Spallation Source Systems</name>
+  <width>2390</width>
+  <height>1350</height>
+  <widget type="navtabs" version="2.0.0">
+    <name>Navigation Tabs</name>
+    <tabs>
+      <tab>
+        <name>Main</name>
+        <file>TS_SSS_Main.bob</file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>C01</name>
+        <file></file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>E01</name>
+        <file>TS_SSS_E01.bob</file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>F01</name>
+        <file></file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>UF01</name>
+        <file></file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>...</name>
+        <file></file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
+    </tabs>
+    <width>2390</width>
+    <height>1350</height>
+    <tab_width>50</tab_width>
+    <tab_spacing>0</tab_spacing>
+  </widget>
+</display>

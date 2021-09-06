@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>TSCS_LubSV_BlockIcon</name>
+  <class>CUSTOM</class>
+  <width>190</width>
+  <height>110</height>
+  <background_color>
+    <color red="220" green="225" blue="221" alpha="0">
+    </color>
+  </background_color>
+  <widget type="rectangle" version="2.0.0">
+    <name>WID_Rect</name>
+    <width>190</width>
+    <height>110</height>
+    <line_width>0</line_width>
+    <background_color>
+      <color red="0" green="0" blue="0" alpha="18">
+      </color>
+    </background_color>
+    <corner_width>10</corner_width>
+    <corner_height>10</corner_height>
+  </widget>
+  <widget type="symbol" version="2.0.0">
+    <name>WID_CenterIconSolenoid</name>
+    <pv_name>${WIDSecSub}:${WIDDis}-${WIDDev}-${WIDIndex}:HWIO_DO_Solenoid</pv_name>
+    <symbols>
+      <symbol>solenoid_OFF@64.png</symbol>
+      <symbol>solenoid_OK@64.png</symbol>
+    </symbols>
+    <x>93</x>
+    <y>25</y>
+    <width>64</width>
+    <height>64</height>
+    <rotation>90.0</rotation>
+    <actions execute_as_one="true">
+    </actions>
+    <tooltip>Open faceplate</tooltip>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="symbol" version="2.0.0">
+    <name>WID_CenterIcon</name>
+    <pv_name>${WIDSecSub}:${WIDDis}-${WIDDev}-${WIDIndex}:SetPosition</pv_name>
+    <symbols>
+      <symbol>valve_NOT_CONTROLED@64.png</symbol>
+      <symbol>valve_OK@64.png</symbol>
+    </symbols>
+    <x>93</x>
+    <y>25</y>
+    <width>64</width>
+    <height>64</height>
+    <rotation>90.0</rotation>
+    <actions execute_as_one="true">
+    </actions>
+    <tooltip>Open faceplate</tooltip>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>WID_TitleLBL</name>
+    <text>${WIDDev}-${WIDIndex}</text>
+    <x>4</x>
+    <y>43</y>
+    <width>98</width>
+    <height>30</height>
+    <font>
+      <font family="Source Sans Pro" style="BOLD" size="18.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+    <tooltip>Device name</tooltip>
+  </widget>
+  <widget type="symbol" version="2.0.0">
+    <name>WID_Interlock</name>
+    <symbols>
+      <symbol>../../symbols/interlock_overridden_disabled_cms@32.png</symbol>
+    </symbols>
+    <x>158</x>
+    <y>14</y>
+    <width>24</width>
+    <height>24</height>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="VisibilityRule" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0 == true">
+          <value>true</value>
+        </exp>
+        <pv_name>${WIDSecSub}:${WIDDis}-${WIDDev}-${WIDIndex}:InterLock_ForceClos</pv_name>
+      </rule>
+    </rules>
+    <tooltip>Open Interlock</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>WID_OpenFaceplate_1</name>
+    <actions>
+      <action type="open_display">
+        <file>TSCS_LubSV_Faceplate.bob</file>
+        <macros>
+          <WIDDev>${WIDDev}</WIDDev>
+          <WIDDis>${WIDDis}</WIDDis>
+          <WIDIndex>${WIDIndex}</WIDIndex>
+          <WIDSecSub>${WIDSecSub}</WIDSecSub>
+        </macros>
+        <target>window</target>
+        <description>OpenFaceplate</description>
+      </action>
+    </actions>
+    <text></text>
+    <x>40</x>
+    <width>118</width>
+    <height>110</height>
+    <transparent>true</transparent>
+    <tooltip>${WIDSecSub}:${WIDDis}-${WIDDev}-${WIDIndex}
+Open faceplate</tooltip>
+  </widget>
+  <widget type="symbol" version="2.0.0">
+    <name>Symbol</name>
+    <pv_name>${WIDSecSub}:${WIDDis}-${WIDDev}-${WIDIndex}:DOFault_Lchd</pv_name>
+    <symbols>
+      <symbol>../../symbols/OK.png</symbol>
+      <symbol>../../symbols/error@32.png</symbol>
+    </symbols>
+    <x>10</x>
+    <y>10</y>
+    <width>20</width>
+    <height>20</height>
+    <tooltip>$(pv_name)</tooltip>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="text-symbol" version="2.0.0">
+    <name>Text Symbol</name>
+    <pv_name>${WIDSecSub}:${WIDDis}-${WIDDev}-${WIDIndex}:Manual_Control_Act</pv_name>
+    <symbols>
+      <symbol>A</symbol>
+      <symbol>M</symbol>
+    </symbols>
+    <x>155</x>
+    <y>60</y>
+    <width>30</width>
+    <height>40</height>
+    <font>
+      <font family="Source Sans Pro" style="BOLD" size="29.0">
+      </font>
+    </font>
+    <vertical_alignment>0</vertical_alignment>
+    <tooltip>$(pv_name)</tooltip>
+  </widget>
+</display>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>TS Image</name>
+  <width>410</width>
+  <height>550</height>
+  <widget type="symbol" version="2.0.0">
+    <name>Symbol_TDU_Shaft_Wheel</name>
+    <symbols>
+      <symbol>TWDS1.png</symbol>
+    </symbols>
+    <x>79</x>
+    <y>2</y>
+    <width>345</width>
+    <height>550</height>
+  </widget>
+  <widget type="symbol" version="2.0.0">
+    <name>Symbol</name>
+    <symbols>
+      <symbol>TMP_Right.png</symbol>
+    </symbols>
+    <x>259</x>
+    <y>225</y>
+    <width>148</width>
+    <height>295</height>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>Polyline_13</name>
+    <y>532</y>
+    <width>80</width>
+    <height>1</height>
+    <line_color>
+      <color name="ERROR" red="252" green="13" blue="27">
+      </color>
+    </line_color>
+    <arrows>2</arrows>
+    <points>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="80.0" y="0.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_36</name>
+    <text>Proton Beam</text>
+    <y>501</y>
+    <width>104</width>
+    <height>24</height>
+    <font>
+      <font family="Source Sans Pro" style="BOLD" size="18.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+</display>

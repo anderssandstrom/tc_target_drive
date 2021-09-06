@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Target Drive Unit</name>
+  <width>2360</width>
+  <height>1390</height>
+  <widget type="navtabs" version="2.0.0">
+    <name>Navigation Tabs</name>
+    <tabs>
+      <tab>
+        <name>Main</name>
+        <file>TS_SSS_E01_W01_Main.bob</file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>XY Translation</name>
+        <file></file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>Z Translation</name>
+        <file></file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>Rotation</name>
+        <file></file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
+    </tabs>
+    <width>2360</width>
+    <height>1390</height>
+    <tab_width>120</tab_width>
+    <tab_spacing>0</tab_spacing>
+  </widget>
+</display>

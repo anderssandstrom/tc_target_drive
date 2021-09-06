@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Fault</name>
+  <width>100</width>
+  <height>30</height>
+  <widget type="label" version="2.0.0">
+    <name>Label_FAULT</name>
+    <text>FAULT</text>
+    <x>6</x>
+    <y>5</y>
+    <width>50</width>
+    <horizontal_alignment>2</horizontal_alignment>
+  </widget>
+  <widget type="led" version="2.0.0">
+    <name>LED_FAULT</name>
+    <pv_name>${SecSub}:${Dis}-${Dev}-${Index}:OPI_${Tr_Name}_${LogicalOp}_I${InputNum}</pv_name>
+    <x>69</x>
+    <y>8</y>
+    <width>15</width>
+    <height>15</height>
+    <off_color>
+      <color name="Grid" red="169" green="169" blue="169">
+      </color>
+    </off_color>
+    <on_color>
+      <color name="MAJOR" red="252" green="13" blue="27">
+      </color>
+    </on_color>
+    <square>true</square>
+    <tooltip>$(pv_name)</tooltip>
+  </widget>
+</display>

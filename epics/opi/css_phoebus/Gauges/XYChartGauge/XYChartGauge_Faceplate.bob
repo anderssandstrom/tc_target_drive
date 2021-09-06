@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>XYChartGauge_Faceplate</name>
+  <width>510</width>
+  <height>400</height>
+  <widget type="rectangle" version="2.0.0">
+    <name>Header Bar</name>
+    <width>510</width>
+    <height>50</height>
+    <line_width>0</line_width>
+    <line_color>
+      <color red="0" green="0" blue="255" alpha="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="PRIMARY-HEADER-BACKGROUND" red="151" green="188" blue="202">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>LB_HeaderPVName</name>
+    <text>${SecSub}:${Dis}-${Dev}-${Index}</text>
+    <x>10</x>
+    <width>500</width>
+    <height>50</height>
+    <font>
+      <font name="Header 1" family="Source Sans Pro" style="BOLD_ITALIC" size="36.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_58</name>
+    <class>SUBTITLE</class>
+    <text>XY Position Alarm Settings</text>
+    <x>120</x>
+    <y use_class="true">20</y>
+    <width>390</width>
+    <height use_class="true">30</height>
+    <font use_class="true">
+      <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="HEADER-TEXT" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <horizontal_alignment use_class="true">2</horizontal_alignment>
+    <vertical_alignment use_class="true">2</vertical_alignment>
+    <wrap_words use_class="true">false</wrap_words>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Position X settings and readback</name>
+    <x>10</x>
+    <y>70</y>
+    <width>405</width>
+    <height>151</height>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_4</name>
+      <pv_name>$(PREFIX):$(MECH):FB_ZPos_HiHi</pv_name>
+      <x>191</x>
+      <y>4</y>
+      <width>70</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_5</name>
+      <pv_name>$(PREFIX):$(MECH):FB_ZPos_High</pv_name>
+      <x>191</x>
+      <y>34</y>
+      <width>70</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_10</name>
+      <pv_name>$(PREFIX):$(MECH):FB_ZPos_Low</pv_name>
+      <x>191</x>
+      <y>64</y>
+      <width>70</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_11</name>
+      <pv_name>$(PREFIX):$(MECH):FB_ZPos_LoLo</pv_name>
+      <x>191</x>
+      <y>94</y>
+      <width>70</width>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_31</name>
+      <text>FB X Pos HiHi Setting</text>
+      <y>4</y>
+      <width>200</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="16.0">
+        </font>
+      </font>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_36</name>
+      <text>FB X Pos High Setting</text>
+      <y>34</y>
+      <width>200</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="16.0">
+        </font>
+      </font>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_37</name>
+      <text>FB X Pos Low Setting</text>
+      <y>64</y>
+      <width>200</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="16.0">
+        </font>
+      </font>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_38</name>
+      <text>FB X Pos LoLo Setting</text>
+      <y>94</y>
+      <width>200</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="16.0">
+        </font>
+      </font>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Position Y settings and readback</name>
+    <x>10</x>
+    <y>233</y>
+    <width>405</width>
+    <height>160</height>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_12</name>
+      <pv_name>$(PREFIX):$(MECH):FB_SecCupT_HiHi</pv_name>
+      <x>191</x>
+      <y>7</y>
+      <width>70</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_13</name>
+      <pv_name>$(PREFIX):$(MECH):FB_SecCupT_High</pv_name>
+      <x>191</x>
+      <y>37</y>
+      <width>70</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_14</name>
+      <pv_name>$(PREFIX):$(MECH):FB_SecShroudT_HiHi</pv_name>
+      <x>191</x>
+      <y>67</y>
+      <width>70</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_15</name>
+      <pv_name>$(PREFIX):$(MECH):FB_SecShroudT_High</pv_name>
+      <x>191</x>
+      <y>97</y>
+      <width>70</width>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_39</name>
+      <text>FB Y Pos HiHi Setting</text>
+      <y>7</y>
+      <width>200</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="16.0">
+        </font>
+      </font>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_40</name>
+      <text>FB Y Pos High Setting</text>
+      <y>37</y>
+      <width>200</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="16.0">
+        </font>
+      </font>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_41</name>
+      <text>FB Y Pos Low Setting</text>
+      <y>67</y>
+      <width>200</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="16.0">
+        </font>
+      </font>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_42</name>
+      <text>FB Y Pos LoLo Setting</text>
+      <y>97</y>
+      <width>200</width>
+      <height>15</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="16.0">
+        </font>
+      </font>
+    </widget>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry</name>
+    <pv_name>$(PREFIX):$(MECH):P_X_HiHi</pv_name>
+    <x>308</x>
+    <y>91</y>
+    <width>70</width>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_1</name>
+    <pv_name>$(PREFIX):$(MECH):P_X_High</pv_name>
+    <x>308</x>
+    <y>122</y>
+    <width>70</width>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_2</name>
+    <pv_name>$(PREFIX):$(MECH):P_X_Low</pv_name>
+    <x>308</x>
+    <y>151</y>
+    <width>70</width>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_3</name>
+    <pv_name>$(PREFIX):$(MECH):P_X_LoLo</pv_name>
+    <x>308</x>
+    <y>182</y>
+    <width>70</width>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_6</name>
+    <pv_name>$(PREFIX):$(MECH):P_Y_HiHi</pv_name>
+    <x>308</x>
+    <y>257</y>
+    <width>70</width>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_7</name>
+    <pv_name>$(PREFIX):$(MECH):P_Y_High</pv_name>
+    <x>308</x>
+    <y>288</y>
+    <width>70</width>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_8</name>
+    <pv_name>$(PREFIX):$(MECH):P_Y_LoLo</pv_name>
+    <x>308</x>
+    <y>317</y>
+    <width>70</width>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_9</name>
+    <pv_name>$(PREFIX):$(MECH):P_Y_Low</pv_name>
+    <x>308</x>
+    <y>348</y>
+    <width>70</width>
+  </widget>
+</display>
