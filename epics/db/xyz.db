@@ -1,0 +1,102 @@
+record(bi,"$(P)${DEV_NAME}-EstopOK"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bEstopOK?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Zero")
+  field(ONAM, "One")
+  field(DESC, "${DEV_NAME}: Estop OK")
+}
+
+record(ai,"$(P)${DEV_NAME}-TempAct"){
+  field(PINI, "1")
+  field(DTYP, "asynFloat64")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.fStepperTemp?")
+  field(SCAN, "I/O Intr")
+  field(LINR, "SLOPE")
+  field(ESLO, "1")
+  field(EOFF, "0")   
+  field(EGU,  "DegC")
+  field(DESC, "${DEV_NAME}: Temperture")
+}
+
+record(bi,"$(P)${DEV_NAME}-LimitMax"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bLimitMax?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Activated")
+  field(ONAM, "OK")
+  field(DESC, "${DEV_NAME}: Limit Max")
+}
+
+record(bi,"$(P)${DEV_NAME}-LimitMin"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bLimitMin?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Activated")
+  field(ONAM, "OK")
+  field(DESC, "${DEV_NAME}: Limit Min")
+}
+
+record(bi,"$(P)${DEV_NAME}-LimitMaxMax"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bLimitMaxMax?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Activated")
+  field(ONAM, "OK")
+  field(DESC, "${DEV_NAME}: Limit Max Max")
+}
+
+record(bi,"$(P)${DEV_NAME}-LimitMinMin"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bLimitMinmin?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Activated")
+  field(ONAM, "OK")
+  field(DESC, "${DEV_NAME}: Limit Min Min")
+}
+
+record(bi,"$(P)${DEV_NAME}-BrakeReleased"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bBrakeReleased?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Activated")
+  field(ONAM, "OK")
+  field(DESC, "${DEV_NAME}: Brake Released")
+}
+
+# Only valid for Z axis below
+record(bi,"$(P)${DEV_NAME}-LimitMinPark"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bLimitMinPark?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Activated")
+  field(ONAM, "OK")
+  field(DESC, "${DEV_NAME}: Limit Min Park")
+}
+
+record(bi,"$(P)${DEV_NAME}-LimitMinMinPark"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bLimitMinMinPark?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Activated")
+  field(ONAM, "OK")
+  field(DESC, "${DEV_NAME}: Limit Min Min Park")
+}
+
+record(bi,"$(P)${DEV_NAME}-ParkRangeEnaAct"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bParkingRangeEnabled?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Activated")
+  field(ONAM, "OK")
+  field(DESC, "${DEV_NAME}: Parking range enabled")
+}

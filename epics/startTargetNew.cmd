@@ -32,11 +32,22 @@ asynSetTraceMask("${ADS_ASYN_PORT}", -1, 0x41)
 
 ##############################################################################
 ############# Load records
-dbLoadRecords("./db/target.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
+
+## Rotation
+dbLoadRecords("./db/rotation.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
 dbLoadRecords("./db/indraDriveStatus.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
 dbLoadRecords("./db/indraDriveCommand.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
 #dbLoadRecords("./db/brake.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
-dbLoadRecords("./db/home.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
+dbLoadRecords("./db/rotationHome.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
+
+## Stepper X
+dbLoadRecords("./db/xyz.db","P=${PREFIX},PORT=${ADS_ASYN_PORT},DEV_NAME=X,STRUCT_STAT=stHwStatusX")
+
+## Stepper Y
+dbLoadRecords("./db/xyz.db","P=${PREFIX},PORT=${ADS_ASYN_PORT},DEV_NAME=Y,STRUCT_STAT=stHwStatusY")
+
+## Stepper Z
+dbLoadRecords("./db/xyz.db","P=${PREFIX},PORT=${ADS_ASYN_PORT},DEV_NAME=Z,STRUCT_STAT=stHwStatusZ")
 
 # Load hardware
 epicsEnvSet("EC_SLAVE_NUM",    "2")
