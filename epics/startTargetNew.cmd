@@ -41,13 +41,13 @@ dbLoadRecords("./db/indraDriveCommand.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
 dbLoadRecords("./db/rotationHome.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
 
 ## Stepper X
-dbLoadRecords("./db/xyz.db","P=${PREFIX},PORT=${ADS_ASYN_PORT},DEV_NAME=X,STRUCT_STAT=stHwStatusX")
+dbLoadRecords("./db/xyz.db","P=${PREFIX},PORT=${ADS_ASYN_PORT},DEV_NAME=X,STRUCT_STAT=stHwStatusX, STRUCT_CMD=stHwControlX")
 
 ## Stepper Y
-dbLoadRecords("./db/xyz.db","P=${PREFIX},PORT=${ADS_ASYN_PORT},DEV_NAME=Y,STRUCT_STAT=stHwStatusY")
+dbLoadRecords("./db/xyz.db","P=${PREFIX},PORT=${ADS_ASYN_PORT},DEV_NAME=Y,STRUCT_STAT=stHwStatusY, STRUCT_CMD=stHwControlY")
 
 ## Stepper Z
-dbLoadRecords("./db/xyz.db","P=${PREFIX},PORT=${ADS_ASYN_PORT},DEV_NAME=Z,STRUCT_STAT=stHwStatusZ")
+dbLoadRecords("./db/xyz.db","P=${PREFIX},PORT=${ADS_ASYN_PORT},DEV_NAME=Z,STRUCT_STAT=stHwStatusZ, STRUCT_CMD=stHwControlZ")
 
 # Load hardware
 epicsEnvSet("EC_SLAVE_NUM",    "2")

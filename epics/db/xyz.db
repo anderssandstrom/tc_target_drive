@@ -1,3 +1,25 @@
+record(bo,"$(P)${DEV_NAME}-BrakeReleseCmd"){
+  info(asyn:READBACK,"1")
+  field(PINI, "1")
+  field(DTYP, "asynInt32")
+  field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_CMD}.bBrakeReleaseCmd?")
+  field(SCAN, "Passive")
+  field(ZNAM, "Brake")
+  field(ONAM, "Release")
+  field(DESC, "${DEV_NAME}: Brake release cmd")
+}
+
+record(bo,"$(P)${DEV_NAME}-ManunalILOverrideCmd"){
+  info(asyn:READBACK,"1")
+  field(PINI, "1")
+  field(DTYP, "asynInt32")
+  field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_CMD}.bManualInterlockOverride?")
+  field(SCAN, "Passive")
+  field(ZNAM, "OK")
+  field(ONAM, "Override")
+  field(DESC, "${DEV_NAME}: Manual IL override cmd")
+}
+
 record(bi,"$(P)${DEV_NAME}-EstopOK"){
   field(PINI, "1")  
   field(DTYP, "asynInt32")
@@ -65,12 +87,34 @@ record(bi,"$(P)${DEV_NAME}-BrakeReleased"){
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bBrakeReleased?")
   field(SCAN, "I/O Intr")
-  field(ZNAM, "Activated")
-  field(ONAM, "OK")
+  field(ZNAM, "Braked")
+  field(ONAM, "Released")
   field(DESC, "${DEV_NAME}: Brake Released")
 }
 
-# Only valid for Z axis below
+record(bi,"$(P)${DEV_NAME}-SumILOK"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bSumILOK?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Not Ok")
+  field(ONAM, "OK")
+  field(DESC, "${DEV_NAME}: Summary Interlock OK")
+}
+
+record(bi,"$(P)${DEV_NAME}-ManunalILOverride"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bmanualInterlockOverride?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "OK")
+  field(ONAM, "Override")
+  field(DESC, "${DEV_NAME}: Summary Interlock OK")
+}
+
+############################################################################
+# NOTE: Only valid for Z axis below
+
 record(bi,"$(P)${DEV_NAME}-LimitMinPark"){
   field(PINI, "1")  
   field(DTYP, "asynInt32")
