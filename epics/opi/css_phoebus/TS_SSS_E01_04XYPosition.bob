@@ -1648,4 +1648,23 @@
       <tooltip>$(actions)</tooltip>
     </widget>
   </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_4</name>
+    <actions>
+      <action type="open_display">
+        <file>TS_SSS_E01_034_XYZ_Interlocks.bob</file>
+        <macros>
+          <DEV_NAME>Z</DEV_NAME>
+          <PREFIX>TARGET_DU</PREFIX>
+        </macros>
+        <target>tab</target>
+        <description>Open Display</description>
+      </action>
+    </actions>
+    <text>Interlocks</text>
+    <x>985</x>
+    <y>780</y>
+    <width>140</width>
+    <tooltip>$(actions)</tooltip>
+  </widget>
 </display>

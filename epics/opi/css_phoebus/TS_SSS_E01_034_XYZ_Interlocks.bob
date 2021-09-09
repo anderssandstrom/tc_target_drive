@@ -3,6 +3,13 @@
   <name>$(DEV_NAME) Interlocks</name>
   <width>2140</width>
   <height>1390</height>
+  <actions>
+    <action type="write_pv">
+      <pv_name>loc://dummyTriggVisible&lt;VDouble&gt;</pv_name>
+      <value>1</value>
+      <description>WritePV</description>
+    </action>
+  </actions>
   <widget type="rectangle" version="2.0.0">
     <name>title bg</name>
     <class>TITLE-BAR</class>
@@ -200,70 +207,6 @@
     </widget>
   </widget>
   <widget type="group" version="2.0.0">
-    <name>Group</name>
-    <x>402</x>
-    <y>276</y>
-    <width>269</width>
-    <height>24</height>
-    <style>3</style>
-    <transparent>true</transparent>
-    <rules>
-      <rule name="Visible" prop_id="visible" out_exp="false">
-        <exp bool_exp="$(DEV_NAME)=='Z'">
-          <value>true</value>
-        </exp>
-        <pv_name>loc://dummy&lt;vLong&gt;</pv_name>
-      </rule>
-    </rules>
-    <widget type="label" version="2.0.0">
-      <name>Label_21</name>
-      <macros>
-        <Axis>X</Axis>
-      </macros>
-      <text>$(DEV_NAME) Limit Min Park</text>
-      <width>200</width>
-      <height>24</height>
-      <horizontal_alignment>2</horizontal_alignment>
-    </widget>
-    <widget type="led" version="2.0.0">
-      <name>LED_15</name>
-      <pv_name>$(PREFIX):$(DEV_NAME)-LimitMinPark</pv_name>
-      <x>249</x>
-      <off_color>
-        <color name="LED-RED-ON" red="255" green="60" blue="46">
-        </color>
-      </off_color>
-    </widget>
-  </widget>
-  <widget type="group" version="2.0.0">
-    <name>Group</name>
-    <x>402</x>
-    <y>300</y>
-    <width>269</width>
-    <height>24</height>
-    <style>3</style>
-    <transparent>true</transparent>
-    <widget type="label" version="2.0.0">
-      <name>Label_22</name>
-      <macros>
-        <Axis>X</Axis>
-      </macros>
-      <text>$(DEV_NAME) Limit MinMin Park</text>
-      <width>200</width>
-      <height>24</height>
-      <horizontal_alignment>2</horizontal_alignment>
-    </widget>
-    <widget type="led" version="2.0.0">
-      <name>LED_16</name>
-      <pv_name>$(PREFIX):$(DEV_NAME)-LimitMinMinPark</pv_name>
-      <x>249</x>
-      <off_color>
-        <color name="LED-RED-ON" red="255" green="60" blue="46">
-        </color>
-      </off_color>
-    </widget>
-  </widget>
-  <widget type="group" version="2.0.0">
     <name>Group_1</name>
     <x>402</x>
     <y>380</y>
@@ -331,6 +274,14 @@
     <height>24</height>
     <style>3</style>
     <transparent>true</transparent>
+    <rules>
+      <rule name="New Rule" prop_id="visible" out_exp="true">
+        <exp bool_exp="&quot;$(DEV_NAME)&quot;=='Z'">
+          <expression>0</expression>
+        </exp>
+        <pv_name>loc://dummyTriggVisible&lt;VDouble&gt;</pv_name>
+      </rule>
+    </rules>
     <widget type="label" version="2.0.0">
       <name>Label_25</name>
       <macros>
@@ -384,31 +335,115 @@
     </widget>
   </widget>
   <widget type="group" version="2.0.0">
-    <name>Group_5</name>
+    <name>Group</name>
     <x>402</x>
-    <y>324</y>
+    <y>276</y>
     <width>269</width>
-    <height>24</height>
+    <height>72</height>
     <style>3</style>
     <transparent>true</transparent>
-    <widget type="label" version="2.0.0">
-      <name>Label_27</name>
-      <macros>
-        <Axis>X</Axis>
-      </macros>
-      <text>$(DEV_NAME) Park Range Enabled</text>
-      <width>200</width>
+    <rules>
+      <rule name="New Rule" prop_id="visible" out_exp="true">
+        <exp bool_exp="&quot;$(DEV_NAME)&quot;!='Z'">
+          <expression>0</expression>
+        </exp>
+        <pv_name>loc://dummyTriggVisible&lt;VDouble&gt;</pv_name>
+      </rule>
+    </rules>
+    <widget type="group" version="2.0.0">
+      <name>Group</name>
+      <y>24</y>
+      <width>269</width>
       <height>24</height>
-      <horizontal_alignment>2</horizontal_alignment>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="label" version="2.0.0">
+        <name>Label_22</name>
+        <macros>
+          <Axis>X</Axis>
+        </macros>
+        <text>$(DEV_NAME) Limit MinMin Park</text>
+        <width>200</width>
+        <height>24</height>
+        <horizontal_alignment>2</horizontal_alignment>
+      </widget>
+      <widget type="led" version="2.0.0">
+        <name>LED_16</name>
+        <pv_name>$(PREFIX):$(DEV_NAME)-LimitMinMinPark</pv_name>
+        <x>249</x>
+        <off_color>
+          <color name="LED-RED-ON" red="255" green="60" blue="46">
+          </color>
+        </off_color>
+      </widget>
     </widget>
-    <widget type="led" version="2.0.0">
-      <name>LED_21</name>
-      <pv_name>$(PREFIX):$(DEV_NAME)-ParkRangeEnaAct</pv_name>
-      <x>249</x>
-      <off_color>
-        <color name="LED-RED-ON" red="255" green="60" blue="46">
-        </color>
-      </off_color>
+    <widget type="group" version="2.0.0">
+      <name>Group</name>
+      <width>269</width>
+      <height>24</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <actions>
+        <action type="write_pv">
+          <pv_name>loc://dummyTriggVisible&lt;VDouble&gt;</pv_name>
+          <value>1</value>
+          <description>WritePV</description>
+        </action>
+      </actions>
+      <rules>
+        <rule name="Visible" prop_id="visible" out_exp="true">
+          <exp bool_exp="&quot;$(DEV_NAME)&quot;!='Z'">
+            <expression>0</expression>
+          </exp>
+          <pv_name>loc://dummyTriggVisible&lt;VDouble&gt;</pv_name>
+        </rule>
+      </rules>
+      <widget type="label" version="2.0.0">
+        <name>Label_21</name>
+        <macros>
+          <Axis>X</Axis>
+        </macros>
+        <text>$(DEV_NAME) Limit Min Park</text>
+        <width>200</width>
+        <height>24</height>
+        <horizontal_alignment>2</horizontal_alignment>
+      </widget>
+      <widget type="led" version="2.0.0">
+        <name>LED_15</name>
+        <pv_name>$(PREFIX):$(DEV_NAME)-LimitMinPark</pv_name>
+        <x>249</x>
+        <off_color>
+          <color name="LED-RED-ON" red="255" green="60" blue="46">
+          </color>
+        </off_color>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Group_5</name>
+      <y>48</y>
+      <width>269</width>
+      <height>24</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="label" version="2.0.0">
+        <name>Label_27</name>
+        <macros>
+          <Axis>X</Axis>
+        </macros>
+        <text>$(DEV_NAME) Park Range Enabled</text>
+        <width>200</width>
+        <height>24</height>
+        <horizontal_alignment>2</horizontal_alignment>
+      </widget>
+      <widget type="led" version="2.0.0">
+        <name>LED_21</name>
+        <pv_name>$(PREFIX):$(DEV_NAME)-ParkRangeEnaAct</pv_name>
+        <x>249</x>
+        <off_color>
+          <color name="LED-RED-ON" red="255" green="60" blue="46">
+          </color>
+        </off_color>
+      </widget>
     </widget>
   </widget>
 </display>
