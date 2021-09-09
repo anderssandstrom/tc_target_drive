@@ -326,7 +326,7 @@
   <widget type="group" version="2.0.0">
     <name>Group_3</name>
     <x>402</x>
-    <y>324</y>
+    <y>348</y>
     <width>269</width>
     <height>24</height>
     <style>3</style>
@@ -376,6 +376,34 @@
     <widget type="led" version="2.0.0">
       <name>LED_20</name>
       <pv_name>$(PREFIX):$(DEV_NAME)-EstopOK</pv_name>
+      <x>249</x>
+      <off_color>
+        <color name="LED-RED-ON" red="255" green="60" blue="46">
+        </color>
+      </off_color>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_5</name>
+    <x>402</x>
+    <y>324</y>
+    <width>269</width>
+    <height>24</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="label" version="2.0.0">
+      <name>Label_27</name>
+      <macros>
+        <Axis>X</Axis>
+      </macros>
+      <text>$(DEV_NAME) Park Range Enabled</text>
+      <width>200</width>
+      <height>24</height>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_21</name>
+      <pv_name>$(PREFIX):$(DEV_NAME)-ParkRangeEnaAct</pv_name>
       <x>249</x>
       <off_color>
         <color name="LED-RED-ON" red="255" green="60" blue="46">
