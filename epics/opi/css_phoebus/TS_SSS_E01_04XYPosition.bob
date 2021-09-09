@@ -238,7 +238,6 @@
   </widget>
   <widget type="embedded" version="2.0.0">
     <name>YSV-034a_1</name>
-    <file>TMS/TS_TMS_Chrocodile/TS_TMS_Chrocodile_BlockIcon.bob</file>
     <macros>
       <WIDDesc></WIDDesc>
       <WIDDev>GU</WIDDev>
@@ -246,6 +245,7 @@
       <WIDIndex>102</WIDIndex>
       <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
     </macros>
+    <file>TMS/TS_TMS_Chrocodile/TS_TMS_Chrocodile_BlockIcon.bob</file>
     <x>461</x>
     <y>890</y>
     <width>150</width>
@@ -295,7 +295,6 @@
   </widget>
   <widget type="embedded" version="2.0.0">
     <name>YSV-034a_2</name>
-    <file>Gauges/XYChartGauge/XYChartGauge_BlockIcon.bob</file>
     <macros>
       <WIDDesc></WIDDesc>
       <WIDDev>GU</WIDDev>
@@ -303,6 +302,7 @@
       <WIDIndex>102</WIDIndex>
       <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
     </macros>
+    <file>Gauges/XYChartGauge/XYChartGauge_BlockIcon.bob</file>
     <x>1154</x>
     <y>900</y>
     <width>390</width>
@@ -474,7 +474,7 @@
       <x>411</x>
       <y>357</y>
       <width>23</width>
-      <height>26</height>
+      <height>29</height>
       <font>
         <font family="Source Sans Pro" style="REGULAR" size="20.0">
         </font>
@@ -487,7 +487,7 @@
       <x>522</x>
       <y>357</y>
       <width>23</width>
-      <height>26</height>
+      <height>29</height>
       <font>
         <font family="Source Sans Pro" style="REGULAR" size="20.0">
         </font>
@@ -496,10 +496,10 @@
     </widget>
     <widget type="embedded" version="2.0.0">
       <name>XTranslation</name>
-      <file>TDU/TS_TDU_XYTranslation/TS_TDU_XYTranslation_BlockIcon.bob</file>
       <macros>
         <Axis>X</Axis>
       </macros>
+      <file>TDU/TS_TDU_XYTranslation/TS_TDU_XYTranslation_BlockIcon.bob</file>
       <x>22</x>
       <y>500</y>
       <width>220</width>
@@ -631,13 +631,13 @@
     </widget>
     <widget type="embedded" version="2.0.0">
       <name>M-032</name>
-      <file>TDU/TS_TDU_StepMotor/TS_TDU_StepMotor_BlockIcon.bob</file>
       <macros>
         <WIDDev>M</WIDDev>
         <WIDDis>MC</WIDDis>
         <WIDIndex>032</WIDIndex>
         <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
       </macros>
+      <file>TDU/TS_TDU_StepMotor/TS_TDU_StepMotor_BlockIcon.bob</file>
       <x>431</x>
       <y>500</y>
       <width>150</width>
@@ -646,13 +646,13 @@
     </widget>
     <widget type="embedded" version="2.0.0">
       <name>GB-032d</name>
-      <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
       <macros>
         <WIDDev>GB</WIDDev>
         <WIDDis>MC</WIDDis>
         <WIDIndex>032d</WIDIndex>
         <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
       </macros>
+      <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
       <x>22</x>
       <y>398</y>
       <width>90</width>
@@ -661,13 +661,13 @@
     </widget>
     <widget type="embedded" version="2.0.0">
       <name>GB-032c</name>
-      <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
       <macros>
         <WIDDev>GB</WIDDev>
         <WIDDis>MC</WIDDis>
         <WIDIndex>032c</WIDIndex>
         <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
       </macros>
+      <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
       <x>152</x>
       <y>398</y>
       <width>90</width>
@@ -676,13 +676,13 @@
     </widget>
     <widget type="embedded" version="2.0.0">
       <name>GB-032b</name>
-      <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
       <macros>
         <WIDDev>GB</WIDDev>
         <WIDDis>MC</WIDDis>
         <WIDIndex>032b</WIDIndex>
         <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
       </macros>
+      <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
       <x>365</x>
       <y>398</y>
       <width>90</width>
@@ -691,13 +691,13 @@
     </widget>
     <widget type="embedded" version="2.0.0">
       <name>GB-032a</name>
-      <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
       <macros>
         <WIDDev>GB</WIDDev>
         <WIDDis>MC</WIDDis>
         <WIDIndex>032a</WIDIndex>
         <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
       </macros>
+      <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
       <x>491</x>
       <y>398</y>
       <width>90</width>
@@ -706,13 +706,13 @@
     </widget>
     <widget type="embedded" version="2.0.0">
       <name>SC-032</name>
-      <file>TDU/TS_TDU_StepDrive/TS_TDU_StepDrive_BlockIcon.bob</file>
       <macros>
         <WIDDev>SC</WIDDev>
         <WIDDis>MC</WIDDis>
         <WIDIndex>032</WIDIndex>
         <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
       </macros>
+      <file>TDU/TS_TDU_StepDrive/TS_TDU_StepDrive_BlockIcon.bob</file>
       <x>264</x>
       <y>500</y>
       <width>150</width>
@@ -804,11 +804,6 @@
         <y>30</y>
         <width>20</width>
         <height>30</height>
-        <line_width>1</line_width>
-        <line_color>
-          <color name="BLACK-BORDER" red="121" green="121" blue="121">
-          </color>
-        </line_color>
         <points>
           <point x="20.0" y="0.0">
           </point>
@@ -819,6 +814,11 @@
           <point x="0.0" y="30.0">
           </point>
         </points>
+        <line_width>1</line_width>
+        <line_color>
+          <color name="BLACK-BORDER" red="121" green="121" blue="121">
+          </color>
+        </line_color>
       </widget>
       <widget type="polyline" version="2.0.0">
         <name>Polyline_2</name>
@@ -826,11 +826,6 @@
         <y>30</y>
         <width>20</width>
         <height>30</height>
-        <line_width>1</line_width>
-        <line_color>
-          <color name="BLACK-BORDER" red="121" green="121" blue="121">
-          </color>
-        </line_color>
         <points>
           <point x="0.0" y="0.0">
           </point>
@@ -841,6 +836,11 @@
           <point x="20.0" y="30.0">
           </point>
         </points>
+        <line_width>1</line_width>
+        <line_color>
+          <color name="BLACK-BORDER" red="121" green="121" blue="121">
+          </color>
+        </line_color>
       </widget>
       <widget type="polyline" version="2.0.0">
         <name>Polyline_3</name>
@@ -848,17 +848,17 @@
         <y>30</y>
         <width>1</width>
         <height>30</height>
-        <line_width>1</line_width>
-        <line_color>
-          <color name="BLACK-BORDER" red="121" green="121" blue="121">
-          </color>
-        </line_color>
         <points>
           <point x="0.0" y="0.0">
           </point>
           <point x="0.0" y="30.0">
           </point>
         </points>
+        <line_width>1</line_width>
+        <line_color>
+          <color name="BLACK-BORDER" red="121" green="121" blue="121">
+          </color>
+        </line_color>
       </widget>
       <widget type="polyline" version="2.0.0">
         <name>Polyline_4</name>
@@ -866,28 +866,28 @@
         <y>30</y>
         <width>1</width>
         <height>30</height>
-        <line_width>1</line_width>
-        <line_color>
-          <color name="BLACK-BORDER" red="121" green="121" blue="121">
-          </color>
-        </line_color>
         <points>
           <point x="0.0" y="0.0">
           </point>
           <point x="0.0" y="30.0">
           </point>
         </points>
+        <line_width>1</line_width>
+        <line_color>
+          <color name="BLACK-BORDER" red="121" green="121" blue="121">
+          </color>
+        </line_color>
       </widget>
     </widget>
     <widget type="embedded" version="2.0.0">
       <name>YSV-034a</name>
-      <file>TDU/TS_TDU_XYClamp/TS_TDU_XYClamp_BlockIcon.bob</file>
       <macros>
         <WIDDev>YSV</WIDDev>
         <WIDDis>Proc</WIDDis>
         <WIDIndex>034a</WIDIndex>
         <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
       </macros>
+      <file>TDU/TS_TDU_XYClamp/TS_TDU_XYClamp_BlockIcon.bob</file>
       <x>431</x>
       <y>37</y>
       <width>150</width>
@@ -985,7 +985,7 @@
       <x>57</x>
       <y>357</y>
       <width>20</width>
-      <height>26</height>
+      <height>29</height>
       <font>
         <font family="Source Sans Pro" style="REGULAR" size="20.0">
         </font>
@@ -998,7 +998,7 @@
       <x>182</x>
       <y>357</y>
       <width>20</width>
-      <height>26</height>
+      <height>29</height>
       <font>
         <font family="Source Sans Pro" style="REGULAR" size="20.0">
         </font>
@@ -1025,6 +1025,25 @@
       </background_color>
       <horizontal_alignment>1</horizontal_alignment>
       <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button</name>
+      <actions>
+        <action type="open_display">
+          <file>TS_SSS_E01_034_XYZ_Interlocks.bob</file>
+          <macros>
+            <DEV_NAME>X</DEV_NAME>
+            <PREFIX>TARGET_DU</PREFIX>
+          </macros>
+          <target>tab</target>
+          <description>Open Display</description>
+        </action>
+      </actions>
+      <text>Interlocks</text>
+      <x>274</x>
+      <y>147</y>
+      <width>140</width>
+      <tooltip>$(actions)</tooltip>
     </widget>
   </widget>
   <widget type="group" version="2.0.0">
@@ -1057,7 +1076,7 @@
       <x>411</x>
       <y>357</y>
       <width>23</width>
-      <height>26</height>
+      <height>29</height>
       <font>
         <font family="Source Sans Pro" style="REGULAR" size="20.0">
         </font>
@@ -1070,7 +1089,7 @@
       <x>522</x>
       <y>357</y>
       <width>23</width>
-      <height>26</height>
+      <height>29</height>
       <font>
         <font family="Source Sans Pro" style="REGULAR" size="20.0">
         </font>
@@ -1079,10 +1098,10 @@
     </widget>
     <widget type="embedded" version="2.0.0">
       <name>XTranslation_1</name>
-      <file>TDU/TS_TDU_XYTranslation/TS_TDU_XYTranslation_BlockIcon.bob</file>
       <macros>
         <Axis>Y</Axis>
       </macros>
+      <file>TDU/TS_TDU_XYTranslation/TS_TDU_XYTranslation_BlockIcon.bob</file>
       <x>22</x>
       <y>500</y>
       <width>220</width>
@@ -1214,13 +1233,13 @@
     </widget>
     <widget type="embedded" version="2.0.0">
       <name>M-032_1</name>
-      <file>TDU/TS_TDU_StepMotor/TS_TDU_StepMotor_BlockIcon.bob</file>
       <macros>
         <WIDDev>M</WIDDev>
         <WIDDis>MC</WIDDis>
         <WIDIndex>033</WIDIndex>
         <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
       </macros>
+      <file>TDU/TS_TDU_StepMotor/TS_TDU_StepMotor_BlockIcon.bob</file>
       <x>431</x>
       <y>500</y>
       <width>150</width>
@@ -1229,13 +1248,13 @@
     </widget>
     <widget type="embedded" version="2.0.0">
       <name>GB-033d</name>
-      <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
       <macros>
         <WIDDev>GB</WIDDev>
         <WIDDis>MC</WIDDis>
         <WIDIndex>033d</WIDIndex>
         <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
       </macros>
+      <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
       <x>22</x>
       <y>398</y>
       <width>90</width>
@@ -1244,13 +1263,13 @@
     </widget>
     <widget type="embedded" version="2.0.0">
       <name>GB-033c</name>
-      <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
       <macros>
         <WIDDev>GB</WIDDev>
         <WIDDis>MC</WIDDis>
         <WIDIndex>033c</WIDIndex>
         <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
       </macros>
+      <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
       <x>152</x>
       <y>398</y>
       <width>90</width>
@@ -1259,13 +1278,13 @@
     </widget>
     <widget type="embedded" version="2.0.0">
       <name>GB-033b</name>
-      <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
       <macros>
         <WIDDev>GB</WIDDev>
         <WIDDis>MC</WIDDis>
         <WIDIndex>033b</WIDIndex>
         <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
       </macros>
+      <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
       <x>365</x>
       <y>398</y>
       <width>90</width>
@@ -1274,13 +1293,13 @@
     </widget>
     <widget type="embedded" version="2.0.0">
       <name>GB-033a</name>
-      <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
       <macros>
         <WIDDev>GB</WIDDev>
         <WIDDis>MC</WIDDis>
         <WIDIndex>033a</WIDIndex>
         <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
       </macros>
+      <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
       <x>491</x>
       <y>398</y>
       <width>90</width>
@@ -1289,13 +1308,13 @@
     </widget>
     <widget type="embedded" version="2.0.0">
       <name>SC-032_1</name>
-      <file>TDU/TS_TDU_StepDrive/TS_TDU_StepDrive_BlockIcon.bob</file>
       <macros>
         <WIDDev>SC</WIDDev>
         <WIDDis>MC</WIDDis>
         <WIDIndex>033</WIDIndex>
         <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
       </macros>
+      <file>TDU/TS_TDU_StepDrive/TS_TDU_StepDrive_BlockIcon.bob</file>
       <x>264</x>
       <y>500</y>
       <width>150</width>
@@ -1387,11 +1406,6 @@
         <y>30</y>
         <width>20</width>
         <height>30</height>
-        <line_width>1</line_width>
-        <line_color>
-          <color name="BLACK-BORDER" red="121" green="121" blue="121">
-          </color>
-        </line_color>
         <points>
           <point x="20.0" y="0.0">
           </point>
@@ -1402,6 +1416,11 @@
           <point x="0.0" y="30.0">
           </point>
         </points>
+        <line_width>1</line_width>
+        <line_color>
+          <color name="BLACK-BORDER" red="121" green="121" blue="121">
+          </color>
+        </line_color>
       </widget>
       <widget type="polyline" version="2.0.0">
         <name>Polyline_7</name>
@@ -1409,11 +1428,6 @@
         <y>30</y>
         <width>20</width>
         <height>30</height>
-        <line_width>1</line_width>
-        <line_color>
-          <color name="BLACK-BORDER" red="121" green="121" blue="121">
-          </color>
-        </line_color>
         <points>
           <point x="0.0" y="0.0">
           </point>
@@ -1424,6 +1438,11 @@
           <point x="20.0" y="30.0">
           </point>
         </points>
+        <line_width>1</line_width>
+        <line_color>
+          <color name="BLACK-BORDER" red="121" green="121" blue="121">
+          </color>
+        </line_color>
       </widget>
       <widget type="polyline" version="2.0.0">
         <name>Polyline_8</name>
@@ -1431,17 +1450,17 @@
         <y>30</y>
         <width>1</width>
         <height>30</height>
-        <line_width>1</line_width>
-        <line_color>
-          <color name="BLACK-BORDER" red="121" green="121" blue="121">
-          </color>
-        </line_color>
         <points>
           <point x="0.0" y="0.0">
           </point>
           <point x="0.0" y="30.0">
           </point>
         </points>
+        <line_width>1</line_width>
+        <line_color>
+          <color name="BLACK-BORDER" red="121" green="121" blue="121">
+          </color>
+        </line_color>
       </widget>
       <widget type="polyline" version="2.0.0">
         <name>Polyline_9</name>
@@ -1449,28 +1468,28 @@
         <y>30</y>
         <width>1</width>
         <height>30</height>
-        <line_width>1</line_width>
-        <line_color>
-          <color name="BLACK-BORDER" red="121" green="121" blue="121">
-          </color>
-        </line_color>
         <points>
           <point x="0.0" y="0.0">
           </point>
           <point x="0.0" y="30.0">
           </point>
         </points>
+        <line_width>1</line_width>
+        <line_color>
+          <color name="BLACK-BORDER" red="121" green="121" blue="121">
+          </color>
+        </line_color>
       </widget>
     </widget>
     <widget type="embedded" version="2.0.0">
       <name>YSV-034b</name>
-      <file>TDU/TS_TDU_XYClamp/TS_TDU_XYClamp_BlockIcon.bob</file>
       <macros>
         <WIDDev>YSV</WIDDev>
         <WIDDis>Proc</WIDDis>
         <WIDIndex>034b</WIDIndex>
         <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
       </macros>
+      <file>TDU/TS_TDU_XYClamp/TS_TDU_XYClamp_BlockIcon.bob</file>
       <x>431</x>
       <y>37</y>
       <width>150</width>
@@ -1568,7 +1587,7 @@
       <x>57</x>
       <y>357</y>
       <width>20</width>
-      <height>26</height>
+      <height>29</height>
       <font>
         <font family="Source Sans Pro" style="REGULAR" size="20.0">
         </font>
@@ -1581,7 +1600,7 @@
       <x>182</x>
       <y>357</y>
       <width>20</width>
-      <height>26</height>
+      <height>29</height>
       <font>
         <font family="Source Sans Pro" style="REGULAR" size="20.0">
         </font>
@@ -1608,6 +1627,25 @@
       </background_color>
       <horizontal_alignment>1</horizontal_alignment>
       <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_1</name>
+      <actions>
+        <action type="open_display">
+          <file>TS_SSS_E01_034_XYZ_Interlocks.bob</file>
+          <macros>
+            <DEV_NAME>Y</DEV_NAME>
+            <PREFIX>TARGET_DU</PREFIX>
+          </macros>
+          <target>tab</target>
+          <description>Open Display</description>
+        </action>
+      </actions>
+      <text>Interlocks</text>
+      <x>274</x>
+      <y>147</y>
+      <width>140</width>
+      <tooltip>$(actions)</tooltip>
     </widget>
   </widget>
 </display>
