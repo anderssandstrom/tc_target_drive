@@ -32,11 +32,11 @@ asynSetTraceMask("${ADS_ASYN_PORT}", -1, 0x41)
 
 ##############################################################################
 ############# Load records
-dbLoadRecords("./db/target.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
+dbLoadRecords("./db/rotation.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
 dbLoadRecords("./db/indraDriveStatus.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
 dbLoadRecords("./db/indraDriveCommand.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
 #dbLoadRecords("./db/brake.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
-dbLoadRecords("./db/home.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
+dbLoadRecords("./db/rotationHome.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
 
 # Load hardware
 epicsEnvSet("EC_SLAVE_NUM",    "2")
