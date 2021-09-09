@@ -12,7 +12,7 @@ STRUCT
 	bFC01_FuseMainRotationOK:BOOL;       // s2: ch6: fc01 fuse target wheel motor OK
 	bFC06_FC07_FuseICSOutletsOK:BOOL;    // s2: ch7: fc06 and fc07 ICS outlets fuse OK
 	bFC51_FC52_FC53_FuseUPSOK:BOOL;      // s2: ch8: fc51, fc52 and fc53 UPS fuses OK (something wrong)
-    fKF12_RotTemp:LREAL;                 // s13: ch4: kf12 Target Main motor Temperature (KTY) (in deg*10)
+	
 	// Bridge terminal EL6695
 	bBeamOff:BOOL; 
 	

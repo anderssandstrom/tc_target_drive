@@ -4,6 +4,7 @@
     <Declaration><![CDATA[// HW status for XYZ axis
 TYPE ST_HW_STATUS_XYZ :
 STRUCT
+	bEStopOK:BOOL;
 	fStepperTemp: LREAL;
 	bLimitMax:BOOL;
 	bLimitMin:BOOL;

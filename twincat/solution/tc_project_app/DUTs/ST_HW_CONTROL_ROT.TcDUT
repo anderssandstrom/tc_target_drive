@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
-  <DUT Name="ST_HW_CONTROL_DEV" Id="{3fa93026-3cf8-482e-a913-be8c338af072}">
+  <DUT Name="ST_HW_CONTROL_ROT" Id="{3fa93026-3cf8-482e-a913-be8c338af072}">
     <Declaration><![CDATA[
-TYPE ST_HW_CONTROL_DEV :
+TYPE ST_HW_CONTROL_ROT :
 STRUCT
 	bRotOmronSensor1Feed AT %Q* :BOOL;  // s4: ch1: Feed omron sensor 1
 	bRotOmronSensor2Feed AT %Q* :BOOL;  // s4: ch2: Feed omron sensor 2

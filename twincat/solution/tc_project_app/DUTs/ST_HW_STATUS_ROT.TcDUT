@@ -1,9 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
-  <DUT Name="ST_STAT_EPICS" Id="{6d9583db-fbc6-4b57-83c8-8f61b33208e9}">
-    <Declaration><![CDATA[TYPE ST_STAT_EPICS :
+  <DUT Name="ST_HW_STATUS_ROT" Id="{f2d0bd80-c5ac-47d7-ab04-436fe827dce5}">
+    <Declaration><![CDATA[TYPE ST_HW_STATUS_ROT :
 STRUCT
-	
 	bError:BOOL:=FALSE;
 	nErrorId:UDINT:=0;
 	bEnabled:BOOL:=FALSE;
@@ -19,8 +18,10 @@ STRUCT
 	fPhaseOffsetActDeg:LREAL;
 	bBrake1TempAlarm:BOOL;
 	bBrake2TempAlarm:BOOL;
-	
-	
+	bEStopOK:BOOL;                       // s2: ch1: emergency stop ok                 Verify: OK   
+	bMainDriveThermalFilterOK:BOOL; // s2: ch2: rf01 termal braking filter OK..   Verify: Q to Markus: Maybe this should be rf02?
+	bFuseMainRotationOK:BOOL;       // s2: ch6: fc01 fuse target wheel motor OK
+	fRotTemp:LREAL;                 // s13: ch4: kf12 Target Main motor Temperature (KTY) (in deg*10)
 END_STRUCT
 END_TYPE
 ]]></Declaration>

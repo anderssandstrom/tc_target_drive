@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
   <POU Name="TSCS_Bridge_Outputs" Id="{3c6c9e4f-6ebc-4e74-8e61-0502fd6692d6}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM TSCS_Bridge_Outputs
 (*Outputs from TDU PLC to TSCS PLC*)
@@ -2939,7 +2939,7 @@ END_VAR
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"MAIN.stStatEpics.fActPos"</v>
+                                <v n="Operand">"MAIN.stHwStatusRot.fActPos"</v>
                                 <v n="Type">"LREAL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -3051,7 +3051,7 @@ END_VAR
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"MAIN.stStatEpics.fActVel"</v>
+                                <v n="Operand">"MAIN.stHwStatusRot.fActVel"</v>
                                 <v n="Type">"LREAL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -3163,7 +3163,7 @@ END_VAR
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"MAIN.stStatEpics.fSetVelRaw"</v>
+                                <v n="Operand">"MAIN.stHwStatusRot.fSetVelRaw"</v>
                                 <v n="Type">"LREAL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
