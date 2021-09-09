@@ -59,15 +59,15 @@ VAR
 END_VAR
 
 VAR_INPUT
-  stStatEpics                       : ST_STAT_EPICS;   // Status to EPICS
-  stHWControlX  : ST_HW_CONTROL_XYZ;
-  stHWControlY  : ST_HW_CONTROL_XYZ;
-  stHWControlZ  : ST_HW_CONTROL_XYZ;
-  stHWControlDev: ST_HW_CONTROL_DEV;
-  stHWStatusX   : ST_HW_STATUS_XYZ;
-  stHWStatusY   : ST_HW_STATUS_XYZ;
-  stHWStatusZ   : ST_HW_STATUS_XYZ;
-  stHWStatusDev : ST_HW_STATUS_DEV;
+  stHWControlX   : ST_HW_CONTROL_XYZ;
+  stHWControlY   : ST_HW_CONTROL_XYZ;
+  stHWControlZ   : ST_HW_CONTROL_XYZ;
+  stHWControlRot : ST_HW_CONTROL_ROT;
+  stHWStatusX    : ST_HW_STATUS_XYZ;
+  stHWStatusY    : ST_HW_STATUS_XYZ;
+  stHWStatusZ    : ST_HW_STATUS_XYZ;
+  stHwStatusRot  : ST_HW_STATUS_ROT;
+  stHWStatusDev  : ST_HW_STATUS_DEV;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Check hardware status
@@ -93,7 +93,7 @@ TSCS_Bridge_Outputs();
 ACT_6_Error();
 
 // Post exe
-eTargetStateOld:=stStatEpics.eTargetState;
+eTargetStateOld:=stHwStatusRot.eTargetState;
 
 ]]></ST>
     </Implementation>
@@ -104,11 +104,16 @@ eTargetStateOld:=stStatEpics.eTargetState;
 // Slave 2 EL1809: General I/O, fuses...
 fb_s2_EL1809(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=2);
 stHWStatusDev.bEStopOK:=fb_s2_EL1809.bBI_1;                       // s2: ch1: emergency stop ok                 Verify: OK   
-stHWStatusDev.bRF02_MainDriveThermalFilterOK:=fb_s2_EL1809.bBI_2; // s2: ch2: rf01 termal braking filter OK..   Verify: Q to Markus: Maybe this should be rd02?
+stHWStatusX.bEStopOK:=fb_s2_EL1809.bBI_1;                         // Prepare for individula Estops
+stHWStatusY.bEStopOK:=fb_s2_EL1809.bBI_1;                         // Prepare for individula Estops
+stHWStatusZ.bEStopOK:=fb_s2_EL1809.bBI_1;                         // Prepare for individula Estops
+stHWStatusRot.bEStopOK:=fb_s2_EL1809.bBI_1;                       // Prepare for individula Estops
+
+stHwStatusRot.bMainDriveThermalFilterOK:=fb_s2_EL1809.bBI_2;      // s2: ch2: rf02 termal braking filter OK..   Verify: Q to Markus: Maybe this should be rd02?
 stHWStatusDev.bTA01_TA02_24VSupplyOK:=fb_s2_EL1809.bBI_3;         // s2: ch3: ta01 and ta02 24V power supply OK Verify: OK  
 stHWStatusDev.bFC11_Fuse24VOK:=fb_s2_EL1809.bBI_4;                // s2: ch4: fc11 24V fuse OK                   Verify: OK
 stHWStatusDev.bFA01_FA02_OvervoltageOK:=fb_s2_EL1809.bBI_5;       // s2: ch5: fa01 and fa02 overvoltage protection OK
-stHWStatusDev.bFC01_FuseMainRotationOK:=fb_s2_EL1809.bBI_6;       // s2: ch6: fc01 fuse target wheel motor OK
+stHwStatusRot.bFuseMainRotationOK:=fb_s2_EL1809.bBI_6;            // s2: ch6: fc01 fuse target wheel motor OK
 stHWStatusDev.bFC06_FC07_FuseICSOutletsOK:=fb_s2_EL1809.bBI_7;    // s2: ch7: fc06 and fc07 ICS outlets fuse OK
 stHWStatusDev.bFC51_FC52_FC53_FuseUPSOK:=fb_s2_EL1809.bBI_8;      // s2: ch8: fc51, fc52 and fc53 UPS fuses OK (something wrong)
 
@@ -137,8 +142,8 @@ main.stHWStatusY.bParkingRangeEnabled:=FALSE;             // Not used;
 
 // Slave 4 EL2809: Feed sensors
 fb_s4_EL2819(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=4);
-stHWControlDev.bRotOmronSensor1Feed:=TRUE;     // s4: ch1: Feed omron sensor 1
-stHWControlDev.bRotOmronSensor2Feed:=TRUE;     // s4: ch2: Feed omron sensor 2
+stHWControlRot.bRotOmronSensor1Feed:=TRUE;     // s4: ch1: Feed omron sensor 1
+stHWControlRot.bRotOmronSensor2Feed:=TRUE;     // s4: ch2: Feed omron sensor 2
 
 // Slave 5 EL2809: Feed switches and brakes
 fb_s5_EL2819(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=5);
@@ -181,7 +186,7 @@ fb_s13_EL3214(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=13)
 stHWStatusX.fStepperTemp:=INT_TO_LREAL(fb_s13_EL3214.iAI_1)/10; // s13: ch1: kf12 w02.bt01 temperature stepper X PT100
 stHWStatusY.fStepperTemp:=INT_TO_LREAL(fb_s13_EL3214.iAI_2)/10; // s13: ch2: kf12 w02.bt02 temperature stepper Y PT100
 stHWStatusZ.fStepperTemp:=INT_TO_LREAL(fb_s13_EL3214.iAI_3)/10; // s13: ch3: kf12 w03.bt01 temperature stepper Z PT100
-stHWStatusDev.fKF12_RotTemp:=INT_TO_LREAL(fb_s13_EL3214.iAI_4)/10;   // s13: ch4: kf12 Target Main motor Temperature (KTY) (in deg*10)
+stHWStatusRot.fRotTemp:=INT_TO_LREAL(fb_s13_EL3214.iAI_4)/10;   // s13: ch4: kf12 Target Main motor Temperature (KTY) (in deg*10)
 
 // s14: Extra encoder (main rotation)
 fb_s14_EL5021(ErrorSystem:=fbErrorSystem.pErrorSystem,En:=TRUE,iTerminal_ID:=14);
@@ -226,14 +231,14 @@ fbErrorSystem(En:=TRUE);
 // Interlock motion on temperatures
 // Author: Anders Sandström 2019
 
-stStatEpics.fActTemp:=fb_s13_EL3214.iAI_4/10.0;
+stHwStatusRot.fActTemp:=fb_s13_EL3214.iAI_4/10.0;
 
 // Motor Temperature Monitoring Interlock
-IF (stStatEpics.fActTemp >= GVL_Parameters.nMaxMotorTemperature)  OR fbTemp.iAi_Ch1_Stat > 0 THEN
+IF (stHwStatusRot.fActTemp >= GVL_Parameters.nMaxMotorTemperature)  OR fbTemp.iAi_Ch1_Stat > 0 THEN
 	stCmdEpics.bEnable:= FALSE;
 	stCmdEpics.bExecute:= FALSE;
-	stStatEpics.nErrorId:=GVL_ErrorCodes.nErrorIndraTempToHigh;
-	stStatEpics.sErrorStr:=GVL_ErrorCodes.sErrorIndraTempToHigh;
+	stHwStatusRot.nErrorId:=GVL_ErrorCodes.nErrorIndraTempToHigh;
+	stHwStatusRot.sErrorStr:=GVL_ErrorCodes.sErrorIndraTempToHigh;
 END_IF
 ]]></ST>
       </Implementation>
@@ -248,9 +253,9 @@ IF stCmdEpics.bEnable THEN
    ELSE
 	   stCommands.bEnableAxis := FALSE;
 	   stCmdEpics.bExecute := FALSE;
-	   stStatEpics.bError:=TRUE;
-	   stStatEpics.nErrorId:=GVL_ErrorCodes.nErrorIndraNotReady;
-	   stStatEpics.sErrorStr:=GVL_ErrorCodes.sErrorIndraNotReady; 
+	   stHwStatusRot.bError:=TRUE;
+	   stHwStatusRot.nErrorId:=GVL_ErrorCodes.nErrorIndraNotReady;
+	   stHwStatusRot.sErrorStr:=GVL_ErrorCodes.sErrorIndraNotReady; 
    END_IF
 ELSE
 	//Reset enable
@@ -263,8 +268,8 @@ IF stCmdEpics.bExecute THEN
   ELSE
 	stCmdEpics.bExecute:=FALSE;
 	stCommands.bHaltAxis:=FALSE;
-	stStatEpics.nErrorId:=GVL_ErrorCodes.nErrorNotEnabled;
-	stStatEpics.sErrorStr:=GVL_ErrorCodes.sErrorNotEnabled; 
+	stHwStatusRot.nErrorId:=GVL_ErrorCodes.nErrorNotEnabled;
+	stHwStatusRot.sErrorStr:=GVL_ErrorCodes.sErrorNotEnabled; 
   END_IF
 ELSE
   stCommands.bHaltAxis:=stCmdEpics.bExecute;
@@ -274,15 +279,15 @@ IF NOT stCommands.bEnableAxis THEN
   stCmdEpics.bExecute:=FALSE;
 END_IF
 
-stStatEpics.bEnabled:=stStatus.bAxisEnabled;
+stHwStatusRot.bEnabled:=stStatus.bAxisEnabled;
 stCommands.bCmd_ErrorReset:=stCmdEpics.bReset;
 
 stCommands.bCmd_DriveControlledHoming:=FALSE;
 
 // State change
-IF stCmdEpics.eTargetStateCmd <> stStatEpics.eTargetState AND NOT stCmdEpics.bexecute AND stStatus.bAxisStandStillStatus THEN
+IF stCmdEpics.eTargetStateCmd <> stHwStatusRot.eTargetState AND NOT stCmdEpics.bexecute AND stStatus.bAxisStandStillStatus THEN
     // Only allow state change if execute is low and at standstill
-    stStatEpics.eTargetState:=stCmdEpics.eTargetStateCmd;
+    stHwStatusRot.eTargetState:=stCmdEpics.eTargetStateCmd;
 END_IF
 
 IF stCmdEpics.fPhaseOffsetMM > GVL_Parameters.fMaxPhaseOffsetMM THEN
@@ -292,7 +297,7 @@ IF stCmdEpics.fPhaseOffsetMM < GVL_Parameters.fMinPhaseOffsetMM THEN
 	stCmdEpics.fPhaseOffsetMM :=  GVL_Parameters.fMinPhaseOffsetMM;
 END_IF
 
-stStatEpics.fPhaseOffsetActDeg := stCmdEpics.fPhaseOffsetMM /(GVL_Parameters.fWheelDiameter*pi/360.0);
+stHwStatusRot.fPhaseOffsetActDeg := stCmdEpics.fPhaseOffsetMM /(GVL_Parameters.fWheelDiameter*pi/360.0);
 
 //nAdditiveTorqueSetpoint:=0;
 //IF NOT  stCmdEpics.bExecute THEN
@@ -300,7 +305,7 @@ stStatEpics.fPhaseOffsetActDeg := stCmdEpics.fPhaseOffsetMM /(GVL_Parameters.fWh
 //END_IF
 
 
-CASE stStatEpics.eTargetState OF 
+CASE stHwStatusRot.eTargetState OF 
 	TARGET_STATE_MACHINE.CONSTANT_VELOCITY:
         stCommands.fCommandAcceleration:=GVL_Parameters.fAccDefaultVel;
         stCommands.fCommandDeceleration:=GVL_Parameters.fAccDefaultVel;
@@ -399,8 +404,8 @@ CASE stStatEpics.eTargetState OF
 		stCommands.fCommandVelocity:=0;
 		stCommands.fCommandAcceleration:=0;
         stCommands.fCommandDeceleration:=0;
-		stStatEpics.nErrorId:=GVL_ErrorCodes.nErrorInvalidState;
-	    stStatEpics.sErrorStr:=GVL_ErrorCodes.sErrorInvalidState;
+		stHwStatusRot.nErrorId:=GVL_ErrorCodes.nErrorInvalidState;
+	    stHwStatusRot.sErrorStr:=GVL_ErrorCodes.sErrorInvalidState;
 END_CASE
 
 IF bApplyTorqueFF THEN
@@ -435,16 +440,16 @@ fbIndraDrive(
 	stDriveCommands=> );
 
 // Calculate values for status in EPICS
-stStatEpics.fSetVelRaw:= DINT_TO_LREAL(MAIN.fbIndraDrive.stDriveCommands.nS40_VelocityCommandValue)/10000;	
-stStatEpics.fActPos:=stStatus.fActualPosition-fbModeHome.fActPositionOffset;
-IF stStatEpics.fActPos > 360 THEN
-  stStatEpics.fActPos:=stStatEpics.fActPos-360;	
+stHwStatusRot.fSetVelRaw:= DINT_TO_LREAL(MAIN.fbIndraDrive.stDriveCommands.nS40_VelocityCommandValue)/10000;	
+stHwStatusRot.fActPos:=stStatus.fActualPosition-fbModeHome.fActPositionOffset;
+IF stHwStatusRot.fActPos > 360 THEN
+  stHwStatusRot.fActPos:=stHwStatusRot.fActPos-360;	
 END_IF
-IF stStatEpics.fActPos < 0 THEN
-  stStatEpics.fActPos:=stStatEpics.fActPos+360;	
+IF stHwStatusRot.fActPos < 0 THEN
+  stHwStatusRot.fActPos:=stHwStatusRot.fActPos+360;	
 END_IF
-stStatEpics.fActTorque:=stStatus.fActualTorque;
-stStatEpics.fActVel:=stStatus.fActualVelocity/10;]]></ST>
+stHwStatusRot.fActTorque:=stStatus.fActualTorque;
+stHwStatusRot.fActVel:=stStatus.fActualVelocity/10;]]></ST>
       </Implementation>
     </Action>
     <Action Name="ACT_5_Steppers" Id="{3a068380-4e98-46e5-9ef4-f9271d802bcf}">
@@ -457,32 +462,32 @@ stStatEpics.fActVel:=stStatus.fActualVelocity/10;]]></ST>
         <ST><![CDATA[// Function: Error handling
 // Author: Anders Sandström 2019
 
-IF stStatEpics.eTargetState = TARGET_STATE_MACHINE.PHASING THEN
-  IF fbModePhase.bError AND NOT stStatEpics.bError THEN
-	stStatEpics.bError:=fbModePhase.bError;
-	stStatEpics.nErrorId:=fbModePhase.nErrorId;
-	stStatEpics.sErrorStr:=fbModePhase.sErrorStr;
+IF stHwStatusRot.eTargetState = TARGET_STATE_MACHINE.PHASING THEN
+  IF fbModePhase.bError AND NOT stHwStatusRot.bError THEN
+	stHwStatusRot.bError:=fbModePhase.bError;
+	stHwStatusRot.nErrorId:=fbModePhase.nErrorId;
+	stHwStatusRot.sErrorStr:=fbModePhase.sErrorStr;
   END_IF
   
-ELSIF stStatEpics.eTargetState = TARGET_STATE_MACHINE.CONSTANT_VELOCITY THEN
-  IF fbModeVelo.bError AND NOT stStatEpics.bError THEN
-	stStatEpics.bError:=fbModeVelo.bError;
-	stStatEpics.nErrorId:=fbModeVelo.nErrorId;
-	stStatEpics.sErrorStr:=fbModeVelo.sErrorStr;
+ELSIF stHwStatusRot.eTargetState = TARGET_STATE_MACHINE.CONSTANT_VELOCITY THEN
+  IF fbModeVelo.bError AND NOT stHwStatusRot.bError THEN
+	stHwStatusRot.bError:=fbModeVelo.bError;
+	stHwStatusRot.nErrorId:=fbModeVelo.nErrorId;
+	stHwStatusRot.sErrorStr:=fbModeVelo.sErrorStr;
   END_IF
   
-ELSIF stStatEpics.eTargetState = TARGET_STATE_MACHINE.POSITIONING THEN
-  IF fbModePos.bError AND NOT stStatEpics.bError THEN
-	stStatEpics.bError:=fbModePos.bError;
-	stStatEpics.nErrorId:=fbModePos.nErrorId;
-	stStatEpics.sErrorStr:=fbModePos.sErrorStr;
+ELSIF stHwStatusRot.eTargetState = TARGET_STATE_MACHINE.POSITIONING THEN
+  IF fbModePos.bError AND NOT stHwStatusRot.bError THEN
+	stHwStatusRot.bError:=fbModePos.bError;
+	stHwStatusRot.nErrorId:=fbModePos.nErrorId;
+	stHwStatusRot.sErrorStr:=fbModePos.sErrorStr;
   END_IF
   
-ELSIF stStatEpics.eTargetState = TARGET_STATE_MACHINE.HOMING THEN
-  IF fbModeHome.bError AND NOT stStatEpics.bError THEN
-    stStatEpics.bError:=fbModeHome.bError;
-	stStatEpics.nErrorId:=fbModeHome.nErrorId;
-	stStatEpics.sErrorStr:=fbModeHome.sErrorStr;
+ELSIF stHwStatusRot.eTargetState = TARGET_STATE_MACHINE.HOMING THEN
+  IF fbModeHome.bError AND NOT stHwStatusRot.bError THEN
+    stHwStatusRot.bError:=fbModeHome.bError;
+	stHwStatusRot.nErrorId:=fbModeHome.nErrorId;
+	stHwStatusRot.sErrorStr:=fbModeHome.sErrorStr;
   END_IF
 END_IF
 
@@ -491,17 +496,17 @@ IF ABS(stStatus.fActualVelocity)/10 > GVL_Parameters.fMaximumSPeedRpm THEN
   stCommands.bEnableAxis:= FALSE;
   stCmdEpics.bEnable:=FALSE;
   stCmdEpics.bExecute:=FALSE;
-  stStatEpics.bError:=TRUE;
-  stStatEpics.nErrorId:=GVL_ErrorCodes.nErrorVelToHigh;
-  stStatEpics.sErrorStr:=GVL_ErrorCodes.sErrorVelToHigh;
+  stHwStatusRot.bError:=TRUE;
+  stHwStatusRot.nErrorId:=GVL_ErrorCodes.nErrorVelToHigh;
+  stHwStatusRot.sErrorStr:=GVL_ErrorCodes.sErrorVelToHigh;
 END_IF
 
 IF stcmdEpics.bReset THEN
-  stStatEpics.bError:=FALSE;
-  stStatEpics.nErrorId:=GVL_ErrorCodes.nErrorCodeOKId;
-  stStatEpics.sErrorStr:=GVL_ErrorCodes.nErrorCodeOKStr;
-  stStatEpics.bBrake1TempAlarm:=FALSE;
-  stStatEpics.bBrake2TempAlarm:=FALSE;
+  stHwStatusRot.bError:=FALSE;
+  stHwStatusRot.nErrorId:=GVL_ErrorCodes.nErrorCodeOKId;
+  stHwStatusRot.sErrorStr:=GVL_ErrorCodes.nErrorCodeOKStr;
+  stHwStatusRot.bBrake1TempAlarm:=FALSE;
+  stHwStatusRot.bBrake2TempAlarm:=FALSE;
 END_IF
 stcmdEpics.bReset:=FALSE;]]></ST>
       </Implementation>
@@ -567,6 +572,9 @@ stcmdEpics.bReset:=FALSE;]]></ST>
       <LineId Id="57" Count="0" />
       <LineId Id="4" Count="0" />
       <LineId Id="179" Count="0" />
+      <LineId Id="243" Count="2" />
+      <LineId Id="247" Count="0" />
+      <LineId Id="246" Count="0" />
       <LineId Id="181" Count="6" />
       <LineId Id="230" Count="0" />
       <LineId Id="138" Count="0" />

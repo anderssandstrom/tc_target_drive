@@ -58,7 +58,7 @@
     <Compile Include="DUTs\ST_CMD_EPICS.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\ST_HW_CONTROL_DEV.TcDUT">
+    <Compile Include="DUTs\ST_HW_CONTROL_ROT.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\ST_HW_CONTROL_XYZ.TcDUT">
@@ -89,6 +89,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\ST_S145_SIGNALCONTROLWORD.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\ST_HW_STATUS_ROT.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\TARGET_STATE_MACHINE.TcDUT">
