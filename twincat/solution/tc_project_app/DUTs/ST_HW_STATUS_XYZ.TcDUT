@@ -11,6 +11,7 @@ STRUCT
 	bLimitMaxMax:BOOL;
 	bLimitMinMin:BOOL;
 	bSumILOK:BOOL;
+	bManualInterlockOverride:BOOL;
 	
 	//Only X and Y
 	bBrakeReleased: BOOL;
