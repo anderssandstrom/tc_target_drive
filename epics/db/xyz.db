@@ -9,11 +9,11 @@ record(bo,"$(P)${DEV_NAME}-BrakeReleseCmd"){
   field(DESC, "${DEV_NAME}: Brake release cmd")
 }
 
-record(bo,"$(P)${DEV_NAME}-ManunalILOverrideCmd"){
+record(bo,"$(P)${DEV_NAME}-AllowMotionCmd"){
   info(asyn:READBACK,"1")
   field(PINI, "1")
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_CMD}.bManualInterlockOverride?")
+  field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_CMD}.bAllowMotionGUI?")
   field(SCAN, "Passive")
   field(ZNAM, "OK")
   field(ONAM, "Override")
@@ -39,6 +39,14 @@ record(ai,"$(P)${DEV_NAME}-TempAct"){
   field(ESLO, "1")
   field(EOFF, "0")   
   field(EGU,  "DegC")
+  field(LOLO, "1")
+  field(LOW,  "5")
+  field(HIGH, "90")
+  field(HIHI, "100")
+  field(LLSV, "MAJOR")
+  field(HHSV, "MAJOR")
+  field(HSV,  "MINOR")
+  field(LSV,  "MINOR")
   field(DESC, "${DEV_NAME}: Temperture")
 }
 
