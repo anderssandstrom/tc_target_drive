@@ -1026,25 +1026,6 @@
       <horizontal_alignment>1</horizontal_alignment>
       <vertical_alignment>1</vertical_alignment>
     </widget>
-    <widget type="action_button" version="3.0.0">
-      <name>Action Button</name>
-      <actions>
-        <action type="open_display">
-          <file>TS_SSS_E01_034_XYZ_Interlocks.bob</file>
-          <macros>
-            <DEV_NAME>X</DEV_NAME>
-            <PREFIX>TARGET_DU</PREFIX>
-          </macros>
-          <target>tab</target>
-          <description>Open Display</description>
-        </action>
-      </actions>
-      <text>Interlocks</text>
-      <x>274</x>
-      <y>147</y>
-      <width>140</width>
-      <tooltip>$(actions)</tooltip>
-    </widget>
   </widget>
   <widget type="group" version="2.0.0">
     <name>Group_TDU_Y_Trans</name>
@@ -1628,31 +1609,50 @@
       <horizontal_alignment>1</horizontal_alignment>
       <vertical_alignment>1</vertical_alignment>
     </widget>
-    <widget type="action_button" version="3.0.0">
-      <name>Action Button_1</name>
-      <actions>
-        <action type="open_display">
-          <file>TS_SSS_E01_034_XYZ_Interlocks.bob</file>
-          <macros>
-            <DEV_NAME>Y</DEV_NAME>
-            <PREFIX>TARGET_DU</PREFIX>
-          </macros>
-          <target>tab</target>
-          <description>Open Display</description>
-        </action>
-      </actions>
-      <text>Interlocks</text>
-      <x>274</x>
-      <y>147</y>
-      <width>140</width>
-      <tooltip>$(actions)</tooltip>
-    </widget>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button</name>
+    <actions>
+      <action type="open_display">
+        <file>TDU/TS_TDU_Interlocks/TS_SSS_E01_034_XYZ_Interlocks.bob</file>
+        <macros>
+          <DEV_NAME>X</DEV_NAME>
+          <PREFIX>TARGET_DU</PREFIX>
+        </macros>
+        <target>tab</target>
+        <description>Open Display</description>
+      </action>
+    </actions>
+    <text>Interlocks X</text>
+    <x>150</x>
+    <y>384</y>
+    <width>140</width>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_1</name>
+    <actions>
+      <action type="open_display">
+        <file>TDU/TS_TDU_Interlocks/TS_SSS_E01_034_XYZ_Interlocks.bob</file>
+        <macros>
+          <DEV_NAME>Y</DEV_NAME>
+          <PREFIX>TARGET_DU</PREFIX>
+        </macros>
+        <target>tab</target>
+        <description>Open Display</description>
+      </action>
+    </actions>
+    <text>Interlocks Y</text>
+    <x>150</x>
+    <y>414</y>
+    <width>140</width>
+    <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="action_button" version="3.0.0">
     <name>Action Button_4</name>
     <actions>
       <action type="open_display">
-        <file>TS_SSS_E01_034_XYZ_Interlocks.bob</file>
+        <file>TDU/TS_TDU_Interlocks/TS_SSS_E01_034_XYZ_Interlocks.bob</file>
         <macros>
           <DEV_NAME>Z</DEV_NAME>
           <PREFIX>TARGET_DU</PREFIX>
@@ -1661,9 +1661,28 @@
         <description>Open Display</description>
       </action>
     </actions>
-    <text>Interlocks</text>
-    <x>985</x>
-    <y>780</y>
+    <text>Interlocks Z</text>
+    <x>150</x>
+    <y>444</y>
+    <width>140</width>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_5</name>
+    <actions>
+      <action type="open_display">
+        <file>TDU/TS_TDU_SlaveDiag/TS_TDU_MotionSlaveList.bob</file>
+        <macros>
+          <DEV_NAME>X</DEV_NAME>
+          <PREFIX>TARGET_DU</PREFIX>
+        </macros>
+        <target>tab</target>
+        <description>Open Display</description>
+      </action>
+    </actions>
+    <text>Hardware</text>
+    <x>150</x>
+    <y>474</y>
     <width>140</width>
     <tooltip>$(actions)</tooltip>
   </widget>

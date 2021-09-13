@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name> Slave $(SLAVE_ID) Status:</name>
+  <width>400</width>
+  <actions>
+    <action type="write_pv">
+      <pv_name>loc://dummyTriggVisible&lt;VDouble&gt;</pv_name>
+      <value>1</value>
+      <description>WritePV</description>
+    </action>
+  </actions>
+  <widget type="rectangle" version="2.0.0">
+    <name>MGGrey03-background_5</name>
+    <x>70</x>
+    <y>50</y>
+    <width>304</width>
+    <height>530</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color name="GROUP-BORDER" red="150" green="155" blue="151">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+      </color>
+    </background_color>
+    <corner_width>10</corner_width>
+    <corner_height>10</corner_height>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Background_10</name>
+    <x>401</x>
+    <y>840</y>
+    <width>261</width>
+    <height>460</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="GROUP-BORDER" red="150" green="155" blue="151">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="BACKGROUND" red="220" green="225" blue="221">
+      </color>
+    </background_color>
+    <corner_width>10</corner_width>
+    <corner_height>10</corner_height>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_29</name>
+    <macros>
+      <Axis>X</Axis>
+    </macros>
+    <text>Slave Index:</text>
+    <x>20</x>
+    <y>110</y>
+    <width>200</width>
+    <height>24</height>
+    <horizontal_alignment>2</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label</name>
+    <text>$(SLAVE_ID)</text>
+    <x>240</x>
+    <y>110</y>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_30</name>
+    <macros>
+      <Axis>X</Axis>
+    </macros>
+    <text>HW Type:</text>
+    <x>19</x>
+    <y>134</y>
+    <width>200</width>
+    <height>24</height>
+    <horizontal_alignment>2</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_31</name>
+    <text>$(HW_TYPE)</text>
+    <x>239</x>
+    <y>134</y>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_7</name>
+    <x>51</x>
+    <y>174</y>
+    <width>269</width>
+    <height>24</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="label" version="2.0.0">
+      <name>Label_32</name>
+      <macros>
+        <Axis>X</Axis>
+      </macros>
+      <text>Error:</text>
+      <width>200</width>
+      <height>24</height>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_24</name>
+      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <x>249</x>
+      <off_color>
+        <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="LED-RED-ON" red="255" green="60" blue="46">
+        </color>
+      </on_color>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_8</name>
+    <x>52</x>
+    <y>250</y>
+    <width>269</width>
+    <height>24</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="label" version="2.0.0">
+      <name>Label_33</name>
+      <macros>
+        <Axis>X</Axis>
+      </macros>
+      <text>Data valid:</text>
+      <width>200</width>
+      <height>24</height>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_25</name>
+      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-data-valid</pv_name>
+      <x>249</x>
+      <off_color>
+        <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="LED-RED-ON" red="255" green="60" blue="46">
+        </color>
+      </on_color>
+    </widget>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update</name>
+    <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-ErrMsg</pv_name>
+    <x>90</x>
+    <y>210</y>
+    <width>249</width>
+    <format>6</format>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>AL state Init:</name>
+    <x>52</x>
+    <y>276</y>
+    <width>269</width>
+    <height>24</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="label" version="2.0.0">
+      <name>Label_35</name>
+      <macros>
+        <Axis>X</Axis>
+      </macros>
+      <text>AL state init:</text>
+      <width>200</width>
+      <height>24</height>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_26</name>
+      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-alstate-init</pv_name>
+      <x>249</x>
+      <off_color>
+        <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
+        </color>
+      </off_color>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>AL state Init:_1</name>
+    <x>52</x>
+    <y>300</y>
+    <width>269</width>
+    <height>24</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="label" version="2.0.0">
+      <name>Label_36</name>
+      <macros>
+        <Axis>X</Axis>
+      </macros>
+      <text>AL state preop:</text>
+      <width>200</width>
+      <height>24</height>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_27</name>
+      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-alstate-preop</pv_name>
+      <x>249</x>
+      <off_color>
+        <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
+        </color>
+      </off_color>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>AL state Init:_2</name>
+    <x>52</x>
+    <y>348</y>
+    <width>269</width>
+    <height>24</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="label" version="2.0.0">
+      <name>Label_37</name>
+      <macros>
+        <Axis>X</Axis>
+      </macros>
+      <text>AL state op:</text>
+      <width>200</width>
+      <height>24</height>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_28</name>
+      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-alstate-op</pv_name>
+      <x>249</x>
+      <off_color>
+        <color name="LED-RED-ON" red="255" green="60" blue="46">
+        </color>
+      </off_color>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>AL state Init:_3</name>
+    <x>52</x>
+    <y>324</y>
+    <width>269</width>
+    <height>24</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="label" version="2.0.0">
+      <name>Label_38</name>
+      <macros>
+        <Axis>X</Axis>
+      </macros>
+      <text>AL state safeop:</text>
+      <width>200</width>
+      <height>24</height>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_29</name>
+      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-alstate-safeop</pv_name>
+      <x>249</x>
+      <off_color>
+        <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
+        </color>
+      </off_color>
+    </widget>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_39</name>
+    <macros>
+      <Axis>X</Axis>
+    </macros>
+    <text>Slave Index:</text>
+    <y>400</y>
+    <width>200</width>
+    <height>24</height>
+    <horizontal_alignment>2</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_1</name>
+    <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-TerminalID</pv_name>
+    <x>221</x>
+    <y>400</y>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_2</name>
+    <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-HWType</pv_name>
+    <x>221</x>
+    <y>424</y>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_40</name>
+    <macros>
+      <Axis>X</Axis>
+    </macros>
+    <text>HW Type:</text>
+    <y>424</y>
+    <width>200</width>
+    <height>24</height>
+    <horizontal_alignment>2</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_41</name>
+    <macros>
+      <Axis>X</Axis>
+    </macros>
+    <text>Desc:</text>
+    <x>52</x>
+    <y>460</y>
+    <width>80</width>
+    <height>24</height>
+    <horizontal_alignment>2</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_42</name>
+    <text>$(TOOL_TIP)</text>
+    <x>100</x>
+    <y>484</y>
+    <width>260</width>
+    <height>76</height>
+  </widget>
+</display>

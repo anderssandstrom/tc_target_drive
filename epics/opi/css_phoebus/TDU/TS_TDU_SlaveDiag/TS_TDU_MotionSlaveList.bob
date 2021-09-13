@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Motion CPU Hardware Status:</name>
+  <width>400</width>
+  <height>700</height>
+  <actions>
+    <action type="write_pv">
+      <pv_name>loc://dummyTriggVisible&lt;VDouble&gt;</pv_name>
+      <value>1</value>
+      <description>WritePV</description>
+    </action>
+  </actions>
+  <widget type="rectangle" version="2.0.0">
+    <name>MGGrey03-background_5</name>
+    <x>70</x>
+    <y>50</y>
+    <width>304</width>
+    <height>620</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color name="GROUP-BORDER" red="150" green="155" blue="151">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+      </color>
+    </background_color>
+    <corner_width>10</corner_width>
+    <corner_height>10</corner_height>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_40</name>
+    <text></text>
+    <x>230</x>
+    <y>130</y>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group</name>
+    <macros>
+      <HW_TYPE>EL1809</HW_TYPE>
+      <SLAVE_ID>2</SLAVE_ID>
+      <TOOL_TIP>General: Fuses, Estop..</TOOL_TIP>
+    </macros>
+    <x>120</x>
+    <y>70</y>
+    <width>220</width>
+    <height>30</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_1</name>
+      <actions>
+        <action type="open_display">
+          <file>TS_TDU_SlaveDiag.bob</file>
+          <target>replace</target>
+          <description>Open Display</description>
+        </action>
+      </actions>
+      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <text>S$(SLAVE_ID): $(HW_TYPE)</text>
+      <width>200</width>
+      <tooltip>$(TOOL_TIP)</tooltip>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_10</name>
+    <macros>
+      <HW_TYPE>EL1809</HW_TYPE>
+      <SLAVE_ID>3</SLAVE_ID>
+      <TOOL_TIP>Stepper switches</TOOL_TIP>
+    </macros>
+    <x>120</x>
+    <y>100</y>
+    <width>220</width>
+    <height>30</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_5</name>
+      <actions>
+        <action type="open_display">
+          <file>TS_TDU_SlaveDiag.bob</file>
+          <target>replace</target>
+          <description>Open Display</description>
+        </action>
+      </actions>
+      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <text>S$(SLAVE_ID): $(HW_TYPE)</text>
+      <width>200</width>
+      <tooltip>$(TOOL_TIP)</tooltip>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_12</name>
+    <macros>
+      <HW_TYPE>EL2819</HW_TYPE>
+      <SLAVE_ID>4</SLAVE_ID>
+      <TOOL_TIP>Feed Omron Sensors</TOOL_TIP>
+    </macros>
+    <x>120</x>
+    <y>130</y>
+    <width>220</width>
+    <height>30</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_7</name>
+      <actions>
+        <action type="open_display">
+          <file>TS_TDU_SlaveDiag.bob</file>
+          <target>replace</target>
+          <description>Open Display</description>
+        </action>
+      </actions>
+      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <text>S$(SLAVE_ID): $(HW_TYPE)</text>
+      <width>200</width>
+      <tooltip>$(TOOL_TIP)</tooltip>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_13</name>
+    <macros>
+      <HW_TYPE>EL2819</HW_TYPE>
+      <SLAVE_ID>5</SLAVE_ID>
+      <TOOL_TIP>Feed Stepper Limits</TOOL_TIP>
+    </macros>
+    <x>120</x>
+    <y>160</y>
+    <width>220</width>
+    <height>30</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_8</name>
+      <actions>
+        <action type="open_display">
+          <file>TS_TDU_SlaveDiag.bob</file>
+          <target>replace</target>
+          <description>Open Display</description>
+        </action>
+      </actions>
+      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <text>S$(SLAVE_ID): $(HW_TYPE)</text>
+      <width>200</width>
+      <tooltip>$(TOOL_TIP)</tooltip>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_14</name>
+    <macros>
+      <HW_TYPE>EL9505</HW_TYPE>
+      <SLAVE_ID>6</SLAVE_ID>
+      <TOOL_TIP>5V Supply</TOOL_TIP>
+    </macros>
+    <x>120</x>
+    <y>190</y>
+    <width>220</width>
+    <height>30</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_9</name>
+      <actions>
+        <action type="open_display">
+          <file>TS_TDU_SlaveDiag.bob</file>
+          <target>replace</target>
+          <description>Open Display</description>
+        </action>
+      </actions>
+      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <text>S$(SLAVE_ID): $(HW_TYPE)</text>
+      <width>200</width>
+      <tooltip>$(TOOL_TIP)</tooltip>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_15</name>
+    <macros>
+      <HW_TYPE>EL1252</HW_TYPE>
+      <SLAVE_ID>7</SLAVE_ID>
+      <TOOL_TIP>Timing Pulses</TOOL_TIP>
+    </macros>
+    <x>120</x>
+    <y>220</y>
+    <width>220</width>
+    <height>30</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_11</name>
+      <actions>
+        <action type="open_display">
+          <file>TS_TDU_SlaveDiag.bob</file>
+          <target>replace</target>
+          <description>Open Display</description>
+        </action>
+      </actions>
+      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <text>S$(SLAVE_ID): $(HW_TYPE)</text>
+      <width>200</width>
+      <tooltip>$(TOOL_TIP)</tooltip>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_16</name>
+    <macros>
+      <HW_TYPE>EL9410</HW_TYPE>
+      <SLAVE_ID>8</SLAVE_ID>
+      <TOOL_TIP>24V Supply</TOOL_TIP>
+    </macros>
+    <x>120</x>
+    <y>250</y>
+    <width>220</width>
+    <height>30</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_12</name>
+      <actions>
+        <action type="open_display">
+          <file>TS_TDU_SlaveDiag.bob</file>
+          <target>replace</target>
+          <description>Open Display</description>
+        </action>
+      </actions>
+      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <text>S$(SLAVE_ID): $(HW_TYPE)</text>
+      <width>200</width>
+      <tooltip>$(TOOL_TIP)</tooltip>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_17</name>
+    <macros>
+      <HW_TYPE>EL1252</HW_TYPE>
+      <SLAVE_ID>9</SLAVE_ID>
+      <TOOL_TIP>OMRON SENSORS</TOOL_TIP>
+    </macros>
+    <x>120</x>
+    <y>280</y>
+    <width>220</width>
+    <height>30</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_13</name>
+      <actions>
+        <action type="open_display">
+          <file>TS_TDU_SlaveDiag.bob</file>
+          <target>replace</target>
+          <description>Open Display</description>
+        </action>
+      </actions>
+      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <text>S$(SLAVE_ID): $(HW_TYPE)</text>
+      <width>200</width>
+      <tooltip>$(TOOL_TIP)</tooltip>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_18</name>
+    <macros>
+      <HW_TYPE>EL7201</HW_TYPE>
+      <SLAVE_ID>10</SLAVE_ID>
+      <TOOL_TIP>Stepper X Resolver</TOOL_TIP>
+    </macros>
+    <x>120</x>
+    <y>310</y>
+    <width>220</width>
+    <height>30</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_14</name>
+      <actions>
+        <action type="open_display">
+          <file>TS_TDU_SlaveDiag.bob</file>
+          <target>replace</target>
+          <description>Open Display</description>
+        </action>
+      </actions>
+      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <text>S$(SLAVE_ID): $(HW_TYPE)</text>
+      <width>200</width>
+      <tooltip>$(TOOL_TIP)</tooltip>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_19</name>
+    <macros>
+      <HW_TYPE>EL7201</HW_TYPE>
+      <SLAVE_ID>11</SLAVE_ID>
+      <TOOL_TIP>Stepper Y Resolver</TOOL_TIP>
+    </macros>
+    <x>120</x>
+    <y>340</y>
+    <width>220</width>
+    <height>30</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_15</name>
+      <actions>
+        <action type="open_display">
+          <file>TS_TDU_SlaveDiag.bob</file>
+          <target>replace</target>
+          <description>Open Display</description>
+        </action>
+      </actions>
+      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <text>S$(SLAVE_ID): $(HW_TYPE)</text>
+      <width>200</width>
+      <tooltip>$(TOOL_TIP)</tooltip>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_20</name>
+    <macros>
+      <HW_TYPE>EL7201</HW_TYPE>
+      <SLAVE_ID>12</SLAVE_ID>
+      <TOOL_TIP>Stepper Z Resolver</TOOL_TIP>
+    </macros>
+    <x>120</x>
+    <y>370</y>
+    <width>220</width>
+    <height>30</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_17</name>
+      <actions>
+        <action type="open_display">
+          <file>TS_TDU_SlaveDiag.bob</file>
+          <target>replace</target>
+          <description>Open Display</description>
+        </action>
+      </actions>
+      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <text>S$(SLAVE_ID): $(HW_TYPE)</text>
+      <width>200</width>
+      <tooltip>$(TOOL_TIP)</tooltip>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_21</name>
+    <macros>
+      <HW_TYPE>EL3214</HW_TYPE>
+      <SLAVE_ID>13</SLAVE_ID>
+      <TOOL_TIP>Motor Temperature Measurement (X,Y,Z,Rot)</TOOL_TIP>
+    </macros>
+    <x>120</x>
+    <y>400</y>
+    <width>220</width>
+    <height>30</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_18</name>
+      <actions>
+        <action type="open_display">
+          <file>TS_TDU_SlaveDiag.bob</file>
+          <target>replace</target>
+          <description>Open Display</description>
+        </action>
+      </actions>
+      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <text>S$(SLAVE_ID): $(HW_TYPE)</text>
+      <width>200</width>
+      <tooltip>$(TOOL_TIP)</tooltip>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_22</name>
+    <macros>
+      <HW_TYPE>EL5021</HW_TYPE>
+      <SLAVE_ID>14</SLAVE_ID>
+      <TOOL_TIP>Rotation Secondary AMO Encoder</TOOL_TIP>
+    </macros>
+    <x>120</x>
+    <y>430</y>
+    <width>220</width>
+    <height>30</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_19</name>
+      <actions>
+        <action type="open_display">
+          <file>TS_TDU_SlaveDiag.bob</file>
+          <target>replace</target>
+          <description>Open Display</description>
+        </action>
+      </actions>
+      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <text>S$(SLAVE_ID): $(HW_TYPE)</text>
+      <width>200</width>
+      <tooltip>$(TOOL_TIP)</tooltip>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_23</name>
+    <macros>
+      <HW_TYPE>EL6695</HW_TYPE>
+      <SLAVE_ID>15</SLAVE_ID>
+      <TOOL_TIP>Communication with Evan :-)</TOOL_TIP>
+    </macros>
+    <x>120</x>
+    <y>460</y>
+    <width>220</width>
+    <height>30</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_20</name>
+      <actions>
+        <action type="open_display">
+          <file>TS_TDU_SlaveDiag.bob</file>
+          <target>replace</target>
+          <description>Open Display</description>
+        </action>
+      </actions>
+      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <text>S$(SLAVE_ID): $(HW_TYPE)</text>
+      <width>200</width>
+      <tooltip>$(TOOL_TIP)</tooltip>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_24</name>
+    <macros>
+      <HW_TYPE>EL9410</HW_TYPE>
+      <SLAVE_ID>16</SLAVE_ID>
+      <TOOL_TIP>24V Supply</TOOL_TIP>
+    </macros>
+    <x>120</x>
+    <y>490</y>
+    <width>220</width>
+    <height>30</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_21</name>
+      <actions>
+        <action type="open_display">
+          <file>TS_TDU_SlaveDiag.bob</file>
+          <target>replace</target>
+          <description>Open Display</description>
+        </action>
+      </actions>
+      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <text>S$(SLAVE_ID): $(HW_TYPE)</text>
+      <width>200</width>
+      <tooltip>$(TOOL_TIP)</tooltip>
+    </widget>
+  </widget>
+  <widget type="choice" version="2.0.0">
+    <name>Choice Button</name>
+    <x>520</x>
+    <y>290</y>
+    <width>0</width>
+    <height>0</height>
+    <items>
+      <item>Item 1</item>
+      <item>Item 2</item>
+    </items>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_25</name>
+    <macros>
+      <HW_TYPE>indraDrive</HW_TYPE>
+      <SLAVE_ID>19</SLAVE_ID>
+      <TOOL_TIP>Main Drive</TOOL_TIP>
+    </macros>
+    <x>120</x>
+    <y>520</y>
+    <width>220</width>
+    <height>30</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_23</name>
+      <actions>
+        <action type="open_display">
+          <file>TS_TDU_SlaveDiag.bob</file>
+          <target>replace</target>
+          <description>Open Display</description>
+        </action>
+      </actions>
+      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <text>S$(SLAVE_ID): $(HW_TYPE)</text>
+      <width>200</width>
+      <tooltip>$(TOOL_TIP)</tooltip>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_26</name>
+    <macros>
+      <HW_TYPE>IPOS8020</HW_TYPE>
+      <SLAVE_ID>20</SLAVE_ID>
+      <TOOL_TIP>Stepper X Drive</TOOL_TIP>
+    </macros>
+    <x>120</x>
+    <y>550</y>
+    <width>220</width>
+    <height>30</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_24</name>
+      <actions>
+        <action type="open_display">
+          <file>TS_TDU_SlaveDiag.bob</file>
+          <target>replace</target>
+          <description>Open Display</description>
+        </action>
+      </actions>
+      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <text>S$(SLAVE_ID): $(HW_TYPE)</text>
+      <width>200</width>
+      <tooltip>$(TOOL_TIP)</tooltip>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_27</name>
+    <macros>
+      <HW_TYPE>IPOS8020</HW_TYPE>
+      <SLAVE_ID>21</SLAVE_ID>
+      <TOOL_TIP>Stepper Y Drive</TOOL_TIP>
+    </macros>
+    <x>120</x>
+    <y>580</y>
+    <width>220</width>
+    <height>30</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_25</name>
+      <actions>
+        <action type="open_display">
+          <file>TS_TDU_SlaveDiag.bob</file>
+          <target>replace</target>
+          <description>Open Display</description>
+        </action>
+      </actions>
+      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <text>S$(SLAVE_ID): $(HW_TYPE)</text>
+      <width>200</width>
+      <tooltip>$(TOOL_TIP)</tooltip>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_28</name>
+    <macros>
+      <HW_TYPE>IPOS8020</HW_TYPE>
+      <SLAVE_ID>22</SLAVE_ID>
+      <TOOL_TIP>Stepper Z Drive</TOOL_TIP>
+    </macros>
+    <x>120</x>
+    <y>610</y>
+    <width>220</width>
+    <height>30</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_26</name>
+      <actions>
+        <action type="open_display">
+          <file>TS_TDU_SlaveDiag.bob</file>
+          <target>replace</target>
+          <description>Open Display</description>
+        </action>
+      </actions>
+      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <text>S$(SLAVE_ID): $(HW_TYPE)</text>
+      <width>200</width>
+      <tooltip>$(TOOL_TIP)</tooltip>
+    </widget>
+  </widget>
+</display>
