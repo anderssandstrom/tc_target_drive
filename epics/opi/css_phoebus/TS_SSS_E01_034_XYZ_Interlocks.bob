@@ -446,4 +446,32 @@
       </widget>
     </widget>
   </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_6</name>
+    <x>403</x>
+    <y>460</y>
+    <width>269</width>
+    <height>24</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="label" version="2.0.0">
+      <name>Label_28</name>
+      <macros>
+        <Axis>X</Axis>
+      </macros>
+      <text>$(DEV_NAME) HW IL OK</text>
+      <width>200</width>
+      <height>24</height>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_22</name>
+      <pv_name>$(PREFIX):$(DEV_NAME)-HwOK</pv_name>
+      <x>249</x>
+      <off_color>
+        <color name="LED-RED-ON" red="255" green="60" blue="46">
+        </color>
+      </off_color>
+    </widget>
+  </widget>
 </display>

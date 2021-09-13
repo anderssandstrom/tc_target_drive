@@ -144,3 +144,13 @@ record(bi,"$(P)${DEV_NAME}-ParkRangeEnaAct"){
   field(ONAM, "OK")
   field(DESC, "${DEV_NAME}: Parking range enabled")
 }
+
+record(bi,"$(P)${DEV_NAME}-HwOK"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bHwStatusOK?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "HW Error")
+  field(ONAM, "OK")
+  field(DESC, "${DEV_NAME}: Hardware Interlock")
+}
