@@ -2667,7 +2667,7 @@ Bit 15]]></Comment>
 				<Link VarA="PlcTaskCom Outputs^MAIN.iTorqueCommandValue" VarB="MDT^Torque/force command value"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Drive 49 (iPOS8020 BX-CAT)">
-				<Link VarA="PlcTask Inputs^MAIN.fbTemp.InfoData_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s20_IPOS8020.InfoData_State" VarB="InfoData^State"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Drive 50 (iPOS8020 BX-CAT)">
 				<Link VarA="PlcTask Inputs^MAIN.fb_s21_IPOS8020.InfoData_State" VarB="InfoData^State"/>
