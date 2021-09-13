@@ -1394,7 +1394,7 @@ main.stHWControlZ.bBrakeReleaseCmd:=FALSE; // Not used
                                 </o>
                                 <o t="BoxTreeOperand">
                                   <o n="Operand" t="Operand">
-                                    <v n="Operand">"main.stCmdEpics.bZAllowMotionGUI"</v>
+                                    <v n="Operand">"main.stHWControlZ.bAllowMotionGUI"</v>
                                     <v n="Type">"BOOL"</v>
                                     <v n="Comment">""</v>
                                     <v n="SymbolComment">""</v>

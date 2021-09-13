@@ -2191,7 +2191,7 @@ Bit 15]]></Comment>
 				</Var>
 				<Var>
 					<Name>MAIN.stHWControlX.bBrakeReleaseCmd</Name>
-					<Comment><![CDATA[ s5: ch2: kf05: w02.ql1: stepper x brake]]></Comment>
+					<Comment><![CDATA[ s5: ch2: kf05: w02.ql1: stepper x brake ONLY x and Y]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
@@ -2206,7 +2206,7 @@ Bit 15]]></Comment>
 				</Var>
 				<Var>
 					<Name>MAIN.stHWControlY.bBrakeReleaseCmd</Name>
-					<Comment><![CDATA[ s5: ch2: kf05: w02.ql1: stepper x brake]]></Comment>
+					<Comment><![CDATA[ s5: ch2: kf05: w02.ql1: stepper x brake ONLY x and Y]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
@@ -2221,7 +2221,7 @@ Bit 15]]></Comment>
 				</Var>
 				<Var>
 					<Name>MAIN.stHWControlZ.bBrakeReleaseCmd</Name>
-					<Comment><![CDATA[ s5: ch2: kf05: w02.ql1: stepper x brake]]></Comment>
+					<Comment><![CDATA[ s5: ch2: kf05: w02.ql1: stepper x brake ONLY x and Y]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>

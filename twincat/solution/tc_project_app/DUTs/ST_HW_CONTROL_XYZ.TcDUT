@@ -6,9 +6,11 @@ TYPE ST_HW_CONTROL_XYZ :
 STRUCT
 	
 	bMinMaxFeed  AT %Q* :BOOL;         // s5: ch1: kf05: w02.bg01 w02.bg02 stepper x limit switch max, limit min
-	bBrakeReleaseCmd  AT %Q* :BOOL;    // s5: ch2: kf05: w02.ql1: stepper x brake
+	bBrakeReleaseCmd  AT %Q* :BOOL;    // s5: ch2: kf05: w02.ql1: stepper x brake ONLY x and Y
 	bMinMinMaxMaxFeed  AT %Q* :BOOL;   // s5: ch3: kf05: w02.bg03 w02.bg04 stepper x limit switch max max, limit min min
-    bManualInterlockOverride: bool;
+    bManualInterlockOverride: BOOL;
+	bAllowMotionGUI:BOOL:=FALSE;       // Allow motion from GUI
+	
 END_STRUCT
 END_TYPE
 ]]></Declaration>
