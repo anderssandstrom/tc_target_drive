@@ -12,6 +12,7 @@ STRUCT
 	bLimitMinMin:BOOL;
 	bSumILOK:BOOL;
 	bManualInterlockOverride:BOOL;
+	bHwStatusOK:BOOL;  // Staatus of hardware (IPOS, EL7201, EL3214..)
 	
 	//Only X and Y
 	bBrakeReleased: BOOL;
