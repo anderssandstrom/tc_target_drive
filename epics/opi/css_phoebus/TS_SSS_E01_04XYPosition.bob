@@ -1619,7 +1619,7 @@
           <DEV_NAME>X</DEV_NAME>
           <PREFIX>TARGET_DU</PREFIX>
         </macros>
-        <target>replace</target>
+        <target>window</target>
         <description>Open Display</description>
       </action>
     </actions>
@@ -1638,7 +1638,7 @@
           <DEV_NAME>Y</DEV_NAME>
           <PREFIX>TARGET_DU</PREFIX>
         </macros>
-        <target>tab</target>
+        <target>window</target>
         <description>Open Display</description>
       </action>
     </actions>
@@ -1657,7 +1657,7 @@
           <DEV_NAME>Z</DEV_NAME>
           <PREFIX>TARGET_DU</PREFIX>
         </macros>
-        <target>tab</target>
+        <target>window</target>
         <description>Open Display</description>
       </action>
     </actions>
@@ -1676,7 +1676,7 @@
           <DEV_NAME>X</DEV_NAME>
           <PREFIX>TARGET_DU</PREFIX>
         </macros>
-        <target>tab</target>
+        <target>window</target>
         <description>Open Display</description>
       </action>
     </actions>
