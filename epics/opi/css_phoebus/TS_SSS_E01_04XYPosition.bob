@@ -1619,7 +1619,7 @@
           <DEV_NAME>X</DEV_NAME>
           <PREFIX>TARGET_DU</PREFIX>
         </macros>
-        <target>tab</target>
+        <target>replace</target>
         <description>Open Display</description>
       </action>
     </actions>

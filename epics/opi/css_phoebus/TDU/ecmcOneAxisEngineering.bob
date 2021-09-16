@@ -1,0 +1,1727 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>ecmcOneAxisEngineering</name>
+  <width>1500</width>
+  <height>690</height>
+  <actions>
+  </actions>
+  <grid_visible>false</grid_visible>
+  <widget type="group" version="2.0.0">
+    <name>SuperGroup</name>
+    <width>1500</width>
+    <height>690</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="group" version="2.0.0">
+      <name>Error</name>
+      <x>20</x>
+      <y>460</y>
+      <width>540</width>
+      <height>210</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="rectangle" version="2.0.0">
+        <name>Error BG</name>
+        <width>540</width>
+        <height>210</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color name="GROUP-BORDER" red="150" green="155" blue="151">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Error</name>
+        <text>Error Messages</text>
+        <y>2</y>
+        <width>540</width>
+        <height>40</height>
+        <font>
+          <font family="Source Sans Pro" style="BOLD" size="24.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="TEXT-LIGHT" red="230" green="230" blue="230">
+          </color>
+        </foreground_color>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="group" version="2.0.0">
+        <name>Error GR</name>
+        <x>20</x>
+        <y>40</y>
+        <width>500</width>
+        <height>150</height>
+        <style>3</style>
+        <widget type="label" version="2.0.0">
+          <name>Message</name>
+          <text>Error Message:</text>
+          <x>20</x>
+          <y>55</y>
+          <background_color>
+            <color name="IO Background" red="255" green="255" blue="205">
+            </color>
+          </background_color>
+          <horizontal_alignment>2</horizontal_alignment>
+          <vertical_alignment>1</vertical_alignment>
+          <actions>
+          </actions>
+          <border_color>
+            <color name="IO Border" red="215" green="215" blue="215">
+            </color>
+          </border_color>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>Stat</name>
+          <pv_name>$(P)$(M).STAT</pv_name>
+          <x>130</x>
+          <y>20</y>
+          <width>120</width>
+          <precision>0</precision>
+          <vertical_alignment>1</vertical_alignment>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>Sevr</name>
+          <pv_name>$(P)$(M).SEVR</pv_name>
+          <x>350</x>
+          <y>20</y>
+          <width>120</width>
+          <precision>0</precision>
+          <vertical_alignment>1</vertical_alignment>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>Message</name>
+          <pv_name>$(P)$(R)MsgTxt</pv_name>
+          <x>130</x>
+          <y>55</y>
+          <width>340</width>
+          <height>74</height>
+          <format>6</format>
+          <rules>
+            <rule name="BorderRile" prop_id="name" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Alarm 1</name>
+          <text>Alarm 1:</text>
+          <x>60</x>
+          <y>20</y>
+          <width>60</width>
+          <horizontal_alignment>2</horizontal_alignment>
+          <vertical_alignment>1</vertical_alignment>
+          <actions>
+          </actions>
+          <border_color>
+            <color name="IO Border" red="215" green="215" blue="215">
+            </color>
+          </border_color>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Alarm 2</name>
+          <text>Alarm 2:</text>
+          <x>280</x>
+          <y>20</y>
+          <width>60</width>
+          <horizontal_alignment>2</horizontal_alignment>
+          <vertical_alignment>1</vertical_alignment>
+          <actions>
+          </actions>
+          <border_color>
+            <color name="IO Border" red="215" green="215" blue="215">
+            </color>
+          </border_color>
+        </widget>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Calibration</name>
+      <x>580</x>
+      <y>460</y>
+      <width>259</width>
+      <height>210</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="rectangle" version="2.0.0">
+        <name>Calibration BG</name>
+        <width>259</width>
+        <height>210</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color name="GROUP-BORDER" red="150" green="155" blue="151">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Calibration</name>
+        <text>Calibration</text>
+        <width>259</width>
+        <height>40</height>
+        <font>
+          <font family="Source Sans Pro" style="BOLD" size="24.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="TEXT-LIGHT" red="230" green="230" blue="230">
+          </color>
+        </foreground_color>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="group" version="2.0.0">
+        <name>Calibration GR</name>
+        <x>20</x>
+        <y>40</y>
+        <width>220</width>
+        <height>150</height>
+        <style>3</style>
+        <widget type="bool_button" version="2.0.0">
+          <name>Reverse</name>
+          <pv_name>$(P)$(M).DIR</pv_name>
+          <x>20</x>
+          <y>100</y>
+          <width>180</width>
+          <off_label> Reverse Direction</off_label>
+          <off_color>
+            <color name="LED-YELLOW-OFF" red="110" green="108" blue="90">
+            </color>
+          </off_color>
+          <on_label> Reverse Direction</on_label>
+          <on_color>
+            <color name="LED-YELLOW-ON" red="255" green="235" blue="17">
+            </color>
+          </on_color>
+          <actions>
+          </actions>
+          <rules>
+            <rule name="BorderRule" prop_id="border_style" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>Offset</name>
+          <pv_name>$(P)$(M).OFF</pv_name>
+          <x>86</x>
+          <y>65</y>
+          <width>110</width>
+          <rules>
+            <rule name="BorderRule" prop_id="name" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Offset</name>
+          <text>Offset:</text>
+          <x>20</x>
+          <y>65</y>
+          <width>55</width>
+          <horizontal_alignment>2</horizontal_alignment>
+        </widget>
+        <widget type="bool_button" version="2.0.0">
+          <name>Switch</name>
+          <pv_name>$(P)$(M).SET</pv_name>
+          <bit>-1</bit>
+          <x>20</x>
+          <y>20</y>
+          <width>180</width>
+          <off_label>Set/Use Switch</off_label>
+          <off_color>
+            <color red="0" green="100" blue="0">
+            </color>
+          </off_color>
+          <off_image>Set/Use Switch</off_image>
+          <on_label></on_label>
+          <on_color>
+            <color name="Major" red="255" green="0" blue="0">
+            </color>
+          </on_color>
+          <foreground_color>
+            <color red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color red="240" green="240" blue="240">
+            </color>
+          </background_color>
+          <actions>
+          </actions>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Dial</name>
+      <x>859</x>
+      <y>460</y>
+      <width>281</width>
+      <height>210</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="rectangle" version="2.0.0">
+        <name>Dial BG</name>
+        <width>281</width>
+        <height>210</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color name="GROUP-BORDER" red="150" green="155" blue="151">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Dial</name>
+        <text>Dial</text>
+        <width>281</width>
+        <height>40</height>
+        <font>
+          <font family="Source Sans Pro" style="BOLD" size="24.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="TEXT-LIGHT" red="230" green="230" blue="230">
+          </color>
+        </foreground_color>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="group" version="2.0.0">
+        <name>Dial GR</name>
+        <x>21</x>
+        <y>40</y>
+        <width>240</width>
+        <height>150</height>
+        <style>3</style>
+        <widget type="label" version="2.0.0">
+          <name>Position</name>
+          <text>Position:</text>
+          <x>20</x>
+          <y>20</y>
+          <width>80</width>
+          <horizontal_alignment>2</horizontal_alignment>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>Position</name>
+          <pv_name>$(P)$(M).DVAL</pv_name>
+          <x>110</x>
+          <y>20</y>
+          <width>110</width>
+          <rules>
+            <rule name="BorderRule" prop_id="name" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>Low limit</name>
+          <pv_name>$(P)$(M).DLLM</pv_name>
+          <x>110</x>
+          <y>80</y>
+          <width>110</width>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>Readback</name>
+          <pv_name>$(P)$(M).DRBV</pv_name>
+          <x>110</x>
+          <y>110</y>
+          <width>110</width>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>High limit</name>
+          <pv_name>$(P)$(M).DHLM</pv_name>
+          <x>110</x>
+          <y>50</y>
+          <width>110</width>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Low limit</name>
+          <text>Low Limit:</text>
+          <x>20</x>
+          <y>80</y>
+          <width>80</width>
+          <horizontal_alignment>2</horizontal_alignment>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Readback</name>
+          <text>Readback:</text>
+          <x>20</x>
+          <y>110</y>
+          <width>80</width>
+          <horizontal_alignment>2</horizontal_alignment>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>High limit</name>
+          <text>High Limit:</text>
+          <x>20</x>
+          <y>50</y>
+          <width>80</width>
+          <horizontal_alignment>2</horizontal_alignment>
+        </widget>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Raw</name>
+      <x>1160</x>
+      <y>460</y>
+      <width>320</width>
+      <height>210</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="rectangle" version="2.0.0">
+        <name>Raw BG</name>
+        <width>320</width>
+        <height>210</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color name="GROUP-BORDER" red="150" green="155" blue="151">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Raw</name>
+        <text>Raw</text>
+        <width>320</width>
+        <height>40</height>
+        <font>
+          <font family="Source Sans Pro" style="BOLD" size="24.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="TEXT-LIGHT" red="230" green="230" blue="230">
+          </color>
+        </foreground_color>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="group" version="2.0.0">
+        <name>Raw GR</name>
+        <x>20</x>
+        <y>40</y>
+        <width>280</width>
+        <height>150</height>
+        <style>3</style>
+        <widget type="textupdate" version="2.0.0">
+          <name>Desired</name>
+          <pv_name>$(P)$(M).RVAL</pv_name>
+          <x>150</x>
+          <y>20</y>
+          <width>110</width>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>Motor position</name>
+          <pv_name>$(P)$(M).RMP</pv_name>
+          <x>150</x>
+          <y>65</y>
+          <width>110</width>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>Encoder position</name>
+          <pv_name>$(P)$(M).REP</pv_name>
+          <x>150</x>
+          <y>109</y>
+          <width>110</width>
+          <format>1</format>
+          <vertical_alignment>1</vertical_alignment>
+          <rules>
+            <rule name="BorderRile" prop_id="name" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Encoder position</name>
+          <text>Encoder Position:</text>
+          <x>20</x>
+          <y>109</y>
+          <width>120</width>
+          <background_color>
+            <color name="IO Background" red="255" green="255" blue="205">
+            </color>
+          </background_color>
+          <horizontal_alignment>2</horizontal_alignment>
+          <vertical_alignment>1</vertical_alignment>
+          <actions>
+          </actions>
+          <border_color>
+            <color name="IO Border" red="215" green="215" blue="215">
+            </color>
+          </border_color>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Desired</name>
+          <text>Desired Value:</text>
+          <x>20</x>
+          <y>20</y>
+          <width>120</width>
+          <horizontal_alignment>2</horizontal_alignment>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Motor position</name>
+          <text>Motor Position:</text>
+          <x>20</x>
+          <y>65</y>
+          <width>120</width>
+          <horizontal_alignment>2</horizontal_alignment>
+        </widget>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Status</name>
+      <x>940</x>
+      <y>110</y>
+      <width>260</width>
+      <height>330</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="rectangle" version="2.0.0">
+        <name>Status BG</name>
+        <width>260</width>
+        <height>330</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color name="GROUP-BORDER" red="150" green="155" blue="151">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Status</name>
+        <text>Motor status</text>
+        <width>280</width>
+        <height>40</height>
+        <font>
+          <font family="Source Sans Pro" style="BOLD" size="24.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="TEXT-LIGHT" red="230" green="230" blue="230">
+          </color>
+        </foreground_color>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="group" version="2.0.0">
+        <name>Status GR</name>
+        <x>20</x>
+        <y>40</y>
+        <width>220</width>
+        <height>274</height>
+        <style>3</style>
+        <widget type="led" version="2.0.0">
+          <name>HLS</name>
+          <pv_name>$(P)$(M).MSTA</pv_name>
+          <bit>2</bit>
+          <x>20</x>
+          <y>20</y>
+          <off_color>
+            <color name="LED-YELLOW-OFF" red="110" green="108" blue="90">
+            </color>
+          </off_color>
+          <on_color>
+            <color name="LED-YELLOW-ON" red="255" green="235" blue="17">
+            </color>
+          </on_color>
+          <actions>
+          </actions>
+          <rules>
+            <rule name="BorderRule" prop_id="border_style" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Home LS</name>
+          <text>Home Limit Switch</text>
+          <x>50</x>
+          <y>110</y>
+          <width>150</width>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>Homed</name>
+          <pv_name>$(P)$(M).MSTA</pv_name>
+          <bit>14</bit>
+          <x>20</x>
+          <y>80</y>
+          <off_color>
+            <color name="LED-YELLOW-ON" red="255" green="235" blue="17">
+            </color>
+          </off_color>
+          <on_color>
+            <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+            </color>
+          </on_color>
+          <actions>
+          </actions>
+          <rules>
+            <rule name="BorderRule" prop_id="border_style" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LLS</name>
+          <pv_name>$(P)$(M).MSTA</pv_name>
+          <bit>13</bit>
+          <x>20</x>
+          <y>50</y>
+          <off_color>
+            <color name="LED-YELLOW-OFF" red="110" green="108" blue="90">
+            </color>
+          </off_color>
+          <on_color>
+            <color name="LED-YELLOW-ON" red="255" green="235" blue="17">
+            </color>
+          </on_color>
+          <font>
+            <font name="IO Normal" family="arial" style="REGULAR" size="9.900990099009901">
+            </font>
+          </font>
+          <actions>
+          </actions>
+          <rules>
+            <rule name="BorderRule" prop_id="border_style" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>Problem</name>
+          <pv_name>$(P)$(M).MSTA</pv_name>
+          <bit>9</bit>
+          <x>20</x>
+          <y>170</y>
+          <off_color>
+            <color name="LED-YELLOW-ON" red="255" green="235" blue="17">
+            </color>
+          </off_color>
+          <on_color>
+            <color name="LED-YELLOW-OFF" red="110" green="108" blue="90">
+            </color>
+          </on_color>
+          <actions>
+          </actions>
+          <rules>
+            <rule name="BorderRule" prop_id="border_style" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>Slip stall</name>
+          <pv_name>$(P)$(M).MSTA</pv_name>
+          <bit>6</bit>
+          <x>20</x>
+          <y>141</y>
+          <off_color>
+            <color name="LED-YELLOW-ON" red="255" green="235" blue="17">
+            </color>
+          </off_color>
+          <on_color>
+            <color name="LED-YELLOW-OFF" red="110" green="108" blue="90">
+            </color>
+          </on_color>
+          <actions>
+          </actions>
+          <rules>
+            <rule name="BorderRule" prop_id="border_style" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>Home LS</name>
+          <pv_name>$(P)$(M).MSTA</pv_name>
+          <bit>3</bit>
+          <x>20</x>
+          <y>110</y>
+          <off_color>
+            <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
+            </color>
+          </off_color>
+          <on_color>
+            <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+            </color>
+          </on_color>
+          <actions>
+          </actions>
+          <rules>
+            <rule name="BorderRule" prop_id="border_style" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>HLS</name>
+          <text>High limit switch hit</text>
+          <x>50</x>
+          <y>20</y>
+          <width>150</width>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Homed</name>
+          <text>Homed</text>
+          <x>50</x>
+          <y>80</y>
+          <width>150</width>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Slip stall</name>
+          <text>Slip/Stall detected</text>
+          <x>50</x>
+          <y>141</y>
+          <width>150</width>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Problem</name>
+          <text>Problem</text>
+          <x>50</x>
+          <y>170</y>
+          <width>150</width>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>Encoder</name>
+          <pv_name>$(P)$(M).MSTA</pv_name>
+          <bit>8</bit>
+          <x>20</x>
+          <y>200</y>
+          <off_color>
+            <color name="LED-BLUE-OFF" red="90" green="110" blue="110">
+            </color>
+          </off_color>
+          <on_color>
+            <color name="LED-BLUE-ON" red="81" green="232" blue="255">
+            </color>
+          </on_color>
+          <actions>
+          </actions>
+          <rules>
+            <rule name="BorderRule" prop_id="border_style" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>HOL</name>
+          <pv_name>$(P)$(M).MSTA</pv_name>
+          <bit>15</bit>
+          <x>20</x>
+          <y>230</y>
+          <off_color>
+            <color name="LED-BLUE-OFF" red="90" green="110" blue="110">
+            </color>
+          </off_color>
+          <on_color>
+            <color name="LED-BLUE-ON" red="81" green="232" blue="255">
+            </color>
+          </on_color>
+          <actions>
+          </actions>
+          <rules>
+            <rule name="BorderRule" prop_id="border_style" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Encoder</name>
+          <text>Encoder present</text>
+          <x>50</x>
+          <y>200</y>
+          <width>150</width>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>HOL</name>
+          <text>HOL</text>
+          <x>50</x>
+          <y>230</y>
+          <width>150</width>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>LLS</name>
+          <text>Low limit switch hit</text>
+          <x>50</x>
+          <y>50</y>
+          <width>150</width>
+        </widget>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Warnings</name>
+      <x>1220</x>
+      <y>110</y>
+      <width>260</width>
+      <height>210</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="rectangle" version="2.0.0">
+        <name>Warnings BG</name>
+        <width>260</width>
+        <height>210</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color name="GROUP-BORDER" red="150" green="155" blue="151">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Warnings</name>
+        <text>Warnings</text>
+        <width>260</width>
+        <height>40</height>
+        <font>
+          <font family="Source Sans Pro" style="BOLD" size="24.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="TEXT-LIGHT" red="230" green="230" blue="230">
+          </color>
+        </foreground_color>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="group" version="2.0.0">
+        <name>Warnings GR</name>
+        <x>20</x>
+        <y>40</y>
+        <width>220</width>
+        <height>150</height>
+        <style>3</style>
+        <widget type="led" version="2.0.0">
+          <name>Error</name>
+          <pv_name>$(P)$(R)Err</pv_name>
+          <bit>0</bit>
+          <x>20</x>
+          <y>20</y>
+          <off_color>
+            <color name="LED-RED-OFF" red="110" green="101" blue="90">
+            </color>
+          </off_color>
+          <on_color>
+            <color name="LED-RED-ON" red="255" green="60" blue="46">
+            </color>
+          </on_color>
+          <actions>
+          </actions>
+          <rules>
+            <rule name="BorderRule" prop_id="border_style" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>Retries</name>
+          <pv_name>$(P)$(M).MISS</pv_name>
+          <bit>0</bit>
+          <x>20</x>
+          <y>110</y>
+          <off_color>
+            <color name="LED-YELLOW-OFF" red="110" green="108" blue="90">
+            </color>
+          </off_color>
+          <on_color>
+            <color name="LED-YELLOW-ON" red="255" green="235" blue="17">
+            </color>
+          </on_color>
+          <font>
+            <font name="IO Normal" family="arial" style="REGULAR" size="9.900990099009901">
+            </font>
+          </font>
+          <actions>
+          </actions>
+          <rules>
+            <rule name="BorderRule" prop_id="border_style" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>Limit violation</name>
+          <pv_name>$(P)$(M).LVIO</pv_name>
+          <bit>0</bit>
+          <x>20</x>
+          <y>80</y>
+          <off_color>
+            <color name="LED-YELLOW-OFF" red="110" green="108" blue="90">
+            </color>
+          </off_color>
+          <on_color>
+            <color name="LED-YELLOW-ON" red="255" green="235" blue="17">
+            </color>
+          </on_color>
+          <actions>
+          </actions>
+          <rules>
+            <rule name="BorderRule" prop_id="border_style" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>Alarm</name>
+          <pv_name>$(P)$(M).STAT</pv_name>
+          <x>20</x>
+          <y>50</y>
+          <off_color>
+            <color name="LED-YELLOW-OFF" red="110" green="108" blue="90">
+            </color>
+          </off_color>
+          <on_color>
+            <color name="LED-YELLOW-ON" red="255" green="235" blue="17">
+            </color>
+          </on_color>
+          <actions>
+          </actions>
+          <rules>
+            <rule name="BorderRule" prop_id="border_style" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Limit violation</name>
+          <text>Limit violation</text>
+          <x>50</x>
+          <y>80</y>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Retries</name>
+          <text>Ran out of Retries</text>
+          <x>50</x>
+          <y>110</y>
+          <width>120</width>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Alarm</name>
+          <text>Alarm</text>
+          <x>50</x>
+          <y>50</y>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Error</name>
+          <text>Error</text>
+          <x>50</x>
+          <y>20</y>
+        </widget>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Motion</name>
+      <x>20</x>
+      <y>110</y>
+      <width>900</width>
+      <height>300</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="rectangle" version="2.0.0">
+        <name>Motion BG</name>
+        <width>900</width>
+        <height>300</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color name="GROUP-BORDER" red="150" green="155" blue="151">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Motion</name>
+        <text>Motion Controller</text>
+        <width>900</width>
+        <height>40</height>
+        <font>
+          <font family="Source Sans Pro" style="BOLD" size="24.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="TEXT-LIGHT" red="230" green="230" blue="230">
+          </color>
+        </foreground_color>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="group" version="2.0.0">
+        <name>Motion GR</name>
+        <x>20</x>
+        <y>40</y>
+        <width>860</width>
+        <height>240</height>
+        <style>3</style>
+        <widget type="bool_button" version="2.0.0">
+          <name>Power off</name>
+          <pv_name>$(P)$(M).CNEN</pv_name>
+          <x>719</x>
+          <y>190</y>
+          <width>120</width>
+          <off_label>   Power OFF</off_label>
+          <off_color>
+            <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
+            </color>
+          </off_color>
+          <on_label>   Power ON</on_label>
+          <on_color>
+            <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+            </color>
+          </on_color>
+          <show_led>false</show_led>
+          <actions>
+          </actions>
+          <rules>
+            <rule name="BorderRule" prop_id="border_style" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>Power off</name>
+          <pv_name>$(P)$(M).MSTA</pv_name>
+          <bit>5</bit>
+          <x>730</x>
+          <y>197</y>
+          <width>17</width>
+          <height>17</height>
+          <off_color>
+            <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
+            </color>
+          </off_color>
+          <on_color>
+            <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+            </color>
+          </on_color>
+          <actions>
+          </actions>
+          <rules>
+            <rule name="BorderRule" prop_id="border_style" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Position RB</name>
+          <text>Position:</text>
+          <x>20</x>
+          <y>50</y>
+          <width>120</width>
+          <horizontal_alignment>2</horizontal_alignment>
+          <vertical_alignment>1</vertical_alignment>
+          <actions>
+          </actions>
+          <border_color>
+            <color name="IO Border" red="215" green="215" blue="215">
+            </color>
+          </border_color>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Acceleration</name>
+          <text>Acceleration:</text>
+          <x>20</x>
+          <y>170</y>
+          <width>90</width>
+          <height>21</height>
+          <background_color>
+            <color name="IO Background" red="255" green="255" blue="205">
+            </color>
+          </background_color>
+          <horizontal_alignment>2</horizontal_alignment>
+          <vertical_alignment>1</vertical_alignment>
+          <actions>
+          </actions>
+          <border_color>
+            <color name="IO Border" red="215" green="215" blue="215">
+            </color>
+          </border_color>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Velocity</name>
+          <text>Velocity:</text>
+          <x>50</x>
+          <y>200</y>
+          <width>60</width>
+          <background_color>
+            <color name="IO Background" red="255" green="255" blue="205">
+            </color>
+          </background_color>
+          <horizontal_alignment>2</horizontal_alignment>
+          <vertical_alignment>1</vertical_alignment>
+          <actions>
+          </actions>
+          <border_color>
+            <color name="IO Border" red="215" green="215" blue="215">
+            </color>
+          </border_color>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>Acceleration</name>
+          <pv_name>$(P)$(R)Acc-RB</pv_name>
+          <x>120</x>
+          <y>170</y>
+          <width>130</width>
+          <rules>
+            <rule name="Border Rule" prop_id="name" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>Velocity</name>
+          <pv_name>$(P)$(R)VelAct</pv_name>
+          <x>120</x>
+          <y>200</y>
+          <width>130</width>
+          <rules>
+            <rule name="BorderRule" prop_id="name" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>Position RB</name>
+          <pv_name>$(P)$(M).RBV</pv_name>
+          <x>150</x>
+          <y>50</y>
+          <width>90</width>
+          <rules>
+            <rule name="BorderRule" prop_id="name" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>Low SW limit</name>
+          <pv_name>$(P)$(M).LLM</pv_name>
+          <x>590</x>
+          <y>50</y>
+          <rules>
+            <rule name="BorderRule" prop_id="name" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>High SW limit</name>
+          <pv_name>$(P)$(M).HLM</pv_name>
+          <x>590</x>
+          <y>20</y>
+          <rules>
+            <rule name="BorderRule" prop_id="name" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Low SW limit</name>
+          <text>Low Software Limit:</text>
+          <x>440</x>
+          <y>50</y>
+          <width>140</width>
+          <horizontal_alignment>2</horizontal_alignment>
+          <vertical_alignment>1</vertical_alignment>
+          <actions>
+          </actions>
+          <border_color>
+            <color name="IO Border" red="215" green="215" blue="215">
+            </color>
+          </border_color>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>High SW limit</name>
+          <text>High Software Limit:</text>
+          <x>440</x>
+          <y>20</y>
+          <width>140</width>
+          <horizontal_alignment>2</horizontal_alignment>
+          <vertical_alignment>1</vertical_alignment>
+          <actions>
+          </actions>
+          <border_color>
+            <color name="IO Border" red="215" green="215" blue="215">
+            </color>
+          </border_color>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>Moving</name>
+          <pv_name>$(P)$(M).MOVN</pv_name>
+          <bit>0</bit>
+          <x>715</x>
+          <y>50</y>
+          <off_color>
+            <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
+            </color>
+          </off_color>
+          <on_color>
+            <color name="LED-YELLOW-ON" red="255" green="235" blue="17">
+            </color>
+          </on_color>
+          <font>
+            <font name="IO Normal" family="arial" style="REGULAR" size="9.900990099009901">
+            </font>
+          </font>
+          <actions>
+          </actions>
+          <rules>
+            <rule name="BorderRule" prop_id="border_style" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>Done moving</name>
+          <pv_name>$(P)$(M).DMOV</pv_name>
+          <bit>0</bit>
+          <x>715</x>
+          <y>20</y>
+          <off_color>
+            <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
+            </color>
+          </off_color>
+          <on_color>
+            <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+            </color>
+          </on_color>
+          <actions>
+          </actions>
+          <rules>
+            <rule name="BorderRule" prop_id="border_style" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Done moving</name>
+          <text>Done moving</text>
+          <x>745</x>
+          <y>20</y>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Moving</name>
+          <text>Moving</text>
+          <x>746</x>
+          <y>50</y>
+        </widget>
+        <widget type="textentry" version="3.0.0">
+          <name>Position SP</name>
+          <pv_name>$(P)$(M).VAL</pv_name>
+          <x>150</x>
+          <y>20</y>
+          <width>90</width>
+          <format>1</format>
+          <show_units>false</show_units>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>HLS</name>
+          <pv_name>$(P)$(M).HLS</pv_name>
+          <bit>0</bit>
+          <x>260</x>
+          <y>20</y>
+          <off_color>
+            <color name="LED-YELLOW-OFF" red="110" green="108" blue="90">
+            </color>
+          </off_color>
+          <on_color>
+            <color name="LED-YELLOW-ON" red="255" green="235" blue="17">
+            </color>
+          </on_color>
+          <actions>
+          </actions>
+          <rules>
+            <rule name="BorderRule" prop_id="border_style" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LLS</name>
+          <pv_name>$(P)$(M).LLS</pv_name>
+          <bit>0</bit>
+          <x>260</x>
+          <y>50</y>
+          <off_color>
+            <color name="LED-YELLOW-OFF" red="110" green="108" blue="90">
+            </color>
+          </off_color>
+          <on_color>
+            <color name="LED-YELLOW-ON" red="255" green="235" blue="17">
+            </color>
+          </on_color>
+          <actions>
+          </actions>
+          <rules>
+            <rule name="BorderRule" prop_id="border_style" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>HLS</name>
+          <text>High Limit Switch</text>
+          <x>290</x>
+          <y>20</y>
+          <width>126</width>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>LLS</name>
+          <text>Low Limit Switch</text>
+          <x>290</x>
+          <y>50</y>
+          <width>126</width>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Position SP</name>
+          <text>Set User Postion:</text>
+          <x>20</x>
+          <y>20</y>
+          <width>120</width>
+          <horizontal_alignment>2</horizontal_alignment>
+          <vertical_alignment>1</vertical_alignment>
+          <actions>
+          </actions>
+          <border_color>
+            <color name="IO Border" red="215" green="215" blue="215">
+            </color>
+          </border_color>
+        </widget>
+        <widget type="bool_button" version="2.0.0">
+          <name>Jogg forward</name>
+          <pv_name>$(P)$(M).JOGF</pv_name>
+          <x>700</x>
+          <y>100</y>
+          <width>140</width>
+          <height>40</height>
+          <off_label>Jogg Foward</off_label>
+          <off_color>
+            <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
+            </color>
+          </off_color>
+          <on_label>JOGF</on_label>
+          <on_color>
+            <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+            </color>
+          </on_color>
+          <actions>
+          </actions>
+          <rules>
+            <rule name="BorderRule" prop_id="border_style" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="bool_button" version="2.0.0">
+          <name>Home forward</name>
+          <pv_name>$(P)$(M).HOMF</pv_name>
+          <x>530</x>
+          <y>100</y>
+          <width>150</width>
+          <height>40</height>
+          <off_label>Home Forward</off_label>
+          <off_color>
+            <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
+            </color>
+          </off_color>
+          <on_label>HOMF</on_label>
+          <on_color>
+            <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+            </color>
+          </on_color>
+          <actions>
+          </actions>
+          <rules>
+            <rule name="BorderRule" prop_id="border_style" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="bool_button" version="2.0.0">
+          <name>Home reverse</name>
+          <pv_name>$(P)$(M).HOMR</pv_name>
+          <x>180</x>
+          <y>100</y>
+          <width>150</width>
+          <height>40</height>
+          <off_label>Home Reverse</off_label>
+          <off_color>
+            <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
+            </color>
+          </off_color>
+          <on_label>HOMR</on_label>
+          <on_color>
+            <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+            </color>
+          </on_color>
+          <actions>
+          </actions>
+          <rules>
+            <rule name="BorderRule" prop_id="border_style" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="bool_button" version="2.0.0">
+          <name>Jogg reverse</name>
+          <pv_name>$(P)$(M).JOGR</pv_name>
+          <x>20</x>
+          <y>100</y>
+          <width>140</width>
+          <height>40</height>
+          <off_label>Jogg Reverse</off_label>
+          <off_color>
+            <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
+            </color>
+          </off_color>
+          <on_label>JOGR</on_label>
+          <on_color>
+            <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+            </color>
+          </on_color>
+          <actions>
+          </actions>
+          <rules>
+            <rule name="BorderRule" prop_id="border_style" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="bool_button" version="2.0.0">
+          <name>Stop</name>
+          <pv_name>$(P)$(M).STOP</pv_name>
+          <x>350</x>
+          <y>100</y>
+          <width>160</width>
+          <height>40</height>
+          <off_label>STOP</off_label>
+          <off_color>
+            <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
+            </color>
+          </off_color>
+          <on_label>STOPPED</on_label>
+          <on_color>
+            <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+            </color>
+          </on_color>
+          <actions>
+          </actions>
+          <rules>
+            <rule name="BorderRule" prop_id="border_style" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="bool_button" version="2.0.0">
+          <name>Reset error</name>
+          <pv_name>$(P)$(R)ErrRst</pv_name>
+          <x>440</x>
+          <y>190</y>
+          <width>120</width>
+          <off_label>Reset Error</off_label>
+          <off_color>
+            <color name="YELLOW-BORDER" red="150" green="144" blue="10">
+            </color>
+          </off_color>
+          <on_label>ErrRst</on_label>
+          <on_color>
+            <color name="ATTENTION" red="252" green="242" blue="17">
+            </color>
+          </on_color>
+          <show_led>false</show_led>
+          <actions>
+          </actions>
+          <rules>
+            <rule name="BorderRule" prop_id="border_style" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="bool_button" version="2.0.0">
+          <name>Use encoder</name>
+          <pv_name>$(P)$(M).UEIP</pv_name>
+          <x>580</x>
+          <y>190</y>
+          <width>120</width>
+          <off_label>Use Encoder</off_label>
+          <off_color>
+            <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
+            </color>
+          </off_color>
+          <on_label>Use Encoder</on_label>
+          <on_color>
+            <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+            </color>
+          </on_color>
+          <actions>
+          </actions>
+          <rules>
+            <rule name="BorderRule" prop_id="border_style" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>9</value>
+              </exp>
+              <pv_name>$(pv_name)</pv_name>
+            </rule>
+          </rules>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="action_button" version="3.0.0">
+          <name>Synchronisation</name>
+          <text>Synchronisation</text>
+          <x>300</x>
+          <y>190</y>
+          <width>120</width>
+          <tooltip>$(actions)</tooltip>
+        </widget>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Description</name>
+      <x>20</x>
+      <y>20</y>
+      <width>1460</width>
+      <height>70</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="rectangle" version="2.0.0">
+        <name>Description BG</name>
+        <width>1460</width>
+        <height>70</height>
+        <line_width>2</line_width>
+        <line_color>
+          <color name="GROUP-BORDER" red="150" green="155" blue="151">
+          </color>
+        </line_color>
+        <background_color>
+          <color name="GROUP-BORDER" red="150" green="155" blue="151">
+          </color>
+        </background_color>
+        <corner_width>10</corner_width>
+        <corner_height>10</corner_height>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>Type</name>
+        <pv_name>$(P)$(M).RTYP</pv_name>
+        <x>1120</x>
+        <y>20</y>
+        <width>140</width>
+        <height>30</height>
+        <font>
+          <font family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="TEXT-LIGHT" red="230" green="230" blue="230">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="BACKGROUND" red="220" green="225" blue="221">
+          </color>
+        </background_color>
+        <transparent>true</transparent>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Type</name>
+        <text>Type:</text>
+        <x>900</x>
+        <y>20</y>
+        <width>210</width>
+        <height>30</height>
+        <font>
+          <font family="Source Sans Pro" style="BOLD" size="24.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="TEXT-LIGHT" red="230" green="230" blue="230">
+          </color>
+        </foreground_color>
+        <horizontal_alignment>2</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>Version</name>
+        <pv_name>$(P)$(M).VERS</pv_name>
+        <x>740</x>
+        <y>20</y>
+        <width>140</width>
+        <height>30</height>
+        <font>
+          <font family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="TEXT-LIGHT" red="230" green="230" blue="230">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="BACKGROUND" red="220" green="225" blue="221">
+          </color>
+        </background_color>
+        <transparent>true</transparent>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Version</name>
+        <text>Motor version:</text>
+        <x>520</x>
+        <y>20</y>
+        <width>210</width>
+        <height>30</height>
+        <font>
+          <font family="Source Sans Pro" style="BOLD" size="24.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="TEXT-LIGHT" red="230" green="230" blue="230">
+          </color>
+        </foreground_color>
+        <horizontal_alignment>2</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>Description</name>
+        <pv_name>$(P)$(M).DESC</pv_name>
+        <x>20</x>
+        <y>20</y>
+        <width>480</width>
+        <height>30</height>
+        <font>
+          <font family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="TEXT-LIGHT" red="230" green="230" blue="230">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="BACKGROUND" red="220" green="225" blue="221">
+          </color>
+        </background_color>
+        <transparent>true</transparent>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+    </widget>
+  </widget>
+</display>
