@@ -15,7 +15,6 @@ STRUCT
 	bHwStatusOK:BOOL;  // Staatus of hardware (IPOS, EL7201, EL3214..)
 	bBusy:BOOL:=FALSE;
 	bEnabled:BOOL:=0;
-	fActPos:LREAL:=0;
 	
 	//Only X and Y
 	bBrakeReleased: BOOL;

@@ -43,6 +43,11 @@ IF main.stHWControlX.bExecuteStop THEN
   GVL.astAxes[1].stControl.bStop := NOT(GVL.astAxes[1].stControl.bStop);
   main.stHWControlX.bExecuteStop:=FALSE;
 END_IF
+
+// Error Code
+GVL.astAxes[1].stStatus.nErrorID;
+
+
 ]]></ST>
     </Implementation>
     <Action Name="ACT_1_Interlock" Id="{ca43ea7f-b212-458e-a066-b237d81a70c7}">
@@ -1140,6 +1145,9 @@ END_IF
       <LineId Id="88" Count="0" />
       <LineId Id="90" Count="1" />
       <LineId Id="93" Count="1" />
+      <LineId Id="111" Count="2" />
+      <LineId Id="115" Count="0" />
+      <LineId Id="114" Count="0" />
       <LineId Id="79" Count="0" />
     </LineIds>
   </POU>
