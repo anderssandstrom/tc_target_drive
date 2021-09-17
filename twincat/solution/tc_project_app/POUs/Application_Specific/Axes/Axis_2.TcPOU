@@ -15,22 +15,22 @@ IF _TaskInfo[fbGetCurTaskIndex.index].FirstCycle THEN
     GVL.astAxes[2].stConfig.fHomeFinishDistance := -1;
 END_IF
 
-//Define ACTIONS() or write exclusive code for an specific axis.
-//Eg. Stop when temperature reaches certain values, reduce speed if  a signal is activated, etc.
-
 ACT_2_Interlock();
 
 // Brake control from GUI
 main.stHWStatusY.bBrakeReleased:=main.stHWControlY.bBrakeReleaseCmd;
 
-// Trigger Abs movement
+// Enable Cmd from GUI
+GVL.astAxes[2].stControl.bEnable:=main.stHWControlY.bEnable;
+
+// Trigger Abs movement from GUI
 IF main.stHWControlY.bExecuteAbsPos  AND NOT GVL.astAxes[2].stStatus.bBusy THEN
   GVL.astAxes[2].stControl.eCommand:=E_MotionFunctions.eMoveAbsolute;
   GVL.astAxes[2].stControl.bExecute:=TRUE;
   main.stHWControlY.bExecuteAbsPos:=FALSE;
 END_IF
 
-// Trigger Home vs LimitFwd (should be valid for all axes)
+// Trigger Home vs LimitFwd (should be valid for all axes) from GUI
 IF main.stHWControlY.bExecuteHome  AND NOT GVL.astAxes[2].stStatus.bBusy THEN
   GVL.astAxes[2].stControl.eCommand:=E_MotionFunctions.eHome;
   GVL.astAxes[2].stConfig.eHomeSeq:=E_HomingRoutines.eHomeToLimit_Fwd;
@@ -38,7 +38,7 @@ IF main.stHWControlY.bExecuteHome  AND NOT GVL.astAxes[2].stStatus.bBusy THEN
   main.stHWControlY.bExecuteHome:=FALSE;
 END_IF
 
-//Stop Motion
+//Stop Motion from GUI
 IF main.stHWControlY.bExecuteStop THEN
   GVL.astAxes[2].stControl.bStop := NOT(GVL.astAxes[2].stControl.bStop);
   main.stHWControlY.bExecuteStop:=FALSE;
@@ -1119,13 +1119,16 @@ END_IF
     </Action>
     <LineIds Name="Axis_2">
       <LineId Id="20" Count="0" />
-      <LineId Id="29" Count="8" />
+      <LineId Id="29" Count="5" />
       <LineId Id="45" Count="0" />
       <LineId Id="44" Count="0" />
       <LineId Id="49" Count="0" />
       <LineId Id="47" Count="0" />
       <LineId Id="50" Count="0" />
-      <LineId Id="56" Count="21" />
+      <LineId Id="78" Count="1" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="80" Count="0" />
+      <LineId Id="57" Count="20" />
       <LineId Id="48" Count="0" />
     </LineIds>
   </POU>

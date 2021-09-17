@@ -15,23 +15,22 @@ IF _TaskInfo[fbGetCurTaskIndex.index].FirstCycle THEN
     GVL.astAxes[3].stConfig.fHomeFinishDistance := -1;
 END_IF
 
-//Define ACTIONS() or write exclusive code for an specific axis.
-//Eg. Stop when temperature reaches certain values, reduce speed if  a signal is activated, etc.
-
 ACT_3_Interlock();
 
 main.stHWStatusZ.bBrakeReleased:=FALSE;  // Not used
 main.stHWControlZ.bBrakeReleaseCmd:=FALSE; // Not used
 
+// Enable Cmd from GUI
+GVL.astAxes[3].stControl.bEnable:=main.stHWControlZ.bEnable;
 
-// Trigger Abs movement
+// Trigger Abs movement from GUI
 IF main.stHWControlZ.bExecuteAbsPos  AND NOT GVL.astAxes[3].stStatus.bBusy THEN
   GVL.astAxes[3].stControl.eCommand:=E_MotionFunctions.eMoveAbsolute;
   GVL.astAxes[3].stControl.bExecute:=TRUE;
   main.stHWControlZ.bExecuteAbsPos:=FALSE;
 END_IF
 
-// Trigger Home vs LimitFwd (should be valid for all axes)
+// Trigger Home vs LimitFwd (should be valid for all axes) from GUI
 IF main.stHWControlZ.bExecuteHome  AND NOT GVL.astAxes[3].stStatus.bBusy THEN
   GVL.astAxes[3].stControl.eCommand:=E_MotionFunctions.eHome;
   GVL.astAxes[3].stConfig.eHomeSeq:=E_HomingRoutines.eHomeToLimit_Fwd;
@@ -39,7 +38,7 @@ IF main.stHWControlZ.bExecuteHome  AND NOT GVL.astAxes[3].stStatus.bBusy THEN
   main.stHWControlZ.bExecuteHome:=FALSE;
 END_IF
 
-//Stop Motion
+//Stop Motion from GUI
 IF main.stHWControlZ.bExecuteStop THEN
   GVL.astAxes[3].stControl.bStop := NOT(GVL.astAxes[3].stControl.bStop);
   main.stHWControlZ.bExecuteStop:=FALSE;
@@ -1879,13 +1878,17 @@ END_IF
     </Action>
     <LineIds Name="Axis_3">
       <LineId Id="20" Count="0" />
-      <LineId Id="29" Count="8" />
+      <LineId Id="29" Count="5" />
       <LineId Id="60" Count="0" />
       <LineId Id="44" Count="0" />
       <LineId Id="63" Count="0" />
       <LineId Id="62" Count="0" />
       <LineId Id="65" Count="0" />
-      <LineId Id="70" Count="21" />
+      <LineId Id="70" Count="0" />
+      <LineId Id="92" Count="0" />
+      <LineId Id="71" Count="0" />
+      <LineId Id="93" Count="0" />
+      <LineId Id="72" Count="19" />
       <LineId Id="64" Count="0" />
     </LineIds>
   </POU>
