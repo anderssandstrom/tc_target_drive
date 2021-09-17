@@ -42,12 +42,15 @@ dbLoadRecords("./db/rotationHome.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
 
 ## Stepper X
 dbLoadRecords("./db/xyz.db","P=${PREFIX},PORT=${ADS_ASYN_PORT},DEV_NAME=X,STRUCT_STAT=stHwStatusX, STRUCT_CMD=stHwControlX")
+dbLoadRecords("./db/tcMotionAxis.db","P=${PREFIX},PORT=${ADS_ASYN_PORT},DEV_NAME=X,AXIS_INDEX=1")
 
 ## Stepper Y
 dbLoadRecords("./db/xyz.db","P=${PREFIX},PORT=${ADS_ASYN_PORT},DEV_NAME=Y,STRUCT_STAT=stHwStatusY, STRUCT_CMD=stHwControlY")
+dbLoadRecords("./db/tcMotionAxis.db","P=${PREFIX},PORT=${ADS_ASYN_PORT},DEV_NAME=Y,AXIS_INDEX=2")
 
 ## Stepper Z
 dbLoadRecords("./db/xyz.db","P=${PREFIX},PORT=${ADS_ASYN_PORT},DEV_NAME=Z,STRUCT_STAT=stHwStatusZ, STRUCT_CMD=stHwControlZ")
+dbLoadRecords("./db/tcMotionAxis.db","P=${PREFIX},PORT=${ADS_ASYN_PORT},DEV_NAME=Z,AXIS_INDEX=3")
 
 # Load hardware
 epicsEnvSet("EC_SLAVE_NUM",    "2")
