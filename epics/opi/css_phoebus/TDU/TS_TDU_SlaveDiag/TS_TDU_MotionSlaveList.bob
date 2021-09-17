@@ -52,7 +52,7 @@
       <actions>
         <action type="open_display">
           <file>TS_TDU_SlaveDiag.bob</file>
-          <target>replace</target>
+          <target>window</target>
           <description>Open Display</description>
         </action>
       </actions>
@@ -80,7 +80,7 @@
       <actions>
         <action type="open_display">
           <file>TS_TDU_SlaveDiag.bob</file>
-          <target>replace</target>
+          <target>window</target>
           <description>Open Display</description>
         </action>
       </actions>
@@ -108,7 +108,7 @@
       <actions>
         <action type="open_display">
           <file>TS_TDU_SlaveDiag.bob</file>
-          <target>replace</target>
+          <target>window</target>
           <description>Open Display</description>
         </action>
       </actions>
@@ -136,7 +136,7 @@
       <actions>
         <action type="open_display">
           <file>TS_TDU_SlaveDiag.bob</file>
-          <target>replace</target>
+          <target>window</target>
           <description>Open Display</description>
         </action>
       </actions>
@@ -164,7 +164,7 @@
       <actions>
         <action type="open_display">
           <file>TS_TDU_SlaveDiag.bob</file>
-          <target>replace</target>
+          <target>window</target>
           <description>Open Display</description>
         </action>
       </actions>
@@ -192,7 +192,7 @@
       <actions>
         <action type="open_display">
           <file>TS_TDU_SlaveDiag.bob</file>
-          <target>replace</target>
+          <target>window</target>
           <description>Open Display</description>
         </action>
       </actions>
@@ -220,7 +220,7 @@
       <actions>
         <action type="open_display">
           <file>TS_TDU_SlaveDiag.bob</file>
-          <target>replace</target>
+          <target>window</target>
           <description>Open Display</description>
         </action>
       </actions>
@@ -248,7 +248,7 @@
       <actions>
         <action type="open_display">
           <file>TS_TDU_SlaveDiag.bob</file>
-          <target>replace</target>
+          <target>window</target>
           <description>Open Display</description>
         </action>
       </actions>
@@ -276,7 +276,7 @@
       <actions>
         <action type="open_display">
           <file>TS_TDU_SlaveDiag.bob</file>
-          <target>replace</target>
+          <target>window</target>
           <description>Open Display</description>
         </action>
       </actions>
@@ -304,7 +304,7 @@
       <actions>
         <action type="open_display">
           <file>TS_TDU_SlaveDiag.bob</file>
-          <target>replace</target>
+          <target>window</target>
           <description>Open Display</description>
         </action>
       </actions>
@@ -332,7 +332,7 @@
       <actions>
         <action type="open_display">
           <file>TS_TDU_SlaveDiag.bob</file>
-          <target>replace</target>
+          <target>window</target>
           <description>Open Display</description>
         </action>
       </actions>
@@ -360,7 +360,7 @@
       <actions>
         <action type="open_display">
           <file>TS_TDU_SlaveDiag.bob</file>
-          <target>replace</target>
+          <target>window</target>
           <description>Open Display</description>
         </action>
       </actions>
@@ -388,7 +388,7 @@
       <actions>
         <action type="open_display">
           <file>TS_TDU_SlaveDiag.bob</file>
-          <target>replace</target>
+          <target>window</target>
           <description>Open Display</description>
         </action>
       </actions>
@@ -403,7 +403,7 @@
     <macros>
       <HW_TYPE>EL6695</HW_TYPE>
       <SLAVE_ID>15</SLAVE_ID>
-      <TOOL_TIP>Communication with Evan :-)</TOOL_TIP>
+      <TOOL_TIP>Communication ICS</TOOL_TIP>
     </macros>
     <x>120</x>
     <y>460</y>
@@ -416,7 +416,7 @@
       <actions>
         <action type="open_display">
           <file>TS_TDU_SlaveDiag.bob</file>
-          <target>replace</target>
+          <target>window</target>
           <description>Open Display</description>
         </action>
       </actions>
@@ -444,7 +444,7 @@
       <actions>
         <action type="open_display">
           <file>TS_TDU_SlaveDiag.bob</file>
-          <target>replace</target>
+          <target>window</target>
           <description>Open Display</description>
         </action>
       </actions>
@@ -458,8 +458,8 @@
     <name>Choice Button</name>
     <x>520</x>
     <y>290</y>
-    <width>0</width>
-    <height>0</height>
+    <width>1</width>
+    <height>1</height>
     <items>
       <item>Item 1</item>
       <item>Item 2</item>
@@ -483,7 +483,7 @@
       <actions>
         <action type="open_display">
           <file>TS_TDU_SlaveDiag.bob</file>
-          <target>replace</target>
+          <target>window</target>
           <description>Open Display</description>
         </action>
       </actions>
@@ -511,7 +511,7 @@
       <actions>
         <action type="open_display">
           <file>TS_TDU_SlaveDiag.bob</file>
-          <target>replace</target>
+          <target>window</target>
           <description>Open Display</description>
         </action>
       </actions>
@@ -539,7 +539,7 @@
       <actions>
         <action type="open_display">
           <file>TS_TDU_SlaveDiag.bob</file>
-          <target>replace</target>
+          <target>window</target>
           <description>Open Display</description>
         </action>
       </actions>
@@ -567,7 +567,7 @@
       <actions>
         <action type="open_display">
           <file>TS_TDU_SlaveDiag.bob</file>
-          <target>replace</target>
+          <target>window</target>
           <description>Open Display</description>
         </action>
       </actions>
