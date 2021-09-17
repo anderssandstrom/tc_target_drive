@@ -1,0 +1,48 @@
+record(ai,"$(P)${DEV_NAME}-PosAct"){
+  field(PINI, "1")
+  field(DTYP, "asynFloat64")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/GVL.astAxes[${AXIS_INDEX}].stStatus.fActPosition?")
+  field(SCAN, "I/O Intr")
+  field(LINR, "SLOPE")
+  field(ESLO, "1")
+  field(EOFF, "0")   
+  field(EGU,  "mm")
+  field(LOLO, "-5")
+  field(LOW,  "-4")
+  field(HIGH, "4")
+  field(HIHI, "5")
+  field(LLSV, "MAJOR")
+  field(HHSV, "MAJOR")
+  field(HSV,  "MINOR")
+  field(LSV,  "MINOR")
+  field(DESC, "${DEV_NAME}: Actual position")
+}
+
+record(ai,"$(P)${DEV_NAME}-VelAct"){
+  field(PINI, "1")
+  field(DTYP, "asynFloat64")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/GVL.astAxes[${AXIS_INDEX}].stStatus.fActVelocity?")
+  field(SCAN, "I/O Intr")
+  field(LINR, "SLOPE")
+  field(ESLO, "1")
+  field(EOFF, "0")   
+  field(EGU,  "mm")
+  field(LOLO, "-1")
+  field(LOW,  "-0.5")
+  field(HIGH, "0.5")
+  field(HIHI, "1")
+  field(LLSV, "MAJOR")
+  field(HHSV, "MAJOR")
+  field(HSV,  "MINOR")
+  field(LSV,  "MINOR")
+  field(DESC, "${DEV_NAME}: Actual velocity")
+}
+
+record(ai,"$(P)${DEV_NAME}-ErrId"){
+  field(PINI, "1")
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/GVL.astAxes[${AXIS_INDEX}].stStatus.nErrorId?")
+  field(SCAN, "I/O Intr")
+  field(DESC, "${DEV_NAME}: Error Code")
+}
+
