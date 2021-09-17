@@ -10,7 +10,10 @@ STRUCT
 	bMinMinMaxMaxFeed  AT %Q* :BOOL;   // s5: ch3: kf05: w02.bg03 w02.bg04 stepper x limit switch max max, limit min min
     bManualInterlockOverride: BOOL;
 	bAllowMotionGUI:BOOL:=FALSE;       // Allow motion from GUI
-	
+	bExecuteAbsPos:BOOL:=FALSE;
+	bExecuteHome:BOOL:=FALSE;
+	bExecuteStop:BOOL:=FALSE;
+	fSetPos:LREAL:=0;
 END_STRUCT
 END_TYPE
 ]]></Declaration>

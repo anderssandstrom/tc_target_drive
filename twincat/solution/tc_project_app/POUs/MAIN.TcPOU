@@ -507,6 +507,10 @@ IF stcmdEpics.bReset THEN
   stHwStatusRot.sErrorStr:=GVL_ErrorCodes.nErrorCodeOKStr;
   stHwStatusRot.bBrake1TempAlarm:=FALSE;
   stHwStatusRot.bBrake2TempAlarm:=FALSE;
+  GVL.astAxes[1].stControl.bReset:=NOT(GVL.astAxes[1].stControl.bReset);
+  GVL.astAxes[2].stControl.bReset:=NOT(GVL.astAxes[2].stControl.bReset);
+  GVL.astAxes[3].stControl.bReset:=NOT(GVL.astAxes[3].stControl.bReset);
+  
 END_IF
 stcmdEpics.bReset:=FALSE;]]></ST>
       </Implementation>
@@ -769,6 +773,7 @@ stcmdEpics.bReset:=FALSE;]]></ST>
       <LineId Id="54" Count="1" />
       <LineId Id="53" Count="0" />
       <LineId Id="33" Count="7" />
+      <LineId Id="59" Count="3" />
       <LineId Id="1" Count="0" />
       <LineId Id="58" Count="0" />
     </LineIds>

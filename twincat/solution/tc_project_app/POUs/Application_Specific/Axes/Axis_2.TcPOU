@@ -22,6 +22,28 @@ ACT_2_Interlock();
 
 // Brake control from GUI
 main.stHWStatusY.bBrakeReleased:=main.stHWControlY.bBrakeReleaseCmd;
+
+// Trigger Abs movement
+IF main.stHWControlY.bExecuteAbsPos  AND NOT GVL.astAxes[2].stStatus.bBusy THEN
+  GVL.astAxes[2].stControl.eCommand:=E_MotionFunctions.eMoveAbsolute;
+  GVL.astAxes[2].stControl.bExecute:=TRUE;
+  main.stHWControlY.bExecuteAbsPos:=FALSE;
+END_IF
+
+// Trigger Home vs LimitFwd (should be valid for all axes)
+IF main.stHWControlY.bExecuteHome  AND NOT GVL.astAxes[2].stStatus.bBusy THEN
+  GVL.astAxes[2].stControl.eCommand:=E_MotionFunctions.eHome;
+  GVL.astAxes[2].stConfig.eHomeSeq:=E_HomingRoutines.eHomeToLimit_Fwd;
+  GVL.astAxes[2].stControl.bExecute:=TRUE;
+  main.stHWControlY.bExecuteHome:=FALSE;
+END_IF
+
+//Stop Motion
+IF main.stHWControlY.bExecuteStop THEN
+  GVL.astAxes[2].stControl.bStop := NOT(GVL.astAxes[2].stControl.bStop);
+  main.stHWControlY.bExecuteStop:=FALSE;
+END_IF
+
 ]]></ST>
     </Implementation>
     <Action Name="ACT_2_Interlock" Id="{c949121c-9701-4c5f-8bc8-3c78316b1a11}">
@@ -1103,6 +1125,7 @@ main.stHWStatusY.bBrakeReleased:=main.stHWControlY.bBrakeReleaseCmd;
       <LineId Id="49" Count="0" />
       <LineId Id="47" Count="0" />
       <LineId Id="50" Count="0" />
+      <LineId Id="56" Count="21" />
       <LineId Id="48" Count="0" />
     </LineIds>
   </POU>
