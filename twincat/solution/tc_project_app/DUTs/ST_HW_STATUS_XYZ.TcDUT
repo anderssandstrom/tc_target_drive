@@ -12,9 +12,12 @@ STRUCT
 	bLimitMinMin:BOOL;
 	bSumILOK:BOOL;
 	bManualInterlockOverride:BOOL;
-	bHwStatusOK:BOOL;  // Staatus of hardware (IPOS, EL7201, EL3214..)
+	bHwStatusOK:BOOL;  // Staatus of hardware (IPOS, EL7201, EL3214, fuses..)
+	bFwdBwdILOK:BOOL:=FALSE;
 	bBusy:BOOL:=FALSE;
-	bEnabled:BOOL:=0;
+	bEnabled:BOOL:=FALSE;
+	bHomed:BOOL:=FALSE;
+	bHomingCmdActive:BOOL:=FALSE;
 	
 	//Only X and Y
 	bBrakeReleased: BOOL;
