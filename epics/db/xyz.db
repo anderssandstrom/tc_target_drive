@@ -163,6 +163,36 @@ record(bi,"$(P)${DEV_NAME}-HwOK"){
   field(DESC, "${DEV_NAME}: Hardware Interlock")
 }
 
+record(bi,"$(P)${DEV_NAME}-BwdFwdSummryILOK"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bFwdBwdILOk?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Not OK")
+  field(ONAM, "OK")
+  field(DESC, "${DEV_NAME}: Summary IL OK Bwd+Fwd")
+}
+
+record(bi,"$(P)${DEV_NAME}-Homed"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bHomed?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Not Homed")
+  field(ONAM, "Homed")
+  field(DESC, "${DEV_NAME}: Homed")
+}
+
+record(bi,"$(P)${DEV_NAME}-HomingCmdActive"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bHomingCmdActive?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Not Homing")
+  field(ONAM, "Homing")
+  field(DESC, "${DEV_NAME}: Homed")
+}
+
 # Motion axis
 record(bo,"$(P)${DEV_NAME}-ExePosCmd"){
   info(asyn:READBACK,"1")

@@ -40,6 +40,11 @@ dbLoadRecords("./db/indraDriveCommand.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
 #dbLoadRecords("./db/brake.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
 dbLoadRecords("./db/rotationHome.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
 
+
+## general Stuff, Fuses and so
+dbLoadRecords("./db/general.db","P=${PREFIX},PORT=${ADS_ASYN_PORT},DEV_NAME=DEV")
+
+
 ## Stepper X
 dbLoadRecords("./db/xyz.db","P=${PREFIX},PORT=${ADS_ASYN_PORT},DEV_NAME=X,STRUCT_STAT=stHwStatusX, STRUCT_CMD=stHwControlX")
 dbLoadRecords("./db/tcMotionAxis.db","P=${PREFIX},PORT=${ADS_ASYN_PORT},DEV_NAME=X,AXIS_INDEX=1")

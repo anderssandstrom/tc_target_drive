@@ -56,3 +56,22 @@ record(ao,"$(P)${DEV_NAME}-PosCmd"){
   field(DESC, "${DEV_NAME}: Position Setpoint")
 }
 
+record(bi,"$(P)${DEV_NAME}-SumILFwd"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/GVL.astAxes[${AXIS_INDEX}].stStatus.bFwEnabled?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "FWD not Allowed")
+  field(ONAM, "FWD Allowed")
+  field(DESC, "${DEV_NAME}: FWD Motion Allowed")
+}
+
+record(bi,"$(P)${DEV_NAME}-SumILBwd"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/GVL.astAxes[${AXIS_INDEX}].stStatus.bBwEnabled?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "BWD not Allowed")
+  field(ONAM, "BWD Allowed")
+  field(DESC, "${DEV_NAME}: BWD Motion Allowed")
+}
