@@ -51,6 +51,10 @@ main.stHWControlZ.bExecuteReset:=FALSE;
 main.stHWStatusZ.bHomed:=GVL.astAxes[3].stStatus.bHomed;
 main.stHWStatusZ.bHomingCmdActive:=GVL.astAxes[3].stControl.eCommand=E_MotionFunctions.eHome AND 
                                    GVL.astAxes[3].stConfig.eHomeSeq=E_HomingRoutines.eHomeToLimit_Fwd;
+
+GVL.astAxes[3].stControl.fAcceleration:=GVL_Parameters.fStepperTargetAcc;
+GVL.astAxes[3].stControl.fDeceleration:=GVL_Parameters.fStepperTargetAcc;
+GVL.astAxes[3].stControl.fVelocity:=GVL_Parameters.fStepperTargetVelo;
 ]]></ST>
     </Implementation>
     <Action Name="ACT_3_Interlock" Id="{9a8d4546-6892-40d1-9370-4b045bf9101e}">
@@ -1932,7 +1936,9 @@ main.stHWStatusZ.bHomingCmdActive:=GVL.astAxes[3].stControl.eCommand=E_MotionFun
       <LineId Id="64" Count="0" />
       <LineId Id="98" Count="0" />
       <LineId Id="101" Count="1" />
+      <LineId Id="105" Count="2" />
       <LineId Id="99" Count="0" />
+      <LineId Id="108" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
