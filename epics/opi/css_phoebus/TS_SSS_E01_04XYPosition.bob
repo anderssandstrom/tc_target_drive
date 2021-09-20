@@ -551,6 +551,8 @@
         <x>39</x>
         <y>40</y>
         <width>80</width>
+        <minimum>-5.0</minimum>
+        <maximum>5.0</maximum>
         <increment>0.1</increment>
       </widget>
       <widget type="label" version="2.0.0">
@@ -587,6 +589,7 @@
         <x>39</x>
         <y>30</y>
         <width>80</width>
+        <show_units>false</show_units>
         <horizontal_alignment>1</horizontal_alignment>
       </widget>
       <widget type="label" version="2.0.0">
@@ -1024,10 +1027,6 @@
       <actions>
         <action type="open_display">
           <file>TDU/TS_TDU_Interlocks/TS_SSS_E01_034_XYZ_Interlocks.bob</file>
-          <macros>
-            <DEV_NAME>X</DEV_NAME>
-            <PREFIX>TARGET_DU</PREFIX>
-          </macros>
           <target>window</target>
           <description>Open Display</description>
         </action>
@@ -1045,7 +1044,7 @@
           <file>TDU/TS_TDU_SlaveDiag/TS_TDU_MotionSlaveList.bob</file>
           <macros>
             <DEV_NAME>X</DEV_NAME>
-            <PREFIX>TARGET_DU</PREFIX>
+            <PREFIX>TARGET_DU:</PREFIX>
           </macros>
           <target>window</target>
           <description>Open Display</description>
@@ -1753,10 +1752,6 @@
       <actions>
         <action type="open_display">
           <file>TDU/TS_TDU_Interlocks/TS_SSS_E01_034_XYZ_Interlocks.bob</file>
-          <macros>
-            <DEV_NAME>Y</DEV_NAME>
-            <PREFIX>TARGET_DU</PREFIX>
-          </macros>
           <target>window</target>
           <description>Open Display</description>
         </action>
@@ -1772,10 +1767,6 @@
       <actions>
         <action type="open_display">
           <file>TDU/TS_TDU_SlaveDiag/TS_TDU_MotionSlaveList.bob</file>
-          <macros>
-            <DEV_NAME>X</DEV_NAME>
-            <PREFIX>TARGET_DU</PREFIX>
-          </macros>
           <target>window</target>
           <description>Open Display</description>
         </action>

@@ -77,6 +77,8 @@ record(bi,"$(P)${DEV_NAME}-LimitMaxMax"){
   field(SCAN, "I/O Intr")
   field(ZNAM, "Activated")
   field(ONAM, "OK")
+  field(ZSV, "MAJOR")
+  field(OSV, "NO_ALARM")
   field(DESC, "${DEV_NAME}: Limit Max Max")
 }
 
@@ -87,6 +89,8 @@ record(bi,"$(P)${DEV_NAME}-LimitMinMin"){
   field(SCAN, "I/O Intr")
   field(ZNAM, "Activated")
   field(ONAM, "OK")
+  field(ZSV, "MAJOR")
+  field(OSV, "NO_ALARM")
   field(DESC, "${DEV_NAME}: Limit Min Min")
 }
 
@@ -117,6 +121,8 @@ record(bi,"$(P)${DEV_NAME}-ManunalILOverride"){
   field(SCAN, "I/O Intr")
   field(ZNAM, "OK")
   field(ONAM, "Override")
+  field(ZSV, "NO_ALARM")
+  field(OSV, "MAJOR")
   field(DESC, "${DEV_NAME}: Summary Interlock OK")
 }
 
@@ -140,6 +146,8 @@ record(bi,"$(P)${DEV_NAME}-LimitMinMinPark"){
   field(SCAN, "I/O Intr")
   field(ZNAM, "Activated")
   field(ONAM, "OK")
+  field(ZSV, "MAJOR")
+  field(OSV, "NO_ALARM")
   field(DESC, "${DEV_NAME}: Limit Min Min Park")
 }
 
@@ -160,6 +168,8 @@ record(bi,"$(P)${DEV_NAME}-HwOK"){
   field(SCAN, "I/O Intr")
   field(ZNAM, "HW Error")
   field(ONAM, "OK")
+  field(ZSV, "MAJOR")
+  field(OSV, "NO_ALARM")
   field(DESC, "${DEV_NAME}: Hardware Interlock")
 }
 
