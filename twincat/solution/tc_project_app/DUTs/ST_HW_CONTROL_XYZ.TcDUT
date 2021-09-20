@@ -13,6 +13,7 @@ STRUCT
 	bExecuteHome:BOOL:=FALSE;
 	bExecuteStop:BOOL:=FALSE;
 	bEnable:BOOL:=FALSE;
+	bExecuteReset:BOOL:=FALSE;
 END_STRUCT
 END_TYPE
 ]]></Declaration>

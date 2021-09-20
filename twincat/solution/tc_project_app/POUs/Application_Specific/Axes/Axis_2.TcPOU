@@ -22,6 +22,7 @@ main.stHWStatusY.bBrakeReleased:=main.stHWControlY.bBrakeReleaseCmd;
 
 // Enable Cmd from GUI
 GVL.astAxes[2].stControl.bEnable:=main.stHWControlY.bEnable;
+main.stHWStatusY.bEnabled:=GVL.astAxes[2].stStatus.bEnabled;
 
 // Trigger Abs movement from GUI
 IF main.stHWControlY.bExecuteAbsPos  AND NOT GVL.astAxes[2].stStatus.bBusy THEN
@@ -44,6 +45,9 @@ IF main.stHWControlY.bExecuteStop THEN
   main.stHWControlY.bExecuteStop:=FALSE;
 END_IF
 
+main.stHWStatusY.bBusy:=GVL.astAxes[2].stStatus.bBusy;
+GVL.astAxes[2].stControl.bReset:=main.stHWControlZ.bExecuteReset;
+main.stHWControlY.bExecuteReset:=FALSE;
 ]]></ST>
     </Implementation>
     <Action Name="ACT_2_Interlock" Id="{c949121c-9701-4c5f-8bc8-3c78316b1a11}">
@@ -1127,8 +1131,13 @@ END_IF
       <LineId Id="50" Count="0" />
       <LineId Id="78" Count="1" />
       <LineId Id="56" Count="0" />
+      <LineId Id="81" Count="0" />
       <LineId Id="80" Count="0" />
-      <LineId Id="57" Count="20" />
+      <LineId Id="57" Count="19" />
+      <LineId Id="82" Count="0" />
+      <LineId Id="77" Count="0" />
+      <LineId Id="83" Count="0" />
+      <LineId Id="85" Count="0" />
       <LineId Id="48" Count="0" />
     </LineIds>
   </POU>
