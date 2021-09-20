@@ -15,22 +15,22 @@ IF _TaskInfo[fbGetCurTaskIndex.index].FirstCycle THEN
     GVL.astAxes[1].stConfig.fHomeFinishDistance := -1;
 END_IF
 
-//Define ACTIONS() or write exclusive code for an specific axis.
-//Eg. Stop when temperature reaches certain values, reduce speed if  a signal is activated, etc.
-
 ACT_1_Interlock();
 
 // Brake control from GUI
 main.stHWStatusX.bBrakeReleased:=main.stHWControlX.bBrakeReleaseCmd;
 
-// Trigger Abs movement
+// Enable Cmd from GUI
+GVL.astAxes[1].stControl.bEnable:=main.stHWControlX.bEnable;
+
+// Trigger Abs movement from GUI
 IF main.stHWControlX.bExecuteAbsPos  AND NOT GVL.astAxes[1].stStatus.bBusy THEN
   GVL.astAxes[1].stControl.eCommand:=E_MotionFunctions.eMoveAbsolute;
   GVL.astAxes[1].stControl.bExecute:=TRUE;
   main.stHWControlX.bExecuteAbsPos:=FALSE;
 END_IF
 
-// Trigger Home vs LimitFwd (should be valid for all axes)
+// Trigger Home vs LimitFwd (should be valid for all axes) from GUI
 IF main.stHWControlX.bExecuteHome  AND NOT GVL.astAxes[1].stStatus.bBusy THEN
   GVL.astAxes[1].stControl.eCommand:=E_MotionFunctions.eHome;
   GVL.astAxes[1].stConfig.eHomeSeq:=E_HomingRoutines.eHomeToLimit_Fwd;
@@ -38,11 +38,14 @@ IF main.stHWControlX.bExecuteHome  AND NOT GVL.astAxes[1].stStatus.bBusy THEN
   main.stHWControlX.bExecuteHome:=FALSE;
 END_IF
 
-//Stop Motion
+//Stop Motion from GUI
 IF main.stHWControlX.bExecuteStop THEN
   GVL.astAxes[1].stControl.bStop := NOT(GVL.astAxes[1].stControl.bStop);
   main.stHWControlX.bExecuteStop:=FALSE;
 END_IF
+
+// Error Code
+GVL.astAxes[1].stStatus.nErrorID;
 
 
 ]]></ST>
@@ -1119,11 +1122,14 @@ END_IF
       </Implementation>
     </Action>
     <LineIds Name="Axis_1">
-      <LineId Id="46" Count="11" />
+      <LineId Id="46" Count="6" />
+      <LineId Id="56" Count="1" />
       <LineId Id="66" Count="0" />
       <LineId Id="65" Count="0" />
       <LineId Id="71" Count="0" />
+      <LineId Id="108" Count="1" />
       <LineId Id="87" Count="0" />
+      <LineId Id="110" Count="0" />
       <LineId Id="81" Count="0" />
       <LineId Id="77" Count="1" />
       <LineId Id="41" Count="0" />
@@ -1135,12 +1141,13 @@ END_IF
       <LineId Id="99" Count="0" />
       <LineId Id="101" Count="0" />
       <LineId Id="96" Count="0" />
-      <LineId Id="104" Count="0" />
+      <LineId Id="106" Count="0" />
       <LineId Id="88" Count="0" />
       <LineId Id="90" Count="1" />
       <LineId Id="93" Count="1" />
-      <LineId Id="84" Count="0" />
-      <LineId Id="80" Count="0" />
+      <LineId Id="111" Count="2" />
+      <LineId Id="115" Count="0" />
+      <LineId Id="114" Count="0" />
       <LineId Id="79" Count="0" />
     </LineIds>
   </POU>

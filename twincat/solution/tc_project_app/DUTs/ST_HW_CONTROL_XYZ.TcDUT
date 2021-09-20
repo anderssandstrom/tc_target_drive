@@ -4,7 +4,6 @@
     <Declaration><![CDATA[
 TYPE ST_HW_CONTROL_XYZ :
 STRUCT
-	
 	bMinMaxFeed  AT %Q* :BOOL;         // s5: ch1: kf05: w02.bg01 w02.bg02 stepper x limit switch max, limit min
 	bBrakeReleaseCmd  AT %Q* :BOOL;    // s5: ch2: kf05: w02.ql1: stepper x brake ONLY x and Y
 	bMinMinMaxMaxFeed  AT %Q* :BOOL;   // s5: ch3: kf05: w02.bg03 w02.bg04 stepper x limit switch max max, limit min min
@@ -13,7 +12,7 @@ STRUCT
 	bExecuteAbsPos:BOOL:=FALSE;
 	bExecuteHome:BOOL:=FALSE;
 	bExecuteStop:BOOL:=FALSE;
-	fSetPos:LREAL:=0;
+	bEnable:BOOL:=FALSE;
 END_STRUCT
 END_TYPE
 ]]></Declaration>
