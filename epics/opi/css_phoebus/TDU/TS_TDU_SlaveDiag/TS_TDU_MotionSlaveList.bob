@@ -56,7 +56,7 @@
           <description>Open Display</description>
         </action>
       </actions>
-      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <pv_name>$(PREFIX)ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
       <text>S$(SLAVE_ID): $(HW_TYPE)</text>
       <width>200</width>
       <tooltip>$(TOOL_TIP)</tooltip>
@@ -84,7 +84,7 @@
           <description>Open Display</description>
         </action>
       </actions>
-      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <pv_name>$(PREFIX)ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
       <text>S$(SLAVE_ID): $(HW_TYPE)</text>
       <width>200</width>
       <tooltip>$(TOOL_TIP)</tooltip>
@@ -112,7 +112,7 @@
           <description>Open Display</description>
         </action>
       </actions>
-      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <pv_name>$(PREFIX)ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
       <text>S$(SLAVE_ID): $(HW_TYPE)</text>
       <width>200</width>
       <tooltip>$(TOOL_TIP)</tooltip>
@@ -140,7 +140,7 @@
           <description>Open Display</description>
         </action>
       </actions>
-      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <pv_name>$(PREFIX)ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
       <text>S$(SLAVE_ID): $(HW_TYPE)</text>
       <width>200</width>
       <tooltip>$(TOOL_TIP)</tooltip>
@@ -168,7 +168,7 @@
           <description>Open Display</description>
         </action>
       </actions>
-      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <pv_name>$(PREFIX)ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
       <text>S$(SLAVE_ID): $(HW_TYPE)</text>
       <width>200</width>
       <tooltip>$(TOOL_TIP)</tooltip>
@@ -196,7 +196,7 @@
           <description>Open Display</description>
         </action>
       </actions>
-      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <pv_name>$(PREFIX)ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
       <text>S$(SLAVE_ID): $(HW_TYPE)</text>
       <width>200</width>
       <tooltip>$(TOOL_TIP)</tooltip>
@@ -224,7 +224,7 @@
           <description>Open Display</description>
         </action>
       </actions>
-      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <pv_name>$(PREFIX)ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
       <text>S$(SLAVE_ID): $(HW_TYPE)</text>
       <width>200</width>
       <tooltip>$(TOOL_TIP)</tooltip>
@@ -252,7 +252,7 @@
           <description>Open Display</description>
         </action>
       </actions>
-      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <pv_name>$(PREFIX)ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
       <text>S$(SLAVE_ID): $(HW_TYPE)</text>
       <width>200</width>
       <tooltip>$(TOOL_TIP)</tooltip>
@@ -280,7 +280,7 @@
           <description>Open Display</description>
         </action>
       </actions>
-      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <pv_name>$(PREFIX)ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
       <text>S$(SLAVE_ID): $(HW_TYPE)</text>
       <width>200</width>
       <tooltip>$(TOOL_TIP)</tooltip>
@@ -308,7 +308,7 @@
           <description>Open Display</description>
         </action>
       </actions>
-      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <pv_name>$(PREFIX)ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
       <text>S$(SLAVE_ID): $(HW_TYPE)</text>
       <width>200</width>
       <tooltip>$(TOOL_TIP)</tooltip>
@@ -336,7 +336,7 @@
           <description>Open Display</description>
         </action>
       </actions>
-      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <pv_name>$(PREFIX)ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
       <text>S$(SLAVE_ID): $(HW_TYPE)</text>
       <width>200</width>
       <tooltip>$(TOOL_TIP)</tooltip>
@@ -364,7 +364,7 @@
           <description>Open Display</description>
         </action>
       </actions>
-      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <pv_name>$(PREFIX)ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
       <text>S$(SLAVE_ID): $(HW_TYPE)</text>
       <width>200</width>
       <tooltip>$(TOOL_TIP)</tooltip>
@@ -392,7 +392,7 @@
           <description>Open Display</description>
         </action>
       </actions>
-      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <pv_name>$(PREFIX)ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
       <text>S$(SLAVE_ID): $(HW_TYPE)</text>
       <width>200</width>
       <tooltip>$(TOOL_TIP)</tooltip>
@@ -420,7 +420,7 @@
           <description>Open Display</description>
         </action>
       </actions>
-      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <pv_name>$(PREFIX)ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
       <text>S$(SLAVE_ID): $(HW_TYPE)</text>
       <width>200</width>
       <tooltip>$(TOOL_TIP)</tooltip>
@@ -448,7 +448,7 @@
           <description>Open Display</description>
         </action>
       </actions>
-      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <pv_name>$(PREFIX)ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
       <text>S$(SLAVE_ID): $(HW_TYPE)</text>
       <width>200</width>
       <tooltip>$(TOOL_TIP)</tooltip>
@@ -487,7 +487,7 @@
           <description>Open Display</description>
         </action>
       </actions>
-      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <pv_name>$(PREFIX)ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
       <text>S$(SLAVE_ID): $(HW_TYPE)</text>
       <width>200</width>
       <tooltip>$(TOOL_TIP)</tooltip>
@@ -515,7 +515,7 @@
           <description>Open Display</description>
         </action>
       </actions>
-      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <pv_name>$(PREFIX)ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
       <text>S$(SLAVE_ID): $(HW_TYPE)</text>
       <width>200</width>
       <tooltip>$(TOOL_TIP)</tooltip>
@@ -543,7 +543,7 @@
           <description>Open Display</description>
         </action>
       </actions>
-      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <pv_name>$(PREFIX)ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
       <text>S$(SLAVE_ID): $(HW_TYPE)</text>
       <width>200</width>
       <tooltip>$(TOOL_TIP)</tooltip>
@@ -571,7 +571,7 @@
           <description>Open Display</description>
         </action>
       </actions>
-      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <pv_name>$(PREFIX)ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
       <text>S$(SLAVE_ID): $(HW_TYPE)</text>
       <width>200</width>
       <tooltip>$(TOOL_TIP)</tooltip>

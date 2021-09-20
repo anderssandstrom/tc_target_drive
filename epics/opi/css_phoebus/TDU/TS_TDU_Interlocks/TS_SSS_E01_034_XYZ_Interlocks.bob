@@ -45,7 +45,7 @@
     <transparent>true</transparent>
     <widget type="led" version="2.0.0">
       <name>LED_28</name>
-      <pv_name>$(PREFIX):$(DEV_NAME)-EstopOK</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-EstopOK</pv_name>
       <x>126</x>
       <y>2</y>
       <off_color>
@@ -93,7 +93,7 @@
     <transparent>true</transparent>
     <widget type="led" version="2.0.0">
       <name>LED_44</name>
-      <pv_name>$(PREFIX):$(DEV_NAME)-AllowMotionCmd</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-AllowMotionCmd</pv_name>
       <x>126</x>
       <y>2</y>
       <off_color>
@@ -141,7 +141,7 @@
     <transparent>true</transparent>
     <widget type="led" version="2.0.0">
       <name>LED_45</name>
-      <pv_name>$(PREFIX):$(DEV_NAME)-LimitMaxMax</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-LimitMaxMax</pv_name>
       <x>126</x>
       <y>2</y>
       <off_color>
@@ -189,7 +189,7 @@
     <transparent>true</transparent>
     <widget type="led" version="2.0.0">
       <name>LED_47</name>
-      <pv_name>$(PREFIX):$(DEV_NAME)-TempAct.STAT</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-TempAct.STAT</pv_name>
       <x>126</x>
       <y>2</y>
       <off_color>
@@ -241,7 +241,7 @@
     <transparent>true</transparent>
     <widget type="led" version="2.0.0">
       <name>LED_48</name>
-      <pv_name>$(PREFIX):$(DEV_NAME)-LimitMinMin</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-LimitMinMin</pv_name>
       <x>126</x>
       <y>2</y>
       <off_color>
@@ -289,7 +289,7 @@
     <transparent>true</transparent>
     <widget type="led" version="2.0.0">
       <name>LED_49</name>
-      <pv_name>$(PREFIX):Dev-BeamOff</pv_name>
+      <pv_name>$(PREFIX)Dev-BeamOff</pv_name>
       <x>126</x>
       <y>2</y>
       <off_color>
@@ -337,7 +337,7 @@
     <transparent>true</transparent>
     <widget type="led" version="2.0.0">
       <name>LED_50</name>
-      <pv_name>$(PREFIX):$(DEV_NAME)-HwOK</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-HwOK</pv_name>
       <x>126</x>
       <y>2</y>
       <off_color>
@@ -385,7 +385,7 @@
     <transparent>true</transparent>
     <widget type="led" version="2.0.0">
       <name>LED_51</name>
-      <pv_name>$(PREFIX):$(DEV_NAME)-BrakeReleased</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-BrakeReleased</pv_name>
       <x>126</x>
       <y>2</y>
       <off_color>
@@ -433,7 +433,7 @@
     <transparent>true</transparent>
     <widget type="led" version="2.0.0">
       <name>LED_53</name>
-      <pv_name>$(PREFIX):$(DEV_NAME)-ErrId</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-ErrId</pv_name>
       <x>126</x>
       <y>2</y>
       <off_color>
@@ -504,7 +504,7 @@
               </color>
             </value>
           </exp>
-          <pv_name>$(PREFIX):$(DEV_NAME)-ManunalILOverride</pv_name>
+          <pv_name>$(PREFIX)$(DEV_NAME)-ManunalILOverride</pv_name>
           <pv_name>sim://ramp(0,1,1)</pv_name>
         </rule>
       </rules>
@@ -538,7 +538,7 @@
       <transparent>true</transparent>
       <widget type="led" version="2.0.0">
         <name>LED_89</name>
-        <pv_name>$(PREFIX):$(DEV_NAME)-ManunalILOverride</pv_name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-ManunalILOverride</pv_name>
         <x>126</x>
         <y>2</y>
         <off_color>
@@ -582,7 +582,7 @@
     </widget>
     <widget type="led" version="2.0.0">
       <name>LED_95</name>
-      <pv_name>$(PREFIX):$(DEV_NAME)-BwdFwdSummryILOK</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-BwdFwdSummryILOK</pv_name>
       <x>128</x>
       <y>11</y>
       <off_color>
@@ -622,7 +622,7 @@
       <transparent>true</transparent>
       <widget type="led" version="2.0.0">
         <name>LED_66</name>
-        <pv_name>$(PREFIX):$(DEV_NAME)-LimitMax</pv_name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-LimitMax</pv_name>
         <x>126</x>
         <y>2</y>
         <off_color>
@@ -688,7 +688,7 @@
       </widget>
       <widget type="led" version="2.0.0">
         <name>LED_85</name>
-        <pv_name>$(PREFIX):$(DEV_NAME)-SumILOK</pv_name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-SumILOK</pv_name>
         <x>127</x>
         <y>4</y>
         <off_color>
@@ -768,7 +768,7 @@
       <transparent>true</transparent>
       <widget type="led" version="2.0.0">
         <name>LED_84</name>
-        <pv_name>$(PREFIX):$(DEV_NAME)-LimitMin</pv_name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-LimitMin</pv_name>
         <x>126</x>
         <y>2</y>
         <off_color>
@@ -820,7 +820,7 @@
     </widget>
     <widget type="led" version="2.0.0">
       <name>LED_94</name>
-      <pv_name>$(PREFIX):$(DEV_NAME)-SumILOK</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-SumILOK</pv_name>
       <x>126</x>
       <y>9</y>
       <off_color>
@@ -898,7 +898,7 @@
   </widget>
   <widget type="led" version="2.0.0">
     <name>LED_26</name>
-    <pv_name>$(PREFIX):$(DEV_NAME)-ErrId</pv_name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-ErrId</pv_name>
     <x>862</x>
     <y>1250</y>
     <off_color>
@@ -924,7 +924,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_1</name>
-    <pv_name>$(PREFIX):$(DEV_NAME)-ErrId</pv_name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-ErrId</pv_name>
     <x>752</x>
     <y>1250</y>
     <format>4</format>
@@ -947,7 +947,7 @@
         <exp bool_exp="pv0==0">
           <expression>0</expression>
         </exp>
-        <pv_name>$(PREFIX):$(DEV_NAME)-ManunalILOverride</pv_name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-ManunalILOverride</pv_name>
       </rule>
     </rules>
   </widget>
@@ -976,7 +976,7 @@
             </color>
           </value>
         </exp>
-        <pv_name>$(PREFIX):$(DEV_NAME)-ManunalILOverride</pv_name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-ManunalILOverride</pv_name>
         <pv_name>sim://ramp(0,1,1)</pv_name>
       </rule>
     </rules>
@@ -991,7 +991,7 @@
     <transparent>true</transparent>
     <widget type="led" version="2.0.0">
       <name>LED_11</name>
-      <pv_name>$(PREFIX):$(DEV_NAME)-LimitMaxMax</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-LimitMaxMax</pv_name>
       <x>249</x>
       <off_color>
         <color name="LED-RED-ON" red="255" green="60" blue="46">
@@ -1009,7 +1009,7 @@
     <transparent>true</transparent>
     <widget type="led" version="2.0.0">
       <name>LED_12</name>
-      <pv_name>$(PREFIX):$(DEV_NAME)-LimitMax</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-LimitMax</pv_name>
       <x>249</x>
       <off_color>
         <color name="LED-RED-ON" red="255" green="60" blue="46">
@@ -1027,7 +1027,7 @@
     <transparent>true</transparent>
     <widget type="led" version="2.0.0">
       <name>LED_13</name>
-      <pv_name>$(PREFIX):$(DEV_NAME)-LimitMin</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-LimitMin</pv_name>
       <x>249</x>
       <off_color>
         <color name="LED-RED-ON" red="255" green="60" blue="46">
@@ -1045,7 +1045,7 @@
     <transparent>true</transparent>
     <widget type="led" version="2.0.0">
       <name>LED_14</name>
-      <pv_name>$(PREFIX):$(DEV_NAME)-LimitMinMin</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-LimitMinMin</pv_name>
       <x>249</x>
       <off_color>
         <color name="LED-RED-ON" red="255" green="60" blue="46">
@@ -1063,7 +1063,7 @@
     <transparent>true</transparent>
     <widget type="led" version="2.0.0">
       <name>LED_17</name>
-      <pv_name>$(PREFIX):$(DEV_NAME)-SumILOK</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-SumILOK</pv_name>
       <x>249</x>
       <off_color>
         <color name="LED-RED-ON" red="255" green="60" blue="46">
@@ -1081,7 +1081,7 @@
     <transparent>true</transparent>
     <widget type="led" version="2.0.0">
       <name>LED_18</name>
-      <pv_name>$(PREFIX):$(DEV_NAME)-ManunalILOverride</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-ManunalILOverride</pv_name>
       <x>249</x>
       <off_color>
         <color name="LED-GREEN-ON" red="70" green="255" blue="70">
@@ -1103,7 +1103,7 @@
     <transparent>true</transparent>
     <widget type="led" version="2.0.0">
       <name>LED_20</name>
-      <pv_name>$(PREFIX):$(DEV_NAME)-EstopOK</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-EstopOK</pv_name>
       <x>249</x>
       <off_color>
         <color name="LED-RED-ON" red="255" green="60" blue="46">
@@ -1136,7 +1136,7 @@
       <transparent>true</transparent>
       <widget type="led" version="2.0.0">
         <name>LED_16</name>
-        <pv_name>$(PREFIX):$(DEV_NAME)-LimitMinMinPark</pv_name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-LimitMinMinPark</pv_name>
         <x>249</x>
         <off_color>
           <color name="LED-RED-ON" red="255" green="60" blue="46">
@@ -1167,7 +1167,7 @@
       </rules>
       <widget type="led" version="2.0.0">
         <name>LED_15</name>
-        <pv_name>$(PREFIX):$(DEV_NAME)-LimitMinPark</pv_name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-LimitMinPark</pv_name>
         <x>249</x>
         <off_color>
           <color name="LED-RED-ON" red="255" green="60" blue="46">
@@ -1184,7 +1184,7 @@
       <transparent>true</transparent>
       <widget type="led" version="2.0.0">
         <name>LED_21</name>
-        <pv_name>$(PREFIX):$(DEV_NAME)-ParkRangeEnaAct</pv_name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-ParkRangeEnaAct</pv_name>
         <x>249</x>
         <off_color>
           <color name="LED-RED-ON" red="255" green="60" blue="46">
@@ -1203,7 +1203,7 @@
     <transparent>true</transparent>
     <widget type="led" version="2.0.0">
       <name>LED_22</name>
-      <pv_name>$(PREFIX):$(DEV_NAME)-HwOK</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-HwOK</pv_name>
       <x>249</x>
       <off_color>
         <color name="LED-RED-ON" red="255" green="60" blue="46">
@@ -1213,13 +1213,13 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update</name>
-    <pv_name>$(PREFIX):$(DEV_NAME)-TempAct</pv_name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-TempAct</pv_name>
     <x>752</x>
     <y>1160</y>
   </widget>
   <widget type="led" version="2.0.0">
     <name>LED_23</name>
-    <pv_name>$(PREFIX):$(DEV_NAME)-TempAct.STAT</pv_name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-TempAct.STAT</pv_name>
     <x>862</x>
     <y>1160</y>
     <off_color>
@@ -1245,7 +1245,7 @@
   </widget>
   <widget type="led" version="2.0.0">
     <name>LED_24</name>
-    <pv_name>$(PREFIX):$(DEV_NAME)-AllowMotionCmd</pv_name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-AllowMotionCmd</pv_name>
     <x>862</x>
     <y>1200</y>
     <off_color>
@@ -1271,7 +1271,7 @@
   </widget>
   <widget type="checkbox" version="2.0.0">
     <name>Check Box</name>
-    <pv_name>$(PREFIX):$(DEV_NAME)-AllowMotionCmd</pv_name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-AllowMotionCmd</pv_name>
     <label></label>
     <x>830</x>
     <y>1200</y>
@@ -1297,7 +1297,7 @@
     </rules>
     <widget type="led" version="2.0.0">
       <name>LED_25</name>
-      <pv_name>$(PREFIX):$(DEV_NAME)-BrakeReleased</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-BrakeReleased</pv_name>
       <x>251</x>
       <off_color>
         <color name="LED-RED-ON" red="255" green="60" blue="46">
@@ -1311,7 +1311,7 @@
     </widget>
     <widget type="checkbox" version="2.0.0">
       <name>Check Box_1</name>
-      <pv_name>$(PREFIX):$(DEV_NAME)-BrakeReleseCmd</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-BrakeReleseCmd</pv_name>
       <label></label>
       <x>219</x>
       <width>10</width>
@@ -1465,7 +1465,7 @@
     <transparent>true</transparent>
     <widget type="led" version="2.0.0">
       <name>LED_86</name>
-      <pv_name>$(PREFIX):$(DEV_NAME)-SumILFwd</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-SumILFwd</pv_name>
       <x>17</x>
       <off_color>
         <color name="LED-RED-ON" red="255" green="60" blue="46">
@@ -1512,7 +1512,7 @@
     <transparent>true</transparent>
     <widget type="led" version="2.0.0">
       <name>LED_87</name>
-      <pv_name>$(PREFIX):$(DEV_NAME)-SumILBwd</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-SumILBwd</pv_name>
       <x>17</x>
       <off_color>
         <color name="LED-RED-ON" red="255" green="60" blue="46">
@@ -1540,7 +1540,7 @@
     <transparent>true</transparent>
     <widget type="led" version="2.0.0">
       <name>LED_91</name>
-      <pv_name>$(PREFIX):$(DEV_NAME)-AllowMotionCmd</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-AllowMotionCmd</pv_name>
       <x>220</x>
       <off_color>
         <color name="LED-RED-ON" red="255" green="60" blue="46">
@@ -1554,7 +1554,7 @@
     </widget>
     <widget type="checkbox" version="2.0.0">
       <name>Check Box_3</name>
-      <pv_name>$(PREFIX):$(DEV_NAME)-AllowMotionCmd</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-AllowMotionCmd</pv_name>
       <label></label>
       <x>188</x>
       <width>10</width>
@@ -1584,13 +1584,13 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_2</name>
-    <pv_name>$(PREFIX):$(DEV_NAME)-TempAct</pv_name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-TempAct</pv_name>
     <x>142</x>
     <y>598</y>
   </widget>
   <widget type="led" version="2.0.0">
     <name>LED_93</name>
-    <pv_name>$(PREFIX):$(DEV_NAME)-TempAct.STAT</pv_name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-TempAct.STAT</pv_name>
     <x>252</x>
     <y>598</y>
     <off_color>
@@ -1627,7 +1627,7 @@
       </rules>
       <widget type="led" version="2.0.0">
         <name>LED_90</name>
-        <pv_name>$(PREFIX):$(DEV_NAME)-BrakeReleased</pv_name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-BrakeReleased</pv_name>
         <x>251</x>
         <off_color>
           <color name="LED-RED-ON" red="255" green="60" blue="46">
@@ -1641,7 +1641,7 @@
       </widget>
       <widget type="checkbox" version="2.0.0">
         <name>Check Box_2</name>
-        <pv_name>$(PREFIX):$(DEV_NAME)-BrakeReleseCmd</pv_name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-BrakeReleseCmd</pv_name>
         <label></label>
         <x>219</x>
         <width>10</width>
@@ -1684,7 +1684,7 @@
       <transparent>true</transparent>
       <widget type="led" version="2.0.0">
         <name>LED_46</name>
-        <pv_name>$(PREFIX):$(DEV_NAME)-SumILOK</pv_name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-SumILOK</pv_name>
         <x>126</x>
         <y>2</y>
         <off_color>
@@ -1777,7 +1777,7 @@
     <transparent>true</transparent>
     <widget type="led" version="2.0.0">
       <name>LED_96</name>
-      <pv_name>$(PREFIX):Rotation-Drv-Stat-Standstill</pv_name>
+      <pv_name>$(PREFIX)Rotation-Drv-Stat-Standstill</pv_name>
       <x>126</x>
       <y>2</y>
       <off_color>
@@ -1891,7 +1891,7 @@
     </widget>
     <widget type="led" version="2.0.0">
       <name>LED_100</name>
-      <pv_name>$(PREFIX):$(DEV_NAME)-Homed</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-Homed</pv_name>
       <x>83</x>
       <y>9</y>
       <off_color>
@@ -1901,7 +1901,7 @@
     </widget>
     <widget type="led" version="2.0.0">
       <name>LED_99</name>
-      <pv_name>$(PREFIX):$(DEV_NAME)-HomingCmdActive</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-HomingCmdActive</pv_name>
       <x>83</x>
       <y>47</y>
       <off_color>
@@ -1969,5 +1969,74 @@
       <height>24</height>
       <horizontal_alignment>2</horizontal_alignment>
     </widget>
+  </widget>
+  <widget type="led" version="2.0.0">
+    <name>LED_97</name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-ErrId</pv_name>
+    <x>252</x>
+    <y>622</y>
+    <off_color>
+      <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+      </color>
+    </off_color>
+    <on_color>
+      <color name="LED-RED-ON" red="255" green="60" blue="46">
+      </color>
+    </on_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_3</name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-ErrId</pv_name>
+    <x>142</x>
+    <y>622</y>
+    <format>4</format>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_111</name>
+    <macros>
+      <Axis>X</Axis>
+    </macros>
+    <text>Motion Error:</text>
+    <x>32</x>
+    <y>622</y>
+    <width>110</width>
+    <height>24</height>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_8</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(pv_name)</pv_name>
+        <value>1</value>
+        <description>Write PV</description>
+      </action>
+    </actions>
+    <pv_name>$(PREFIX)$(DEV_NAME)-ExeResetCmd</pv_name>
+    <text>Reset</text>
+    <x>285</x>
+    <y>623</y>
+    <width>80</width>
+    <height>20</height>
+    <rules>
+      <rule name="New Rule" prop_id="background_color" out_exp="false">
+        <exp bool_exp="pv0!=0">
+          <value>
+            <color name="ERROR" red="252" green="13" blue="27">
+            </color>
+          </value>
+        </exp>
+        <exp bool_exp="pv0==0">
+          <value>
+            <color name="Button_Background" red="236" green="236" blue="236">
+            </color>
+          </value>
+        </exp>
+        <pv_name>$(PREFIX)$(DEV_NAME)-ErrId</pv_name>
+      </rule>
+    </rules>
+    <tooltip>$(actions)</tooltip>
+    <show_confirm_dialog>true</show_confirm_dialog>
+    <confirm_message>Are your sure you want to reset error?</confirm_message>
   </widget>
 </display>

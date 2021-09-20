@@ -101,7 +101,7 @@
     </widget>
     <widget type="led" version="2.0.0">
       <name>LED_24</name>
-      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
+      <pv_name>$(PREFIX)ec0-s$(SLAVE_ID)-$(HW_TYPE)-Err</pv_name>
       <x>249</x>
       <off_color>
         <color name="LED-GREEN-ON" red="70" green="255" blue="70">
@@ -133,7 +133,7 @@
     </widget>
     <widget type="led" version="2.0.0">
       <name>LED_25</name>
-      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-data-valid</pv_name>
+      <pv_name>$(PREFIX)ec0-s$(SLAVE_ID)-$(HW_TYPE)-data-valid</pv_name>
       <x>249</x>
       <off_color>
         <color name="LED-GREEN-ON" red="70" green="255" blue="70">
@@ -147,7 +147,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update</name>
-    <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-ErrMsg</pv_name>
+    <pv_name>$(PREFIX)ec0-s$(SLAVE_ID)-$(HW_TYPE)-ErrMsg</pv_name>
     <x>90</x>
     <y>210</y>
     <width>249</width>
@@ -173,7 +173,7 @@
     </widget>
     <widget type="led" version="2.0.0">
       <name>LED_26</name>
-      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-alstate-init</pv_name>
+      <pv_name>$(PREFIX)ec0-s$(SLAVE_ID)-$(HW_TYPE)-alstate-init</pv_name>
       <x>249</x>
       <off_color>
         <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
@@ -201,7 +201,7 @@
     </widget>
     <widget type="led" version="2.0.0">
       <name>LED_27</name>
-      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-alstate-preop</pv_name>
+      <pv_name>$(PREFIX)ec0-s$(SLAVE_ID)-$(HW_TYPE)-alstate-preop</pv_name>
       <x>249</x>
       <off_color>
         <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
@@ -229,7 +229,7 @@
     </widget>
     <widget type="led" version="2.0.0">
       <name>LED_28</name>
-      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-alstate-op</pv_name>
+      <pv_name>$(PREFIX)ec0-s$(SLAVE_ID)-$(HW_TYPE)-alstate-op</pv_name>
       <x>249</x>
       <off_color>
         <color name="LED-RED-ON" red="255" green="60" blue="46">
@@ -257,7 +257,7 @@
     </widget>
     <widget type="led" version="2.0.0">
       <name>LED_29</name>
-      <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-alstate-safeop</pv_name>
+      <pv_name>$(PREFIX)ec0-s$(SLAVE_ID)-$(HW_TYPE)-alstate-safeop</pv_name>
       <x>249</x>
       <off_color>
         <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
@@ -278,13 +278,13 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_1</name>
-    <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-TerminalID</pv_name>
+    <pv_name>$(PREFIX)ec0-s$(SLAVE_ID)-$(HW_TYPE)-TerminalID</pv_name>
     <x>221</x>
     <y>400</y>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_2</name>
-    <pv_name>$(PREFIX):ec0-s$(SLAVE_ID)-$(HW_TYPE)-HWType</pv_name>
+    <pv_name>$(PREFIX)ec0-s$(SLAVE_ID)-$(HW_TYPE)-HWType</pv_name>
     <x>221</x>
     <y>424</y>
   </widget>
