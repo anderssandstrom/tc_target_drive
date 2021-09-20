@@ -27,24 +27,18 @@
     </background_color>
     <corner_width>10</corner_width>
     <corner_height>10</corner_height>
-  </widget>
-  <widget type="rectangle" version="2.0.0">
-    <name>Background_10</name>
-    <x>401</x>
-    <y>840</y>
-    <width>261</width>
-    <height>460</height>
-    <line_width>1</line_width>
-    <line_color>
-      <color name="GROUP-BORDER" red="150" green="155" blue="151">
-      </color>
-    </line_color>
-    <background_color>
-      <color name="BACKGROUND" red="220" green="225" blue="221">
-      </color>
-    </background_color>
-    <corner_width>10</corner_width>
-    <corner_height>10</corner_height>
+    <rules>
+      <rule name="New Rule" prop_id="background_color" out_exp="false">
+        <exp bool_exp="pv0==1 and pv1==1">
+          <value>
+            <color name="LED-RED-ON" red="255" green="60" blue="46">
+            </color>
+          </value>
+        </exp>
+        <pv_name>$(PREFIX):$(DEV_NAME)-ManunalILOverride</pv_name>
+        <pv_name>sim://ramp(0,1,1)</pv_name>
+      </rule>
+    </rules>
   </widget>
   <widget type="group" version="2.0.0">
     <name>Group</name>
@@ -514,5 +508,60 @@
     <y>420</y>
     <width>200</width>
     <height>24</height>
+  </widget>
+  <widget type="led" version="2.0.0">
+    <name>LED_26</name>
+    <pv_name>$(PREFIX):$(DEV_NAME)-ErrId</pv_name>
+    <x>315</x>
+    <y>560</y>
+    <off_color>
+      <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+      </color>
+    </off_color>
+    <on_color>
+      <color name="LED-RED-ON" red="255" green="60" blue="46">
+      </color>
+    </on_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_32</name>
+    <macros>
+      <Axis>X</Axis>
+    </macros>
+    <text>Motion Error:</text>
+    <x>95</x>
+    <y>560</y>
+    <width>200</width>
+    <height>24</height>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_1</name>
+    <pv_name>$(PREFIX):$(DEV_NAME)-ErrId</pv_name>
+    <x>205</x>
+    <y>560</y>
+    <format>4</format>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_34</name>
+    <macros>
+      <Axis>X</Axis>
+    </macros>
+    <text>MANUAL OVERRIDE IN PLC ACTIVE!</text>
+    <x>93</x>
+    <y>30</y>
+    <width>257</width>
+    <height>30</height>
+    <rules>
+      <rule name="New Rule" prop_id="visible" out_exp="true">
+        <exp bool_exp="pv0==1">
+          <expression>1</expression>
+        </exp>
+        <exp bool_exp="pv0==0">
+          <expression>0</expression>
+        </exp>
+        <pv_name>$(PREFIX):$(DEV_NAME)-ManunalILOverride</pv_name>
+      </rule>
+    </rules>
   </widget>
 </display>

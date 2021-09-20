@@ -163,7 +163,6 @@ record(bi,"$(P)${DEV_NAME}-HwOK"){
   field(DESC, "${DEV_NAME}: Hardware Interlock")
 }
 
-
 # Motion axis
 record(bo,"$(P)${DEV_NAME}-ExePosCmd"){
   info(asyn:READBACK,"1")
@@ -184,7 +183,7 @@ record(bo,"$(P)${DEV_NAME}-ExeHomeCmd"){
   field(SCAN, "Passive")
   field(ZNAM, "Idle")
   field(ONAM, "Execute")
-  field(DESC, "${DEV_NAME}: Execute Home. Pos Cmd")
+  field(DESC, "${DEV_NAME}: Execute Home.")
 }
 
 record(bo,"$(P)${DEV_NAME}-ExeStopCmd"){
@@ -195,16 +194,47 @@ record(bo,"$(P)${DEV_NAME}-ExeStopCmd"){
   field(SCAN, "Passive")
   field(ZNAM, "Idle")
   field(ONAM, "Execute")
-  field(DESC, "${DEV_NAME}: Execute Stop. Pos Cmd")
+  field(DESC, "${DEV_NAME}: Execute Stop.")
 }
 
-record(bo,"$(P)${DEV_NAME}-EnableCmd"){
+record(bo,"$(P)${DEV_NAME}-ExeResetCmd"){
+  info(asyn:READBACK,"1")
+  field(PINI, "1")
+  field(DTYP, "asynInt32")
+  field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_CMD}.bExecuteReset?")
+  field(SCAN, "Passive")
+  field(ZNAM, "Idle")
+  field(ONAM, "Reset")
+  field(DESC, "${DEV_NAME}: Execute Error Reset.")
+}
+
+record(bo,"$(P)${DEV_NAME}-EnaCmd"){
   info(asyn:READBACK,"1")
   field(PINI, "1")
   field(DTYP, "asynInt32")
   field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_CMD}.bEnable?")
   field(SCAN, "Passive")
   field(ZNAM, "Idle")
-  field(ONAM, "Execute")
-  field(DESC, "${DEV_NAME}: Execute Stop. Pos Cmd")
+  field(ONAM, "Enable")
+  field(DESC, "${DEV_NAME}: Enable Cmd")
+}
+
+record(bi,"$(P)${DEV_NAME}-EnaAct"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bEnabled?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Idle")
+  field(ONAM, "Enabled")
+  field(DESC, "${DEV_NAME}: Enabled")
+}
+
+record(bi,"$(P)${DEV_NAME}-Busy"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bBusy?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Idle")
+  field(ONAM, "Busy")
+  field(DESC, "${DEV_NAME}: Busy")
 }
