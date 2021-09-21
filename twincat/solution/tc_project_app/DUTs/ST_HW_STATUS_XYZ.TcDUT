@@ -21,6 +21,12 @@ STRUCT
 	bHomed:BOOL:=FALSE;
 	bHomingCmdActive:BOOL:=FALSE;
 	
+	// Position Outside range alarms
+	bHiAlm:BOOL:=FALSE;
+	bHiHiAlm:BOOL:=FALSE;
+	bLoAlm:BOOL:=FALSE;
+	bLoLoAlm:BOOL:=FALSE;
+	
 	//Only X and Y
 	bBrakeReleased: BOOL;
 	
