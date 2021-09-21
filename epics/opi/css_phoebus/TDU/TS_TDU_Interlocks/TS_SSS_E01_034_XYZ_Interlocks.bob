@@ -2,7 +2,7 @@
 <display version="2.0.0">
   <name>$(DEV_NAME) Interlocks</name>
   <width>1000</width>
-  <height>700</height>
+  <height>720</height>
   <actions>
     <action type="write_pv">
       <pv_name>loc://dummyTriggVisible&lt;VDouble&gt;</pv_name>
@@ -934,47 +934,22 @@
     <macros>
       <Axis>X</Axis>
     </macros>
-    <text>MANUAL OVERRIDE IN PLC ACTIVE!</text>
-    <x>640</x>
-    <y>720</y>
-    <width>257</width>
+    <text>WARNING!! MANUAL IL OVERRIDE IN PLC ACTIVE!</text>
+    <x>433</x>
+    <y>413</y>
+    <width>410</width>
     <height>30</height>
+    <foreground_color>
+      <color name="RED" red="252" green="13" blue="27">
+      </color>
+    </foreground_color>
     <rules>
       <rule name="New Rule" prop_id="visible" out_exp="true">
-        <exp bool_exp="pv0==1">
-          <expression>1</expression>
+        <exp bool_exp="pv0==1 and pv1==1">
+          <expression>False</expression>
         </exp>
         <exp bool_exp="pv0==0">
-          <expression>0</expression>
-        </exp>
-        <pv_name>$(PREFIX)$(DEV_NAME)-ManunalILOverride</pv_name>
-      </rule>
-    </rules>
-  </widget>
-  <widget type="rectangle" version="2.0.0">
-    <name>MGGrey03-background_5</name>
-    <x>611</x>
-    <y>710</y>
-    <width>304</width>
-    <height>610</height>
-    <line_width>2</line_width>
-    <line_color>
-      <color name="GROUP-BORDER" red="150" green="155" blue="151">
-      </color>
-    </line_color>
-    <background_color>
-      <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
-      </color>
-    </background_color>
-    <corner_width>10</corner_width>
-    <corner_height>10</corner_height>
-    <rules>
-      <rule name="New Rule" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1 and pv1==1">
-          <value>
-            <color name="LED-RED-ON" red="255" green="60" blue="46">
-            </color>
-          </value>
+          <expression>False</expression>
         </exp>
         <pv_name>$(PREFIX)$(DEV_NAME)-ManunalILOverride</pv_name>
         <pv_name>sim://ramp(0,1,1)</pv_name>
@@ -1849,13 +1824,17 @@
     </rules>
     <widget type="led" version="2.0.0">
       <name>LED_46</name>
-      <pv_name>$(PREFIX)$(DEV_NAME)-SumILOK</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-LimitMinMinPark</pv_name>
       <x>126</x>
       <y>2</y>
       <off_color>
         <color name="LED-RED-ON" red="255" green="60" blue="46">
         </color>
       </off_color>
+      <on_color>
+        <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+        </color>
+      </on_color>
     </widget>
     <widget type="label" version="2.0.0">
       <name>Label_54</name>
@@ -1914,7 +1893,7 @@
     </actions>
     <text>Hardware</text>
     <x>807</x>
-    <y>611</y>
+    <y>637</y>
     <width>80</width>
     <height>51</height>
     <tooltip>$(actions)</tooltip>
@@ -1930,8 +1909,8 @@
     </actions>
     <pv_name>$(PREFIX)$(DEV_NAME)-ExePosCmd</pv_name>
     <text>Move</text>
-    <x>807</x>
-    <y>480</y>
+    <x>527</x>
+    <y>443</y>
     <width>80</width>
     <height>51</height>
     <rules>
@@ -1966,9 +1945,9 @@
     </actions>
     <pv_name>$(PREFIX)$(DEV_NAME)-ExeStopCmd</pv_name>
     <text>Stop</text>
-    <x>807</x>
-    <y>528</y>
-    <width>80</width>
+    <x>626</x>
+    <y>443</y>
+    <width>181</width>
     <height>51</height>
     <tooltip>$(actions)</tooltip>
     <confirm_message>Are your sure you want to execute a motion for $(DEV_NAME)?</confirm_message>
@@ -2255,5 +2234,79 @@
     <x>764</x>
     <y>508</y>
     <width>56</width>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_73</name>
+    <x>430</x>
+    <y>662</y>
+    <height>24</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="New Rule" prop_id="visible" out_exp="true">
+        <exp bool_exp="&quot;$(DEV_NAME)&quot;!='Z'">
+          <expression>0</expression>
+        </exp>
+        <pv_name>loc://dummyTriggVisible</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>Label_118</name>
+      <macros>
+        <Axis>X</Axis>
+      </macros>
+      <text>Parking Range Enabled:</text>
+      <width>200</width>
+      <height>24</height>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_104</name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-ParkRangeEnaAct</pv_name>
+      <x>240</x>
+      <off_color>
+        <color name="LED-RED-ON" red="255" green="60" blue="46">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+        </color>
+      </on_color>
+    </widget>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_12</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(pv_name)</pv_name>
+        <value>1</value>
+        <description>Write PV</description>
+      </action>
+    </actions>
+    <pv_name>$(PREFIX)$(DEV_NAME)-ExeHomeCmd</pv_name>
+    <text>Home</text>
+    <x>433</x>
+    <y>443</y>
+    <width>80</width>
+    <height>48</height>
+    <rules>
+      <rule name="New Rule" prop_id="background_color" out_exp="false">
+        <exp bool_exp="pv0==1">
+          <value>
+            <color name="LED-RED-ON" red="255" green="60" blue="46">
+            </color>
+          </value>
+        </exp>
+        <exp bool_exp="pv0==0">
+          <value>
+            <color name="Button_Background" red="236" green="236" blue="236">
+            </color>
+          </value>
+        </exp>
+        <pv_name>$(PREFIX)$(DEV_NAME)-Busy</pv_name>
+      </rule>
+    </rules>
+    <tooltip>$(actions)</tooltip>
+    <show_confirm_dialog>true</show_confirm_dialog>
+    <confirm_message>Are your sure you want to execute a motion for $(DEV_NAME)?</confirm_message>
   </widget>
 </display>

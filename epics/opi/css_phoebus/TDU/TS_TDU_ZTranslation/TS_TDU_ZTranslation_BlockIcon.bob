@@ -22,7 +22,7 @@
   </widget>
   <widget type="label" version="2.0.0">
     <name>WID_TitleLBL_1</name>
-    <text>${Axis} Axis Referencing</text>
+    <text>${DEV_NAME} Axis Referencing</text>
     <width>220</width>
     <height>30</height>
     <font>
@@ -161,5 +161,29 @@ PVFactory.releasePV(Inhibit_Lock);
     <height>150</height>
     <transparent>true</transparent>
     <tooltip>Open faceplate</tooltip>
+  </widget>
+  <widget type="multi_state_led" version="2.0.0">
+    <name>LED (Multi State)</name>
+    <pv_name>$(PV_NAME)</pv_name>
+    <x>195</x>
+    <y>40</y>
+    <states>
+      <state>
+        <value>0</value>
+        <label></label>
+        <color>
+          <color name="LED-RED-ON" red="255" green="60" blue="46">
+          </color>
+        </color>
+      </state>
+      <state>
+        <value>1</value>
+        <label></label>
+        <color>
+          <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+          </color>
+        </color>
+      </state>
+    </states>
   </widget>
 </display>

@@ -850,7 +850,7 @@
     <widget type="label" version="2.0.0">
       <name>LB_Header_5</name>
       <class>HEADER3</class>
-      <text>X-Translation</text>
+      <text>$(DEV_NAME)-Translation</text>
       <width>600</width>
       <height>37</height>
       <font use_class="true">
@@ -1192,18 +1192,18 @@ widget.setPropertyValue('x', 240+value*40)
     </widget>
   </widget>
   <widget type="group" version="2.0.0">
-    <name>Group_TDU_Y_Trans</name>
+    <name>Group_TDU_X_Trans_1</name>
     <macros>
       <DEV_NAME>Y</DEV_NAME>
     </macros>
-    <x>1021</x>
+    <x>1020</x>
     <y>100</y>
     <width>600</width>
     <height>660</height>
     <style>3</style>
     <transparent>true</transparent>
     <widget type="rectangle" version="2.0.0">
-      <name>Background_12</name>
+      <name>Background_6</name>
       <width>600</width>
       <height>660</height>
       <line_width>1</line_width>
@@ -1289,22 +1289,22 @@ widget.setPropertyValue('x', 240+value*40)
         <corner_width>10</corner_width>
         <corner_height>10</corner_height>
       </widget>
+      <widget type="spinner" version="2.0.0">
+        <name>Spinner_1</name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-PosCmd</pv_name>
+        <x>39</x>
+        <y>40</y>
+        <width>80</width>
+        <minimum>-5.0</minimum>
+        <maximum>5.0</maximum>
+        <increment>0.1</increment>
+      </widget>
       <widget type="label" version="2.0.0">
         <name>Label_47</name>
         <text>[mm]</text>
         <x>128</x>
         <y>40</y>
         <width>56</width>
-      </widget>
-      <widget type="spinner" version="2.0.0">
-        <name>Spinner_2</name>
-        <pv_name>$(PREFIX)$(DEV_NAME)-PosCmd</pv_name>
-        <x>40</x>
-        <y>44</y>
-        <width>80</width>
-        <minimum>-5.0</minimum>
-        <maximum>5.0</maximum>
-        <increment>0.1</increment>
       </widget>
     </widget>
     <widget type="group" version="2.0.0">
@@ -1327,6 +1327,15 @@ widget.setPropertyValue('x', 240+value*40)
         <corner_width>10</corner_width>
         <corner_height>10</corner_height>
       </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>Text Update_10</name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-PosAct</pv_name>
+        <x>39</x>
+        <y>30</y>
+        <width>80</width>
+        <show_units>false</show_units>
+        <horizontal_alignment>1</horizontal_alignment>
+      </widget>
       <widget type="label" version="2.0.0">
         <name>Label_54</name>
         <text>[mm]</text>
@@ -1345,15 +1354,6 @@ widget.setPropertyValue('x', 240+value*40)
         </font>
         <horizontal_alignment>1</horizontal_alignment>
         <tooltip>Device name</tooltip>
-      </widget>
-      <widget type="textupdate" version="2.0.0">
-        <name>Text Update_11</name>
-        <pv_name>$(PREFIX)$(DEV_NAME)-PosAct</pv_name>
-        <x>40</x>
-        <y>30</y>
-        <width>80</width>
-        <show_units>false</show_units>
-        <horizontal_alignment>1</horizontal_alignment>
       </widget>
     </widget>
     <widget type="label" version="2.0.0">
@@ -1374,7 +1374,7 @@ widget.setPropertyValue('x', 240+value*40)
       <macros>
         <WIDDev>M</WIDDev>
         <WIDDis>MC</WIDDis>
-        <WIDIndex>033</WIDIndex>
+        <WIDIndex>032</WIDIndex>
         <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
       </macros>
       <file>TDU/TS_TDU_StepMotor/TS_TDU_StepMotor_BlockIcon.bob</file>
@@ -1385,11 +1385,12 @@ widget.setPropertyValue('x', 240+value*40)
       <resize>2</resize>
     </widget>
     <widget type="embedded" version="2.0.0">
-      <name>GB-033d</name>
+      <name>GB-032d_1</name>
       <macros>
+        <PV_NAME>$(PREFIX)$(DEV_NAME)-LimitMinMin</PV_NAME>
         <WIDDev>GB</WIDDev>
         <WIDDis>MC</WIDDis>
-        <WIDIndex>033d</WIDIndex>
+        <WIDIndex>032d</WIDIndex>
         <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
       </macros>
       <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
@@ -1400,11 +1401,12 @@ widget.setPropertyValue('x', 240+value*40)
       <resize>2</resize>
     </widget>
     <widget type="embedded" version="2.0.0">
-      <name>GB-033c</name>
+      <name>GB-032c_1</name>
       <macros>
+        <PV_NAME>$(PREFIX)$(DEV_NAME)-LimitMin</PV_NAME>
         <WIDDev>GB</WIDDev>
         <WIDDis>MC</WIDDis>
-        <WIDIndex>033c</WIDIndex>
+        <WIDIndex>032c</WIDIndex>
         <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
       </macros>
       <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
@@ -1415,11 +1417,12 @@ widget.setPropertyValue('x', 240+value*40)
       <resize>2</resize>
     </widget>
     <widget type="embedded" version="2.0.0">
-      <name>GB-033b</name>
+      <name>GB-032b_1</name>
       <macros>
+        <PV_NAME>$(PREFIX)$(DEV_NAME)-LimitMax</PV_NAME>
         <WIDDev>GB</WIDDev>
         <WIDDis>MC</WIDDis>
-        <WIDIndex>033b</WIDIndex>
+        <WIDIndex>032b</WIDIndex>
         <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
       </macros>
       <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
@@ -1430,11 +1433,12 @@ widget.setPropertyValue('x', 240+value*40)
       <resize>2</resize>
     </widget>
     <widget type="embedded" version="2.0.0">
-      <name>GB-033a</name>
+      <name>GB-032a_1</name>
       <macros>
+        <PV_NAME>$(PREFIX)$(DEV_NAME)-LimitMaxMax</PV_NAME>
         <WIDDev>GB</WIDDev>
         <WIDDis>MC</WIDDis>
-        <WIDIndex>033a</WIDIndex>
+        <WIDIndex>032a</WIDIndex>
         <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
       </macros>
       <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
@@ -1447,9 +1451,10 @@ widget.setPropertyValue('x', 240+value*40)
     <widget type="embedded" version="2.0.0">
       <name>SC-032_1</name>
       <macros>
+        <PV_NAME>$(PREFIX)ec0-s21-IPOS8020-data-valid</PV_NAME>
         <WIDDev>SC</WIDDev>
         <WIDDis>MC</WIDDis>
-        <WIDIndex>033</WIDIndex>
+        <WIDIndex>032</WIDIndex>
         <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
       </macros>
       <file>TDU/TS_TDU_StepDrive/TS_TDU_StepDrive_BlockIcon.bob</file>
@@ -1459,177 +1464,17 @@ widget.setPropertyValue('x', 240+value*40)
       <height>150</height>
       <resize>2</resize>
     </widget>
-    <widget type="group" version="2.0.0">
-      <name>LinearGauge_Draft_2</name>
-      <x>54</x>
-      <y>240</y>
-      <width>500</width>
-      <height>60</height>
-      <style>3</style>
-      <transparent>true</transparent>
-      <widget type="rectangle" version="2.0.0">
-        <name>Rectangle_2</name>
-        <y>20</y>
-        <width>500</width>
-        <height>10</height>
-        <line_width>0</line_width>
-        <line_color>
-          <color name="BLACK" red="0" green="0" blue="0">
-          </color>
-        </line_color>
-        <background_color>
-          <color red="255" green="102" blue="102">
-          </color>
-        </background_color>
-      </widget>
-      <widget type="rectangle" version="2.0.0">
-        <name>Rectangle_4</name>
-        <x>62</x>
-        <y>20</y>
-        <width>376</width>
-        <height>10</height>
-        <line_width>0</line_width>
-        <line_color>
-          <color name="BLACK" red="0" green="0" blue="0">
-          </color>
-        </line_color>
-        <background_color>
-          <color name="ActiveText" red="254" green="194" blue="81">
-          </color>
-        </background_color>
-      </widget>
-      <widget type="rectangle" version="2.0.0">
-        <name>Rectangle_6</name>
-        <x>137</x>
-        <y>20</y>
-        <width>227</width>
-        <height>10</height>
-        <line_width>0</line_width>
-        <line_color>
-          <color name="BLACK" red="0" green="0" blue="0">
-          </color>
-        </line_color>
-        <background_color>
-          <color red="153" green="204" blue="153">
-          </color>
-        </background_color>
-      </widget>
-      <widget type="polyline" version="2.0.0">
-        <name>Polyline_5</name>
-        <x>220</x>
-        <width>20</width>
-        <height>44</height>
-        <points>
-          <point x="10.0" y="17.32">
-          </point>
-          <point x="0.0" y="0.0">
-          </point>
-          <point x="20.0" y="0.0">
-          </point>
-          <point x="10.0" y="17.32">
-          </point>
-          <point x="10.0" y="27.32">
-          </point>
-          <point x="0.0" y="44.64">
-          </point>
-          <point x="20.0" y="44.64">
-          </point>
-          <point x="10.0" y="27.32">
-          </point>
-        </points>
-      </widget>
-      <widget type="polyline" version="2.0.0">
-        <name>Polyline_6</name>
-        <x>42</x>
-        <y>30</y>
-        <width>20</width>
-        <height>30</height>
-        <points>
-          <point x="20.0" y="0.0">
-          </point>
-          <point x="20.0" y="10.0">
-          </point>
-          <point x="0.0" y="10.0">
-          </point>
-          <point x="0.0" y="30.0">
-          </point>
-        </points>
-        <line_width>1</line_width>
-        <line_color>
-          <color name="BLACK-BORDER" red="121" green="121" blue="121">
-          </color>
-        </line_color>
-      </widget>
-      <widget type="polyline" version="2.0.0">
-        <name>Polyline_7</name>
-        <x>438</x>
-        <y>30</y>
-        <width>20</width>
-        <height>30</height>
-        <points>
-          <point x="0.0" y="0.0">
-          </point>
-          <point x="0.0" y="10.0">
-          </point>
-          <point x="20.0" y="10.0">
-          </point>
-          <point x="20.0" y="30.0">
-          </point>
-        </points>
-        <line_width>1</line_width>
-        <line_color>
-          <color name="BLACK-BORDER" red="121" green="121" blue="121">
-          </color>
-        </line_color>
-      </widget>
-      <widget type="polyline" version="2.0.0">
-        <name>Polyline_8</name>
-        <x>137</x>
-        <y>30</y>
-        <width>1</width>
-        <height>30</height>
-        <points>
-          <point x="0.0" y="0.0">
-          </point>
-          <point x="0.0" y="30.0">
-          </point>
-        </points>
-        <line_width>1</line_width>
-        <line_color>
-          <color name="BLACK-BORDER" red="121" green="121" blue="121">
-          </color>
-        </line_color>
-      </widget>
-      <widget type="polyline" version="2.0.0">
-        <name>Polyline_9</name>
-        <x>364</x>
-        <y>30</y>
-        <width>1</width>
-        <height>30</height>
-        <points>
-          <point x="0.0" y="0.0">
-          </point>
-          <point x="0.0" y="30.0">
-          </point>
-        </points>
-        <line_width>1</line_width>
-        <line_color>
-          <color name="BLACK-BORDER" red="121" green="121" blue="121">
-          </color>
-        </line_color>
-      </widget>
-    </widget>
     <widget type="embedded" version="2.0.0">
-      <name>YSV-034b</name>
+      <name>YSV-034a_3</name>
       <macros>
         <PV_NAME>$(PREFIX)$(DEV_NAME)-BrakeReleased</PV_NAME>
         <WIDDev>YSV</WIDDev>
         <WIDDis>Proc</WIDDis>
-        <WIDIndex>034b</WIDIndex>
+        <WIDIndex>034a</WIDIndex>
         <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
       </macros>
       <file>TDU/TS_TDU_XYClamp/TS_TDU_XYClamp_BlockIcon.bob</file>
-      <x>431</x>
+      <x>433</x>
       <y>37</y>
       <width>150</width>
       <height>170</height>
@@ -1666,7 +1511,7 @@ widget.setPropertyValue('x', 240+value*40)
     </widget>
     <widget type="led" version="2.0.0">
       <name>LED_15</name>
-      <pv_name>$(PREFIX):Mech-Rotor:XPos_LoLo_Act</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-PosLoLoAlm</pv_name>
       <x>57</x>
       <y>337</y>
       <off_color>
@@ -1680,7 +1525,7 @@ widget.setPropertyValue('x', 240+value*40)
     </widget>
     <widget type="led" version="2.0.0">
       <name>LED_16</name>
-      <pv_name>$(PREFIX):Mech-Rotor:XPos_Low_Act</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-PosLoAlm</pv_name>
       <x>183</x>
       <y>337</y>
       <off_color>
@@ -1694,7 +1539,7 @@ widget.setPropertyValue('x', 240+value*40)
     </widget>
     <widget type="led" version="2.0.0">
       <name>LED_17</name>
-      <pv_name>$(PREFIX):Mech-Rotor:XPos_High_Act</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-PosHiAlm</pv_name>
       <x>413</x>
       <y>337</y>
       <off_color>
@@ -1708,7 +1553,7 @@ widget.setPropertyValue('x', 240+value*40)
     </widget>
     <widget type="led" version="2.0.0">
       <name>LED_18</name>
-      <pv_name>$(PREFIX):Mech-Rotor:XPos_HiHi_Act</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-PosHiHiAlm</pv_name>
       <x>522</x>
       <y>337</y>
       <off_color>
@@ -1747,9 +1592,9 @@ widget.setPropertyValue('x', 240+value*40)
       <auto_size>true</auto_size>
     </widget>
     <widget type="label" version="2.0.0">
-      <name>LB_Header_12</name>
+      <name>LB_Header_6</name>
       <class>HEADER3</class>
-      <text>Y-Translation</text>
+      <text>$(DEV_NAME)-Translation</text>
       <width>600</width>
       <height>37</height>
       <font use_class="true">
@@ -1768,7 +1613,7 @@ widget.setPropertyValue('x', 240+value*40)
       <vertical_alignment>1</vertical_alignment>
     </widget>
     <widget type="action_button" version="3.0.0">
-      <name>Action Button_1</name>
+      <name>Action Button_12</name>
       <actions>
         <action type="open_display">
           <file>TDU/TS_TDU_Interlocks/TS_SSS_E01_034_XYZ_Interlocks.bob</file>
@@ -1783,7 +1628,7 @@ widget.setPropertyValue('x', 240+value*40)
       <tooltip>$(actions)</tooltip>
     </widget>
     <widget type="action_button" version="3.0.0">
-      <name>Action Button_7</name>
+      <name>Action Button_13</name>
       <actions>
         <action type="open_display">
           <file>TDU/TS_TDU_SlaveDiag/TS_TDU_MotionSlaveList.bob</file>
@@ -1801,8 +1646,43 @@ widget.setPropertyValue('x', 240+value*40)
       <width>140</width>
       <tooltip>$(actions)</tooltip>
     </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_14</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(pv_name)</pv_name>
+          <value>1</value>
+          <description>Write PV</description>
+        </action>
+      </actions>
+      <pv_name>$(PREFIX)$(DEV_NAME)-ExeResetCmd</pv_name>
+      <text>Reset</text>
+      <x>274</x>
+      <y>187</y>
+      <width>140</width>
+      <rules>
+        <rule name="New Rule" prop_id="background_color" out_exp="false">
+          <exp bool_exp="pv0!=0">
+            <value>
+              <color name="ERROR" red="252" green="13" blue="27">
+              </color>
+            </value>
+          </exp>
+          <exp bool_exp="pv0==0">
+            <value>
+              <color name="Button_Background" red="236" green="236" blue="236">
+              </color>
+            </value>
+          </exp>
+          <pv_name>$(PREFIX)$(DEV_NAME)-ErrId</pv_name>
+        </rule>
+      </rules>
+      <tooltip>$(actions)</tooltip>
+      <show_confirm_dialog>true</show_confirm_dialog>
+      <confirm_message>Are your sure you want to reset error?</confirm_message>
+    </widget>
     <widget type="bool_button" version="2.0.0">
-      <name>Boolean Button_1</name>
+      <name>Boolean Button_2</name>
       <pv_name>$(PREFIX)$(DEV_NAME)-EnaCmd</pv_name>
       <x>274</x>
       <y>97</y>
@@ -1830,7 +1710,7 @@ widget.setPropertyValue('x', 240+value*40)
       <confirm_message>Are your sure you want to toggle enable state of $(DEV_NAME) drive?</confirm_message>
     </widget>
     <widget type="action_button" version="3.0.0">
-      <name>Action Button_9</name>
+      <name>Action Button_15</name>
       <actions>
         <action type="write_pv">
           <pv_name>$(pv_name)</pv_name>
@@ -1865,7 +1745,7 @@ widget.setPropertyValue('x', 240+value*40)
       <confirm_message>Are your sure you want to execute a motion for $(DEV_NAME)?</confirm_message>
     </widget>
     <widget type="action_button" version="3.0.0">
-      <name>Action Button_10</name>
+      <name>Action Button_16</name>
       <actions>
         <action type="write_pv">
           <pv_name>$(pv_name)</pv_name>
@@ -1881,40 +1761,178 @@ widget.setPropertyValue('x', 240+value*40)
       <tooltip>$(actions)</tooltip>
       <confirm_message>Are your sure you want to execute a motion for $(DEV_NAME)?</confirm_message>
     </widget>
-    <widget type="action_button" version="3.0.0">
-      <name>Action Button_11</name>
-      <actions>
-        <action type="write_pv">
-          <pv_name>$(pv_name)</pv_name>
-          <value>1</value>
-          <description>Write PV</description>
-        </action>
-      </actions>
-      <pv_name>$(PREFIX)$(DEV_NAME)-ExeResetCmd</pv_name>
-      <text>Reset</text>
-      <x>274</x>
-      <y>187</y>
-      <width>140</width>
-      <rules>
-        <rule name="New Rule" prop_id="background_color" out_exp="false">
-          <exp bool_exp="pv0!=0">
-            <value>
-              <color name="ERROR" red="252" green="13" blue="27">
-              </color>
-            </value>
-          </exp>
-          <exp bool_exp="pv0==0">
-            <value>
-              <color name="Button_Background" red="236" green="236" blue="236">
-              </color>
-            </value>
-          </exp>
-          <pv_name>$(PREFIX)$(DEV_NAME)-ErrId</pv_name>
-        </rule>
-      </rules>
-      <tooltip>$(actions)</tooltip>
-      <show_confirm_dialog>true</show_confirm_dialog>
-      <confirm_message>Are your sure you want to reset error?</confirm_message>
+    <widget type="group" version="2.0.0">
+      <name>LinearGauge_Draft_2</name>
+      <x>54</x>
+      <y>240</y>
+      <width>500</width>
+      <height>60</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="rectangle" version="2.0.0">
+        <name>Rectangle_2</name>
+        <y>20</y>
+        <width>500</width>
+        <height>10</height>
+        <line_width>0</line_width>
+        <line_color>
+          <color name="BLACK" red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <background_color>
+          <color red="255" green="102" blue="102">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Rectangle_4</name>
+        <x>50</x>
+        <y>20</y>
+        <width>400</width>
+        <height>10</height>
+        <line_width>0</line_width>
+        <line_color>
+          <color name="BLACK" red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <background_color>
+          <color name="ActiveText" red="254" green="194" blue="81">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Rectangle_6</name>
+        <x>90</x>
+        <y>20</y>
+        <width>320</width>
+        <height>10</height>
+        <line_width>0</line_width>
+        <line_color>
+          <color name="BLACK" red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <background_color>
+          <color red="153" green="204" blue="153">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>Polyline_5</name>
+        <x>250</x>
+        <width>20</width>
+        <height>44</height>
+        <points>
+          <point x="10.0" y="17.32">
+          </point>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="20.0" y="0.0">
+          </point>
+          <point x="10.0" y="17.32">
+          </point>
+          <point x="10.0" y="27.32">
+          </point>
+          <point x="0.0" y="44.64">
+          </point>
+          <point x="20.0" y="44.64">
+          </point>
+          <point x="10.0" y="27.32">
+          </point>
+        </points>
+        <scripts>
+          <script file="EmbeddedPy">
+            <text><![CDATA[# Embedded python script
+from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
+print 'Hello'
+# widget.setPropertyValue('text', PVUtil.getString(pvs[0]))
+
+value = PVUtil.getDouble(pvs[0]);
+widget.setPropertyValue('x', 240+value*40)
+]]></text>
+            <pv_name>$(PREFIX)$(DEV_NAME)-PosAct</pv_name>
+          </script>
+        </scripts>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>Polyline_6</name>
+        <x>29</x>
+        <y>30</y>
+        <width>20</width>
+        <height>30</height>
+        <points>
+          <point x="20.0" y="0.0">
+          </point>
+          <point x="20.0" y="10.0">
+          </point>
+          <point x="0.0" y="10.0">
+          </point>
+          <point x="0.0" y="30.0">
+          </point>
+        </points>
+        <line_width>1</line_width>
+        <line_color>
+          <color name="BLACK-BORDER" red="121" green="121" blue="121">
+          </color>
+        </line_color>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>Polyline_7</name>
+        <x>451</x>
+        <y>30</y>
+        <width>20</width>
+        <height>30</height>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="0.0" y="10.0">
+          </point>
+          <point x="20.0" y="10.0">
+          </point>
+          <point x="20.0" y="30.0">
+          </point>
+        </points>
+        <line_width>1</line_width>
+        <line_color>
+          <color name="BLACK-BORDER" red="121" green="121" blue="121">
+          </color>
+        </line_color>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>Polyline_8</name>
+        <x>89</x>
+        <y>30</y>
+        <width>1</width>
+        <height>30</height>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="0.0" y="30.0">
+          </point>
+        </points>
+        <line_width>1</line_width>
+        <line_color>
+          <color name="BLACK-BORDER" red="121" green="121" blue="121">
+          </color>
+        </line_color>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>Polyline_9</name>
+        <x>410</x>
+        <y>30</y>
+        <width>1</width>
+        <height>30</height>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="0.0" y="30.0">
+          </point>
+        </points>
+        <line_width>1</line_width>
+        <line_color>
+          <color name="BLACK-BORDER" red="121" green="121" blue="121">
+          </color>
+        </line_color>
+      </widget>
     </widget>
   </widget>
 </display>

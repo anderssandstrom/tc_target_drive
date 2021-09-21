@@ -3,7 +3,7 @@
   <name>Z Positioning</name>
   <class></class>
   <macros>
-    <PREFIX>Tgt-TMS1063</PREFIX>
+    <PREFIX>TARGET_DU:</PREFIX>
   </macros>
   <width>2140</width>
   <height>1390</height>
@@ -154,24 +154,6 @@
     <corner_width>10</corner_width>
     <corner_height>10</corner_height>
   </widget>
-  <widget type="rectangle" version="2.0.0">
-    <name>Background_5</name>
-    <x>383</x>
-    <y>110</y>
-    <width>918</width>
-    <height>670</height>
-    <line_width>1</line_width>
-    <line_color>
-      <color name="GROUP-BORDER" red="150" green="155" blue="151">
-      </color>
-    </line_color>
-    <background_color>
-      <color name="BACKGROUND" red="220" green="225" blue="221">
-      </color>
-    </background_color>
-    <corner_width>10</corner_width>
-    <corner_height>10</corner_height>
-  </widget>
   <widget type="label" version="2.0.0">
     <name>Label_8</name>
     <class>HEADER2</class>
@@ -191,160 +173,6 @@
     <horizontal_alignment>1</horizontal_alignment>
     <vertical_alignment>1</vertical_alignment>
     <wrap_words>false</wrap_words>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>LB_Header_5</name>
-    <class>HEADER3</class>
-    <text>Z-Translation</text>
-    <x>383</x>
-    <y>110</y>
-    <width>816</width>
-    <height>37</height>
-    <font use_class="true">
-      <font name="Header 3" family="Source Sans Pro" style="BOLD_ITALIC" size="18.0">
-      </font>
-    </font>
-    <foreground_color use_class="true">
-      <color name="Text" red="25" green="25" blue="25">
-      </color>
-    </foreground_color>
-    <background_color>
-      <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
-      </color>
-    </background_color>
-    <horizontal_alignment>1</horizontal_alignment>
-    <vertical_alignment>1</vertical_alignment>
-  </widget>
-  <widget type="embedded" version="2.0.0">
-    <name>M-032</name>
-    <macros>
-      <WIDDev>M</WIDDev>
-      <WIDDis>MC</WIDDis>
-      <WIDIndex>031</WIDIndex>
-      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
-    </macros>
-    <file>TDU/TS_TDU_StepMotor/TS_TDU_StepMotor_BlockIcon.bob</file>
-    <x>970</x>
-    <y>490</y>
-    <width>150</width>
-    <height>150</height>
-    <resize>2</resize>
-  </widget>
-  <widget type="embedded" version="2.0.0">
-    <name>GB-031d</name>
-    <macros>
-      <WIDDev>GB</WIDDev>
-      <WIDDis>MC</WIDDis>
-      <WIDIndex>032d</WIDIndex>
-      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
-    </macros>
-    <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
-    <x>860</x>
-    <y>476</y>
-    <width>90</width>
-    <height>90</height>
-    <resize>2</resize>
-  </widget>
-  <widget type="embedded" version="2.0.0">
-    <name>GB-031c</name>
-    <macros>
-      <WIDDev>GB</WIDDev>
-      <WIDDis>MC</WIDDis>
-      <WIDIndex>031c</WIDIndex>
-      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
-    </macros>
-    <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
-    <x>860</x>
-    <y>376</y>
-    <width>90</width>
-    <height>90</height>
-    <resize>2</resize>
-  </widget>
-  <widget type="embedded" version="2.0.0">
-    <name>GB-031b</name>
-    <macros>
-      <WIDDev>GB</WIDDev>
-      <WIDDis>MC</WIDDis>
-      <WIDIndex>031b</WIDIndex>
-      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
-    </macros>
-    <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
-    <x>860</x>
-    <y>266</y>
-    <width>90</width>
-    <height>90</height>
-    <resize>2</resize>
-  </widget>
-  <widget type="embedded" version="2.0.0">
-    <name>GB-031a</name>
-    <macros>
-      <WIDDev>GB</WIDDev>
-      <WIDDis>MC</WIDDis>
-      <WIDIndex>032a</WIDIndex>
-      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
-    </macros>
-    <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
-    <x>860</x>
-    <y>164</y>
-    <width>90</width>
-    <height>90</height>
-    <resize>2</resize>
-  </widget>
-  <widget type="embedded" version="2.0.0">
-    <name>SC-031</name>
-    <macros>
-      <WIDDev>SC</WIDDev>
-      <WIDDis>MC</WIDDis>
-      <WIDIndex>031</WIDIndex>
-      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
-    </macros>
-    <file>TDU/TS_TDU_StepDrive/TS_TDU_StepDrive_BlockIcon.bob</file>
-    <x>970</x>
-    <y>324</y>
-    <width>150</width>
-    <height>150</height>
-    <resize>2</resize>
-  </widget>
-  <widget type="rectangle" version="2.0.0">
-    <name>WID_Rect_1</name>
-    <x>700</x>
-    <y>174</y>
-    <width>140</width>
-    <height>573</height>
-    <line_width>0</line_width>
-    <background_color>
-      <color red="0" green="0" blue="0" alpha="18">
-      </color>
-    </background_color>
-    <corner_width>10</corner_width>
-    <corner_height>10</corner_height>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>WID_TitleLBL_2</name>
-    <text>Position Alarms</text>
-    <x>700</x>
-    <y>174</y>
-    <width>140</width>
-    <height>30</height>
-    <font>
-      <font family="Source Sans Pro" style="BOLD" size="18.0">
-      </font>
-    </font>
-    <horizontal_alignment>1</horizontal_alignment>
-    <vertical_alignment>1</vertical_alignment>
-    <tooltip>Device name</tooltip>
-  </widget>
-  <widget type="embedded" version="2.0.0">
-    <name>XTranslation</name>
-    <macros>
-      <Axis>Z</Axis>
-    </macros>
-    <file>TDU/TS_TDU_ZTranslation/TS_TDU_ZTranslation_BlockIcon.bob</file>
-    <x>970</x>
-    <y>164</y>
-    <width>220</width>
-    <height>150</height>
-    <resize>2</resize>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_53</name>
@@ -422,120 +250,6 @@
     <height>170</height>
     <resize>2</resize>
   </widget>
-  <widget type="rectangle" version="2.0.0">
-    <name>Rectangle_1</name>
-    <x>661</x>
-    <y>187</y>
-    <width>10</width>
-    <height>548</height>
-    <line_width>0</line_width>
-    <line_color>
-      <color name="BLACK" red="0" green="0" blue="0">
-      </color>
-    </line_color>
-    <background_color>
-      <color red="255" green="102" blue="102">
-      </color>
-    </background_color>
-  </widget>
-  <widget type="rectangle" version="2.0.0">
-    <name>Rectangle_3</name>
-    <x>661</x>
-    <y>234</y>
-    <width>10</width>
-    <height>301</height>
-    <line_width>0</line_width>
-    <line_color>
-      <color name="BLACK" red="0" green="0" blue="0">
-      </color>
-    </line_color>
-    <background_color>
-      <color name="ActiveText" red="254" green="194" blue="81">
-      </color>
-    </background_color>
-  </widget>
-  <widget type="rectangle" version="2.0.0">
-    <name>Rectangle_5</name>
-    <x>661</x>
-    <y>284</y>
-    <width>10</width>
-    <height>161</height>
-    <line_width>0</line_width>
-    <line_color>
-      <color name="BLACK" red="0" green="0" blue="0">
-      </color>
-    </line_color>
-    <background_color>
-      <color red="153" green="204" blue="153">
-      </color>
-    </background_color>
-  </widget>
-  <widget type="rectangle" version="2.0.0">
-    <name>Rectangle_6</name>
-    <x>661</x>
-    <y>585</y>
-    <width>10</width>
-    <height>110</height>
-    <line_width>0</line_width>
-    <line_color>
-      <color name="BLACK" red="0" green="0" blue="0">
-      </color>
-    </line_color>
-  </widget>
-  <widget type="polyline" version="2.0.0">
-    <name>Polyline_8</name>
-    <x>644</x>
-    <y>680</y>
-    <width>44</width>
-    <points>
-      <point x="17.32" y="10.0">
-      </point>
-      <point x="0.0" y="20.0">
-      </point>
-      <point x="0.0" y="0.0">
-      </point>
-      <point x="17.32" y="10.0">
-      </point>
-      <point x="27.32" y="10.0">
-      </point>
-      <point x="44.64" y="0.0">
-      </point>
-      <point x="44.64" y="20.0">
-      </point>
-      <point x="27.32" y="10.0">
-      </point>
-    </points>
-  </widget>
-  <widget type="embedded" version="2.0.0">
-    <name>GB-031e</name>
-    <macros>
-      <WIDDev>GB</WIDDev>
-      <WIDDis>MC</WIDDis>
-      <WIDIndex>031e</WIDIndex>
-      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
-    </macros>
-    <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
-    <x>860</x>
-    <y>576</y>
-    <width>90</width>
-    <height>90</height>
-    <resize>2</resize>
-  </widget>
-  <widget type="embedded" version="2.0.0">
-    <name>GB-031f</name>
-    <macros>
-      <WIDDev>GB</WIDDev>
-      <WIDDis>MC</WIDDis>
-      <WIDIndex>032d</WIDIndex>
-      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
-    </macros>
-    <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
-    <x>860</x>
-    <y>676</y>
-    <width>90</width>
-    <height>90</height>
-    <resize>2</resize>
-  </widget>
   <widget type="label" version="2.0.0">
     <name>Label_7</name>
     <class>HEADER3</class>
@@ -555,320 +269,6 @@
     <horizontal_alignment>1</horizontal_alignment>
     <vertical_alignment>1</vertical_alignment>
     <wrap_words>false</wrap_words>
-  </widget>
-  <widget type="group" version="2.0.0">
-    <name>Group</name>
-    <x>400</x>
-    <y>254</y>
-    <width>230</width>
-    <height>100</height>
-    <style>3</style>
-    <transparent>true</transparent>
-    <widget type="label" version="2.0.0">
-      <name>WID_TitleLBL_4</name>
-      <text>Setpoint Position</text>
-      <width>230</width>
-      <height>30</height>
-      <font>
-        <font family="Source Sans Pro" style="BOLD" size="18.0">
-        </font>
-      </font>
-      <horizontal_alignment>1</horizontal_alignment>
-      <vertical_alignment>1</vertical_alignment>
-      <tooltip>Device name</tooltip>
-    </widget>
-    <widget type="rectangle" version="2.0.0">
-      <name>WID_Rect_3</name>
-      <width>230</width>
-      <height>100</height>
-      <line_width>0</line_width>
-      <background_color>
-        <color red="0" green="0" blue="0" alpha="18">
-        </color>
-      </background_color>
-      <corner_width>10</corner_width>
-      <corner_height>10</corner_height>
-    </widget>
-    <widget type="action_button" version="3.0.0">
-      <name>Action Button_2</name>
-      <actions>
-        <action type="write_pv">
-          <pv_name>$(pv_name)</pv_name>
-          <value>1</value>
-          <description>Write PV</description>
-        </action>
-      </actions>
-      <text>Move</text>
-      <x>75</x>
-      <y>70</y>
-      <width>80</width>
-      <height>20</height>
-      <tooltip>$(actions)</tooltip>
-    </widget>
-    <widget type="spinner" version="2.0.0">
-      <name>Spinner</name>
-      <x>39</x>
-      <y>40</y>
-      <width>80</width>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_59</name>
-      <text>[mm]</text>
-      <x>128</x>
-      <y>40</y>
-      <width>56</width>
-    </widget>
-  </widget>
-  <widget type="group" version="2.0.0">
-    <name>Group_1</name>
-    <x>400</x>
-    <y>174</y>
-    <width>230</width>
-    <height>70</height>
-    <style>3</style>
-    <transparent>true</transparent>
-    <widget type="rectangle" version="2.0.0">
-      <name>WID_Rect_4</name>
-      <width>230</width>
-      <height>70</height>
-      <line_width>0</line_width>
-      <background_color>
-        <color red="0" green="0" blue="0" alpha="18">
-        </color>
-      </background_color>
-      <corner_width>10</corner_width>
-      <corner_height>10</corner_height>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Text Update_16</name>
-      <x>39</x>
-      <y>30</y>
-      <width>80</width>
-      <horizontal_alignment>1</horizontal_alignment>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_60</name>
-      <text>[mm]</text>
-      <x>128</x>
-      <y>30</y>
-      <width>45</width>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>WID_TitleLBL_5</name>
-      <text>Current Position</text>
-      <width>230</width>
-      <height>30</height>
-      <font>
-        <font family="Source Sans Pro" style="BOLD" size="18.0">
-        </font>
-      </font>
-      <horizontal_alignment>1</horizontal_alignment>
-      <tooltip>Device name</tooltip>
-    </widget>
-  </widget>
-  <widget type="group" version="2.0.0">
-    <name>Group</name>
-    <x>718</x>
-    <y>682</y>
-    <width>99</width>
-    <height>20</height>
-    <style>3</style>
-    <transparent>true</transparent>
-    <widget type="led" version="2.0.0">
-      <name>LED_23</name>
-      <pv_name>$(PREFIX):Mech-Wheel:ZPos_Parked_Act</pv_name>
-      <off_color>
-        <color name="LED-RED-OFF" red="110" green="101" blue="90">
-        </color>
-      </off_color>
-      <on_color>
-        <color name="LED-RED-ON" red="255" green="60" blue="46">
-        </color>
-      </on_color>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_66</name>
-      <text>Parked</text>
-      <x>29</x>
-      <width>60</width>
-      <height>29</height>
-      <font>
-        <font family="Source Sans Pro" style="REGULAR" size="20.0">
-        </font>
-      </font>
-      <vertical_alignment>1</vertical_alignment>
-      <auto_size>true</auto_size>
-    </widget>
-  </widget>
-  <widget type="group" version="2.0.0">
-    <name>Group</name>
-    <x>718</x>
-    <y>580</y>
-    <width>99</width>
-    <height>20</height>
-    <style>3</style>
-    <transparent>true</transparent>
-    <widget type="led" version="2.0.0">
-      <name>LED_22</name>
-      <pv_name>$(PREFIX):Mech-Wheel:ZPos_Parking_Act</pv_name>
-      <off_color>
-        <color name="LED-ORANGE-OFF" red="110" green="105" blue="90">
-        </color>
-      </off_color>
-      <on_color>
-        <color name="LED-ORANGE-ON" red="255" green="175" blue="81">
-        </color>
-      </on_color>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_65</name>
-      <text>Parking</text>
-      <x>29</x>
-      <width>65</width>
-      <height>29</height>
-      <font>
-        <font family="Source Sans Pro" style="REGULAR" size="20.0">
-        </font>
-      </font>
-      <vertical_alignment>1</vertical_alignment>
-      <auto_size>true</auto_size>
-    </widget>
-  </widget>
-  <widget type="group" version="2.0.0">
-    <name>Group</name>
-    <x>718</x>
-    <y>531</y>
-    <width>99</width>
-    <height>20</height>
-    <style>3</style>
-    <transparent>true</transparent>
-    <widget type="led" version="2.0.0">
-      <name>LED_21</name>
-      <pv_name>$(PREFIX):Mech-Wheel:ZPos_LoLo_Act</pv_name>
-      <off_color>
-        <color name="LED-RED-OFF" red="110" green="101" blue="90">
-        </color>
-      </off_color>
-      <on_color>
-        <color name="LED-RED-ON" red="255" green="60" blue="46">
-        </color>
-      </on_color>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_64</name>
-      <text>L2</text>
-      <x>29</x>
-      <width>20</width>
-      <height>29</height>
-      <font>
-        <font family="Source Sans Pro" style="REGULAR" size="20.0">
-        </font>
-      </font>
-      <vertical_alignment>1</vertical_alignment>
-      <auto_size>true</auto_size>
-    </widget>
-  </widget>
-  <widget type="group" version="2.0.0">
-    <name>Group</name>
-    <x>718</x>
-    <y>432</y>
-    <width>99</width>
-    <height>20</height>
-    <style>3</style>
-    <transparent>true</transparent>
-    <widget type="led" version="2.0.0">
-      <name>LED_20</name>
-      <pv_name>$(PREFIX):Mech-Wheel:ZPos_Low_Act</pv_name>
-      <off_color>
-        <color name="LED-ORANGE-OFF" red="110" green="105" blue="90">
-        </color>
-      </off_color>
-      <on_color>
-        <color name="LED-ORANGE-ON" red="255" green="175" blue="81">
-        </color>
-      </on_color>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_63</name>
-      <text>L1</text>
-      <x>29</x>
-      <width>20</width>
-      <height>29</height>
-      <font>
-        <font family="Source Sans Pro" style="REGULAR" size="20.0">
-        </font>
-      </font>
-      <vertical_alignment>1</vertical_alignment>
-      <auto_size>true</auto_size>
-    </widget>
-  </widget>
-  <widget type="group" version="2.0.0">
-    <name>Group</name>
-    <x>718</x>
-    <y>268</y>
-    <width>99</width>
-    <height>20</height>
-    <style>3</style>
-    <transparent>true</transparent>
-    <widget type="led" version="2.0.0">
-      <name>LED_19</name>
-      <pv_name>$(PREFIX):Mech-Wheel:ZPos_High_Act</pv_name>
-      <off_color>
-        <color name="LED-ORANGE-OFF" red="110" green="105" blue="90">
-        </color>
-      </off_color>
-      <on_color>
-        <color name="LED-ORANGE-ON" red="255" green="175" blue="81">
-        </color>
-      </on_color>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_62</name>
-      <text>H1</text>
-      <x>29</x>
-      <width>23</width>
-      <height>29</height>
-      <font>
-        <font family="Source Sans Pro" style="REGULAR" size="20.0">
-        </font>
-      </font>
-      <vertical_alignment>1</vertical_alignment>
-      <auto_size>true</auto_size>
-    </widget>
-  </widget>
-  <widget type="group" version="2.0.0">
-    <name>Group</name>
-    <x>718</x>
-    <y>224</y>
-    <width>99</width>
-    <height>20</height>
-    <style>3</style>
-    <transparent>true</transparent>
-    <widget type="led" version="2.0.0">
-      <name>LED_18</name>
-      <pv_name>$(PREFIX):Mech-Wheel:ZPos_HiHi_Act</pv_name>
-      <off_color>
-        <color name="LED-RED-OFF" red="110" green="101" blue="90">
-        </color>
-      </off_color>
-      <on_color>
-        <color name="LED-RED-ON" red="255" green="60" blue="46">
-        </color>
-      </on_color>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_61</name>
-      <text>H2</text>
-      <x>29</x>
-      <width>23</width>
-      <height>29</height>
-      <font>
-        <font family="Source Sans Pro" style="REGULAR" size="20.0">
-        </font>
-      </font>
-      <vertical_alignment>1</vertical_alignment>
-      <auto_size>true</auto_size>
-    </widget>
   </widget>
   <widget type="symbol" version="2.0.0">
     <name>Symbol_3</name>
@@ -1133,42 +533,1510 @@
     <vertical_alignment>1</vertical_alignment>
     <wrap_words>false</wrap_words>
   </widget>
-  <widget type="action_button" version="3.0.0">
-    <name>Action Button_5</name>
-    <actions>
-      <action type="open_display">
-        <file>TDU/TS_TDU_SlaveDiag/TS_TDU_MotionSlaveList.bob</file>
-        <macros>
-          <DEV_NAME>X</DEV_NAME>
-          <PREFIX>TARGET_DU</PREFIX>
-        </macros>
-        <target>window</target>
-        <description>Open Display</description>
-      </action>
-    </actions>
-    <text>Hardware</text>
-    <x>439</x>
-    <y>450</y>
-    <width>140</width>
-    <tooltip>$(actions)</tooltip>
+  <widget type="group" version="2.0.0">
+    <name>Group_TDU_X_Trans</name>
+    <macros>
+      <DEV_NAME>X</DEV_NAME>
+    </macros>
+    <x>1360</x>
+    <y>204</y>
+    <width>600</width>
+    <height>660</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="rectangle" version="2.0.0">
+      <name>Background_6</name>
+      <width>600</width>
+      <height>660</height>
+      <line_width>1</line_width>
+      <line_color>
+        <color name="GROUP-BORDER" red="150" green="155" blue="151">
+        </color>
+      </line_color>
+      <background_color>
+        <color name="BACKGROUND" red="220" green="225" blue="221">
+        </color>
+      </background_color>
+      <corner_width>10</corner_width>
+      <corner_height>10</corner_height>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>XTranslation_1</name>
+      <macros>
+        <PV_NAME>$(PREFIX)$(DEV_NAME)-Homed</PV_NAME>
+      </macros>
+      <file>TDU/TS_TDU_XYTranslation/TS_TDU_XYTranslation_BlockIcon.bob</file>
+      <x>22</x>
+      <y>500</y>
+      <width>220</width>
+      <height>150</height>
+      <resize>2</resize>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_51</name>
+      <text>Position Switches</text>
+      <x>249</x>
+      <y>420</y>
+      <width>110</width>
+      <height>50</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="16.0">
+        </font>
+      </font>
+      <horizontal_alignment>1</horizontal_alignment>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>M-032_1</name>
+      <macros>
+        <WIDDev>M</WIDDev>
+        <WIDDis>MC</WIDDis>
+        <WIDIndex>032</WIDIndex>
+        <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+      </macros>
+      <file>TDU/TS_TDU_StepMotor/TS_TDU_StepMotor_BlockIcon.bob</file>
+      <x>431</x>
+      <y>500</y>
+      <width>150</width>
+      <height>150</height>
+      <resize>2</resize>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>GB-032d</name>
+      <macros>
+        <PV_NAME>$(PREFIX)$(DEV_NAME)-LimitMinMin</PV_NAME>
+        <WIDDev>GB</WIDDev>
+        <WIDDis>MC</WIDDis>
+        <WIDIndex>032d</WIDIndex>
+        <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+      </macros>
+      <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
+      <x>22</x>
+      <y>398</y>
+      <width>90</width>
+      <height>90</height>
+      <resize>2</resize>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>GB-032c</name>
+      <macros>
+        <PV_NAME>$(PREFIX)$(DEV_NAME)-LimitMin</PV_NAME>
+        <WIDDev>GB</WIDDev>
+        <WIDDis>MC</WIDDis>
+        <WIDIndex>032c</WIDIndex>
+        <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+      </macros>
+      <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
+      <x>152</x>
+      <y>398</y>
+      <width>90</width>
+      <height>90</height>
+      <resize>2</resize>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>GB-032b</name>
+      <macros>
+        <PV_NAME>$(PREFIX)$(DEV_NAME)-LimitMax</PV_NAME>
+        <WIDDev>GB</WIDDev>
+        <WIDDis>MC</WIDDis>
+        <WIDIndex>032b</WIDIndex>
+        <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+      </macros>
+      <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
+      <x>365</x>
+      <y>398</y>
+      <width>90</width>
+      <height>90</height>
+      <resize>2</resize>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>GB-032a</name>
+      <macros>
+        <PV_NAME>$(PREFIX)$(DEV_NAME)-LimitMaxMax</PV_NAME>
+        <WIDDev>GB</WIDDev>
+        <WIDDis>MC</WIDDis>
+        <WIDIndex>032a</WIDIndex>
+        <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+      </macros>
+      <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
+      <x>491</x>
+      <y>398</y>
+      <width>90</width>
+      <height>90</height>
+      <resize>2</resize>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>SC-032</name>
+      <macros>
+        <PV_NAME>$(PREFIX)ec0-s20-IPOS8020-data-valid</PV_NAME>
+        <WIDDev>SC</WIDDev>
+        <WIDDis>MC</WIDDis>
+        <WIDIndex>032</WIDIndex>
+        <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+      </macros>
+      <file>TDU/TS_TDU_StepDrive/TS_TDU_StepDrive_BlockIcon.bob</file>
+      <x>264</x>
+      <y>500</y>
+      <width>150</width>
+      <height>150</height>
+      <resize>2</resize>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>YSV-034a</name>
+      <macros>
+        <PV_NAME>$(PREFIX)$(DEV_NAME)-BrakeReleased</PV_NAME>
+        <WIDDev>YSV</WIDDev>
+        <WIDDis>Proc</WIDDis>
+        <WIDIndex>034a</WIDIndex>
+        <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+      </macros>
+      <file>TDU/TS_TDU_XYClamp/TS_TDU_XYClamp_BlockIcon.bob</file>
+      <x>433</x>
+      <y>37</y>
+      <width>150</width>
+      <height>170</height>
+      <resize>2</resize>
+    </widget>
+    <widget type="rectangle" version="2.0.0">
+      <name>WID_Rect_8</name>
+      <x>22</x>
+      <y>316</y>
+      <width>559</width>
+      <height>70</height>
+      <line_width>0</line_width>
+      <background_color>
+        <color red="0" green="0" blue="0" alpha="18">
+        </color>
+      </background_color>
+      <corner_width>10</corner_width>
+      <corner_height>10</corner_height>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>WID_TitleLBL_8</name>
+      <text>Position Alarms</text>
+      <x>54</x>
+      <y>316</y>
+      <width>508</width>
+      <height>30</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="18.0">
+        </font>
+      </font>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <tooltip>Device name</tooltip>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>LB_Header_6</name>
+      <class>HEADER3</class>
+      <text>$(DEV_NAME)-Translation</text>
+      <width>600</width>
+      <height>37</height>
+      <font use_class="true">
+        <font name="Header 3" family="Source Sans Pro" style="BOLD_ITALIC" size="18.0">
+        </font>
+      </font>
+      <foreground_color use_class="true">
+        <color name="Text" red="25" green="25" blue="25">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
   </widget>
-  <widget type="action_button" version="3.0.0">
-    <name>Action Button_6</name>
-    <actions>
-      <action type="open_display">
-        <file>TDU/TS_TDU_Interlocks/TS_SSS_E01_034_XYZ_Interlocks.bob</file>
-        <macros>
-          <DEV_NAME>Z</DEV_NAME>
-          <PREFIX>TARGET_DU</PREFIX>
-        </macros>
-        <target>window</target>
-        <description>Open Display</description>
-      </action>
-    </actions>
-    <text>Interlocks Z</text>
-    <x>439</x>
-    <y>420</y>
-    <width>140</width>
-    <tooltip>$(actions)</tooltip>
+  <widget type="group" version="2.0.0">
+    <name>Group</name>
+    <macros>
+      <DEV_NAME>Z</DEV_NAME>
+    </macros>
+    <x>383</x>
+    <y>110</y>
+    <width>918</width>
+    <height>670</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="embedded" version="2.0.0">
+      <name>GB-031f</name>
+      <macros>
+        <WIDDev>GB</WIDDev>
+        <WIDDis>MC</WIDDis>
+        <WIDIndex>032d</WIDIndex>
+        <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+      </macros>
+      <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
+      <x>477</x>
+      <y>566</y>
+      <width>90</width>
+      <height>90</height>
+      <resize>2</resize>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Group</name>
+      <x>17</x>
+      <y>144</y>
+      <width>230</width>
+      <height>100</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="label" version="2.0.0">
+        <name>WID_TitleLBL_4</name>
+        <text>Setpoint Position</text>
+        <width>230</width>
+        <height>30</height>
+        <font>
+          <font family="Source Sans Pro" style="BOLD" size="18.0">
+          </font>
+        </font>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+        <tooltip>Device name</tooltip>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>WID_Rect_3</name>
+        <width>230</width>
+        <height>100</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color red="0" green="0" blue="0" alpha="18">
+          </color>
+        </background_color>
+        <corner_width>10</corner_width>
+        <corner_height>10</corner_height>
+      </widget>
+      <widget type="action_button" version="3.0.0">
+        <name>Action Button_2</name>
+        <actions>
+          <action type="write_pv">
+            <pv_name>$(pv_name)</pv_name>
+            <value>1</value>
+            <description>Write PV</description>
+          </action>
+        </actions>
+        <text>Move</text>
+        <x>75</x>
+        <y>70</y>
+        <width>80</width>
+        <height>20</height>
+        <tooltip>$(actions)</tooltip>
+      </widget>
+      <widget type="spinner" version="2.0.0">
+        <name>Spinner</name>
+        <x>39</x>
+        <y>40</y>
+        <width>80</width>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label_59</name>
+        <text>[mm]</text>
+        <x>128</x>
+        <y>40</y>
+        <width>56</width>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Group_1</name>
+      <x>17</x>
+      <y>64</y>
+      <width>230</width>
+      <height>70</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="rectangle" version="2.0.0">
+        <name>WID_Rect_4</name>
+        <width>230</width>
+        <height>70</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color red="0" green="0" blue="0" alpha="18">
+          </color>
+        </background_color>
+        <corner_width>10</corner_width>
+        <corner_height>10</corner_height>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>Text Update_16</name>
+        <x>39</x>
+        <y>30</y>
+        <width>80</width>
+        <horizontal_alignment>1</horizontal_alignment>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label_60</name>
+        <text>[mm]</text>
+        <x>128</x>
+        <y>30</y>
+        <width>45</width>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>WID_TitleLBL_5</name>
+        <text>Current Position</text>
+        <width>230</width>
+        <height>30</height>
+        <font>
+          <font family="Source Sans Pro" style="BOLD" size="18.0">
+          </font>
+        </font>
+        <horizontal_alignment>1</horizontal_alignment>
+        <tooltip>Device name</tooltip>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Group</name>
+      <x>335</x>
+      <y>572</y>
+      <width>99</width>
+      <height>20</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="led" version="2.0.0">
+        <name>LED_23</name>
+        <pv_name>$(PREFIX):Mech-Wheel:ZPos_Parked_Act</pv_name>
+        <off_color>
+          <color name="LED-RED-OFF" red="110" green="101" blue="90">
+          </color>
+        </off_color>
+        <on_color>
+          <color name="LED-RED-ON" red="255" green="60" blue="46">
+          </color>
+        </on_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label_66</name>
+        <text>Parked</text>
+        <x>29</x>
+        <width>60</width>
+        <height>29</height>
+        <font>
+          <font family="Source Sans Pro" style="REGULAR" size="20.0">
+          </font>
+        </font>
+        <vertical_alignment>1</vertical_alignment>
+        <auto_size>true</auto_size>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Group</name>
+      <x>335</x>
+      <y>470</y>
+      <width>99</width>
+      <height>20</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="led" version="2.0.0">
+        <name>LED_22</name>
+        <pv_name>$(PREFIX):Mech-Wheel:ZPos_Parking_Act</pv_name>
+        <off_color>
+          <color name="LED-ORANGE-OFF" red="110" green="105" blue="90">
+          </color>
+        </off_color>
+        <on_color>
+          <color name="LED-ORANGE-ON" red="255" green="175" blue="81">
+          </color>
+        </on_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label_65</name>
+        <text>Parking</text>
+        <x>29</x>
+        <width>65</width>
+        <height>29</height>
+        <font>
+          <font family="Source Sans Pro" style="REGULAR" size="20.0">
+          </font>
+        </font>
+        <vertical_alignment>1</vertical_alignment>
+        <auto_size>true</auto_size>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Group</name>
+      <x>335</x>
+      <y>421</y>
+      <width>99</width>
+      <height>20</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="led" version="2.0.0">
+        <name>LED_21</name>
+        <pv_name>$(PREFIX):Mech-Wheel:ZPos_LoLo_Act</pv_name>
+        <off_color>
+          <color name="LED-RED-OFF" red="110" green="101" blue="90">
+          </color>
+        </off_color>
+        <on_color>
+          <color name="LED-RED-ON" red="255" green="60" blue="46">
+          </color>
+        </on_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label_64</name>
+        <text>L2</text>
+        <x>29</x>
+        <width>20</width>
+        <height>29</height>
+        <font>
+          <font family="Source Sans Pro" style="REGULAR" size="20.0">
+          </font>
+        </font>
+        <vertical_alignment>1</vertical_alignment>
+        <auto_size>true</auto_size>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Group</name>
+      <x>335</x>
+      <y>322</y>
+      <width>99</width>
+      <height>20</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="led" version="2.0.0">
+        <name>LED_20</name>
+        <pv_name>$(PREFIX):Mech-Wheel:ZPos_Low_Act</pv_name>
+        <off_color>
+          <color name="LED-ORANGE-OFF" red="110" green="105" blue="90">
+          </color>
+        </off_color>
+        <on_color>
+          <color name="LED-ORANGE-ON" red="255" green="175" blue="81">
+          </color>
+        </on_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label_63</name>
+        <text>L1</text>
+        <x>29</x>
+        <width>20</width>
+        <height>29</height>
+        <font>
+          <font family="Source Sans Pro" style="REGULAR" size="20.0">
+          </font>
+        </font>
+        <vertical_alignment>1</vertical_alignment>
+        <auto_size>true</auto_size>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Group</name>
+      <x>335</x>
+      <y>158</y>
+      <width>99</width>
+      <height>20</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="led" version="2.0.0">
+        <name>LED_19</name>
+        <pv_name>$(PREFIX):Mech-Wheel:ZPos_High_Act</pv_name>
+        <off_color>
+          <color name="LED-ORANGE-OFF" red="110" green="105" blue="90">
+          </color>
+        </off_color>
+        <on_color>
+          <color name="LED-ORANGE-ON" red="255" green="175" blue="81">
+          </color>
+        </on_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label_62</name>
+        <text>H1</text>
+        <x>29</x>
+        <width>23</width>
+        <height>29</height>
+        <font>
+          <font family="Source Sans Pro" style="REGULAR" size="20.0">
+          </font>
+        </font>
+        <vertical_alignment>1</vertical_alignment>
+        <auto_size>true</auto_size>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Group</name>
+      <x>335</x>
+      <y>114</y>
+      <width>99</width>
+      <height>20</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="led" version="2.0.0">
+        <name>LED_18</name>
+        <pv_name>$(PREFIX):Mech-Wheel:ZPos_HiHi_Act</pv_name>
+        <off_color>
+          <color name="LED-RED-OFF" red="110" green="101" blue="90">
+          </color>
+        </off_color>
+        <on_color>
+          <color name="LED-RED-ON" red="255" green="60" blue="46">
+          </color>
+        </on_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label_61</name>
+        <text>H2</text>
+        <x>29</x>
+        <width>23</width>
+        <height>29</height>
+        <font>
+          <font family="Source Sans Pro" style="REGULAR" size="20.0">
+          </font>
+        </font>
+        <vertical_alignment>1</vertical_alignment>
+        <auto_size>true</auto_size>
+      </widget>
+    </widget>
+    <widget type="rectangle" version="2.0.0">
+      <name>Background_5</name>
+      <width>918</width>
+      <height>670</height>
+      <line_width>1</line_width>
+      <line_color>
+        <color name="GROUP-BORDER" red="150" green="155" blue="151">
+        </color>
+      </line_color>
+      <background_color>
+        <color name="BACKGROUND" red="220" green="225" blue="221">
+        </color>
+      </background_color>
+      <corner_width>10</corner_width>
+      <corner_height>10</corner_height>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>LB_Header_5</name>
+      <class>HEADER3</class>
+      <text>Z-Translation</text>
+      <width>816</width>
+      <height>37</height>
+      <font use_class="true">
+        <font name="Header 3" family="Source Sans Pro" style="BOLD_ITALIC" size="18.0">
+        </font>
+      </font>
+      <foreground_color use_class="true">
+        <color name="Text" red="25" green="25" blue="25">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>M-032</name>
+      <macros>
+        <WIDDev>M</WIDDev>
+        <WIDDis>MC</WIDDis>
+        <WIDIndex>031</WIDIndex>
+        <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+      </macros>
+      <file>TDU/TS_TDU_StepMotor/TS_TDU_StepMotor_BlockIcon.bob</file>
+      <x>587</x>
+      <y>380</y>
+      <width>150</width>
+      <height>150</height>
+      <resize>2</resize>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>GB-031d</name>
+      <macros>
+        <PV_NAME>$(PREFIX)$(DEV_NAME)-LimitMinMin</PV_NAME>
+        <WIDDev>GB</WIDDev>
+        <WIDDis>MC</WIDDis>
+        <WIDIndex>032d</WIDIndex>
+        <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+      </macros>
+      <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
+      <x>477</x>
+      <y>366</y>
+      <width>90</width>
+      <height>90</height>
+      <resize>2</resize>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>GB-031c</name>
+      <macros>
+        <PV_NAME>$(PREFIX)$(DEV_NAME)-LimitMin</PV_NAME>
+        <WIDDev>GB</WIDDev>
+        <WIDDis>MC</WIDDis>
+        <WIDIndex>031c</WIDIndex>
+        <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+      </macros>
+      <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
+      <x>477</x>
+      <y>266</y>
+      <width>90</width>
+      <height>90</height>
+      <resize>2</resize>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>GB-031b</name>
+      <macros>
+        <PV_NAME>$(PREFIX)$(DEV_NAME)-LimitMax</PV_NAME>
+        <WIDDev>GB</WIDDev>
+        <WIDDis>MC</WIDDis>
+        <WIDIndex>031b</WIDIndex>
+        <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+      </macros>
+      <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
+      <x>477</x>
+      <y>156</y>
+      <width>90</width>
+      <height>90</height>
+      <resize>2</resize>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>GB-031a</name>
+      <macros>
+        <PV_NAME>$(PREFIX)$(DEV_NAME)-LimitMaxMax</PV_NAME>
+        <WIDDev>GB</WIDDev>
+        <WIDDis>MC</WIDDis>
+        <WIDIndex>032a</WIDIndex>
+        <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+      </macros>
+      <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
+      <x>477</x>
+      <y>54</y>
+      <width>90</width>
+      <height>90</height>
+      <resize>2</resize>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>SC-031</name>
+      <macros>
+        <PV_NAME>$(PREFIX)ec0-s22-IPOS8020-data-valid</PV_NAME>
+        <WIDDev>SC</WIDDev>
+        <WIDDis>MC</WIDDis>
+        <WIDIndex>031</WIDIndex>
+        <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+      </macros>
+      <file>TDU/TS_TDU_StepDrive/TS_TDU_StepDrive_BlockIcon.bob</file>
+      <x>587</x>
+      <y>214</y>
+      <width>150</width>
+      <height>150</height>
+      <resize>2</resize>
+    </widget>
+    <widget type="rectangle" version="2.0.0">
+      <name>WID_Rect_1</name>
+      <x>317</x>
+      <y>64</y>
+      <width>140</width>
+      <height>573</height>
+      <line_width>0</line_width>
+      <background_color>
+        <color red="0" green="0" blue="0" alpha="18">
+        </color>
+      </background_color>
+      <corner_width>10</corner_width>
+      <corner_height>10</corner_height>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>WID_TitleLBL_2</name>
+      <text>Position Alarms</text>
+      <x>317</x>
+      <y>64</y>
+      <width>140</width>
+      <height>30</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="18.0">
+        </font>
+      </font>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <tooltip>Device name</tooltip>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>XTranslation</name>
+      <macros>
+        <PV_NAME>$(PREFIX)$(DEV_NAME)-Homed</PV_NAME>
+      </macros>
+      <file>TDU/TS_TDU_ZTranslation/TS_TDU_ZTranslation_BlockIcon.bob</file>
+      <x>588</x>
+      <y>54</y>
+      <width>220</width>
+      <height>150</height>
+      <resize>2</resize>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>GB-031e</name>
+      <macros>
+        <PV_NAME>$(PREFIX)$(DEV_NAME)-LimitMinPark</PV_NAME>
+        <WIDDev>GB</WIDDev>
+        <WIDDis>MC</WIDDis>
+        <WIDIndex>031e</WIDIndex>
+        <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+      </macros>
+      <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
+      <x>477</x>
+      <y>466</y>
+      <width>90</width>
+      <height>90</height>
+      <resize>2</resize>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Group_2</name>
+      <x>17</x>
+      <y>144</y>
+      <width>230</width>
+      <height>100</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="label" version="2.0.0">
+        <name>WID_TitleLBL_6</name>
+        <text>Setpoint Position</text>
+        <width>230</width>
+        <height>30</height>
+        <font>
+          <font family="Source Sans Pro" style="BOLD" size="18.0">
+          </font>
+        </font>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+        <tooltip>Device name</tooltip>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>WID_Rect_6</name>
+        <width>230</width>
+        <height>100</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color red="0" green="0" blue="0" alpha="18">
+          </color>
+        </background_color>
+        <corner_width>10</corner_width>
+        <corner_height>10</corner_height>
+      </widget>
+      <widget type="spinner" version="2.0.0">
+        <name>Spinner_1</name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-PosCmd</pv_name>
+        <x>39</x>
+        <y>40</y>
+        <width>80</width>
+        <minimum>-5.0</minimum>
+        <maximum>5.0</maximum>
+        <increment>0.1</increment>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label_46</name>
+        <text>[mm]</text>
+        <x>128</x>
+        <y>40</y>
+        <width>56</width>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Group_3</name>
+      <x>17</x>
+      <y>64</y>
+      <width>230</width>
+      <height>70</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="rectangle" version="2.0.0">
+        <name>WID_Rect_7</name>
+        <width>230</width>
+        <height>70</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color red="0" green="0" blue="0" alpha="18">
+          </color>
+        </background_color>
+        <corner_width>10</corner_width>
+        <corner_height>10</corner_height>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>Text Update_6</name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-PosAct</pv_name>
+        <x>39</x>
+        <y>30</y>
+        <width>80</width>
+        <show_units>false</show_units>
+        <horizontal_alignment>1</horizontal_alignment>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label_50</name>
+        <text>[mm]</text>
+        <x>128</x>
+        <y>30</y>
+        <width>45</width>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>WID_TitleLBL_7</name>
+        <text>Current Position</text>
+        <width>230</width>
+        <height>30</height>
+        <font>
+          <font family="Source Sans Pro" style="BOLD" size="18.0">
+          </font>
+        </font>
+        <horizontal_alignment>1</horizontal_alignment>
+        <tooltip>Device name</tooltip>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Group</name>
+      <x>261</x>
+      <y>77</y>
+      <width>44</width>
+      <height>548</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="rectangle" version="2.0.0">
+        <name>Rectangle_1</name>
+        <x>17</x>
+        <width>10</width>
+        <height>450</height>
+        <line_width>0</line_width>
+        <line_color>
+          <color name="BLACK" red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <background_color>
+          <color red="255" green="102" blue="102">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Rectangle_3</name>
+        <x>17</x>
+        <y>47</y>
+        <width>10</width>
+        <height>301</height>
+        <line_width>0</line_width>
+        <line_color>
+          <color name="BLACK" red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <background_color>
+          <color name="ActiveText" red="254" green="194" blue="81">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Rectangle_5</name>
+        <x>17</x>
+        <y>97</y>
+        <width>10</width>
+        <height>161</height>
+        <line_width>0</line_width>
+        <line_color>
+          <color name="BLACK" red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <background_color>
+          <color red="153" green="204" blue="153">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Rectangle_8</name>
+        <x>17</x>
+        <y>440</y>
+        <width>10</width>
+        <height>100</height>
+        <line_width>0</line_width>
+        <line_color>
+          <color name="BLACK" red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <background_color>
+          <color red="255" green="102" blue="102">
+          </color>
+        </background_color>
+        <rules>
+          <rule name="New Rule" prop_id="background_color" out_exp="false">
+            <exp bool_exp="pv0==0">
+              <value>
+                <color name="GRAY" red="169" green="169" blue="169">
+                </color>
+              </value>
+            </exp>
+            <exp bool_exp="pv0==1">
+              <value>
+                <color red="255" green="102" blue="102">
+                </color>
+              </value>
+            </exp>
+            <pv_name>$(PREFIX)$(DEV_NAME)-ParkRangeEnaAct</pv_name>
+          </rule>
+        </rules>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Rectangle_6</name>
+        <x>17</x>
+        <y>398</y>
+        <width>10</width>
+        <height>110</height>
+        <line_width>0</line_width>
+        <line_color>
+          <color name="BLACK" red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <background_color>
+          <color name="ActiveText" red="254" green="194" blue="81">
+          </color>
+        </background_color>
+        <rules>
+          <rule name="New Rule" prop_id="background_color" out_exp="false">
+            <exp bool_exp="pv0==0">
+              <value>
+                <color name="GRAY" red="169" green="169" blue="169">
+                </color>
+              </value>
+            </exp>
+            <pv_name>$(PREFIX)$(DEV_NAME)-ParkRangeEnaAct</pv_name>
+          </rule>
+        </rules>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Rectangle_9</name>
+        <x>17</x>
+        <y>170</y>
+        <width>10</width>
+        <height>309</height>
+        <line_width>0</line_width>
+        <line_color>
+          <color name="BLACK" red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <background_color>
+          <color red="153" green="204" blue="153">
+          </color>
+        </background_color>
+        <rules>
+          <rule name="New Rule" prop_id="visible" out_exp="true">
+            <exp bool_exp="pv0==0">
+              <expression>False</expression>
+            </exp>
+            <pv_name>$(PREFIX)$(DEV_NAME)-ParkRangeEnaAct</pv_name>
+          </rule>
+        </rules>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>Polyline_8</name>
+        <y>170</y>
+        <width>44</width>
+        <points>
+          <point x="17.32" y="10.0">
+          </point>
+          <point x="0.0" y="20.0">
+          </point>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="17.32" y="10.0">
+          </point>
+          <point x="27.32" y="10.0">
+          </point>
+          <point x="44.64" y="0.0">
+          </point>
+          <point x="44.64" y="20.0">
+          </point>
+          <point x="27.32" y="10.0">
+          </point>
+        </points>
+        <scripts>
+          <script file="EmbeddedPy">
+            <text><![CDATA[# Embedded python script
+from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
+print 'Hello'
+# widget.setPropertyValue('text', PVUtil.getString(pvs[0]))
+
+value = PVUtil.getDouble(pvs[0]);
+widget.setPropertyValue('y', 170+value*40)]]></text>
+            <pv_name>$(PREFIX)$(DEV_NAME)-PosAct</pv_name>
+          </script>
+        </scripts>
+      </widget>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>GB-031e_1</name>
+      <macros>
+        <PV_NAME>$(PREFIX)$(DEV_NAME)-LimitMinMinPark</PV_NAME>
+        <WIDDev>GB</WIDDev>
+        <WIDDis>MC</WIDDis>
+        <WIDIndex>031e</WIDIndex>
+        <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
+      </macros>
+      <file>TDU/TS_TDU_RefSwitch/TS_TDU_RefSwitch_BlockIcon.bob</file>
+      <x>477</x>
+      <y>566</y>
+      <width>90</width>
+      <height>90</height>
+      <resize>2</resize>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_34</name>
+      <text>H1</text>
+      <x>330</x>
+      <y>158</y>
+      <width>30</width>
+      <height>29</height>
+      <font>
+        <font family="Source Sans Pro" style="REGULAR" size="20.0">
+        </font>
+      </font>
+      <auto_size>true</auto_size>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_25</name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-PosHiAlm</pv_name>
+      <x>356</x>
+      <y>162</y>
+      <off_color>
+        <color name="LED-ORANGE-OFF" red="110" green="105" blue="90">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="LED-ORANGE-ON" red="255" green="175" blue="81">
+        </color>
+      </on_color>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_104</name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-ParkRangeEnaAct</pv_name>
+      <x>207</x>
+      <y>553</y>
+      <off_color>
+        <color name="LED-RED-ON" red="255" green="60" blue="46">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+        </color>
+      </on_color>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Group</name>
+      <x>331</x>
+      <y>322</y>
+      <width>45</width>
+      <height>29</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <rules>
+        <rule name="New Rule" prop_id="visible" out_exp="true">
+          <exp bool_exp="pv0==1">
+            <expression>False</expression>
+          </exp>
+          <pv_name>$(PREFIX)$(DEV_NAME)-ParkRangeEnaAct</pv_name>
+        </rule>
+      </rules>
+      <widget type="led" version="2.0.0">
+        <name>LED_24</name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-PosLoAlm</pv_name>
+        <x>25</x>
+        <y>4</y>
+        <off_color>
+          <color name="LED-ORANGE-OFF" red="110" green="105" blue="90">
+          </color>
+        </off_color>
+        <on_color>
+          <color name="LED-ORANGE-ON" red="255" green="175" blue="81">
+          </color>
+        </on_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label_55</name>
+        <text>L1</text>
+        <width>20</width>
+        <height>29</height>
+        <font>
+          <font family="Source Sans Pro" style="REGULAR" size="20.0">
+          </font>
+        </font>
+        <auto_size>true</auto_size>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Group</name>
+      <x>331</x>
+      <y>421</y>
+      <width>45</width>
+      <height>29</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <rules>
+        <rule name="New Rule" prop_id="visible" out_exp="true">
+          <exp bool_exp="pv0==1">
+            <expression>False</expression>
+          </exp>
+          <pv_name>$(PREFIX)$(DEV_NAME)-ParkRangeEnaAct</pv_name>
+        </rule>
+      </rules>
+      <widget type="led" version="2.0.0">
+        <name>LED_11</name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-PosLoLoAlm</pv_name>
+        <x>25</x>
+        <y>4</y>
+        <off_color>
+          <color name="LED-RED-OFF" red="110" green="101" blue="90">
+          </color>
+        </off_color>
+        <on_color>
+          <color name="LED-RED-ON" red="255" green="60" blue="46">
+          </color>
+        </on_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label_52</name>
+        <text>L2</text>
+        <width>20</width>
+        <height>29</height>
+        <font>
+          <font family="Source Sans Pro" style="REGULAR" size="20.0">
+          </font>
+        </font>
+        <auto_size>true</auto_size>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Group_4</name>
+      <x>335</x>
+      <y>539</y>
+      <width>45</width>
+      <height>29</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <rules>
+        <rule name="New Rule" prop_id="visible" out_exp="true">
+          <exp bool_exp="pv0==0">
+            <expression>False</expression>
+          </exp>
+          <pv_name>$(PREFIX)$(DEV_NAME)-ParkRangeEnaAct</pv_name>
+        </rule>
+      </rules>
+      <widget type="led" version="2.0.0">
+        <name>LED_105</name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-PosLoAlm</pv_name>
+        <x>25</x>
+        <y>4</y>
+        <off_color>
+          <color name="LED-ORANGE-OFF" red="110" green="105" blue="90">
+          </color>
+        </off_color>
+        <on_color>
+          <color name="LED-ORANGE-ON" red="255" green="175" blue="81">
+          </color>
+        </on_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label_57</name>
+        <text>L1</text>
+        <width>20</width>
+        <height>29</height>
+        <font>
+          <font family="Source Sans Pro" style="REGULAR" size="20.0">
+          </font>
+        </font>
+        <auto_size>true</auto_size>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Group_5</name>
+      <x>335</x>
+      <y>571</y>
+      <width>45</width>
+      <height>29</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <rules>
+        <rule name="New Rule" prop_id="visible" out_exp="true">
+          <exp bool_exp="pv0==0">
+            <expression>False</expression>
+          </exp>
+          <pv_name>$(PREFIX)$(DEV_NAME)-ParkRangeEnaAct</pv_name>
+        </rule>
+      </rules>
+      <widget type="led" version="2.0.0">
+        <name>LED_106</name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-PosLoLoAlm</pv_name>
+        <x>25</x>
+        <y>4</y>
+        <off_color>
+          <color name="LED-RED-OFF" red="110" green="101" blue="90">
+          </color>
+        </off_color>
+        <on_color>
+          <color name="LED-RED-ON" red="255" green="60" blue="46">
+          </color>
+        </on_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label_68</name>
+        <text>L2</text>
+        <width>20</width>
+        <height>29</height>
+        <font>
+          <font family="Source Sans Pro" style="REGULAR" size="20.0">
+          </font>
+        </font>
+        <auto_size>true</auto_size>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Group</name>
+      <x>330</x>
+      <y>107</y>
+      <width>46</width>
+      <height>29</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="led" version="2.0.0">
+        <name>LED_26</name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-PosHiHiAlm</pv_name>
+        <x>26</x>
+        <y>4</y>
+        <off_color>
+          <color name="LED-RED-OFF" red="110" green="101" blue="90">
+          </color>
+        </off_color>
+        <on_color>
+          <color name="LED-RED-ON" red="255" green="60" blue="46">
+          </color>
+        </on_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label_35</name>
+        <text>H2</text>
+        <width>23</width>
+        <height>29</height>
+        <font>
+          <font family="Source Sans Pro" style="REGULAR" size="20.0">
+          </font>
+        </font>
+        <auto_size>true</auto_size>
+      </widget>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>WID_TitleLBL_9</name>
+      <text>Parking Enabled:</text>
+      <x>56</x>
+      <y>548</y>
+      <width>140</width>
+      <height>30</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="18.0">
+        </font>
+      </font>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <tooltip>Device name</tooltip>
+    </widget>
+    <widget type="rectangle" version="2.0.0">
+      <name>WID_Rect_9</name>
+      <x>17</x>
+      <y>267</y>
+      <width>230</width>
+      <height>281</height>
+      <line_width>0</line_width>
+      <background_color>
+        <color red="0" green="0" blue="0" alpha="18">
+        </color>
+      </background_color>
+      <corner_width>10</corner_width>
+      <corner_height>10</corner_height>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>WID_TitleLBL_10</name>
+      <text>Controls</text>
+      <x>13</x>
+      <y>267</y>
+      <width>230</width>
+      <height>30</height>
+      <font>
+        <font family="Source Sans Pro" style="BOLD" size="18.0">
+        </font>
+      </font>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <tooltip>Device name</tooltip>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button</name>
+      <actions>
+        <action type="open_display">
+          <file>TDU/TS_TDU_Interlocks/TS_SSS_E01_034_XYZ_Interlocks.bob</file>
+          <target>window</target>
+          <description>Open Display</description>
+        </action>
+      </actions>
+      <text>Engineering $(DEV_NAME)</text>
+      <x>64</x>
+      <y>301</y>
+      <width>140</width>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_7</name>
+      <actions>
+        <action type="open_display">
+          <file>TDU/TS_TDU_SlaveDiag/TS_TDU_MotionSlaveList.bob</file>
+          <macros>
+            <DEV_NAME>X</DEV_NAME>
+            <PREFIX>TARGET_DU:</PREFIX>
+          </macros>
+          <target>window</target>
+          <description>Open Display</description>
+        </action>
+      </actions>
+      <text>Hardware</text>
+      <x>64</x>
+      <y>331</y>
+      <width>140</width>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_8</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(pv_name)</pv_name>
+          <value>1</value>
+          <description>Write PV</description>
+        </action>
+      </actions>
+      <pv_name>$(PREFIX)$(DEV_NAME)-ExeResetCmd</pv_name>
+      <text>Reset</text>
+      <x>64</x>
+      <y>480</y>
+      <width>140</width>
+      <rules>
+        <rule name="New Rule" prop_id="background_color" out_exp="false">
+          <exp bool_exp="pv0!=0">
+            <value>
+              <color name="ERROR" red="252" green="13" blue="27">
+              </color>
+            </value>
+          </exp>
+          <exp bool_exp="pv0==0">
+            <value>
+              <color name="Button_Background" red="236" green="236" blue="236">
+              </color>
+            </value>
+          </exp>
+          <pv_name>$(PREFIX)$(DEV_NAME)-ErrId</pv_name>
+        </rule>
+      </rules>
+      <tooltip>$(actions)</tooltip>
+      <show_confirm_dialog>true</show_confirm_dialog>
+      <confirm_message>Are your sure you want to reset error?</confirm_message>
+    </widget>
+    <widget type="bool_button" version="2.0.0">
+      <name>Boolean Button</name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-EnaCmd</pv_name>
+      <x>64</x>
+      <y>361</y>
+      <width>140</width>
+      <off_label>Enable</off_label>
+      <on_label>Disable</on_label>
+      <rules>
+        <rule name="New Rule" prop_id="background_color" out_exp="false">
+          <exp bool_exp="pv0==0">
+            <value>
+              <color name="Button_Background" red="236" green="236" blue="236">
+              </color>
+            </value>
+          </exp>
+          <exp bool_exp="pv0==1">
+            <value>
+              <color name="GREEN" red="61" green="216" blue="61">
+              </color>
+            </value>
+          </exp>
+          <pv_name>$(PREFIX)$(DEV_NAME)-EnaAct</pv_name>
+        </rule>
+      </rules>
+      <show_confirm_dialog>1</show_confirm_dialog>
+      <confirm_message>Are your sure you want to toggle enable state of $(DEV_NAME) drive?</confirm_message>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_9</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(pv_name)</pv_name>
+          <value>1</value>
+          <description>Write PV</description>
+        </action>
+      </actions>
+      <pv_name>$(PREFIX)$(DEV_NAME)-ExePosCmd</pv_name>
+      <text>Move</text>
+      <x>64</x>
+      <y>391</y>
+      <width>140</width>
+      <rules>
+        <rule name="New Rule" prop_id="background_color" out_exp="false">
+          <exp bool_exp="pv0==1">
+            <value>
+              <color name="LED-RED-ON" red="255" green="60" blue="46">
+              </color>
+            </value>
+          </exp>
+          <exp bool_exp="pv0==0">
+            <value>
+              <color name="Button_Background" red="236" green="236" blue="236">
+              </color>
+            </value>
+          </exp>
+          <pv_name>$(PREFIX)$(DEV_NAME)-Busy</pv_name>
+        </rule>
+      </rules>
+      <tooltip>$(actions)</tooltip>
+      <show_confirm_dialog>true</show_confirm_dialog>
+      <confirm_message>Are your sure you want to execute a motion for $(DEV_NAME)?</confirm_message>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_10</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(pv_name)</pv_name>
+          <value>1</value>
+          <description>Write PV</description>
+        </action>
+      </actions>
+      <pv_name>$(PREFIX)$(DEV_NAME)-ExeStopCmd</pv_name>
+      <text>Stop</text>
+      <x>64</x>
+      <y>450</y>
+      <width>140</width>
+      <tooltip>$(actions)</tooltip>
+      <confirm_message>Are your sure you want to execute a motion for $(DEV_NAME)?</confirm_message>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_11</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(pv_name)</pv_name>
+          <value>1</value>
+          <description>Write PV</description>
+        </action>
+      </actions>
+      <pv_name>$(PREFIX)$(DEV_NAME)-ExeHomeCmd</pv_name>
+      <text>Home</text>
+      <x>64</x>
+      <y>421</y>
+      <width>140</width>
+      <rules>
+        <rule name="New Rule" prop_id="background_color" out_exp="false">
+          <exp bool_exp="pv0==1">
+            <value>
+              <color name="LED-RED-ON" red="255" green="60" blue="46">
+              </color>
+            </value>
+          </exp>
+          <exp bool_exp="pv0==0">
+            <value>
+              <color name="Button_Background" red="236" green="236" blue="236">
+              </color>
+            </value>
+          </exp>
+          <pv_name>$(PREFIX)$(DEV_NAME)-Busy</pv_name>
+        </rule>
+      </rules>
+      <tooltip>$(actions)</tooltip>
+      <show_confirm_dialog>true</show_confirm_dialog>
+      <confirm_message>Are your sure you want to execute a motion for $(DEV_NAME)?</confirm_message>
+    </widget>
   </widget>
 </display>

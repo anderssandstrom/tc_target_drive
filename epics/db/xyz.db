@@ -158,8 +158,8 @@ record(bi,"$(P)${DEV_NAME}-LimitMinMinPark"){
   field(SCAN, "I/O Intr")
   field(ZNAM, "Activated")
   field(ONAM, "OK")
-  field(ZSV, "MAJOR")
-  field(OSV, "NO_ALARM")
+  field(ZSV,  "MAJOR")
+  field(OSV,  "NO_ALARM")
   field(DESC, "${DEV_NAME}: Limit Min Min Park")
 }
 
@@ -212,6 +212,8 @@ record(bi,"$(P)${DEV_NAME}-Homed"){
   field(SCAN, "I/O Intr")
   field(ZNAM, "Not Homed")
   field(ONAM, "Homed")
+  field(ZSV,  "MAJOR")
+  field(OSV,  "NO_ALARM")
   field(DESC, "${DEV_NAME}: Homed")
 }
 
@@ -222,7 +224,7 @@ record(bi,"$(P)${DEV_NAME}-HomingCmdActive"){
   field(SCAN, "I/O Intr")
   field(ZNAM, "Not Homing")
   field(ONAM, "Homing")
-  field(DESC, "${DEV_NAME}: Homed")
+  field(DESC, "${DEV_NAME}: Homing Active")
 }
 
 # Motion axis
