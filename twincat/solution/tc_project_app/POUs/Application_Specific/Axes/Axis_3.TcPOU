@@ -42,6 +42,7 @@ END_IF
 //Stop Motion from GUI
 IF main.stHWControlZ.bExecuteStop THEN
   GVL.astAxes[3].stControl.bStop := NOT(GVL.astAxes[3].stControl.bStop);
+  GVL.astAxes[3].stControl.bExecute:=FALSE;
   main.stHWControlZ.bExecuteStop:=FALSE;
 END_IF
 
@@ -2226,7 +2227,9 @@ main.stHWStatusZ.bhiHiAlm:=gvl.astAxes[3].stStatus.fActPosition > GVL_Parameters
       <LineId Id="71" Count="0" />
       <LineId Id="94" Count="0" />
       <LineId Id="93" Count="0" />
-      <LineId Id="72" Count="19" />
+      <LineId Id="72" Count="17" />
+      <LineId Id="125" Count="0" />
+      <LineId Id="90" Count="1" />
       <LineId Id="96" Count="0" />
       <LineId Id="95" Count="0" />
       <LineId Id="97" Count="0" />

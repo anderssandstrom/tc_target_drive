@@ -42,6 +42,7 @@ END_IF
 //Stop Motion from GUI
 IF main.stHWControlY.bExecuteStop THEN
   GVL.astAxes[2].stControl.bStop := NOT(GVL.astAxes[2].stControl.bStop);
+  GVL.astAxes[2].stControl.bExecute:=FALSE;
   main.stHWControlY.bExecuteStop:=FALSE;
 END_IF
 
@@ -1459,7 +1460,9 @@ main.stHWStatusY.bhiHiAlm:=gvl.astAxes[2].stStatus.fActPosition > GVL_Parameters
       <LineId Id="56" Count="0" />
       <LineId Id="81" Count="0" />
       <LineId Id="80" Count="0" />
-      <LineId Id="57" Count="19" />
+      <LineId Id="57" Count="17" />
+      <LineId Id="106" Count="0" />
+      <LineId Id="75" Count="1" />
       <LineId Id="82" Count="0" />
       <LineId Id="77" Count="0" />
       <LineId Id="83" Count="0" />
