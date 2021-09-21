@@ -52,10 +52,16 @@ main.stHWStatusY.bHomed:=GVL.astAxes[2].stStatus.bHomed;
 main.stHWStatusY.bHomingCmdActive:=GVL.astAxes[2].stControl.eCommand=E_MotionFunctions.eHome AND 
                                    GVL.astAxes[2].stConfig.eHomeSeq=E_HomingRoutines.eHomeToLimit_Fwd;
 
-
+// Hard code velocities and acc/dec
 GVL.astAxes[2].stControl.fAcceleration:=GVL_Parameters.fStepperTargetAcc;
 GVL.astAxes[2].stControl.fDeceleration:=GVL_Parameters.fStepperTargetAcc;
 GVL.astAxes[2].stControl.fVelocity:=GVL_Parameters.fStepperTargetVelo;
+
+// Check position is inside limits (and homed)
+main.stHWStatusY.bLoLoAlm:=gvl.astAxes[2].stStatus.fActPosition < GVL_Parameters.fYRangeL2 OR NOT main.stHWStatusY.bHomed;
+main.stHWStatusY.bLoAlm:=gvl.astAxes[2].stStatus.fActPosition < GVL_Parameters.fYRangeL1 OR NOT main.stHWStatusY.bHomed;;
+main.stHWStatusY.bHiAlm:=gvl.astAxes[2].stStatus.fActPosition > GVL_Parameters.fYRangeH1 OR NOT main.stHWStatusY.bHomed;;
+main.stHWStatusY.bhiHiAlm:=gvl.astAxes[2].stStatus.fActPosition > GVL_Parameters.fYRangeH2 OR NOT main.stHWStatusY.bHomed;;
 ]]></ST>
     </Implementation>
     <Action Name="ACT_2_Interlock" Id="{c949121c-9701-4c5f-8bc8-3c78316b1a11}">
@@ -1460,6 +1466,9 @@ GVL.astAxes[2].stControl.fVelocity:=GVL_Parameters.fStepperTargetVelo;
       <LineId Id="85" Count="1" />
       <LineId Id="92" Count="5" />
       <LineId Id="48" Count="0" />
+      <LineId Id="105" Count="0" />
+      <LineId Id="101" Count="3" />
+      <LineId Id="99" Count="0" />
       <LineId Id="98" Count="0" />
     </LineIds>
   </POU>

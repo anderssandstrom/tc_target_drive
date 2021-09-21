@@ -42,18 +42,18 @@ VAR_GLOBAL CONSTANT
   bTargetRotorInstalled: BOOL:=FALSE;
   
   // Need to set resonable values here
-  fXRangeH1:LREAL:=1;    // High
-  fXRangeH2:LREAL:=1.1;  // High high
-  fXRangeL1:LREAL:=-1;   // Low
-  fXRangeL2:LREAL:=-1.1; // Low low
-  fYRangeH1:LREAL:=1;
-  fYRangeH2:LREAL:=1.1;
-  fYRangeL1:LREAL:=-1;
-  fYRangeL2:LREAL:=-1.1;
-  fZRangeH1:LREAL:=1;
-  fZRangeH2:LREAL:=1.1;
-  fZRangeL1:LREAL:=0;
-  fZRangeL2:LREAL:=-0.1;
+  fXRangeH1:LREAL:=4;    // High
+  fXRangeH2:LREAL:=5;  // High high
+  fXRangeL1:LREAL:=-4;   // Low
+  fXRangeL2:LREAL:=-5; // Low low
+  fYRangeH1:LREAL:=4;
+  fYRangeH2:LREAL:=5;
+  fYRangeL1:LREAL:=-4;
+  fYRangeL2:LREAL:=-5;
+  fZRangeH1:LREAL:=4;
+  fZRangeH2:LREAL:=5;
+  fZRangeL1:LREAL:=1;
+  fZRangeL2:LREAL:=0;
   fZRangeParkL1:LREAL:=-1.0;
   fZRangeParkL2:LREAL:=-1.1;
   
