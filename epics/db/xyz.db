@@ -300,3 +300,51 @@ record(bi,"$(P)${DEV_NAME}-Busy"){
   field(ONAM, "Busy")
   field(DESC, "${DEV_NAME}: Busy")
 }
+
+record(bi,"$(P)${DEV_NAME}-PosLoLoAlm"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bLoLoAlm?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "OK")
+  field(ONAM, "Overrange")
+  field(ZSV,  "NO_ALARM")
+  field(OSV,  "MAJOR")
+  field(DESC, "${DEV_NAME}: Position Over LoLo Limit")
+}
+
+record(bi,"$(P)${DEV_NAME}-PosLoAlm"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bLoAlm?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "OK")
+  field(ONAM, "Overrange")
+  field(ZSV,  "NO_ALARM")
+  field(OSV,  "MINOR")
+  field(DESC, "${DEV_NAME}: Position Over Lo Limit")
+}
+
+record(bi,"$(P)${DEV_NAME}-PosHiHiAlm"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bHiHiAlm?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "OK")
+  field(ONAM, "Overrange")
+  field(ZSV,  "NO_ALARM")
+  field(OSV,  "MAJOR")
+  field(DESC, "${DEV_NAME}: Position Over HiHi Limit")
+}
+
+record(bi,"$(P)${DEV_NAME}-PosHiAlm"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bHiAlm?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "OK")
+  field(ONAM, "Overrange")
+  field(ZSV,  "NO_ALARM")
+  field(OSV,  "MINOR")
+  field(DESC, "${DEV_NAME}: Position Over Hi Limit")
+}
