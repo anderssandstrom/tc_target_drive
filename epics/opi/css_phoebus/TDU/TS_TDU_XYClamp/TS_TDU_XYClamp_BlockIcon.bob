@@ -164,6 +164,7 @@ PVFactory.releasePV(Inhibit_Lock);
   </widget>
   <widget type="led" version="2.0.0">
     <name>LED</name>
+    <pv_name>$(PV_NAME)</pv_name>
     <x>100</x>
     <y>140</y>
   </widget>

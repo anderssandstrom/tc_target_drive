@@ -165,7 +165,16 @@ PVFactory.releasePV(Inhibit_Lock);
   </widget>
   <widget type="led" version="2.0.0">
     <name>LED</name>
+    <pv_name>$(PV_NAME)</pv_name>
     <x>35</x>
     <y>40</y>
+    <off_color>
+      <color name="LED-RED-ON" red="255" green="60" blue="46">
+      </color>
+    </off_color>
+    <on_color>
+      <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+      </color>
+    </on_color>
   </widget>
 </display>
