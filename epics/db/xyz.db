@@ -25,8 +25,10 @@ record(bi,"$(P)${DEV_NAME}-EstopOK"){
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bEstopOK?")
   field(SCAN, "I/O Intr")
-  field(ZNAM, "Zero")
-  field(ONAM, "One")
+  field(ZNAM, "E-STOP")
+  field(ONAM, "OK")
+  field(OSV,  "NO_ALARM")
+  field(ZSV,  "MAJOR")
   field(DESC, "${DEV_NAME}: Estop OK")
 }
 
@@ -104,14 +106,24 @@ record(bi,"$(P)${DEV_NAME}-BrakeReleased"){
   field(DESC, "${DEV_NAME}: Brake Released")
 }
 
-record(bi,"$(P)${DEV_NAME}-SumILOK"){
+record(bi,"$(P)${DEV_NAME}-SumFwdILOK"){
   field(PINI, "1")  
   field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bSumILOK?")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bSumFwdILOK?")
   field(SCAN, "I/O Intr")
   field(ZNAM, "Not Ok")
   field(ONAM, "OK")
-  field(DESC, "${DEV_NAME}: Summary Interlock OK")
+  field(DESC, "${DEV_NAME}: Summary Interlock FWD OK")
+}
+
+record(bi,"$(P)${DEV_NAME}-SumBwdILOK"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bSumBwdILOK?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Not Ok")
+  field(ONAM, "OK")
+  field(DESC, "${DEV_NAME}: Summary Interlock BWD OK")
 }
 
 record(bi,"$(P)${DEV_NAME}-ManunalILOverride"){
@@ -173,14 +185,24 @@ record(bi,"$(P)${DEV_NAME}-HwOK"){
   field(DESC, "${DEV_NAME}: Hardware Interlock")
 }
 
-record(bi,"$(P)${DEV_NAME}-BwdFwdSummryILOK"){
+record(bi,"$(P)${DEV_NAME}-GeneralAndOverrideILOK"){
   field(PINI, "1")  
   field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bFwdBwdILOk?")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bGeneralAndOverrideILOk?")
   field(SCAN, "I/O Intr")
   field(ZNAM, "Not OK")
   field(ONAM, "OK")
-  field(DESC, "${DEV_NAME}: Summary IL OK Bwd+Fwd")
+  field(DESC, "${DEV_NAME}: General and Override Sum IL OK")
+}
+
+record(bi,"$(P)${DEV_NAME}-GeneralILOK"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bGeneralILOk?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Not OK")
+  field(ONAM, "OK")
+  field(DESC, "${DEV_NAME}: General IL OK")
 }
 
 record(bi,"$(P)${DEV_NAME}-Homed"){
