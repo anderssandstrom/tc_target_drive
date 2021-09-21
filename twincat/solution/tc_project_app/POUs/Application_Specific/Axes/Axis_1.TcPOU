@@ -36,13 +36,13 @@ IF main.stHWControlX.bExecuteHome  AND NOT GVL.astAxes[1].stStatus.bBusy THEN
   GVL.astAxes[1].stControl.eCommand:=E_MotionFunctions.eHome;
   GVL.astAxes[1].stConfig.eHomeSeq:=E_HomingRoutines.eHomeToLimit_Fwd;
   GVL.astAxes[1].stControl.bExecute:=TRUE;
-
   main.stHWControlX.bExecuteHome:=FALSE;
 END_IF
 
 //Stop Motion from GUI
 IF main.stHWControlX.bExecuteStop THEN
   GVL.astAxes[1].stControl.bStop := NOT(GVL.astAxes[1].stControl.bStop);
+  GVL.astAxes[1].stControl.bExecute:=FALSE;
   main.stHWControlX.bExecuteStop:=FALSE;
 END_IF
 
@@ -1470,12 +1470,12 @@ main.stHWStatusX.bhiHiAlm:=gvl.astAxes[1].stStatus.fActPosition > GVL_Parameters
       <LineId Id="97" Count="1" />
       <LineId Id="102" Count="1" />
       <LineId Id="99" Count="0" />
-      <LineId Id="129" Count="0" />
       <LineId Id="101" Count="0" />
       <LineId Id="96" Count="0" />
       <LineId Id="131" Count="0" />
       <LineId Id="88" Count="0" />
       <LineId Id="90" Count="1" />
+      <LineId Id="157" Count="0" />
       <LineId Id="93" Count="0" />
       <LineId Id="117" Count="2" />
       <LineId Id="94" Count="0" />
