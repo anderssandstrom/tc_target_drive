@@ -45,6 +45,14 @@ record(ai,"$(P)${DEV_NAME}-ErrId"){
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/GVL.astAxes[${AXIS_INDEX}].stStatus.nErrorId?")
   field(SCAN, "I/O Intr")
+  field(LLSV, "NO_ALARM")
+  field(LSV,  "NO_ALARM")
+  field(HHSV, "MAJOR")
+  field(HSV,  "MAJOR")
+  field(LOLO, "0")
+  field(LOW,  "0")
+  field(HIGH, "1")
+  field(HIHI, "1")
   field(DESC, "${DEV_NAME}: Error Code")
 }
 
