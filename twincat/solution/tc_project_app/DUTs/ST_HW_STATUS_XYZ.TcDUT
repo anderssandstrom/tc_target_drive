@@ -10,10 +10,12 @@ STRUCT
 	bLimitMin:BOOL;
 	bLimitMaxMax:BOOL;
 	bLimitMinMin:BOOL;
-	bSumILOK:BOOL;
+	bSumBwdILOK:BOOL:=FALSE;   
+	bSumFwdILOK:BOOL:=FALSE;  
 	bManualInterlockOverride:BOOL;
-	bHwStatusOK:BOOL;  // Staatus of hardware (IPOS, EL7201, EL3214, fuses..)
-	bFwdBwdILOK:BOOL:=FALSE;
+	bHwStatusOK:BOOL;  // Status of hardware (IPOS, EL7201, EL3214, fuses..)
+	bGeneralILOK:BOOL:=FALSE;  // All on direction related summary interlocks
+	bGeneralAndOverrideILOK:BOOL:=FALSE;
 	bBusy:BOOL:=FALSE;
 	bEnabled:BOOL:=FALSE;
 	bHomed:BOOL:=FALSE;

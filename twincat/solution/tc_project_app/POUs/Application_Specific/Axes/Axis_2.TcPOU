@@ -386,7 +386,7 @@ GVL.astAxes[2].stControl.fVelocity:=GVL_Parameters.fStepperTargetVelo;
                               <o n="OutputItems" t="OutputItemList">
                                 <l2 n="OutputItems" cet="Operand">
                                   <o>
-                                    <v n="Operand">"main.stHWStatusY.bFwdBwdILOK"</v>
+                                    <v n="Operand">"main.stHWStatusY.bGeneralILOK"</v>
                                     <v n="Type">"BOOL"</v>
                                     <v n="Comment">""</v>
                                     <v n="SymbolComment">""</v>
@@ -1024,7 +1024,7 @@ GVL.astAxes[2].stControl.fVelocity:=GVL_Parameters.fStepperTargetVelo;
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
                             <o>
-                              <v n="Operand">"main.stHWStatusY.bSumILOK"</v>
+                              <v n="Operand">"main.stHWStatusY.bGeneralAndOverrideILOK"</v>
                               <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -1131,6 +1131,290 @@ GVL.astAxes[2].stControl.fVelocity:=GVL_Parameters.fStepperTargetVelo;
                     </l2>
                     <l2 n="Connectors" />
                     <v n="Id">111L</v>
+                  </o>
+                  <o>
+                    <v n="ILActive">false</v>
+                    <v n="FBDValid">false</v>
+                    <v n="ILValid">false</v>
+                    <l2 n="ILLines" />
+                    <v n="Comment">""</v>
+                    <v n="Title">""</v>
+                    <v n="Label">""</v>
+                    <v n="OutCommented">false</v>
+                    <l2 n="NetworkItems" cet="BoxTreeAssign">
+                      <o>
+                        <o n="OutputItems" t="OutputItemList">
+                          <l2 n="OutputItems" cet="Operand">
+                            <o>
+                              <v n="Operand">"main.stHWstatusY.bSumBwdILOK"</v>
+                              <v n="Type">"BOOL"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">true</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">144L</v>
+                            </o>
+                          </l2>
+                        </o>
+                        <o n="Flags" t="Flags">
+                          <v n="Flags">0</v>
+                          <v n="Fixed">false</v>
+                          <v n="Extensible">false</v>
+                        </o>
+                        <o n="RValue" t="BoxTreeBox">
+                          <v n="BoxType">"&amp;"</v>
+                          <o n="Instance" t="Operand">
+                            <n n="Operand" />
+                            <v n="Type">""</v>
+                            <v n="Comment">""</v>
+                            <v n="SymbolComment">""</v>
+                            <v n="Address">""</v>
+                            <o n="Flags" t="Flags">
+                              <v n="Flags">0</v>
+                              <v n="Fixed">false</v>
+                              <v n="Extensible">false</v>
+                            </o>
+                            <v n="LValue">false</v>
+                            <v n="Boolean">false</v>
+                            <v n="IsInstance">true</v>
+                            <v n="Id">138L</v>
+                          </o>
+                          <o n="OutputItems" t="OutputItemList">
+                            <l2 n="OutputItems">
+                              <n />
+                            </l2>
+                          </o>
+                          <o n="Flags" t="Flags">
+                            <v n="Flags">0</v>
+                            <v n="Fixed">true</v>
+                            <v n="Extensible">false</v>
+                          </o>
+                          <l2 n="InputFlags" cet="Flags">
+                            <o>
+                              <v n="Flags">0</v>
+                              <v n="Fixed">false</v>
+                              <v n="Extensible">false</v>
+                            </o>
+                            <o>
+                              <v n="Flags">1</v>
+                              <v n="Fixed">true</v>
+                              <v n="Extensible">false</v>
+                            </o>
+                          </l2>
+                          <l2 n="InputItems" cet="BoxTreeOperand">
+                            <o>
+                              <o n="Operand" t="Operand">
+                                <v n="Operand">"gvl.astAxes[2].stStatus.bBwEnabled"</v>
+                                <v n="Type">"BOOL"</v>
+                                <v n="Comment">""</v>
+                                <v n="SymbolComment">""</v>
+                                <v n="Address">""</v>
+                                <o n="Flags" t="Flags">
+                                  <v n="Flags">0</v>
+                                  <v n="Fixed">false</v>
+                                  <v n="Extensible">false</v>
+                                </o>
+                                <v n="LValue">false</v>
+                                <v n="Boolean">false</v>
+                                <v n="IsInstance">false</v>
+                                <v n="Id">141L</v>
+                              </o>
+                              <v n="Id">140L</v>
+                            </o>
+                            <o>
+                              <o n="Operand" t="Operand">
+                                <v n="Operand">"gvl.astAxes[2].stControl.bInterlock"</v>
+                                <v n="Type">"BOOL"</v>
+                                <v n="Comment">""</v>
+                                <v n="SymbolComment">""</v>
+                                <v n="Address">""</v>
+                                <o n="Flags" t="Flags">
+                                  <v n="Flags">0</v>
+                                  <v n="Fixed">false</v>
+                                  <v n="Extensible">false</v>
+                                </o>
+                                <v n="LValue">false</v>
+                                <v n="Boolean">false</v>
+                                <v n="IsInstance">false</v>
+                                <v n="Id">143L</v>
+                              </o>
+                              <v n="Id">142L</v>
+                            </o>
+                          </l2>
+                          <o n="InputParam" t="ParamList">
+                            <l2 n="Names" />
+                            <l2 n="Types" />
+                          </o>
+                          <o n="OutputParam" t="ParamList">
+                            <l2 n="Names" cet="String">
+                              <v></v>
+                            </l2>
+                            <l2 n="Types" cet="String">
+                              <v>BOOL</v>
+                            </l2>
+                          </o>
+                          <v n="CallType" t="Operator">Ampersand</v>
+                          <v n="EN">false</v>
+                          <v n="ENO">false</v>
+                          <n n="STSnippet" />
+                          <v n="ContainsExtensibleInputs">false</v>
+                          <v n="ProvidesSTSnippet">false</v>
+                          <v n="Id">139L</v>
+                        </o>
+                        <v n="Id">145L</v>
+                      </o>
+                    </l2>
+                    <l2 n="Connectors" />
+                    <v n="Id">137L</v>
+                  </o>
+                  <o>
+                    <v n="ILActive">false</v>
+                    <v n="FBDValid">false</v>
+                    <v n="ILValid">false</v>
+                    <l2 n="ILLines" />
+                    <v n="Comment">""</v>
+                    <v n="Title">""</v>
+                    <v n="Label">""</v>
+                    <v n="OutCommented">false</v>
+                    <l2 n="NetworkItems" cet="BoxTreeAssign">
+                      <o>
+                        <o n="OutputItems" t="OutputItemList">
+                          <l2 n="OutputItems" cet="Operand">
+                            <o>
+                              <v n="Operand">"main.stHWstatusY.bSumFwdILOK"</v>
+                              <v n="Type">"BOOL"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">true</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">153L</v>
+                            </o>
+                          </l2>
+                        </o>
+                        <o n="Flags" t="Flags">
+                          <v n="Flags">0</v>
+                          <v n="Fixed">false</v>
+                          <v n="Extensible">false</v>
+                        </o>
+                        <o n="RValue" t="BoxTreeBox">
+                          <v n="BoxType">"&amp;"</v>
+                          <o n="Instance" t="Operand">
+                            <n n="Operand" />
+                            <v n="Type">""</v>
+                            <v n="Comment">""</v>
+                            <v n="SymbolComment">""</v>
+                            <v n="Address">""</v>
+                            <o n="Flags" t="Flags">
+                              <v n="Flags">0</v>
+                              <v n="Fixed">false</v>
+                              <v n="Extensible">false</v>
+                            </o>
+                            <v n="LValue">false</v>
+                            <v n="Boolean">false</v>
+                            <v n="IsInstance">true</v>
+                            <v n="Id">147L</v>
+                          </o>
+                          <o n="OutputItems" t="OutputItemList">
+                            <l2 n="OutputItems">
+                              <n />
+                            </l2>
+                          </o>
+                          <o n="Flags" t="Flags">
+                            <v n="Flags">0</v>
+                            <v n="Fixed">true</v>
+                            <v n="Extensible">false</v>
+                          </o>
+                          <l2 n="InputFlags" cet="Flags">
+                            <o>
+                              <v n="Flags">0</v>
+                              <v n="Fixed">false</v>
+                              <v n="Extensible">false</v>
+                            </o>
+                            <o>
+                              <v n="Flags">1</v>
+                              <v n="Fixed">true</v>
+                              <v n="Extensible">false</v>
+                            </o>
+                          </l2>
+                          <l2 n="InputItems" cet="BoxTreeOperand">
+                            <o>
+                              <o n="Operand" t="Operand">
+                                <v n="Operand">"gvl.astAxes[2].stStatus.bFwEnabled"</v>
+                                <v n="Type">"BOOL"</v>
+                                <v n="Comment">""</v>
+                                <v n="SymbolComment">""</v>
+                                <v n="Address">""</v>
+                                <o n="Flags" t="Flags">
+                                  <v n="Flags">0</v>
+                                  <v n="Fixed">false</v>
+                                  <v n="Extensible">false</v>
+                                </o>
+                                <v n="LValue">false</v>
+                                <v n="Boolean">false</v>
+                                <v n="IsInstance">false</v>
+                                <v n="Id">150L</v>
+                              </o>
+                              <v n="Id">149L</v>
+                            </o>
+                            <o>
+                              <o n="Operand" t="Operand">
+                                <v n="Operand">"gvl.astAxes[2].stControl.bInterlock"</v>
+                                <v n="Type">"BOOL"</v>
+                                <v n="Comment">""</v>
+                                <v n="SymbolComment">""</v>
+                                <v n="Address">""</v>
+                                <o n="Flags" t="Flags">
+                                  <v n="Flags">0</v>
+                                  <v n="Fixed">false</v>
+                                  <v n="Extensible">false</v>
+                                </o>
+                                <v n="LValue">false</v>
+                                <v n="Boolean">false</v>
+                                <v n="IsInstance">false</v>
+                                <v n="Id">152L</v>
+                              </o>
+                              <v n="Id">151L</v>
+                            </o>
+                          </l2>
+                          <o n="InputParam" t="ParamList">
+                            <l2 n="Names" />
+                            <l2 n="Types" />
+                          </o>
+                          <o n="OutputParam" t="ParamList">
+                            <l2 n="Names" cet="String">
+                              <v></v>
+                            </l2>
+                            <l2 n="Types" cet="String">
+                              <v>BOOL</v>
+                            </l2>
+                          </o>
+                          <v n="CallType" t="Operator">Ampersand</v>
+                          <v n="EN">false</v>
+                          <v n="ENO">false</v>
+                          <n n="STSnippet" />
+                          <v n="ContainsExtensibleInputs">false</v>
+                          <v n="ProvidesSTSnippet">false</v>
+                          <v n="Id">148L</v>
+                        </o>
+                        <v n="Id">154L</v>
+                      </o>
+                    </l2>
+                    <l2 n="Connectors" />
+                    <v n="Id">146L</v>
                   </o>
                 </l2>
                 <v n="BranchCounter">0</v>
