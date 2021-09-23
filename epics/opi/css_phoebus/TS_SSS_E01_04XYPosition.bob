@@ -966,41 +966,6 @@
       <confirm_message>Are your sure you want to toggle enable state of $(DEV_NAME) drive?</confirm_message>
     </widget>
     <widget type="action_button" version="3.0.0">
-      <name>Action Button_2</name>
-      <actions>
-        <action type="write_pv">
-          <pv_name>$(pv_name)</pv_name>
-          <value>1</value>
-          <description>Write PV</description>
-        </action>
-      </actions>
-      <pv_name>$(PREFIX)$(DEV_NAME)-ExePosCmd</pv_name>
-      <text>Move</text>
-      <x>274</x>
-      <y>127</y>
-      <width>140</width>
-      <rules>
-        <rule name="New Rule" prop_id="background_color" out_exp="false">
-          <exp bool_exp="pv0==1">
-            <value>
-              <color name="LED-RED-ON" red="255" green="60" blue="46">
-              </color>
-            </value>
-          </exp>
-          <exp bool_exp="pv0==0">
-            <value>
-              <color name="Button_Background" red="236" green="236" blue="236">
-              </color>
-            </value>
-          </exp>
-          <pv_name>$(PREFIX)$(DEV_NAME)-Busy</pv_name>
-        </rule>
-      </rules>
-      <tooltip>$(actions)</tooltip>
-      <show_confirm_dialog>true</show_confirm_dialog>
-      <confirm_message>Are your sure you want to execute a motion for $(DEV_NAME)?</confirm_message>
-    </widget>
-    <widget type="action_button" version="3.0.0">
       <name>Action Button_5</name>
       <actions>
         <action type="write_pv">
@@ -1188,6 +1153,103 @@ widget.setPropertyValue('x', 240+value*40)
           <color name="BLACK-BORDER" red="121" green="121" blue="121">
           </color>
         </line_color>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Group</name>
+      <x>274</x>
+      <y>127</y>
+      <width>140</width>
+      <height>30</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="action_button" version="3.0.0">
+        <name>Action Button_2</name>
+        <actions>
+          <action type="write_pv">
+            <pv_name>$(pv_name)</pv_name>
+            <value>1</value>
+            <description>Write PV</description>
+          </action>
+        </actions>
+        <pv_name>$(PREFIX)$(DEV_NAME)-ExePosCmd</pv_name>
+        <text>Move</text>
+        <width>140</width>
+        <rules>
+          <rule name="Color" prop_id="background_color" out_exp="false">
+            <exp bool_exp="pv0==1">
+              <value>
+                <color name="LED-RED-ON" red="255" green="60" blue="46">
+                </color>
+              </value>
+            </exp>
+            <exp bool_exp="pv0==0">
+              <value>
+                <color name="Button_Background" red="236" green="236" blue="236">
+                </color>
+              </value>
+            </exp>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Busy</pv_name>
+          </rule>
+          <rule name="Enabled" prop_id="enabled" out_exp="true">
+            <exp bool_exp="not pv0 and not pv1">
+              <expression>0</expression>
+            </exp>
+            <pv_name>$(PREFIX)$(DEV_NAME)-SumBwdILOK</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-SumFwdILOK</pv_name>
+          </rule>
+        </rules>
+        <tooltip>$(actions)</tooltip>
+        <show_confirm_dialog>true</show_confirm_dialog>
+        <confirm_message>Are your sure you want to execute a motion for $(DEV_NAME)?</confirm_message>
+      </widget>
+      <widget type="multi_state_led" version="2.0.0">
+        <name>LED (Multi State)</name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-SumBwdILOK</pv_name>
+        <x>10</x>
+        <y>6</y>
+        <states>
+          <state>
+            <value>0</value>
+            <label></label>
+            <color>
+              <color name="LED-RED-ON" red="255" green="60" blue="46">
+              </color>
+            </color>
+          </state>
+          <state>
+            <value>1</value>
+            <label></label>
+            <color>
+              <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+              </color>
+            </color>
+          </state>
+        </states>
+      </widget>
+      <widget type="multi_state_led" version="2.0.0">
+        <name>LED (Multi State)_1</name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-SumFwdILOK</pv_name>
+        <x>105</x>
+        <y>6</y>
+        <states>
+          <state>
+            <value>0</value>
+            <label></label>
+            <color>
+              <color name="LED-RED-ON" red="255" green="60" blue="46">
+              </color>
+            </color>
+          </state>
+          <state>
+            <value>1</value>
+            <label></label>
+            <color>
+              <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+              </color>
+            </color>
+          </state>
+        </states>
       </widget>
     </widget>
   </widget>
@@ -1710,41 +1772,6 @@ widget.setPropertyValue('x', 240+value*40)
       <confirm_message>Are your sure you want to toggle enable state of $(DEV_NAME) drive?</confirm_message>
     </widget>
     <widget type="action_button" version="3.0.0">
-      <name>Action Button_15</name>
-      <actions>
-        <action type="write_pv">
-          <pv_name>$(pv_name)</pv_name>
-          <value>1</value>
-          <description>Write PV</description>
-        </action>
-      </actions>
-      <pv_name>$(PREFIX)$(DEV_NAME)-ExePosCmd</pv_name>
-      <text>Move</text>
-      <x>274</x>
-      <y>127</y>
-      <width>140</width>
-      <rules>
-        <rule name="New Rule" prop_id="background_color" out_exp="false">
-          <exp bool_exp="pv0==1">
-            <value>
-              <color name="LED-RED-ON" red="255" green="60" blue="46">
-              </color>
-            </value>
-          </exp>
-          <exp bool_exp="pv0==0">
-            <value>
-              <color name="Button_Background" red="236" green="236" blue="236">
-              </color>
-            </value>
-          </exp>
-          <pv_name>$(PREFIX)$(DEV_NAME)-Busy</pv_name>
-        </rule>
-      </rules>
-      <tooltip>$(actions)</tooltip>
-      <show_confirm_dialog>true</show_confirm_dialog>
-      <confirm_message>Are your sure you want to execute a motion for $(DEV_NAME)?</confirm_message>
-    </widget>
-    <widget type="action_button" version="3.0.0">
       <name>Action Button_16</name>
       <actions>
         <action type="write_pv">
@@ -1932,6 +1959,103 @@ widget.setPropertyValue('x', 240+value*40)
           <color name="BLACK-BORDER" red="121" green="121" blue="121">
           </color>
         </line_color>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Group_3</name>
+      <x>274</x>
+      <y>127</y>
+      <width>140</width>
+      <height>30</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="action_button" version="3.0.0">
+        <name>Action Button_3</name>
+        <actions>
+          <action type="write_pv">
+            <pv_name>$(pv_name)</pv_name>
+            <value>1</value>
+            <description>Write PV</description>
+          </action>
+        </actions>
+        <pv_name>$(PREFIX)$(DEV_NAME)-ExePosCmd</pv_name>
+        <text>Move</text>
+        <width>140</width>
+        <rules>
+          <rule name="Color" prop_id="background_color" out_exp="false">
+            <exp bool_exp="pv0==1">
+              <value>
+                <color name="LED-RED-ON" red="255" green="60" blue="46">
+                </color>
+              </value>
+            </exp>
+            <exp bool_exp="pv0==0">
+              <value>
+                <color name="Button_Background" red="236" green="236" blue="236">
+                </color>
+              </value>
+            </exp>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Busy</pv_name>
+          </rule>
+          <rule name="Enabled" prop_id="enabled" out_exp="true">
+            <exp bool_exp="not pv0 and not pv1">
+              <expression>0</expression>
+            </exp>
+            <pv_name>$(PREFIX)$(DEV_NAME)-SumBwdILOK</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-SumFwdILOK</pv_name>
+          </rule>
+        </rules>
+        <tooltip>$(actions)</tooltip>
+        <show_confirm_dialog>true</show_confirm_dialog>
+        <confirm_message>Are your sure you want to execute a motion for $(DEV_NAME)?</confirm_message>
+      </widget>
+      <widget type="multi_state_led" version="2.0.0">
+        <name>LED (Multi State)_6</name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-SumBwdILOK</pv_name>
+        <x>10</x>
+        <y>6</y>
+        <states>
+          <state>
+            <value>0</value>
+            <label></label>
+            <color>
+              <color name="LED-RED-ON" red="255" green="60" blue="46">
+              </color>
+            </color>
+          </state>
+          <state>
+            <value>1</value>
+            <label></label>
+            <color>
+              <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+              </color>
+            </color>
+          </state>
+        </states>
+      </widget>
+      <widget type="multi_state_led" version="2.0.0">
+        <name>LED (Multi State)_7</name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-SumFwdILOK</pv_name>
+        <x>105</x>
+        <y>6</y>
+        <states>
+          <state>
+            <value>0</value>
+            <label></label>
+            <color>
+              <color name="LED-RED-ON" red="255" green="60" blue="46">
+              </color>
+            </color>
+          </state>
+          <state>
+            <value>1</value>
+            <label></label>
+            <color>
+              <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+              </color>
+            </color>
+          </state>
+        </states>
       </widget>
     </widget>
   </widget>
