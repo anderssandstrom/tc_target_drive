@@ -454,7 +454,8 @@ stHwStatusRot.fActVel:=stStatus.fActualVelocity/10;]]></ST>
     </Action>
     <Action Name="ACT_5_Steppers" Id="{3a068380-4e98-46e5-9ef4-f9271d802bcf}">
       <Implementation>
-        <ST><![CDATA[// Motion of steppers handled in MAIN_NORMAL_MOTION]]></ST>
+        <ST><![CDATA[// Motion of steppers handled in MAIN_NORMAL_MOTION
+]]></ST>
       </Implementation>
     </Action>
     <Action Name="ACT_6_Error" Id="{6316e704-a716-4c28-824a-a22fe5448145}">
@@ -760,7 +761,7 @@ stcmdEpics.bReset:=FALSE;]]></ST>
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="MAIN.ACT_5_Steppers">
-      <LineId Id="1" Count="0" />
+      <LineId Id="1" Count="1" />
     </LineIds>
     <LineIds Name="MAIN.ACT_6_Error">
       <LineId Id="41" Count="0" />

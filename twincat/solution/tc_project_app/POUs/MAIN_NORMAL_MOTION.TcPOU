@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.5">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
   <POU Name="MAIN_NORMAL_MOTION" Id="{33eb6f49-7781-4211-a70b-87ada6d80cb7}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN_NORMAL_MOTION
 VAR
@@ -25,7 +25,10 @@ VAR PERSISTENT
     bRestoreOnStartup: BOOL;
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[POSITION_RECOVERY();
+      <ST><![CDATA[// Block PILS
+GVL.bLocalMode:=TRUE;
+
+POSITION_RECOVERY();
 AXES();
 PROG();]]></ST>
     </Implementation>
@@ -207,6 +210,8 @@ END_FOR]]></ST>
       </Implementation>
     </Action>
     <LineIds Name="MAIN_NORMAL_MOTION">
+      <LineId Id="563" Count="0" />
+      <LineId Id="561" Count="1" />
       <LineId Id="505" Count="0" />
       <LineId Id="81" Count="0" />
       <LineId Id="538" Count="0" />
