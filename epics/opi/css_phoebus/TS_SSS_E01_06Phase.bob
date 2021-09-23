@@ -26,7 +26,7 @@
   <widget type="label" version="2.0.0">
     <name>Label_5</name>
     <class>TITLE</class>
-    <text>Target System - Rotation</text>
+    <text>Target System - Phase</text>
     <x use_class="true">20</x>
     <y use_class="true">0</y>
     <width>1930</width>
