@@ -1914,7 +1914,7 @@
     <width>80</width>
     <height>51</height>
     <rules>
-      <rule name="New Rule" prop_id="background_color" out_exp="false">
+      <rule name="Color" prop_id="background_color" out_exp="false">
         <exp bool_exp="pv0==1">
           <value>
             <color name="LED-RED-ON" red="255" green="60" blue="46">
@@ -1928,6 +1928,13 @@
           </value>
         </exp>
         <pv_name>$(PREFIX)$(DEV_NAME)-Busy</pv_name>
+      </rule>
+      <rule name="Enabled" prop_id="enabled" out_exp="true">
+        <exp bool_exp="not pv0 and not pv1">
+          <expression>0</expression>
+        </exp>
+        <pv_name>$(PREFIX)$(DEV_NAME)-SumBwdILOK</pv_name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-SumFwdILOK</pv_name>
       </rule>
     </rules>
     <tooltip>$(actions)</tooltip>
