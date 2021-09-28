@@ -329,7 +329,23 @@ main.stHWStatusX.bhiHiAlm:=gvl.astAxes[1].stStatus.fActPosition > GVL_Parameters
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
                             <o>
-                              <v n="Operand">"gvl.astAxes[1].stControl.bInterlock"</v>
+                              <v n="Operand">"gvl.astAxes[1].stControl.bInterlockBwd"</v>
+                              <v n="Type">"BOOL"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">true</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">201L</v>
+                            </o>
+                            <o>
+                              <v n="Operand">"gvl.astAxes[1].stControl.bInterlockFwd"</v>
                               <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -1040,7 +1056,7 @@ main.stHWStatusX.bhiHiAlm:=gvl.astAxes[1].stStatus.fActPosition > GVL_Parameters
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
-                                <v n="Flags">1</v>
+                                <v n="Flags">0</v>
                                 <v n="Fixed">true</v>
                                 <v n="Extensible">false</v>
                               </o>
@@ -1056,10 +1072,11 @@ main.stHWStatusX.bhiHiAlm:=gvl.astAxes[1].stStatus.fActPosition > GVL_Parameters
                           <v n="Fixed">false</v>
                           <v n="Extensible">false</v>
                         </o>
-                        <o n="RValue" t="BoxTreeOperand">
-                          <o n="Operand" t="Operand">
-                            <v n="Operand">"gvl.astAxes[1].stControl.bInterlock"</v>
-                            <v n="Type">"BOOL"</v>
+                        <o n="RValue" t="BoxTreeBox">
+                          <v n="BoxType">"&amp;"</v>
+                          <o n="Instance" t="Operand">
+                            <n n="Operand" />
+                            <v n="Type">""</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
                             <v n="Address">""</v>
@@ -1070,10 +1087,90 @@ main.stHWStatusX.bhiHiAlm:=gvl.astAxes[1].stStatus.fActPosition > GVL_Parameters
                             </o>
                             <v n="LValue">false</v>
                             <v n="Boolean">false</v>
-                            <v n="IsInstance">false</v>
-                            <v n="Id">112L</v>
+                            <v n="IsInstance">true</v>
+                            <v n="Id">199L</v>
                           </o>
-                          <v n="Id">111L</v>
+                          <o n="OutputItems" t="OutputItemList">
+                            <l2 n="OutputItems">
+                              <n />
+                            </l2>
+                          </o>
+                          <o n="Flags" t="Flags">
+                            <v n="Flags">0</v>
+                            <v n="Fixed">true</v>
+                            <v n="Extensible">false</v>
+                          </o>
+                          <l2 n="InputFlags" cet="Flags">
+                            <o>
+                              <v n="Flags">1</v>
+                              <v n="Fixed">true</v>
+                              <v n="Extensible">false</v>
+                            </o>
+                            <o>
+                              <v n="Flags">1</v>
+                              <v n="Fixed">true</v>
+                              <v n="Extensible">false</v>
+                            </o>
+                          </l2>
+                          <l2 n="InputItems" cet="BoxTreeOperand">
+                            <o>
+                              <o n="Operand" t="Operand">
+                                <v n="Operand">"gvl.astAxes[1].stControl.bInterlockBwd"</v>
+                                <v n="Type">"BOOL"</v>
+                                <v n="Comment">""</v>
+                                <v n="SymbolComment">""</v>
+                                <v n="Address">""</v>
+                                <o n="Flags" t="Flags">
+                                  <v n="Flags">0</v>
+                                  <v n="Fixed">false</v>
+                                  <v n="Extensible">false</v>
+                                </o>
+                                <v n="LValue">false</v>
+                                <v n="Boolean">false</v>
+                                <v n="IsInstance">false</v>
+                                <v n="Id">112L</v>
+                              </o>
+                              <v n="Id">111L</v>
+                            </o>
+                            <o>
+                              <o n="Operand" t="Operand">
+                                <v n="Operand">"gvl.astAxes[1].stControl.bInterlockFwd"</v>
+                                <v n="Type">"BOOL"</v>
+                                <v n="Comment">""</v>
+                                <v n="SymbolComment">""</v>
+                                <v n="Address">""</v>
+                                <o n="Flags" t="Flags">
+                                  <v n="Flags">0</v>
+                                  <v n="Fixed">false</v>
+                                  <v n="Extensible">false</v>
+                                </o>
+                                <v n="LValue">false</v>
+                                <v n="Boolean">false</v>
+                                <v n="IsInstance">false</v>
+                                <v n="Id">198L</v>
+                              </o>
+                              <v n="Id">197L</v>
+                            </o>
+                          </l2>
+                          <o n="InputParam" t="ParamList">
+                            <l2 n="Names" />
+                            <l2 n="Types" />
+                          </o>
+                          <o n="OutputParam" t="ParamList">
+                            <l2 n="Names" cet="String">
+                              <v></v>
+                            </l2>
+                            <l2 n="Types" cet="String">
+                              <v>BOOL</v>
+                            </l2>
+                          </o>
+                          <v n="CallType" t="Operator">Ampersand</v>
+                          <v n="EN">false</v>
+                          <v n="ENO">false</v>
+                          <n n="STSnippet" />
+                          <v n="ContainsExtensibleInputs">false</v>
+                          <v n="ProvidesSTSnippet">false</v>
+                          <v n="Id">200L</v>
                         </o>
                         <v n="Id">114L</v>
                       </o>
@@ -1240,7 +1337,7 @@ main.stHWStatusX.bhiHiAlm:=gvl.astAxes[1].stStatus.fActPosition > GVL_Parameters
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"gvl.astAxes[1].stControl.bInterlock"</v>
+                                <v n="Operand">"gvl.astAxes[1].stControl.bInterlockBwd"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1382,7 +1479,7 @@ main.stHWStatusX.bhiHiAlm:=gvl.astAxes[1].stStatus.fActPosition > GVL_Parameters
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"gvl.astAxes[1].stControl.bInterlock"</v>
+                                <v n="Operand">"gvl.astAxes[1].stControl.bInterlockFwd"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
