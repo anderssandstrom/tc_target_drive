@@ -2323,4 +2323,382 @@
     <show_confirm_dialog>true</show_confirm_dialog>
     <confirm_message>Are your sure you want to execute a motion for $(DEV_NAME)?</confirm_message>
   </widget>
+  <widget type="led" version="2.0.0">
+    <name>LED_52</name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-BrakeReleased</pv_name>
+    <x>408</x>
+    <y>112</y>
+    <off_color>
+      <color name="LED-RED-ON" red="255" green="60" blue="46">
+      </color>
+    </off_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_60</name>
+    <macros>
+      <Axis>X</Axis>
+    </macros>
+    <text>Brake Released:</text>
+    <x>282</x>
+    <y>110</y>
+    <width>110</width>
+    <height>24</height>
+    <horizontal_alignment>2</horizontal_alignment>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_31</name>
+    <x>1030</x>
+    <y>62</y>
+    <width>174</width>
+    <height>24</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="led" version="2.0.0">
+      <name>LED_55</name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-BrakeReleased</pv_name>
+      <x>126</x>
+      <y>2</y>
+      <off_color>
+        <color name="LED-RED-ON" red="255" green="60" blue="46">
+        </color>
+      </off_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_63</name>
+      <macros>
+        <Axis>X</Axis>
+      </macros>
+      <text>${DEV_NAME} Brake Locked:</text>
+      <width>110</width>
+      <height>24</height>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="polyline" version="2.0.0">
+      <name>Polyline_29</name>
+      <x>154</x>
+      <y>12</y>
+      <width>20</width>
+      <height>1</height>
+      <points>
+        <point x="0.0" y="0.0">
+        </point>
+        <point x="20.0" y="0.0">
+        </point>
+        <point x="20.0" y="0.0">
+        </point>
+      </points>
+      <line_color>
+        <color name="BLACK" red="0" green="0" blue="0">
+        </color>
+      </line_color>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_32</name>
+    <x>1030</x>
+    <y>86</y>
+    <width>174</width>
+    <height>24</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="led" version="2.0.0">
+      <name>LED_57</name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-EnaAct</pv_name>
+      <x>126</x>
+      <y>2</y>
+      <off_color>
+        <color name="LED-RED-ON" red="255" green="60" blue="46">
+        </color>
+      </off_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_65</name>
+      <macros>
+        <Axis>X</Axis>
+      </macros>
+      <text>${DEV_NAME} Disabled</text>
+      <width>110</width>
+      <height>24</height>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="polyline" version="2.0.0">
+      <name>Polyline_30</name>
+      <x>154</x>
+      <y>12</y>
+      <width>20</width>
+      <height>1</height>
+      <points>
+        <point x="0.0" y="0.0">
+        </point>
+        <point x="20.0" y="0.0">
+        </point>
+        <point x="20.0" y="0.0">
+        </point>
+      </points>
+      <line_color>
+        <color name="BLACK" red="0" green="0" blue="0">
+        </color>
+      </line_color>
+    </widget>
+  </widget>
+  <widget type="led" version="2.0.0">
+    <name>LED_58</name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-LimitMaxMax</pv_name>
+    <x>606</x>
+    <y>372</y>
+    <off_color>
+      <color name="LED-RED-ON" red="255" green="60" blue="46">
+      </color>
+    </off_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_66</name>
+    <macros>
+      <Axis>X</Axis>
+    </macros>
+    <text>Lim HIHI:</text>
+    <x>480</x>
+    <y>370</y>
+    <width>110</width>
+    <height>24</height>
+    <horizontal_alignment>2</horizontal_alignment>
+  </widget>
+  <widget type="led" version="2.0.0">
+    <name>LED_59</name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-LimitMinMin</pv_name>
+    <x>606</x>
+    <y>372</y>
+    <off_color>
+      <color name="LED-RED-ON" red="255" green="60" blue="46">
+      </color>
+    </off_color>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_33</name>
+    <x>1031</x>
+    <y>147</y>
+    <width>174</width>
+    <height>24</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="led" version="2.0.0">
+      <name>LED_60</name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-LimitMaxMax</pv_name>
+      <x>126</x>
+      <y>2</y>
+      <off_color>
+        <color name="LED-RED-ON" red="255" green="60" blue="46">
+        </color>
+      </off_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_68</name>
+      <macros>
+        <Axis>X</Axis>
+      </macros>
+      <text>${DEV_NAME} Lim HIHI:</text>
+      <width>110</width>
+      <height>24</height>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="polyline" version="2.0.0">
+      <name>Polyline_31</name>
+      <x>154</x>
+      <y>12</y>
+      <width>20</width>
+      <height>1</height>
+      <points>
+        <point x="0.0" y="0.0">
+        </point>
+        <point x="20.0" y="0.0">
+        </point>
+        <point x="20.0" y="0.0">
+        </point>
+      </points>
+      <line_color>
+        <color name="BLACK" red="0" green="0" blue="0">
+        </color>
+      </line_color>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_34</name>
+    <x>1031</x>
+    <y>112</y>
+    <width>174</width>
+    <height>24</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="led" version="2.0.0">
+      <name>LED_61</name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-LimitMinMin</pv_name>
+      <x>126</x>
+      <y>2</y>
+      <off_color>
+        <color name="LED-RED-ON" red="255" green="60" blue="46">
+        </color>
+      </off_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_69</name>
+      <macros>
+        <Axis>X</Axis>
+      </macros>
+      <text>${DEV_NAME} Lim LOLO</text>
+      <width>110</width>
+      <height>24</height>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="polyline" version="2.0.0">
+      <name>Polyline_32</name>
+      <x>154</x>
+      <y>12</y>
+      <width>20</width>
+      <height>1</height>
+      <points>
+        <point x="0.0" y="0.0">
+        </point>
+        <point x="20.0" y="0.0">
+        </point>
+        <point x="20.0" y="0.0">
+        </point>
+      </points>
+      <line_color>
+        <color name="BLACK" red="0" green="0" blue="0">
+        </color>
+      </line_color>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_35</name>
+    <x>1031</x>
+    <y>341</y>
+    <width>174</width>
+    <height>24</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="led" version="2.0.0">
+      <name>LED_62</name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-AllowMotionCmd</pv_name>
+      <x>126</x>
+      <y>2</y>
+      <off_color>
+        <color name="LED-RED-ON" red="255" green="60" blue="46">
+        </color>
+      </off_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_70</name>
+      <macros>
+        <Axis>X</Axis>
+      </macros>
+      <text>${DEV_NAME} Allow Motion:</text>
+      <width>110</width>
+      <height>24</height>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="polyline" version="2.0.0">
+      <name>Polyline_33</name>
+      <x>154</x>
+      <y>12</y>
+      <width>20</width>
+      <height>1</height>
+      <points>
+        <point x="0.0" y="0.0">
+        </point>
+        <point x="20.0" y="0.0">
+        </point>
+        <point x="20.0" y="0.0">
+        </point>
+      </points>
+      <line_color>
+        <color name="BLACK" red="0" green="0" blue="0">
+        </color>
+      </line_color>
+    </widget>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_71</name>
+    <text>X,Y interlcks</text>
+    <x>1050</x>
+    <y>40</y>
+    <width>240</width>
+    <height>46</height>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_36</name>
+    <x>1050</x>
+    <y>249</y>
+    <width>174</width>
+    <height>24</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="New Rule" prop_id="visible" out_exp="true">
+        <exp bool_exp="&quot;$(DEV_NAME)&quot;!='Z'">
+          <expression>0</expression>
+        </exp>
+        <pv_name>loc://dummyTriggVisible</pv_name>
+      </rule>
+    </rules>
+    <widget type="led" version="2.0.0">
+      <name>LED_63</name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-LimitMinMinPark</pv_name>
+      <x>126</x>
+      <y>2</y>
+      <off_color>
+        <color name="LED-RED-ON" red="255" green="60" blue="46">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+        </color>
+      </on_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_72</name>
+      <macros>
+        <Axis>X</Axis>
+      </macros>
+      <text>Lim LOLO Park:</text>
+      <width>110</width>
+      <height>24</height>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="polyline" version="2.0.0">
+      <name>Polyline_34</name>
+      <x>154</x>
+      <y>12</y>
+      <width>20</width>
+      <height>1</height>
+      <points>
+        <point x="0.0" y="0.0">
+        </point>
+        <point x="20.0" y="0.0">
+        </point>
+        <point x="20.0" y="0.0">
+        </point>
+      </points>
+      <line_color>
+        <color name="BLACK" red="0" green="0" blue="0">
+        </color>
+      </line_color>
+    </widget>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_73</name>
+    <text>Z specific interlcks</text>
+    <x>1050</x>
+    <y>221</y>
+    <width>240</width>
+    <height>46</height>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_74</name>
+    <text>Other</text>
+    <x>1031</x>
+    <y>317</y>
+    <width>240</width>
+    <height>46</height>
+  </widget>
 </display>

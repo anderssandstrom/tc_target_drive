@@ -2100,5 +2100,32 @@ widget.setPropertyValue('y', 170+value*40)]]></text>
         </states>
       </widget>
     </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_38</name>
+      <macros>
+        <Axis>X</Axis>
+      </macros>
+      <text>WARNING!! MANUAL IL OVERRIDE IN PLC ACTIVE!</text>
+      <x>201</x>
+      <y>30</y>
+      <width>410</width>
+      <height>30</height>
+      <foreground_color>
+        <color name="RED" red="252" green="13" blue="27">
+        </color>
+      </foreground_color>
+      <rules>
+        <rule name="New Rule" prop_id="visible" out_exp="true">
+          <exp bool_exp="pv0==1 and pv1==1">
+            <expression>False</expression>
+          </exp>
+          <exp bool_exp="pv0==0">
+            <expression>False</expression>
+          </exp>
+          <pv_name>$(PREFIX)$(DEV_NAME)-ManunalILOverride</pv_name>
+          <pv_name>sim://ramp(0,1,1)</pv_name>
+        </rule>
+      </rules>
+    </widget>
   </widget>
 </display>

@@ -1252,6 +1252,33 @@ widget.setPropertyValue('x', 240+value*40)
         </states>
       </widget>
     </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_38</name>
+      <macros>
+        <Axis>X</Axis>
+      </macros>
+      <text>WARNING!! MANUAL IL OVERRIDE IN PLC ACTIVE!</text>
+      <x>139</x>
+      <y>217</y>
+      <width>410</width>
+      <height>30</height>
+      <foreground_color>
+        <color name="RED" red="252" green="13" blue="27">
+        </color>
+      </foreground_color>
+      <rules>
+        <rule name="New Rule" prop_id="visible" out_exp="true">
+          <exp bool_exp="pv0==1 and pv1==1">
+            <expression>False</expression>
+          </exp>
+          <exp bool_exp="pv0==0">
+            <expression>False</expression>
+          </exp>
+          <pv_name>$(PREFIX)$(DEV_NAME)-ManunalILOverride</pv_name>
+          <pv_name>sim://ramp(0,1,1)</pv_name>
+        </rule>
+      </rules>
+    </widget>
   </widget>
   <widget type="group" version="2.0.0">
     <name>Group_TDU_X_Trans_1</name>
@@ -2057,6 +2084,33 @@ widget.setPropertyValue('x', 240+value*40)
           </state>
         </states>
       </widget>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_39</name>
+      <macros>
+        <Axis>X</Axis>
+      </macros>
+      <text>WARNING!! MANUAL IL OVERRIDE IN PLC ACTIVE!</text>
+      <x>144</x>
+      <y>217</y>
+      <width>410</width>
+      <height>30</height>
+      <foreground_color>
+        <color name="RED" red="252" green="13" blue="27">
+        </color>
+      </foreground_color>
+      <rules>
+        <rule name="New Rule" prop_id="visible" out_exp="true">
+          <exp bool_exp="pv0==1 and pv1==1">
+            <expression>False</expression>
+          </exp>
+          <exp bool_exp="pv0==0">
+            <expression>False</expression>
+          </exp>
+          <pv_name>$(PREFIX)$(DEV_NAME)-ManunalILOverride</pv_name>
+          <pv_name>sim://ramp(0,1,1)</pv_name>
+        </rule>
+      </rules>
     </widget>
   </widget>
 </display>
