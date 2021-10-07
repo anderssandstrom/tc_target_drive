@@ -23,7 +23,7 @@ STRUCT
 	bFuseMainRotationOK:BOOL;       // s2: ch6: fc01 fuse target wheel motor OK
 	fRotTemp:LREAL;                 // s13: ch4: kf12 Target Main motor Temperature (KTY) (in deg*10)
 	bSumILOK:BOOL:=FALSE;
-	bSumHwILOk:BOOL:=FALSE;
+	bHWILOK:BOOL:=FALSE;
 END_STRUCT
 END_TYPE
 ]]></Declaration>

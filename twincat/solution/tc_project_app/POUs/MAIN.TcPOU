@@ -272,7 +272,7 @@ main.stHWStatusY.bBrakeReleased;
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
                             <o>
-                              <v n="Operand">"main.stHwStatusRot.bSumHwILOk"</v>
+                              <v n="Operand">"main.stHwStatusRot.bHWILOK"</v>
                               <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -1772,7 +1772,7 @@ main.stHWStatusY.bBrakeReleased;
                             </o>
                             <o t="BoxTreeOperand">
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"main.stHwStatusRot.bSumHwILOk"</v>
+                                <v n="Operand">"main.stHwStatusRot.bHWILOK"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
