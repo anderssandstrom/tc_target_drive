@@ -2126,6 +2126,16 @@ Bit 15]]></Comment>
 			<Vars VarGrpType="2" AreaNo="1">
 				<Name>PlcTask Outputs</Name>
 				<Var>
+					<Name>MAIN.stHWControlRot.bRotOmronSensor1Feed</Name>
+					<Comment><![CDATA[ s4: ch1: Feed omron sensor 1]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.stHWControlRot.bRotOmronSensor2Feed</Name>
+					<Comment><![CDATA[ s4: ch2: Feed omron sensor 2]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
 					<Name>MAIN.nAdditiveTorqueSetpoint</Name>
 					<Comment><![CDATA[ Unit 0.1%  (10=1%)]]></Comment>
 					<Type>INT</Type>
@@ -2173,16 +2183,6 @@ Bit 15]]></Comment>
 				<Var>
 					<Name>MAIN.fbIndraDrive.stDriveCommands.nS40_VelocityCommandValue</Name>
 					<Type>DINT</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.stHWControlRot.bRotOmronSensor1Feed</Name>
-					<Comment><![CDATA[ s4: ch1: Feed omron sensor 1]]></Comment>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.stHWControlRot.bRotOmronSensor2Feed</Name>
-					<Comment><![CDATA[ s4: ch2: Feed omron sensor 2]]></Comment>
-					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>MAIN.stHWControlX.bMinMaxFeed</Name>
