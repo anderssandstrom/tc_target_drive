@@ -6,6 +6,7 @@ TYPE ST_HW_CONTROL_ROT :
 STRUCT
 	bRotOmronSensor1Feed AT %Q* :BOOL;  // s4: ch1: Feed omron sensor 1
 	bRotOmronSensor2Feed AT %Q* :BOOL;  // s4: ch2: Feed omron sensor 2
+	bManualInterlockOverride: BOOL:=FALSE;
 END_STRUCT
 END_TYPE
 
