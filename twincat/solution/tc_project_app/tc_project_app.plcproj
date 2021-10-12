@@ -55,9 +55,6 @@
     <Compile Include="DUTs\ST_AXIS_STATUS.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\ST_CMD_EPICS.TcDUT">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="DUTs\ST_HW_CONTROL_ROT.TcDUT">
       <SubType>Code</SubType>
     </Compile>
