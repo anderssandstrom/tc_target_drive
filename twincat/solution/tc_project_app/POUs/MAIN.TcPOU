@@ -22,8 +22,6 @@ VAR
 	fbModePos                         : FB_ModePos;      // Positioning Mode
 	fbModeHome                        : FB_ModeHome;     // Homing Mode
 	fbIndraDrive                      : fbIndraDrive;    // Control of drive
-	
-	stCmdEpics                        : ST_CMD_EPICS;    // Control to EPICS 
 	stCommands                        : ST_AXIS_COMMAND; // Control to drive
 	stStatus                          : ST_AXIS_STATUS;  // Status from drive
 	eTargetStateOld                   : TARGET_STATE_MACHINE;
@@ -238,8 +236,8 @@ stHwStatusRot.fActTemp:=fb_s13_EL3214.iAI_4/10.0;
 
 // Motor Temperature Monitoring Interlock
 IF (stHwStatusRot.fActTemp >= GVL_Parameters.nMaxMotorTemperature)  OR fbTemp.iAi_Ch1_Stat > 0 THEN
-	stCmdEpics.bEnable:= FALSE;
-	stCmdEpics.bExecute:= FALSE;
+	stHWControlRot.bEnable:= FALSE;
+	stHWControlRot.bExecute:= FALSE;
 	stHwStatusRot.nErrorId:=GVL_ErrorCodes.nErrorIndraTempToHigh;
 	stHwStatusRot.sErrorStr:=GVL_ErrorCodes.sErrorIndraTempToHigh;
 END_IF
@@ -1830,7 +1828,7 @@ main.stHWStatusY.bBrakeReleased;
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
                             <o>
-                              <v n="Operand">"stCmdEpics.bExecute"</v>
+                              <v n="Operand">"stHWControlRot.bExecute"</v>
                               <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -1973,7 +1971,7 @@ main.stHWStatusY.bBrakeReleased;
                             </o>
                             <o t="BoxTreeOperand">
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"stCmdEpics.bExecute"</v>
+                                <v n="Operand">"stHWControlRot.bExecute"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -2107,60 +2105,60 @@ main.stHWStatusY.bBrakeReleased;
       <Implementation>
         <ST><![CDATA[
 // Enable Axis independent of state (Ensure that drive is ready to enable)
-IF stCmdEpics.bEnable THEN
+IF stHWControlRot.bEnable THEN
    IF stStatus.bDCBusPresent AND NOT stStatus.bSTOActiveCh1 AND NOT stStatus.bSTOActiveCh2 AND NOT stStatus.bError THEN 
-	   stCommands.bEnableAxis :=stCmdEpics.bEnable;
+	   stCommands.bEnableAxis :=stHWControlRot.bEnable;
    ELSE
 	   stCommands.bEnableAxis := FALSE;
-	   stCmdEpics.bExecute := FALSE;
+	   stHWControlRot.bExecute := FALSE;
 	   stHwStatusRot.bError:=TRUE;
 	   stHwStatusRot.nErrorId:=GVL_ErrorCodes.nErrorIndraNotReady;
 	   stHwStatusRot.sErrorStr:=GVL_ErrorCodes.sErrorIndraNotReady; 
    END_IF
 ELSE
 	//Reset enable
-    stCommands.bEnableAxis:=stCmdEpics.bEnable;
+    stCommands.bEnableAxis:=stHWControlRot.bEnable;
 END_IF
 
-IF stCmdEpics.bExecute THEN
+IF stHWControlRot.bExecute THEN
   IF stStatus.bAxisEnabled THEN
-    stCommands.bHaltAxis:=stCmdEpics.bExecute;
+    stCommands.bHaltAxis:=stHWControlRot.bExecute;
   ELSE
-	stCmdEpics.bExecute:=FALSE;
+	stHWControlRot.bExecute:=FALSE;
 	stCommands.bHaltAxis:=FALSE;
 	stHwStatusRot.nErrorId:=GVL_ErrorCodes.nErrorNotEnabled;
 	stHwStatusRot.sErrorStr:=GVL_ErrorCodes.sErrorNotEnabled; 
   END_IF
 ELSE
-  stCommands.bHaltAxis:=stCmdEpics.bExecute;
+  stCommands.bHaltAxis:=stHWControlRot.bExecute;
 END_IF
 
 IF NOT stCommands.bEnableAxis THEN
-  stCmdEpics.bExecute:=FALSE;
+  stHWControlRot.bExecute:=FALSE;
 END_IF
 
 stHwStatusRot.bEnabled:=stStatus.bAxisEnabled;
-stCommands.bCmd_ErrorReset:=stCmdEpics.bReset;
+stCommands.bCmd_ErrorReset:=stHWControlRot.bReset;
 
 stCommands.bCmd_DriveControlledHoming:=FALSE;
 
 // State change
-IF stCmdEpics.eTargetStateCmd <> stHwStatusRot.eTargetState AND NOT stCmdEpics.bexecute AND stStatus.bAxisStandStillStatus THEN
+IF stHWControlRot.eTargetStateCmd <> stHwStatusRot.eTargetState AND NOT stHWControlRot.bexecute AND stStatus.bAxisStandStillStatus THEN
     // Only allow state change if execute is low and at standstill
-    stHwStatusRot.eTargetState:=stCmdEpics.eTargetStateCmd;
+    stHwStatusRot.eTargetState:=stHWControlRot.eTargetStateCmd;
 END_IF
 
-IF stCmdEpics.fPhaseOffsetMM > GVL_Parameters.fMaxPhaseOffsetMM THEN
-	stCmdEpics.fPhaseOffsetMM :=  GVL_Parameters.fMaxPhaseOffsetMM;
+IF stHWControlRot.fPhaseOffsetMM > GVL_Parameters.fMaxPhaseOffsetMM THEN
+	stHWControlRot.fPhaseOffsetMM :=  GVL_Parameters.fMaxPhaseOffsetMM;
 END_IF
-IF stCmdEpics.fPhaseOffsetMM < GVL_Parameters.fMinPhaseOffsetMM THEN
-	stCmdEpics.fPhaseOffsetMM :=  GVL_Parameters.fMinPhaseOffsetMM;
+IF stHWControlRot.fPhaseOffsetMM < GVL_Parameters.fMinPhaseOffsetMM THEN
+	stHWControlRot.fPhaseOffsetMM :=  GVL_Parameters.fMinPhaseOffsetMM;
 END_IF
 
-stHwStatusRot.fPhaseOffsetActDeg := stCmdEpics.fPhaseOffsetMM /(GVL_Parameters.fWheelDiameter*pi/360.0);
+stHwStatusRot.fPhaseOffsetActDeg := stHWControlRot.fPhaseOffsetMM /(GVL_Parameters.fWheelDiameter*pi/360.0);
 
 //nAdditiveTorqueSetpoint:=0;
-//IF NOT  stCmdEpics.bExecute THEN
+//IF NOT  stHWControlRot.bExecute THEN
 //	addStartupTorqueTrigger:=TRUE;
 //END_IF
 
@@ -2170,24 +2168,24 @@ CASE stHwStatusRot.eTargetState OF
         stCommands.fCommandAcceleration:=GVL_Parameters.fAccDefaultVel;
         stCommands.fCommandDeceleration:=GVL_Parameters.fAccDefaultVel;
 		fbModeVelo(
-            bExecute:=         stCmdEpics.bExecute,
-            bReset:=           stCmdEpics.bReset,
-			fVelSet:=          stCmdEpics.fVelSet,
+            bExecute:=         stHWControlRot.bExecute,
+            bReset:=           stHWControlRot.bReset,
+			fVelSet:=          stHWControlRot.fVelSet,
 			stStatus:=	       stStatus,	
 			stCommands:=       stCommands);
 			
 			//ramp velocity with selected acceleration
-			fbRampVelo(bExecute:=stCmdEpics.bExecute,
+			fbRampVelo(bExecute:=stHWControlRot.bExecute,
               fVelSetIn:=fbModeVelo.fSpeedSetpoint,
               iBlockSampleTimeMicroS:=GVL_Parameters.nTaskSampleTime*1000,
               fVelSetOut:=stCommands.fVelocityCommandValue,
               fVelActIn:=stStatus.fActualVelocity/10);
 			  
 // add extra torque att startup TEST
-		//	IF stStatus.bAxisEnabled AND stCmdEpics.bExecute AND stCmdEpics.fVelSet > 0 THEN
-		//		IF stStatus.fActualVelocity/10< stCmdEpics.fVelSet/2 THEN
+		//	IF stStatus.bAxisEnabled AND stHWControlRot.bExecute AND stHWControlRot.fVelSet > 0 THEN
+		//		IF stStatus.fActualVelocity/10< stHWControlRot.fVelSet/2 THEN
 		//	        nAdditiveTorqueSetpoint:=100;  //Add 10% when under x rpm
-		//		ELSIF stStatus.fActualVelocity/10 > stCmdEpics.fVelSet/2 THEN
+		//		ELSIF stStatus.fActualVelocity/10 > stHWControlRot.fVelSet/2 THEN
 		//			nAdditiveTorqueSetpoint:=40;
 		//		END_IF
 		//	END_IF
@@ -2198,10 +2196,10 @@ CASE stHwStatusRot.eTargetState OF
         stCommands.fCommandDeceleration:=GVL_Parameters.fAccDefaultPos;
 
 		fbModePos(
-            bExecute:=         stCmdEpics.bExecute,
-            bReset:=           stCmdEpics.bReset,
-			fVelSet:=          stCmdEpics.fVelSet,
-			fPosSet:=          stCmdEpics.fPosSet,
+            bExecute:=         stHWControlRot.bExecute,
+            bReset:=           stHWControlRot.bReset,
+			fVelSet:=          stHWControlRot.fVelSet,
+			fPosSet:=          stHWControlRot.fPosSet,
 			fRefOffset:=       fbModeHome.fActPositionOffset,
 			stStatus:=         stStatus,	
 			stCommands:=       stCommands);
@@ -2210,19 +2208,19 @@ CASE stHwStatusRot.eTargetState OF
 	    stCommands.fCommandAcceleration:=GVL_Parameters.fAccDefaultVel;
         stCommands.fCommandDeceleration:=GVL_Parameters.fAccDefaultVel;
    		fbModePhase(
-			bExecute:=         stCmdEpics.bExecute,
-            bReset:=           stCmdEpics.bReset,
+			bExecute:=         stHWControlRot.bExecute,
+            bReset:=           stHWControlRot.bReset,
 			stStatus:=	       stStatus,
 			dLatchedPosition:= dLatchedPosition,
-			ePhaseType:=       stCmdEpics.ePhaseCntrlAlg,
-			ePwmType:=         stCmdEpics.ePhasePwmType,
+			ePhaseType:=       stHWControlRot.ePhaseCntrlAlg,
+			ePwmType:=         stHWControlRot.ePhasePwmType,
 			stCommands:=       stCommands,
-            fPhaseOffsetMM:=   stCmdEpics.fPhaseOffsetMM,
+            fPhaseOffsetMM:=   stHWControlRot.fPhaseOffsetMM,
             fRefOffset:=       fbModeHome.fActPositionOffset);
 			
 			//ramp velocity with selected acceleration (as long as not phasing)
 			IF NOT fbModePhase.bPhasing THEN
-              fbRampVelo(bExecute:=stCmdEpics.bExecute,
+              fbRampVelo(bExecute:=stHWControlRot.bExecute,
                 fVelSetIn:=fbModePhase.fSpeedSetpoint,
                 iBlockSampleTimeMicroS:=GVL_Parameters.nTaskSampleTime*1000,
                 fVelSetOut:=stCommands.fVelocityCommandValue,
@@ -2235,15 +2233,15 @@ CASE stHwStatusRot.eTargetState OF
         stCommands.fCommandAcceleration:=GVL_Parameters.fAccDefaultVel;
         stCommands.fCommandDeceleration:=GVL_Parameters.fAccDefaultVel;
         fbModeHome( 
-            bExecute:=         stCmdEpics.bExecute,
-            bReset:=           stCmdEpics.bReset,
+            bExecute:=         stHWControlRot.bExecute,
+            bReset:=           stHWControlRot.bReset,
 			fVelSet:=          GVL_Parameters.fHomeSpeedRpm,
-			fPosSet:=          stCmdEpics.fPosSet,
+			fPosSet:=          stHWControlRot.fPosSet,
 			stStatus:=	       stStatus,	
 			stCommands:=       stCommands);
 		//stCommands.fFeedrateOverride:=1.0;
 		//ramp velocity with selected acceleration
-		fbRampVelo(bExecute:=stCmdEpics.bExecute,
+		fbRampVelo(bExecute:=stHWControlRot.bExecute,
               fVelSetIn:=fbModeHome.fSpeedSetpoint,
               iBlockSampleTimeMicroS:=GVL_Parameters.nTaskSampleTime*1000,
               fVelSetOut:=stCommands.fVelocityCommandValue,
@@ -2258,8 +2256,8 @@ CASE stHwStatusRot.eTargetState OF
 	  ELSE  // No valid state
 		  
 		bApplyTorqueFF:=FALSE;
-		stCmdEpics.bExecute:=FALSE;
-        stCmdEpics.bEnable:=FALSE;
+		stHWControlRot.bExecute:=FALSE;
+        stHWControlRot.bEnable:=FALSE;
 		stCommands.fVelocityCommandValue:=0;
 		stCommands.fCommandVelocity:=0;
 		stCommands.fCommandAcceleration:=0;
@@ -2270,12 +2268,12 @@ END_CASE
 
 IF bApplyTorqueFF THEN
   // add extra torque att startup TEST
-  IF stStatus.bAxisEnabled (*AND stCmdEpics.bExecute*) THEN
+  IF stStatus.bAxisEnabled (*AND stHWControlRot.bExecute*) THEN
 	 nAdditiveTorqueSetpoint:=nTest;  //Add 10% when under x rpm
   END_IF
 END_IF
 
-IF NOT stCmdEpics.bExecute THEN
+IF NOT stHWControlRot.bExecute THEN
 	stCommands.fVelocityCommandValue:=0;
 END_IF
 
@@ -2356,14 +2354,14 @@ END_IF
 // To high velocity detected. Shutdown..
 IF ABS(stStatus.fActualVelocity)/10 > GVL_Parameters.fMaximumSPeedRpm THEN 
   stCommands.bEnableAxis:= FALSE;
-  stCmdEpics.bEnable:=FALSE;
-  stCmdEpics.bExecute:=FALSE;
+  stHWControlRot.bEnable:=FALSE;
+  stHWControlRot.bExecute:=FALSE;
   stHwStatusRot.bError:=TRUE;
   stHwStatusRot.nErrorId:=GVL_ErrorCodes.nErrorVelToHigh;
   stHwStatusRot.sErrorStr:=GVL_ErrorCodes.sErrorVelToHigh;
 END_IF
 
-IF stcmdEpics.bReset THEN
+IF stHWControlRot.bReset THEN
   stHwStatusRot.bError:=FALSE;
   stHwStatusRot.nErrorId:=GVL_ErrorCodes.nErrorCodeOKId;
   stHwStatusRot.sErrorStr:=GVL_ErrorCodes.nErrorCodeOKStr;
@@ -2374,7 +2372,7 @@ IF stcmdEpics.bReset THEN
   GVL.astAxes[3].stControl.bReset:=NOT(GVL.astAxes[3].stControl.bReset);
   
 END_IF
-stcmdEpics.bReset:=FALSE;]]></ST>
+stHWControlRot.bReset:=FALSE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="ACT_X_Diag" Id="{2a0ea7d8-8ff8-4796-ae8a-6c3ebb6f7955}">

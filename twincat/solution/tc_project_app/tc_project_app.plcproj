@@ -70,9 +70,6 @@
     <Compile Include="DUTs\ST_HW_STATUS_XYZ.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\ST_STAT_EPICS.TcDUT">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="DUTs\ST_INDRADRIVE_IO_INPUT.TcDUT">
       <SubType>Code</SubType>
     </Compile>
