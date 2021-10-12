@@ -34,7 +34,7 @@ asynSetTraceMask("${ADS_ASYN_PORT}", -1, 0x41)
 ############# Load records
 
 ## Rotation
-dbLoadRecords("./db/rotation.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
+dbLoadRecords("./db/rotation.db","P=${PREFIX},PORT=${ADS_ASYN_PORT},DEV_NAME=Rotation,STRUCT_STAT=stHwStatusRot,STRUCT_CMD=stHwControlRot")
 dbLoadRecords("./db/indraDriveStatus.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
 dbLoadRecords("./db/indraDriveCommand.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
 #dbLoadRecords("./db/brake.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
