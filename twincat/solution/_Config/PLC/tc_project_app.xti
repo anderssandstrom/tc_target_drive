@@ -2126,16 +2126,6 @@ Bit 15]]></Comment>
 			<Vars VarGrpType="2" AreaNo="1">
 				<Name>PlcTask Outputs</Name>
 				<Var>
-					<Name>MAIN.stHWControlRot.bRotOmronSensor1Feed</Name>
-					<Comment><![CDATA[ s4: ch1: Feed omron sensor 1]]></Comment>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.stHWControlRot.bRotOmronSensor2Feed</Name>
-					<Comment><![CDATA[ s4: ch2: Feed omron sensor 2]]></Comment>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
 					<Name>MAIN.nAdditiveTorqueSetpoint</Name>
 					<Comment><![CDATA[ Unit 0.1%  (10=1%)]]></Comment>
 					<Type>INT</Type>
@@ -2215,11 +2205,6 @@ Bit 15]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>GVL_Bridge_TSCS.OUTPUTS</Name>
-					<Comment><![CDATA[ Outputs]]></Comment>
-					<Type GUID="{155273E7-D90F-4E0A-DBD3-CADC6647405F}">ST_Bridge_TSCS_OUTPUTS</Type>
-				</Var>
-				<Var>
 					<Name>MAIN.stHWControlZ.bMinMaxFeed</Name>
 					<Comment><![CDATA[ s5: ch1: kf05: w02.bg01 w02.bg02 stepper x limit switch max, limit min]]></Comment>
 					<Type>BOOL</Type>
@@ -2233,6 +2218,21 @@ Bit 15]]></Comment>
 					<Name>MAIN.stHWControlZ.bMinMinMaxMaxFeed</Name>
 					<Comment><![CDATA[ s5: ch3: kf05: w02.bg03 w02.bg04 stepper x limit switch max max, limit min min]]></Comment>
 					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.stHWControlRot.bRotOmronSensor1Feed</Name>
+					<Comment><![CDATA[ s4: ch1: Feed omron sensor 1]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.stHWControlRot.bRotOmronSensor2Feed</Name>
+					<Comment><![CDATA[ s4: ch2: Feed omron sensor 2]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Bridge_TSCS.OUTPUTS</Name>
+					<Comment><![CDATA[ Outputs]]></Comment>
+					<Type GUID="{155273E7-D90F-4E0A-DBD3-CADC6647405F}">ST_Bridge_TSCS_OUTPUTS</Type>
 				</Var>
 				<Var>
 					<Name>GVL.astAxes[1].Axis.PlcToNc</Name>

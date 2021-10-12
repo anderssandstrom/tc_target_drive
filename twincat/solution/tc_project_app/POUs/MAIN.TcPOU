@@ -22,8 +22,8 @@ VAR
 	fbModePos                         : FB_ModePos;      // Positioning Mode
 	fbModeHome                        : FB_ModeHome;     // Homing Mode
 	fbIndraDrive                      : fbIndraDrive;    // Control of drive
-	stCommands                        : ST_AXIS_COMMAND; // Control to drive
-	stStatus                          : ST_AXIS_STATUS;  // Status from drive
+	stCommands                        : ST_INDRADRIVE_AXIS_COMMAND; // Control to drive
+	stStatus                          : ST_INDRADRIVE_AXIS_STATUS;  // Status from drive
 	eTargetStateOld                   : TARGET_STATE_MACHINE;
 	addStartupTorqueTrigger           : BOOL:=FALSE;
 	iTorqueCommandValue  AT %Q*       : INT := 0;

@@ -49,10 +49,10 @@
     <Compile Include="DUTs\E_VELOCITY_STATE_MACHINE.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\ST_AXIS_COMMAND.TcDUT">
+    <Compile Include="DUTs\ST_INDRADRIVE_AXIS_COMMAND.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\ST_AXIS_STATUS.TcDUT">
+    <Compile Include="DUTs\ST_INDRADRIVE_AXIS_STATUS.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\ST_HW_CONTROL_ROT.TcDUT">

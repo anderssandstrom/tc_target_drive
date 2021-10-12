@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
-  <DUT Name="ST_AXIS_STATUS" Id="{e254610f-185a-469f-a884-c83c971223f1}">
-    <Declaration><![CDATA[TYPE ST_AXIS_STATUS :
+  <DUT Name="ST_INDRADRIVE_AXIS_STATUS" Id="{e254610f-185a-469f-a884-c83c971223f1}">
+    <Declaration><![CDATA[TYPE ST_INDRADRIVE_AXIS_STATUS :
 STRUCT
 
 	bDriveInParameterMode		: BOOL;		// FALSE (S424): Drive is in Operating mode

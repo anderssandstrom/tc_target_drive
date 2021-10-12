@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
   <POU Name="fbIndraDrive" Id="{c552eacd-cc63-42de-838c-771e92ee46fa}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK fbIndraDrive
 VAR_INPUT 
 	AmsNetId			: AMSNETID;		// AMS Net Id of the EtherCAT Master
 	AdsAddr_Port		: WORD; 		// EtherCAT address of the Drive
-	stAxisCommands		: ST_AXIS_COMMAND; 
+	stAxisCommands		: ST_INDRADRIVE_AXIS_COMMAND; 
 	stDriveStatus		: ST_INDRADRIVE_IO_INPUT; 
 END_VAR
 VAR_OUTPUT
-	stAxisStatus		: ST_AXIS_STATUS; 
+	stAxisStatus		: ST_INDRADRIVE_AXIS_STATUS; 
 	stDriveCommands		: ST_INDRADRIVE_IO_OUTPUT; 
 END_VAR
 VAR
