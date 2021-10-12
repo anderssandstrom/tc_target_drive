@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
   <POU Name="FB_ModeVelo" Id="{c95731c8-4fe5-4d11-ab47-46b5e16e76f1}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_ModeVelo
 VAR_INPUT
 	bExecute:BOOL;
 	bReset: BOOL;
 	fVelSet:LREAL:=0;
-	stStatus: ST_AXIS_STATUS;
+	stStatus: ST_INDRADRIVE_AXIS_STATUS;
 END_VAR
 VAR_OUTPUT
 	fSpeedSetpoint:LREAL:=0;
@@ -15,7 +15,7 @@ VAR_OUTPUT
 	sErrorStr: STRING:=GVL_ErrorCodes.nErrorCodeOKStr;
 END_VAR
 VAR_IN_OUT
-	stCommands: ST_AXIS_COMMAND;
+	stCommands: ST_INDRADRIVE_AXIS_COMMAND;
 END_VAR
 ]]></Declaration>
     <Implementation>

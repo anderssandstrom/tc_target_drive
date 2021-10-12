@@ -5,7 +5,7 @@
 VAR_INPUT
 	bExecute           : BOOL         := FALSE;
 	bReset             : BOOL         := FALSE;
-	stStatus           : ST_AXIS_STATUS;
+	stStatus           : ST_INDRADRIVE_AXIS_STATUS;
     dLatchedPosition   : DINT         := 0;
 	//fPhaseOffsetDeg    : LREAL        := 0;
     fPhaseControlKp    : LREAL        := 0.0012;
@@ -26,7 +26,7 @@ VAR_OUTPUT
 	fSpeedSetpoint     : LREAL;
 END_VAR
 VAR_IN_OUT
-	stCommands         : ST_AXIS_COMMAND;
+	stCommands         : ST_INDRADRIVE_AXIS_COMMAND;
 END_VAR
 VAR
   bNewTriggPulse           : BOOL  := FALSE;

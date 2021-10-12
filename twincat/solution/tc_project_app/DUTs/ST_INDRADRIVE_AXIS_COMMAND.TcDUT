@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
-  <DUT Name="ST_AXIS_COMMAND" Id="{1f17bf9a-e1c8-4812-a12d-020cbadfb6be}">
-    <Declaration><![CDATA[TYPE ST_AXIS_COMMAND :
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+  <DUT Name="ST_INDRADRIVE_AXIS_COMMAND" Id="{1f17bf9a-e1c8-4812-a12d-020cbadfb6be}">
+    <Declaration><![CDATA[TYPE ST_INDRADRIVE_AXIS_COMMAND :
 STRUCT
 	eOperationMode				: E_OPERATION_MODE_NO	:= E_OPERATION_MODE_NO.ePrimaryOpMode;	// (S134.0-2) Defines the Operation mode to use (the different operation modes are configured in the drive) 
 	bEnableAxis					: BOOL	:= FALSE; 	// FALSE (S134.13-15): Disable drive 
