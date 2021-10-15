@@ -46,6 +46,9 @@
   </widget>
   <widget type="rectangle" version="2.0.0">
     <name>MGGrey03-background_4</name>
+    <macros>
+      <DEV_NAME>Rotation</DEV_NAME>
+    </macros>
     <x>350</x>
     <y>70</y>
     <width>860</width>
@@ -5172,8 +5175,8 @@ $(pv_value)</tooltip>
       </action>
     </actions>
     <text>IndraDrive</text>
-    <x>480</x>
-    <y>740</y>
+    <x>690</x>
+    <y>810</y>
     <width>140</width>
     <tooltip>$(actions)</tooltip>
   </widget>
@@ -5203,5 +5206,39 @@ $(pv_value)</tooltip>
         <pv_name>sim://ramp(0,1,1)</pv_name>
       </rule>
     </rules>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_6</name>
+    <actions>
+      <action type="open_display">
+        <file>TDU/TS_TDU_SlaveDiag/TS_TDU_MotionSlaveList.bob</file>
+        <macros>
+          <DEV_NAME>X</DEV_NAME>
+          <PREFIX>TARGET_DU:</PREFIX>
+        </macros>
+        <target>window</target>
+        <description>Open Display</description>
+      </action>
+    </actions>
+    <text>Hardware</text>
+    <x>690</x>
+    <y>780</y>
+    <width>140</width>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_7</name>
+    <actions>
+      <action type="open_display">
+        <file>TDU/TS_TDU_Interlocks/TS_SSS_E01_ROT_Interlocks.bob</file>
+        <target>window</target>
+        <description>Open Display</description>
+      </action>
+    </actions>
+    <text>Engineering $(DEV_NAME)</text>
+    <x>690</x>
+    <y>750</y>
+    <width>140</width>
+    <tooltip>$(actions)</tooltip>
   </widget>
 </display>
