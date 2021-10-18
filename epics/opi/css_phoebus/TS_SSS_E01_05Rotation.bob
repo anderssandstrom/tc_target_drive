@@ -4577,7 +4577,7 @@ $(pv_value)</tooltip>
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button</name>
-    <pv_name>$(PREFIX)Rotation-Exe-Cmd</pv_name>
+    <pv_name>$(PREFIX)Rotation-ExeCmd</pv_name>
     <bit>-1</bit>
     <x>554</x>
     <y>169</y>
@@ -5118,7 +5118,7 @@ $(pv_value)</tooltip>
         <exp bool_exp="pv0==0">
           <expression>true</expression>
         </exp>
-        <pv_name>$(PREFIX)Rotation-Exe-Cmd</pv_name>
+        <pv_name>$(PREFIX)Rotation-ExeCmd</pv_name>
       </rule>
     </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
@@ -5179,7 +5179,7 @@ $(pv_value)</tooltip>
         <exp bool_exp="pv0==0">
           <expression>true</expression>
         </exp>
-        <pv_name>$(PREFIX)Rotation-Exe-Cmd</pv_name>
+        <pv_name>$(PREFIX)Rotation-ExeCmd</pv_name>
       </rule>
     </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>

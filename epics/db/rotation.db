@@ -127,7 +127,7 @@ record(mbbi,"$(P)${DEV_NAME}-State-Stat"){
   field(SXST, "TORQUE")
 }
 
-record(bo,"$(P)${DEV_NAME}-Exe-Cmd"){
+record(bo,"$(P)${DEV_NAME}-ExeCmd"){
   info(asyn:READBACK,"1")
   field(PINI, "1")
   field(DTYP, "asynInt32")
@@ -339,7 +339,7 @@ record(ao,"$(P)${DEV_NAME}-Vel-Cmd"){
   field(PINI, "1")
   field(DTYP, "asynInt32")
   field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_CMD}.fVelSet?")
-  field(PREC, "1")
+  field(PREC, "3")
   field(SCAN, "Passive")
   field(DESC, "${DEV_NAME}: Velocity setpoint [RPM]")
 }
@@ -349,7 +349,7 @@ record(ao,"$(P)${DEV_NAME}-Pos-Cmd"){
   field(PINI, "1")
   field(DTYP, "asynInt32")
   field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_CMD}.fPosSet?")
-  field(PREC, "1")
+  field(PREC, "3")
   field(SCAN, "Passive")
   field(DESC, "${DEV_NAME}: Position setpoint [deg]")
 }
@@ -435,3 +435,16 @@ record(bi,"$(P)${DEV_NAME}-ManunalILOverride"){
   field(OSV, "MAJOR")
   field(DESC, "${DEV_NAME}: Summary Interlock OK")
 }
+
+record(bi,"$(P)${DEV_NAME}-HwOK"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bHwStatusOK?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "HW Error")
+  field(ONAM, "OK")
+  field(ZSV, "MAJOR")
+  field(OSV, "NO_ALARM")
+  field(DESC, "${DEV_NAME}: Hardware Interlock")
+}
+
