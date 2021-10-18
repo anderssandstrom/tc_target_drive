@@ -270,7 +270,7 @@ main.stHWStatusY.bBrakeReleased;
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
                             <o>
-                              <v n="Operand">"main.stHwStatusRot.bHWILOK"</v>
+                              <v n="Operand">"main.stHwStatusRot.bHwStatusOK"</v>
                               <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -1770,7 +1770,7 @@ main.stHWStatusY.bBrakeReleased;
                             </o>
                             <o t="BoxTreeOperand">
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"main.stHwStatusRot.bHWILOK"</v>
+                                <v n="Operand">"main.stHwStatusRot.bHwStatusOK"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -2372,7 +2372,7 @@ IF stHWControlRot.bReset THEN
   GVL.astAxes[3].stControl.bReset:=NOT(GVL.astAxes[3].stControl.bReset);
   
 END_IF
-stHWControlRot.bReset:=FALSE;]]></ST>
+//stHWControlRot.bReset:=FALSE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="ACT_X_Diag" Id="{2a0ea7d8-8ff8-4796-ae8a-6c3ebb6f7955}">
