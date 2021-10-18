@@ -4656,6 +4656,7 @@ $(pv_value)</tooltip>
     </background_color>
     <actions>
     </actions>
+    <mode>1</mode>
     <confirm_message>Are you sure you want to do this?</confirm_message>
   </widget>
   <widget type="label" version="2.0.0">
@@ -5109,6 +5110,17 @@ $(pv_value)</tooltip>
     </background_color>
     <actions>
     </actions>
+    <rules>
+      <rule name="New Rule" prop_id="enabled" out_exp="true">
+        <exp bool_exp="pv0==1">
+          <expression>false</expression>
+        </exp>
+        <exp bool_exp="pv0==0">
+          <expression>true</expression>
+        </exp>
+        <pv_name>$(PREFIX)Rotation-Exe-Cmd</pv_name>
+      </rule>
+    </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <border_color>
       <color red="0" green="128" blue="255">
@@ -5159,6 +5171,17 @@ $(pv_value)</tooltip>
     </background_color>
     <actions>
     </actions>
+    <rules>
+      <rule name="New Rule" prop_id="enabled" out_exp="true">
+        <exp bool_exp="pv0==1">
+          <expression>false</expression>
+        </exp>
+        <exp bool_exp="pv0==0">
+          <expression>true</expression>
+        </exp>
+        <pv_name>$(PREFIX)Rotation-Exe-Cmd</pv_name>
+      </rule>
+    </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <border_color>
       <color red="0" green="128" blue="255">
