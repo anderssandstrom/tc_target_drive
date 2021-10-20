@@ -1789,7 +1789,7 @@
     <name>Action Button</name>
     <actions>
       <action type="open_display">
-        <file>TDU/TS_TDU_TorqMotorDrive/TS_SSS_E01_IndraDrive.bob</file>
+        <file>../TS_TDU_TorqMotorDrive/TS_SSS_E01_IndraDrive.bob</file>
         <target>window</target>
         <description>Open Display</description>
       </action>
