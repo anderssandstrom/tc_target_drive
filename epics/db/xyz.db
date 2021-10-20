@@ -126,7 +126,7 @@ record(bi,"$(P)${DEV_NAME}-SumBwdILOK"){
   field(DESC, "${DEV_NAME}: Summary Interlock BWD OK")
 }
 
-record(bi,"$(P)${DEV_NAME}-ManunalILOverride"){
+record(bi,"$(P)${DEV_NAME}-ManualILOverride"){
   field(PINI, "1")  
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bmanualInterlockOverride?")

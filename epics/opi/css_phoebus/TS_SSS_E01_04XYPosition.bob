@@ -1274,7 +1274,7 @@ widget.setPropertyValue('x', 240+value*40)
           <exp bool_exp="pv0==0">
             <expression>False</expression>
           </exp>
-          <pv_name>$(PREFIX)$(DEV_NAME)-ManunalILOverride</pv_name>
+          <pv_name>$(PREFIX)$(DEV_NAME)-ManualILOverride</pv_name>
           <pv_name>sim://ramp(0,1,1)</pv_name>
         </rule>
       </rules>
@@ -2107,7 +2107,7 @@ widget.setPropertyValue('x', 240+value*40)
           <exp bool_exp="pv0==0">
             <expression>False</expression>
           </exp>
-          <pv_name>$(PREFIX)$(DEV_NAME)-ManunalILOverride</pv_name>
+          <pv_name>$(PREFIX)$(DEV_NAME)-ManualILOverride</pv_name>
           <pv_name>sim://ramp(0,1,1)</pv_name>
         </rule>
       </rules>
