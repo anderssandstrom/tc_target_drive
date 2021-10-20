@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <display version="2.0.0">
   <name>Motion CPU Hardware Status:</name>
-  <width>400</width>
+  <width>600</width>
   <height>700</height>
   <actions>
     <action type="write_pv">
@@ -14,7 +14,7 @@
     <name>MGGrey03-background_5</name>
     <x>70</x>
     <y>50</y>
-    <width>304</width>
+    <width>410</width>
     <height>620</height>
     <line_width>2</line_width>
     <line_color>
@@ -576,5 +576,20 @@
       <width>200</width>
       <tooltip>$(TOOL_TIP)</tooltip>
     </widget>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button</name>
+    <actions>
+      <action type="open_display">
+        <file>TDU/TS_TDU_TorqMotorDrive/TS_SSS_E01_IndraDrive.bob</file>
+        <target>window</target>
+        <description>Open Display</description>
+      </action>
+    </actions>
+    <text>Details</text>
+    <x>320</x>
+    <y>520</y>
+    <width>140</width>
+    <tooltip>$(actions)</tooltip>
   </widget>
 </display>

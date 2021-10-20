@@ -259,7 +259,7 @@ record(ai,"$(P)${DEV_NAME}-VelLastSectorAct"){
   field(DESC, "${DEV_NAME}: Act Vel for Last Sector")
 }
 
-record(waveform,"$(P)ErrorStr"){
+record(waveform,"$(P)${DEV_NAME}-ErrStr"){
   field(PINI, "1")
   field(TSE, -2)
   field(DTYP,"asynInt8ArrayIn")
@@ -270,7 +270,7 @@ record(waveform,"$(P)ErrorStr"){
   field(DESC, "Error description")
 }
 
-record(ai,"$(P)ErrorId"){
+record(ai,"$(P)${DEV_NAME}-ErrId"){
   field(PINI, "1")
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.nErrorId?")
@@ -279,7 +279,7 @@ record(ai,"$(P)ErrorId"){
   field(DESC, "Error Id")
 }
 
-record(bi,"$(P)Error"){
+record(bi,"$(P)${DEV_NAME}-Err"){
   field(PINI, "1")
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bError?")
@@ -479,3 +479,14 @@ record(bo,"$(P)${DEV_NAME}-AllowMotionCmd"){
   field(DESC, "${DEV_NAME}: Allow motion GUI cmd")
 }
 
+record(bi,"$(P)${DEV_NAME}-EstopOK"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bEstopOK?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "E-STOP")
+  field(ONAM, "OK")
+  field(OSV,  "NO_ALARM")
+  field(ZSV,  "MAJOR")
+  field(DESC, "${DEV_NAME}: Estop OK")
+}
