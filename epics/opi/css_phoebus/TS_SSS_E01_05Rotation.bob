@@ -5255,6 +5255,10 @@ $(pv_value)</tooltip>
     <actions>
       <action type="open_display">
         <file>TDU/TS_TDU_Interlocks/TS_SSS_E01_ROT_Interlocks.bob</file>
+        <macros>
+          <DEV_NAME>Rotation</DEV_NAME>
+          <PREFIX>TARGET_DU:</PREFIX>
+        </macros>
         <target>window</target>
         <description>Open Display</description>
       </action>

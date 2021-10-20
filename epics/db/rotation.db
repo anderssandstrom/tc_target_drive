@@ -424,7 +424,7 @@ record(mbbo,"$(P)${DEV_NAME}-StatePhasePWMTypeCmd"){
   field(TWST, "SIMPLE")
 }
 
-record(bi,"$(P)${DEV_NAME}-ManunalILOverrideAct"){
+record(bi,"$(P)${DEV_NAME}-ManunalILOverride"){
   field(PINI, "1")  
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bmanualInterlockOverride?")
@@ -433,7 +433,7 @@ record(bi,"$(P)${DEV_NAME}-ManunalILOverrideAct"){
   field(ONAM, "Override")
   field(ZSV, "NO_ALARM")
   field(OSV, "MAJOR")
-  field(DESC, "${DEV_NAME}: Summary Interlock OK")
+  field(DESC, "${DEV_NAME}: manual override status")
 }
 
 record(bi,"$(P)${DEV_NAME}-HwOK"){
@@ -446,5 +446,25 @@ record(bi,"$(P)${DEV_NAME}-HwOK"){
   field(ZSV, "MAJOR")
   field(OSV, "NO_ALARM")
   field(DESC, "${DEV_NAME}: Hardware Interlock")
+}
+
+record(bi,"$(P)${DEV_NAME}-GeneralILOK"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bGeneralILOk?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Not OK")
+  field(ONAM, "OK")
+  field(DESC, "${DEV_NAME}: General IL OK")
+}
+
+record(bi,"$(P)${DEV_NAME}-SumILOK"){
+  field(PINI, "1")  
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bSumILOK?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Not Ok")
+  field(ONAM, "OK")
+  field(DESC, "${DEV_NAME}: Summary Interlock OK")
 }
 
