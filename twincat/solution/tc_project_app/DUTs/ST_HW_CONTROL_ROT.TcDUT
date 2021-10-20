@@ -15,7 +15,8 @@ STRUCT
 	eTargetStateCmd   : TARGET_STATE_MACHINE:=TARGET_STATE_MACHINE.NONE;
 	ePhaseCntrlAlg    : E_PHASE_TYPE:=E_PHASE_TYPE.PID;
 	ePhasePwmType     : E_PWM_TYPE:=E_PWM_TYPE.NONE;
-	fPhaseOffsetMM    : LREAL:=0; 
+	fPhaseOffsetMM    : LREAL:=0;
+	bAllowMotionGUI   : BOOL:=FALSE;       // Allow motion from GUI
 	//brake: Only in test rig
 	//bBrakeLockOnCmd   : BOOL:=FALSE;
 	//bFreeWheelOnOnCmd : BOOL:=TRUE;
