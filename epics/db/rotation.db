@@ -468,3 +468,14 @@ record(bi,"$(P)${DEV_NAME}-SumILOK"){
   field(DESC, "${DEV_NAME}: Summary Interlock OK")
 }
 
+record(bo,"$(P)${DEV_NAME}-AllowMotionCmd"){
+  info(asyn:READBACK,"1")
+  field(PINI, "1")
+  field(DTYP, "asynInt32")
+  field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_CMD}.bAllowMotionGUI?")
+  field(SCAN, "Passive")
+  field(ZNAM, "OK")
+  field(ONAM, "Override")
+  field(DESC, "${DEV_NAME}: Allow motion GUI cmd")
+}
+
