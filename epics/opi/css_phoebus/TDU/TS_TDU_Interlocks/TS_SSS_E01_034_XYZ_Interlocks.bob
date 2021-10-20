@@ -504,7 +504,7 @@
               </color>
             </value>
           </exp>
-          <pv_name>$(PREFIX)$(DEV_NAME)-ManunalILOverride</pv_name>
+          <pv_name>$(PREFIX)$(DEV_NAME)-ManualILOverride</pv_name>
           <pv_name>sim://ramp(0,1,1)</pv_name>
         </rule>
       </rules>
@@ -538,7 +538,7 @@
       <transparent>true</transparent>
       <widget type="led" version="2.0.0">
         <name>LED_89</name>
-        <pv_name>$(PREFIX)$(DEV_NAME)-ManunalILOverride</pv_name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-ManualILOverride</pv_name>
         <x>126</x>
         <y>2</y>
         <off_color>
@@ -951,7 +951,7 @@
         <exp bool_exp="pv0==0">
           <expression>False</expression>
         </exp>
-        <pv_name>$(PREFIX)$(DEV_NAME)-ManunalILOverride</pv_name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-ManualILOverride</pv_name>
         <pv_name>sim://ramp(0,1,1)</pv_name>
       </rule>
     </rules>
@@ -1056,7 +1056,7 @@
     <transparent>true</transparent>
     <widget type="led" version="2.0.0">
       <name>LED_18</name>
-      <pv_name>$(PREFIX)$(DEV_NAME)-ManunalILOverride</pv_name>
+      <pv_name>$(PREFIX)$(DEV_NAME)-ManualILOverride</pv_name>
       <x>249</x>
       <off_color>
         <color name="LED-GREEN-ON" red="70" green="255" blue="70">
