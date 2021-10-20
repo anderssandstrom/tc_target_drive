@@ -31,7 +31,7 @@ record(bi,"$(P)Rotation-Drv-Cmd-Halt-RB"){
   field(DESC, "Rot: Drive Halt Cmd RB")
 }
 
-record(bi,"$(P)Rotation-Drv-Cmd-Pos-Chg-RB"){
+record(bi,"$(P)Rotation-Drv-Cmd-PosChg-RB"){
   field(PINI, "1")
   field(TSE,  "-2")
   field(DTYP, "asynInt32")
@@ -42,7 +42,7 @@ record(bi,"$(P)Rotation-Drv-Cmd-Pos-Chg-RB"){
   field(DESC, "Rot: Drive Cmd Position Change RB")
 }
 
-record(bi,"$(P)Rotation-Drv-Cmd-Pos-ValType-RB"){
+record(bi,"$(P)Rotation-Drv-Cmd-PosValType-RB"){
   field(PINI, "1")
   field(TSE,  "-2")
   field(DTYP, "asynInt32")
@@ -108,7 +108,7 @@ record(bi,"$(P)Rotation-Drv-Cmd-DisableLim-RB"){
   field(DESC, "Rot: Drive Disable Checking of Limits RB")
 }
 
-record(bi,"$(P)Rotation-Drv-Cmd-Enter-ParamMode-RB"){
+record(bi,"$(P)Rotation-Drv-Cmd-EnterParamMode-RB"){
   field(PINI, "1")
   field(TSE,  "-2")
   field(DTYP, "asynInt32")
@@ -119,7 +119,7 @@ record(bi,"$(P)Rotation-Drv-Cmd-Enter-ParamMode-RB"){
   field(DESC, "Rot: Drive Enter Param Mode Cmd RB")
 }
 
-record(bi,"$(P)Rotation-Drv-Cmd-Exit-ParamMode-RB"){
+record(bi,"$(P)Rotation-Drv-Cmd-ExitParamMode-RB"){
   field(PINI, "1")
   field(TSE,  "-2")
   field(DTYP, "asynInt32")
@@ -130,7 +130,7 @@ record(bi,"$(P)Rotation-Drv-Cmd-Exit-ParamMode-RB"){
   field(DESC, "Rot: Drive Exit Param Mode Cmd RB")
 }
 
-record(bi,"$(P)Rotation-Drv-Cmd-Run-Virt-Master-RB"){
+record(bi,"$(P)Rotation-Drv-Cmd-RunVirtMaster-RB"){
   field(PINI, "1")
   field(TSE,  "-2")
   field(DTYP, "asynInt32")
@@ -191,7 +191,7 @@ record(ai,"$(P)Rotation-Drv-Cmd-Override-RB"){
   field(DESC, "Rot: Drive Override Feedrate Cmd RB")
 }
 
-record(ai,"$(P)Rotation-Drv-Cmd-Torque-Lim-RB"){
+record(ai,"$(P)Rotation-Drv-Cmd-TorqueLim-RB"){
   field(PINI, "1")
   field(TSE,  "-2")
   field(DTYP, "asynFloat64")
@@ -248,7 +248,7 @@ record(bo,"$(P)Rotation-Drv-Cmd-Halt"){
   field(DESC, "Rot: Drive Halt Cmd ")
 }
 
-record(bo,"$(P)Rotation-Drv-Cmd-Pos-Chg"){
+record(bo,"$(P)Rotation-Drv-Cmd-PosChg"){
   info(asyn:READBACK,"1")
   field(PINI, "1")
   field(TSE,  "-2")
@@ -260,7 +260,7 @@ record(bo,"$(P)Rotation-Drv-Cmd-Pos-Chg"){
   field(DESC, "Rot: Drive Cmd Position Change ")
 }
 
-record(bo,"$(P)Rotation-Drv-Cmd-Pos-ValType"){
+record(bo,"$(P)Rotation-Drv-Cmd-PosValType"){
   info(asyn:READBACK,"1")
   field(PINI, "1")
   field(TSE,  "-2")
@@ -332,7 +332,7 @@ record(bo,"$(P)Rotation-Drv-Cmd-DisableLim"){
   field(DESC, "Rot: Drive Disable Checking of Limits ")
 }
 
-record(bo,"$(P)Rotation-Drv-Cmd-Enter-ParamMode"){
+record(bo,"$(P)Rotation-Drv-Cmd-EnterParamMode"){
   info(asyn:READBACK,"1")    
   field(PINI, "1")
   field(TSE,  "-2")
@@ -344,7 +344,7 @@ record(bo,"$(P)Rotation-Drv-Cmd-Enter-ParamMode"){
   field(DESC, "Rot: Drive Enter Param Mode Cmd ")
 }
 
-record(bo,"$(P)Rotation-Drv-Cmd-Exit-ParamMode"){
+record(bo,"$(P)Rotation-Drv-Cmd-ExitParamMode"){
   info(asyn:READBACK,"1")
   field(PINI, "1")
   field(TSE,  "-2")
@@ -356,7 +356,7 @@ record(bo,"$(P)Rotation-Drv-Cmd-Exit-ParamMode"){
   field(DESC, "Rot: Drive Exit Param Mode Cmd ")
 }
 
-record(bo,"$(P)Rotation-Drv-Cmd-Run-Virt-Master"){
+record(bo,"$(P)Rotation-Drv-Cmd-RunVirtMaster"){
   info(asyn:READBACK,"1")    
   field(PINI, "1")
   field(TSE,  "-2")
@@ -390,7 +390,7 @@ record(ao,"$(P)Rotation-Drv-Cmd-Vel"){
   field(DESC, "Rot: Drive Velocity Setpoint Cmd ")
 }
 
-record(ao,"$(P)Rotation-Drv-Cmd-Acc"){
+record(ao,"$(P)Rotation-Drv-CmdAcc"){
   info(asyn:READBACK,"1")    
   field(PINI, "1")
   field(TSE,  "-2")
@@ -401,7 +401,7 @@ record(ao,"$(P)Rotation-Drv-Cmd-Acc"){
   field(DESC, "Rot: Drive Acceleration Setpoint Cmd ")
 }
 
-record(ao,"$(P)Rotation-Drv-Cmd-Dec"){
+record(ao,"$(P)Rotation-Drv-CmdDec"){
   info(asyn:READBACK,"1")    
   field(PINI, "1")
   field(TSE,  "-2")
@@ -423,7 +423,7 @@ record(ao,"$(P)Rotation-Drv-Cmd-Override"){
   field(DESC, "Rot: Drive Override Feedrate Cmd ")
 }
 
-record(ao,"$(P)Rotation-Drv-Cmd-Torque-Lim"){
+record(ao,"$(P)Rotation-Drv-Cmd-TorqueLim"){
   info(asyn:READBACK,"1")    
   field(PINI, "1")
   field(TSE,  "-2")

@@ -17,7 +17,7 @@ record(bo,"$(P)${DEV_NAME}-AllowMotionCmd"){
   field(SCAN, "Passive")
   field(ZNAM, "OK")
   field(ONAM, "Override")
-  field(DESC, "${DEV_NAME}: Manual IL override cmd")
+  field(DESC, "${DEV_NAME}: Allow motion GUI cmd")
 }
 
 record(bi,"$(P)${DEV_NAME}-EstopOK"){
