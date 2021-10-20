@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <display version="2.0.0">
-  <name>Rotation</name>
+  <name>$(DEV_NAME)</name>
   <macros>
+    <DEV_NAME>Rotation</DEV_NAME>
     <PREFIX>TARGET_DU:</PREFIX>
   </macros>
   <width>2140</width>
@@ -108,7 +109,7 @@
         <children>
           <widget type="textentry" version="3.0.0">
             <name>Text Input_1</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Stat-OpModeNo</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-DrvStatOpModeNo</pv_name>
             <x>146</x>
             <y>54</y>
             <height>25</height>
@@ -154,7 +155,7 @@
           </widget>
           <widget type="textentry" version="3.0.0">
             <name>Text Input_1</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Stat-ActPos</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Stat-ActPos</pv_name>
             <x>146</x>
             <y>80</y>
             <height>25</height>
@@ -200,7 +201,7 @@
           </widget>
           <widget type="textentry" version="3.0.0">
             <name>Text Input_1</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-OpMode-RB</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-OpMode-RB</pv_name>
             <x>696</x>
             <y>51</y>
             <height>25</height>
@@ -246,7 +247,7 @@
           </widget>
           <widget type="textentry" version="3.0.0">
             <name>Text Input_1</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Stat-ActVel</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Stat-ActVel</pv_name>
             <x>146</x>
             <y>106</y>
             <height>25</height>
@@ -292,7 +293,7 @@
           </widget>
           <widget type="textentry" version="3.0.0">
             <name>Text Input_1</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Stat-ActTorque</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Stat-ActTorque</pv_name>
             <x>146</x>
             <y>132</y>
             <height>25</height>
@@ -338,7 +339,7 @@
           </widget>
           <widget type="textentry" version="3.0.0">
             <name>Text Input_1</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Stat-Diag-Code</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Stat-Diag-Code</pv_name>
             <x>145</x>
             <y>159</y>
             <height>25</height>
@@ -384,7 +385,7 @@
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Stat-Acc</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Stat-Acc</pv_name>
             <x>187</x>
             <y>196</y>
             <width>16</width>
@@ -456,7 +457,7 @@
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Stat-Dec</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Stat-Dec</pv_name>
             <x>187</x>
             <y>215</y>
             <width>16</width>
@@ -505,7 +506,7 @@
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Stat-ConstVelo</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Stat-ConstVelo</pv_name>
             <x>187</x>
             <y>234</y>
             <width>16</width>
@@ -577,7 +578,7 @@
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Stat-InTargetPos</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Stat-InTargetPos</pv_name>
             <x>187</x>
             <y>253</y>
             <width>16</width>
@@ -603,7 +604,7 @@
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Stat-Standstill</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Stat-Standstill</pv_name>
             <x>187</x>
             <y>272</y>
             <width>16</width>
@@ -652,7 +653,7 @@
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Stat-Enc-Homed</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Stat-Enc-Homed</pv_name>
             <x>187</x>
             <y>291</y>
             <width>16</width>
@@ -701,7 +702,7 @@
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Stat-Ena</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Stat-Ena</pv_name>
             <x>187</x>
             <y>310</y>
             <width>16</width>
@@ -750,7 +751,7 @@
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Stat-Jog</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Stat-Jog</pv_name>
             <x>187</x>
             <y>329</y>
             <width>16</width>
@@ -799,7 +800,7 @@
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Stat-DCbusOK</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Stat-DCbusOK</pv_name>
             <x>187</x>
             <y>348</y>
             <width>16</width>
@@ -848,7 +849,7 @@
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Stat-Lim</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Stat-Lim</pv_name>
             <x>187</x>
             <y>367</y>
             <width>16</width>
@@ -897,7 +898,7 @@
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Stat-Diag</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Stat-Diag</pv_name>
             <x>187</x>
             <y>386</y>
             <width>16</width>
@@ -946,7 +947,7 @@
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Stat-Cmd-Chg</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Stat-Cmd-Chg</pv_name>
             <x>187</x>
             <y>405</y>
             <width>16</width>
@@ -995,7 +996,7 @@
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Stat-InParamMode</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Stat-InParamMode</pv_name>
             <x>187</x>
             <y>424</y>
             <width>16</width>
@@ -1044,7 +1045,7 @@
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Stat-Cmd-Proc</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Stat-Cmd-Proc</pv_name>
             <x>187</x>
             <y>443</y>
             <width>16</width>
@@ -1093,7 +1094,7 @@
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Stat-Wrn</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Stat-Wrn</pv_name>
             <x>187</x>
             <y>462</y>
             <width>16</width>
@@ -1142,7 +1143,7 @@
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Stat-Err</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Stat-Err</pv_name>
             <x>187</x>
             <y>481</y>
             <width>16</width>
@@ -1214,7 +1215,7 @@
           </widget>
           <widget type="textentry" version="3.0.0">
             <name>Text Input_1</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-Pos-RB</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-Pos-RB</pv_name>
             <x>696</x>
             <y>78</y>
             <height>25</height>
@@ -1260,7 +1261,7 @@
           </widget>
           <widget type="textentry" version="3.0.0">
             <name>Text Input_1</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-Vel-RB</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-Vel-RB</pv_name>
             <x>696</x>
             <y>105</y>
             <height>25</height>
@@ -1306,7 +1307,7 @@
           </widget>
           <widget type="textentry" version="3.0.0">
             <name>Text Input_1</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-VelPos-RB</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-VelPos-RB</pv_name>
             <x>696</x>
             <y>132</y>
             <height>25</height>
@@ -1352,7 +1353,7 @@
           </widget>
           <widget type="textentry" version="3.0.0">
             <name>Text Input_1</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-Acc-RB</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-Acc-RB</pv_name>
             <x>696</x>
             <y>159</y>
             <height>25</height>
@@ -1398,7 +1399,7 @@
           </widget>
           <widget type="textentry" version="3.0.0">
             <name>Text Input_1</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-Dec-RB</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-Dec-RB</pv_name>
             <x>696</x>
             <y>186</y>
             <height>25</height>
@@ -1444,7 +1445,7 @@
           </widget>
           <widget type="textentry" version="3.0.0">
             <name>Text Input_1</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-Torque-Lim-RB</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-Torque-Lim-RB</pv_name>
             <x>696</x>
             <y>241</y>
             <height>25</height>
@@ -1490,7 +1491,7 @@
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-Ena-RB</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-Ena-RB</pv_name>
             <x>709</x>
             <y>267</y>
             <width>16</width>
@@ -1539,7 +1540,7 @@
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-DisableLim-RB</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-DisableLim-RB</pv_name>
             <x>709</x>
             <y>286</y>
             <width>16</width>
@@ -1611,7 +1612,7 @@
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-Enter-ParamMode-RB</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-Enter-ParamMode-RB</pv_name>
             <x>709</x>
             <y>305</y>
             <width>16</width>
@@ -1660,7 +1661,7 @@
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-ErrRst-RB</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-ErrRst-RB</pv_name>
             <x>709</x>
             <y>324</y>
             <width>16</width>
@@ -1709,7 +1710,7 @@
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-Exe-RB</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-Exe-RB</pv_name>
             <x>709</x>
             <y>343</y>
             <width>16</width>
@@ -1758,7 +1759,7 @@
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-ExeHome-RB</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-ExeHome-RB</pv_name>
             <x>709</x>
             <y>362</y>
             <width>16</width>
@@ -1807,7 +1808,7 @@
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-Exit-ParamMode-RB</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-Exit-ParamMode-RB</pv_name>
             <x>709</x>
             <y>381</y>
             <width>16</width>
@@ -1856,7 +1857,7 @@
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-Halt-RB</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-Halt-RB</pv_name>
             <x>709</x>
             <y>400</y>
             <width>16</width>
@@ -1905,7 +1906,7 @@
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-Pos-Chg-RB</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-Pos-Chg-RB</pv_name>
             <x>709</x>
             <y>419</y>
             <width>16</width>
@@ -1954,7 +1955,7 @@
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-Pos-ValType-RB</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-Pos-ValType-RB</pv_name>
             <x>709</x>
             <y>438</y>
             <width>16</width>
@@ -2003,7 +2004,7 @@
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-Run-Virt-Master-RB</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-Run-Virt-Master-RB</pv_name>
             <x>709</x>
             <y>457</y>
             <width>16</width>
@@ -2052,7 +2053,7 @@
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-SetAbsPos-RB</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-SetAbsPos-RB</pv_name>
             <x>709</x>
             <y>476</y>
             <width>16</width>
@@ -2078,7 +2079,7 @@
           </widget>
           <widget type="textentry" version="3.0.0">
             <name>Text Input</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-OpMode</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-OpMode</pv_name>
             <x>576</x>
             <y>51</y>
             <width>97</width>
@@ -2101,7 +2102,7 @@
           </widget>
           <widget type="textentry" version="3.0.0">
             <name>Text Input</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-Pos</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-Pos</pv_name>
             <x>576</x>
             <y>78</y>
             <width>97</width>
@@ -2124,7 +2125,7 @@
           </widget>
           <widget type="textentry" version="3.0.0">
             <name>Text Input</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-Vel</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-Vel</pv_name>
             <x>576</x>
             <y>105</y>
             <width>97</width>
@@ -2147,7 +2148,7 @@
           </widget>
           <widget type="textentry" version="3.0.0">
             <name>Text Input</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-VelPos</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-VelPos</pv_name>
             <x>576</x>
             <y>132</y>
             <width>97</width>
@@ -2170,7 +2171,7 @@
           </widget>
           <widget type="textentry" version="3.0.0">
             <name>Text Input</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-Acc</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-Acc</pv_name>
             <x>576</x>
             <y>159</y>
             <width>97</width>
@@ -2193,7 +2194,7 @@
           </widget>
           <widget type="textentry" version="3.0.0">
             <name>Text Input</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-Dec</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-Dec</pv_name>
             <x>576</x>
             <y>186</y>
             <width>97</width>
@@ -2216,7 +2217,7 @@
           </widget>
           <widget type="textentry" version="3.0.0">
             <name>Text Input</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-Torque-Lim</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-Torque-Lim</pv_name>
             <x>576</x>
             <y>241</y>
             <width>97</width>
@@ -2239,7 +2240,7 @@
           </widget>
           <widget type="bool_button" version="2.0.0">
             <name>Boolean Button</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-Ena</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-Ena</pv_name>
             <bit>-1</bit>
             <x>657</x>
             <y>265</y>
@@ -2269,7 +2270,7 @@
           </widget>
           <widget type="bool_button" version="2.0.0">
             <name>Boolean Button</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-DisableLim</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-DisableLim</pv_name>
             <bit>-1</bit>
             <x>657</x>
             <y>284</y>
@@ -2299,7 +2300,7 @@
           </widget>
           <widget type="bool_button" version="2.0.0">
             <name>Boolean Button</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-Enter-ParamMode</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-Enter-ParamMode</pv_name>
             <bit>-1</bit>
             <x>657</x>
             <y>303</y>
@@ -2329,7 +2330,7 @@
           </widget>
           <widget type="bool_button" version="2.0.0">
             <name>Boolean Button</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-ErrRst</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-ErrRst</pv_name>
             <bit>-1</bit>
             <x>657</x>
             <y>322</y>
@@ -2359,7 +2360,7 @@
           </widget>
           <widget type="bool_button" version="2.0.0">
             <name>Boolean Button</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-Exe</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-Exe</pv_name>
             <bit>-1</bit>
             <x>657</x>
             <y>341</y>
@@ -2389,7 +2390,7 @@
           </widget>
           <widget type="bool_button" version="2.0.0">
             <name>Boolean Button</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-ExeHome</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-ExeHome</pv_name>
             <bit>-1</bit>
             <x>657</x>
             <y>360</y>
@@ -2419,7 +2420,7 @@
           </widget>
           <widget type="bool_button" version="2.0.0">
             <name>Boolean Button</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-Exit-ParamMode</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-Exit-ParamMode</pv_name>
             <bit>-1</bit>
             <x>657</x>
             <y>379</y>
@@ -2449,7 +2450,7 @@
           </widget>
           <widget type="bool_button" version="2.0.0">
             <name>Boolean Button</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-Halt</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-Halt</pv_name>
             <bit>-1</bit>
             <x>657</x>
             <y>398</y>
@@ -2479,7 +2480,7 @@
           </widget>
           <widget type="bool_button" version="2.0.0">
             <name>Boolean Button</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-Pos-Chg</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-Pos-Chg</pv_name>
             <bit>-1</bit>
             <x>657</x>
             <y>417</y>
@@ -2509,7 +2510,7 @@
           </widget>
           <widget type="bool_button" version="2.0.0">
             <name>Boolean Button</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-Pos-ValType</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-Pos-ValType</pv_name>
             <bit>-1</bit>
             <x>657</x>
             <y>436</y>
@@ -2539,7 +2540,7 @@
           </widget>
           <widget type="bool_button" version="2.0.0">
             <name>Boolean Button</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-Run-Virt-Master</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-Run-Virt-Master</pv_name>
             <bit>-1</bit>
             <x>657</x>
             <y>455</y>
@@ -2569,7 +2570,7 @@
           </widget>
           <widget type="bool_button" version="2.0.0">
             <name>Boolean Button</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-SetAbsPos</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-SetAbsPos</pv_name>
             <bit>-1</bit>
             <x>657</x>
             <y>474</y>
@@ -2628,7 +2629,7 @@ $(pv_value)</tooltip>
           </widget>
           <widget type="textentry" version="3.0.0">
             <name>Text Input_1</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-Override-RB</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-Override-RB</pv_name>
             <x>696</x>
             <y>213</y>
             <height>25</height>
@@ -2674,7 +2675,7 @@ $(pv_value)</tooltip>
           </widget>
           <widget type="textentry" version="3.0.0">
             <name>Text Input</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Cmd-Override</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Cmd-Override</pv_name>
             <x>576</x>
             <y>213</y>
             <width>97</width>
@@ -2720,7 +2721,7 @@ $(pv_value)</tooltip>
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Stat-STO-Active-Ch1</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Stat-STO-Active-Ch1</pv_name>
             <x>187</x>
             <y>500</y>
             <width>16</width>
@@ -2769,7 +2770,7 @@ $(pv_value)</tooltip>
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Drv-Stat-STO-Active-Ch2</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Drv-Stat-STO-Active-Ch2</pv_name>
             <x>187</x>
             <y>519</y>
             <width>16</width>
@@ -2805,7 +2806,7 @@ $(pv_value)</tooltip>
         <children>
           <widget type="textentry" version="3.0.0">
             <name>Text Input_2</name>
-            <pv_name>$(PREFIX)Rotation-ActPhaseErrorMM</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-ActPhaseErrorMM</pv_name>
             <x>164</x>
             <y>45</y>
             <height>25</height>
@@ -2851,7 +2852,7 @@ $(pv_value)</tooltip>
           </widget>
           <widget type="textentry" version="3.0.0">
             <name>Text Input_1</name>
-            <pv_name>$(PREFIX)Rotation-LatchedPos</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-LatchedPos</pv_name>
             <x>164</x>
             <y>78</y>
             <height>25</height>
@@ -2921,7 +2922,7 @@ $(pv_value)</tooltip>
           </widget>
           <widget type="led" version="2.0.0">
             <name>LED</name>
-            <pv_name>$(PREFIX)Rotation-Phasing-Stat</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Phasing-Stat</pv_name>
             <x>236</x>
             <y>20</y>
             <width>16</width>
@@ -2947,7 +2948,7 @@ $(pv_value)</tooltip>
           </widget>
           <widget type="textentry" version="3.0.0">
             <name>Text Input_2</name>
-            <pv_name>$(PREFIX)Rotation-ClosestSectorID</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-ClosestSectorID</pv_name>
             <x>420</x>
             <y>15</y>
             <height>25</height>
@@ -2993,7 +2994,7 @@ $(pv_value)</tooltip>
           </widget>
           <widget type="textentry" version="3.0.0">
             <name>Text Input_3</name>
-            <pv_name>$(PREFIX)Rotation-ChoosenSector</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-ChoosenSector</pv_name>
             <x>420</x>
             <y>45</y>
             <height>25</height>
@@ -3039,7 +3040,7 @@ $(pv_value)</tooltip>
           </widget>
           <widget type="meter" version="3.0.0">
             <name>Meter</name>
-            <pv_name>$(PREFIX)Rotation-ActPhaseErrorMM</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-ActPhaseErrorMM</pv_name>
             <x>684</x>
             <y>24</y>
             <width>200</width>
@@ -3068,8 +3069,8 @@ $(pv_value)</tooltip>
                     </color>
                   </value>
                 </exp>
-                <pv_name>$(PREFIX)Rotation-ActPhaseErrorMM</pv_name>
-                <pv_name>$(PREFIX)Rotation-Phasing-Stat</pv_name>
+                <pv_name>$(PREFIX)$(DEV_NAME)-ActPhaseErrorMM</pv_name>
+                <pv_name>$(PREFIX)$(DEV_NAME)-Phasing-Stat</pv_name>
               </rule>
             </rules>
             <limits_from_pv>false</limits_from_pv>
@@ -3104,7 +3105,7 @@ $(pv_value)</tooltip>
           </widget>
           <widget type="textentry" version="3.0.0">
             <name>Text Input_4</name>
-            <pv_name>$(PREFIX)Rotation-Vel-Stable-Count</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Vel-Stable-Count</pv_name>
             <x>420</x>
             <y>81</y>
             <height>25</height>
@@ -3126,7 +3127,7 @@ $(pv_value)</tooltip>
                     </color>
                   </value>
                 </exp>
-                <pv_name>$(PREFIX)Rotation-Vel-Stable</pv_name>
+                <pv_name>$(PREFIX)$(DEV_NAME)-Vel-Stable</pv_name>
               </rule>
             </rules>
             <border_alarm_sensitive>false</border_alarm_sensitive>
@@ -3194,7 +3195,7 @@ $(pv_value)</tooltip>
             <traces>
               <trace>
                 <name>$(traces[0].y_pv)</name>
-                <y_pv>$(PREFIX)Rotation-ActPhaseErrorMM</y_pv>
+                <y_pv>$(PREFIX)$(DEV_NAME)-ActPhaseErrorMM</y_pv>
                 <axis>0</axis>
                 <trace_type>1</trace_type>
                 <color>
@@ -3210,7 +3211,7 @@ $(pv_value)</tooltip>
           </widget>
           <widget type="choice" version="2.0.0">
             <name>Choice Button</name>
-            <pv_name>$(PREFIX)Rotation-State-Phase-PWM-Type</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-State-Phase-PWM-Type</pv_name>
             <x>784</x>
             <y>300</y>
             <height>100</height>
@@ -3236,7 +3237,7 @@ $(pv_value)</tooltip>
           </widget>
           <widget type="choice" version="2.0.0">
             <name>Choice Button</name>
-            <pv_name>$(PREFIX)Rotation-State-Phase-Ctrl-Type</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-State-Phase-Ctrl-Type</pv_name>
             <x>784</x>
             <y>174</y>
             <height>100</height>
@@ -3308,7 +3309,7 @@ $(pv_value)</tooltip>
           </widget>
           <widget type="textentry" version="3.0.0">
             <name>Text Input_2</name>
-            <pv_name>$(PREFIX)Rotation-MissedTimingPulses</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-MissedTimingPulses</pv_name>
             <x>164</x>
             <y>111</y>
             <height>25</height>
@@ -3377,7 +3378,7 @@ $(pv_value)</tooltip>
           </widget>
           <widget type="textentry" version="3.0.0">
             <name>Text Input</name>
-            <pv_name>$(PREFIX)Rotation-PhaseOffetMM-Cmd</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-PhaseOffetMM-Cmd</pv_name>
             <x>421</x>
             <y>111</y>
             <width>97</width>
@@ -3400,7 +3401,7 @@ $(pv_value)</tooltip>
           </widget>
           <widget type="textentry" version="3.0.0">
             <name>Text Input_4</name>
-            <pv_name>$(PREFIX)Rotation-PhaseOffetDeg-Act</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-PhaseOffetDeg-Act</pv_name>
             <x>570</x>
             <y>111</y>
             <height>25</height>
@@ -3493,7 +3494,7 @@ $(pv_value)</tooltip>
             <traces>
               <trace>
                 <name>$(traces[0].y_pv)</name>
-                <y_pv>$(PREFIX)Rotation-ActVel</y_pv>
+                <y_pv>$(PREFIX)$(DEV_NAME)-ActVel</y_pv>
                 <axis>1</axis>
                 <trace_type>1</trace_type>
                 <color>
@@ -3507,7 +3508,7 @@ $(pv_value)</tooltip>
               </trace>
               <trace>
                 <name>$(traces[1].y_pv)</name>
-                <y_pv>$(PREFIX)Rotation-ActVel-LastSector</y_pv>
+                <y_pv>$(PREFIX)$(DEV_NAME)-ActVel-LastSector</y_pv>
                 <axis>0</axis>
                 <trace_type>1</trace_type>
                 <color>
@@ -3521,7 +3522,7 @@ $(pv_value)</tooltip>
               </trace>
               <trace>
                 <name>$(traces[2].y_pv)</name>
-                <y_pv>$(PREFIX)Rotation-Vel-Cmd</y_pv>
+                <y_pv>$(PREFIX)$(DEV_NAME)-Vel-Cmd</y_pv>
                 <axis>0</axis>
                 <trace_type>1</trace_type>
                 <color>
@@ -3537,7 +3538,7 @@ $(pv_value)</tooltip>
           </widget>
           <widget type="meter" version="3.0.0">
             <name>Meter</name>
-            <pv_name>$(PREFIX)Rotation-ActVel</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-ActVel</pv_name>
             <x>36</x>
             <y>24</y>
             <width>200</width>
@@ -3585,7 +3586,7 @@ $(pv_value)</tooltip>
           </widget>
           <widget type="meter" version="3.0.0">
             <name>Meter_1</name>
-            <pv_name>$(PREFIX)Rotation-ActTorque</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-ActTorque</pv_name>
             <x>633</x>
             <y>24</y>
             <width>200</width>
@@ -3633,7 +3634,7 @@ $(pv_value)</tooltip>
           </widget>
           <widget type="meter" version="3.0.0">
             <name>Meter</name>
-            <pv_name>$(PREFIX)Rotation-Vel-Cmd</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Vel-Cmd</pv_name>
             <x>434</x>
             <y>24</y>
             <width>200</width>
@@ -3681,7 +3682,7 @@ $(pv_value)</tooltip>
           </widget>
           <widget type="meter" version="3.0.0">
             <name>Meter</name>
-            <pv_name>$(PREFIX)Rotation-ActVel-LastSector</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-ActVel-LastSector</pv_name>
             <x>235</x>
             <y>24</y>
             <width>200</width>
@@ -3776,7 +3777,7 @@ $(pv_value)</tooltip>
             <traces>
               <trace>
                 <name>$(traces[0].y_pv)</name>
-                <y_pv>$(PREFIX)Rotation-ActVel</y_pv>
+                <y_pv>$(PREFIX)$(DEV_NAME)-ActVel</y_pv>
                 <axis>0</axis>
                 <trace_type>1</trace_type>
                 <color>
@@ -3790,7 +3791,7 @@ $(pv_value)</tooltip>
               </trace>
               <trace>
                 <name>$(traces[1].y_pv)</name>
-                <y_pv>$(PREFIX)Rotation-ActTorque</y_pv>
+                <y_pv>$(PREFIX)$(DEV_NAME)-ActTorque</y_pv>
                 <axis>1</axis>
                 <trace_type>1</trace_type>
                 <color>
@@ -3806,7 +3807,7 @@ $(pv_value)</tooltip>
           </widget>
           <widget type="meter" version="3.0.0">
             <name>Meter</name>
-            <pv_name>$(PREFIX)Rotation-ActVel</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-ActVel</pv_name>
             <x>42</x>
             <y>36</y>
             <width>200</width>
@@ -3854,7 +3855,7 @@ $(pv_value)</tooltip>
           </widget>
           <widget type="meter" version="3.0.0">
             <name>Meter_1</name>
-            <pv_name>$(PREFIX)Rotation-ActTorque</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-ActTorque</pv_name>
             <x>639</x>
             <y>36</y>
             <width>200</width>
@@ -3902,7 +3903,7 @@ $(pv_value)</tooltip>
           </widget>
           <widget type="meter" version="3.0.0">
             <name>Meter_2</name>
-            <pv_name>$(PREFIX)Rotation-Vel-Cmd</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-Vel-Cmd</pv_name>
             <x>440</x>
             <y>36</y>
             <width>200</width>
@@ -3950,7 +3951,7 @@ $(pv_value)</tooltip>
           </widget>
           <widget type="meter" version="3.0.0">
             <name>Meter_3</name>
-            <pv_name>$(PREFIX)Rotation-ActVel-LastSector</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-ActVel-LastSector</pv_name>
             <x>241</x>
             <y>36</y>
             <width>200</width>
@@ -4045,7 +4046,7 @@ $(pv_value)</tooltip>
             <traces>
               <trace>
                 <name>$(traces[0].y_pv)</name>
-                <y_pv>$(PREFIX)Rotation-ActTorque</y_pv>
+                <y_pv>$(PREFIX)$(DEV_NAME)-ActTorque</y_pv>
                 <axis>0</axis>
                 <trace_type>1</trace_type>
                 <color>
@@ -4059,7 +4060,7 @@ $(pv_value)</tooltip>
               </trace>
               <trace>
                 <name>$(traces[1].y_pv)</name>
-                <y_pv>$(PREFIX)Rotation-ActTemp</y_pv>
+                <y_pv>$(PREFIX)$(DEV_NAME)-ActTemp</y_pv>
                 <axis>1</axis>
                 <trace_type>1</trace_type>
                 <color>
@@ -4075,7 +4076,7 @@ $(pv_value)</tooltip>
           </widget>
           <widget type="meter" version="3.0.0">
             <name>Meter</name>
-            <pv_name>$(PREFIX)Rotation-ActVel</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-ActVel</pv_name>
             <x>198</x>
             <y>30</y>
             <width>200</width>
@@ -4100,7 +4101,7 @@ $(pv_value)</tooltip>
           </widget>
           <widget type="meter" version="3.0.0">
             <name>Meter_1</name>
-            <pv_name>$(PREFIX)Rotation-ActTorque</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-ActTorque</pv_name>
             <x>615</x>
             <y>30</y>
             <width>200</width>
@@ -4171,7 +4172,7 @@ $(pv_value)</tooltip>
           </widget>
           <widget type="meter" version="3.0.0">
             <name>Meter</name>
-            <pv_name>$(PREFIX)Rotation-ActTemp</pv_name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-ActTemp</pv_name>
             <x>408</x>
             <y>30</y>
             <width>200</width>
@@ -4234,7 +4235,7 @@ $(pv_value)</tooltip>
   </widget>
   <widget type="led" version="2.0.0">
     <name>LED</name>
-    <pv_name>$(PREFIX)Rotation-Ena-Cmd-RB</pv_name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-EnaCmd-RB</pv_name>
     <x>606</x>
     <y>146</y>
     <width>16</width>
@@ -4260,7 +4261,7 @@ $(pv_value)</tooltip>
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button</name>
-    <pv_name>$(PREFIX)Rotation-Ena-Cmd</pv_name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-EnaCmd</pv_name>
     <bit>-1</bit>
     <x>554</x>
     <y>138</y>
@@ -4336,7 +4337,7 @@ $(pv_value)</tooltip>
   </widget>
   <widget type="led" version="2.0.0">
     <name>LED</name>
-    <pv_name>$(PREFIX)Rotation-Ena-Stat</pv_name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-EnaAct</pv_name>
     <x>648</x>
     <y>146</y>
     <width>16</width>
@@ -4362,7 +4363,7 @@ $(pv_value)</tooltip>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_1</name>
-    <pv_name>$(PREFIX)Rotation-ActPos</pv_name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-PosAct</pv_name>
     <x>676</x>
     <y>451</y>
     <height>25</height>
@@ -4404,7 +4405,7 @@ $(pv_value)</tooltip>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_1</name>
-    <pv_name>$(PREFIX)Rotation-ActVel</pv_name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-VelAct</pv_name>
     <x>676</x>
     <y>481</y>
     <height>25</height>
@@ -4451,7 +4452,7 @@ $(pv_value)</tooltip>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_2</name>
-    <pv_name>$(PREFIX)Rotation-ActTorque</pv_name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-TorqueAct</pv_name>
     <x>525</x>
     <y>506</y>
     <height>25</height>
@@ -4493,7 +4494,7 @@ $(pv_value)</tooltip>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_2</name>
-    <pv_name>$(PREFIX)Rotation-ActTemp</pv_name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-TempAct</pv_name>
     <x>525</x>
     <y>536</y>
     <height>25</height>
@@ -4535,7 +4536,7 @@ $(pv_value)</tooltip>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_2</name>
-    <pv_name>$(PREFIX)Rotation-ActPhaseErrorMM</pv_name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-PhaseErrorMMAct</pv_name>
     <x>525</x>
     <y>566</y>
     <height>25</height>
@@ -4577,7 +4578,7 @@ $(pv_value)</tooltip>
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button</name>
-    <pv_name>$(PREFIX)Rotation-ExeCmd</pv_name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-ExeCmd</pv_name>
     <bit>-1</bit>
     <x>554</x>
     <y>169</y>
@@ -4630,7 +4631,7 @@ $(pv_value)</tooltip>
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button</name>
-    <pv_name>$(PREFIX)Rotation-Rst-Cmd</pv_name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-RstCmd</pv_name>
     <bit>-1</bit>
     <x>554</x>
     <y>204</y>
@@ -4707,7 +4708,7 @@ $(pv_value)</tooltip>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_1</name>
-    <pv_name>$(PREFIX)Rotation-LatchedPos</pv_name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-LatchedPosAct</pv_name>
     <x>525</x>
     <y>596</y>
     <height>25</height>
@@ -4772,7 +4773,7 @@ $(pv_value)</tooltip>
   </widget>
   <widget type="led" version="2.0.0">
     <name>LED</name>
-    <pv_name>$(PREFIX)Rotation-Phasing-Stat</pv_name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-PhasingAct</pv_name>
     <x>596</x>
     <y>634</y>
     <width>16</width>
@@ -4798,7 +4799,7 @@ $(pv_value)</tooltip>
   </widget>
   <widget type="meter" version="3.0.0">
     <name>Meter</name>
-    <pv_name>$(PREFIX)Rotation-ActPhaseErrorMM</pv_name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-PhaseErrorMMAct</pv_name>
     <x>942</x>
     <y>492</y>
     <width>200</width>
@@ -4823,8 +4824,8 @@ $(pv_value)</tooltip>
             </color>
           </value>
         </exp>
-        <pv_name>$(PREFIX)Rotation-ActPhaseErrorMM</pv_name>
-        <pv_name>$(PREFIX)Rotation-Phasing-Stat</pv_name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-ActPhaseErrorMM</pv_name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-Phasing-Stat</pv_name>
       </rule>
     </rules>
     <limits_from_pv>false</limits_from_pv>
@@ -4860,7 +4861,7 @@ $(pv_value)</tooltip>
   </widget>
   <widget type="meter" version="3.0.0">
     <name>Meter</name>
-    <pv_name>$(PREFIX)Rotation-ActVel</pv_name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-VelAct</pv_name>
     <x>942</x>
     <y>147</y>
     <width>200</width>
@@ -4904,8 +4905,8 @@ $(pv_value)</tooltip>
   </widget>
   <widget type="meter" version="3.0.0">
     <name>Meter</name>
-    <pv_name>$(PREFIX)Rotation-ActTemp</pv_name>
-    <x>942</x>
+    <pv_name>$(PREFIX)$(DEV_NAME)-TempAct</pv_name>
+    <x>941</x>
     <y>261</y>
     <width>200</width>
     <height>91</height>
@@ -4947,7 +4948,7 @@ $(pv_value)</tooltip>
   </widget>
   <widget type="meter" version="3.0.0">
     <name>Meter</name>
-    <pv_name>$(PREFIX)Rotation-ActTorque</pv_name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-TorqueAct</pv_name>
     <x>942</x>
     <y>375</y>
     <width>200</width>
@@ -4991,7 +4992,7 @@ $(pv_value)</tooltip>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_1</name>
-    <pv_name>$(PREFIX)Rotation-MaxMotorTemp-Cmd</pv_name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-MaxMotorTempCmd</pv_name>
     <x>676</x>
     <y>542</y>
     <height>25</height>
@@ -5010,7 +5011,7 @@ $(pv_value)</tooltip>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_1</name>
-    <pv_name>$(PREFIX)Rotation-State-Stat</pv_name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-StateAct</pv_name>
     <x>524</x>
     <y>420</y>
     <height>25</height>
@@ -5095,7 +5096,7 @@ $(pv_value)</tooltip>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input</name>
-    <pv_name>$(PREFIX)Rotation-Vel-Cmd</pv_name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-VelSetCmd</pv_name>
     <x>525</x>
     <y>481</y>
     <width>97</width>
@@ -5118,7 +5119,7 @@ $(pv_value)</tooltip>
         <exp bool_exp="pv0==0">
           <expression>true</expression>
         </exp>
-        <pv_name>$(PREFIX)Rotation-ExeCmd</pv_name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-ExeCmd</pv_name>
       </rule>
     </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
@@ -5129,7 +5130,7 @@ $(pv_value)</tooltip>
   </widget>
   <widget type="choice" version="2.0.0">
     <name>Choice Button</name>
-    <pv_name>$(PREFIX)Rotation-State-Cmd</pv_name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-StateCmd</pv_name>
     <x>526</x>
     <y>242</y>
     <width>176</width>
@@ -5156,7 +5157,7 @@ $(pv_value)</tooltip>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input</name>
-    <pv_name>$(PREFIX)Rotation-Pos-Cmd</pv_name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-PosCmd</pv_name>
     <x>525</x>
     <y>451</y>
     <width>97</width>
@@ -5179,7 +5180,7 @@ $(pv_value)</tooltip>
         <exp bool_exp="pv0==0">
           <expression>true</expression>
         </exp>
-        <pv_name>$(PREFIX)Rotation-ExeCmd</pv_name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-ExeCmd</pv_name>
       </rule>
     </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>

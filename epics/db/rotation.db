@@ -1,4 +1,4 @@
-record(bo,"$(P)${DEV_NAME}-Ena-Cmd"){
+record(bo,"$(P)${DEV_NAME}-EnaCmd"){
   field(PINI, "1")
   field(DTYP, "asynInt32")
   field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_CMD}.bEnable=")
@@ -8,7 +8,7 @@ record(bo,"$(P)${DEV_NAME}-Ena-Cmd"){
   field(DESC, "${DEV_NAME}: Drive Enable Cmd")
 }
 
-record(bi,"$(P)${DEV_NAME}-Ena-Cmd-RB"){
+record(bi,"$(P)${DEV_NAME}-EnaCmd-RB"){
   field(PINI, "1")  
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_CMD}.bEnable?")
@@ -18,7 +18,7 @@ record(bi,"$(P)${DEV_NAME}-Ena-Cmd-RB"){
   field(DESC, "${DEV_NAME}: Drive Enable Cmd RB")
 }
 
-record(bi,"$(P)${DEV_NAME}-Ena-Stat"){
+record(bi,"$(P)${DEV_NAME}-EnaAct"){
   field(PINI, "1")
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bEnabled?")
@@ -28,7 +28,7 @@ record(bi,"$(P)${DEV_NAME}-Ena-Stat"){
   field(DESC, "${DEV_NAME}: Drive Enabled")
 }
 
-record(ai,"$(P)${DEV_NAME}-ActPos"){
+record(ai,"$(P)${DEV_NAME}-PosAct"){
   field(PINI, "1")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.${STRUCT_STAT}.fActPos?")
@@ -37,7 +37,7 @@ record(ai,"$(P)${DEV_NAME}-ActPos"){
   field(DESC, "${DEV_NAME}: Motor Position [deg]")
 }
 
-record(ai,"$(P)${DEV_NAME}-ActVel"){
+record(ai,"$(P)${DEV_NAME}-VelAct"){
   field(PINI, "1")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.fActVel?")
@@ -48,7 +48,7 @@ record(ai,"$(P)${DEV_NAME}-ActVel"){
   field(DESC, "${DEV_NAME}: Act Velocity [rpm]")
 }
 
-record(ai,"$(P)${DEV_NAME}-ActTorque"){
+record(ai,"$(P)${DEV_NAME}-TorqueAct"){
   field(PINI, "1")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.fActTorque?")
@@ -57,7 +57,7 @@ record(ai,"$(P)${DEV_NAME}-ActTorque"){
   field(DESC, "${DEV_NAME}: Act Torque [%]")
 }
 
-record(ai,"$(P)${DEV_NAME}-ActTemp"){
+record(ai,"$(P)${DEV_NAME}-TempAct"){
   field(PINI, "1")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.fActTemp?")
@@ -66,7 +66,7 @@ record(ai,"$(P)${DEV_NAME}-ActTemp"){
   field(DESC, "${DEV_NAME}: Motor Temp [degC]")
 }
 
-record(ai,"$(P)${DEV_NAME}-ActPhaseErrorMM"){
+record(ai,"$(P)${DEV_NAME}-PhaseErrorMMAct"){
   field(PINI, "1")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/T_DLY_MS=500/TS_MS=10/Main.fbModePhase.fPhaseErrorMM?")
@@ -84,7 +84,7 @@ record(ai,"$(P)${DEV_NAME}-MissedTimingPulses"){
   field(DESC, "${DEV_NAME}: Missed Timing pulses [mm]")
 }
 
-record(mbbo,"$(P)${DEV_NAME}-State-Cmd"){
+record(mbbo,"$(P)${DEV_NAME}-StateCmd"){
   info(asyn:READBACK,"1")
   field(PINI, "1")
   field(DTYP, "asynInt32")
@@ -107,7 +107,7 @@ record(mbbo,"$(P)${DEV_NAME}-State-Cmd"){
   field(SXST, "TORQUE")
 }
 
-record(mbbi,"$(P)${DEV_NAME}-State-Stat"){  
+record(mbbi,"$(P)${DEV_NAME}-StateAct"){  
   field(PINI, "1")
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))ADSPORT=852/Main.${STRUCT_STAT}.eTargetState?")
@@ -138,7 +138,7 @@ record(bo,"$(P)${DEV_NAME}-ExeCmd"){
   field(DESC, "${DEV_NAME}: Execute Cmd")
 }
 
-record(bo,"$(P)${DEV_NAME}-Rst-Cmd"){
+record(bo,"$(P)${DEV_NAME}-RstCmd"){
   info(asyn:READBACK,"1")
   field(PINI, "1")
   field(DTYP, "asynInt32")
@@ -149,7 +149,7 @@ record(bo,"$(P)${DEV_NAME}-Rst-Cmd"){
   field(DESC, "${DEV_NAME}: Reset Cmd")
 }
 
-record(ao,"$(P)${DEV_NAME}-MaxMotorTemp-Cmd"){
+record(ao,"$(P)${DEV_NAME}-MaxMotorTempCmd"){
   info(asyn:READBACK,"1")
   field(PINI, "1")
   field(DTYP, "asynInt32")
@@ -159,7 +159,7 @@ record(ao,"$(P)${DEV_NAME}-MaxMotorTemp-Cmd"){
   field(DESC, "${DEV_NAME}: Max Motor Temp Cmd")
 }
 
-record(ao,"$(P)${DEV_NAME}-PhaseOffetMM-Cmd"){
+record(ao,"$(P)${DEV_NAME}-PhaseOffetMMCmd"){
   info(asyn:READBACK,"1")
   field(PINI, "1")
   field(DTYP, "asynFloat64")
@@ -169,7 +169,7 @@ record(ao,"$(P)${DEV_NAME}-PhaseOffetMM-Cmd"){
   field(DESC, "${DEV_NAME}: Offset of phase in [mm]")
 }
 
-record(ai,"$(P)${DEV_NAME}-PhaseOffetDeg-Act"){
+record(ai,"$(P)${DEV_NAME}-PhaseOffetDegAct"){
   field(PINI, "1")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.fPhaseOffsetActDeg?")
@@ -178,7 +178,7 @@ record(ai,"$(P)${DEV_NAME}-PhaseOffetDeg-Act"){
   field(DESC, "${DEV_NAME}: Offset of phase in [deg]")
 }
 
-record(ai,"$(P)${DEV_NAME}-LatchedPos"){
+record(ai,"$(P)${DEV_NAME}-LatchedPosAct"){
   field(PINI, "1")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.fLatchedPosition?")
@@ -187,7 +187,7 @@ record(ai,"$(P)${DEV_NAME}-LatchedPos"){
   field(DESC, "${DEV_NAME}: Last Latched Position")
 }
 
-record(bi,"$(P)${DEV_NAME}-Phasing-Stat"){
+record(bi,"$(P)${DEV_NAME}-PhasingAct"){
   field(PINI, "1")
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.bPhasing?")  
@@ -204,7 +204,7 @@ record(ai,"$(P)${DEV_NAME}-ClosestSectorID"){
   field(DESC, "${DEV_NAME}: Closest Sector ID")
 }
 
-record(ai,"$(P)${DEV_NAME}-ChoosenSector"){
+record(ai,"$(P)${DEV_NAME}-ChoosenSectorAct"){
   field(PINI, "1")
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.nChoosenSector?")
@@ -213,7 +213,7 @@ record(ai,"$(P)${DEV_NAME}-ChoosenSector"){
   field(DESC, "${DEV_NAME}: Choosen Sector ID")
 }
 
-#record(ai,"$(P)${DEV_NAME}-Cntrl-Cmd"){
+#record(ai,"$(P)${DEV_NAME}-CntrlCmd"){
 #  field(PINI, "1")
 #  field(DTYP, "asynFloat64")
 #  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.fCtrlOutput?")
@@ -222,7 +222,7 @@ record(ai,"$(P)${DEV_NAME}-ChoosenSector"){
 #  field(DESC, "${DEV_NAME}: Phase PID Controller output")
 #}
 
-record(ai,"$(P)${DEV_NAME}-Vel-Stable-Count"){
+record(ai,"$(P)${DEV_NAME}-VelStableCountAct"){
   field(PINI, "1")
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.iRangeOkCounter?")
@@ -231,7 +231,7 @@ record(ai,"$(P)${DEV_NAME}-Vel-Stable-Count"){
   field(DESC, "${DEV_NAME}: Velocity Stable Counter")
 }
 
-record(bi,"$(P)${DEV_NAME}-Vel-Stable"){
+record(bi,"$(P)${DEV_NAME}-VelStableAct"){
   field(PINI, "1")
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.bVeloStable?")  
@@ -241,7 +241,7 @@ record(bi,"$(P)${DEV_NAME}-Vel-Stable"){
   field(ONAM, "Stable")
 }
 
-record(ai,"$(P)${DEV_NAME}-VelRaw-Cmd-RB"){
+record(ai,"$(P)${DEV_NAME}-VelRawCmd-RB"){
   field(PINI, "1")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.fSetVelRaw?")
@@ -250,7 +250,7 @@ record(ai,"$(P)${DEV_NAME}-VelRaw-Cmd-RB"){
   field(DESC, "${DEV_NAME}: Vel Set to Drive")
 }
 
-record(ai,"$(P)${DEV_NAME}-ActVel-LastSector"){
+record(ai,"$(P)${DEV_NAME}-VelLastSectorAct"){
   field(PINI, "1")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.fLastSectorVelocity?")
@@ -287,7 +287,7 @@ record(bi,"$(P)Error"){
   field(DESC, "Error")
 }
 
-record(ai,"$(P)${DEV_NAME}-ActTemp_1Hz"){
+record(ai,"$(P)${DEV_NAME}-Temp_1HzAct"){
   field(PINI, "1")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.fActTemp?")
@@ -296,7 +296,7 @@ record(ai,"$(P)${DEV_NAME}-ActTemp_1Hz"){
   field(DESC, "${DEV_NAME}: Motor Temp [degC]")
 }
 
-record(ai,"$(P)${DEV_NAME}-ActTorque_1Hz"){
+record(ai,"$(P)${DEV_NAME}-Torque_1HzAct"){
   field(PINI, "1")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.fActTorque?")
@@ -305,7 +305,7 @@ record(ai,"$(P)${DEV_NAME}-ActTorque_1Hz"){
   field(DESC, "${DEV_NAME}: Act Torque [%]")
 }
 
-record(ai,"$(P)${DEV_NAME}-ActPhaseErrorMM_1Hz"){
+record(ai,"$(P)${DEV_NAME}-PhaseErrorMM_1HzAct"){
   field(PINI, "1")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.fPhaseErrorMM?")
@@ -314,7 +314,7 @@ record(ai,"$(P)${DEV_NAME}-ActPhaseErrorMM_1Hz"){
   field(DESC, "${DEV_NAME}: Act Phase Error [mm]")
 }
 
-record(ai,"$(P)${DEV_NAME}-ActVel_1Hz"){
+record(ai,"$(P)${DEV_NAME}-Vel_1HzAct"){
   field(PINI, "1")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.fActVel?")
@@ -325,7 +325,7 @@ record(ai,"$(P)${DEV_NAME}-ActVel_1Hz"){
   field(DESC, "${DEV_NAME}: Act Velocity [rpm]")
 }
 
-record(ai,"$(P)${DEV_NAME}-Vel-Cmd_1Hz"){
+record(ai,"$(P)${DEV_NAME}-VelSetCmd_1HzAct"){
   field(PINI, "1")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.fSetVelRaw?")
@@ -334,7 +334,7 @@ record(ai,"$(P)${DEV_NAME}-Vel-Cmd_1Hz"){
   field(DESC, "${DEV_NAME}: Vel Set to Drive")
 }
 
-record(ao,"$(P)${DEV_NAME}-Vel-Cmd"){
+record(ao,"$(P)${DEV_NAME}-VelSetCmd"){
   info(asyn:READBACK,"1")
   field(PINI, "1")
   field(DTYP, "asynInt32")
@@ -344,7 +344,7 @@ record(ao,"$(P)${DEV_NAME}-Vel-Cmd"){
   field(DESC, "${DEV_NAME}: Velocity setpoint [RPM]")
 }
 
-record(ao,"$(P)${DEV_NAME}-Pos-Cmd"){
+record(ao,"$(P)${DEV_NAME}-PosCmd"){
   info(asyn:READBACK,"1")
   field(PINI, "1")
   field(DTYP, "asynInt32")
@@ -354,7 +354,7 @@ record(ao,"$(P)${DEV_NAME}-Pos-Cmd"){
   field(DESC, "${DEV_NAME}: Position setpoint [deg]")
 }
 
-record(ai,"$(P)${DEV_NAME}-ActTemp_Slow"){
+record(ai,"$(P)${DEV_NAME}-Temp_1HzAct"){
   field(PINI, "1")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.fActTemp?")
@@ -363,7 +363,7 @@ record(ai,"$(P)${DEV_NAME}-ActTemp_Slow"){
   field(DESC, "${DEV_NAME}: Motor Temp [degC]")
 }
 
-record(ai,"$(P)${DEV_NAME}-ActPhaseErrorMM_Slow"){
+record(ai,"$(P)${DEV_NAME}-PhaseErrorMM_1HzAct"){
   field(PINI, "1")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.fPhaseErrorMM?")
@@ -372,7 +372,7 @@ record(ai,"$(P)${DEV_NAME}-ActPhaseErrorMM_Slow"){
   field(DESC, "${DEV_NAME}: Act Phase Error [mm]")
 }
 
-record(ai,"$(P)${DEV_NAME}-ActVel_Slow"){
+record(ai,"$(P)${DEV_NAME}-Vel_1HzAct"){
   field(PINI, "1")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.fActVel?")
@@ -383,7 +383,7 @@ record(ai,"$(P)${DEV_NAME}-ActVel_Slow"){
   field(DESC, "${DEV_NAME}: Act Velocity [rpm]")
 }
 
-record(ai,"$(P)${DEV_NAME}-ActTorque_Slow"){
+record(ai,"$(P)${DEV_NAME}-Torque_1HzAct"){
   field(PINI, "1")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.fActTorque?")
@@ -392,7 +392,7 @@ record(ai,"$(P)${DEV_NAME}-ActTorque_Slow"){
   field(DESC, "${DEV_NAME}: Act Torque [%]")
 }
 
-record(mbbo,"$(P)${DEV_NAME}-State-Phase-Ctrl-Type"){
+record(mbbo,"$(P)${DEV_NAME}-StatePhaseCtrlTypeCmd"){
   info(asyn:READBACK,"1")
   field(PINI, "1")
   field(DTYP, "asynInt32")
@@ -409,7 +409,7 @@ record(mbbo,"$(P)${DEV_NAME}-State-Phase-Ctrl-Type"){
   field(THST, "ONLY_MEASURE")
 }
 
-record(mbbo,"$(P)${DEV_NAME}-State-Phase-PWM-Type"){
+record(mbbo,"$(P)${DEV_NAME}-StatePhasePWMTypeCmd"){
   info(asyn:READBACK,"1")
   field(PINI, "1")
   field(DTYP, "asynInt32")
@@ -424,7 +424,7 @@ record(mbbo,"$(P)${DEV_NAME}-State-Phase-PWM-Type"){
   field(TWST, "SIMPLE")
 }
 
-record(bi,"$(P)${DEV_NAME}-ManunalILOverride"){
+record(bi,"$(P)${DEV_NAME}-ManunalILOverrideAct"){
   field(PINI, "1")  
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bmanualInterlockOverride?")

@@ -32,7 +32,7 @@ record(bi,"$(P)Rotation-Drv-Stat-Ena"){
   field(DESC, "Rotation: Drive Enabled")
 }
 
-record(bi,"$(P)Rotation-Drv-Stat-Enc-Homed"){
+record(bi,"$(P)Rotation-Drv-Stat-EncHomed"){
   field(PINI, "1")
   field(TSE,  "-2")
   field(DTYP, "asynInt32")
@@ -109,7 +109,7 @@ record(bi,"$(P)Rotation-Drv-Stat-Jog"){
   field(DESC, "Rotation: Drive in Jog-mode")
 }
 
-record(bi,"$(P)Rotation-Drv-Stat-Cmd-Chg"){
+record(bi,"$(P)Rotation-Drv-Stat-CmdChg"){
   field(PINI, "1")
   field(TSE,  "-2")
   field(DTYP, "asynInt32")
@@ -120,7 +120,7 @@ record(bi,"$(P)Rotation-Drv-Stat-Cmd-Chg"){
   field(DESC, "Rotation: Drive New Command Toggle")
 }
 
-record(bi,"$(P)Rotation-Drv-Stat-Cmd-Proc"){
+record(bi,"$(P)Rotation-Drv-Stat-CmdProc"){
   field(PINI, "1")
   field(TSE,  "-2")
   field(DTYP, "asynInt32")
@@ -219,7 +219,7 @@ record(ai,"$(P)Rotation-Drv-Stat-ActTorque"){
   field(DESC, "Rotation: Drive Actual Torque [%]")
 }
 
-record(ai,"$(P)Rotation-Drv-Stat-Diag-Code"){
+record(ai,"$(P)Rotation-Drv-Stat-DiagCode"){
   field(PINI, "1")
   field(TSE,  "-2")
   field(DTYP, "asynInt32")
@@ -229,7 +229,7 @@ record(ai,"$(P)Rotation-Drv-Stat-Diag-Code"){
   field(DESC, "Rotation: Drive Diagnostic Message")
 }
 
-record(bi,"$(P)Rotation-Drv-Stat-STO-Active-Ch1"){
+record(bi,"$(P)Rotation-Drv-Stat-STOActiveCh1"){
   field(PINI, "1")
   field(TSE,  "-2")
   field(DTYP, "asynInt32")
@@ -242,7 +242,7 @@ record(bi,"$(P)Rotation-Drv-Stat-STO-Active-Ch1"){
   field(DESC, "Rotation: STO Active ch1")
 }
 
-record(bi,"$(P)Rotation-Drv-Stat-STO-Active-Ch2"){
+record(bi,"$(P)Rotation-Drv-Stat-STOActiveCh2"){
   field(PINI, "1")
   field(TSE,  "-2")
   field(DTYP, "asynInt32")
