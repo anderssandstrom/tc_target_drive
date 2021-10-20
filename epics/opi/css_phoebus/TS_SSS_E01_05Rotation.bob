@@ -5030,7 +5030,7 @@ $(pv_value)</tooltip>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_1</name>
-    <pv_name>$(PREFIX)ErrorStr</pv_name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-ErrStr</pv_name>
     <x>510</x>
     <y>696</y>
     <width>493</width>
@@ -5188,21 +5188,6 @@ $(pv_value)</tooltip>
       <color red="0" green="128" blue="255">
       </color>
     </border_color>
-  </widget>
-  <widget type="action_button" version="3.0.0">
-    <name>Action Button</name>
-    <actions>
-      <action type="open_display">
-        <file>TDU/TS_TDU_TorqMotorDrive/TS_SSS_E01_IndraDrive.bob</file>
-        <target>window</target>
-        <description>Open Display</description>
-      </action>
-    </actions>
-    <text>IndraDrive</text>
-    <x>690</x>
-    <y>810</y>
-    <width>140</width>
-    <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_38</name>
