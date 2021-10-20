@@ -195,7 +195,7 @@ record(bi,"$(P)${DEV_NAME}-PhasingAct"){
   field(DESC, "${DEV_NAME}: Phasing")
 }
 
-record(ai,"$(P)${DEV_NAME}-ClosestSectorID"){
+record(ai,"$(P)${DEV_NAME}-ClosestSectorIDAct"){
   field(PINI, "1")
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.nClosestSectorId?")
