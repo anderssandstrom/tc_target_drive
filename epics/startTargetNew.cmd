@@ -22,7 +22,7 @@ epicsEnvSet("ADSPORT_DEF",        "852")
 epicsEnvSet("SAMPLE_RATE_MS_DEF", "500");
 epicsEnvSet("MAX_DLY_MS_DEF",     "100");
 
-adsSetLocalAddress "172.30.2.52.1.1"
+#adsSetLocalAddress "172.30.2.35.1.1"
 adsAsynPortDriverConfigure("${ADS_ASYN_PORT}","172.30.2.35","172.30.2.35.1.1",${ADSPORT_DEF},1000,0,0,${SAMPLE_RATE_MS_DEF},${MAX_DLY_MS_DEF},1000,0)
 #adsSetLocalAddress "172.30.2.52.1.1"
 
