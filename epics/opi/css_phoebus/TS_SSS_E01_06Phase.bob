@@ -4617,7 +4617,7 @@ $(pv_value)</tooltip>
     <traces>
       <trace>
         <name>$(traces[0].y_pv)</name>
-        <y_pv>$(PREFIX)$(DEV_NAME)-ActPhaseErrorMM</y_pv>
+        <y_pv>$(PREFIX)$(DEV_NAME)-PhaseErrorMMAct</y_pv>
         <axis>0</axis>
         <trace_type>1</trace_type>
         <color>
