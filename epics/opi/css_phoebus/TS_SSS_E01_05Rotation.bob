@@ -377,8 +377,8 @@
           <widget type="label" version="2.0.0">
             <name>Label_4</name>
             <text>Operation State:</text>
-            <x>40</x>
-            <y>363</y>
+            <x>366</x>
+            <y>91</y>
             <width>163</width>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -426,8 +426,8 @@
           <widget type="textentry" version="3.0.0">
             <name>Text Input_1</name>
             <pv_name>$(PREFIX)$(DEV_NAME)-PosAct</pv_name>
-            <x>322</x>
-            <y>391</y>
+            <x>648</x>
+            <y>119</y>
             <height>25</height>
             <background_color>
               <color name="Read_Background" red="230" green="235" blue="232">
@@ -445,8 +445,8 @@
           <widget type="label" version="2.0.0">
             <name>Label_4</name>
             <text>Pos [deg]:</text>
-            <x>40</x>
-            <y>394</y>
+            <x>366</x>
+            <y>122</y>
             <width>163</width>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -468,8 +468,8 @@
           <widget type="textentry" version="3.0.0">
             <name>Text Input_1</name>
             <pv_name>$(PREFIX)$(DEV_NAME)-VelAct</pv_name>
-            <x>322</x>
-            <y>421</y>
+            <x>648</x>
+            <y>149</y>
             <height>25</height>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -492,8 +492,8 @@
           <widget type="label" version="2.0.0">
             <name>Label_5</name>
             <text>Vel [rpm]</text>
-            <x>40</x>
-            <y>424</y>
+            <x>366</x>
+            <y>152</y>
             <width>163</width>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -515,8 +515,8 @@
           <widget type="textentry" version="3.0.0">
             <name>Text Input_2</name>
             <pv_name>$(PREFIX)$(DEV_NAME)-TorqueAct</pv_name>
-            <x>171</x>
-            <y>446</y>
+            <x>497</x>
+            <y>174</y>
             <height>25</height>
             <background_color>
               <color name="Read_Background" red="230" green="235" blue="232">
@@ -534,8 +534,8 @@
           <widget type="label" version="2.0.0">
             <name>Label_6</name>
             <text>Act Torque [%]:</text>
-            <x>40</x>
-            <y>454</y>
+            <x>366</x>
+            <y>182</y>
             <width>163</width>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -557,8 +557,8 @@
           <widget type="textentry" version="3.0.0">
             <name>Text Input_2</name>
             <pv_name>$(PREFIX)$(DEV_NAME)-TempAct</pv_name>
-            <x>171</x>
-            <y>476</y>
+            <x>497</x>
+            <y>204</y>
             <height>25</height>
             <background_color>
               <color name="Read_Background" red="230" green="235" blue="232">
@@ -576,8 +576,8 @@
           <widget type="label" version="2.0.0">
             <name>Label_6</name>
             <text>Act Temp [degC]:</text>
-            <x>40</x>
-            <y>484</y>
+            <x>366</x>
+            <y>212</y>
             <width>163</width>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -599,8 +599,8 @@
           <widget type="textentry" version="3.0.0">
             <name>Text Input_2</name>
             <pv_name>$(PREFIX)$(DEV_NAME)-PhaseErrorMMAct</pv_name>
-            <x>171</x>
-            <y>506</y>
+            <x>497</x>
+            <y>234</y>
             <height>25</height>
             <background_color>
               <color name="Read_Background" red="230" green="235" blue="232">
@@ -618,8 +618,8 @@
           <widget type="label" version="2.0.0">
             <name>Label_6</name>
             <text>Phase Error [mm]:</text>
-            <x>40</x>
-            <y>514</y>
+            <x>366</x>
+            <y>242</y>
             <width>163</width>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -748,8 +748,8 @@
           <widget type="label" version="2.0.0">
             <name>Label_4</name>
             <text>max :</text>
-            <x>285</x>
-            <y>484</y>
+            <x>611</x>
+            <y>212</y>
             <width>41</width>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -771,8 +771,8 @@
           <widget type="textentry" version="3.0.0">
             <name>Text Input_1</name>
             <pv_name>$(PREFIX)$(DEV_NAME)-LatchedPosAct</pv_name>
-            <x>171</x>
-            <y>536</y>
+            <x>497</x>
+            <y>264</y>
             <height>25</height>
             <background_color>
               <color name="Read_Background" red="230" green="235" blue="232">
@@ -790,8 +790,8 @@
           <widget type="label" version="2.0.0">
             <name>Label_4</name>
             <text>Last Latched Pos:</text>
-            <x>40</x>
-            <y>544</y>
+            <x>366</x>
+            <y>272</y>
             <width>163</width>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -813,8 +813,8 @@
           <widget type="label" version="2.0.0">
             <name>Label_4</name>
             <text>Phasing:</text>
-            <x>40</x>
-            <y>572</y>
+            <x>366</x>
+            <y>300</y>
             <width>103</width>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -836,8 +836,8 @@
           <widget type="led" version="2.0.0">
             <name>LED</name>
             <pv_name>$(PREFIX)$(DEV_NAME)-PhasingAct</pv_name>
-            <x>242</x>
-            <y>574</y>
+            <x>568</x>
+            <y>302</y>
             <width>16</width>
             <height>16</height>
             <off_color>
@@ -862,8 +862,8 @@
           <widget type="textentry" version="3.0.0">
             <name>Text Input_1</name>
             <pv_name>$(PREFIX)$(DEV_NAME)-MaxMotorTempCmd</pv_name>
-            <x>322</x>
-            <y>482</y>
+            <x>648</x>
+            <y>210</y>
             <height>25</height>
             <background_color>
               <color name="Read_Background" red="230" green="235" blue="232">
@@ -881,8 +881,8 @@
           <widget type="textentry" version="3.0.0">
             <name>Text Input_1</name>
             <pv_name>$(PREFIX)$(DEV_NAME)-StateAct</pv_name>
-            <x>170</x>
-            <y>360</y>
+            <x>496</x>
+            <y>88</y>
             <height>25</height>
             <background_color>
               <color name="Read_Background" red="230" green="235" blue="232">
@@ -900,8 +900,8 @@
           <widget type="textentry" version="3.0.0">
             <name>Text Input_1</name>
             <pv_name>$(PREFIX)$(DEV_NAME)-ErrStr</pv_name>
-            <x>156</x>
-            <y>636</y>
+            <x>66</x>
+            <y>448</y>
             <width>493</width>
             <height>25</height>
             <background_color>
@@ -921,8 +921,8 @@
           <widget type="led" version="2.0.0">
             <name>LED</name>
             <pv_name>$(PREFIX)$(DEV_NAME)-Err</pv_name>
-            <x>751</x>
-            <y>641</y>
+            <x>661</x>
+            <y>453</y>
             <width>16</width>
             <height>16</height>
             <off_color>
@@ -947,8 +947,8 @@
           <widget type="textentry" version="3.0.0">
             <name>Text Input_1</name>
             <pv_name>$(PREFIX)$(DEV_NAME)-ErrId</pv_name>
-            <x>638</x>
-            <y>636</y>
+            <x>548</x>
+            <y>448</y>
             <height>25</height>
             <background_color>
               <color name="Read_Background" red="230" green="235" blue="232">
@@ -966,8 +966,8 @@
           <widget type="textentry" version="3.0.0">
             <name>Text Input</name>
             <pv_name>$(PREFIX)$(DEV_NAME)-VelSetCmd</pv_name>
-            <x>171</x>
-            <y>421</y>
+            <x>497</x>
+            <y>149</y>
             <width>97</width>
             <height>25</height>
             <foreground_color>
@@ -1027,8 +1027,8 @@
           <widget type="textentry" version="3.0.0">
             <name>Text Input</name>
             <pv_name>$(PREFIX)$(DEV_NAME)-PosCmd</pv_name>
-            <x>171</x>
-            <y>391</y>
+            <x>497</x>
+            <y>119</y>
             <width>97</width>
             <height>25</height>
             <foreground_color>
@@ -1064,8 +1064,8 @@
               <DEV_NAME>Rotation</DEV_NAME>
             </macros>
             <text>WARNING!! MANUAL IL OVERRIDE IN PLC ACTIVE!</text>
-            <x>156</x>
-            <y>592</y>
+            <x>66</x>
+            <y>398</y>
             <width>410</width>
             <height>30</height>
             <foreground_color>
@@ -1099,8 +1099,8 @@
               </action>
             </actions>
             <text>Hardware</text>
-            <x>506</x>
-            <y>574</y>
+            <x>536</x>
+            <y>388</y>
             <width>140</width>
             <tooltip>$(actions)</tooltip>
           </widget>
@@ -1118,8 +1118,8 @@
               </action>
             </actions>
             <text>Engineering $(DEV_NAME)</text>
-            <x>506</x>
-            <y>544</y>
+            <x>536</x>
+            <y>358</y>
             <width>140</width>
             <tooltip>$(actions)</tooltip>
           </widget>
@@ -1130,10 +1130,10 @@
         <children>
           <widget type="stripchart" version="2.0.0">
             <name>XY Graph</name>
-            <x>26</x>
-            <y>48</y>
-            <width>729</width>
-            <height>529</height>
+            <x>20</x>
+            <y>20</y>
+            <width>730</width>
+            <height>560</height>
             <foreground_color>
               <color red="0" green="0" blue="0">
               </color>
@@ -1207,10 +1207,10 @@
         <children>
           <widget type="stripchart" version="2.0.0">
             <name>XY Graph</name>
-            <x>26</x>
-            <y>28</y>
-            <width>749</width>
-            <height>529</height>
+            <x>20</x>
+            <y>20</y>
+            <width>730</width>
+            <height>560</height>
             <foreground_color>
               <color red="0" green="0" blue="0">
               </color>
@@ -1282,114 +1282,12 @@
       <tab>
         <name>Phasing</name>
         <children>
-          <widget type="choice" version="2.0.0">
-            <name>Choice Button</name>
-            <pv_name>$(PREFIX)$(DEV_NAME)-StatePhasePWMTypeCmd</pv_name>
-            <x>625</x>
-            <y>47</y>
-            <width>80</width>
-            <height>50</height>
-            <foreground_color>
-              <color red="0" green="0" blue="0">
-              </color>
-            </foreground_color>
-            <background_color>
-              <color red="240" green="240" blue="240">
-              </color>
-            </background_color>
-            <selected_color>
-              <color name="IO Normal Level Alarm" red="0" green="255" blue="0">
-              </color>
-            </selected_color>
-            <horizontal>false</horizontal>
-            <actions>
-            </actions>
-            <items>
-              <item>Item 1</item>
-              <item>Item 2</item>
-            </items>
-          </widget>
-          <widget type="choice" version="2.0.0">
-            <name>Choice Button</name>
-            <pv_name>$(PREFIX)$(DEV_NAME)-StatePhaseCtrlTypeCmd</pv_name>
-            <x>545</x>
-            <y>47</y>
-            <width>80</width>
-            <height>50</height>
-            <foreground_color>
-              <color red="0" green="0" blue="0">
-              </color>
-            </foreground_color>
-            <background_color>
-              <color red="240" green="240" blue="240">
-              </color>
-            </background_color>
-            <selected_color>
-              <color name="IO Normal Level Alarm" red="0" green="255" blue="0">
-              </color>
-            </selected_color>
-            <horizontal>false</horizontal>
-            <actions>
-            </actions>
-            <items>
-              <item>Item 1</item>
-              <item>Item 2</item>
-            </items>
-          </widget>
-          <widget type="label" version="2.0.0">
-            <name>Label_9</name>
-            <text>Ctrl Type:</text>
-            <x>545</x>
-            <y>28</y>
-            <width>55</width>
-            <height>1</height>
-            <foreground_color>
-              <color red="0" green="0" blue="0">
-              </color>
-            </foreground_color>
-            <background_color>
-              <color red="255" green="255" blue="255">
-              </color>
-            </background_color>
-            <vertical_alignment>1</vertical_alignment>
-            <wrap_words>false</wrap_words>
-            <actions>
-            </actions>
-            <border_color>
-              <color red="0" green="128" blue="255">
-              </color>
-            </border_color>
-          </widget>
-          <widget type="label" version="2.0.0">
-            <name>Label_9</name>
-            <text>PWM Type:</text>
-            <x>635</x>
-            <y>28</y>
-            <width>43</width>
-            <height>12</height>
-            <foreground_color>
-              <color red="0" green="0" blue="0">
-              </color>
-            </foreground_color>
-            <background_color>
-              <color red="255" green="255" blue="255">
-              </color>
-            </background_color>
-            <vertical_alignment>1</vertical_alignment>
-            <wrap_words>false</wrap_words>
-            <actions>
-            </actions>
-            <border_color>
-              <color red="0" green="128" blue="255">
-              </color>
-            </border_color>
-          </widget>
           <widget type="stripchart" version="2.0.0">
             <name>XY Graph_1</name>
-            <x>19</x>
-            <y>148</y>
-            <width>763</width>
-            <height>459</height>
+            <x>20</x>
+            <y>20</y>
+            <width>730</width>
+            <height>460</height>
             <foreground_color>
               <color red="0" green="0" blue="0">
               </color>
@@ -1433,11 +1331,113 @@
               </trace>
             </traces>
           </widget>
+          <widget type="choice" version="2.0.0">
+            <name>Choice Button</name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-StatePhasePWMTypeCmd</pv_name>
+            <x>652</x>
+            <y>502</y>
+            <width>80</width>
+            <height>50</height>
+            <foreground_color>
+              <color red="0" green="0" blue="0">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="240" green="240" blue="240">
+              </color>
+            </background_color>
+            <selected_color>
+              <color name="IO Normal Level Alarm" red="0" green="255" blue="0">
+              </color>
+            </selected_color>
+            <horizontal>false</horizontal>
+            <actions>
+            </actions>
+            <items>
+              <item>Item 1</item>
+              <item>Item 2</item>
+            </items>
+          </widget>
+          <widget type="choice" version="2.0.0">
+            <name>Choice Button</name>
+            <pv_name>$(PREFIX)$(DEV_NAME)-StatePhaseCtrlTypeCmd</pv_name>
+            <x>572</x>
+            <y>502</y>
+            <width>80</width>
+            <height>50</height>
+            <foreground_color>
+              <color red="0" green="0" blue="0">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="240" green="240" blue="240">
+              </color>
+            </background_color>
+            <selected_color>
+              <color name="IO Normal Level Alarm" red="0" green="255" blue="0">
+              </color>
+            </selected_color>
+            <horizontal>false</horizontal>
+            <actions>
+            </actions>
+            <items>
+              <item>Item 1</item>
+              <item>Item 2</item>
+            </items>
+          </widget>
+          <widget type="label" version="2.0.0">
+            <name>Label_9</name>
+            <text>Ctrl Type:</text>
+            <x>572</x>
+            <y>483</y>
+            <width>55</width>
+            <height>1</height>
+            <foreground_color>
+              <color red="0" green="0" blue="0">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="255" green="255" blue="255">
+              </color>
+            </background_color>
+            <vertical_alignment>1</vertical_alignment>
+            <wrap_words>false</wrap_words>
+            <actions>
+            </actions>
+            <border_color>
+              <color red="0" green="128" blue="255">
+              </color>
+            </border_color>
+          </widget>
+          <widget type="label" version="2.0.0">
+            <name>Label_9</name>
+            <text>PWM Type:</text>
+            <x>662</x>
+            <y>483</y>
+            <width>43</width>
+            <height>12</height>
+            <foreground_color>
+              <color red="0" green="0" blue="0">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="255" green="255" blue="255">
+              </color>
+            </background_color>
+            <vertical_alignment>1</vertical_alignment>
+            <wrap_words>false</wrap_words>
+            <actions>
+            </actions>
+            <border_color>
+              <color red="0" green="128" blue="255">
+              </color>
+            </border_color>
+          </widget>
           <widget type="textentry" version="3.0.0">
             <name>Text Input_5</name>
             <pv_name>$(PREFIX)$(DEV_NAME)-PhaseErrorMMAct</pv_name>
-            <x>153</x>
-            <y>53</y>
+            <x>180</x>
+            <y>508</y>
             <height>25</height>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -1459,8 +1459,8 @@
           <widget type="label" version="2.0.0">
             <name>Label_13</name>
             <text>Phase Error [mm]:</text>
-            <x>19</x>
-            <y>56</y>
+            <x>46</x>
+            <y>511</y>
             <width>163</width>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -1482,8 +1482,8 @@
           <widget type="textentry" version="3.0.0">
             <name>Text Input_6</name>
             <pv_name>$(PREFIX)$(DEV_NAME)-LatchedPosAct</pv_name>
-            <x>153</x>
-            <y>86</y>
+            <x>180</x>
+            <y>541</y>
             <height>25</height>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -1506,8 +1506,8 @@
           <widget type="label" version="2.0.0">
             <name>Label_14</name>
             <text>Last Latched Pos:</text>
-            <x>19</x>
-            <y>89</y>
+            <x>46</x>
+            <y>544</y>
             <width>163</width>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -1529,8 +1529,8 @@
           <widget type="label" version="2.0.0">
             <name>Label_15</name>
             <text>Phasing:</text>
-            <x>19</x>
-            <y>26</y>
+            <x>46</x>
+            <y>481</y>
             <width>103</width>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -1552,8 +1552,8 @@
           <widget type="led" version="2.0.0">
             <name>LED_1</name>
             <pv_name>$(PREFIX)$(DEV_NAME)-PhasingAct</pv_name>
-            <x>225</x>
-            <y>28</y>
+            <x>252</x>
+            <y>483</y>
             <width>16</width>
             <height>16</height>
             <off_color>
@@ -1578,8 +1578,8 @@
           <widget type="textentry" version="3.0.0">
             <name>Text Input_7</name>
             <pv_name>$(PREFIX)$(DEV_NAME)-ClosestSectorIDAct</pv_name>
-            <x>409</x>
-            <y>23</y>
+            <x>436</x>
+            <y>478</y>
             <height>25</height>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -1601,8 +1601,8 @@
           <widget type="label" version="2.0.0">
             <name>Label_16</name>
             <text>Closest Sector: </text>
-            <x>275</x>
-            <y>26</y>
+            <x>302</x>
+            <y>481</y>
             <width>163</width>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -1624,8 +1624,8 @@
           <widget type="textentry" version="3.0.0">
             <name>Text Input_8</name>
             <pv_name>$(PREFIX)$(DEV_NAME)-ChoosenSectorAct</pv_name>
-            <x>409</x>
-            <y>53</y>
+            <x>436</x>
+            <y>508</y>
             <height>25</height>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -1647,8 +1647,8 @@
           <widget type="label" version="2.0.0">
             <name>Label_17</name>
             <text>Choosen Sector:</text>
-            <x>275</x>
-            <y>56</y>
+            <x>302</x>
+            <y>511</y>
             <width>163</width>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -1670,8 +1670,8 @@
           <widget type="textentry" version="3.0.0">
             <name>Text Input_9</name>
             <pv_name>$(PREFIX)$(DEV_NAME)-VelStableCountAct</pv_name>
-            <x>409</x>
-            <y>89</y>
+            <x>436</x>
+            <y>544</y>
             <height>25</height>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -1704,8 +1704,8 @@
           <widget type="label" version="2.0.0">
             <name>Label_19</name>
             <text>Velo Stable Count:</text>
-            <x>275</x>
-            <y>92</y>
+            <x>302</x>
+            <y>547</y>
             <width>163</width>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -1727,8 +1727,8 @@
           <widget type="textentry" version="3.0.0">
             <name>Text Input_10</name>
             <pv_name>$(PREFIX)$(DEV_NAME)-MissedTimingPulses</pv_name>
-            <x>153</x>
-            <y>119</y>
+            <x>180</x>
+            <y>574</y>
             <height>25</height>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -1750,8 +1750,8 @@
           <widget type="label" version="2.0.0">
             <name>Label_22</name>
             <text>Missed trigg counter:</text>
-            <x>19</x>
-            <y>122</y>
+            <x>46</x>
+            <y>577</y>
             <width>163</width>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -1773,8 +1773,8 @@
           <widget type="label" version="2.0.0">
             <name>Label_23</name>
             <text>Phase offset [mm]</text>
-            <x>279</x>
-            <y>122</y>
+            <x>306</x>
+            <y>577</y>
             <width>163</width>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -1796,8 +1796,8 @@
           <widget type="textentry" version="3.0.0">
             <name>Text Input_11</name>
             <pv_name>$(PREFIX)$(DEV_NAME)-PhaseOffetMMCmd</pv_name>
-            <x>410</x>
-            <y>119</y>
+            <x>437</x>
+            <y>574</y>
             <width>97</width>
             <height>25</height>
             <foreground_color>
@@ -1819,8 +1819,8 @@
           <widget type="textentry" version="3.0.0">
             <name>Text Input_12</name>
             <pv_name>$(PREFIX)$(DEV_NAME)-PhaseOffetDegAct</pv_name>
-            <x>559</x>
-            <y>119</y>
+            <x>586</x>
+            <y>574</y>
             <height>25</height>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -1842,8 +1842,8 @@
           <widget type="label" version="2.0.0">
             <name>Label_24</name>
             <text>[deg]</text>
-            <x>523</x>
-            <y>122</y>
+            <x>550</x>
+            <y>577</y>
             <width>37</width>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -1869,10 +1869,10 @@
         <children>
           <widget type="stripchart" version="2.0.0">
             <name>XY Graph</name>
-            <x>36</x>
-            <y>28</y>
-            <width>729</width>
-            <height>545</height>
+            <x>20</x>
+            <y>20</y>
+            <width>730</width>
+            <height>560</height>
             <foreground_color>
               <color red="0" green="0" blue="0">
               </color>
@@ -1936,7 +1936,7 @@
     <x>360</x>
     <y>110</y>
     <width>830</width>
-    <height>630</height>
+    <height>620</height>
     <background_color>
       <color red="240" green="240" blue="240">
       </color>
