@@ -1152,20 +1152,20 @@
             <y_axes>
               <y_axis>
                 <title>Velcoity [RPM]</title>
-                <autoscale>true</autoscale>
+                <autoscale>false</autoscale>
                 <log_scale>false</log_scale>
-                <minimum>-3.0</minimum>
-                <maximum>3.0</maximum>
+                <minimum>0.0</minimum>
+                <maximum>28.0</maximum>
                 <show_grid>true</show_grid>
                 <visible>true</visible>
               </y_axis>
               <y_axis>
                 <title>Torque [%]</title>
-                <autoscale>true</autoscale>
+                <autoscale>false</autoscale>
                 <log_scale>false</log_scale>
                 <minimum>0.0</minimum>
                 <maximum>100.0</maximum>
-                <show_grid>true</show_grid>
+                <show_grid>false</show_grid>
                 <visible>true</visible>
               </y_axis>
             </y_axes>
@@ -1229,16 +1229,16 @@
             <y_axes>
               <y_axis>
                 <title>Torque [%]</title>
-                <autoscale>true</autoscale>
+                <autoscale>false</autoscale>
                 <log_scale>false</log_scale>
-                <minimum>-3.0</minimum>
-                <maximum>3.0</maximum>
+                <minimum>0.0</minimum>
+                <maximum>100.0</maximum>
                 <show_grid>true</show_grid>
                 <visible>true</visible>
               </y_axis>
               <y_axis>
                 <title>Temperature [degC]</title>
-                <autoscale>true</autoscale>
+                <autoscale>false</autoscale>
                 <log_scale>false</log_scale>
                 <minimum>0.0</minimum>
                 <maximum>100.0</maximum>
