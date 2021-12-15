@@ -4197,10 +4197,10 @@ $(pv_value)</tooltip>
         </children>
       </tab>
     </tabs>
-    <x>1540</x>
-    <y>110</y>
+    <x>1300</x>
+    <y>80</y>
     <width>901</width>
-    <height>709</height>
+    <height>820</height>
     <background_color>
       <color red="240" green="240" blue="240">
       </color>
