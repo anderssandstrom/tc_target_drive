@@ -123,8 +123,8 @@
             </color>
           </value>
         </exp>
-        <pv_name>$(PREFIX)$(DEV_NAME)-ActPhaseErrorMM</pv_name>
-        <pv_name>$(PREFIX)$(DEV_NAME)-Phasing-Stat</pv_name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-PhaseErrorMMAct</pv_name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-PhasingAct</pv_name>
       </rule>
     </rules>
     <limits_from_pv>false</limits_from_pv>
@@ -522,6 +522,7 @@
               <color name="Read_Background" red="230" green="235" blue="232">
               </color>
             </background_color>
+            <precision>1</precision>
             <actions>
             </actions>
             <border_alarm_sensitive>false</border_alarm_sensitive>
@@ -564,6 +565,7 @@
               <color name="Read_Background" red="230" green="235" blue="232">
               </color>
             </background_color>
+            <precision>1</precision>
             <actions>
             </actions>
             <border_alarm_sensitive>false</border_alarm_sensitive>
@@ -606,6 +608,7 @@
               <color name="Read_Background" red="230" green="235" blue="232">
               </color>
             </background_color>
+            <precision>3</precision>
             <actions>
             </actions>
             <border_alarm_sensitive>false</border_alarm_sensitive>
@@ -778,6 +781,7 @@
               <color name="Read_Background" red="230" green="235" blue="232">
               </color>
             </background_color>
+            <precision>3</precision>
             <actions>
             </actions>
             <border_alarm_sensitive>false</border_alarm_sensitive>
@@ -1334,10 +1338,9 @@
           <widget type="choice" version="2.0.0">
             <name>Choice Button</name>
             <pv_name>$(PREFIX)$(DEV_NAME)-StatePhasePWMTypeCmd</pv_name>
-            <x>652</x>
-            <y>502</y>
-            <width>80</width>
-            <height>50</height>
+            <x>666</x>
+            <y>478</y>
+            <height>91</height>
             <foreground_color>
               <color red="0" green="0" blue="0">
               </color>
@@ -1361,10 +1364,9 @@
           <widget type="choice" version="2.0.0">
             <name>Choice Button</name>
             <pv_name>$(PREFIX)$(DEV_NAME)-StatePhaseCtrlTypeCmd</pv_name>
-            <x>572</x>
-            <y>502</y>
-            <width>80</width>
-            <height>50</height>
+            <x>566</x>
+            <y>477</y>
+            <height>91</height>
             <foreground_color>
               <color red="0" green="0" blue="0">
               </color>
@@ -1388,10 +1390,10 @@
           <widget type="label" version="2.0.0">
             <name>Label_9</name>
             <text>Ctrl Type:</text>
-            <x>572</x>
-            <y>483</y>
-            <width>55</width>
-            <height>1</height>
+            <x>566</x>
+            <y>448</y>
+            <width>75</width>
+            <height>42</height>
             <foreground_color>
               <color red="0" green="0" blue="0">
               </color>
@@ -1412,9 +1414,9 @@
           <widget type="label" version="2.0.0">
             <name>Label_9</name>
             <text>PWM Type:</text>
-            <x>662</x>
-            <y>483</y>
-            <width>43</width>
+            <x>666</x>
+            <y>458</y>
+            <width>90</width>
             <height>12</height>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -1459,7 +1461,7 @@
           <widget type="label" version="2.0.0">
             <name>Label_13</name>
             <text>Phase Error [mm]:</text>
-            <x>46</x>
+            <x>36</x>
             <y>511</y>
             <width>163</width>
             <foreground_color>
@@ -1506,7 +1508,7 @@
           <widget type="label" version="2.0.0">
             <name>Label_14</name>
             <text>Last Latched Pos:</text>
-            <x>46</x>
+            <x>36</x>
             <y>544</y>
             <width>163</width>
             <foreground_color>
@@ -1529,7 +1531,7 @@
           <widget type="label" version="2.0.0">
             <name>Label_15</name>
             <text>Phasing:</text>
-            <x>46</x>
+            <x>36</x>
             <y>481</y>
             <width>103</width>
             <foreground_color>
@@ -1691,7 +1693,7 @@
                     </color>
                   </value>
                 </exp>
-                <pv_name>$(PREFIX)$(DEV_NAME)-Vel-Stable</pv_name>
+                <pv_name>$(PREFIX)$(DEV_NAME)-VelStableAct</pv_name>
               </rule>
             </rules>
             <border_alarm_sensitive>false</border_alarm_sensitive>
@@ -1728,7 +1730,7 @@
             <name>Text Input_10</name>
             <pv_name>$(PREFIX)$(DEV_NAME)-MissedTimingPulses</pv_name>
             <x>180</x>
-            <y>574</y>
+            <y>573</y>
             <height>25</height>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -1750,8 +1752,8 @@
           <widget type="label" version="2.0.0">
             <name>Label_22</name>
             <text>Missed trigg counter:</text>
-            <x>46</x>
-            <y>577</y>
+            <x>36</x>
+            <y>575</y>
             <width>163</width>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -1774,7 +1776,7 @@
             <name>Label_23</name>
             <text>Phase offset [mm]</text>
             <x>306</x>
-            <y>577</y>
+            <y>575</y>
             <width>163</width>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -1797,7 +1799,7 @@
             <name>Text Input_11</name>
             <pv_name>$(PREFIX)$(DEV_NAME)-PhaseOffetMMCmd</pv_name>
             <x>437</x>
-            <y>574</y>
+            <y>573</y>
             <width>97</width>
             <height>25</height>
             <foreground_color>
@@ -1820,7 +1822,7 @@
             <name>Text Input_12</name>
             <pv_name>$(PREFIX)$(DEV_NAME)-PhaseOffetDegAct</pv_name>
             <x>586</x>
-            <y>574</y>
+            <y>573</y>
             <height>25</height>
             <foreground_color>
               <color red="0" green="0" blue="0">
@@ -1842,8 +1844,8 @@
           <widget type="label" version="2.0.0">
             <name>Label_24</name>
             <text>[deg]</text>
-            <x>550</x>
-            <y>577</y>
+            <x>548</x>
+            <y>575</y>
             <width>37</width>
             <foreground_color>
               <color red="0" green="0" blue="0">
