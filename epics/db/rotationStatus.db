@@ -1,0 +1,11 @@
+record(bi,"$(P)${DEV_NAME}-PhaseOK"){
+  field(PINI, "1")
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stStatusRot.bPhaseOK?")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Phase not OK")
+  field(ONAM, "Phase OK")
+  field(ZSV,  "MAJOR")
+  field(OSV,  "NO_ALARM")
+  field(DESC, "${DEV_NAME}: Phase error OK (FR92)")
+}
