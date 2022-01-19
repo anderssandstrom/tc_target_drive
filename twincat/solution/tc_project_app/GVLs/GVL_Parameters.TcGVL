@@ -61,6 +61,15 @@ VAR_GLOBAL CONSTANT
   fStepperTargetAcc:LREAL:=10;
   
   fStepperTempH2:LREAL:=100;  // Deg C
+  
+  // Phase OK calcs
+  timePhaseStabilizationTime:TIME:=T#60S;
+  timePhaseGreaterThanH1Time:TIME:=T#10S;
+  fPhaseStabilityVelocityLowLinit:LREAL:=20.0;
+  fNominalPhaseErrorLimitMM:LREAL:=2.0;
+  fH1PhaseErrorLimitMM:LREAL:=5.0;
+  fH2PhaseErrorLimitMM:LREAL:=10.0;
+  
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
