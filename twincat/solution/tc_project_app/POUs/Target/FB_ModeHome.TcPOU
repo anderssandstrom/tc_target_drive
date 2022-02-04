@@ -91,6 +91,7 @@ CASE eHomeState OF
 	  fSpeedSetpoint     := 0;
 	  fActPosAtHomeStart := 0;
 	  fActPositionOffset := 0;
+	  fNewestRefMarkPos  := 0;
 	  eHomeState:=E_HOME_STATE.RAMP_UP;
     END_IF
 
@@ -214,7 +215,9 @@ bExecuteOld:=bExecute;
       <LineId Id="1181" Count="0" />
       <LineId Id="1113" Count="0" />
       <LineId Id="1174" Count="0" />
-      <LineId Id="1158" Count="1" />
+      <LineId Id="1158" Count="0" />
+      <LineId Id="1304" Count="0" />
+      <LineId Id="1159" Count="0" />
       <LineId Id="1103" Count="0" />
       <LineId Id="1096" Count="0" />
       <LineId Id="1054" Count="0" />
