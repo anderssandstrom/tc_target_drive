@@ -3127,16 +3127,6 @@ ELSIF stHwStatusRot.eTargetState = TARGET_STATE_MACHINE.HOMING THEN
   END_IF
 END_IF
 
-// To high velocity detected. Shutdown..
-IF ABS(stStatus.fActualVelocity)/10 > GVL_Parameters.fMaximumSPeedRpm THEN 
-  stCommands.bEnableAxis:= FALSE;
-  stHWControlRot.bEnable:=FALSE;
-  stHWControlRot.bExecute:=FALSE;
-  stHwStatusRot.bError:=TRUE;
-  stHwStatusRot.nErrorId:=GVL_ErrorCodes.nErrorVelToHigh;
-  stHwStatusRot.sErrorStr:=GVL_ErrorCodes.sErrorVelToHigh;
-END_IF
-
 IF stHWControlRot.bReset THEN
   stHwStatusRot.bError:=FALSE;
   stHwStatusRot.nErrorId:=GVL_ErrorCodes.nErrorCodeOKId;
@@ -4571,13 +4561,7 @@ END_IF
       <LineId Id="41" Count="0" />
       <LineId Id="2" Count="28" />
       <LineId Id="32" Count="0" />
-      <LineId Id="57" Count="0" />
-      <LineId Id="44" Count="1" />
-      <LineId Id="56" Count="0" />
-      <LineId Id="47" Count="1" />
-      <LineId Id="54" Count="1" />
-      <LineId Id="53" Count="0" />
-      <LineId Id="33" Count="7" />
+      <LineId Id="34" Count="6" />
       <LineId Id="59" Count="3" />
       <LineId Id="1" Count="0" />
       <LineId Id="58" Count="0" />
