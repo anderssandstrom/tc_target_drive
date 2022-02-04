@@ -369,11 +369,6 @@ main.stHWStatusY.bBrakeReleased;
                               <v n="Fixed">true</v>
                               <v n="Extensible">false</v>
                             </o>
-                            <o>
-                              <v n="Flags">1</v>
-                              <v n="Fixed">true</v>
-                              <v n="Extensible">false</v>
-                            </o>
                           </l2>
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
@@ -489,25 +484,6 @@ main.stHWStatusY.bBrakeReleased;
                                 <v n="Id">137L</v>
                               </o>
                               <v n="Id">136L</v>
-                            </o>
-                            <o>
-                              <o n="Operand" t="Operand">
-                                <v n="Operand">"main.fbIndraDrive.stAxisStatus.bWarning"</v>
-                                <v n="Type">"BOOL"</v>
-                                <v n="Comment">""</v>
-                                <v n="SymbolComment">""</v>
-                                <v n="Address">""</v>
-                                <o n="Flags" t="Flags">
-                                  <v n="Flags">0</v>
-                                  <v n="Fixed">false</v>
-                                  <v n="Extensible">false</v>
-                                </o>
-                                <v n="LValue">false</v>
-                                <v n="Boolean">false</v>
-                                <v n="IsInstance">false</v>
-                                <v n="Id">139L</v>
-                              </o>
-                              <v n="Id">138L</v>
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
@@ -2373,11 +2349,12 @@ main.stHWStatusY.bBrakeReleased;
                                 <v n="Extensible">false</v>
                               </o>
                               <n n="InputFlags" />
-                              <l2 n="InputItems" cet="BoxTreeOperand">
-                                <o>
-                                  <o n="Operand" t="Operand">
-                                    <v n="Operand">"stHwStatusRot.fActVel"</v>
-                                    <v n="Type">"LREAL"</v>
+                              <l2 n="InputItems">
+                                <o t="BoxTreeBox">
+                                  <v n="BoxType">"ABS"</v>
+                                  <o n="Instance" t="Operand">
+                                    <n n="Operand" />
+                                    <v n="Type">""</v>
                                     <v n="Comment">""</v>
                                     <v n="SymbolComment">""</v>
                                     <v n="Address">""</v>
@@ -2388,15 +2365,65 @@ main.stHWStatusY.bBrakeReleased;
                                     </o>
                                     <v n="LValue">false</v>
                                     <v n="Boolean">false</v>
-                                    <v n="IsInstance">false</v>
-                                    <v n="Id">220L</v>
+                                    <v n="IsInstance">true</v>
+                                    <v n="Id">233L</v>
                                   </o>
-                                  <v n="Id">219L</v>
+                                  <o n="OutputItems" t="OutputItemList">
+                                    <l2 n="OutputItems">
+                                      <n />
+                                    </l2>
+                                  </o>
+                                  <o n="Flags" t="Flags">
+                                    <v n="Flags">0</v>
+                                    <v n="Fixed">true</v>
+                                    <v n="Extensible">false</v>
+                                  </o>
+                                  <n n="InputFlags" />
+                                  <l2 n="InputItems" cet="BoxTreeOperand">
+                                    <o>
+                                      <o n="Operand" t="Operand">
+                                        <v n="Operand">"stHwStatusRot.fActVel"</v>
+                                        <v n="Type">"LREAL"</v>
+                                        <v n="Comment">""</v>
+                                        <v n="SymbolComment">""</v>
+                                        <v n="Address">""</v>
+                                        <o n="Flags" t="Flags">
+                                          <v n="Flags">0</v>
+                                          <v n="Fixed">false</v>
+                                          <v n="Extensible">false</v>
+                                        </o>
+                                        <v n="LValue">false</v>
+                                        <v n="Boolean">false</v>
+                                        <v n="IsInstance">false</v>
+                                        <v n="Id">220L</v>
+                                      </o>
+                                      <v n="Id">219L</v>
+                                    </o>
+                                  </l2>
+                                  <o n="InputParam" t="ParamList">
+                                    <l2 n="Names" />
+                                    <l2 n="Types" />
+                                  </o>
+                                  <o n="OutputParam" t="ParamList">
+                                    <l2 n="Names" cet="String">
+                                      <v></v>
+                                    </l2>
+                                    <l2 n="Types" cet="String">
+                                      <v>INT</v>
+                                    </l2>
+                                  </o>
+                                  <v n="CallType" t="Operator">Abs</v>
+                                  <v n="EN">false</v>
+                                  <v n="ENO">false</v>
+                                  <n n="STSnippet" />
+                                  <v n="ContainsExtensibleInputs">false</v>
+                                  <v n="ProvidesSTSnippet">false</v>
+                                  <v n="Id">234L</v>
                                 </o>
-                                <o>
+                                <o t="BoxTreeOperand">
                                   <o n="Operand" t="Operand">
-                                    <v n="Operand">"30"</v>
-                                    <v n="Type">"INT"</v>
+                                    <v n="Operand">"GVL_Parameters.fMaximumSPeedRpm"</v>
+                                    <v n="Type">"LREAL"</v>
                                     <v n="Comment">""</v>
                                     <v n="SymbolComment">""</v>
                                     <v n="Address">""</v>
@@ -2980,7 +3007,6 @@ CASE stHwStatusRot.eTargetState OF
 	    stCommands.eMotionMode :=e_Motion_mode.eJogPositive;
 	
 	  ELSE  // No valid state
-		  
 		bApplyTorqueFF:=FALSE;
 		stHWControlRot.bExecute:=FALSE;
         stHWControlRot.bEnable:=FALSE;
@@ -3075,16 +3101,6 @@ ELSIF stHwStatusRot.eTargetState = TARGET_STATE_MACHINE.HOMING THEN
 	stHwStatusRot.nErrorId:=fbModeHome.nErrorId;
 	stHwStatusRot.sErrorStr:=fbModeHome.sErrorStr;
   END_IF
-END_IF
-
-// To high velocity detected. Shutdown..
-IF ABS(stStatus.fActualVelocity)/10 > GVL_Parameters.fMaximumSPeedRpm THEN 
-  stCommands.bEnableAxis:= FALSE;
-  stHWControlRot.bEnable:=FALSE;
-  stHWControlRot.bExecute:=FALSE;
-  stHwStatusRot.bError:=TRUE;
-  stHwStatusRot.nErrorId:=GVL_ErrorCodes.nErrorVelToHigh;
-  stHwStatusRot.sErrorStr:=GVL_ErrorCodes.sErrorVelToHigh;
 END_IF
 
 IF stHWControlRot.bReset THEN
@@ -4494,9 +4510,7 @@ END_IF
       <LineId Id="133" Count="0" />
       <LineId Id="72" Count="1" />
       <LineId Id="163" Count="1" />
-      <LineId Id="74" Count="3" />
-      <LineId Id="193" Count="0" />
-      <LineId Id="78" Count="4" />
+      <LineId Id="74" Count="8" />
       <LineId Id="166" Count="1" />
       <LineId Id="194" Count="0" />
       <LineId Id="197" Count="0" />
@@ -4523,13 +4537,7 @@ END_IF
       <LineId Id="41" Count="0" />
       <LineId Id="2" Count="28" />
       <LineId Id="32" Count="0" />
-      <LineId Id="57" Count="0" />
-      <LineId Id="44" Count="1" />
-      <LineId Id="56" Count="0" />
-      <LineId Id="47" Count="1" />
-      <LineId Id="54" Count="1" />
-      <LineId Id="53" Count="0" />
-      <LineId Id="33" Count="7" />
+      <LineId Id="34" Count="6" />
       <LineId Id="59" Count="3" />
       <LineId Id="1" Count="0" />
       <LineId Id="58" Count="0" />
