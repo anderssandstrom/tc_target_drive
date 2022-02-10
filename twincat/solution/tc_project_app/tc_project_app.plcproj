@@ -350,6 +350,9 @@
     <Compile Include="POUs\Target\FB_TargetSuperImpose.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Target\FC_DistMod.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="tc_mca_std_lib_real\DUTs\E_AxisParameters.TcTLEO">
       <SubType>Code</SubType>
     </Compile>

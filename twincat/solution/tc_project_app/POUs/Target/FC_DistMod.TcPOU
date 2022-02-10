@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+  <POU Name="FC_DistMod" Id="{ab909bcd-5527-41a8-a57f-59891c5d6be4}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION FC_DistMod : LREAL
+VAR_INPUT
+	fPosFrom:LREAL;
+	fPosTo:LREAL;
+	fModRange:LREAL;
+END_VAR
+VAR
+	fDist:LREAL;
+	fDist1:LREAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[  // check closest direction between two points
+
+IF fPosTo > fPosFrom THEN
+  IF fPosTo - fPosFrom < 360 - fPosTo+ fPosFrom THEN
+    fDist:=fPosTo - fPosFrom;  //forward
+  ELSE	
+    fDist:=-( 360 - fPosTo+ fPosFrom);  //backward
+  END_IF
+ELSE
+  IF fPosFrom - fPosTo < fPosTo + 360 - fPosFrom THEN
+	fDist:=-(fPosFrom - fPosTo); //Backward
+  ELSE	
+    fDist:=fPosTo + 360 - fPosFrom;  //Forward
+  END_IF
+END_IF
+
+FC_DistMod:= fDist;
+]]></ST>
+    </Implementation>
+    <LineIds Name="FC_DistMod">
+      <LineId Id="11" Count="0" />
+      <LineId Id="35" Count="0" />
+      <LineId Id="12" Count="1" />
+      <LineId Id="39" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="19" Count="2" />
+      <LineId Id="23" Count="1" />
+      <LineId Id="26" Count="1" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="43" Count="0" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="41" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

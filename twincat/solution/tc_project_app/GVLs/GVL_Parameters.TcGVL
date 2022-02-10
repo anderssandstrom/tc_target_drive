@@ -25,7 +25,7 @@ VAR_GLOBAL CONSTANT
   nMaxBrakeTemperature: INT:= 100;
   fWheelDiameter:LREAL:=2500;
   fAccDefaultVel:LREAL:=0.039;  //RPM/S^2 (0.039 => tn min to 23.3) 
-  fAccDefaultPos:LREAL:=0.001;  //RPM/S^2 (0.039 => tn min to 23.3) 
+  fAccDefaultPos:LREAL:=0.3;  //RPM/S^2 (0.039 => tn min to 23.3) 
   nPhaseErrorFilterSize:INT:=36;  //Two revs
   nVeloInRangeCount:INT:=100;
   nSuperPosMaxCyclesToOutput:INT:=100;
@@ -69,6 +69,10 @@ VAR_GLOBAL CONSTANT
   fNominalPhaseErrorLimitMM:LREAL:=2.0;
   fH1PhaseErrorLimitMM:LREAL:=5.0;
   fH2PhaseErrorLimitMM:LREAL:=10.0;
+  
+  // Positioning step (simple traj step)
+  fPosStep:LREAL:=5;
+  fReachedTol:LREAL:=0.2;
   
 END_VAR]]></Declaration>
   </GVL>

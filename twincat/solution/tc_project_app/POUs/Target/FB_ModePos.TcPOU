@@ -19,7 +19,12 @@ VAR_IN_OUT
 	stCommands: ST_INDRADRIVE_AXIS_COMMAND;
 END_VAR
 VAR
- 
+	fActPos:LREAL:=0;
+    bExecuteOld:BOOL:=FALSE;
+    //fPosSetTemp:LREAL:=0;
+	fDistToTarget:LREAL:=0;
+	//fDistToTrajSet:LREAL:=0;
+	bVeloMode:BOOL:=FALSE;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -30,20 +35,95 @@ END_VAR
 stCommands.eMotionMode :=e_Motion_mode.ePositioning;
 stCommands.eOperationMode:=e_Operation_mode_no.ePrimaryOpMode;
 //stCommands.eOperationMode:=e_Operation_mode_no.eSecondaryOpMode3;
+
+fActPos:=stStatus.fActualPosition-fRefOffset;
+IF fActPos > 360 THEN
+  fActPos:=fActPos-360;	
+END_IF
+IF fActPos < 0 THEN
+  fActPos:=fActPos+360;	
+END_IF
+
+fDistToTarget:=FC_DistMod(fPosFrom:=fActPos,fPosTo:=fPosSet,fModRange:=360);
+IF bExecute AND  NOT bExecuteOld THEN
+  IF ABS(fDistToTarget) > 30 THEN   
+    bVeloMode:=TRUE;
+  ELSE
+    bVeloMode:=FALSE;	 
+  END_IF
+END_IF
+
+IF NOT bExecute THEN
+  bVeloMode:=FALSE;
+END_IF;	 
 IF bExecute THEN
+  IF bVeloMode THEN
+	IF fDistToTarget> 0 THEN
+	  stCommands.fVelocityCommandValue:=fVelSet;
+	  IF fDistToTarget>0 THEN
+	    stCommands.eMotionMode :=e_Motion_mode.eJogPositive;
+	  ELSE
+		 stCommands.eMotionMode :=e_Motion_mode.eJogNegative;
+	  END_IF
+      stCommands.eOperationMode:=e_Operation_mode_no.eSecondaryOpMode2;
+	END_IF
+	IF ABS(fDistToTarget) < 30 THEN 
+		stCommands.fVelocityCommandValue:=0;
+		IF stStatus.fActualVelocity <  fVelSet THEN
+			bVeloMode:=FALSE;
+		END_IF
+	END_IF
+  ELSE   // positioning
+      stCommands.fCommandPosition:=fPosSet + fRefOffset;
+      IF stCommands.fCommandPosition > 360 THEN
+        stCommands.fCommandPosition:=stCommands.fCommandPosition-360;	
+      END_IF
+      IF stCommands.fCommandPosition < 0 THEN
+         stCommands.fCommandPosition:=stCommands.fCommandPosition+360;	
+      END_IF
+      stCommands.fCommandVelocity:=fVelSet;
+	  stCommands.eMotionMode :=e_Motion_mode.ePositioning;
+      stCommands.eOperationMode:=e_Operation_mode_no.ePrimaryOpMode;
+	  stCommands.fVelocityCommandValue:=0;
+  END_IF
+ELSE  
+  stCommands.fCommandVelocity:=0;
+  stCommands.fVelocityCommandValue:=0;
+END_IF
+
+
+//fDistToTrajSet:=FC_DistMod(fPosFrom:=fActPos,fPosTo:=fPosSetTemp,fModRange:=360);
+
+
+(*IF ABS(fDistToTrajSet) < GVL_Parameters.fReachedTol THEN
+  IF fDistToTarget > 0 THEN  // Increase traj setpoint with one step
+	  fPosSetTemp:= fPosSetTemp + GVL_Parameters.fPosStep;
+  ELSE
+	  fPosSetTemp:= fPosSetTemp - GVL_Parameters.fPosStep;
+  END_IF
+END_IF
+
+IF ABS(fDistToTarget) < GVL_Parameters.fPosStep THEN
+   fPosSetTemp:=fPosSet;
+END_IF
+
+IF bExecute THEN
+  stCommands.fCommandPosition:=fPosSetTemp + fRefOffset;
+  IF stCommands.fCommandPosition > 360 THEN
+    stCommands.fCommandPosition:=stCommands.fCommandPosition-360;	
+  END_IF
+  IF stCommands.fCommandPosition < 0 THEN
+    stCommands.fCommandPosition:=stCommands.fCommandPosition+360;	
+  END_IF
   stCommands.fCommandVelocity:=fVelSet;
 ELSE
+  stCommands.fCommandPosition:=stStatus.fActualPosition;
   stCommands.fCommandVelocity:=0;
-END_IF
-stCommands.fCommandPosition:=fPosSet + fRefOffset;
-IF stCommands.fCommandPosition > 360 THEN
-  stCommands.fCommandPosition:=stCommands.fCommandPosition-360;	
-END_IF
-IF stCommands.fCommandPosition < 0 THEN
-  stCommands.fCommandPosition:=stCommands.fCommandPosition+360;	
-END_IF
-stCommands.fVelocityCommandValue:=0;  //Used for other mode
-]]></ST>
+END_IF*)
+
+
+//stCommands.fVelocityCommandValue:=0;  //Used for other mode
+bExecuteOld:=bExecute;]]></ST>
     </Implementation>
     <LineIds Name="FB_ModePos">
       <LineId Id="916" Count="1" />
@@ -52,10 +132,52 @@ stCommands.fVelocityCommandValue:=0;  //Used for other mode
       <LineId Id="886" Count="0" />
       <LineId Id="893" Count="0" />
       <LineId Id="938" Count="0" />
-      <LineId Id="888" Count="4" />
-      <LineId Id="962" Count="5" />
+      <LineId Id="962" Count="0" />
+      <LineId Id="1035" Count="0" />
+      <LineId Id="963" Count="4" />
       <LineId Id="961" Count="0" />
-      <LineId Id="708" Count="0" />
+      <LineId Id="1045" Count="0" />
+      <LineId Id="1067" Count="0" />
+      <LineId Id="1047" Count="0" />
+      <LineId Id="1139" Count="4" />
+      <LineId Id="1138" Count="0" />
+      <LineId Id="1136" Count="0" />
+      <LineId Id="1129" Count="1" />
+      <LineId Id="1099" Count="0" />
+      <LineId Id="1062" Count="0" />
+      <LineId Id="1065" Count="0" />
+      <LineId Id="1077" Count="0" />
+      <LineId Id="1075" Count="0" />
+      <LineId Id="1085" Count="1" />
+      <LineId Id="1088" Count="2" />
+      <LineId Id="1087" Count="0" />
+      <LineId Id="1082" Count="0" />
+      <LineId Id="1145" Count="1" />
+      <LineId Id="1149" Count="2" />
+      <LineId Id="1147" Count="0" />
+      <LineId Id="1078" Count="0" />
+      <LineId Id="1100" Count="5" />
+      <LineId Id="1081" Count="0" />
+      <LineId Id="1084" Count="0" />
+      <LineId Id="1079" Count="1" />
+      <LineId Id="1083" Count="0" />
+      <LineId Id="1076" Count="0" />
+      <LineId Id="1106" Count="0" />
+      <LineId Id="1108" Count="1" />
+      <LineId Id="1092" Count="0" />
+      <LineId Id="1094" Count="0" />
+      <LineId Id="1063" Count="0" />
+      <LineId Id="1061" Count="0" />
+      <LineId Id="1042" Count="0" />
+      <LineId Id="1060" Count="0" />
+      <LineId Id="993" Count="10" />
+      <LineId Id="1006" Count="1" />
+      <LineId Id="1053" Count="5" />
+      <LineId Id="1052" Count="0" />
+      <LineId Id="1009" Count="4" />
+      <LineId Id="1059" Count="0" />
+      <LineId Id="1030" Count="0" />
+      <LineId Id="1014" Count="0" />
       <LineId Id="896" Count="0" />
     </LineIds>
   </POU>
