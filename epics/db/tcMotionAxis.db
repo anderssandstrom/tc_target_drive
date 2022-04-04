@@ -59,7 +59,7 @@ record(ai,"$(P)${DEV_NAME}-ErrId"){
 record(ao,"$(P)${DEV_NAME}-PosCmd"){
   info(asyn:READBACK,"1")
   field(PINI, "1")
-  field(DTYP, "asynInt32")
+  field(DTYP, "asynFloat64")
   field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/GVL.astAxes[${AXIS_INDEX}].stControl.fPosition?")
   field(PREC, "3")
   field(SCAN, "Passive")  
