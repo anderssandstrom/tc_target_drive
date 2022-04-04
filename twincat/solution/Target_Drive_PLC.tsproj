@@ -29,6 +29,7 @@
 		</Io>
 		<SymbolWatch>
 			<Variable>TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 4 (EL2819)^WcState^WcState</Variable>
+			<Variable>TIID^Device 1 (EtherCAT)^Drive 49 (iPOS8020 BX-CAT)^Receive PDO 1 mapping parameters^Target Velocity</Variable>
 		</SymbolWatch>
 	</Project>
 	<Mappings>
