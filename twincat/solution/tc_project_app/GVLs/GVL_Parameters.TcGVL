@@ -59,6 +59,8 @@ VAR_GLOBAL CONSTANT
   
   fStepperTargetVelo:LREAL:=0.02;
   fStepperTargetAcc:LREAL:=0.02;
+  fStepperTargetVeloZ:LREAL:=0.01;
+  fStepperTargetAccZ:LREAL:=0.01;
   
   fStepperTempH2:LREAL:=100;  // Deg C
   
