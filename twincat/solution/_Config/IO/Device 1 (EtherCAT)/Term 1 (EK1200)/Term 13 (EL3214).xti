@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.11" ClassName="CFlbTermDef" SubType="9099">
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.12" ClassName="CFlbTermDef" SubType="9099">
 	<DataTypes>
 		<DataType>
 			<Name GUID="{18071995-0000-0000-0000-002000000004}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..3] OF BIT</Name>
@@ -36,9 +36,9 @@
 			<BootStrapData>0010f400f410f400</BootStrapData>
 			<MBoxUserCmdData>020003000a0000000b000000030000000000000000000000000000000000000020308019020000001a0052544420656c656d656e7400</MBoxUserCmdData>
 			<MBoxUserCmdData>020003000a0000001500000003000000000000000000000000000000000000002030801a020000000000436f6e6e656374696f6e20746563686e6f6c6f677900</MBoxUserCmdData>
-			<MBoxUserCmdData>020003000a0000001500000003000000000000000000000000000000000000002000801a020000000300436f6e6e656374696f6e20746563686e6f6c6f677900</MBoxUserCmdData>
-			<MBoxUserCmdData>020003000a0000001500000003000000000000000000000000000000000000002010801a020000000300436f6e6e656374696f6e20746563686e6f6c6f677900</MBoxUserCmdData>
-			<MBoxUserCmdData>020003000a0000001500000003000000000000000000000000000000000000002020801a020000000300436f6e6e656374696f6e20746563686e6f6c6f677900</MBoxUserCmdData>
+			<MBoxUserCmdData>020003000a0000001500000003000000000000000000000000000000000000002000801a020000000000436f6e6e656374696f6e20746563686e6f6c6f677900</MBoxUserCmdData>
+			<MBoxUserCmdData>020003000a0000001500000003000000000000000000000000000000000000002010801a020000000000436f6e6e656374696f6e20746563686e6f6c6f677900</MBoxUserCmdData>
+			<MBoxUserCmdData>020003000a0000001500000003000000000000000000000000000000000000002020801a020000000000436f6e6e656374696f6e20746563686e6f6c6f677900</MBoxUserCmdData>
 			<Pdo Name="RTD Inputs Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="3">
 				<Entry Name="Status__Underrange" Index="#x6000" Sub="#x01">
 					<Type>BIT</Type>
@@ -118,25 +118,25 @@
 				</Entry>
 			</Pdo>
 			<Pdo Name="RTD Inputs Channel 4" Index="#x1a03" Flags="#x0011" SyncMan="3">
-				<Entry Name="Status__Underrange" Index="#x6030" Sub="#x01">
+				<Entry Name="Status__Underrange" Index="#x6030" Sub="#x01" Flags="#x00008020">
 					<Type>BIT</Type>
 				</Entry>
-				<Entry Name="Status__Overrange" Index="#x6030" Sub="#x02">
+				<Entry Name="Status__Overrange" Index="#x6030" Sub="#x02" Flags="#x00008020">
 					<Type>BIT</Type>
 				</Entry>
 				<Entry Name="Status__">
 					<Type GUID="{18071995-0000-0000-0000-002000000004}">ARRAY [0..3] OF BIT</Type>
 				</Entry>
-				<Entry Name="Status__Error" Index="#x6030" Sub="#x07">
+				<Entry Name="Status__Error" Index="#x6030" Sub="#x07" Flags="#x00008020">
 					<Type>BIT</Type>
 				</Entry>
 				<Entry Name="Status__">
 					<Type GUID="{18071995-0000-0000-0000-002000000007}">ARRAY [0..6] OF BIT</Type>
 				</Entry>
-				<Entry Name="Status__TxPDO State" Index="#x6030" Sub="#x0f">
+				<Entry Name="Status__TxPDO State" Index="#x6030" Sub="#x0f" Flags="#x00008020">
 					<Type>BIT</Type>
 				</Entry>
-				<Entry Name="Status__TxPDO Toggle" Index="#x6030" Sub="#x10">
+				<Entry Name="Status__TxPDO Toggle" Index="#x6030" Sub="#x10" Flags="#x00008020">
 					<Type>BIT</Type>
 				</Entry>
 				<Entry Name="Value" Index="#x6030" Sub="#x11">
