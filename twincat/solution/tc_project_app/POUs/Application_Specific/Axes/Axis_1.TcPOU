@@ -33,6 +33,9 @@ END_IF
 
 // Trigger Home vs LimitFwd (should be valid for all axes) from GUI
 IF main.stHWControlX.bExecuteHome  AND NOT GVL.astAxes[1].stStatus.bBusy THEN
+  GVL.astAxes[1].stConfig.fHomingVelFromCam:=GVL_Parameters.fXHomeVelOffCam;
+  GVL.astAxes[1].stConfig.fHomingVelToCam:=GVL_Parameters.fXHomeVelToCam;
+  GVL.astAxes[1].stConfig.fHomePosition:=GVL_Parameters.fXHomePosition;
   GVL.astAxes[1].stControl.eCommand:=E_MotionFunctions.eHome;
   GVL.astAxes[1].stConfig.eHomeSeq:=E_HomingRoutines.eHomeToLimit_Fwd;
   GVL.astAxes[1].stControl.bExecute:=TRUE;
@@ -57,9 +60,9 @@ main.stHWStatusX.bHomingCmdActive:=GVL.astAxes[1].stControl.eCommand=E_MotionFun
                                    GVL.astAxes[1].stConfig.eHomeSeq=E_HomingRoutines.eHomeToLimit_Fwd;
 
 // Hard code velocities and acc/dec
-GVL.astAxes[1].stControl.fAcceleration:=GVL_Parameters.fStepperTargetAcc;
-GVL.astAxes[1].stControl.fDeceleration:=GVL_Parameters.fStepperTargetAcc;
-GVL.astAxes[1].stControl.fVelocity:=GVL_Parameters.fStepperTargetVelo;
+GVL.astAxes[1].stControl.fAcceleration:=GVL_Parameters.fXStepperTargetAcc;
+GVL.astAxes[1].stControl.fDeceleration:=GVL_Parameters.fXStepperTargetAcc;
+GVL.astAxes[1].stControl.fVelocity:=GVL_Parameters.fXStepperTargetVelo;
 
 // Check position is inside limits (and homed)
 main.stHWStatusX.bLoLoAlm:=gvl.astAxes[1].stStatus.fActPosition < GVL_Parameters.fXRangeL2 OR NOT main.stHWStatusX.bHomed;
@@ -1683,6 +1686,9 @@ main.stHWStatusX.bhiHiAlm:=gvl.astAxes[1].stStatus.fActPosition > GVL_Parameters
       <LineId Id="85" Count="0" />
       <LineId Id="95" Count="0" />
       <LineId Id="97" Count="1" />
+      <LineId Id="164" Count="0" />
+      <LineId Id="163" Count="0" />
+      <LineId Id="162" Count="0" />
       <LineId Id="102" Count="1" />
       <LineId Id="99" Count="0" />
       <LineId Id="101" Count="0" />
