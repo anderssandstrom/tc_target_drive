@@ -4,9 +4,8 @@ file "./db/ecSlave.template"
           {}
 }
 
-# No custom data yet
-#file "./db/EL7201.template"
-#{
-#  pattern {}
-#          {}
-#}
+file "./db/EL7201.template"
+{
+  pattern {}
+          {}
+}
