@@ -239,6 +239,18 @@ record(bo,"$(P)${DEV_NAME}-ExePosCmd"){
   field(DESC, "${DEV_NAME}: Execute Abs. Pos Cmd")
 }
 
+# Motion axis
+record(bo,"$(P)${DEV_NAME}-ExeVelCmd"){
+  info(asyn:READBACK,"1")
+  field(PINI, "1")
+  field(DTYP, "asynInt32")
+  field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_CMD}.bExecuteConstVelo?")
+  field(SCAN, "Passive")
+  field(ZNAM, "Idle")
+  field(ONAM, "Execute")
+  field(DESC, "${DEV_NAME}: Execute Abs. Pos Cmd")
+}
+
 record(bo,"$(P)${DEV_NAME}-ExeHomeCmd"){
   info(asyn:READBACK,"1")
   field(PINI, "1")

@@ -2221,8 +2221,8 @@
       <x>131</x>
       <y>2</y>
       <width>99</width>
-      <minimum>-5.0</minimum>
-      <maximum>5.0</maximum>
+      <minimum>-30.0</minimum>
+      <maximum>30.0</maximum>
       <increment>0.1</increment>
     </widget>
     <widget type="textupdate" version="2.0.0">
