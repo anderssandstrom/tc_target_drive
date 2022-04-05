@@ -12,7 +12,7 @@ IF _TaskInfo[fbGetCurTaskIndex.index].FirstCycle THEN
     //Initial default values:
     GVL.astAxes[2].stConfig.eHomeSeq := 1;
     GVL.astAxes[2].stConfig.fHomePosition := 0.0;
-    GVL.astAxes[2].stConfig.fHomeFinishDistance := -1;
+    GVL.astAxes[2].stConfig.fHomeFinishDistance := 0;
 END_IF
 
 ACT_2_Interlock();
