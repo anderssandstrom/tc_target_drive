@@ -57,12 +57,28 @@ VAR_GLOBAL CONSTANT
   fZRangeParkL1:LREAL:=-1.0;
   fZRangeParkL2:LREAL:=-1.1;
   
-  fStepperTargetVelo:LREAL:=0.02;
-  fStepperTargetAcc:LREAL:=0.02;
-  fStepperTargetVeloZ:LREAL:=0.01;
-  fStepperTargetAccZ:LREAL:=0.01;
+  fXStepperTargetVelo:LREAL:=0.1;
+  fXStepperTargetAcc:LREAL:=0.05;
+  
+  fYStepperTargetVelo:LREAL:=0.1;
+  fYStepperTargetAcc:LREAL:=0.05;
+  
+  fZStepperTargetVelo:LREAL:=0.01;
+  fZStepperTargetAcc:LREAL:=0.01;
   
   fStepperTempH2:LREAL:=100;  // Deg C
+  
+  fXHomePosition:LREAL:=21.0;
+  fYHomePosition:LREAL:=21.0;
+  fZHomePosition:LREAL:=5.0;
+  
+  fXHomeVelOffCam:LREAL:=0.02;
+  fYHomeVelOffCam:LREAL:=0.02;
+  fZHomeVelOffCam:LREAL:=0.01;
+  
+  fXHomeVelToCam:LREAL:=0.05;
+  fYHomeVelToCam:LREAL:=0.05;
+  fZHomeVelToCam:LREAL:=0.03;
   
   // Phase OK calcs
   timePhaseStabilizationTime:TIME:=T#60S;

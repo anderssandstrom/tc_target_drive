@@ -1925,30 +1925,6 @@ Bit 15]]></Comment>
 					<Type>UINT</Type>
 				</Var>
 				<Var>
-					<Name>MAIN.fb_s10_EL7201.WcState_WcState</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fb_s10_EL7201.InfoData_State</Name>
-					<Type>UINT</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fb_s11_EL7201.WcState_WcState</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fb_s11_EL7201.InfoData_State</Name>
-					<Type>UINT</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fb_s12_EL7201.WcState_WcState</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fb_s12_EL7201.InfoData_State</Name>
-					<Type>UINT</Type>
-				</Var>
-				<Var>
 					<Name>MAIN.fb_s13_EL3214.iAI_1</Name>
 					<Type>INT</Type>
 				</Var>
@@ -2121,6 +2097,42 @@ Bit 15]]></Comment>
 				<Var>
 					<Name>GVL.astAxes[3].Axis.NcToPlc</Name>
 					<Type GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s10_EL7201.WcState_WcState</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s10_EL7201.InfoData_State</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s10_EL7201.fPosAct</Name>
+					<Type>UDINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s11_EL7201.WcState_WcState</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s11_EL7201.InfoData_State</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s11_EL7201.fPosAct</Name>
+					<Type>UDINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s12_EL7201.WcState_WcState</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s12_EL7201.InfoData_State</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fb_s12_EL7201.fPosAct</Name>
+					<Type>UDINT</Type>
 				</Var>
 			</Vars>
 			<Vars VarGrpType="2" AreaNo="1">
@@ -2678,14 +2690,17 @@ Bit 15]]></Comment>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 10 (EL7201)">
 				<Link VarA="PlcTask Inputs^MAIN.fb_s10_EL7201.InfoData_State" VarB="InfoData^State"/>
 				<Link VarA="PlcTask Inputs^MAIN.fb_s10_EL7201.WcState_WcState" VarB="WcState^WcState" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s10_EL7201.fPosAct" VarB="FB Position^Position"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 11 (EL7201)">
 				<Link VarA="PlcTask Inputs^MAIN.fb_s11_EL7201.InfoData_State" VarB="InfoData^State"/>
 				<Link VarA="PlcTask Inputs^MAIN.fb_s11_EL7201.WcState_WcState" VarB="WcState^WcState" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s11_EL7201.fPosAct" VarB="FB Position^Position"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 12 (EL7201)">
 				<Link VarA="PlcTask Inputs^MAIN.fb_s12_EL7201.InfoData_State" VarB="InfoData^State"/>
 				<Link VarA="PlcTask Inputs^MAIN.fb_s12_EL7201.WcState_WcState" VarB="WcState^WcState" Size="1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fb_s12_EL7201.fPosAct" VarB="FB Position^Position"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 13 (EL3214)">
 				<Link VarA="PlcTask Inputs^MAIN.fb_s13_EL3214.InfoData_State" VarB="InfoData^State"/>

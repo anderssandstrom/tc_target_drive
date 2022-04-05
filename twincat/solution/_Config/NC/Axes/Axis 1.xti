@@ -1325,7 +1325,7 @@ External Setpoint Generation:
 			<OtherSettings AllowMotionCmdToSlave="true" PulseDistancePos="0.1" PulseDistanceNeg="0.1"/>
 		</AxisPara>
 		<Encoder Name="Enc" EncType="19">
-			<EncPara ScaleFactorNumerator="0.340251786" ScaleFactorDenominator="51200" MaxCount="#xffffffff"/>
+			<EncPara ScaleFactorNumerator="0.340251786" ScaleFactorDenominator="51200" Inverse="true" MaxCount="#xffffffff"/>
 			<Vars VarGrpType="1">
 				<Name>Inputs</Name>
 				<Var>
@@ -1385,7 +1385,7 @@ External Setpoint Generation:
 			</Vars>
 		</Encoder>
 		<Drive Name="Drive" DrvType="16">
-			<DrvPara MaxCount="#xffffffff">
+			<DrvPara Inverse="true" MaxCount="#xffffffff">
 				<Analog VeloReferenz="0.1" VeloScale="8192" TorqueSetpointScale="10" ScaleFactorActTorque="0.1"/>
 				<TimeComp TaskDelayCycles="1"/>
 			</DrvPara>

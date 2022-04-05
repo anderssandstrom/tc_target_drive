@@ -12,7 +12,7 @@ IF _TaskInfo[fbGetCurTaskIndex.index].FirstCycle THEN
     //Initial default values:
     GVL.astAxes[1].stConfig.eHomeSeq := 0;
     GVL.astAxes[1].stConfig.fHomePosition := 0.0;
-    GVL.astAxes[1].stConfig.fHomeFinishDistance := -1;
+    GVL.astAxes[1].stConfig.fHomeFinishDistance := 0.0;
 END_IF
 
 ACT_1_Interlock();
@@ -31,8 +31,18 @@ IF main.stHWControlX.bExecuteAbsPos  AND NOT GVL.astAxes[1].stStatus.bBusy THEN
   main.stHWControlX.bExecuteAbsPos:=FALSE;
 END_IF
 
+// Trigger Const Velo movement from GUI
+IF main.stHWControlX.bExecuteConstVelo AND NOT GVL.astAxes[1].stStatus.bBusy THEN
+  GVL.astAxes[1].stControl.eCommand:=E_MotionFunctions.eMoveVelocity;
+  GVL.astAxes[1].stControl.bExecute:=TRUE;
+  main.stHWControlX.bExecuteConstVelo:=FALSE;
+END_IF
+
 // Trigger Home vs LimitFwd (should be valid for all axes) from GUI
 IF main.stHWControlX.bExecuteHome  AND NOT GVL.astAxes[1].stStatus.bBusy THEN
+  GVL.astAxes[1].stConfig.fHomingVelFromCam:=GVL_Parameters.fXHomeVelOffCam;
+  GVL.astAxes[1].stConfig.fHomingVelToCam:=GVL_Parameters.fXHomeVelToCam;
+  GVL.astAxes[1].stConfig.fHomePosition:=GVL_Parameters.fXHomePosition;
   GVL.astAxes[1].stControl.eCommand:=E_MotionFunctions.eHome;
   GVL.astAxes[1].stConfig.eHomeSeq:=E_HomingRoutines.eHomeToLimit_Fwd;
   GVL.astAxes[1].stControl.bExecute:=TRUE;
@@ -57,9 +67,9 @@ main.stHWStatusX.bHomingCmdActive:=GVL.astAxes[1].stControl.eCommand=E_MotionFun
                                    GVL.astAxes[1].stConfig.eHomeSeq=E_HomingRoutines.eHomeToLimit_Fwd;
 
 // Hard code velocities and acc/dec
-GVL.astAxes[1].stControl.fAcceleration:=GVL_Parameters.fStepperTargetAcc;
-GVL.astAxes[1].stControl.fDeceleration:=GVL_Parameters.fStepperTargetAcc;
-GVL.astAxes[1].stControl.fVelocity:=GVL_Parameters.fStepperTargetVelo;
+GVL.astAxes[1].stControl.fAcceleration:=GVL_Parameters.fXStepperTargetAcc;
+GVL.astAxes[1].stControl.fDeceleration:=GVL_Parameters.fXStepperTargetAcc;
+GVL.astAxes[1].stControl.fVelocity:=GVL_Parameters.fXStepperTargetVelo;
 
 // Check position is inside limits (and homed)
 main.stHWStatusX.bLoLoAlm:=gvl.astAxes[1].stStatus.fActPosition < GVL_Parameters.fXRangeL2 OR NOT main.stHWStatusX.bHomed;
@@ -523,6 +533,11 @@ main.stHWStatusX.bhiHiAlm:=gvl.astAxes[1].stStatus.fActPosition > GVL_Parameters
                                     <v n="Fixed">false</v>
                                     <v n="Extensible">false</v>
                                   </o>
+                                  <o>
+                                    <v n="Flags">0</v>
+                                    <v n="Fixed">false</v>
+                                    <v n="Extensible">false</v>
+                                  </o>
                                 </l2>
                                 <l2 n="InputItems">
                                   <o t="BoxTreeOperand">
@@ -962,6 +977,95 @@ main.stHWStatusX.bhiHiAlm:=gvl.astAxes[1].stStatus.fActPosition > GVL_Parameters
                                       <v n="Id">213L</v>
                                     </o>
                                     <v n="Id">212L</v>
+                                  </o>
+                                  <o t="BoxTreeBox">
+                                    <v n="BoxType">"OR"</v>
+                                    <o n="Instance" t="Operand">
+                                      <n n="Operand" />
+                                      <v n="Type">""</v>
+                                      <v n="Comment">""</v>
+                                      <v n="SymbolComment">""</v>
+                                      <v n="Address">""</v>
+                                      <o n="Flags" t="Flags">
+                                        <v n="Flags">0</v>
+                                        <v n="Fixed">false</v>
+                                        <v n="Extensible">false</v>
+                                      </o>
+                                      <v n="LValue">false</v>
+                                      <v n="Boolean">false</v>
+                                      <v n="IsInstance">true</v>
+                                      <v n="Id">222L</v>
+                                    </o>
+                                    <o n="OutputItems" t="OutputItemList">
+                                      <l2 n="OutputItems">
+                                        <n />
+                                      </l2>
+                                    </o>
+                                    <o n="Flags" t="Flags">
+                                      <v n="Flags">0</v>
+                                      <v n="Fixed">true</v>
+                                      <v n="Extensible">false</v>
+                                    </o>
+                                    <n n="InputFlags" />
+                                    <l2 n="InputItems" cet="BoxTreeOperand">
+                                      <o>
+                                        <o n="Operand" t="Operand">
+                                          <v n="Operand">"main.stHWStatusX.bHomingCmdActive"</v>
+                                          <v n="Type">"BOOL"</v>
+                                          <v n="Comment">""</v>
+                                          <v n="SymbolComment">""</v>
+                                          <v n="Address">""</v>
+                                          <o n="Flags" t="Flags">
+                                            <v n="Flags">0</v>
+                                            <v n="Fixed">false</v>
+                                            <v n="Extensible">false</v>
+                                          </o>
+                                          <v n="LValue">false</v>
+                                          <v n="Boolean">false</v>
+                                          <v n="IsInstance">false</v>
+                                          <v n="Id">215L</v>
+                                        </o>
+                                        <v n="Id">214L</v>
+                                      </o>
+                                      <o>
+                                        <o n="Operand" t="Operand">
+                                          <v n="Operand">"main.stHWStatusX.bHomed"</v>
+                                          <v n="Type">"BOOL"</v>
+                                          <v n="Comment">""</v>
+                                          <v n="SymbolComment">""</v>
+                                          <v n="Address">""</v>
+                                          <o n="Flags" t="Flags">
+                                            <v n="Flags">0</v>
+                                            <v n="Fixed">false</v>
+                                            <v n="Extensible">false</v>
+                                          </o>
+                                          <v n="LValue">false</v>
+                                          <v n="Boolean">false</v>
+                                          <v n="IsInstance">false</v>
+                                          <v n="Id">219L</v>
+                                        </o>
+                                        <v n="Id">218L</v>
+                                      </o>
+                                    </l2>
+                                    <o n="InputParam" t="ParamList">
+                                      <l2 n="Names" />
+                                      <l2 n="Types" />
+                                    </o>
+                                    <o n="OutputParam" t="ParamList">
+                                      <l2 n="Names" cet="String">
+                                        <v></v>
+                                      </l2>
+                                      <l2 n="Types" cet="String">
+                                        <v>BOOL</v>
+                                      </l2>
+                                    </o>
+                                    <v n="CallType" t="Operator">Or</v>
+                                    <v n="EN">false</v>
+                                    <v n="ENO">false</v>
+                                    <n n="STSnippet" />
+                                    <v n="ContainsExtensibleInputs">false</v>
+                                    <v n="ProvidesSTSnippet">false</v>
+                                    <v n="Id">223L</v>
                                   </o>
                                 </l2>
                                 <o n="InputParam" t="ParamList">
@@ -1681,8 +1785,13 @@ main.stHWStatusX.bhiHiAlm:=gvl.astAxes[1].stStatus.fActPosition > GVL_Parameters
       <LineId Id="41" Count="0" />
       <LineId Id="83" Count="0" />
       <LineId Id="85" Count="0" />
+      <LineId Id="166" Count="5" />
+      <LineId Id="165" Count="0" />
       <LineId Id="95" Count="0" />
       <LineId Id="97" Count="1" />
+      <LineId Id="164" Count="0" />
+      <LineId Id="163" Count="0" />
+      <LineId Id="162" Count="0" />
       <LineId Id="102" Count="1" />
       <LineId Id="99" Count="0" />
       <LineId Id="101" Count="0" />
