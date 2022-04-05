@@ -10,6 +10,7 @@ STRUCT
     bManualInterlockOverride: BOOL:=FALSE;
 	bAllowMotionGUI:BOOL:=FALSE;       // Allow motion from GUI
 	bExecuteAbsPos:BOOL:=FALSE;
+	bExecuteConstVelo:BOOL:=FALSE;
 	bExecuteHome:BOOL:=FALSE;
 	bExecuteStop:BOOL:=FALSE;
 	bEnable:BOOL:=FALSE;

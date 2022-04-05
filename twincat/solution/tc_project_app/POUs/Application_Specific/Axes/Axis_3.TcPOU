@@ -31,6 +31,13 @@ IF main.stHWControlZ.bExecuteAbsPos  AND NOT GVL.astAxes[3].stStatus.bBusy THEN
   main.stHWControlZ.bExecuteAbsPos:=FALSE;
 END_IF
 
+// Trigger Const Velo movement from GUI
+IF main.stHWControlZ.bExecuteConstVelo AND NOT GVL.astAxes[3].stStatus.bBusy THEN
+  GVL.astAxes[3].stControl.eCommand:=E_MotionFunctions.eMoveVelocity;
+  GVL.astAxes[3].stControl.bExecute:=TRUE;
+  main.stHWControlZ.bExecuteConstVelo:=FALSE;
+END_IF
+
 // Trigger Home vs LimitFwd (should be valid for all axes) from GUI
 IF main.stHWControlZ.bExecuteHome  AND NOT GVL.astAxes[3].stStatus.bBusy THEN
   GVL.astAxes[3].stConfig.fHomePosition:=GVL_Parameters.fZHomePosition;
@@ -2539,7 +2546,11 @@ main.stHWStatusZ.bhiHiAlm:=gvl.astAxes[3].stStatus.fActPosition > GVL_Parameters
       <LineId Id="71" Count="0" />
       <LineId Id="94" Count="0" />
       <LineId Id="93" Count="0" />
-      <LineId Id="72" Count="8" />
+      <LineId Id="72" Count="5" />
+      <LineId Id="140" Count="0" />
+      <LineId Id="135" Count="4" />
+      <LineId Id="134" Count="0" />
+      <LineId Id="78" Count="2" />
       <LineId Id="130" Count="0" />
       <LineId Id="132" Count="1" />
       <LineId Id="81" Count="8" />
