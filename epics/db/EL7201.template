@@ -1,0 +1,12 @@
+
+# Position act
+record(ai,"$(P)ec$(MASTER_ID)-s$(SLAVE_POS)-$(HWTYPE)-PosAct"){
+  field(DESC, "$(HWTYPE): Position Actual")
+  field(PINI, "$(PINI=1)")
+  field(DTYP, "asynInt32")
+  field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))TIMEBASE=PLC/T_DLY_MS=500/TS_MS=100/ADSPORT=${ADSPORT=852}/Main.fb_s${SLAVE_POS}_${HWTYPE}.fPosAct?")
+  field(SCAN, "I/O Intr")
+  field(TSE,  "$(TSE=-2)")
+  
+}
+
