@@ -57,8 +57,8 @@ VAR_GLOBAL CONSTANT
   fZRangeParkL1:LREAL:=-1.0;
   fZRangeParkL2:LREAL:=-1.1;
   
-  fStepperTargetVelo:LREAL:=0.02;
-  fStepperTargetAcc:LREAL:=0.02;
+  fStepperTargetVelo:LREAL:=0.1;
+  fStepperTargetAcc:LREAL:=0.05;
   fStepperTargetVeloZ:LREAL:=0.01;
   fStepperTargetAccZ:LREAL:=0.01;
   
