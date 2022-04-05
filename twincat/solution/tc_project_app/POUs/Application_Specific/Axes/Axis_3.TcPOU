@@ -54,9 +54,9 @@ main.stHWStatusZ.bHomingCmdActive:=GVL.astAxes[3].stControl.eCommand=E_MotionFun
                                    GVL.astAxes[3].stConfig.eHomeSeq=E_HomingRoutines.eHomeToLimit_Fwd;
 
 // Hard code velocities and acc/dec
-GVL.astAxes[3].stControl.fAcceleration:=GVL_Parameters.fStepperTargetAcc;
-GVL.astAxes[3].stControl.fDeceleration:=GVL_Parameters.fStepperTargetAcc;
-GVL.astAxes[3].stControl.fVelocity:=GVL_Parameters.fStepperTargetVelo;
+GVL.astAxes[3].stControl.fAcceleration:=GVL_Parameters.fStepperTargetAccZ;
+GVL.astAxes[3].stControl.fDeceleration:=GVL_Parameters.fStepperTargetAccZ;
+GVL.astAxes[3].stControl.fVelocity:=GVL_Parameters.fStepperTargetVeloZ;
 
 // Check position is inside limits (and homed)
 IF main.stHWStatusZ.bParkingRangeEnabled THEN 
