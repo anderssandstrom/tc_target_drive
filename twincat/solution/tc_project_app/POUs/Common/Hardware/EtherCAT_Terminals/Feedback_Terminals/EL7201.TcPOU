@@ -19,7 +19,7 @@ END_VAR
 VAR
     WcState_WcState AT %I* : BOOL := FALSE;
     InfoData_State  AT %I* : UINT := 0;
-
+    fPosAct         AT %I* : UDINT := 0;
     //FB-s
     EL7201_Error    : FB_TerminalError;
 END_VAR
