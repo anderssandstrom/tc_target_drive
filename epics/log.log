@@ -634,4 +634,44 @@ RBV : 0             RVAL: 0             SEVR: NO_ALARM      STAT: NO_ALARM
 TPRO: 0             VAL : 0             
 mcag-tgt-drv-io-11241 > dbpr TARGET_DU:X-ExeVelCmd[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P TARGET_DU:X-ExeVelCmdf TARGET_DU:X-ExeVelCmd[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C 1
 DBF_STRING:         "Execute" 
+mcag-tgt-drv-io-11241 > d[Kdbgreo[Kp *:X*
+TARGET_DU:X-BrakeReleseCmd
+TARGET_DU:X-AllowMotionCmd
+TARGET_DU:X-ExePosCmd
+TARGET_DU:X-ExeVelCmd
+TARGET_DU:X-ExeHomeCmd
+TARGET_DU:X-ExeStopCmd
+TARGET_DU:X-ExeResetCmd
+TARGET_DU:X-EnaCmd
+TARGET_DU:X-PosCmd
+TARGET_DU:X-EstopOK
+TARGET_DU:X-LimitMax
+TARGET_DU:X-LimitMin
+TARGET_DU:X-LimitMaxMax
+TARGET_DU:X-LimitMinMin
+TARGET_DU:X-BrakeReleased
+TARGET_DU:X-SumFwdILOK
+TARGET_DU:X-SumBwdILOK
+TARGET_DU:X-ManualILOverride
+TARGET_DU:X-LimitMinPark
+TARGET_DU:X-LimitMinMinPark
+TARGET_DU:X-ParkRangeEnaAct
+TARGET_DU:X-HwOK
+TARGET_DU:X-GeneralAndOverrideILOK
+TARGET_DU:X-GeneralILOK
+TARGET_DU:X-Homed
+TARGET_DU:X-HomingCmdActive
+TARGET_DU:X-EnaAct
+TARGET_DU:X-Busy
+TARGET_DU:X-PosLoLoAlm
+TARGET_DU:X-PosLoAlm
+TARGET_DU:X-PosHiHiAlm
+TARGET_DU:X-PosHiAlm
+TARGET_DU:X-SumILFwd
+TARGET_DU:X-SumILBwd
+TARGET_DU:X-TempAct
+TARGET_DU:X-PosAct
+TARGET_DU:X-VelAct
+TARGET_DU:X-ErrId
+mcag-tgt-drv-io-11241 > dbgrep *:X* > X.[K.log
 mcag-tgt-drv-io-11241 > 

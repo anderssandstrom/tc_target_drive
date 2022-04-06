@@ -362,3 +362,14 @@ record(bi,"$(P)${DEV_NAME}-PosHiAlm"){
   field(OSV,  "MINOR")
   field(DESC, "${DEV_NAME}: Position Over Hi Limit")
 }
+
+record(bo,"$(P)${DEV_NAME}-ConstVeloDirFwd"){
+  info(asyn:READBACK,"1")
+  field(PINI, "1")
+  field(DTYP, "asynInt32")
+  field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_CMD}.bJogDirFwd?")
+  field(SCAN, "Passive")
+  field(ZNAM, "BWD")
+  field(ONAM, "FWD")
+  field(DESC, "${DEV_NAME}: Jog dir")
+}
