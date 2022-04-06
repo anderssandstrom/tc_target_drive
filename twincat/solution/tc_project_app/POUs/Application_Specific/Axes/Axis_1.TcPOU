@@ -71,6 +71,13 @@ GVL.astAxes[1].stControl.fAcceleration:=GVL_Parameters.fXStepperTargetAcc;
 GVL.astAxes[1].stControl.fDeceleration:=GVL_Parameters.fXStepperTargetAcc;
 GVL.astAxes[1].stControl.fVelocity:=GVL_Parameters.fXStepperTargetVelo;
 
+// reverse velo if dir is BWD
+IF GVL.astAxes[1].stControl.eCommand=E_MotionFunctions.eMoveVelocity AND NOT main.stHWControlX.bJogDirFwd  THEN
+	GVL.astAxes[1].stControl.fVelocity:=-GVL_Parameters.fXStepperTargetVelo;
+END_IF
+
+GVL.astAxes[1].stControl.fVelocity:=GVL_Parameters.fXStepperTargetVelo;
+
 // Check position is inside limits (and homed)
 main.stHWStatusX.bLoLoAlm:=gvl.astAxes[1].stStatus.fActPosition < GVL_Parameters.fXRangeL2 OR NOT main.stHWStatusX.bHomed;
 main.stHWStatusX.bLoAlm:=gvl.astAxes[1].stStatus.fActPosition < GVL_Parameters.fXRangeL1 OR NOT main.stHWStatusX.bHomed;
@@ -1812,7 +1819,15 @@ main.stHWStatusX.bhiHiAlm:=gvl.astAxes[1].stStatus.fActPosition > GVL_Parameters
       <LineId Id="156" Count="0" />
       <LineId Id="144" Count="0" />
       <LineId Id="123" Count="0" />
-      <LineId Id="145" Count="1" />
+      <LineId Id="145" Count="0" />
+      <LineId Id="178" Count="0" />
+      <LineId Id="191" Count="0" />
+      <LineId Id="186" Count="0" />
+      <LineId Id="177" Count="0" />
+      <LineId Id="188" Count="0" />
+      <LineId Id="180" Count="0" />
+      <LineId Id="190" Count="0" />
+      <LineId Id="146" Count="0" />
       <LineId Id="155" Count="0" />
       <LineId Id="148" Count="0" />
       <LineId Id="147" Count="0" />

@@ -15,6 +15,7 @@ STRUCT
 	bExecuteStop:BOOL:=FALSE;
 	bEnable:BOOL:=FALSE;
 	bExecuteReset:BOOL:=FALSE;
+	bJogDirFwd:BOOL:=1;   // 1=fwd, 0=bwd
 END_STRUCT
 END_TYPE
 ]]></Declaration>
