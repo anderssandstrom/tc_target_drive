@@ -68,6 +68,11 @@ GVL.astAxes[3].stControl.fAcceleration:=GVL_Parameters.fZStepperTargetAcc;
 GVL.astAxes[3].stControl.fDeceleration:=GVL_Parameters.fZStepperTargetAcc;
 GVL.astAxes[3].stControl.fVelocity:=GVL_Parameters.fZStepperTargetVelo;
 
+// reverse velo if dir is BWD
+IF GVL.astAxes[3].stControl.eCommand=E_MotionFunctions.eMoveVelocity AND NOT main.stHWControlZ.bJogDirFwd  THEN
+	GVL.astAxes[3].stControl.fVelocity:=-GVL_Parameters.fZStepperTargetVelo;
+END_IF
+
 // Check position is inside limits (and homed)
 IF main.stHWStatusZ.bParkingRangeEnabled THEN 
   main.stHWStatusZ.bLoLoAlm:=gvl.astAxes[3].stStatus.fActPosition < GVL_Parameters.fZRangeParkL2 OR NOT main.stHWStatusZ.bHomed;
@@ -2565,6 +2570,8 @@ main.stHWStatusZ.bhiHiAlm:=gvl.astAxes[3].stStatus.fActPosition > GVL_Parameters
       <LineId Id="124" Count="0" />
       <LineId Id="105" Count="2" />
       <LineId Id="99" Count="0" />
+      <LineId Id="146" Count="3" />
+      <LineId Id="145" Count="0" />
       <LineId Id="123" Count="0" />
       <LineId Id="109" Count="0" />
       <LineId Id="111" Count="0" />
