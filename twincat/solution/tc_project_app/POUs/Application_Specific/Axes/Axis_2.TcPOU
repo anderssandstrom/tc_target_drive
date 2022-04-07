@@ -57,7 +57,7 @@ IF main.stHWControlY.bExecuteStop THEN
 END_IF
 
 main.stHWStatusY.bBusy:=GVL.astAxes[2].stStatus.bBusy;
-GVL.astAxes[2].stControl.bReset:=main.stHWControlZ.bExecuteReset;
+GVL.astAxes[2].stControl.bReset:=main.stHWControlY.bExecuteReset;
 main.stHWControlY.bExecuteReset:=FALSE;
 main.stHWStatusY.bHomed:=GVL.astAxes[2].stStatus.bHomed;
 main.stHWStatusY.bHomingCmdActive:=GVL.astAxes[2].stControl.eCommand=E_MotionFunctions.eHome AND 
