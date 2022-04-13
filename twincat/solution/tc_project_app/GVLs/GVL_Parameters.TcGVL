@@ -66,7 +66,7 @@ VAR_GLOBAL CONSTANT
   fZStepperTargetVelo:LREAL:=0.03;
   fZStepperTargetAcc:LREAL:=0.01;
   
-  fStepperTempH2:LREAL:=100;  // Deg C
+  fStepperTempH2:LREAL:=120;  // Deg C
   
   fXHomePosition:LREAL:=21.0;
   fYHomePosition:LREAL:=21.0;
