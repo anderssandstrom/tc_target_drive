@@ -55,7 +55,7 @@ record(ai,"$(P)${DEV_NAME}-TempAct"){
 record(bi,"$(P)${DEV_NAME}-LimitMax"){
   field(PINI, "1")  
   field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bLimitMax?")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/T_DLY_MS=100/TS_MS=100/GVL.astAxes[${AXIS_NO}].stInputs.bLimitfwd?")
   field(SCAN, "I/O Intr")
   field(ZNAM, "Activated")
   field(ONAM, "OK")
@@ -65,7 +65,7 @@ record(bi,"$(P)${DEV_NAME}-LimitMax"){
 record(bi,"$(P)${DEV_NAME}-LimitMin"){
   field(PINI, "1")  
   field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bLimitMin?")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/T_DLY_MS=100/TS_MS=100/GVL.astAxes[${AXIS_NO}].stInputs.bLimitbwd?")
   field(SCAN, "I/O Intr")
   field(ZNAM, "Activated")
   field(ONAM, "OK")
