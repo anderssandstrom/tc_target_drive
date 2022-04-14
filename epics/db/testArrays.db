@@ -2,12 +2,12 @@
 ###############################################################################
 # fTestArray: waveform Input
 
-record(waveform,"$(P)GetFTestArray"){
+record(waveform,"$(P)GetFTestArray${INDEX}"){
   field(PINI, "1")
   field(TSE, -2)
   field(DTYP,"asynFloat64ArrayIn")
-  field(INP,"@asyn($(PORT),0,1)ADSPORT=851/Main.fTestArray?")
-  field(NELM,100)
+  field(INP,"@asyn($(PORT),0,1)ADSPORT=852/TIMEBASE=PLC/T_DLY_MS=2/TS_MS=2/Main.fTestArray${INDEX}?")
+  field(NELM,${NELM})
   field(SCAN,"I/O Intr")
   field(FTVL,"DOUBLE")
 }
