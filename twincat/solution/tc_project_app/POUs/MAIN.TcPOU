@@ -59,6 +59,19 @@ VAR
 	timPhaseStabilization: TON;
 	timPhaseErrorOverH1: TON;
 	bPhaseOKSetReset: SR;
+	
+	// Test of array transfer
+  (*  fTestArray01: ARRAY [1..200] OF LREAL;
+    fTestArray02: ARRAY [1..200] OF LREAL;
+    fTestArray03: ARRAY [1..200] OF LREAL;
+    fTestArray04: ARRAY [1..200] OF LREAL;
+    fTestArray05: ARRAY [1..200] OF LREAL;
+    fTestArray06: ARRAY [1..200] OF LREAL;
+    fTestArray07: ARRAY [1..200] OF LREAL;
+    fTestArray08: ARRAY [1..200] OF LREAL;
+	i: INT;
+	counter: LREAL;
+	btest: INT;*)
 END_VAR
 
 VAR_INPUT
@@ -73,7 +86,24 @@ VAR_INPUT
   stHWStatusDev  : ST_HW_STATUS_DEV;
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// Check hardware status
+      <ST><![CDATA[// Test of array transfer
+(*IF btest>=4 THEN 
+  FOR i:=1 TO 200 DO
+    fTestArray01[i]:=SIN(counter/1000/2/3.1415);
+	fTestArray02[i]:=SIN(counter/1000/2/3.1415+1);
+	fTestArray03[i]:=COS(counter/1000/2/3.1415);
+	fTestArray04[i]:=COS(counter/1000/2/3.1415+1);
+	fTestArray05[i]:=SIN(counter/1000/2/3.1415);
+	fTestArray06[i]:=SIN(counter/1000/2/3.1415+1);
+	fTestArray07[i]:=COS(counter/1000/2/3.1415);
+	fTestArray08[i]:=COS(counter/1000/2/3.1415+1);
+    counter:=counter+1;
+  END_FOR
+  bTest:=0;
+END_IF
+btest:=btest+1;*)
+
+// Check hardware status
 ACT_1_Hardware();
 
 // Read Bridge Terminal Inputs
@@ -4330,6 +4360,15 @@ END_IF
       </Implementation>
     </Action>
     <LineIds Name="MAIN">
+      <LineId Id="2044" Count="0" />
+      <LineId Id="2035" Count="1" />
+      <LineId Id="2043" Count="0" />
+      <LineId Id="2047" Count="6" />
+      <LineId Id="2038" Count="1" />
+      <LineId Id="2054" Count="0" />
+      <LineId Id="2046" Count="0" />
+      <LineId Id="2037" Count="0" />
+      <LineId Id="2055" Count="0" />
       <LineId Id="1843" Count="7" />
       <LineId Id="1869" Count="1" />
       <LineId Id="1868" Count="0" />
