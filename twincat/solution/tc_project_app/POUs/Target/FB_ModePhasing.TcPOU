@@ -61,9 +61,12 @@ VAR
   fbPhasePID               : FB_PID;
   fbPWM                    : FB_PWM;
   fbSuperImpose            : FB_TargetSuperImpose;
-  timerCheckLatchFreq      : TON;
+  timerCheckLatchFreqHigh  : TON;
+  timerCheckLatchFreqLow   : TON;
   nMissedTimingPulses      : INT:=0;
   nMissedTimingPulsesOld   : INT:=0;
+  nMissedTimingPulsesLow   : INT:=0;
+  nMissedTimingPulsesLowold : INT:=0;   
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -150,13 +153,17 @@ END_IF
 
 //Ensure that pulses arrive from timing system when velocity is above certain limit
 IF ABS(stStatus.fActualVelocity/10) > GVL_Parameters.fCheckTimingPulseMinVel THEN
-  timerCheckLatchFreq(IN:=fLatchedPosition = fLatchedPositionOld,PT:=LREAL_TO_TIME(1000/GVL_Parameters.nPulseFreqHz*1.5));
-  IF timerCheckLatchFreq.Q THEN
+  IF NOT  timerCheckLatchFreqLow.Q AND fLatchedPosition <> fLatchedPositionOld THEN  // To early time trigger
+	nMissedTimingPulsesLow:=nMissedTimingPulsesLow+1;
+  END_IF
+  timerCheckLatchFreqHigh(IN:=fLatchedPosition = fLatchedPositionOld,PT:=LREAL_TO_TIME(1000/GVL_Parameters.nPulseFreqHz + 5));
+  timerCheckLatchFreqLow(IN:=fLatchedPosition = fLatchedPositionOld,PT:=LREAL_TO_TIME(1000/GVL_Parameters.nPulseFreqHz- 5));
+  IF timerCheckLatchFreqHigh.Q THEN // to late timing pulse
     nMissedTimingPulses:=nMissedTimingPulses+1;
-	timerCheckLatchFreq(IN:=FALSE);  //Reset
+	timerCheckLatchFreqHigh(IN:=FALSE);  //Reset
   END_IF
 ELSE
-  timerCheckLatchFreq(IN:=FALSE);  //Reset
+  timerCheckLatchFreqHigh(IN:=FALSE);  //Reset
 END_IF
   
 IF NOT bPhaseAlgTrigg THEN
@@ -345,14 +352,22 @@ IF nMissedTimingPulsesOld<>nMissedTimingPulses THEN
   sErrorStr:=GVL_ErrorCodes.sErrorNoLatchStr;
 END_IF
 
+IF nMissedTimingPulsesLowOld<>nMissedTimingPulsesLow THEN
+  bError:=TRUE;
+  nErrorId:=GVL_ErrorCodes.nErrorNoLatchId;
+  sErrorStr:=GVL_ErrorCodes.sErrorNoLatchStr;
+END_IF
+
 IF bReset THEN
   bError:=FALSE;
   nErrorId:=0;
   //nMissedTimingPulses:=0;
-  timerCheckLatchFreq(IN:=FALSE);  //Reset
+  timerCheckLatchFreqHigh(IN:=FALSE);  //Reset
+  timerCheckLatchFreqLow(IN:=FALSE);  //Reset
 END_IF
 
-nMissedTimingPulsesOld:=nMissedTimingPulses;]]></ST>
+nMissedTimingPulsesOld:=nMissedTimingPulses;
+nMissedTimingPulsesLowold:=nMissedTimingPulsesLow;]]></ST>
     </Implementation>
     <LineIds Name="FB_ModePhasing">
       <LineId Id="1065" Count="0" />
@@ -395,7 +410,9 @@ nMissedTimingPulsesOld:=nMissedTimingPulses;]]></ST>
       <LineId Id="698" Count="0" />
       <LineId Id="694" Count="0" />
       <LineId Id="1695" Count="0" />
+      <LineId Id="1972" Count="2" />
       <LineId Id="693" Count="0" />
+      <LineId Id="1970" Count="0" />
       <LineId Id="1692" Count="0" />
       <LineId Id="287" Count="0" />
       <LineId Id="1701" Count="0" />
@@ -493,15 +510,19 @@ nMissedTimingPulsesOld:=nMissedTimingPulses;]]></ST>
       <LineId Id="703" Count="0" />
       <LineId Id="782" Count="0" />
       <LineId Id="702" Count="0" />
+      <LineId Id="1979" Count="4" />
+      <LineId Id="1978" Count="0" />
       <LineId Id="706" Count="0" />
       <LineId Id="704" Count="0" />
       <LineId Id="707" Count="0" />
       <LineId Id="709" Count="0" />
       <LineId Id="1702" Count="0" />
       <LineId Id="1764" Count="0" />
+      <LineId Id="1971" Count="0" />
       <LineId Id="708" Count="0" />
       <LineId Id="1766" Count="0" />
       <LineId Id="1555" Count="0" />
+      <LineId Id="1977" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
