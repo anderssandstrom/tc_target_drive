@@ -84,6 +84,15 @@ record(ai,"$(P)Rotation-MissedTimingPulses"){
   field(DESC, "Rotation: Missed Timing pulses [mm]")
 }
 
+record(ai,"$(P)Rotation-MissedTimingPulsesLow"){
+  field(PINI, "1")
+  field(DTYP, "asynFloat64")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.nMissedTimingPulsesLow?")
+  field(PREC, "3")
+  field(SCAN, "I/O Intr")
+  field(DESC, "Rotation: Missed Timing pulses [mm]")
+}
+
 record(mbbo,"$(P)Rotation-State-Cmd"){
   info(asyn:READBACK,"1")
   field(PINI, "1")
