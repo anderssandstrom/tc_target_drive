@@ -761,47 +761,47 @@ main.stHWStatusY.bBrakeReleased;
                               <v n="Extensible">false</v>
                             </o>
                             <o>
+                              <v n="Flags">1</v>
+                              <v n="Fixed">true</v>
+                              <v n="Extensible">false</v>
+                            </o>
+                            <o>
+                              <v n="Flags">1</v>
+                              <v n="Fixed">true</v>
+                              <v n="Extensible">false</v>
+                            </o>
+                            <o>
                               <v n="Flags">0</v>
-                              <v n="Fixed">false</v>
+                              <v n="Fixed">true</v>
                               <v n="Extensible">false</v>
                             </o>
                             <o>
                               <v n="Flags">0</v>
-                              <v n="Fixed">false</v>
-                              <v n="Extensible">false</v>
-                            </o>
-                            <o>
-                              <v n="Flags">1</v>
                               <v n="Fixed">true</v>
                               <v n="Extensible">false</v>
                             </o>
                             <o>
-                              <v n="Flags">1</v>
+                              <v n="Flags">0</v>
                               <v n="Fixed">true</v>
                               <v n="Extensible">false</v>
                             </o>
                             <o>
-                              <v n="Flags">1</v>
+                              <v n="Flags">0</v>
                               <v n="Fixed">true</v>
                               <v n="Extensible">false</v>
                             </o>
                             <o>
-                              <v n="Flags">1</v>
+                              <v n="Flags">0</v>
                               <v n="Fixed">true</v>
                               <v n="Extensible">false</v>
                             </o>
                             <o>
-                              <v n="Flags">1</v>
+                              <v n="Flags">0</v>
                               <v n="Fixed">true</v>
                               <v n="Extensible">false</v>
                             </o>
                             <o>
-                              <v n="Flags">1</v>
-                              <v n="Fixed">true</v>
-                              <v n="Extensible">false</v>
-                            </o>
-                            <o>
-                              <v n="Flags">1</v>
+                              <v n="Flags">0</v>
                               <v n="Fixed">true</v>
                               <v n="Extensible">false</v>
                             </o>
