@@ -1,16 +1,16 @@
 registerChannelProviderLocal firstTime true
 #
-# Start at "2022-W14-Apr05-1627-08-CEST"
+# Start at "2022-W16-Apr19-1423-46-CEST"
 #
 # Version information:
-# European Spallation Source ERIC : iocsh.bash (3.4.0-PID-11241)
+# European Spallation Source ERIC : iocsh.bash (3.4.0-PID-10176)
 #
 # --->--> snip -->--> 
 # Please Use Version and other environment variables
 # in order to report or debug this shell
 #
 # HOSTDISPLAY=""
-# WINDOWID="27263014"
+# WINDOWID="25165862"
 # PWD="/home/anderssandstrom/sources/tc_target_drive/epics"
 # USER="anderssandstrom"
 # LOGNAME="anderssandstrom"
@@ -31,10 +31,10 @@ registerChannelProviderLocal firstTime true
 # --->--> snip -->--> 
 #
 # Set REQUIRE_IOC for its internal PVs
-epicsEnvSet REQUIRE_IOC "REQMOD:mcag-tgt-drv-io-11241"
+epicsEnvSet REQUIRE_IOC "REQMOD:mcag-tgt-drv-io-10176"
 #
 # Enable an exit subroutine for sotfioc
-dbLoadRecords "/home/anderssandstrom/epics/base-7.0.5/db/softIocExit.db" "IOC=REQMOD:mcag-tgt-drv-io-11241"
+dbLoadRecords "/home/anderssandstrom/epics/base-7.0.5/db/softIocExit.db" "IOC=REQMOD:mcag-tgt-drv-io-10176"
 #
 # Set E3_IOCSH_TOP for the absolute path where iocsh.bash is executed.
 epicsEnvSet E3_IOCSH_TOP "/home/anderssandstrom/sources/tc_target_drive/epics"
@@ -92,7 +92,7 @@ epicsEnvSet("SAMPLE_RATE_MS_DEF", "500");
 epicsEnvSet("MAX_DLY_MS_DEF",     "100");
 #adsSetLocalAddress "172.30.2.35.1.1"
 adsAsynPortDriverConfigure("TARGET_ADS_PORT","172.30.12.18","172.30.12.18.1.1",852,1000,0,0,500,100,1000,0)
-2022-04-05T16:27:08+0200 Info: Connected to 172.30.12.18
+2022-04-19T14:23:46+0200 Info: Connected to 172.30.12.18
 #adsSetLocalAddress "172.30.2.52.1.1"
 asynOctetSetOutputEos("TARGET_ADS_PORT", -1, "\n")
 asynOctetSetInputEos("TARGET_ADS_PORT", -1, "\n")
@@ -109,13 +109,13 @@ dbLoadRecords("./db/rotationHome.db","P=TARGET_DU:,PORT=TARGET_ADS_PORT")
 ## general Stuff, Fuses and so
 dbLoadRecords("./db/general.db","P=TARGET_DU:,PORT=TARGET_ADS_PORT,DEV_NAME=DEV")
 ## Stepper X
-dbLoadRecords("./db/xyz.db","P=TARGET_DU:,PORT=TARGET_ADS_PORT,DEV_NAME=X,STRUCT_STAT=stHwStatusX, STRUCT_CMD=stHwControlX")
+dbLoadRecords("./db/xyz.db","P=TARGET_DU:,PORT=TARGET_ADS_PORT,DEV_NAME=X,STRUCT_STAT=stHwStatusX, STRUCT_CMD=stHwControlX, AXIS_NO=1")
 dbLoadRecords("./db/tcMotionAxis.db","P=TARGET_DU:,PORT=TARGET_ADS_PORT,DEV_NAME=X,AXIS_INDEX=1")
 ## Stepper Y
-dbLoadRecords("./db/xyz.db","P=TARGET_DU:,PORT=TARGET_ADS_PORT,DEV_NAME=Y,STRUCT_STAT=stHwStatusY, STRUCT_CMD=stHwControlY")
+dbLoadRecords("./db/xyz.db","P=TARGET_DU:,PORT=TARGET_ADS_PORT,DEV_NAME=Y,STRUCT_STAT=stHwStatusY, STRUCT_CMD=stHwControlY, AXIS_NO=2")
 dbLoadRecords("./db/tcMotionAxis.db","P=TARGET_DU:,PORT=TARGET_ADS_PORT,DEV_NAME=Y,AXIS_INDEX=2")
 ## Stepper Z
-dbLoadRecords("./db/xyz.db","P=TARGET_DU:,PORT=TARGET_ADS_PORT,DEV_NAME=Z,STRUCT_STAT=stHwStatusZ, STRUCT_CMD=stHwControlZ")
+dbLoadRecords("./db/xyz.db","P=TARGET_DU:,PORT=TARGET_ADS_PORT,DEV_NAME=Z,STRUCT_STAT=stHwStatusZ, STRUCT_CMD=stHwControlZ, AXIS_NO=3")
 dbLoadRecords("./db/tcMotionAxis.db","P=TARGET_DU:,PORT=TARGET_ADS_PORT,DEV_NAME=Z,AXIS_INDEX=3")
 # Load hardware
 epicsEnvSet("EC_SLAVE_NUM",    "2")
@@ -197,400 +197,404 @@ dbLoadTemplate("./db/IPOS8020.substitutions","P=TARGET_DU:,PORT=TARGET_ADS_PORT,
 #epicsEnvSet("EC_SLAVE_NUM",    "25")
 #epicsEnvSet("EC_HWTYPE",       "EL3214")
 #dbLoadTemplate("./db/${EC_HWTYPE}.substitutions","P=${PREFIX},PORT=${ADS_ASYN_PORT},ADDR=0,TIMEOUT=1,ADSPORT=${ADSPORT_DEF},MASTER_ID=${EC_MASTER_ID},SLAVE_POS=${EC_SLAVE_NUM},HWTYPE=${EC_HWTYPE},T_SMP_MS=${SAMPLE_RATE_MS_DEF},TSE=${TSE=0}")
-#
-#epicsEnvSet("EC_SLAVE_NUM",   Starting iocInit
-2022/04/05 16:27:08.804 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlRot.bEnable=" (index 1).
-2022/04/05 16:27:08.811 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlRot.bExecute?" (index 2).
-2022/04/05 16:27:08.820 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlRot.bReset?" (index 3).
-2022/04/05 16:27:08.829 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlRot.bAllowMotionGUI?" (index 4).
-2022/04/05 16:27:08.835 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.bEnableAxis?" (index 5).
-2022/04/05 16:27:08.844 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.bHaltAxis?" (index 6).
-2022/04/05 16:27:08.851 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.bCommandPositionChange?" (index 7).
-2022/04/05 16:27:08.858 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.bPositionCommandValue?" (index 8).
-2022/04/05 16:27:08.863 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.bCommandValueAccept?" (index 9).
-2022/04/05 16:27:08.871 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.bCmd_ErrorReset?" (index 10).
-2022/04/05 16:27:08.878 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.bCmd_SetAbsolutePosition?" (index 11).
-2022/04/05 16:27:08.886 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.bCmd_DriveControlledHoming?" (index 12).
-2022/04/05 16:27:08.893 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.bCmd_DisableLimits?" (index 13).
-2022/04/05 16:27:08.900 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.bCmd_ActivateParameterMode?" (index 14).
-2022/04/05 16:27:08.908 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.bCmd_ExitParameterMode?" (index 15).
-2022/04/05 16:27:08.917 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.bCmd_RunVirtualMater?" (index 16).
-2022/04/05 16:27:08.925 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlX.bBrakeReleaseCmd?" (index 17).
-2022/04/05 16:27:08.934 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlX.bAllowMotionGUI?" (index 18).
-2022/04/05 16:27:08.942 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlX.bExecuteAbsPos?" (index 19).
-2022/04/05 16:27:08.951 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlX.bExecuteConstVelo?" (index 20).
-2022/04/05 16:27:08.958 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlX.bExecuteHome?" (index 21).
-2022/04/05 16:27:08.965 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlX.bExecuteStop?" (index 22).
-2022/04/05 16:27:08.973 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlX.bExecuteReset?" (index 23).
-2022/04/05 16:27:08.980 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlX.bEnable?" (index 24).
-2022/04/05 16:27:08.986 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlY.bBrakeReleaseCmd?" (index 25).
-2022/04/05 16:27:08.994 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlY.bAllowMotionGUI?" (index 26).
-2022/04/05 16:27:09.002 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlY.bExecuteAbsPos?" (index 27).
-2022/04/05 16:27:09.010 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlY.bExecuteConstVelo?" (index 28).
-2022/04/05 16:27:09.017 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlY.bExecuteHome?" (index 29).
-2022/04/05 16:27:09.024 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlY.bExecuteStop?" (index 30).
-2022/04/05 16:27:09.033 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlY.bExecuteReset?" (index 31).
-2022/04/05 16:27:09.040 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlY.bEnable?" (index 32).
-2022/04/05 16:27:09.047 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlZ.bBrakeReleaseCmd?" (index 33).
-2022/04/05 16:27:09.054 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlZ.bAllowMotionGUI?" (index 34).
-2022/04/05 16:27:09.061 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlZ.bExecuteAbsPos?" (index 35).
-2022/04/05 16:27:09.068 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlZ.bExecuteConstVelo?" (index 36).
-2022/04/05 16:27:09.076 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlZ.bExecuteHome?" (index 37).
-2022/04/05 16:27:09.084 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlZ.bExecuteStop?" (index 38).
-2022/04/05 16:27:09.091 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlZ.bExecuteReset?" (index 39).
-2022/04/05 16:27:09.098 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlZ.bEnable?" (index 40).
-2022/04/05 16:27:09.105 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.eTargetState?" (index 41).
-2022/04/05 16:27:09.113 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.fbModeHome.eHomeState?" (index 42).
-2022/04/05 16:27:09.121 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlRot.eTargetStateCmd?" (index 43).
-2022/04/05 16:27:09.128 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlRot.ePhaseCntrlAlg?" (index 44).
-2022/04/05 16:27:09.136 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlRot.ePhasePwmType?" (index 45).
-2022/04/05 16:27:09.145 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL_Parameters.nMaxMotorTemperature?" (index 46).
-2022/04/05 16:27:09.153 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlRot.fPhaseOffsetMM?" (index 47).
-2022/04/05 16:27:09.160 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlRot.fVelSet?" (index 48).
-2022/04/05 16:27:09.167 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlRot.fPosSet?" (index 49).
-2022/04/05 16:27:09.176 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.eOperationMode?" (index 50).
-2022/04/05 16:27:09.186 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.fCommandPosition?" (index 51).
-2022/04/05 16:27:09.194 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.fCommandVelocity?" (index 52).
-2022/04/05 16:27:09.203 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.fCommandAcceleration?" (index 53).
-2022/04/05 16:27:09.211 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.fCommandDeceleration?" (index 54).
-2022/04/05 16:27:09.218 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.fFeedrateOverride?" (index 55).
-2022/04/05 16:27:09.225 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.fTorqueLimit?" (index 56).
-2022/04/05 16:27:09.234 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.fVelocityCommandValue?" (index 57).
-2022/04/05 16:27:09.242 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[1].stControl.fPosition?" (index 58).
-2022/04/05 16:27:09.250 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[2].stControl.fPosition?" (index 59).
-2022/04/05 16:27:09.258 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[3].stControl.fPosition?" (index 60).
-2022/04/05 16:27:09.267 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.sErrorStr?" (index 61).
-2022/04/05 16:27:09.273 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.fbModeHome.fRefMarkPosArray?" (index 62).
-2022/04/05 16:27:09.280 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.sErrorMessage?" (index 63).
-2022/04/05 16:27:09.287 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.sErrorMessage?" (index 64).
-2022/04/05 16:27:09.294 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.sErrorMessage?" (index 65).
-2022/04/05 16:27:09.300 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.sErrorMessage?" (index 66).
-2022/04/05 16:27:09.308 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s6_EL9505.sErrorMessage?" (index 67).
-2022/04/05 16:27:09.315 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s7_EL1252.sErrorMessage?" (index 68).
-2022/04/05 16:27:09.322 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s8_EL9410.sErrorMessage?" (index 69).
-2022/04/05 16:27:09.329 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s9_EL1252.sErrorMessage?" (index 70).
-2022/04/05 16:27:09.336 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s10_EL7201.sErrorMessage?" (index 71).
-2022/04/05 16:27:09.342 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s11_EL7201.sErrorMessage?" (index 72).
-2022/04/05 16:27:09.350 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s12_EL7201.sErrorMessage?" (index 73).
-2022/04/05 16:27:09.360 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s13_EL3214.sErrorMessage?" (index 74).
-2022/04/05 16:27:09.367 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s14_EL5021.sErrorMessage?" (index 75).
-2022/04/05 16:27:09.375 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s15_EL6695.sErrorMessage?" (index 76).
-2022/04/05 16:27:09.382 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s16_EL9410.sErrorMessage?" (index 77).
-2022/04/05 16:27:09.390 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s17_EL2032.sErrorMessage?" (index 78).
-2022/04/05 16:27:09.396 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s18_EK1110.sErrorMessage?" (index 79).
-2022/04/05 16:27:09.402 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s19_indraDrive.sErrorMessage?" (index 80).
-2022/04/05 16:27:09.408 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s20_IPOS8020.sErrorMessage?" (index 81).
-2022/04/05 16:27:09.415 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s21_IPOS8020.sErrorMessage?" (index 82).
-2022/04/05 16:27:09.421 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s22_IPOS8020.sErrorMessage?" (index 83).
-2022/04/05 16:27:09.427 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.InfoData_State?" (index 84).
-2022/04/05 16:27:09.434 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.iTerminal_ID?" (index 85).
-2022/04/05 16:27:09.443 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.InfoData_State?" (index 86).
-2022/04/05 16:27:09.450 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.iTerminal_ID?" (index 87).
-2022/04/05 16:27:09.459 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.InfoData_State?" (index 88).
-2022/04/05 16:27:09.466 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.iTerminal_ID?" (index 89).
-2022/04/05 16:27:09.476 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH1_Diag?" (index 90).
-2022/04/05 16:27:09.486 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH2_Diag?" (index 91).
-2022/04/05 16:27:09.495 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH3_Diag?" (index 92).
-2022/04/05 16:27:09.502 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH4_Diag?" (index 93).
-2022/04/05 16:27:09.510 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH5_Diag?" (index 94).
-2022/04/05 16:27:09.518 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH6_Diag?" (index 95).
-2022/04/05 16:27:09.526 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH7_Diag?" (index 96).
-2022/04/05 16:27:09.534 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH8_Diag?" (index 97).
-2022/04/05 16:27:09.544 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH9_Diag?" (index 98).
-2022/04/05 16:27:09.555 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH10_Diag?" (index 99).
-2022/04/05 16:27:09.564 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH11_Diag?" (index 100).
-2022/04/05 16:27:09.572 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH12_Diag?" (index 101).
-2022/04/05 16:27:09.580 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH13_Diag?" (index 102).
-2022/04/05 16:27:09.588 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH14_Diag?" (index 103).
-2022/04/05 16:27:09.596 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH15_Diag?" (index 104).
-2022/04/05 16:27:09.606 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH16_Diag?" (index 105).
-2022/04/05 16:27:09.614 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.InfoData_State?" (index 106).
-2022/04/05 16:27:09.622 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.iTerminal_ID?" (index 107).
-2022/04/05 16:27:09.630 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH1_Diag?" (index 108).
-2022/04/05 16:27:09.640 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH2_Diag?" (index 109).
-2022/04/05 16:27:09.649 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH3_Diag?" (index 110).
-2022/04/05 16:27:09.656 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH4_Diag?" (index 111).
-2022/04/05 16:27:09.665 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH5_Diag?" (index 112).
-2022/04/05 16:27:09.673 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH6_Diag?" (index 113).
-2022/04/05 16:27:09.682 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH7_Diag?" (index 114).
-2022/04/05 16:27:09.691 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH8_Diag?" (index 115).
-2022/04/05 16:27:09.699 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH9_Diag?" (index 116).
-2022/04/05 16:27:09.708 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH10_Diag?" (index 117).
-2022/04/05 16:27:09.717 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH11_Diag?" (index 118).
-2022/04/05 16:27:09.726 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH12_Diag?" (index 119).
-2022/04/05 16:27:09.736 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH13_Diag?" (index 120).
-2022/04/05 16:27:09.743 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH14_Diag?" (index 121).
-2022/04/05 16:27:09.752 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH15_Diag?" (index 122).
-2022/04/05 16:27:09.759 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH16_Diag?" (index 123).
-2022/04/05 16:27:09.768 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s6_EL9505.InfoData_State?" (index 124).
-2022/04/05 16:27:09.776 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s6_EL9505.iTerminal_ID?" (index 125).
-2022/04/05 16:27:09.785 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s7_EL1252.InfoData_State?" (index 126).
-2022/04/05 16:27:09.793 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s7_EL1252.iTerminal_ID?" (index 127).
-2022/04/05 16:27:09.802 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s8_EL9410.InfoData_State?" (index 128).
-2022/04/05 16:27:09.809 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s8_EL9410.iTerminal_ID?" (index 129).
-2022/04/05 16:27:09.819 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s9_EL1252.InfoData_State?" (index 130).
-2022/04/05 16:27:09.828 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s9_EL1252.iTerminal_ID?" (index 131).
-2022/04/05 16:27:09.836 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s10_EL7201.InfoData_State?" (index 132).
-2022/04/05 16:27:09.844 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s10_EL7201.iTerminal_ID?" (index 133).
-2022/04/05 16:27:09.853 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s11_EL7201.InfoData_State?" (index 134).
-2022/04/05 16:27:09.862 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s11_EL7201.iTerminal_ID?" (index 135).
-2022/04/05 16:27:09.870 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s12_EL7201.InfoData_State?" (index 136).
-2022/04/05 16:27:09.878 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s12_EL7201.iTerminal_ID?" (index 137).
-2022/04/05 16:27:09.887 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s13_EL3214.InfoData_State?" (index 138).
-2022/04/05 16:27:09.895 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s13_EL3214.iTerminal_ID?" (index 139).
-2022/04/05 16:27:09.902 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s13_EL3214.wCh1_Status?" (index 140).
-2022/04/05 16:27:09.910 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s13_EL3214.wCh2_Status?" (index 141).
-2022/04/05 16:27:09.919 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s13_EL3214.wCh3_Status?" (index 142).
-2022/04/05 16:27:09.928 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s13_EL3214.wCh4_Status?" (index 143).
-2022/04/05 16:27:09.936 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s14_EL5021.InfoData_State?" (index 144).
-2022/04/05 16:27:09.944 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s14_EL5021.iTerminal_ID?" (index 145).
-2022/04/05 16:27:09.954 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s15_EL6695.InfoData_State?" (index 146).
-2022/04/05 16:27:09.962 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s15_EL6695.iTerminal_ID?" (index 147).
-2022/04/05 16:27:09.973 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s16_EL9410.InfoData_State?" (index 148).
-2022/04/05 16:27:09.982 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s16_EL9410.iTerminal_ID?" (index 149).
-2022/04/05 16:27:09.991 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s17_EL2032.InfoData_State?" (index 150).
-2022/04/05 16:27:10.000 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s17_EL2032.iTerminal_ID?" (index 151).
-2022/04/05 16:27:10.008 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s18_EK1110.InfoData_State?" (index 152).
-2022/04/05 16:27:10.018 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s18_EK1110.iTerminal_ID?" (index 153).
-2022/04/05 16:27:10.027 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s19_indraDrive.InfoData_State?" (index 154).
-2022/04/05 16:27:10.036 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s19_indraDrive.iTerminal_ID?" (index 155).
-2022/04/05 16:27:10.044 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s20_IPOS8020.InfoData_State?" (index 156).
-2022/04/05 16:27:10.053 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s20_IPOS8020.iTerminal_ID?" (index 157).
-2022/04/05 16:27:10.062 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s21_IPOS8020.InfoData_State?" (index 158).
-2022/04/05 16:27:10.071 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s21_IPOS8020.iTerminal_ID?" (index 159).
-2022/04/05 16:27:10.080 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s22_IPOS8020.InfoData_State?" (index 160).
-2022/04/05 16:27:10.088 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s22_IPOS8020.iTerminal_ID?" (index 161).
-2022/04/05 16:27:10.097 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlRot.bEnable?" (index 162).
-2022/04/05 16:27:10.106 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.bEnabled?" (index 163).
-2022/04/05 16:27:10.114 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.fbModePhase.bPhasing?" (index 164).
-2022/04/05 16:27:10.124 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.fbModePhase.bVeloStable?" (index 165).
-2022/04/05 16:27:10.132 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.bError?" (index 166).
-2022/04/05 16:27:10.141 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.bmanualInterlockOverride?" (index 167).
-2022/04/05 16:27:10.150 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.bHwStatusOK?" (index 168).
-2022/04/05 16:27:10.160 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.bGeneralILOk?" (index 169).
-2022/04/05 16:27:10.169 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.bSumILOK?" (index 170).
-2022/04/05 16:27:10.180 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.bEstopOK?" (index 171).
-2022/04/05 16:27:10.189 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatusRot.bPhaseOK?" (index 172).
-2022/04/05 16:27:10.196 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bDriveInParameterMode?" (index 173).
-2022/04/05 16:27:10.204 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bDCBusPresent?" (index 174).
-2022/04/05 16:27:10.212 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bAxisEnabled?" (index 175).
-2022/04/05 16:27:10.221 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bAxisHomedStatus?" (index 176).
-2022/04/05 16:27:10.230 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bAxisStandStillStatus?" (index 177).
-2022/04/05 16:27:10.238 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bAxisInTargetPosition?" (index 178).
-2022/04/05 16:27:10.246 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bAxisConstantVelocityStatus?" (index 179).
-2022/04/05 16:27:10.253 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bAxisAccelerationStatus?" (index 180).
-2022/04/05 16:27:10.260 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bAxisDecelerationStatus?" (index 181).
-2022/04/05 16:27:10.268 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bAxisJogStatus?" (index 182).
-2022/04/05 16:27:10.278 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bCommandChange?" (index 183).
-2022/04/05 16:27:10.288 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bCommandValueProcessing?" (index 184).
-2022/04/05 16:27:10.296 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bLimitsDisabled?" (index 185).
-2022/04/05 16:27:10.306 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bDiagMessage?" (index 186).
-2022/04/05 16:27:10.313 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bWarning?" (index 187).
-2022/04/05 16:27:10.321 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bError?" (index 188).
-2022/04/05 16:27:10.329 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bSTOActiveCh1?" (index 189).
-2022/04/05 16:27:10.336 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bSTOActiveCh2?" (index 190).
-2022/04/05 16:27:10.375 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.fbModeHome.bHomed?" (index 191).
-2022/04/05 16:27:10.383 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHWStatusDev.bBeamOff?" (index 192).
-2022/04/05 16:27:10.392 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bEstopOK?" (index 193).
-2022/04/05 16:27:10.400 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bLimitMax?" (index 194).
-2022/04/05 16:27:10.408 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bLimitMin?" (index 195).
-2022/04/05 16:27:10.416 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bLimitMaxMax?" (index 196).
-2022/04/05 16:27:10.426 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bLimitMinmin?" (index 197).
-2022/04/05 16:27:10.435 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bBrakeReleased?" (index 198).
-2022/04/05 16:27:10.443 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bSumFwdILOK?" (index 199).
-2022/04/05 16:27:10.450 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bSumBwdILOK?" (index 200).
-2022/04/05 16:27:10.458 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bmanualInterlockOverride?" (index 201).
-2022/04/05 16:27:10.466 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bLimitMinPark?" (index 202).
-2022/04/05 16:27:10.474 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bLimitMinMinPark?" (index 203).
-2022/04/05 16:27:10.483 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bParkingRangeEnabled?" (index 204).
-2022/04/05 16:27:10.492 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bHwStatusOK?" (index 205).
-2022/04/05 16:27:10.501 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bGeneralAndOverrideILOk?" (index 206).
-2022/04/05 16:27:10.509 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bGeneralILOk?" (index 207).
-2022/04/05 16:27:10.518 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bHomed?" (index 208).
-2022/04/05 16:27:10.528 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bHomingCmdActive?" (index 209).
-2022/04/05 16:27:10.538 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bEnabled?" (index 210).
-2022/04/05 16:27:10.548 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bBusy?" (index 211).
-2022/04/05 16:27:10.556 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bLoLoAlm?" (index 212).
-2022/04/05 16:27:10.564 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bLoAlm?" (index 213).
-2022/04/05 16:27:10.573 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bHiHiAlm?" (index 214).
-2022/04/05 16:27:10.583 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bHiAlm?" (index 215).
-2022/04/05 16:27:10.590 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[1].stStatus.bFwEnabled?" (index 216).
-2022/04/05 16:27:10.603 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[1].stStatus.bBwEnabled?" (index 217).
-2022/04/05 16:27:10.613 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bEstopOK?" (index 218).
-2022/04/05 16:27:10.623 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bLimitMax?" (index 219).
-2022/04/05 16:27:10.633 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bLimitMin?" (index 220).
-2022/04/05 16:27:10.642 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bLimitMaxMax?" (index 221).
-2022/04/05 16:27:10.651 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bLimitMinmin?" (index 222).
-2022/04/05 16:27:10.658 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bBrakeReleased?" (index 223).
-2022/04/05 16:27:10.667 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bSumFwdILOK?" (index 224).
-2022/04/05 16:27:10.677 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bSumBwdILOK?" (index 225).
-2022/04/05 16:27:10.684 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bmanualInterlockOverride?" (index 226).
-2022/04/05 16:27:10.692 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bLimitMinPark?" (index 227).
-2022/04/05 16:27:10.702 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bLimitMinMinPark?" (index 228).
-2022/04/05 16:27:10.712 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bParkingRangeEnabled?" (index 229).
-2022/04/05 16:27:10.721 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bHwStatusOK?" (index 230).
-2022/04/05 16:27:10.730 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bGeneralAndOverrideILOk?" (index 231).
-2022/04/05 16:27:10.739 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bGeneralILOk?" (index 232).
-2022/04/05 16:27:10.747 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bHomed?" (index 233).
-2022/04/05 16:27:10.756 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bHomingCmdActive?" (index 234).
-2022/04/05 16:27:10.764 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bEnabled?" (index 235).
-2022/04/05 16:27:10.772 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bBusy?" (index 236).
-2022/04/05 16:27:10.783 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bLoLoAlm?" (index 237).
-2022/04/05 16:27:10.794 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bLoAlm?" (index 238).
-2022/04/05 16:27:10.803 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bHiHiAlm?" (index 239).
-2022/04/05 16:27:10.813 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bHiAlm?" (index 240).
-2022/04/05 16:27:10.822 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[2].stStatus.bFwEnabled?" (index 241).
-2022/04/05 16:27:10.833 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[2].stStatus.bBwEnabled?" (index 242).
-2022/04/05 16:27:10.844 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bEstopOK?" (index 243).
-2022/04/05 16:27:10.854 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bLimitMax?" (index 244).
-2022/04/05 16:27:10.865 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bLimitMin?" (index 245).
-2022/04/05 16:27:10.873 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bLimitMaxMax?" (index 246).
-2022/04/05 16:27:10.883 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bLimitMinmin?" (index 247).
-2022/04/05 16:27:10.891 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bBrakeReleased?" (index 248).
-2022/04/05 16:27:10.900 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bSumFwdILOK?" (index 249).
-2022/04/05 16:27:10.909 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bSumBwdILOK?" (index 250).
-2022/04/05 16:27:10.919 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bmanualInterlockOverride?" (index 251).
-2022/04/05 16:27:10.929 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bLimitMinPark?" (index 252).
-2022/04/05 16:27:10.940 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bLimitMinMinPark?" (index 253).
-2022/04/05 16:27:10.950 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bParkingRangeEnabled?" (index 254).
-2022/04/05 16:27:10.961 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bHwStatusOK?" (index 255).
-2022/04/05 16:27:10.970 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bGeneralAndOverrideILOk?" (index 256).
-2022/04/05 16:27:10.980 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bGeneralILOk?" (index 257).
-2022/04/05 16:27:10.992 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bHomed?" (index 258).
-2022/04/05 16:27:11.002 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bHomingCmdActive?" (index 259).
-2022/04/05 16:27:11.012 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bEnabled?" (index 260).
-2022/04/05 16:27:11.022 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bBusy?" (index 261).
-2022/04/05 16:27:11.032 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bLoLoAlm?" (index 262).
-2022/04/05 16:27:11.043 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bLoAlm?" (index 263).
-2022/04/05 16:27:11.055 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bHiHiAlm?" (index 264).
-2022/04/05 16:27:11.064 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bHiAlm?" (index 265).
-2022/04/05 16:27:11.073 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[3].stStatus.bFwEnabled?" (index 266).
-2022/04/05 16:27:11.082 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[3].stStatus.bBwEnabled?" (index 267).
-2022/04/05 16:27:11.092 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.WcState_WcState?" (index 268).
-2022/04/05 16:27:11.102 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bError?" (index 269).
-2022/04/05 16:27:11.112 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_1?" (index 270).
-2022/04/05 16:27:11.122 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_2?" (index 271).
-2022/04/05 16:27:11.131 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_3?" (index 272).
-2022/04/05 16:27:11.139 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_4?" (index 273).
-2022/04/05 16:27:11.148 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_5?" (index 274).
-2022/04/05 16:27:11.158 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_6?" (index 275).
-2022/04/05 16:27:11.168 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_7?" (index 276).
-2022/04/05 16:27:11.179 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_8?" (index 277).
-2022/04/05 16:27:11.190 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_9?" (index 278).
-2022/04/05 16:27:11.198 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_10?" (index 279).
-2022/04/05 16:27:11.209 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_11?" (index 280).
-2022/04/05 16:27:11.219 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_12?" (index 281).
-2022/04/05 16:27:11.230 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_13?" (index 282).
-2022/04/05 16:27:11.241 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_14?" (index 283).
-2022/04/05 16:27:11.251 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_15?" (index 284).
-2022/04/05 16:27:11.261 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_16?" (index 285).
-2022/04/05 16:27:11.272 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.WcState_WcState?" (index 286).
-2022/04/05 16:27:11.283 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bError?" (index 287).
-2022/04/05 16:27:11.295 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_1?" (index 288).
-2022/04/05 16:27:11.307 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_2?" (index 289).
-2022/04/05 16:27:11.317 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_3?" (index 290).
-2022/04/05 16:27:11.329 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_4?" (index 291).
-2022/04/05 16:27:11.339 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_5?" (index 292).
-2022/04/05 16:27:11.349 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_6?" (index 293).
-2022/04/05 16:27:11.361 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_7?" (index 294).
-2022/04/05 16:27:11.373 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_8?" (index 295).
-2022/04/05 16:27:11.384 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_9?" (index 296).
-2022/04/05 16:27:11.393 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_10?" (index 297).
-2022/04/05 16:27:11.403 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_11?" (index 298).
-2022/04/05 16:27:11.415 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_12?" (index 299).
-2022/04/05 16:27:11.425 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_13?" (index 300).
-2022/04/05 16:27:11.435 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_14?" (index 301).
-2022/04/05 16:27:11.444 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_15?" (index 302).
-2022/04/05 16:27:11.455 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_16?" (index 303).
-2022/04/05 16:27:11.465 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.WcState_WcState?" (index 304).
-2022/04/05 16:27:11.473 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.bError?" (index 305).
-2022/04/05 16:27:11.485 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.WcState_WcState?" (index 306).
-2022/04/05 16:27:11.494 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.bError?" (index 307).
-2022/04/05 16:27:11.505 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s6_EL9505.WcState_WcState?" (index 308).
-2022/04/05 16:27:11.515 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s6_EL9505.bError?" (index 309).
-2022/04/05 16:27:11.525 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s6_EL9505.bUoPwr_OK?" (index 310).
-2022/04/05 16:27:11.536 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s6_EL9505.bUo_Overload?" (index 311).
-2022/04/05 16:27:11.547 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s7_EL1252.WcState_WcState?" (index 312).
-2022/04/05 16:27:11.557 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s7_EL1252.bError?" (index 313).
-2022/04/05 16:27:11.566 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s7_EL1252.bBI_1?" (index 314).
-2022/04/05 16:27:11.576 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s7_EL1252.bBI_2?" (index 315).
-2022/04/05 16:27:11.587 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s8_EL9410.WcState_WcState?" (index 316).
-2022/04/05 16:27:11.598 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s8_EL9410.bError?" (index 317).
-2022/04/05 16:27:11.611 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s8_EL9410.bUs_Undervoltage?" (index 318).
-2022/04/05 16:27:11.623 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s8_EL9410.bUp_Undervoltage?" (index 319).
-2022/04/05 16:27:11.633 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s9_EL1252.WcState_WcState?" (index 320).
-2022/04/05 16:27:11.645 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s9_EL1252.bError?" (index 321).
-2022/04/05 16:27:11.655 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s9_EL1252.bBI_1?" (index 322).
-2022/04/05 16:27:11.667 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s9_EL1252.bBI_2?" (index 323).
-2022/04/05 16:27:11.677 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s10_EL7201.WcState_WcState?" (index 324).
-2022/04/05 16:27:11.689 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s10_EL7201.bError?" (index 325).
-2022/04/05 16:27:11.701 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s11_EL7201.WcState_WcState?" (index 326).
-2022/04/05 16:27:11.711 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s11_EL7201.bError?" (index 327).
-2022/04/05 16:27:11.724 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s12_EL7201.WcState_WcState?" (index 328).
-2022/04/05 16:27:11.734 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s12_EL7201.bError?" (index 329).
-2022/04/05 16:27:11.744 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s13_EL3214.WcState_WcState?" (index 330).
-2022/04/05 16:27:11.756 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s13_EL3214.bError?" (index 331).
-2022/04/05 16:27:11.769 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s14_EL5021.WcState_WcState?" (index 332).
-2022/04/05 16:27:11.781 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s14_EL5021.bError?" (index 333).
-2022/04/05 16:27:11.791 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s15_EL6695.WcState_WcState?" (index 334).
-2022/04/05 16:27:11.803 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s15_EL6695.bError?" (index 335).
-2022/04/05 16:27:11.813 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s16_EL9410.WcState_WcState?" (index 336).
-2022/04/05 16:27:11.824 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s16_EL9410.bError?" (index 337).
-2022/04/05 16:27:11.835 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s16_EL9410.bUs_Undervoltage?" (index 338).
-2022/04/05 16:27:11.848 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s16_EL9410.bUp_Undervoltage?" (index 339).
-2022/04/05 16:27:11.860 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s17_EL2032.WcState_WcState?" (index 340).
-2022/04/05 16:27:11.871 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s17_EL2032.bError?" (index 341).
-2022/04/05 16:27:11.882 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s18_EK1110.bError?" (index 342).
-2022/04/05 16:27:11.893 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s19_indraDrive.WcState_WcState?" (index 343).
-2022/04/05 16:27:11.903 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s19_indraDrive.bError?" (index 344).
-2022/04/05 16:27:11.914 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s20_IPOS8020.WcState_WcState?" (index 345).
-2022/04/05 16:27:11.924 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s20_IPOS8020.bError?" (index 346).
-2022/04/05 16:27:11.934 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s21_IPOS8020.WcState_WcState?" (index 347).
-2022/04/05 16:27:11.944 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s21_IPOS8020.bError?" (index 348).
-2022/04/05 16:27:11.954 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s22_IPOS8020.WcState_WcState?" (index 349).
-2022/04/05 16:27:11.965 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s22_IPOS8020.bError?" (index 350).
-2022/04/05 16:27:11.977 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.stHwStatusRot.fActPos?" (index 351).
-2022/04/05 16:27:11.987 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.fActVel?" (index 352).
-2022/04/05 16:27:11.999 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.fActTorque?" (index 353).
-2022/04/05 16:27:12.010 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.fActTemp?" (index 354).
-2022/04/05 16:27:12.022 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/T_DLY_MS=500/TS_MS=10/Main.fbModePhase.fPhaseErrorMM?" (index 355).
-2022/04/05 16:27:12.035 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.fbModePhase.nMissedTimingPulses?" (index 356).
-2022/04/05 16:27:12.047 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.fPhaseOffsetActDeg?" (index 357).
-2022/04/05 16:27:12.059 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.fbModePhase.fLatchedPosition?" (index 358).
-2022/04/05 16:27:12.070 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.fbModePhase.nClosestSectorId?" (index 359).
-2022/04/05 16:27:12.081 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.fbModePhase.nChoosenSector?" (index 360).
-2022/04/05 16:27:12.091 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.fbModePhase.iRangeOkCounter?" (index 361).
-2022/04/05 16:27:12.103 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.fSetVelRaw?" (index 362).
-2022/04/05 16:27:12.113 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.fbModePhase.fLastSectorVelocity?" (index 363).
-2022/04/05 16:27:12.124 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.nErrorId?" (index 364).
-2022/04/05 16:27:12.143 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.fbModePhase.fPhaseErrorMM?" (index 365).
-2022/04/05 16:27:12.163 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.eActualOperationModeNo?" (index 366).
-2022/04/05 16:27:12.176 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.fActualPosition?" (index 367).
-2022/04/05 16:27:12.188 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.fActualVelocity?" (index 368).
-2022/04/05 16:27:12.199 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.fActualTorque?" (index 369).
-2022/04/05 16:27:12.211 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.nDiagMessage?" (index 370).
-2022/04/05 16:27:12.254 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.fbModeHome.fActPositionOffset?" (index 371).
-2022/04/05 16:27:12.266 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.fStepperTemp?" (index 372).
-2022/04/05 16:27:12.277 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[1].stStatus.fActPosition?" (index 373).
-2022/04/05 16:27:12.289 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[1].stStatus.fActVelocity?" (index 374).
-2022/04/05 16:27:12.302 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[1].stStatus.nErrorId?" (index 375).
-2022/04/05 16:27:12.315 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.fStepperTemp?" (index 376).
-2022/04/05 16:27:12.328 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[2].stStatus.fActPosition?" (index 377).
-2022/04/05 16:27:12.341 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[2].stStatus.fActVelocity?" (index 378).
-2022/04/05 16:27:12.354 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[2].stStatus.nErrorId?" (index 379).
-2022/04/05 16:27:12.367 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.fStepperTemp?" (index 380).
-2022/04/05 16:27:12.379 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[3].stStatus.fActPosition?" (index 381).
-2022/04/05 16:27:12.390 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[3].stStatus.fActVelocity?" (index 382).
-2022/04/05 16:27:12.403 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[3].stStatus.nErrorId?" (index 383).
-2022/04/05 16:27:12.417 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=100/ADSPORT=852/Main.fb_s10_EL7201.fPosAct?" (index 384).
-2022/04/05 16:27:12.431 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=100/ADSPORT=852/Main.fb_s11_EL7201.fPosAct?" (index 385).
-2022/04/05 16:27:12.442 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=100/ADSPORT=852/Main.fb_s12_EL7201.fPosAct?" (index 386).
-2022/04/05 16:27:12.455 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s13_EL3214.iAI_1?" (index 387).
-2022/04/05 16:27:12.468 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s13_EL3214.iAI_2?" (index 388).
-2022/04/05 16:27:12.481 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s13_EL3214.iAI_3?" (index 389).
-2022/04/05 16:27:12.494 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s13_EL3214.iAI_4?" (index 390).
+Starting iocInit
+2022/04/19 14:23:46.591 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlRot.bEnable=" (index 1).
+2022/04/19 14:23:46.600 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlRot.bExecute?" (index 2).
+2022/04/19 14:23:46.613 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlRot.bReset?" (index 3).
+2022/04/19 14:23:46.624 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlRot.bAllowMotionGUI?" (index 4).
+2022/04/19 14:23:46.636 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.bEnableAxis?" (index 5).
+2022/04/19 14:23:46.648 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.bHaltAxis?" (index 6).
+2022/04/19 14:23:46.660 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.bCommandPositionChange?" (index 7).
+2022/04/19 14:23:46.672 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.bPositionCommandValue?" (index 8).
+2022/04/19 14:23:46.684 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.bCommandValueAccept?" (index 9).
+2022/04/19 14:23:46.696 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.bCmd_ErrorReset?" (index 10).
+2022/04/19 14:23:46.710 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.bCmd_SetAbsolutePosition?" (index 11).
+2022/04/19 14:23:46.721 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.bCmd_DriveControlledHoming?" (index 12).
+2022/04/19 14:23:46.733 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.bCmd_DisableLimits?" (index 13).
+2022/04/19 14:23:46.746 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.bCmd_ActivateParameterMode?" (index 14).
+2022/04/19 14:23:46.757 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.bCmd_ExitParameterMode?" (index 15).
+2022/04/19 14:23:46.770 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.bCmd_RunVirtualMater?" (index 16).
+2022/04/19 14:23:46.781 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlX.bBrakeReleaseCmd?" (index 17).
+2022/04/19 14:23:46.793 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlX.bAllowMotionGUI?" (index 18).
+2022/04/19 14:23:46.805 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlX.bExecuteAbsPos?" (index 19).
+2022/04/19 14:23:46.816 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlX.bExecuteConstVelo?" (index 20).
+2022/04/19 14:23:46.829 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlX.bExecuteHome?" (index 21).
+2022/04/19 14:23:46.840 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlX.bExecuteStop?" (index 22).
+2022/04/19 14:23:46.852 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlX.bExecuteReset?" (index 23).
+2022/04/19 14:23:46.864 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlX.bEnable?" (index 24).
+2022/04/19 14:23:46.876 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlX.bJogDirFwd?" (index 25).
+2022/04/19 14:23:46.889 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlY.bBrakeReleaseCmd?" (index 26).
+2022/04/19 14:23:46.900 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlY.bAllowMotionGUI?" (index 27).
+2022/04/19 14:23:46.912 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlY.bExecuteAbsPos?" (index 28).
+2022/04/19 14:23:46.924 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlY.bExecuteConstVelo?" (index 29).
+2022/04/19 14:23:46.935 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlY.bExecuteHome?" (index 30).
+2022/04/19 14:23:46.947 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlY.bExecuteStop?" (index 31).
+2022/04/19 14:23:46.959 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlY.bExecuteReset?" (index 32).
+2022/04/19 14:23:46.971 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlY.bEnable?" (index 33).
+2022/04/19 14:23:46.983 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlY.bJogDirFwd?" (index 34).
+2022/04/19 14:23:46.995 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlZ.bBrakeReleaseCmd?" (index 35).
+2022/04/19 14:23:47.007 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlZ.bAllowMotionGUI?" (index 36).
+2022/04/19 14:23:47.019 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlZ.bExecuteAbsPos?" (index 37).
+2022/04/19 14:23:47.031 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlZ.bExecuteConstVelo?" (index 38).
+2022/04/19 14:23:47.043 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlZ.bExecuteHome?" (index 39).
+2022/04/19 14:23:47.055 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlZ.bExecuteStop?" (index 40).
+2022/04/19 14:23:47.068 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlZ.bExecuteReset?" (index 41).
+2022/04/19 14:23:47.080 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlZ.bEnable?" (index 42).
+2022/04/19 14:23:47.092 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlZ.bJogDirFwd?" (index 43).
+2022/04/19 14:23:47.104 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.eTargetState?" (index 44).
+2022/04/19 14:23:47.115 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.fbModeHome.eHomeState?" (index 45).
+2022/04/19 14:23:47.127 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlRot.eTargetStateCmd?" (index 46).
+2022/04/19 14:23:47.140 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlRot.ePhaseCntrlAlg?" (index 47).
+2022/04/19 14:23:47.152 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlRot.ePhasePwmType?" (index 48).
+2022/04/19 14:23:47.164 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL_Parameters.nMaxMotorTemperature?" (index 49).
+2022/04/19 14:23:47.176 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlRot.fPhaseOffsetMM?" (index 50).
+2022/04/19 14:23:47.187 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlRot.fVelSet?" (index 51).
+2022/04/19 14:23:47.200 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlRot.fPosSet?" (index 52).
+2022/04/19 14:23:47.212 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.eOperationMode?" (index 53).
+2022/04/19 14:23:47.224 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.fCommandPosition?" (index 54).
+2022/04/19 14:23:47.236 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.fCommandVelocity?" (index 55).
+2022/04/19 14:23:47.248 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.fCommandAcceleration?" (index 56).
+2022/04/19 14:23:47.260 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.fCommandDeceleration?" (index 57).
+2022/04/19 14:23:47.272 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.fFeedrateOverride?" (index 58).
+2022/04/19 14:23:47.283 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.fTorqueLimit?" (index 59).
+2022/04/19 14:23:47.296 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stCommands.fVelocityCommandValue?" (index 60).
+2022/04/19 14:23:47.308 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[1].stControl.fPosition?" (index 61).
+2022/04/19 14:23:47.320 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[2].stControl.fPosition?" (index 62).
+2022/04/19 14:23:47.332 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[3].stControl.fPosition?" (index 63).
+2022/04/19 14:23:47.344 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.sErrorStr?" (index 64).
+2022/04/19 14:23:47.354 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.fbModeHome.fRefMarkPosArray?" (index 65).
+2022/04/19 14:23:47.364 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.sErrorMessage?" (index 66).
+2022/04/19 14:23:47.374 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.sErrorMessage?" (index 67).
+2022/04/19 14:23:47.384 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.sErrorMessage?" (index 68).
+2022/04/19 14:23:47.394 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.sErrorMessage?" (index 69).
+2022/04/19 14:23:47.404 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s6_EL9505.sErrorMessage?" (index 70).
+2022/04/19 14:23:47.413 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s7_EL1252.sErrorMessage?" (index 71).
+2022/04/19 14:23:47.424 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s8_EL9410.sErrorMessage?" (index 72).
+2022/04/19 14:23:47.434 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s9_EL1252.sErrorMessage?" (index 73).
+2022/04/19 14:23:47.444 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s10_EL7201.sErrorMessage?" (index 74).
+2022/04/19 14:23:47.453 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s11_EL7201.sErrorMessage?" (index 75).
+2022/04/19 14:23:47.464 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s12_EL7201.sErrorMessage?" (index 76).
+2022/04/19 14:23:47.474 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s13_EL3214.sErrorMessage?" (index 77).
+2022/04/19 14:23:47.483 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s14_EL5021.sErrorMessage?" (index 78).
+2022/04/19 14:23:47.494 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s15_EL6695.sErrorMessage?" (index 79).
+2022/04/19 14:23:47.504 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s16_EL9410.sErrorMessage?" (index 80).
+2022/04/19 14:23:47.514 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s17_EL2032.sErrorMessage?" (index 81).
+2022/04/19 14:23:47.524 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s18_EK1110.sErrorMessage?" (index 82).
+2022/04/19 14:23:47.534 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s19_indraDrive.sErrorMessage?" (index 83).
+2022/04/19 14:23:47.544 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s20_IPOS8020.sErrorMessage?" (index 84).
+2022/04/19 14:23:47.554 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s21_IPOS8020.sErrorMessage?" (index 85).
+2022/04/19 14:23:47.564 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s22_IPOS8020.sErrorMessage?" (index 86).
+2022/04/19 14:23:47.574 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.InfoData_State?" (index 87).
+2022/04/19 14:23:47.586 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.iTerminal_ID?" (index 88).
+2022/04/19 14:23:47.598 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.InfoData_State?" (index 89).
+2022/04/19 14:23:47.610 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.iTerminal_ID?" (index 90).
+2022/04/19 14:23:47.622 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.InfoData_State?" (index 91).
+2022/04/19 14:23:47.634 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.iTerminal_ID?" (index 92).
+2022/04/19 14:23:47.646 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH1_Diag?" (index 93).
+2022/04/19 14:23:47.658 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH2_Diag?" (index 94).
+2022/04/19 14:23:47.670 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH3_Diag?" (index 95).
+2022/04/19 14:23:47.682 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH4_Diag?" (index 96).
+2022/04/19 14:23:47.694 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH5_Diag?" (index 97).
+2022/04/19 14:23:47.706 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH6_Diag?" (index 98).
+2022/04/19 14:23:47.718 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH7_Diag?" (index 99).
+2022/04/19 14:23:47.730 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH8_Diag?" (index 100).
+2022/04/19 14:23:47.742 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH9_Diag?" (index 101).
+2022/04/19 14:23:47.754 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH10_Diag?" (index 102).
+2022/04/19 14:23:47.766 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH11_Diag?" (index 103).
+2022/04/19 14:23:47.778 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH12_Diag?" (index 104).
+2022/04/19 14:23:47.790 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH13_Diag?" (index 105).
+2022/04/19 14:23:47.802 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH14_Diag?" (index 106).
+2022/04/19 14:23:47.814 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH15_Diag?" (index 107).
+2022/04/19 14:23:47.826 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.wCH16_Diag?" (index 108).
+2022/04/19 14:23:47.838 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.InfoData_State?" (index 109).
+2022/04/19 14:23:47.850 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.iTerminal_ID?" (index 110).
+2022/04/19 14:23:47.862 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH1_Diag?" (index 111).
+2022/04/19 14:23:47.874 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH2_Diag?" (index 112).
+2022/04/19 14:23:47.886 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH3_Diag?" (index 113).
+2022/04/19 14:23:47.898 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH4_Diag?" (index 114).
+2022/04/19 14:23:47.910 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH5_Diag?" (index 115).
+2022/04/19 14:23:47.922 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH6_Diag?" (index 116).
+2022/04/19 14:23:47.934 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH7_Diag?" (index 117).
+2022/04/19 14:23:47.946 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH8_Diag?" (index 118).
+2022/04/19 14:23:47.958 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH9_Diag?" (index 119).
+2022/04/19 14:23:47.970 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH10_Diag?" (index 120).
+2022/04/19 14:23:47.982 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH11_Diag?" (index 121).
+2022/04/19 14:23:47.994 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH12_Diag?" (index 122).
+2022/04/19 14:23:48.006 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH13_Diag?" (index 123).
+2022/04/19 14:23:48.018 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH14_Diag?" (index 124).
+2022/04/19 14:23:48.030 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH15_Diag?" (index 125).
+2022/04/19 14:23:48.042 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.wCH16_Diag?" (index 126).
+2022/04/19 14:23:48.054 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s6_EL9505.InfoData_State?" (index 127).
+2022/04/19 14:23:48.066 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s6_EL9505.iTerminal_ID?" (index 128).
+2022/04/19 14:23:48.078 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s7_EL1252.InfoData_State?" (index 129).
+2022/04/19 14:23:48.090 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s7_EL1252.iTerminal_ID?" (index 130).
+2022/04/19 14:23:48.102 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s8_EL9410.InfoData_State?" (index 131).
+2022/04/19 14:23:48.114 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s8_EL9410.iTerminal_ID?" (index 132).
+2022/04/19 14:23:48.126 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s9_EL1252.InfoData_State?" (index 133).
+2022/04/19 14:23:48.138 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s9_EL1252.iTerminal_ID?" (index 134).
+2022/04/19 14:23:48.150 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s10_EL7201.InfoData_State?" (index 135).
+2022/04/19 14:23:48.162 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s10_EL7201.iTerminal_ID?" (index 136).
+2022/04/19 14:23:48.174 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s11_EL7201.InfoData_State?" (index 137).
+2022/04/19 14:23:48.186 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s11_EL7201.iTerminal_ID?" (index 138).
+2022/04/19 14:23:48.198 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s12_EL7201.InfoData_State?" (index 139).
+2022/04/19 14:23:48.210 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s12_EL7201.iTerminal_ID?" (index 140).
+2022/04/19 14:23:48.222 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s13_EL3214.InfoData_State?" (index 141).
+2022/04/19 14:23:48.234 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s13_EL3214.iTerminal_ID?" (index 142).
+2022/04/19 14:23:48.246 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s13_EL3214.wCh1_Status?" (index 143).
+2022/04/19 14:23:48.258 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s13_EL3214.wCh2_Status?" (index 144).
+2022/04/19 14:23:48.270 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s13_EL3214.wCh3_Status?" (index 145).
+2022/04/19 14:23:48.282 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s13_EL3214.wCh4_Status?" (index 146).
+2022/04/19 14:23:48.295 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s14_EL5021.InfoData_State?" (index 147).
+2022/04/19 14:23:48.307 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s14_EL5021.iTerminal_ID?" (index 148).
+2022/04/19 14:23:48.319 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s15_EL6695.InfoData_State?" (index 149).
+2022/04/19 14:23:48.332 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s15_EL6695.iTerminal_ID?" (index 150).
+2022/04/19 14:23:48.344 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s16_EL9410.InfoData_State?" (index 151).
+2022/04/19 14:23:48.356 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s16_EL9410.iTerminal_ID?" (index 152).
+2022/04/19 14:23:48.368 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s17_EL2032.InfoData_State?" (index 153).
+2022/04/19 14:23:48.380 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s17_EL2032.iTerminal_ID?" (index 154).
+2022/04/19 14:23:48.392 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s18_EK1110.InfoData_State?" (index 155).
+2022/04/19 14:23:48.404 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s18_EK1110.iTerminal_ID?" (index 156).
+2022/04/19 14:23:48.416 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s19_indraDrive.InfoData_State?" (index 157).
+2022/04/19 14:23:48.428 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s19_indraDrive.iTerminal_ID?" (index 158).
+2022/04/19 14:23:48.440 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s20_IPOS8020.InfoData_State?" (index 159).
+2022/04/19 14:23:48.452 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s20_IPOS8020.iTerminal_ID?" (index 160).
+2022/04/19 14:23:48.464 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s21_IPOS8020.InfoData_State?" (index 161).
+2022/04/19 14:23:48.477 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s21_IPOS8020.iTerminal_ID?" (index 162).
+2022/04/19 14:23:48.490 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s22_IPOS8020.InfoData_State?" (index 163).
+2022/04/19 14:23:48.502 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s22_IPOS8020.iTerminal_ID?" (index 164).
+2022/04/19 14:23:48.515 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwControlRot.bEnable?" (index 165).
+2022/04/19 14:23:48.527 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.bEnabled?" (index 166).
+2022/04/19 14:23:48.540 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.fbModePhase.bPhasing?" (index 167).
+2022/04/19 14:23:48.552 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.fbModePhase.bVeloStable?" (index 168).
+2022/04/19 14:23:48.565 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.bError?" (index 169).
+2022/04/19 14:23:48.578 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.bmanualInterlockOverride?" (index 170).
+2022/04/19 14:23:48.590 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.bHwStatusOK?" (index 171).
+2022/04/19 14:23:48.602 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.bGeneralILOk?" (index 172).
+2022/04/19 14:23:48.614 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.bSumILOK?" (index 173).
+2022/04/19 14:23:48.626 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.bEstopOK?" (index 174).
+2022/04/19 14:23:48.638 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatusRot.bPhaseOK?" (index 175).
+2022/04/19 14:23:48.650 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bDriveInParameterMode?" (index 176).
+2022/04/19 14:23:48.663 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bDCBusPresent?" (index 177).
+2022/04/19 14:23:48.676 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bAxisEnabled?" (index 178).
+2022/04/19 14:23:48.688 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bAxisHomedStatus?" (index 179).
+2022/04/19 14:23:48.700 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bAxisStandStillStatus?" (index 180).
+2022/04/19 14:23:48.713 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bAxisInTargetPosition?" (index 181).
+2022/04/19 14:23:48.725 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bAxisConstantVelocityStatus?" (index 182).
+2022/04/19 14:23:48.738 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bAxisAccelerationStatus?" (index 183).
+2022/04/19 14:23:48.751 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bAxisDecelerationStatus?" (index 184).
+2022/04/19 14:23:48.764 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bAxisJogStatus?" (index 185).
+2022/04/19 14:23:48.777 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bCommandChange?" (index 186).
+2022/04/19 14:23:48.790 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bCommandValueProcessing?" (index 187).
+2022/04/19 14:23:48.803 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bLimitsDisabled?" (index 188).
+2022/04/19 14:23:48.815 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bDiagMessage?" (index 189).
+2022/04/19 14:23:48.827 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bWarning?" (index 190).
+2022/04/19 14:23:48.840 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bError?" (index 191).
+2022/04/19 14:23:48.853 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bSTOActiveCh1?" (index 192).
+2022/04/19 14:23:48.866 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.bSTOActiveCh2?" (index 193).
+2022/04/19 14:23:48.927 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.fbModeHome.bHomed?" (index 194).
+2022/04/19 14:23:48.940 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHWStatusDev.bBeamOff?" (index 195).
+2022/04/19 14:23:48.952 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bEstopOK?" (index 196).
+2022/04/19 14:23:48.965 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/T_DLY_MS=100/TS_MS=100/GVL.astAxes[1].stInputs.bLimitfwd?" (index 197).
+2022/04/19 14:23:48.977 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/T_DLY_MS=100/TS_MS=100/GVL.astAxes[1].stInputs.bLimitbwd?" (index 198).
+2022/04/19 14:23:48.990 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bLimitMaxMax?" (index 199).
+2022/04/19 14:23:49.003 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bLimitMinmin?" (index 200).
+2022/04/19 14:23:49.016 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bBrakeReleased?" (index 201).
+2022/04/19 14:23:49.029 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bSumFwdILOK?" (index 202).
+2022/04/19 14:23:49.042 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bSumBwdILOK?" (index 203).
+2022/04/19 14:23:49.054 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bmanualInterlockOverride?" (index 204).
+2022/04/19 14:23:49.067 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bLimitMinPark?" (index 205).
+2022/04/19 14:23:49.080 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bLimitMinMinPark?" (index 206).
+2022/04/19 14:23:49.092 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bParkingRangeEnabled?" (index 207).
+2022/04/19 14:23:49.104 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bHwStatusOK?" (index 208).
+2022/04/19 14:23:49.117 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bGeneralAndOverrideILOk?" (index 209).
+2022/04/19 14:23:49.130 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bGeneralILOk?" (index 210).
+2022/04/19 14:23:49.143 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bHomed?" (index 211).
+2022/04/19 14:23:49.156 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bHomingCmdActive?" (index 212).
+2022/04/19 14:23:49.168 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bEnabled?" (index 213).
+2022/04/19 14:23:49.181 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bBusy?" (index 214).
+2022/04/19 14:23:49.194 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bLoLoAlm?" (index 215).
+2022/04/19 14:23:49.208 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bLoAlm?" (index 216).
+2022/04/19 14:23:49.220 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bHiHiAlm?" (index 217).
+2022/04/19 14:23:49.232 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.bHiAlm?" (index 218).
+2022/04/19 14:23:49.245 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[1].stStatus.bFwEnabled?" (index 219).
+2022/04/19 14:23:49.258 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[1].stStatus.bBwEnabled?" (index 220).
+2022/04/19 14:23:49.272 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bEstopOK?" (index 221).
+2022/04/19 14:23:49.284 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/T_DLY_MS=100/TS_MS=100/GVL.astAxes[2].stInputs.bLimitfwd?" (index 222).
+2022/04/19 14:23:49.297 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/T_DLY_MS=100/TS_MS=100/GVL.astAxes[2].stInputs.bLimitbwd?" (index 223).
+2022/04/19 14:23:49.310 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bLimitMaxMax?" (index 224).
+2022/04/19 14:23:49.323 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bLimitMinmin?" (index 225).
+2022/04/19 14:23:49.337 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bBrakeReleased?" (index 226).
+2022/04/19 14:23:49.349 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bSumFwdILOK?" (index 227).
+2022/04/19 14:23:49.362 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bSumBwdILOK?" (index 228).
+2022/04/19 14:23:49.375 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bmanualInterlockOverride?" (index 229).
+2022/04/19 14:23:49.388 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bLimitMinPark?" (index 230).
+2022/04/19 14:23:49.402 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bLimitMinMinPark?" (index 231).
+2022/04/19 14:23:49.414 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bParkingRangeEnabled?" (index 232).
+2022/04/19 14:23:49.427 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bHwStatusOK?" (index 233).
+2022/04/19 14:23:49.440 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bGeneralAndOverrideILOk?" (index 234).
+2022/04/19 14:23:49.453 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bGeneralILOk?" (index 235).
+2022/04/19 14:23:49.467 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bHomed?" (index 236).
+2022/04/19 14:23:49.479 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bHomingCmdActive?" (index 237).
+2022/04/19 14:23:49.492 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bEnabled?" (index 238).
+2022/04/19 14:23:49.505 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bBusy?" (index 239).
+2022/04/19 14:23:49.518 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bLoLoAlm?" (index 240).
+2022/04/19 14:23:49.532 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bLoAlm?" (index 241).
+2022/04/19 14:23:49.544 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bHiHiAlm?" (index 242).
+2022/04/19 14:23:49.558 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.bHiAlm?" (index 243).
+2022/04/19 14:23:49.570 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[2].stStatus.bFwEnabled?" (index 244).
+2022/04/19 14:23:49.584 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[2].stStatus.bBwEnabled?" (index 245).
+2022/04/19 14:23:49.597 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bEstopOK?" (index 246).
+2022/04/19 14:23:49.610 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/T_DLY_MS=100/TS_MS=100/GVL.astAxes[3].stInputs.bLimitfwd?" (index 247).
+2022/04/19 14:23:49.624 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/T_DLY_MS=100/TS_MS=100/GVL.astAxes[3].stInputs.bLimitbwd?" (index 248).
+2022/04/19 14:23:49.637 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bLimitMaxMax?" (index 249).
+2022/04/19 14:23:49.649 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bLimitMinmin?" (index 250).
+2022/04/19 14:23:49.662 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bBrakeReleased?" (index 251).
+2022/04/19 14:23:49.675 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bSumFwdILOK?" (index 252).
+2022/04/19 14:23:49.689 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bSumBwdILOK?" (index 253).
+2022/04/19 14:23:49.702 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bmanualInterlockOverride?" (index 254).
+2022/04/19 14:23:49.715 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bLimitMinPark?" (index 255).
+2022/04/19 14:23:49.727 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bLimitMinMinPark?" (index 256).
+2022/04/19 14:23:49.741 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bParkingRangeEnabled?" (index 257).
+2022/04/19 14:23:49.754 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bHwStatusOK?" (index 258).
+2022/04/19 14:23:49.768 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bGeneralAndOverrideILOk?" (index 259).
+2022/04/19 14:23:49.781 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bGeneralILOk?" (index 260).
+2022/04/19 14:23:49.796 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bHomed?" (index 261).
+2022/04/19 14:23:49.809 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bHomingCmdActive?" (index 262).
+2022/04/19 14:23:49.822 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bEnabled?" (index 263).
+2022/04/19 14:23:49.836 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bBusy?" (index 264).
+2022/04/19 14:23:49.849 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bLoLoAlm?" (index 265).
+2022/04/19 14:23:49.863 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bLoAlm?" (index 266).
+2022/04/19 14:23:49.875 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bHiHiAlm?" (index 267).
+2022/04/19 14:23:49.888 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.bHiAlm?" (index 268).
+2022/04/19 14:23:49.901 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[3].stStatus.bFwEnabled?" (index 269).
+2022/04/19 14:23:49.914 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[3].stStatus.bBwEnabled?" (index 270).
+2022/04/19 14:23:49.927 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.WcState_WcState?" (index 271).
+2022/04/19 14:23:49.939 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bError?" (index 272).
+2022/04/19 14:23:49.952 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_1?" (index 273).
+2022/04/19 14:23:49.965 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_2?" (index 274).
+2022/04/19 14:23:49.978 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_3?" (index 275).
+2022/04/19 14:23:49.991 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_4?" (index 276).
+2022/04/19 14:23:50.004 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_5?" (index 277).
+2022/04/19 14:23:50.018 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_6?" (index 278).
+2022/04/19 14:23:50.031 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_7?" (index 279).
+2022/04/19 14:23:50.044 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_8?" (index 280).
+2022/04/19 14:23:50.056 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_9?" (index 281).
+2022/04/19 14:23:50.070 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_10?" (index 282).
+2022/04/19 14:23:50.082 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_11?" (index 283).
+2022/04/19 14:23:50.095 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_12?" (index 284).
+2022/04/19 14:23:50.108 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_13?" (index 285).
+2022/04/19 14:23:50.121 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_14?" (index 286).
+2022/04/19 14:23:50.135 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_15?" (index 287).
+2022/04/19 14:23:50.147 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s2_EL1809.bBI_16?" (index 288).
+2022/04/19 14:23:50.161 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.WcState_WcState?" (index 289).
+2022/04/19 14:23:50.173 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bError?" (index 290).
+2022/04/19 14:23:50.186 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_1?" (index 291).
+2022/04/19 14:23:50.201 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_2?" (index 292).
+2022/04/19 14:23:50.215 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_3?" (index 293).
+2022/04/19 14:23:50.229 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_4?" (index 294).
+2022/04/19 14:23:50.242 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_5?" (index 295).
+2022/04/19 14:23:50.254 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_6?" (index 296).
+2022/04/19 14:23:50.267 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_7?" (index 297).
+2022/04/19 14:23:50.281 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_8?" (index 298).
+2022/04/19 14:23:50.294 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_9?" (index 299).
+2022/04/19 14:23:50.307 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_10?" (index 300).
+2022/04/19 14:23:50.320 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_11?" (index 301).
+2022/04/19 14:23:50.333 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_12?" (index 302).
+2022/04/19 14:23:50.346 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_13?" (index 303).
+2022/04/19 14:23:50.360 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_14?" (index 304).
+2022/04/19 14:23:50.373 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_15?" (index 305).
+2022/04/19 14:23:50.387 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s3_EL1809.bBI_16?" (index 306).
+2022/04/19 14:23:50.400 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.WcState_WcState?" (index 307).
+2022/04/19 14:23:50.413 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s4_EL2819.bError?" (index 308).
+2022/04/19 14:23:50.428 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.WcState_WcState?" (index 309).
+2022/04/19 14:23:50.441 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s5_EL2819.bError?" (index 310).
+2022/04/19 14:23:50.454 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s6_EL9505.WcState_WcState?" (index 311).
+2022/04/19 14:23:50.467 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s6_EL9505.bError?" (index 312).
+2022/04/19 14:23:50.481 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s6_EL9505.bUoPwr_OK?" (index 313).
+2022/04/19 14:23:50.494 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s6_EL9505.bUo_Overload?" (index 314).
+2022/04/19 14:23:50.508 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s7_EL1252.WcState_WcState?" (index 315).
+2022/04/19 14:23:50.522 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s7_EL1252.bError?" (index 316).
+2022/04/19 14:23:50.535 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s7_EL1252.bBI_1?" (index 317).
+2022/04/19 14:23:50.550 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s7_EL1252.bBI_2?" (index 318).
+2022/04/19 14:23:50.563 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s8_EL9410.WcState_WcState?" (index 319).
+2022/04/19 14:23:50.576 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s8_EL9410.bError?" (index 320).
+2022/04/19 14:23:50.591 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s8_EL9410.bUs_Undervoltage?" (index 321).
+2022/04/19 14:23:50.604 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s8_EL9410.bUp_Undervoltage?" (index 322).
+2022/04/19 14:23:50.618 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s9_EL1252.WcState_WcState?" (index 323).
+2022/04/19 14:23:50.631 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s9_EL1252.bError?" (index 324).
+2022/04/19 14:23:50.646 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s9_EL1252.bBI_1?" (index 325).
+2022/04/19 14:23:50.659 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s9_EL1252.bBI_2?" (index 326).
+2022/04/19 14:23:50.673 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s10_EL7201.WcState_WcState?" (index 327).
+2022/04/19 14:23:50.686 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s10_EL7201.bError?" (index 328).
+2022/04/19 14:23:50.700 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s11_EL7201.WcState_WcState?" (index 329).
+2022/04/19 14:23:50.713 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s11_EL7201.bError?" (index 330).
+2022/04/19 14:23:50.728 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s12_EL7201.WcState_WcState?" (index 331).
+2022/04/19 14:23:50.742 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s12_EL7201.bError?" (index 332).
+2022/04/19 14:23:50.755 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s13_EL3214.WcState_WcState?" (index 333).
+2022/04/19 14:23:50.769 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s13_EL3214.bError?" (index 334).
+2022/04/19 14:23:50.783 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s14_EL5021.WcState_WcState?" (index 335).
+2022/04/19 14:23:50.797 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s14_EL5021.bError?" (index 336).
+2022/04/19 14:23:50.811 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s15_EL6695.WcState_WcState?" (index 337).
+2022/04/19 14:23:50.824 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s15_EL6695.bError?" (index 338).
+2022/04/19 14:23:50.837 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s16_EL9410.WcState_WcState?" (index 339).
+2022/04/19 14:23:50.851 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s16_EL9410.bError?" (index 340).
+2022/04/19 14:23:50.865 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s16_EL9410.bUs_Undervoltage?" (index 341).
+2022/04/19 14:23:50.879 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s16_EL9410.bUp_Undervoltage?" (index 342).
+2022/04/19 14:23:50.893 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s17_EL2032.WcState_WcState?" (index 343).
+2022/04/19 14:23:50.907 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s17_EL2032.bError?" (index 344).
+2022/04/19 14:23:50.921 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s18_EK1110.bError?" (index 345).
+2022/04/19 14:23:50.934 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s19_indraDrive.WcState_WcState?" (index 346).
+2022/04/19 14:23:50.947 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s19_indraDrive.bError?" (index 347).
+2022/04/19 14:23:50.962 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s20_IPOS8020.WcState_WcState?" (index 348).
+2022/04/19 14:23:50.978 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s20_IPOS8020.bError?" (index 349).
+2022/04/19 14:23:50.993 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s21_IPOS8020.WcState_WcState?" (index 350).
+2022/04/19 14:23:51.009 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s21_IPOS8020.bError?" (index 351).
+2022/04/19 14:23:51.027 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s22_IPOS8020.WcState_WcState?" (index 352).
+2022/04/19 14:23:51.041 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s22_IPOS8020.bError?" (index 353).
+2022/04/19 14:23:51.058 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.stHwStatusRot.fActPos?" (index 354).
+2022/04/19 14:23:51.072 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.fActVel?" (index 355).
+2022/04/19 14:23:51.086 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.fActTorque?" (index 356).
+2022/04/19 14:23:51.101 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.fActTemp?" (index 357).
+2022/04/19 14:23:51.116 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/T_DLY_MS=500/TS_MS=10/Main.fbModePhase.fPhaseErrorMM?" (index 358).
+2022/04/19 14:23:51.130 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.fbModePhase.nMissedTimingPulses?" (index 359).
+2022/04/19 14:23:51.143 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.fbModePhase.nMissedTimingPulsesLow?" (index 360).
+2022/04/19 14:23:51.156 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.fPhaseOffsetActDeg?" (index 361).
+2022/04/19 14:23:51.170 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.fbModePhase.fLatchedPosition?" (index 362).
+2022/04/19 14:23:51.185 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.fbModePhase.nClosestSectorId?" (index 363).
+2022/04/19 14:23:51.198 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.fbModePhase.nChoosenSector?" (index 364).
+2022/04/19 14:23:51.212 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.fbModePhase.iRangeOkCounter?" (index 365).
+2022/04/19 14:23:51.225 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.fSetVelRaw?" (index 366).
+2022/04/19 14:23:51.238 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.fbModePhase.fLastSectorVelocity?" (index 367).
+2022/04/19 14:23:51.254 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusRot.nErrorId?" (index 368).
+2022/04/19 14:23:51.275 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.fbModePhase.fPhaseErrorMM?" (index 369).
+2022/04/19 14:23:51.299 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.eActualOperationModeNo?" (index 370).
+2022/04/19 14:23:51.315 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.fActualPosition?" (index 371).
+2022/04/19 14:23:51.329 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.fActualVelocity?" (index 372).
+2022/04/19 14:23:51.344 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.fActualTorque?" (index 373).
+2022/04/19 14:23:51.358 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stStatus.nDiagMessage?" (index 374).
+2022/04/19 14:23:51.405 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.fbModeHome.fActPositionOffset?" (index 375).
+2022/04/19 14:23:51.418 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusX.fStepperTemp?" (index 376).
+2022/04/19 14:23:51.433 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[1].stStatus.fActPosition?" (index 377).
+2022/04/19 14:23:51.447 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[1].stStatus.fActVelocity?" (index 378).
+2022/04/19 14:23:51.462 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[1].stStatus.nErrorId?" (index 379).
+2022/04/19 14:23:51.476 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusY.fStepperTemp?" (index 380).
+2022/04/19 14:23:51.491 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[2].stStatus.fActPosition?" (index 381).
+2022/04/19 14:23:51.504 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[2].stStatus.fActVelocity?" (index 382).
+2022/04/19 14:23:51.519 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[2].stStatus.nErrorId?" (index 383).
+2022/04/19 14:23:51.532 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/Main.stHwStatusZ.fStepperTemp?" (index 384).
+2022/04/19 14:23:51.547 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[3].stStatus.fActPosition?" (index 385).
+2022/04/19 14:23:51.561 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[3].stStatus.fActVelocity?" (index 386).
+2022/04/19 14:23:51.577 adsAsynPortDriver:drvUserCreate: Parameter created: "ADSPORT=852/GVL.astAxes[3].stStatus.nErrorId?" (index 387).
+2022/04/19 14:23:51.592 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=100/ADSPORT=852/Main.fb_s10_EL7201.fPosAct?" (index 388).
+2022/04/19 14:23:51.606 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=100/ADSPORT=852/Main.fb_s11_EL7201.fPosAct?" (index 389).
+2022/04/19 14:23:51.623 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=100/ADSPORT=852/Main.fb_s12_EL7201.fPosAct?" (index 390).
+2022/04/19 14:23:51.638 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s13_EL3214.iAI_1?" (index 391).
+2022/04/19 14:23:51.653 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s13_EL3214.iAI_2?" (index 392).
+2022/04/19 14:23:51.667 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s13_EL3214.iAI_3?" (index 393).
+2022/04/19 14:23:51.682 adsAsynPortDriver:drvUserCreate: Parameter created: "TIMEBASE=PLC/T_DLY_MS=500/TS_MS=10/ADSPORT=852/Main.fb_s13_EL3214.iAI_4?" (index 394).
 iocRun: All initialization complete
- "26")
+#
+#epicsEnvSet("EC_SLAVE_NUM",    "26")
 #epicsEnvSet("EC_HWTYPE",       "EL3214")
 #dbLoadTemplate("./db/${EC_HWTYPE}.substitutions","P=${PREFIX},PORT=${ADS_ASYN_PORT},ADDR=0,TIMEOUT=1,ADSPORT=${ADSPORT_DEF},MASTER_ID=${EC_MASTER_ID},SLAVE_POS=${EC_SLAVE_NUM},HWTYPE=${EC_HWTYPE},T_SMP_MS=${SAMPLE_RATE_MS_DEF},TSE=${TSE=0}")
 #
@@ -612,66 +616,40 @@ iocInit()
 ## Rev. 2021-04-13T11:46+0200
 ############################################################################
 # Set the IOC Prompt String One 
-epicsEnvSet IOCSH_PS1 "mcag-tgt-drv-io-11241 > "
+epicsEnvSet IOCSH_PS1 "mcag-tgt-drv-io-10176 > "
 #
-[?1034hmcag-tgt-drv-io-11241 > 2022/04/05 16:27:13.285 adsAsynPortDriver:cyclicThread: Device "Plc30 App" connected (Ams-port 852, Ams router version 3.1.1711).
-2022/04/05 16:27:13.285 adsAsynPortDriver:cyclicThread: Ams-port, 852, state change: "UNKOWN ADSSTATE" -> "ADSSTATE_RUN".
-2022/04/05 16:27:13.784 adsAsynPortDriver:adsSymbolsChangedCallback: Symbols changed for Ams-port 852.
-[Kmcag-tgt-drv-io-11241 > 
-mcag-tgt-drv-io-11241 > 
-mcag-tgt-drv-io-11241 > dbgrep *ConstV[KV*
-TARGET_DU:Rotation-Drv-Stat-ConstVelo
-mcag-tgt-drv-io-11241 > dbgrep *ConstV*[Kdbgr[K[Kp[Kgrep **E*x*e*V*e*l*C*m*d*
-TARGET_DU:X-ExeVelCmd
-TARGET_DU:Y-ExeVelCmd
-TARGET_DU:Z-ExeVelCmd
-mcag-tgt-drv-io-11241 > dbgf TARGET_DU:X-ExeVelCmd
-DBF_STRING:         "Idle"    
-mcag-tgt-drv-io-11241 > dbgf TARGET_DU:X-ExeVelCmd[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P TARGET_DU:X-ExeVelCmd[1P TARGET_DU:X-ExeVelCmdp TARGET_DU:X-ExeVelCmdr TARGET_DU:X-ExeVelCmd
-ASG :               DESC: X: Execute Abs. Pos Cmd           DISA: 0             
-DISP: 0             DISV: 1             NAME: TARGET_DU:X-ExeVelCmd             
-RBV : 0             RVAL: 0             SEVR: NO_ALARM      STAT: NO_ALARM      
-TPRO: 0             VAL : 0             
-mcag-tgt-drv-io-11241 > dbpr TARGET_DU:X-ExeVelCmd[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P TARGET_DU:X-ExeVelCmdf TARGET_DU:X-ExeVelCmd[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C 1
-DBF_STRING:         "Execute" 
-mcag-tgt-drv-io-11241 > d[Kdbgreo[Kp *:X*
-TARGET_DU:X-BrakeReleseCmd
-TARGET_DU:X-AllowMotionCmd
-TARGET_DU:X-ExePosCmd
-TARGET_DU:X-ExeVelCmd
-TARGET_DU:X-ExeHomeCmd
-TARGET_DU:X-ExeStopCmd
-TARGET_DU:X-ExeResetCmd
-TARGET_DU:X-EnaCmd
-TARGET_DU:X-PosCmd
-TARGET_DU:X-EstopOK
-TARGET_DU:X-LimitMax
-TARGET_DU:X-LimitMin
-TARGET_DU:X-LimitMaxMax
-TARGET_DU:X-LimitMinMin
-TARGET_DU:X-BrakeReleased
-TARGET_DU:X-SumFwdILOK
-TARGET_DU:X-SumBwdILOK
-TARGET_DU:X-ManualILOverride
-TARGET_DU:X-LimitMinPark
-TARGET_DU:X-LimitMinMinPark
-TARGET_DU:X-ParkRangeEnaAct
-TARGET_DU:X-HwOK
-TARGET_DU:X-GeneralAndOverrideILOK
-TARGET_DU:X-GeneralILOK
-TARGET_DU:X-Homed
-TARGET_DU:X-HomingCmdActive
-TARGET_DU:X-EnaAct
-TARGET_DU:X-Busy
-TARGET_DU:X-PosLoLoAlm
-TARGET_DU:X-PosLoAlm
-TARGET_DU:X-PosHiHiAlm
-TARGET_DU:X-PosHiAlm
-TARGET_DU:X-SumILFwd
-TARGET_DU:X-SumILBwd
-TARGET_DU:X-TempAct
-TARGET_DU:X-PosAct
-TARGET_DU:X-VelAct
-TARGET_DU:X-ErrId
-mcag-tgt-drv-io-11241 > dbgrep *:X* > X.[K.log
-mcag-tgt-drv-io-11241 > 
+[?1034hmcag-tgt-drv-io-10176 > 2022/04/19 14:23:52.564 adsAsynPortDriver:cyclicThread: Device "Plc30 App" connected (Ams-port 852, Ams router version 3.1.1711).
+2022/04/19 14:23:52.564 adsAsynPortDriver:cyclicThread: Ams-port, 852, state change: "UNKOWN ADSSTATE" -> "ADSSTATE_RUN".
+2022/04/19 14:23:53.064 adsAsynPortDriver:adsSymbolsChangedCallback: Symbols changed for Ams-port 852.
+
+mcag-tgt-drv-io-10176 > dbgrep *Missed*
+TARGET_DU:Rotation-MissedTimingPulses
+TARGET_DU:Rotation-MissedTimingPulsesLow
+mcag-tgt-drv-io-10176 > dbgf[K[Kpr TARGET_DU:Rotation-MissedTimingPulsesLow
+ASG :               DESC: Rotation: Missed Timing pulses low[mm]                
+DISA: 0             DISP: 0             DISV: 1             
+NAME: TARGET_DU:Rotation-MissedTimingPulsesLow              RVAL: 0             
+SEVR: NO_ALARM      STAT: NO_ALARM      SVAL: 0             TPRO: 0             
+VAL : 0             
+mcag-tgt-drv-io-10176 > 
+mcag-tgt-drv-io-10176 > 
+mcag-tgt-drv-io-10176 > dbgrep REQ**REQ*
+REQMOD:mcag-tgt-drv-io-10176:MODULES
+REQMOD:mcag-tgt-drv-io-10176:VERSIONS
+REQMOD:mcag-tgt-drv-io-10176:MOD_VER
+REQMOD:mcag-tgt-drv-io-10176:exit
+REQMOD:mcag-tgt-drv-io-10176:BaseVersion
+REQMOD:mcag-tgt-drv-io-10176:require_VER
+REQMOD:mcag-tgt-drv-io-10176:asyn_VER
+REQMOD:mcag-tgt-drv-io-10176:beckhoffads_VER
+REQMOD:mcag-tgt-drv-io-10176:ads_VER
+mcag-tgt-drv-io-10176 > dbgf REQMOD:mcag-tgt-drv-io-10176:asyn_VER
+DBF_STRING:         "4.41.0+0"          
+mcag-tgt-drv-io-10176 > dbgf REQMOD:mcag-tgt-drv-io-10176:asyn_VER[1P_VER[1P_VER[1P_VER[1P_VERr_VERe_VERq_VERi_VERu_VERi_VERr_VERe_VER[1P_VER[1P_VER[1P_VER[1P_VER[1P_VERu_VERi_VERr_VERe_VER
+DBF_STRING:         "3.4.0"   
+mcag-tgt-drv-io-10176 > dbgf REQMOD:mcag-tgt-drv-io-10176:ads_VER
+DBF_STRING:         "2.0.2+0" 
+mcag-tgt-drv-io-10176 > 2022/04/19 15:27:06.811 adsAsynPortDriver:cyclicThread: Ams-port, 852, state change: "ADSSTATE_RUN" -> "ADSSTATE_INVALID".
+2022/04/19 15:27:09.357 adsAsynPortDriver:adsSymbolsChangedCallback: Symbols changed for Ams-port 852.
+2022/04/19 15:27:11.420 adsAsynPortDriver:cyclicThread: Ams-port, 852, state change: "ADSSTATE_INVALID" -> "ADSSTATE_STOP".
+2022/04/19 15:27:18.450 adsAsynPortDriver:cyclicThread: Ams-port, 852, state change: "ADSSTATE_STOP" -> "ADSSTATE_RUN".
