@@ -2278,6 +2278,10 @@ Bit 15]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
+					<Name>MAIN.nSecondRotEncoder</Name>
+					<Type>UDINT</Type>
+				</Var>
+				<Var>
 					<Name>GVL_back.axes[1].stInputs.bLimitFwd</Name>
 					<Type>BOOL</Type>
 				</Var>
@@ -2327,10 +2331,6 @@ Bit 15]]></Comment>
 				<Var>
 					<Name>GVL_back.axes[3].Axis.NcToPlc</Name>
 					<Type GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.nSecondRotEncoder</Name>
-					<Type>UDINT</Type>
 				</Var>
 			</Vars>
 			<Vars VarGrpType="2" ContextId="1" AreaNo="17">
