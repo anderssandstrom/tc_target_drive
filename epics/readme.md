@@ -2,9 +2,18 @@
 
 
 ## Start IOC
+``` 
+iocsh.bash startTargetNew.cmd
+``` 
 
-iocsh.bash startTarget.cmd
+## Preps for MPS test 
 
+MPS wants to know rotation velocity when they trigger STO is triggered:
+``` 
+camonitor -n TARGET_DU:Rotation-VelAct TARGET_DU:Rotation-Drv-Stat-STOActiveCh1 TARGET_DU:Rotation-Drv-Stat-STOActiveCh2 | tee data.log
+``` 
+
+# Obsolete below (not using PILS anymore)
 
 ## Start PILS ioc
 

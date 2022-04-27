@@ -40,7 +40,7 @@ record(ai,"$(P)${DEV_NAME}-PosAct"){
 record(ai,"$(P)${DEV_NAME}-VelAct"){
   field(PINI, "1")
   field(DTYP, "asynFloat64")
-  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.fActVel?")
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/T_DLY_MS=500/TS_MS=100/Main.${STRUCT_STAT}.fActVel?")
   field(SCAN, "I/O Intr")
   field(LINR, "SLOPE")
   field(ESLO, "0.1")
