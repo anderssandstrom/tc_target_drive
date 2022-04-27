@@ -365,7 +365,6 @@ IF bReset THEN
   nErrorId:=0;
   //nMissedTimingPulses:=0;
   timerCheckLatchFreqHigh(IN:=FALSE);  //Reset
-  timerCheckLatchFreqLow(IN:=FALSE);  //Reset
 END_IF
 
 nMissedTimingPulsesOld:=nMissedTimingPulses;
@@ -524,7 +523,6 @@ nMissedTimingPulsesLowold:=nMissedTimingPulsesLow;]]></ST>
       <LineId Id="709" Count="0" />
       <LineId Id="1702" Count="0" />
       <LineId Id="1764" Count="0" />
-      <LineId Id="1971" Count="0" />
       <LineId Id="708" Count="0" />
       <LineId Id="1766" Count="0" />
       <LineId Id="1555" Count="0" />

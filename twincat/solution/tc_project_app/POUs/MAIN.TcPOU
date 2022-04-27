@@ -16,6 +16,7 @@ VAR
     fbTemp                            : EL3214_old;
 	inputDigSens1 AT %I*              : BOOL;
 	inputDigSens2 AT %I*              : BOOL;
+	nSecondRotEncoder AT %I*           :UDINT:=0;
 	fbModePhase                       : FB_ModePhasing;	 // Phasing Mode
 	fbRampVelo                        : FB_RampVelo;
 	fbModeVelo                        : FB_ModeVelo;     // Velocity Mode
@@ -761,47 +762,47 @@ main.stHWStatusY.bBrakeReleased;
                               <v n="Extensible">false</v>
                             </o>
                             <o>
+                              <v n="Flags">1</v>
+                              <v n="Fixed">true</v>
+                              <v n="Extensible">false</v>
+                            </o>
+                            <o>
+                              <v n="Flags">1</v>
+                              <v n="Fixed">true</v>
+                              <v n="Extensible">false</v>
+                            </o>
+                            <o>
                               <v n="Flags">0</v>
-                              <v n="Fixed">false</v>
+                              <v n="Fixed">true</v>
                               <v n="Extensible">false</v>
                             </o>
                             <o>
                               <v n="Flags">0</v>
-                              <v n="Fixed">false</v>
-                              <v n="Extensible">false</v>
-                            </o>
-                            <o>
-                              <v n="Flags">1</v>
                               <v n="Fixed">true</v>
                               <v n="Extensible">false</v>
                             </o>
                             <o>
-                              <v n="Flags">1</v>
+                              <v n="Flags">0</v>
                               <v n="Fixed">true</v>
                               <v n="Extensible">false</v>
                             </o>
                             <o>
-                              <v n="Flags">1</v>
+                              <v n="Flags">0</v>
                               <v n="Fixed">true</v>
                               <v n="Extensible">false</v>
                             </o>
                             <o>
-                              <v n="Flags">1</v>
+                              <v n="Flags">0</v>
                               <v n="Fixed">true</v>
                               <v n="Extensible">false</v>
                             </o>
                             <o>
-                              <v n="Flags">1</v>
+                              <v n="Flags">0</v>
                               <v n="Fixed">true</v>
                               <v n="Extensible">false</v>
                             </o>
                             <o>
-                              <v n="Flags">1</v>
-                              <v n="Fixed">true</v>
-                              <v n="Extensible">false</v>
-                            </o>
-                            <o>
-                              <v n="Flags">1</v>
+                              <v n="Flags">0</v>
                               <v n="Fixed">true</v>
                               <v n="Extensible">false</v>
                             </o>
@@ -1813,10 +1814,11 @@ main.stHWStatusY.bBrakeReleased;
                               </o>
                               <v n="Id">115L</v>
                             </o>
-                            <o t="BoxTreeOperand">
-                              <o n="Operand" t="Operand">
-                                <v n="Operand">"main.fbModeHome.bHomed"</v>
-                                <v n="Type">"BOOL"</v>
+                            <o t="BoxTreeBox">
+                              <v n="BoxType">"OR"</v>
+                              <o n="Instance" t="Operand">
+                                <n n="Operand" />
+                                <v n="Type">""</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
                                 <v n="Address">""</v>
@@ -1827,10 +1829,149 @@ main.stHWStatusY.bBrakeReleased;
                                 </o>
                                 <v n="LValue">false</v>
                                 <v n="Boolean">false</v>
-                                <v n="IsInstance">false</v>
-                                <v n="Id">118L</v>
+                                <v n="IsInstance">true</v>
+                                <v n="Id">252L</v>
                               </o>
-                              <v n="Id">117L</v>
+                              <o n="OutputItems" t="OutputItemList">
+                                <l2 n="OutputItems">
+                                  <n />
+                                </l2>
+                              </o>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">true</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <n n="InputFlags" />
+                              <l2 n="InputItems">
+                                <o t="BoxTreeOperand">
+                                  <o n="Operand" t="Operand">
+                                    <v n="Operand">"main.fbModeHome.bHomed"</v>
+                                    <v n="Type">"BOOL"</v>
+                                    <v n="Comment">""</v>
+                                    <v n="SymbolComment">""</v>
+                                    <v n="Address">""</v>
+                                    <o n="Flags" t="Flags">
+                                      <v n="Flags">0</v>
+                                      <v n="Fixed">false</v>
+                                      <v n="Extensible">false</v>
+                                    </o>
+                                    <v n="LValue">false</v>
+                                    <v n="Boolean">false</v>
+                                    <v n="IsInstance">false</v>
+                                    <v n="Id">118L</v>
+                                  </o>
+                                  <v n="Id">117L</v>
+                                </o>
+                                <o t="BoxTreeBox">
+                                  <v n="BoxType">"="</v>
+                                  <o n="Instance" t="Operand">
+                                    <n n="Operand" />
+                                    <v n="Type">""</v>
+                                    <v n="Comment">""</v>
+                                    <v n="SymbolComment">""</v>
+                                    <v n="Address">""</v>
+                                    <o n="Flags" t="Flags">
+                                      <v n="Flags">0</v>
+                                      <v n="Fixed">false</v>
+                                      <v n="Extensible">false</v>
+                                    </o>
+                                    <v n="LValue">false</v>
+                                    <v n="Boolean">false</v>
+                                    <v n="IsInstance">true</v>
+                                    <v n="Id">258L</v>
+                                  </o>
+                                  <o n="OutputItems" t="OutputItemList">
+                                    <l2 n="OutputItems">
+                                      <n />
+                                    </l2>
+                                  </o>
+                                  <o n="Flags" t="Flags">
+                                    <v n="Flags">0</v>
+                                    <v n="Fixed">true</v>
+                                    <v n="Extensible">false</v>
+                                  </o>
+                                  <n n="InputFlags" />
+                                  <l2 n="InputItems" cet="BoxTreeOperand">
+                                    <o>
+                                      <o n="Operand" t="Operand">
+                                        <v n="Operand">"stHwStatusRot.eTargetState"</v>
+                                        <v n="Type">"TARGET_STATE_MACHINE"</v>
+                                        <v n="Comment">""</v>
+                                        <v n="SymbolComment">""</v>
+                                        <v n="Address">""</v>
+                                        <o n="Flags" t="Flags">
+                                          <v n="Flags">0</v>
+                                          <v n="Fixed">false</v>
+                                          <v n="Extensible">false</v>
+                                        </o>
+                                        <v n="LValue">false</v>
+                                        <v n="Boolean">false</v>
+                                        <v n="IsInstance">false</v>
+                                        <v n="Id">251L</v>
+                                      </o>
+                                      <v n="Id">250L</v>
+                                    </o>
+                                    <o>
+                                      <o n="Operand" t="Operand">
+                                        <v n="Operand">"TARGET_STATE_MACHINE.HOMING"</v>
+                                        <v n="Type">"TARGET_STATE_MACHINE"</v>
+                                        <v n="Comment">""</v>
+                                        <v n="SymbolComment">""</v>
+                                        <v n="Address">""</v>
+                                        <o n="Flags" t="Flags">
+                                          <v n="Flags">0</v>
+                                          <v n="Fixed">false</v>
+                                          <v n="Extensible">false</v>
+                                        </o>
+                                        <v n="LValue">false</v>
+                                        <v n="Boolean">false</v>
+                                        <v n="IsInstance">false</v>
+                                        <v n="Id">257L</v>
+                                      </o>
+                                      <v n="Id">256L</v>
+                                    </o>
+                                  </l2>
+                                  <o n="InputParam" t="ParamList">
+                                    <l2 n="Names" />
+                                    <l2 n="Types" />
+                                  </o>
+                                  <o n="OutputParam" t="ParamList">
+                                    <l2 n="Names" cet="String">
+                                      <v></v>
+                                    </l2>
+                                    <l2 n="Types" cet="String">
+                                      <v>BOOL</v>
+                                    </l2>
+                                  </o>
+                                  <v n="CallType" t="Operator">Equal</v>
+                                  <v n="EN">false</v>
+                                  <v n="ENO">false</v>
+                                  <n n="STSnippet" />
+                                  <v n="ContainsExtensibleInputs">false</v>
+                                  <v n="ProvidesSTSnippet">false</v>
+                                  <v n="Id">259L</v>
+                                </o>
+                              </l2>
+                              <o n="InputParam" t="ParamList">
+                                <l2 n="Names" />
+                                <l2 n="Types" />
+                              </o>
+                              <o n="OutputParam" t="ParamList">
+                                <l2 n="Names" cet="String">
+                                  <v></v>
+                                </l2>
+                                <l2 n="Types" cet="String">
+                                  <v>BOOL</v>
+                                </l2>
+                              </o>
+                              <v n="CallType" t="Operator">Or</v>
+                              <v n="EN">false</v>
+                              <v n="ENO">false</v>
+                              <n n="STSnippet" />
+                              <v n="ContainsExtensibleInputs">false</v>
+                              <v n="ProvidesSTSnippet">false</v>
+                              <v n="Id">253L</v>
                             </o>
                             <o t="BoxTreeOperand">
                               <o n="Operand" t="Operand">
@@ -2331,25 +2472,6 @@ main.stHWStatusY.bBrakeReleased;
                               </o>
                               <v n="Id">211L</v>
                             </o>
-                            <o t="BoxTreeOperand">
-                              <o n="Operand" t="Operand">
-                                <v n="Operand">"stStatus.bAxisEnabled"</v>
-                                <v n="Type">"BOOL"</v>
-                                <v n="Comment">""</v>
-                                <v n="SymbolComment">""</v>
-                                <v n="Address">""</v>
-                                <o n="Flags" t="Flags">
-                                  <v n="Flags">0</v>
-                                  <v n="Fixed">false</v>
-                                  <v n="Extensible">false</v>
-                                </o>
-                                <v n="LValue">false</v>
-                                <v n="Boolean">false</v>
-                                <v n="IsInstance">false</v>
-                                <v n="Id">214L</v>
-                              </o>
-                              <v n="Id">213L</v>
-                            </o>
                             <o t="BoxTreeBox">
                               <v n="BoxType">"&lt;"</v>
                               <o n="Instance" t="Operand">
@@ -2771,6 +2893,25 @@ main.stHWStatusY.bBrakeReleased;
                               </o>
                               <v n="Id">227L</v>
                             </o>
+                            <o>
+                              <o n="Operand" t="Operand">
+                                <v n="Operand">"stStatus.bAxisEnabled"</v>
+                                <v n="Type">"BOOL"</v>
+                                <v n="Comment">""</v>
+                                <v n="SymbolComment">""</v>
+                                <v n="Address">""</v>
+                                <o n="Flags" t="Flags">
+                                  <v n="Flags">0</v>
+                                  <v n="Fixed">false</v>
+                                  <v n="Extensible">false</v>
+                                </o>
+                                <v n="LValue">false</v>
+                                <v n="Boolean">false</v>
+                                <v n="IsInstance">false</v>
+                                <v n="Id">247L</v>
+                              </o>
+                              <v n="Id">246L</v>
+                            </o>
                           </l2>
                           <o n="InputParam" t="ParamList">
                             <l2 n="Names" />
@@ -2859,6 +3000,137 @@ main.stHWStatusY.bBrakeReleased;
                     <l2 n="Connectors" />
                     <v n="Id">152L</v>
                   </o>
+                  <o>
+                    <v n="ILActive">false</v>
+                    <v n="FBDValid">false</v>
+                    <v n="ILValid">false</v>
+                    <l2 n="ILLines" />
+                    <v n="Comment">""</v>
+                    <v n="Title">""</v>
+                    <v n="Label">""</v>
+                    <v n="OutCommented">false</v>
+                    <l2 n="NetworkItems" cet="BoxTreeAssign">
+                      <o>
+                        <o n="OutputItems" t="OutputItemList">
+                          <l2 n="OutputItems" cet="Operand">
+                            <o>
+                              <v n="Operand">"stHWControlRot.bEnable"</v>
+                              <v n="Type">"BOOL"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">true</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">244L</v>
+                            </o>
+                          </l2>
+                        </o>
+                        <o n="Flags" t="Flags">
+                          <v n="Flags">0</v>
+                          <v n="Fixed">false</v>
+                          <v n="Extensible">false</v>
+                        </o>
+                        <o n="RValue" t="BoxTreeBox">
+                          <v n="BoxType">"&amp;"</v>
+                          <o n="Instance" t="Operand">
+                            <n n="Operand" />
+                            <v n="Type">""</v>
+                            <v n="Comment">""</v>
+                            <v n="SymbolComment">""</v>
+                            <v n="Address">""</v>
+                            <o n="Flags" t="Flags">
+                              <v n="Flags">0</v>
+                              <v n="Fixed">false</v>
+                              <v n="Extensible">false</v>
+                            </o>
+                            <v n="LValue">false</v>
+                            <v n="Boolean">false</v>
+                            <v n="IsInstance">true</v>
+                            <v n="Id">242L</v>
+                          </o>
+                          <o n="OutputItems" t="OutputItemList">
+                            <l2 n="OutputItems">
+                              <n />
+                            </l2>
+                          </o>
+                          <o n="Flags" t="Flags">
+                            <v n="Flags">0</v>
+                            <v n="Fixed">true</v>
+                            <v n="Extensible">false</v>
+                          </o>
+                          <n n="InputFlags" />
+                          <l2 n="InputItems" cet="BoxTreeOperand">
+                            <o>
+                              <o n="Operand" t="Operand">
+                                <v n="Operand">"stHWControlRot.bEnable"</v>
+                                <v n="Type">"BOOL"</v>
+                                <v n="Comment">""</v>
+                                <v n="SymbolComment">""</v>
+                                <v n="Address">""</v>
+                                <o n="Flags" t="Flags">
+                                  <v n="Flags">0</v>
+                                  <v n="Fixed">false</v>
+                                  <v n="Extensible">false</v>
+                                </o>
+                                <v n="LValue">false</v>
+                                <v n="Boolean">false</v>
+                                <v n="IsInstance">false</v>
+                                <v n="Id">239L</v>
+                              </o>
+                              <v n="Id">238L</v>
+                            </o>
+                            <o>
+                              <o n="Operand" t="Operand">
+                                <v n="Operand">"bRotImportantIL"</v>
+                                <v n="Type">"BOOL"</v>
+                                <v n="Comment">""</v>
+                                <v n="SymbolComment">""</v>
+                                <v n="Address">""</v>
+                                <o n="Flags" t="Flags">
+                                  <v n="Flags">0</v>
+                                  <v n="Fixed">false</v>
+                                  <v n="Extensible">false</v>
+                                </o>
+                                <v n="LValue">false</v>
+                                <v n="Boolean">false</v>
+                                <v n="IsInstance">false</v>
+                                <v n="Id">241L</v>
+                              </o>
+                              <v n="Id">240L</v>
+                            </o>
+                          </l2>
+                          <o n="InputParam" t="ParamList">
+                            <l2 n="Names" />
+                            <l2 n="Types" />
+                          </o>
+                          <o n="OutputParam" t="ParamList">
+                            <l2 n="Names" cet="String">
+                              <v></v>
+                            </l2>
+                            <l2 n="Types" cet="String">
+                              <v>BOOL</v>
+                            </l2>
+                          </o>
+                          <v n="CallType" t="Operator">Ampersand</v>
+                          <v n="EN">false</v>
+                          <v n="ENO">false</v>
+                          <n n="STSnippet" />
+                          <v n="ContainsExtensibleInputs">false</v>
+                          <v n="ProvidesSTSnippet">false</v>
+                          <v n="Id">243L</v>
+                        </o>
+                        <v n="Id">245L</v>
+                      </o>
+                    </l2>
+                    <l2 n="Connectors" />
+                    <v n="Id">235L</v>
+                  </o>
                 </l2>
                 <v n="BranchCounter">0</v>
                 <v n="ValidIds">true</v>
@@ -2939,6 +3211,16 @@ IF stHWControlRot.fPhaseOffsetMM < GVL_Parameters.fMinPhaseOffsetMM THEN
 END_IF
 
 stHwStatusRot.fPhaseOffsetActDeg := stHWControlRot.fPhaseOffsetMM /(GVL_Parameters.fWheelDiameter*pi/360.0);
+
+//To high velo?
+IF ABS(stHWControlRot.fVelSet) > GVL_Parameters.fMaximumSPeedRpm  OR ABS(stHwStatusRot.fActVel) > GVL_Parameters.fMaximumSPeedRpm THEN
+	stHWControlRot.fVelSet:=0;
+	stHWControlRot.bEnable:=0;
+	stHWControlRot.bExecute:=0;
+	stHwStatusRot.bError:=TRUE;
+	stHwStatusRot.nErrorId:=GVL_ErrorCodes.nErrorVelToHigh;
+	stHwStatusRot.sErrorStr:=GVL_ErrorCodes.sErrorVelToHigh;
+END_IF
 
 //nAdditiveTorqueSetpoint:=0;
 //IF NOT  stHWControlRot.bExecute THEN
@@ -4526,6 +4808,15 @@ END_IF
       <LineId Id="233" Count="2" />
       <LineId Id="232" Count="0" />
       <LineId Id="114" Count="0" />
+      <LineId Id="315" Count="0" />
+      <LineId Id="304" Count="0" />
+      <LineId Id="303" Count="0" />
+      <LineId Id="305" Count="0" />
+      <LineId Id="311" Count="0" />
+      <LineId Id="313" Count="0" />
+      <LineId Id="309" Count="1" />
+      <LineId Id="308" Count="0" />
+      <LineId Id="306" Count="0" />
       <LineId Id="226" Count="0" />
       <LineId Id="2" Count="3" />
       <LineId Id="238" Count="0" />
