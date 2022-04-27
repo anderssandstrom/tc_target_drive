@@ -2328,6 +2328,10 @@ Bit 15]]></Comment>
 					<Name>GVL_back.axes[3].Axis.NcToPlc</Name>
 					<Type GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 				</Var>
+				<Var>
+					<Name>MAIN.nSecondRotEncoder</Name>
+					<Type>UDINT</Type>
+				</Var>
 			</Vars>
 			<Vars VarGrpType="2" ContextId="1" AreaNo="17">
 				<Name>PlcTaskCom Outputs</Name>
@@ -2742,6 +2746,7 @@ Bit 15]]></Comment>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 18 (EL5021)">
 				<Link VarA="PlcTask Inputs^MAIN.fb_s14_EL5021.InfoData_State" VarB="InfoData^State"/>
 				<Link VarA="PlcTask Inputs^MAIN.fb_s14_EL5021.WcState_WcState" VarB="WcState^WcState" Size="1"/>
+				<Link VarA="PlcTaskCom Inputs^MAIN.nSecondRotEncoder" VarB="ENC Status^Counter value"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 2 (EL1809)">
 				<Link VarA="PlcTask Inputs^MAIN.fb_s2_EL1809.InfoData_State" VarB="InfoData^State"/>

@@ -16,6 +16,7 @@ VAR
     fbTemp                            : EL3214_old;
 	inputDigSens1 AT %I*              : BOOL;
 	inputDigSens2 AT %I*              : BOOL;
+	nSecondRotEncoder AT %I*           :UDINT:=0;
 	fbModePhase                       : FB_ModePhasing;	 // Phasing Mode
 	fbRampVelo                        : FB_RampVelo;
 	fbModeVelo                        : FB_ModeVelo;     // Velocity Mode
