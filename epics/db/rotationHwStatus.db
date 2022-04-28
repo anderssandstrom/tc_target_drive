@@ -349,6 +349,8 @@ record(ao,"$(P)${DEV_NAME}-VelSetCmd"){
   field(DTYP, "asynInt32")
   field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_CMD}.fVelSet?")
   field(PREC, "3")
+  field(DRVL, "-28")
+  field(DRVH, "28")
   field(SCAN, "Passive")
   field(DESC, "${DEV_NAME}: Velocity setpoint [RPM]")
 }
