@@ -18,7 +18,7 @@ END_IF
 ACT_2_Interlock();
 
 // Brake control from GUI
-main.stHWStatusY.bBrakeReleased:=main.stHWControlY.bBrakeReleaseCmd;
+//main.stHWStatusY.bBrakeReleased:=main.stHWControlY.bBrakeReleaseCmd;
 
 // Enable Cmd from GUI
 GVL.astAxes[2].stControl.bEnable:=main.stHWControlY.bEnable;

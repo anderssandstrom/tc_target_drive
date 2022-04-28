@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
   <POU Name="TSCS_Bridge_Inputs" Id="{7b91ca15-7221-418a-8914-49b2d98ef7bd}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM TSCS_Bridge_Inputs	
 (* Inputs from TSCS PLC to TDU PLC*)
@@ -77,7 +77,7 @@ END_VAR
                         <v n="BoxType">"OSCAT_BYTE_TO_BITS"</v>
                         <o n="Instance" t="Operand">
                           <v n="Operand">"BYTE_TO_BITS_10"</v>
-                          <v n="Type">"BYTE_TO_BITS"</v>
+                          <v n="Type">"OSCAT_BYTE_TO_BITS"</v>
                           <v n="Comment">""</v>
                           <v n="SymbolComment">""</v>
                           <v n="Address">""</v>
@@ -95,8 +95,8 @@ END_VAR
                           <l2 n="OutputItems" cet="Operand">
                             <n />
                             <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
+                              <v n="Operand">"main.stHWStatusX.bBrakeReleased"</v>
+                              <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -111,8 +111,8 @@ END_VAR
                               <v n="Id">400L</v>
                             </o>
                             <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
+                              <v n="Operand">"main.stHWStatusY.bBrakeReleased"</v>
+                              <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -293,7 +293,7 @@ END_VAR
                       <v n="BoxType">"OSCAT_BYTE_TO_BITS"</v>
                       <o n="Instance" t="Operand">
                         <v n="Operand">"BYTE_TO_BITS_11"</v>
-                        <v n="Type">"BYTE_TO_BITS"</v>
+                        <v n="Type">"OSCAT_BYTE_TO_BITS"</v>
                         <v n="Comment">""</v>
                         <v n="SymbolComment">""</v>
                         <v n="Address">""</v>
@@ -507,7 +507,7 @@ END_VAR
                       <v n="BoxType">"OSCAT_BYTE_TO_BITS"</v>
                       <o n="Instance" t="Operand">
                         <v n="Operand">"BYTE_TO_BITS_12"</v>
-                        <v n="Type">"BYTE_TO_BITS"</v>
+                        <v n="Type">"OSCAT_BYTE_TO_BITS"</v>
                         <v n="Comment">""</v>
                         <v n="SymbolComment">""</v>
                         <v n="Address">""</v>
@@ -721,7 +721,7 @@ END_VAR
                       <v n="BoxType">"OSCAT_BYTE_TO_BITS"</v>
                       <o n="Instance" t="Operand">
                         <v n="Operand">"BYTE_TO_BITS_13"</v>
-                        <v n="Type">"BYTE_TO_BITS"</v>
+                        <v n="Type">"OSCAT_BYTE_TO_BITS"</v>
                         <v n="Comment">""</v>
                         <v n="SymbolComment">""</v>
                         <v n="Address">""</v>
@@ -935,7 +935,7 @@ END_VAR
                       <v n="BoxType">"OSCAT_BYTE_TO_BITS"</v>
                       <o n="Instance" t="Operand">
                         <v n="Operand">"BYTE_TO_BITS_14"</v>
-                        <v n="Type">"BYTE_TO_BITS"</v>
+                        <v n="Type">"OSCAT_BYTE_TO_BITS"</v>
                         <v n="Comment">""</v>
                         <v n="SymbolComment">""</v>
                         <v n="Address">""</v>
@@ -1149,7 +1149,7 @@ END_VAR
                       <v n="BoxType">"OSCAT_BYTE_TO_BITS"</v>
                       <o n="Instance" t="Operand">
                         <v n="Operand">"BYTE_TO_BITS_20"</v>
-                        <v n="Type">"BYTE_TO_BITS"</v>
+                        <v n="Type">"OSCAT_BYTE_TO_BITS"</v>
                         <v n="Comment">""</v>
                         <v n="SymbolComment">""</v>
                         <v n="Address">""</v>
@@ -1363,7 +1363,7 @@ END_VAR
                       <v n="BoxType">"OSCAT_BYTE_TO_BITS"</v>
                       <o n="Instance" t="Operand">
                         <v n="Operand">"BYTE_TO_BITS_21"</v>
-                        <v n="Type">"BYTE_TO_BITS"</v>
+                        <v n="Type">"OSCAT_BYTE_TO_BITS"</v>
                         <v n="Comment">""</v>
                         <v n="SymbolComment">""</v>
                         <v n="Address">""</v>
@@ -1577,7 +1577,7 @@ END_VAR
                       <v n="BoxType">"OSCAT_BYTE_TO_BITS"</v>
                       <o n="Instance" t="Operand">
                         <v n="Operand">"BYTE_TO_BITS_22"</v>
-                        <v n="Type">"BYTE_TO_BITS"</v>
+                        <v n="Type">"OSCAT_BYTE_TO_BITS"</v>
                         <v n="Comment">""</v>
                         <v n="SymbolComment">""</v>
                         <v n="Address">""</v>
@@ -1791,7 +1791,7 @@ END_VAR
                       <v n="BoxType">"OSCAT_BYTE_TO_BITS"</v>
                       <o n="Instance" t="Operand">
                         <v n="Operand">"BYTE_TO_BITS_23"</v>
-                        <v n="Type">"BYTE_TO_BITS"</v>
+                        <v n="Type">"OSCAT_BYTE_TO_BITS"</v>
                         <v n="Comment">""</v>
                         <v n="SymbolComment">""</v>
                         <v n="Address">""</v>
@@ -2005,7 +2005,7 @@ END_VAR
                       <v n="BoxType">"OSCAT_BYTE_TO_BITS"</v>
                       <o n="Instance" t="Operand">
                         <v n="Operand">"BYTE_TO_BITS_24"</v>
-                        <v n="Type">"BYTE_TO_BITS"</v>
+                        <v n="Type">"OSCAT_BYTE_TO_BITS"</v>
                         <v n="Comment">""</v>
                         <v n="SymbolComment">""</v>
                         <v n="Address">""</v>
