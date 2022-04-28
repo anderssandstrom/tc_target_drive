@@ -20,7 +20,7 @@ VAR_GLOBAL CONSTANT
   // Velocity setpoint for homing 
   fHomeSpeedRpm: LREAL := 5;
   // Maximum allowed speed
-  fMaximumSPeedRpm: LREAL := GVL_Parameters.fNominalSpeedRpm*1.2;
+  fMaximumSPeedRpm: LREAL := 28;
   nMaxMotorTemperature: INT:= 90;
   nMaxBrakeTemperature: INT:= 100;
   fWheelDiameter:LREAL:=2500;
