@@ -41,10 +41,11 @@ record(ai,"$(P)${DEV_NAME}-VelAct"){
   field(PINI, "1")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/T_DLY_MS=500/TS_MS=100/Main.${STRUCT_STAT}.fActVel?")
+  field(PREC, "3")
   field(SCAN, "I/O Intr")
   field(LINR, "SLOPE")
   field(ESLO, "0.1")
-  field(EOFF, "0")   
+  field(EOFF, "0")
   field(DESC, "${DEV_NAME}: Act Velocity [rpm]")
 }
 
@@ -79,7 +80,7 @@ record(ai,"$(P)${DEV_NAME}-MissedTimingPulses"){
   field(PINI, "1")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.nMissedTimingPulses?")
-  field(PREC, "3")
+  field(PREC, "0")
   field(SCAN, "I/O Intr")
   field(DESC, "${DEV_NAME}: Missed Timing pulses [mm]")
 }
@@ -88,7 +89,7 @@ record(ai,"$(P)Rotation-MissedTimingPulsesLow"){
   field(PINI, "1")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.nMissedTimingPulsesLow?")
-  field(PREC, "3")
+  field(PREC, "0")
   field(SCAN, "I/O Intr")
   field(DESC, "Rotation: Missed Timing pulses low[mm]")
 }
@@ -191,7 +192,7 @@ record(ai,"$(P)${DEV_NAME}-LatchedPosAct"){
   field(PINI, "1")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.fLatchedPosition?")
-  field(PREC, "0")
+  field(PREC, "3")
   field(SCAN, "I/O Intr")
   field(DESC, "${DEV_NAME}: Last Latched Position")
 }
@@ -244,6 +245,7 @@ record(bi,"$(P)${DEV_NAME}-VelStableAct"){
   field(PINI, "1")
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.bVeloStable?")  
+  field(PREC, "3")
   field(SCAN, "I/O Intr")
   field(DESC, "${DEV_NAME}: Velocity Stable")
   field(ZNAM, "Unstable")
@@ -254,7 +256,7 @@ record(ai,"$(P)${DEV_NAME}-VelRawCmd-RB"){
   field(PINI, "1")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.fSetVelRaw?")
-  field(PREC, "0")
+  field(PREC, "3")
   field(SCAN, "I/O Intr")
   field(DESC, "${DEV_NAME}: Vel Set to Drive")
 }
@@ -263,7 +265,7 @@ record(ai,"$(P)${DEV_NAME}-VelLastSectorAct"){
   field(PINI, "1")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.fLastSectorVelocity?")
-  field(PREC, "0")
+  field(PREC, "3")
   field(SCAN, "I/O Intr")
   field(DESC, "${DEV_NAME}: Act Vel for Last Sector")
 }
@@ -327,6 +329,7 @@ record(ai,"$(P)${DEV_NAME}-Vel_1HzAct"){
   field(PINI, "1")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.fActVel?")
+  field(PREC, "3")
   field(SCAN, "1 second")
   field(LINR, "SLOPE")
   field(ESLO, "0.1")
@@ -338,7 +341,7 @@ record(ai,"$(P)${DEV_NAME}-VelSetCmd_1HzAct"){
   field(PINI, "1")
   field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.fSetVelRaw?")
-  field(PREC, "0")
+  field(PREC, "3")
   field(SCAN, "1 second")
   field(DESC, "${DEV_NAME}: Vel Set to Drive")
 }
@@ -349,8 +352,8 @@ record(ao,"$(P)${DEV_NAME}-VelSetCmd"){
   field(DTYP, "asynFloat64")
   field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_CMD}.fVelSet?")
   field(PREC, "3")
-  field(DRVL, "-28")
-  field(DRVH, "28")
+  field(DRVL, "-25")
+  field(DRVH, "25")
   field(SCAN, "Passive")
   field(DESC, "${DEV_NAME}: Velocity setpoint [RPM]")
 }
