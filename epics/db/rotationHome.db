@@ -2,7 +2,7 @@
 record(bi,"$(P)Rotation-Home-Homed"){
   field(PINI, "1")
   field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModeHome.bHomed?")  
+  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stHwStatusRot.bHomed?")  
   field(SCAN, "I/O Intr")
   field(DESC, "Rotation: Homed")
 }
