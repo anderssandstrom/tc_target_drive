@@ -3227,11 +3227,16 @@ END_IF
 //	addStartupTorqueTrigger:=TRUE;
 //END_IF
 
-// Clear homed bit if drive is re-parametrizied
-IF stStatus.bDriveInParameterMode THEN
+// Clear homed bit if drive is re-parametrizied or lost connection
+IF stStatus.bDriveInParameterMode OR MAIN.fb_s19_IndraDrive.InfoData_State <> 8 THEN
 	stHwStatusRot.bHomed:=FALSE;
+	stHWControlRot.fVelSet:=0;
+	stHWControlRot.bEnable:=0;
+	stHWControlRot.bExecute:=0;
+	stHwStatusRot.bError:=TRUE;
+	stHwStatusRot.nErrorId:=GVL_ErrorCodes.nErrorNeedHoming;
+	stHwStatusRot.sErrorStr:=GVL_ErrorCodes.sErrorNeedHoming;
 END_IF
-
 
 CASE stHwStatusRot.eTargetState OF 
 	TARGET_STATE_MACHINE.CONSTANT_VELOCITY:
@@ -4827,8 +4832,12 @@ END_IF
       <LineId Id="2" Count="3" />
       <LineId Id="319" Count="1" />
       <LineId Id="318" Count="0" />
-      <LineId Id="321" Count="1" />
-      <LineId Id="238" Count="0" />
+      <LineId Id="321" Count="0" />
+      <LineId Id="330" Count="1" />
+      <LineId Id="324" Count="0" />
+      <LineId Id="328" Count="1" />
+      <LineId Id="327" Count="0" />
+      <LineId Id="322" Count="0" />
       <LineId Id="6" Count="2" />
       <LineId Id="152" Count="0" />
       <LineId Id="150" Count="0" />
