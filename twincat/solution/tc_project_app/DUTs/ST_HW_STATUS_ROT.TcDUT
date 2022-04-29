@@ -26,6 +26,7 @@ STRUCT
 	bHwStatusOK:BOOL:=FALSE;
 	bManualInterlockOverride:BOOL:=FALSE;
 	bGeneralILOK:BOOL:=FALSE;  // All on direction related summary interlocks
+	bHomed:BOOL:=FALSE;
 END_STRUCT
 END_TYPE
 ]]></Declaration>

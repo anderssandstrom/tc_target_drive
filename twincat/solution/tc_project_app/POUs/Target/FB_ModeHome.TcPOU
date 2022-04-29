@@ -12,14 +12,14 @@ END_VAR
 VAR_OUTPUT
 	fSpeedSetpoint     : LREAL  := 0;
 	fActPositionOffset : LREAL  := 0;
-	bHomed             : BOOL   := FALSE;
 	bBusy              : BOOL   := FALSE;
 	bError             : BOOL   := 0;
 	nErrorId           : UDINT  := 0;
 	sErrorStr          : STRING := GVL_ErrorCodes.nErrorCodeOKStr;
 END_VAR
 VAR_IN_OUT
-	stCommands: ST_INDRADRIVE_AXIS_COMMAND;
+	stCommands : ST_INDRADRIVE_AXIS_COMMAND;
+	bHomed     : BOOL;
 END_VAR
 VAR
   bRefMarkPosArrayConsistent : BOOL  := FALSE;
