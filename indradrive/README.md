@@ -17,3 +17,6 @@ Connect to drive with EoE via ams id: 172.30.2.35.1.1
 Reverse dir can be done in:
 Axis->axis mechanics scalings
 
+# Encoder
+If reference track nbot ok alarm in indra. Then a power cycle of encoder make it work again (atleast once)
+
