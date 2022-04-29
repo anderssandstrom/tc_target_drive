@@ -18,7 +18,7 @@ END_IF
 ACT_1_Interlock();
 
 // Brake control from GUI
-main.stHWStatusX.bBrakeReleased:=main.stHWControlX.bBrakeReleaseCmd;
+// main.stHWStatusX.bBrakeReleased:=main.stHWControlX.bBrakeReleaseCmd;
 
 // Enable Cmd from GUI
 GVL.astAxes[1].stControl.bEnable:=main.stHWControlX.bEnable;
@@ -2105,10 +2105,9 @@ main.stHWStatusX.bhiHiAlm:=gvl.astAxes[1].stStatus.fActPosition > GVL_Parameters
     </Action>
     <LineIds Name="Axis_1">
       <LineId Id="46" Count="6" />
-      <LineId Id="56" Count="1" />
-      <LineId Id="66" Count="0" />
-      <LineId Id="65" Count="0" />
-      <LineId Id="71" Count="0" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="196" Count="2" />
+      <LineId Id="57" Count="0" />
       <LineId Id="108" Count="1" />
       <LineId Id="87" Count="0" />
       <LineId Id="116" Count="0" />
