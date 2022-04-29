@@ -1846,7 +1846,7 @@ main.stHWStatusY.bBrakeReleased;
                               <l2 n="InputItems">
                                 <o t="BoxTreeOperand">
                                   <o n="Operand" t="Operand">
-                                    <v n="Operand">"main.fbModeHome.bHomed"</v>
+                                    <v n="Operand">"stHwStatusRot.bHomed"</v>
                                     <v n="Type">"BOOL"</v>
                                     <v n="Comment">""</v>
                                     <v n="SymbolComment">""</v>
@@ -3227,6 +3227,11 @@ END_IF
 //	addStartupTorqueTrigger:=TRUE;
 //END_IF
 
+// Clear homed bit if drive is re-parametrizied
+IF stStatus.bDriveInParameterMode THEN
+	stHwStatusRot.bHomed:=FALSE;
+END_IF
+
 
 CASE stHwStatusRot.eTargetState OF 
 	TARGET_STATE_MACHINE.CONSTANT_VELOCITY:
@@ -3300,6 +3305,7 @@ CASE stHwStatusRot.eTargetState OF
         fbModeHome( 
             bExecute:=         stHWControlRot.bExecute,
             bReset:=           stHWControlRot.bReset,
+			bHomed:=           stHwStatusRot.bHomed,
 			fVelSet:=          GVL_Parameters.fHomeSpeedRpm,
 			fPosSet:=          stHWControlRot.fPosSet,
 			stStatus:=	       stStatus,	
@@ -4819,6 +4825,9 @@ END_IF
       <LineId Id="306" Count="0" />
       <LineId Id="316" Count="0" />
       <LineId Id="2" Count="3" />
+      <LineId Id="319" Count="1" />
+      <LineId Id="318" Count="0" />
+      <LineId Id="321" Count="1" />
       <LineId Id="238" Count="0" />
       <LineId Id="6" Count="2" />
       <LineId Id="152" Count="0" />
@@ -4835,7 +4844,9 @@ END_IF
       <LineId Id="250" Count="0" />
       <LineId Id="51" Count="12" />
       <LineId Id="160" Count="1" />
-      <LineId Id="64" Count="7" />
+      <LineId Id="64" Count="2" />
+      <LineId Id="317" Count="0" />
+      <LineId Id="67" Count="4" />
       <LineId Id="134" Count="4" />
       <LineId Id="133" Count="0" />
       <LineId Id="72" Count="1" />
