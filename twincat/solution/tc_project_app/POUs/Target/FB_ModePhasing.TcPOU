@@ -15,8 +15,8 @@ VAR_INPUT
 	fPhaseOffsetMM     : LREAL        := 0.0;
 	fRefOffset         : LREAL        :=0;  //Offset from homing
 	bPhaseControlReset : BOOL         := FALSE;
-	ePhaseType         : E_PHASE_TYPE := E_PHASE_TYPE.PID;
-	ePwmType           : E_PWM_TYPE   := E_PWM_TYPE.OPTIMIZED;
+	ePhaseType         : E_PHASE_TYPE := E_PHASE_TYPE.SUPERIMPOSE;
+	ePwmType           : E_PWM_TYPE   := E_PWM_TYPE.NONE;
 END_VAR
 VAR_OUTPUT
 	bError             : BOOL;

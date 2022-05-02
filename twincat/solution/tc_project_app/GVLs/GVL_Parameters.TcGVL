@@ -21,6 +21,7 @@ VAR_GLOBAL CONSTANT
   fHomeSpeedRpm: LREAL := 5;
   // Maximum allowed speed
   fMaximumSPeedRpm: LREAL := 28;
+  fMaximumSPeedSPRpm: LREAL := 25;
   nMaxMotorTemperature: INT:= 90;
   nMaxBrakeTemperature: INT:= 100;
   fWheelDiameter:LREAL:=2500;
