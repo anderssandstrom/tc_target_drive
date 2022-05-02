@@ -2138,11 +2138,6 @@ Bit 15]]></Comment>
 			<Vars VarGrpType="2" AreaNo="1">
 				<Name>PlcTask Outputs</Name>
 				<Var>
-					<Name>MAIN.nAdditiveTorqueSetpoint</Name>
-					<Comment><![CDATA[ Unit 0.1%  (10=1%)]]></Comment>
-					<Type>INT</Type>
-				</Var>
-				<Var>
 					<Name>MAIN.fbIndraDrive.stDriveCommands.stS134_MasterControlWord</Name>
 					<Type GUID="{4CCFD5CA-E676-474E-B42D-6A96C42819C9}">ST_S134_MASTERCONTROLWORD</Type>
 				</Var>
@@ -2167,10 +2162,6 @@ Bit 15]]></Comment>
 					<Type>UDINT</Type>
 				</Var>
 				<Var>
-					<Name>MAIN.fbIndraDrive.stDriveCommands.nS359_PositioningDeceleration</Name>
-					<Type>UDINT</Type>
-				</Var>
-				<Var>
 					<Name>MAIN.fbIndraDrive.stDriveCommands.nS108_FeedrateOverride</Name>
 					<Type>UINT</Type>
 				</Var>
@@ -2185,6 +2176,15 @@ Bit 15]]></Comment>
 				<Var>
 					<Name>MAIN.fbIndraDrive.stDriveCommands.nS40_VelocityCommandValue</Name>
 					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.nAdditiveTorqueSetpoint</Name>
+					<Comment><![CDATA[ Unit 0.1%  (10=1%)]]></Comment>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbIndraDrive.stDriveCommands.nS359_PositioningDeceleration</Name>
+					<Type>UDINT</Type>
 				</Var>
 				<Var>
 					<Name>MAIN.stHWControlX.bMinMaxFeed</Name>

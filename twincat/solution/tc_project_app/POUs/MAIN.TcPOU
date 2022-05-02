@@ -3232,7 +3232,7 @@ END_IF
 stHwStatusRot.fPhaseOffsetActDeg := stHWControlRot.fPhaseOffsetMM /(GVL_Parameters.fWheelDiameter*pi/360.0);
 
 //To high velo?
-IF ABS(stHWControlRot.fVelSet) > GVL_Parameters.fMaximumSPeedRpm  OR ABS(stHwStatusRot.fActVel) > GVL_Parameters.fMaximumSPeedRpm THEN
+IF ABS(stHWControlRot.fVelSet) > GVL_Parameters.fMaximumSPeedSPRpm  OR ABS(stHwStatusRot.fActVel) > GVL_Parameters.fMaximumSPeedRpm THEN
 	stHWControlRot.fVelSet:=0;
 	stHWControlRot.bEnable:=0;
 	stHWControlRot.bExecute:=0;
