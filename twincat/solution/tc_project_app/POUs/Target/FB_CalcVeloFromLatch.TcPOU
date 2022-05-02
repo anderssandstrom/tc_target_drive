@@ -37,11 +37,24 @@ END_IF
 
 // New trigger from timing system
 IF (fLatchedPosition-fLatchedPositionOld)<>0 THEN
-  IF(fLatchedPositionOld>fLatchedPosition) THEN
-	fDistBetweenLastPulses:=(360-fLatchedPositionOld+fLatchedPosition);
+  
+  fDistBetweenLastPulses:=fLatchedPosition-fLatchedPositionOld;
+  // Check over/underflow
+  IF (ABS(fLatchedPositionOld - fLatchedPosition) > 200 ) THEN
+    IF(fLatchedPositionOld > fLatchedPosition) THEN
+	  // overflow
+	  fDistBetweenLastPulses:=(360 - fLatchedPositionOld+fLatchedPosition);
+    ELSE
+	  // underflow
+	  fDistBetweenLastPulses:=  fLatchedPositionOld +  fLatchedPosition-360;  
+    END_IF
+  END_IF
+
+  (*IF(fLatchedPositionOld > fLatchedPosition) THEN
+	fDistBetweenLastPulses:=(360 - fLatchedPositionOld+fLatchedPosition);
   ELSE
 	fDistBetweenLastPulses:=fLatchedPosition-fLatchedPositionOld;
-  END_IF
+  END_IF*) 
   fLastSectorVelocity:=fDistBetweenLastPulses*GVL_Parameters.nPulseFreqHz*60/360;
   fLastSectorVelocityOld:=fLastSectorVelocity;
 END_IF
@@ -60,7 +73,21 @@ fSpeedActual:=fLastSectorVelocity;
       <LineId Id="1831" Count="0" />
       <LineId Id="1119" Count="0" />
       <LineId Id="1118" Count="0" />
-      <LineId Id="55" Count="6" />
+      <LineId Id="55" Count="0" />
+      <LineId Id="2460" Count="0" />
+      <LineId Id="2475" Count="0" />
+      <LineId Id="2461" Count="1" />
+      <LineId Id="2465" Count="0" />
+      <LineId Id="2473" Count="0" />
+      <LineId Id="2468" Count="0" />
+      <LineId Id="2470" Count="0" />
+      <LineId Id="2474" Count="0" />
+      <LineId Id="2471" Count="0" />
+      <LineId Id="2467" Count="0" />
+      <LineId Id="2464" Count="0" />
+      <LineId Id="2466" Count="0" />
+      <LineId Id="56" Count="4" />
+      <LineId Id="2476" Count="0" />
       <LineId Id="1096" Count="0" />
       <LineId Id="2258" Count="0" />
       <LineId Id="1391" Count="0" />
