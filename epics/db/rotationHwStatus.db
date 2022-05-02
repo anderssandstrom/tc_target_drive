@@ -304,6 +304,8 @@ record(bi,"$(P)${DEV_NAME}-Err"){
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.${STRUCT_STAT}.bError?")
   field(SCAN, "I/O Intr")
+  field(ZNAM, "OK")
+  field(ONAM, "Error")
   field(DESC, "Error")
 }
 
