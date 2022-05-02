@@ -329,6 +329,9 @@
     <Compile Include="POUs\Target\FB_ModePhasing.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Target\FB_CalcVeloFromLatch.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\Target\FB_ModeVelo.TcPOU">
       <SubType>Code</SubType>
     </Compile>

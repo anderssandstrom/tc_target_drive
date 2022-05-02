@@ -22,6 +22,7 @@ VAR
 	fbModeVelo                        : FB_ModeVelo;     // Velocity Mode
 	fbModePos                         : FB_ModePos;      // Positioning Mode
 	fbModeHome                        : FB_ModeHome;     // Homing Mode
+	fbCalcVeloLatch                   : FB_CalcVeloFromLatch;
 	fbIndraDrive                      : fbIndraDrive;    // Control of drive
 	stCommands                        : ST_INDRADRIVE_AXIS_COMMAND; // Control to drive
 	stStatus                          : ST_INDRADRIVE_AXIS_STATUS;  // Status from drive
@@ -3257,6 +3258,10 @@ IF stStatus.bDriveInParameterMode OR MAIN.fb_s19_IndraDrive.InfoData_State <> 8 
 	stHwStatusRot.sErrorStr:=GVL_ErrorCodes.sErrorNeedHoming;
 END_IF
 
+fbCalcVeloLatch(
+            fVeloLimit:=3,
+			dLatchedPosition:= dLatchedPosition);
+
 CASE stHwStatusRot.eTargetState OF 
 	TARGET_STATE_MACHINE.CONSTANT_VELOCITY:
         stCommands.fCommandAcceleration:=GVL_Parameters.fAccDefaultVel;
@@ -4857,7 +4862,10 @@ END_IF
       <LineId Id="328" Count="1" />
       <LineId Id="327" Count="0" />
       <LineId Id="322" Count="0" />
-      <LineId Id="6" Count="2" />
+      <LineId Id="332" Count="1" />
+      <LineId Id="337" Count="1" />
+      <LineId Id="343" Count="0" />
+      <LineId Id="7" Count="1" />
       <LineId Id="152" Count="0" />
       <LineId Id="150" Count="0" />
       <LineId Id="9" Count="24" />

@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+  <POU Name="FB_CalcVeloFromLatch" Id="{14dd21ac-763f-46c5-99c6-268fb0ef0d3f}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_CalcVeloFromLatch
+VAR_INPUT
+    dLatchedPosition   : DINT         := 0;
+	fVeloLimit         : LREAL        := 3;
+END_VAR
+VAR_OUTPUT
+	bError             : BOOL;
+	nErrorId           : UDINT;
+	sErrorStr          : STRING := GVL_ErrorCodes.nErrorCodeOKStr;
+	fSpeedActual       : LREAL;
+END_VAR
+VAR
+  dLatchedPositionOld      : DINT  := 0;
+  fLatchedPositionOld      : LREAL := 0;
+  fDistBetweenLastPulses   : LREAL := 0;
+  fLastSectorVelocity      : LREAL := 0;
+  fLatchedPosition         : LREAL := 0;
+  fLastSectorVelocityOld   : LREAL := 0;
+ END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Function: 
+// Calc velocity from drive latched positions
+// Author: Anders Sandström 2022
+
+fLatchedPositionOld:=fLatchedPosition;  // Backup old
+fLatchedPosition:=DINT_TO_LREAL(dLatchedPosition)/10000.0;  // remove homing offset
+IF fLatchedPosition > 360 THEN
+  fLatchedPosition:=fLatchedPosition - 360;	
+END_IF
+IF fLatchedPosition < 0 THEN
+  fLatchedPosition:=fLatchedPosition + 360;	
+END_IF
+
+// New trigger from timing system
+IF (fLatchedPosition-fLatchedPositionOld)<>0 THEN
+  IF(fLatchedPositionOld>fLatchedPosition) THEN
+	fDistBetweenLastPulses:=(360-fLatchedPositionOld+fLatchedPosition);
+  ELSE
+	fDistBetweenLastPulses:=fLatchedPosition-fLatchedPositionOld;
+  END_IF
+  fLastSectorVelocity:=fDistBetweenLastPulses*GVL_Parameters.nPulseFreqHz*60/360;
+  fLastSectorVelocityOld:=fLastSectorVelocity;
+END_IF
+
+dLatchedPositionOld:=dLatchedPosition;
+fSpeedActual:=fLastSectorVelocity;
+]]></ST>
+    </Implementation>
+    <LineIds Name="FB_CalcVeloFromLatch">
+      <LineId Id="1065" Count="0" />
+      <LineId Id="1331" Count="0" />
+      <LineId Id="948" Count="0" />
+      <LineId Id="1838" Count="0" />
+      <LineId Id="53" Count="1" />
+      <LineId Id="1832" Count="4" />
+      <LineId Id="1831" Count="0" />
+      <LineId Id="1119" Count="0" />
+      <LineId Id="1118" Count="0" />
+      <LineId Id="55" Count="6" />
+      <LineId Id="1096" Count="0" />
+      <LineId Id="2258" Count="0" />
+      <LineId Id="1391" Count="0" />
+      <LineId Id="161" Count="0" />
+      <LineId Id="2456" Count="0" />
+      <LineId Id="1977" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
