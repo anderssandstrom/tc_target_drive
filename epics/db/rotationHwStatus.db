@@ -264,20 +264,20 @@ record(ai,"$(P)${DEV_NAME}-VelRawCmd-RB"){
 record(ai,"$(P)${DEV_NAME}-VelLastSectorAct"){
   field(PINI, "1")
   field(DTYP, "asynFloat64")
-  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.fbModePhase.fLastSectorVelocity?")
-  field(PREC, "3")
-  field(SCAN, "I/O Intr")
-  field(DESC, "${DEV_NAME}: Act Vel for Last Sector")
-}
-
-record(ai,"$(P)${DEV_NAME}-VelLastSectorAct_2"){
-  field(PINI, "1")
-  field(DTYP, "asynFloat64")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/T_DLY_MS=50/TS_MS=50/Main.fbCalcVeloLatch.fLastSectorVelocity?")
   field(PREC, "3")
   field(SCAN, "I/O Intr")
   field(DESC, "${DEV_NAME}: Act Vel for Last Sector")
 }
+
+#record(ai,"$(P)${DEV_NAME}-VelLastSectorAct_2"){
+#  field(PINI, "1")
+#  field(DTYP, "asynFloat64")
+#  field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/T_DLY_MS=50/TS_MS=50/Main.fbCalcVeloLatch.fLastSectorVelocity?")
+#  field(PREC, "3")
+#  field(SCAN, "I/O Intr")
+#  field(DESC, "${DEV_NAME}: Act Vel for Last Sector")
+#}
 
 record(waveform,"$(P)${DEV_NAME}-ErrStr"){
   field(PINI, "1")
