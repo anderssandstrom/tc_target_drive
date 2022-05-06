@@ -61,7 +61,7 @@ VAR
 	timPhaseStabilization: TON;
 	timPhaseErrorOverH1: TON;
 	bPhaseOKSetReset: SR;
-	
+	fActVelOld:LREAL:=0;
 	// Test of array transfer
   (*  fTestArray01: ARRAY [1..200] OF LREAL;
     fTestArray02: ARRAY [1..200] OF LREAL;
@@ -3233,7 +3233,7 @@ END_IF
 stHwStatusRot.fPhaseOffsetActDeg := stHWControlRot.fPhaseOffsetMM /(GVL_Parameters.fWheelDiameter*pi/360.0);
 
 //To high velo?
-IF ABS(stHWControlRot.fVelSet) > GVL_Parameters.fMaximumSPeedSPRpm  OR ABS(stHwStatusRot.fActVel) > GVL_Parameters.fMaximumSPeedRpm THEN
+IF ABS(stHWControlRot.fVelSet) > GVL_Parameters.fMaximumSPeedSPRpm  OR (ABS(stHwStatusRot.fActVel) > GVL_Parameters.fMaximumSPeedRpm  AND ABS(fActVelOld) >  GVL_Parameters.fMaximumSPeedRpm) THEN
 	stHWControlRot.fVelSet:=0;
 	stHWControlRot.bEnable:=0;
 	stHWControlRot.bExecute:=0;
@@ -3406,7 +3406,10 @@ IF stHwStatusRot.fActPos < 0 THEN
   stHwStatusRot.fActPos:=stHwStatusRot.fActPos+360;	
 END_IF
 stHwStatusRot.fActTorque:=stStatus.fActualTorque;
+fActVelOld:=stHwStatusRot.fActVel;
 stHwStatusRot.fActVel:=stStatus.fActualVelocity/10;
+
+
 ]]></ST>
       </Implementation>
     </Action>
@@ -4904,7 +4907,10 @@ END_IF
       <LineId Id="242" Count="2" />
       <LineId Id="247" Count="2" />
       <LineId Id="111" Count="0" />
+      <LineId Id="346" Count="0" />
       <LineId Id="1" Count="0" />
+      <LineId Id="345" Count="0" />
+      <LineId Id="344" Count="0" />
       <LineId Id="302" Count="0" />
     </LineIds>
     <LineIds Name="MAIN.ACT_5_Steppers">
