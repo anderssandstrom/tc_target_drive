@@ -1,5 +1,5 @@
 SERCOS-ASCII
-5/6/2022 3:44:37 PM
+5/6/2022 3:53:51 PM
 default
 FWA-INDRV*-MPB-20V26-D5-1-MSP-NN | HCS02.1E-W0070-A-03-NNNN | MST530C-0010-NS-N0CN-NNNN : MRT530C-3N-0410-NNNN | CSB02.1A-ET-EC-NN-L3-NN-NN-FW
 1
@@ -395,7 +395,7 @@ Velocity loop proportional gain
 Nm/(rad/s)
 0.000
 2147483.647
-10.000
+12.000
 |
 S-0-0101
 Velocity loop integral action time
@@ -403,7 +403,7 @@ Velocity loop integral action time
 ms
 0.0
 6553.5
-3.0
+1.0
 |
 S-0-0103
 Modulo value
@@ -4191,8 +4191,8 @@ s
 --
 12
 12
-1073508.8
-794519.4
+1074041.6
+795052.2
 0.0
 |
 P-0-2052
@@ -5609,7 +5609,7 @@ System fine time
 us
 --
 --
-898606.304
+253106.304
 |
 P-0-2756
 System coarse time
@@ -5617,7 +5617,7 @@ System coarse time
 s
 --
 --
-1646953535
+1646954090
 |
 P-0-0383
 Mains energy counter
@@ -5625,7 +5625,7 @@ Mains energy counter
 kWh
 --
 --
-8.20
+8.22
 |
 P-0-0002
 SPI flash aging counter
@@ -5633,7 +5633,7 @@ SPI flash aging counter
 --
 --
 --
-154118
+154125
 |
 P-0-0177
 Encoder 1, absoute encoder buffer
@@ -5677,7 +5677,7 @@ Energy counter
 kWh
 -20000000.00
 20000000.00
-17.32
+17.34
 |
 P-0-1218
 Motor potentiometer, command value
