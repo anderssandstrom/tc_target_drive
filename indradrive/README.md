@@ -1,3 +1,25 @@
+# MUTS
+
+## TDU cabinet:
+IndraDrive error 8022 Encoder Error already at startup
+Pinged cable OK still 8022
+
+
+## AVS box
+IndraDrive error 8022 Encoder Error
+Phases chnaged to correct order in inlet to box.
+Phases changed to correct orde on motor junction box (on drive unit)
+Inverted encoder (I think)
+Inverted scaling to run CCW
+
+This works!! Hmmm..
+
+Check with eider what she know on phase order issues (she also mentioned this)
+
+Got no time to revisit TDU cabinte to get that working.
+
+Need investigation
+
 # Indradrive configs
 Use: IndraWorks Ds 14V24 P1
 
@@ -18,5 +40,6 @@ Reverse dir can be done in:
 Axis->axis mechanics scalings
 
 # Encoder
-If reference track nbot ok alarm in indra. Then a power cycle of encoder make it work again (atleast once)
+If reference track not ok alarm in indra. Then a power cycle of encoder make it work again (atleast once)
+
 
