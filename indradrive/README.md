@@ -18,7 +18,10 @@ Check with eider what she know on phase order issues (she also mentioned this)
 
 Got no time to revisit TDU cabinte to get that working.
 
-Need investigation
+Need investigation!!!
+
+Working parmans saved in this repo..
+
 
 # Indradrive configs
 Use: IndraWorks Ds 14V24 P1
