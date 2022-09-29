@@ -1,5 +1,5 @@
 SERCOS-ASCII
-9/29/2022 9:00:10 AM
+9/29/2022 10:28:16 AM
 default
 FWA-INDRV*-MPB-20V26-D5-1-MSP-NN | HCS02.1E-W0070-A-03-NNNN | MST530C-0010-NS-N0CN-NNNN : MRT530C-3N-0410-NNNN | CSB02.1A-ET-EC-NN-L3-NN-NN-FW
 1
@@ -315,7 +315,7 @@ Torque/force limit value positive
 %
 0.0
 470.0
-150.0
+200.0
 |
 S-0-0083
 Torque/force limit value negative
@@ -323,7 +323,7 @@ Torque/force limit value negative
 %
 -470.0
 0.0
--150.0
+-200.0
 |
 S-0-0085
 Torque/force polarity parameter
@@ -355,7 +355,7 @@ Bipolar torque/force limit value
 %
 0.0
 470.0
-100.0
+200.0
 |
 S-0-0093
 Torque/force data scaling factor
@@ -395,7 +395,7 @@ Velocity loop proportional gain
 Nm/(rad/s)
 0.000
 2147483.647
-12.000
+5.000
 |
 S-0-0101
 Velocity loop integral action time
@@ -403,7 +403,7 @@ Velocity loop integral action time
 ms
 0.0
 6553.5
-10.0
+40.0
 |
 S-0-0103
 Modulo value
@@ -1949,7 +1949,7 @@ Torque/force peak limit
 %
 0.0
 470.0
-150.0
+200.0
 |
 P-0-0113
 Bipolar velocity limit value of motor
@@ -2845,7 +2845,7 @@ Amplitude for angle acquisition
 V
 0
 1000
-383
+379
 |
 P-0-0507
 Test frequency for angle acquisition
@@ -4191,8 +4191,8 @@ s
 --
 12
 12
-1099803.2
-811042.0
+1100134.4
+811090.8
 0.0
 |
 P-0-2052
@@ -5609,7 +5609,7 @@ System fine time
 us
 --
 --
-692106.004
+356606.004
 |
 P-0-2756
 System coarse time
@@ -5617,7 +5617,7 @@ System coarse time
 s
 --
 --
-1649034004
+1649039290
 |
 P-0-0383
 Mains energy counter
@@ -5625,7 +5625,7 @@ Mains energy counter
 kWh
 --
 --
-10.32
+10.41
 |
 P-0-0002
 SPI flash aging counter
@@ -5633,7 +5633,7 @@ SPI flash aging counter
 --
 --
 --
-175301
+175338
 |
 P-0-0177
 Encoder 1, absoute encoder buffer
@@ -5677,7 +5677,7 @@ Energy counter
 kWh
 -20000000.00
 20000000.00
-19.43
+19.52
 |
 P-0-1218
 Motor potentiometer, command value
