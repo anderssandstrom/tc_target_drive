@@ -75,6 +75,7 @@ VAR
 	i: INT;
 	counter: LREAL;
 	btest: INT;*)
+	btesttesttest: BOOL;
 END_VAR
 
 VAR_INPUT
@@ -87,6 +88,7 @@ VAR_INPUT
   stHWStatusZ    : ST_HW_STATUS_XYZ;
   stHwStatusRot  : ST_HW_STATUS_ROT;
   stHWStatusDev  : ST_HW_STATUS_DEV;
+  bTestTest:bool:=false;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Test of array transfer
@@ -137,6 +139,7 @@ ACT_7_Status();
 // Post exe
 eTargetStateOld:=stHwStatusRot.eTargetState;
 
+bTestTest:=FALSE OR btesttesttest;
 ]]></ST>
     </Implementation>
     <Action Name="ACT_1_Hardware" Id="{713eae55-748e-42a3-b2f0-81f54e66f4bd}">
@@ -3273,7 +3276,7 @@ fActVelOldOld:=fActVelOld;
 fActVelOld:=stHwStatusRot.fActVel;
 stHwStatusRot.fActVel:=stStatus.fActualVelocity/10;
 
-
+stCommands.fTorqueLimit:=GVL_Parameters.fMaxRotationBipolarTorque; //%
 ]]></ST>
       </Implementation>
     </Action>
@@ -4561,6 +4564,7 @@ END_IF
       <LineId Id="1942" Count="0" />
       <LineId Id="1864" Count="3" />
       <LineId Id="1389" Count="0" />
+      <LineId Id="2143" Count="0" />
     </LineIds>
     <LineIds Name="MAIN.ACT_1_Hardware">
       <LineId Id="1" Count="0" />
@@ -4775,9 +4779,9 @@ END_IF
       <LineId Id="349" Count="0" />
       <LineId Id="346" Count="0" />
       <LineId Id="1" Count="0" />
-      <LineId Id="345" Count="0" />
-      <LineId Id="344" Count="0" />
+      <LineId Id="352" Count="0" />
       <LineId Id="302" Count="0" />
+      <LineId Id="350" Count="0" />
     </LineIds>
     <LineIds Name="MAIN.ACT_5_Steppers">
       <LineId Id="1" Count="1" />

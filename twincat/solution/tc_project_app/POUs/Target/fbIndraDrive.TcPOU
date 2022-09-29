@@ -297,8 +297,7 @@ sAmsNetId := F_CreateAmsNetId(AmsNetId);
 			//stDriveCommands.stS145_SignalControlWord.bP760_VM_PosCtrlWord_2_PosActivation	:= TRUE;
 			stDriveCommands.stS145_SignalControlWord.bP760_VM_PosCtrlWord_CmdValueAccept	:= FALSE;
 		END_IF
-		
-]]></ST>
+		]]></ST>
     </Implementation>
     <LineIds Name="fbIndraDrive">
       <LineId Id="3" Count="53" />
@@ -334,8 +333,8 @@ sAmsNetId := F_CreateAmsNetId(AmsNetId);
       <LineId Id="306" Count="0" />
       <LineId Id="200" Count="38" />
       <LineId Id="272" Count="1" />
-      <LineId Id="239" Count="10" />
-      <LineId Id="2" Count="0" />
+      <LineId Id="239" Count="9" />
+      <LineId Id="400" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
