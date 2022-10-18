@@ -76,6 +76,8 @@ VAR
 	counter: LREAL;
 	btest: INT;*)
 	btesttesttest: BOOL;
+	int64_test : LINT;
+	
 END_VAR
 
 VAR_INPUT
@@ -139,8 +141,9 @@ ACT_7_Status();
 // Post exe
 eTargetStateOld:=stHwStatusRot.eTargetState;
 
-bTestTest:=FALSE OR btesttesttest;
-]]></ST>
+IF int64_test>0 THEN
+  bTestTest:=FALSE OR btesttesttest;	
+END_IF]]></ST>
     </Implementation>
     <Action Name="ACT_1_Hardware" Id="{713eae55-748e-42a3-b2f0-81f54e66f4bd}">
       <Implementation>
@@ -4562,9 +4565,10 @@ END_IF
       <LineId Id="1851" Count="12" />
       <LineId Id="1939" Count="1" />
       <LineId Id="1942" Count="0" />
-      <LineId Id="1864" Count="3" />
+      <LineId Id="1864" Count="2" />
       <LineId Id="1389" Count="0" />
       <LineId Id="2143" Count="0" />
+      <LineId Id="2234" Count="1" />
     </LineIds>
     <LineIds Name="MAIN.ACT_1_Hardware">
       <LineId Id="1" Count="0" />
