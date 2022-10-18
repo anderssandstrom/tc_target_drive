@@ -1,0 +1,21 @@
+
+# record(bo,"$(P)TESTING_BO"){
+#   info(asyn:READBACK,"1")
+#   field(PINI, "1")
+#   field(DTYP, "asynInt32")
+#   field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/TIMEBASE=PLC/T_DLY_MS=1000/TS_MS=100/UPDT_ON_WRT=0/Main.bTestTest?")
+#   field(ZNAM, "0")
+#   field(ONAM, "1")  
+#   field(SCAN, "Passive")  
+#   field(DESC, "Test bo")
+# }
+
+record(ao,"$(P)TESTING_AO"){
+  info(asyn:READBACK,"1")
+  field(PINI, "1")
+  field(DTYP, "asynInt64")
+  field(OUT,  "@asyn($(PORT),0,1)ADSPORT=852/TIMEBASE=PLC/T_DLY_MS=1000/TS_MS=100/Main.int64_test?")
+  field(SCAN, "Passive")  
+  field(DESC, "Test ao")
+}
+

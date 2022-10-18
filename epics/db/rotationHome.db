@@ -4,6 +4,8 @@ record(bi,"$(P)Rotation-Home-Homed"){
   field(DTYP, "asynInt32")
   field(INP,  "@asyn($(PORT),0,1)ADSPORT=852/Main.stHwStatusRot.bHomed?")  
   field(SCAN, "I/O Intr")
+  field(ZNAM, "Not Homed")
+  field(ONAM, "Homed")
   field(DESC, "Rotation: Homed")
 }
 

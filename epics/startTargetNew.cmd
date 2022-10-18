@@ -1,4 +1,5 @@
-require ads,2.0.2
+#require ads,2.0.2
+require ads,master
 
 ##############################################################################
 ############# Configure ads device driver:
@@ -48,14 +49,17 @@ dbLoadRecords("./db/general.db","P=${PREFIX},PORT=${ADS_ASYN_PORT},DEV_NAME=DEV"
 ## Stepper X
 dbLoadRecords("./db/xyz.db","P=${PREFIX},PORT=${ADS_ASYN_PORT},DEV_NAME=X,STRUCT_STAT=stHwStatusX, STRUCT_CMD=stHwControlX, AXIS_NO=1")
 dbLoadRecords("./db/tcMotionAxis.db","P=${PREFIX},PORT=${ADS_ASYN_PORT},DEV_NAME=X,AXIS_INDEX=1")
+dbLoadRecords("./db/xyz_resolver.db","P=${PREFIX},PORT=${ADS_ASYN_PORT},DEV_NAME=X,SLAVE_ID=10")
 
 ## Stepper Y
 dbLoadRecords("./db/xyz.db","P=${PREFIX},PORT=${ADS_ASYN_PORT},DEV_NAME=Y,STRUCT_STAT=stHwStatusY, STRUCT_CMD=stHwControlY, AXIS_NO=2")
 dbLoadRecords("./db/tcMotionAxis.db","P=${PREFIX},PORT=${ADS_ASYN_PORT},DEV_NAME=Y,AXIS_INDEX=2")
+dbLoadRecords("./db/xyz_resolver.db","P=${PREFIX},PORT=${ADS_ASYN_PORT},DEV_NAME=Y,SLAVE_ID=11")
 
 ## Stepper Z
 dbLoadRecords("./db/xyz.db","P=${PREFIX},PORT=${ADS_ASYN_PORT},DEV_NAME=Z,STRUCT_STAT=stHwStatusZ, STRUCT_CMD=stHwControlZ, AXIS_NO=3")
 dbLoadRecords("./db/tcMotionAxis.db","P=${PREFIX},PORT=${ADS_ASYN_PORT},DEV_NAME=Z,AXIS_INDEX=3")
+dbLoadRecords("./db/xyz_resolver.db","P=${PREFIX},PORT=${ADS_ASYN_PORT},DEV_NAME=Z,SLAVE_ID=12")
 
 # Load hardware
 epicsEnvSet("EC_SLAVE_NUM",    "2")
@@ -143,34 +147,8 @@ epicsEnvSet("EC_SLAVE_NUM",    "22")
 epicsEnvSet("EC_HWTYPE",       "IPOS8020")
 dbLoadTemplate("./db/${EC_HWTYPE}.substitutions","P=${PREFIX},PORT=${ADS_ASYN_PORT},ADDR=0,TIMEOUT=1,ADSPORT=${ADSPORT_DEF},MASTER_ID=${EC_MASTER_ID},SLAVE_POS=${EC_SLAVE_NUM},HWTYPE=${EC_HWTYPE},T_SMP_MS=${SAMPLE_RATE_MS_DEF},TSE=${TSE=0}")
 
-# Moved to other plc
-#epicsEnvSet("EC_SLAVE_NUM",    "22")
-#epicsEnvSet("EC_HWTYPE",       "EK1100")
-#dbLoadTemplate("./db/${EC_HWTYPE}.substitutions","P=${PREFIX},PORT=${ADS_ASYN_PORT},ADDR=0,TIMEOUT=1,ADSPORT=${ADSPORT_DEF},MASTER_ID=${EC_MASTER_ID},SLAVE_POS=${EC_SLAVE_NUM},HWTYPE=${EC_HWTYPE},T_SMP_MS=${SAMPLE_RATE_MS_DEF},TSE=${TSE=0}")
-#
-#epicsEnvSet("EC_SLAVE_NUM",    "23")
-#epicsEnvSet("EC_HWTYPE",       "EL1252")
-#dbLoadTemplate("./db/${EC_HWTYPE}.substitutions","P=${PREFIX},PORT=${ADS_ASYN_PORT},ADDR=0,TIMEOUT=1,ADSPORT=${ADSPORT_DEF},MASTER_ID=${EC_MASTER_ID},SLAVE_POS=${EC_SLAVE_NUM},HWTYPE=${EC_HWTYPE},T_SMP_MS=${SAMPLE_RATE_MS_DEF},TSE=${TSE=0}")
-#
-#epicsEnvSet("EC_SLAVE_NUM",    "24")
-#epicsEnvSet("EC_HWTYPE",       "EL3742")
-#dbLoadTemplate("./db/${EC_HWTYPE}.substitutions","P=${PREFIX},PORT=${ADS_ASYN_PORT},ADDR=0,TIMEOUT=1,ADSPORT=${ADSPORT_DEF},MASTER_ID=${EC_MASTER_ID},SLAVE_POS=${EC_SLAVE_NUM},HWTYPE=${EC_HWTYPE},T_SMP_MS=${SAMPLE_RATE_MS_DEF},TSE=${TSE=0}")
-#
-#epicsEnvSet("EC_SLAVE_NUM",    "25")
-#epicsEnvSet("EC_HWTYPE",       "EL3214")
-#dbLoadTemplate("./db/${EC_HWTYPE}.substitutions","P=${PREFIX},PORT=${ADS_ASYN_PORT},ADDR=0,TIMEOUT=1,ADSPORT=${ADSPORT_DEF},MASTER_ID=${EC_MASTER_ID},SLAVE_POS=${EC_SLAVE_NUM},HWTYPE=${EC_HWTYPE},T_SMP_MS=${SAMPLE_RATE_MS_DEF},TSE=${TSE=0}")
-#
-#epicsEnvSet("EC_SLAVE_NUM",    "26")
-#epicsEnvSet("EC_HWTYPE",       "EL3214")
-#dbLoadTemplate("./db/${EC_HWTYPE}.substitutions","P=${PREFIX},PORT=${ADS_ASYN_PORT},ADDR=0,TIMEOUT=1,ADSPORT=${ADSPORT_DEF},MASTER_ID=${EC_MASTER_ID},SLAVE_POS=${EC_SLAVE_NUM},HWTYPE=${EC_HWTYPE},T_SMP_MS=${SAMPLE_RATE_MS_DEF},TSE=${TSE=0}")
-#
-#epicsEnvSet("EC_SLAVE_NUM",    "27")
-#epicsEnvSet("EC_HWTYPE",       "EL3214")
-#dbLoadTemplate("./db/${EC_HWTYPE}.substitutions","P=${PREFIX},PORT=${ADS_ASYN_PORT},ADDR=0,TIMEOUT=1,ADSPORT=${ADSPORT_DEF},MASTER_ID=${EC_MASTER_ID},SLAVE_POS=${EC_SLAVE_NUM},HWTYPE=${EC_HWTYPE},T_SMP_MS=${SAMPLE_RATE_MS_DEF},TSE=${TSE=0}")
-#
-#epicsEnvSet("EC_SLAVE_NUM",    "28")
-#epicsEnvSet("EC_HWTYPE",       "EL2819")
-#dbLoadTemplate("./db/${EC_HWTYPE}.substitutions","P=${PREFIX},PORT=${ADS_ASYN_PORT},ADDR=0,TIMEOUT=1,ADSPORT=${ADSPORT_DEF},MASTER_ID=${EC_MASTER_ID},SLAVE_POS=${EC_SLAVE_NUM},HWTYPE=${EC_HWTYPE},T_SMP_MS=${SAMPLE_RATE_MS_DEF},TSE=${TSE=0}")
+
+#dbLoadRecords("./db/test.db","P=${PREFIX},PORT=${ADS_ASYN_PORT}")
 
 ##############################################################################
 ############# Usefull commands
