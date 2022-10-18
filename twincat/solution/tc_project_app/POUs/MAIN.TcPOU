@@ -61,7 +61,8 @@ VAR
 	timPhaseStabilization: TON;
 	timPhaseErrorOverH1: TON;
 	bPhaseOKSetReset: SR;
-	
+	fActVelOld:LREAL:=0;
+	fActVelOldOld:LREAL:=0;
 	// Test of array transfer
   (*  fTestArray01: ARRAY [1..200] OF LREAL;
     fTestArray02: ARRAY [1..200] OF LREAL;
@@ -74,6 +75,7 @@ VAR
 	i: INT;
 	counter: LREAL;
 	btest: INT;*)
+	btesttesttest: BOOL;
 END_VAR
 
 VAR_INPUT
@@ -86,6 +88,7 @@ VAR_INPUT
   stHWStatusZ    : ST_HW_STATUS_XYZ;
   stHwStatusRot  : ST_HW_STATUS_ROT;
   stHWStatusDev  : ST_HW_STATUS_DEV;
+  bTestTest:bool:=false;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Test of array transfer
@@ -136,6 +139,7 @@ ACT_7_Status();
 // Post exe
 eTargetStateOld:=stHwStatusRot.eTargetState;
 
+bTestTest:=FALSE OR btesttesttest;
 ]]></ST>
     </Implementation>
     <Action Name="ACT_1_Hardware" Id="{713eae55-748e-42a3-b2f0-81f54e66f4bd}">
@@ -2473,146 +2477,6 @@ main.stHWStatusY.bBrakeReleased;
                               </o>
                               <v n="Id">211L</v>
                             </o>
-                            <o t="BoxTreeBox">
-                              <v n="BoxType">"&lt;"</v>
-                              <o n="Instance" t="Operand">
-                                <n n="Operand" />
-                                <v n="Type">""</v>
-                                <v n="Comment">""</v>
-                                <v n="SymbolComment">""</v>
-                                <v n="Address">""</v>
-                                <o n="Flags" t="Flags">
-                                  <v n="Flags">0</v>
-                                  <v n="Fixed">false</v>
-                                  <v n="Extensible">false</v>
-                                </o>
-                                <v n="LValue">false</v>
-                                <v n="Boolean">false</v>
-                                <v n="IsInstance">true</v>
-                                <v n="Id">223L</v>
-                              </o>
-                              <o n="OutputItems" t="OutputItemList">
-                                <l2 n="OutputItems">
-                                  <n />
-                                </l2>
-                              </o>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">true</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <n n="InputFlags" />
-                              <l2 n="InputItems">
-                                <o t="BoxTreeBox">
-                                  <v n="BoxType">"ABS"</v>
-                                  <o n="Instance" t="Operand">
-                                    <n n="Operand" />
-                                    <v n="Type">""</v>
-                                    <v n="Comment">""</v>
-                                    <v n="SymbolComment">""</v>
-                                    <v n="Address">""</v>
-                                    <o n="Flags" t="Flags">
-                                      <v n="Flags">0</v>
-                                      <v n="Fixed">false</v>
-                                      <v n="Extensible">false</v>
-                                    </o>
-                                    <v n="LValue">false</v>
-                                    <v n="Boolean">false</v>
-                                    <v n="IsInstance">true</v>
-                                    <v n="Id">233L</v>
-                                  </o>
-                                  <o n="OutputItems" t="OutputItemList">
-                                    <l2 n="OutputItems">
-                                      <n />
-                                    </l2>
-                                  </o>
-                                  <o n="Flags" t="Flags">
-                                    <v n="Flags">0</v>
-                                    <v n="Fixed">true</v>
-                                    <v n="Extensible">false</v>
-                                  </o>
-                                  <n n="InputFlags" />
-                                  <l2 n="InputItems" cet="BoxTreeOperand">
-                                    <o>
-                                      <o n="Operand" t="Operand">
-                                        <v n="Operand">"stHwStatusRot.fActVel"</v>
-                                        <v n="Type">"LREAL"</v>
-                                        <v n="Comment">""</v>
-                                        <v n="SymbolComment">""</v>
-                                        <v n="Address">""</v>
-                                        <o n="Flags" t="Flags">
-                                          <v n="Flags">0</v>
-                                          <v n="Fixed">false</v>
-                                          <v n="Extensible">false</v>
-                                        </o>
-                                        <v n="LValue">false</v>
-                                        <v n="Boolean">false</v>
-                                        <v n="IsInstance">false</v>
-                                        <v n="Id">220L</v>
-                                      </o>
-                                      <v n="Id">219L</v>
-                                    </o>
-                                  </l2>
-                                  <o n="InputParam" t="ParamList">
-                                    <l2 n="Names" />
-                                    <l2 n="Types" />
-                                  </o>
-                                  <o n="OutputParam" t="ParamList">
-                                    <l2 n="Names" cet="String">
-                                      <v></v>
-                                    </l2>
-                                    <l2 n="Types" cet="String">
-                                      <v>INT</v>
-                                    </l2>
-                                  </o>
-                                  <v n="CallType" t="Operator">Abs</v>
-                                  <v n="EN">false</v>
-                                  <v n="ENO">false</v>
-                                  <n n="STSnippet" />
-                                  <v n="ContainsExtensibleInputs">false</v>
-                                  <v n="ProvidesSTSnippet">false</v>
-                                  <v n="Id">234L</v>
-                                </o>
-                                <o t="BoxTreeOperand">
-                                  <o n="Operand" t="Operand">
-                                    <v n="Operand">"GVL_Parameters.fMaximumSPeedRpm"</v>
-                                    <v n="Type">"LREAL"</v>
-                                    <v n="Comment">""</v>
-                                    <v n="SymbolComment">""</v>
-                                    <v n="Address">""</v>
-                                    <o n="Flags" t="Flags">
-                                      <v n="Flags">0</v>
-                                      <v n="Fixed">false</v>
-                                      <v n="Extensible">false</v>
-                                    </o>
-                                    <v n="LValue">false</v>
-                                    <v n="Boolean">false</v>
-                                    <v n="IsInstance">false</v>
-                                    <v n="Id">222L</v>
-                                  </o>
-                                  <v n="Id">221L</v>
-                                </o>
-                              </l2>
-                              <o n="InputParam" t="ParamList">
-                                <l2 n="Names" />
-                                <l2 n="Types" />
-                              </o>
-                              <o n="OutputParam" t="ParamList">
-                                <l2 n="Names" cet="String">
-                                  <v></v>
-                                </l2>
-                                <l2 n="Types" cet="String">
-                                  <v>BOOL</v>
-                                </l2>
-                              </o>
-                              <v n="CallType" t="Operator">Less</v>
-                              <v n="EN">false</v>
-                              <v n="ENO">false</v>
-                              <n n="STSnippet" />
-                              <v n="ContainsExtensibleInputs">false</v>
-                              <v n="ProvidesSTSnippet">false</v>
-                              <v n="Id">224L</v>
-                            </o>
                           </l2>
                           <o n="InputParam" t="ParamList">
                             <l2 n="Names" />
@@ -3233,7 +3097,9 @@ END_IF
 stHwStatusRot.fPhaseOffsetActDeg := stHWControlRot.fPhaseOffsetMM /(GVL_Parameters.fWheelDiameter*pi/360.0);
 
 //To high velo?
-IF ABS(stHWControlRot.fVelSet) > GVL_Parameters.fMaximumSPeedSPRpm  OR ABS(stHwStatusRot.fActVel) > GVL_Parameters.fMaximumSPeedRpm THEN
+IF ABS(stHWControlRot.fVelSet) > GVL_Parameters.fMaximumSPeedSPRpm  OR 
+  (ABS(stHwStatusRot.fActVel) > GVL_Parameters.fMaximumSPeedRpm  AND ABS(fActVelOld) >  GVL_Parameters.fMaximumSPeedRpm AND 
+   ABS(fActVelOldOld) >  GVL_Parameters.fMaximumSPeedRpm) THEN
 	stHWControlRot.fVelSet:=0;
 	stHWControlRot.bEnable:=0;
 	stHWControlRot.bExecute:=0;
@@ -3406,7 +3272,11 @@ IF stHwStatusRot.fActPos < 0 THEN
   stHwStatusRot.fActPos:=stHwStatusRot.fActPos+360;	
 END_IF
 stHwStatusRot.fActTorque:=stStatus.fActualTorque;
+fActVelOldOld:=fActVelOld;
+fActVelOld:=stHwStatusRot.fActVel;
 stHwStatusRot.fActVel:=stStatus.fActualVelocity/10;
+
+stCommands.fTorqueLimit:=GVL_Parameters.fMaxRotationBipolarTorque; //%
 ]]></ST>
       </Implementation>
     </Action>
@@ -4694,6 +4564,7 @@ END_IF
       <LineId Id="1942" Count="0" />
       <LineId Id="1864" Count="3" />
       <LineId Id="1389" Count="0" />
+      <LineId Id="2143" Count="0" />
     </LineIds>
     <LineIds Name="MAIN.ACT_1_Hardware">
       <LineId Id="1" Count="0" />
@@ -4846,6 +4717,7 @@ END_IF
       <LineId Id="315" Count="0" />
       <LineId Id="304" Count="0" />
       <LineId Id="303" Count="0" />
+      <LineId Id="347" Count="1" />
       <LineId Id="305" Count="0" />
       <LineId Id="311" Count="0" />
       <LineId Id="313" Count="0" />
@@ -4904,8 +4776,12 @@ END_IF
       <LineId Id="242" Count="2" />
       <LineId Id="247" Count="2" />
       <LineId Id="111" Count="0" />
+      <LineId Id="349" Count="0" />
+      <LineId Id="346" Count="0" />
       <LineId Id="1" Count="0" />
+      <LineId Id="352" Count="0" />
       <LineId Id="302" Count="0" />
+      <LineId Id="350" Count="0" />
     </LineIds>
     <LineIds Name="MAIN.ACT_5_Steppers">
       <LineId Id="1" Count="1" />

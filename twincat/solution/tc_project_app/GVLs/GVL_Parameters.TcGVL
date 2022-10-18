@@ -38,6 +38,8 @@ VAR_GLOBAL CONSTANT
   fMaxPhaseOffsetMM : LREAL:=100;
   fMinPhaseOffsetMM : LREAL:=-100;
   
+  fMaxRotationBipolarTorque: LREAL :=200.0;  //Max indra drive torque
+  
   // ESS-0127013 requirements
   //   FR31 Starnge to require a setting like this for commisioning.. but OK.
   bTargetRotorInstalled: BOOL:=FALSE;
