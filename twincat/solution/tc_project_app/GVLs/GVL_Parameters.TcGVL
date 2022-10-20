@@ -42,7 +42,7 @@ VAR_GLOBAL CONSTANT
   
   // ESS-0127013 requirements
   //   FR31 Starnge to require a setting like this for commisioning.. but OK.
-  bTargetRotorInstalled: BOOL:=FALSE;
+  bTargetRotorInstalled: BOOL:=TRUE;
   
   // Need to set resonable values here
   fXRangeH1:LREAL:=4;    // High
