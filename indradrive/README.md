@@ -46,3 +46,23 @@ Axis->axis mechanics scalings
 If reference track not ok alarm in indra. Then a power cycle of encoder make it work again (atleast once)
 
 
+# MUTS tuning
+
+## 22 rpm
+kp 400
+ti 8
+
+## 20 rpm
+Kp 270
+Ti 10
+
+## 15 rpm (osc at startup)
+kp 230
+Ti 10
+
+## 7 rpm (and startup)
+kp 230
+Ti 40
+
+
+
