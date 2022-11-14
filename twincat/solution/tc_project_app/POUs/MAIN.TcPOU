@@ -3234,12 +3234,30 @@ CASE stHwStatusRot.eTargetState OF
 	    stHwStatusRot.sErrorStr:=GVL_ErrorCodes.sErrorInvalidState;
 END_CASE
 
-IF bApplyTorqueFF THEN
+(*IF bApplyTorqueFF THEN
   // add extra torque att startup TEST
-  IF stStatus.bAxisEnabled (*AND stHWControlRot.bExecute*) THEN
-	 nAdditiveTorqueSetpoint:=nTest;  //Add 10% when under x rpm
+  IF stStatus.bAxisEnabled AND stHWControlRot.bExecute(*AND stHWControlRot.bExecute*) THEN
+	 //Positive
+	IF stCommands.fVelocityCommandValue >= GVL_Parameters.fMinVelSetpointAbsRpm THEN
+	   IF stStatus.fActualVelocity/10 > GVL_Parameters.fMinVelSetpointAbsRpm THEN
+	     nAdditiveTorqueSetpoint:=LREAL_TO_INT(GVL_Parameters.fNominalFFTourqueAbs*10);
+	   ELSIF stStatus.fActualVelocity/10 < GVL_Parameters.fMinVelSetpointAbsRpm/10 THEN  // Add more tourqe at startup
+		 nAdditiveTorqueSetpoint:=LREAL_TO_INT(GVL_Parameters.fStartupFFTourqueAbs*10);
+	   END_IF
+	ELSIF  stCommands.fVelocityCommandValue <= -GVL_Parameters.fMinVelSetpointAbsRpm THEN
+		IF stStatus.fActualVelocity/10 < -GVL_Parameters.fMinVelSetpointAbsRpm THEN
+	      nAdditiveTorqueSetpoint:=-LREAL_TO_INT(GVL_Parameters.fNominalFFTourqueAbs*10);
+	    ELSIF  stStatus.fActualVelocity/10 > -GVL_Parameters.fMinVelSetpointAbsRpm/10 THEN // Add more tourqe at startup
+		  nAdditiveTorqueSetpoint:=-LREAL_TO_INT(GVL_Parameters.fStartupFFTourqueAbs*10);
+	   END_IF
+    END_IF
+  ELSE
+    nAdditiveTorqueSetpoint:=0;
   END_IF
-END_IF
+ELSE
+  nAdditiveTorqueSetpoint:=0;
+END_IF*)
+nAdditiveTorqueSetpoint:=0;
 
 IF NOT stHWControlRot.bExecute THEN
 	stCommands.fVelocityCommandValue:=0;
@@ -4769,7 +4787,24 @@ END_IF
       <LineId Id="197" Count="0" />
       <LineId Id="84" Count="0" />
       <LineId Id="240" Count="0" />
-      <LineId Id="85" Count="12" />
+      <LineId Id="85" Count="2" />
+      <LineId Id="358" Count="0" />
+      <LineId Id="355" Count="0" />
+      <LineId Id="360" Count="0" />
+      <LineId Id="88" Count="0" />
+      <LineId Id="362" Count="2" />
+      <LineId Id="359" Count="0" />
+      <LineId Id="368" Count="3" />
+      <LineId Id="367" Count="0" />
+      <LineId Id="366" Count="0" />
+      <LineId Id="365" Count="0" />
+      <LineId Id="373" Count="0" />
+      <LineId Id="89" Count="0" />
+      <LineId Id="372" Count="0" />
+      <LineId Id="374" Count="0" />
+      <LineId Id="90" Count="0" />
+      <LineId Id="375" Count="0" />
+      <LineId Id="91" Count="6" />
       <LineId Id="144" Count="0" />
       <LineId Id="139" Count="0" />
       <LineId Id="98" Count="0" />

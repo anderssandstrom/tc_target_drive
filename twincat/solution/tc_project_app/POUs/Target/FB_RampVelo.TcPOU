@@ -46,6 +46,15 @@ IF NOT bExecuteOld AND bExecute THEN
 	 fActVeloOld > -GVL_Parameters.fMaximumSPeedRpm AND 
 	 fActVeloOld < GVL_Parameters.fMaximumSPeedRpm THEN
 	fVelSetOut:=(fVelActIn+fActVeloOld)/2;  //Set to average of two cycles
+    
+	//Ensure minimum velo setpoint positive  to allow smooth start (with high ff tourqe at start)
+	IF fVelSetIn > 0 AND ABS(fVelSetOut) < GVL_Parameters.fMinVelSetpointAbsRpm THEN
+		fVelSetOut:=GVL_Parameters.fMinVelSetpointAbsRpm;
+	END_IF
+	//Ensure minimum velo setpoint negative to allow smooth start (with high ff tourqu at start)
+	IF fVelSetIn < 0 AND ABS(fVelSetOut) < GVL_Parameters.fMinVelSetpointAbsRpm THEN
+		fVelSetOut:=-GVL_Parameters.fMinVelSetpointAbsRpm;
+	END_IF
   ELSE
     fVelSetOut:=0;
   END_IF  
@@ -119,7 +128,12 @@ END_IF
       <LineId Id="1086" Count="0" />
       <LineId Id="1079" Count="1" />
       <LineId Id="1089" Count="1" />
-      <LineId Id="1082" Count="3" />
+      <LineId Id="1082" Count="0" />
+      <LineId Id="1179" Count="1" />
+      <LineId Id="1175" Count="2" />
+      <LineId Id="1182" Count="2" />
+      <LineId Id="1181" Count="0" />
+      <LineId Id="1083" Count="2" />
       <LineId Id="1052" Count="1" />
       <LineId Id="1077" Count="0" />
       <LineId Id="1091" Count="0" />
