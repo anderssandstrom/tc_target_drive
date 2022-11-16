@@ -1,5 +1,5 @@
-#require ads,2.0.2
-require ads,master
+require ads,2.0.2
+#require ads,master
 
 ##############################################################################
 ############# Configure ads device driver:
