@@ -37,12 +37,14 @@ VAR_GLOBAL CONSTANT
   fCheckTimingPulseMinVel: LREAL:=2.0;
   fMaxPhaseOffsetMM : LREAL:=100;
   fMinPhaseOffsetMM : LREAL:=-100;
-  
+  fMinVelSetpointAbsRpm : LREAL:=2;
+  fNominalFFTourqueAbs:LREAL:=62;  //62%
+  fStartupFFTourqueAbs:LREAL:=150;  //62%
   fMaxRotationBipolarTorque: LREAL :=200.0;  //Max indra drive torque
   
   // ESS-0127013 requirements
   //   FR31 Starnge to require a setting like this for commisioning.. but OK.
-  bTargetRotorInstalled: BOOL:=FALSE;
+  bTargetRotorInstalled: BOOL:=TRUE;
   
   // Need to set resonable values here
   fXRangeH1:LREAL:=4;    // High
@@ -55,8 +57,8 @@ VAR_GLOBAL CONSTANT
   fYRangeL2:LREAL:=-5;
   fZRangeH1:LREAL:=4;
   fZRangeH2:LREAL:=5;
-  fZRangeL1:LREAL:=1;
-  fZRangeL2:LREAL:=0;
+  fZRangeL1:LREAL:=0;
+  fZRangeL2:LREAL:=-1;
   fZRangeParkL1:LREAL:=-1.0;
   fZRangeParkL2:LREAL:=-1.1;
   

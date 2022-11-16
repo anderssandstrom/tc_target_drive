@@ -13,6 +13,9 @@
     <Content Include="Digital.tcscopex">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="IndraCurrent.tcscopex">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="MotorBrake.tcscopex">
       <SubType>Content</SubType>
     </Content>
@@ -22,7 +25,10 @@
     <Content Include="PWM.tcscopex">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="YT Scope Project1.tcscopex">
+    <Content Include="Scope Project1.tcscopex">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scope Project2.tcscopex">
       <SubType>Content</SubType>
     </Content>
   </ItemGroup>
