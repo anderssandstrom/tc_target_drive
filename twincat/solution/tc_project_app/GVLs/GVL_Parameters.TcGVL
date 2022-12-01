@@ -42,6 +42,9 @@ VAR_GLOBAL CONSTANT
   fStartupFFTourqueAbs:LREAL:=150;  //62%
   fMaxRotationBipolarTorque: LREAL :=200.0;  //Max indra drive torque
   
+  // Use this var to calibrate offset from alignment.
+  fRotPosOffsetDeg : LREAL :=195;  // Offset between encoder 0 and centre of sector 1 (centre of home sensor hole in direction X)
+  
   // ESS-0127013 requirements
   //   FR31 Starnge to require a setting like this for commisioning.. but OK.
   bTargetRotorInstalled: BOOL:=TRUE;
