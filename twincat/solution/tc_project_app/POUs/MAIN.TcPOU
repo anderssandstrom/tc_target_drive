@@ -3062,6 +3062,13 @@ ELSE
     stCommands.bEnableAxis:=stHWControlRot.bEnable;
 END_IF
 
+// Take down enable if sto
+IF stStatus.bSTOActiveCh1 OR stStatus.bSTOActiveCh2 THEN
+	stCommands.bEnableAxis:=FALSE;
+	stHWControlRot.bEnable:=FALSE;
+	stHWControlRot.bExecute:=FALSE;
+END_IF
+
 IF stHWControlRot.bExecute THEN
   IF stStatus.bAxisEnabled THEN
     stCommands.bHaltAxis:=stHWControlRot.bExecute;
@@ -4709,6 +4716,13 @@ END_IF
       <LineId Id="192" Count="0" />
       <LineId Id="190" Count="0" />
       <LineId Id="174" Count="0" />
+      <LineId Id="382" Count="0" />
+      <LineId Id="377" Count="0" />
+      <LineId Id="376" Count="0" />
+      <LineId Id="378" Count="0" />
+      <LineId Id="381" Count="0" />
+      <LineId Id="383" Count="0" />
+      <LineId Id="379" Count="0" />
       <LineId Id="199" Count="0" />
       <LineId Id="186" Count="0" />
       <LineId Id="215" Count="0" />
