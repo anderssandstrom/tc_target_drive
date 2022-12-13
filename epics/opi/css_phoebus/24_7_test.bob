@@ -220,6 +220,7 @@
       <x>216</x>
       <y>8</y>
       <width>16</width>
+      <height>16</height>
       <off_color>
         <color red="0" green="100" blue="0">
         </color>
@@ -681,72 +682,6 @@
       </border_color>
     </widget>
     <widget type="textentry" version="3.0.0">
-      <name>Text Input_17</name>
-      <pv_name>$(PREFIX)$(DEV_NAME)-ErrStr</pv_name>
-      <x>30</x>
-      <y>170</y>
-      <width>493</width>
-      <height>25</height>
-      <background_color>
-        <color name="Read_Background" red="230" green="235" blue="232">
-        </color>
-      </background_color>
-      <format>6</format>
-      <actions>
-      </actions>
-      <border_alarm_sensitive>false</border_alarm_sensitive>
-      <enabled>false</enabled>
-      <border_color>
-        <color red="0" green="128" blue="255">
-        </color>
-      </border_color>
-    </widget>
-    <widget type="led" version="2.0.0">
-      <name>LED_4</name>
-      <pv_name>$(PREFIX)$(DEV_NAME)-Err</pv_name>
-      <x>625</x>
-      <y>175</y>
-      <width>16</width>
-      <height>16</height>
-      <off_color>
-        <color name="IO Normal Level Alarm" red="0" green="255" blue="0">
-        </color>
-      </off_color>
-      <on_color>
-        <color name="Major" red="250" green="12" blue="14">
-        </color>
-      </on_color>
-      <foreground_color>
-        <color red="192" green="192" blue="192">
-        </color>
-      </foreground_color>
-      <line_color>
-        <color red="150" green="150" blue="150">
-        </color>
-      </line_color>
-      <actions>
-      </actions>
-    </widget>
-    <widget type="textentry" version="3.0.0">
-      <name>Text Input_18</name>
-      <pv_name>$(PREFIX)$(DEV_NAME)-ErrId</pv_name>
-      <x>512</x>
-      <y>170</y>
-      <height>25</height>
-      <background_color>
-        <color name="Read_Background" red="230" green="235" blue="232">
-        </color>
-      </background_color>
-      <actions>
-      </actions>
-      <border_alarm_sensitive>false</border_alarm_sensitive>
-      <enabled>false</enabled>
-      <border_color>
-        <color red="0" green="128" blue="255">
-        </color>
-      </border_color>
-    </widget>
-    <widget type="textentry" version="3.0.0">
       <name>Text Input_19</name>
       <pv_name>$(PREFIX)$(DEV_NAME)-VelSetCmd</pv_name>
       <x>461</x>
@@ -898,6 +833,79 @@
         <color red="0" green="128" blue="255">
         </color>
       </border_color>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Group</name>
+      <x>30</x>
+      <y>170</y>
+      <width>611</width>
+      <height>25</height>
+      <visible>false</visible>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="textentry" version="3.0.0">
+        <name>Text Input_17</name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-ErrStr</pv_name>
+        <width>493</width>
+        <height>25</height>
+        <background_color>
+          <color name="Read_Background" red="230" green="235" blue="232">
+          </color>
+        </background_color>
+        <format>6</format>
+        <actions>
+        </actions>
+        <border_alarm_sensitive>false</border_alarm_sensitive>
+        <enabled>false</enabled>
+        <border_color>
+          <color red="0" green="128" blue="255">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="textentry" version="3.0.0">
+        <name>Text Input_18</name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-ErrId</pv_name>
+        <x>482</x>
+        <height>25</height>
+        <background_color>
+          <color name="Read_Background" red="230" green="235" blue="232">
+          </color>
+        </background_color>
+        <actions>
+        </actions>
+        <border_alarm_sensitive>false</border_alarm_sensitive>
+        <enabled>false</enabled>
+        <border_color>
+          <color red="0" green="128" blue="255">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="led" version="2.0.0">
+        <name>LED_4</name>
+        <pv_name>$(PREFIX)$(DEV_NAME)-Err</pv_name>
+        <x>595</x>
+        <y>5</y>
+        <width>16</width>
+        <height>16</height>
+        <off_color>
+          <color name="IO Normal Level Alarm" red="0" green="255" blue="0">
+          </color>
+        </off_color>
+        <on_color>
+          <color name="Major" red="250" green="12" blue="14">
+          </color>
+        </on_color>
+        <foreground_color>
+          <color red="192" green="192" blue="192">
+          </color>
+        </foreground_color>
+        <line_color>
+          <color red="150" green="150" blue="150">
+          </color>
+        </line_color>
+        <actions>
+        </actions>
+      </widget>
     </widget>
   </widget>
 </display>
