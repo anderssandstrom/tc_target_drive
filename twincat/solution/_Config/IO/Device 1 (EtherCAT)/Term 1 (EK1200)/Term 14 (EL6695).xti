@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.17" ClassName="CFlbTermDef" SubType="9099">
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.12" ClassName="CFlbTermDef" SubType="9099">
 	<DataTypes>
 		<DataType>
 			<Name GUID="{18071995-0000-0000-0000-00200000000C}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..11] OF BIT</Name>
@@ -11,7 +11,7 @@
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-002000000001}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..0] OF BIT</Name>
+			<Name GUID="{18071995-0000-0000-0000-002000000001}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..0] OF BIT</Name>
 			<BitSize>1</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
 			<ArrayInfo>
@@ -20,7 +20,7 @@
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-00200000000A}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..9] OF BIT</Name>
+			<Name GUID="{18071995-0000-0000-0000-00200000000A}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..9] OF BIT</Name>
 			<BitSize>10</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
 			<ArrayInfo>
@@ -38,45 +38,6 @@
 			</ArrayInfo>
 			<Hides>
 				<Hide GUID="{5413E355-BC6D-2A3F-875F-48B53EA03BDF}"/>
-			</Hides>
-		</DataType>
-		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-000300000014}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..19] OF BYTE</Name>
-			<BitSize>160</BitSize>
-			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
-			<ArrayInfo>
-				<LBound>0</LBound>
-				<Elements>20</Elements>
-			</ArrayInfo>
-		</DataType>
-		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-000300000050}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..79] OF BYTE</Name>
-			<BitSize>640</BitSize>
-			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
-			<ArrayInfo>
-				<LBound>0</LBound>
-				<Elements>80</Elements>
-			</ArrayInfo>
-		</DataType>
-		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-0020000000F0}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..29] OF BYTE</Name>
-			<BitSize>240</BitSize>
-			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
-			<ArrayInfo>
-				<LBound>0</LBound>
-				<Elements>30</Elements>
-			</ArrayInfo>
-		</DataType>
-		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-0020000000A0}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..19] OF BYTE</Name>
-			<BitSize>160</BitSize>
-			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
-			<ArrayInfo>
-				<LBound>0</LBound>
-				<Elements>20</Elements>
-			</ArrayInfo>
-			<Hides>
-				<Hide GUID="{18071995-0000-0000-0000-000300000014}"/>
 			</Hides>
 		</DataType>
 	</DataTypes>
@@ -961,8 +922,8 @@
 		<EtherCAT SlaveType="3" AdsServerAddress="c0a8587a020ff603" FixedAdsServerNetId="true" PdiType="#x0008" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="47" EoeType="1" FoeType="1" VendorId="#x00000002" ProductCode="#x1a273052" RevisionNo="#x00050000" InfoDataAddr="true" InfoDataNetId="true" TimeoutMailbox2="2000" GenerateOwnNetId="true" CheckRevisionNoType="3" PortPhys="51" DcTimeLoopControlOnly="true" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL6695 EtherCAT Bridge terminal (Primary)" Desc="EL6695">
 			<SyncMan>0010000426000100010000008000da050004001026010000</SyncMan>
 			<SyncMan>0016000422000100020000008000da050004001622010000</SyncMan>
-			<SyncMan>001c71006400010003000000000000000000001c64010000</SyncMan>
-			<SyncMan>008edc002000010004000000000000000200008e20010000</SyncMan>
+			<SyncMan>001c15006400010003000000000000000000001c64010000</SyncMan>
+			<SyncMan>008e0f002000010004000000000000000200008e20010000</SyncMan>
 			<Fmmu>0000000000000000001c00020100000001000000000000000000000000000000</Fmmu>
 			<Fmmu>0000000000000000008e00010100000002000000000000000000000000000000</Fmmu>
 			<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
@@ -1077,37 +1038,10 @@
 				<Entry Name="TSCS_Byte" Index="#x6000" Sub="#x01">
 					<Type GUID="{A95E4D60-597C-2A3F-8E4A-A0564CC93A35}">ARRAY [0..4] OF BYTE</Type>
 				</Entry>
-				<Entry Name="TSCS_Integer" Index="#x6000" Sub="#x02">
-					<Type GUID="{18071995-0000-0000-0000-000300000014}">ARRAY [0..19] OF BYTE</Type>
-				</Entry>
-				<Entry Name="TSCS_Real" Index="#x6000" Sub="#x03">
-					<Type GUID="{18071995-0000-0000-0000-000300000050}">ARRAY [0..79] OF BYTE</Type>
-				</Entry>
-				<Entry>
-					<Type GUID="{18071995-0000-0000-0000-0020000000F0}">ARRAY [0..29] OF BYTE</Type>
-				</Entry>
-				<Entry>
-					<Type GUID="{18071995-0000-0000-0000-0020000000A0}">ARRAY [0..19] OF BYTE</Type>
-				</Entry>
-				<Entry Name="TMS_Byte" Index="#x6000" Sub="#x04">
-					<Type GUID="{A95E4D60-597C-2A3F-8E4A-A0564CC93A35}">ARRAY [0..4] OF BYTE</Type>
-				</Entry>
-				<Entry Name="TMS_Integer" Index="#x6000" Sub="#x05">
-					<Type GUID="{18071995-0000-0000-0000-000300000014}">ARRAY [0..19] OF BYTE</Type>
-				</Entry>
-				<Entry Name="TMS_Real" Index="#x6000" Sub="#x06">
-					<Type GUID="{18071995-0000-0000-0000-000300000050}">ARRAY [0..79] OF BYTE</Type>
-				</Entry>
-				<Entry>
-					<Type GUID="{18071995-0000-0000-0000-0020000000F0}">ARRAY [0..29] OF BYTE</Type>
-				</Entry>
-				<Entry>
-					<Type GUID="{18071995-0000-0000-0000-0020000000A0}">ARRAY [0..19] OF BYTE</Type>
-				</Entry>
-				<Entry Name="TDU_TestSignal_RB" Index="#x6000" Sub="#x07">
+				<Entry Name="TDU_WatchDog_RB" Index="#x6000" Sub="#x02">
 					<Type>UDINT</Type>
 				</Entry>
-				<Entry Name="TSCS_TestSignal" Index="#x6000" Sub="#x08">
+				<Entry Name="TSCS_WatchDog" Index="#x6000" Sub="#x03">
 					<Type>UDINT</Type>
 				</Entry>
 			</Pdo>
@@ -1115,22 +1049,16 @@
 				<Entry Name="TDU_Byte" Index="#x7000" Sub="#x01">
 					<Type GUID="{A95E4D60-597C-2A3F-8E4A-A0564CC93A35}">ARRAY [0..4] OF BYTE</Type>
 				</Entry>
-				<Entry Name="TDU_Integer" Index="#x7000" Sub="#x02">
-					<Type GUID="{18071995-0000-0000-0000-000300000014}">ARRAY [0..19] OF BYTE</Type>
-				</Entry>
-				<Entry Name="TDU_Real" Index="#x7000" Sub="#x03">
-					<Type GUID="{18071995-0000-0000-0000-000300000050}">ARRAY [0..79] OF BYTE</Type>
-				</Entry>
-				<Entry>
-					<Type GUID="{18071995-0000-0000-0000-0020000000F0}">ARRAY [0..29] OF BYTE</Type>
-				</Entry>
-				<Entry>
-					<Type GUID="{18071995-0000-0000-0000-0020000000A0}">ARRAY [0..19] OF BYTE</Type>
-				</Entry>
-				<Entry Name="TDU_TestSignal" Index="#x7000" Sub="#x04">
+				<Entry Name="TDU_WatchDog" Index="#x7000" Sub="#x02">
 					<Type>UDINT</Type>
 				</Entry>
-				<Entry Name="TSCS_TestSignal_RB" Index="#x7000" Sub="#x05">
+				<Entry Name="TSCS_WatchDog_RB" Index="#x7000" Sub="#x03">
+					<Type>UDINT</Type>
+				</Entry>
+				<Entry Name="TDU_AnglePos" Index="#x7000" Sub="#x04">
+					<Type>UDINT</Type>
+				</Entry>
+				<Entry Name="TDU_Speed" Index="#x7000" Sub="#x05">
 					<Type>UDINT</Type>
 				</Entry>
 			</Pdo>
@@ -1140,8 +1068,8 @@
 	<Mappings>
 		<OwnerA>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 14 (EL6695)">
-				<Link VarA="IO Inputs^TSCS_TestSignal" VarB="IO Outputs^TSCS_TestSignal_RB"/>
-				<Link VarA="IO Outputs^TSCS_TestSignal_RB" VarB="IO Inputs^TSCS_TestSignal"/>
+				<Link VarA="IO Inputs^TSCS_WatchDog" VarB="IO Outputs^TSCS_WatchDog_RB"/>
+				<Link VarA="IO Outputs^TSCS_WatchDog_RB" VarB="IO Inputs^TSCS_WatchDog"/>
 			</OwnerB>
 		</OwnerA>
 	</Mappings>

@@ -1,16 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
   <DUT Name="ST_Bridge_TSCS_INPUTS" Id="{7d2aed18-8bf0-4a0d-adc6-fa69b66256b7}">
     <Declaration><![CDATA[TYPE ST_Bridge_TSCS_INPUTS :
 // 	Inputs from bridge terminal (bridge with TSCS PLC)
 STRUCT
 	TSCS_Byte : ARRAY [0..4] OF BYTE;		// Boolean words from TSCS PLC (5x 8 Booleans)
-	TSCS_Integer : ARRAY [0..9] OF UINT;	// Integer signals from TSCS PLC (10x)	
-	TSCS_Real : ARRAY [0..19] OF UDINT;		// Real signals from TSCS PLC (20x)
-	
-	TMS_Byte : ARRAY [0..4] OF BYTE;		// Boolean words from TMS PLC (via TSCS) (5x 8 Booleans)
-	TMS_Integer : ARRAY [0..9] OF UINT;		// Integer signals from TMS PLC (via TSCS) (10x)
-	TMS_Real : ARRAY [0..19] OF UDINT;		// Real signals from TMS PLC (via TSCS) (20x)
 	
 	TDU_TestSignal_RB : UDINT;				// Diagnostic signal readback TDU->TSCS->TDU
 END_STRUCT
