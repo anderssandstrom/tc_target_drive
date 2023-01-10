@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
   <POU Name="FB_Bridge_Inputs_Real" Id="{1100369f-d7fa-446a-962a-a8af348a2ffe}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_Bridge_Inputs_Real
 // Interface with 20 ports. Converts UDINT to REAL (32 bits)
@@ -12,18 +12,6 @@ VAR_INPUT
 	I05 : UDINT := 0;	// Input real 05
 	I06 : UDINT := 0;	// Input real 06
 	I07 : UDINT := 0;	// Input real 07
-	I08 : UDINT := 0;	// Input real 08
-	I09 : UDINT := 0;	// Input real 09
-	I10 : UDINT := 0;	// Input real 10
-	I11 : UDINT := 0;	// Input real 11
-	I12 : UDINT := 0;	// Input real 12
-	I13 : UDINT := 0;	// Input real 13
-	I14 : UDINT := 0;	// Input real 14
-	I15 : UDINT := 0;	// Input real 15
-	I16 : UDINT := 0;	// Input real 16
-	I17 : UDINT := 0;	// Input real 17
-	I18 : UDINT := 0;	// Input real 18
-	I19 : UDINT := 0;	// Input real 19
 END_VAR
 VAR_OUTPUT
 	Q00 : REAL;
@@ -34,18 +22,6 @@ VAR_OUTPUT
 	Q05 : REAL;
 	Q06 : REAL;
 	Q07 : REAL;
-	Q08 : REAL;
-	Q09 : REAL;
-	Q10 : REAL;
-	Q11 : REAL;
-	Q12 : REAL;
-	Q13 : REAL;
-	Q14 : REAL;
-	Q15 : REAL;
-	Q16 : REAL;
-	Q17 : REAL;
-	Q18 : REAL;
-	Q19 : REAL;
 END_VAR
 VAR
 END_VAR
@@ -58,26 +34,13 @@ Q03 := OSCAT_DW_TO_REAL(I03);
 Q04 := OSCAT_DW_TO_REAL(I04);
 Q05 := OSCAT_DW_TO_REAL(I05);
 Q06 := OSCAT_DW_TO_REAL(I06);
-Q07 := OSCAT_DW_TO_REAL(I07);
-Q08 := OSCAT_DW_TO_REAL(I08);
-Q09 := OSCAT_DW_TO_REAL(I09);
-Q10 := OSCAT_DW_TO_REAL(I10);
-Q11 := OSCAT_DW_TO_REAL(I11);
-Q12 := OSCAT_DW_TO_REAL(I12);
-Q13 := OSCAT_DW_TO_REAL(I13);
-Q14 := OSCAT_DW_TO_REAL(I14);
-Q15 := OSCAT_DW_TO_REAL(I15);
-Q16 := OSCAT_DW_TO_REAL(I16);
-Q17 := OSCAT_DW_TO_REAL(I17);
-Q18 := OSCAT_DW_TO_REAL(I18);
-Q19 := OSCAT_DW_TO_REAL(I19);]]></ST>
+Q07 := OSCAT_DW_TO_REAL(I07);]]></ST>
     </Implementation>
     <LineIds Name="FB_Bridge_Inputs_Real">
       <LineId Id="9" Count="0" />
       <LineId Id="171" Count="0" />
-      <LineId Id="56" Count="7" />
-      <LineId Id="55" Count="0" />
-      <LineId Id="65" Count="8" />
+      <LineId Id="56" Count="4" />
+      <LineId Id="73" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

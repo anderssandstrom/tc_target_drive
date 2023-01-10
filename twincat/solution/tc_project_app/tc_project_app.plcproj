@@ -131,13 +131,7 @@
     <Compile Include="POUs\Application_Specific\Axes\Axis_3.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Bridge Terminal\FBs\FB_Bridge_Outputs_Integer.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\Bridge Terminal\FBs\FB_Bridge_Outputs_Real.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Bridge Terminal\FBs\FB_Bridge_Inputs_Integer.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Bridge Terminal\FBs\FB_Bridge_Inputs_Real.TcPOU">

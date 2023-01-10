@@ -4,10 +4,9 @@
     <Declaration><![CDATA[TYPE ST_Bridge_TSCS_OUTPUTS :
 	// 	Outputs from TDU PLC to bridge terminal (to TSCS PLC)
 STRUCT
-	TDU_Byte : ARRAY [0..4] OF BYTE;	// Boolean words from TDU PLC (5x 8 Booleans)
-	TDU_TestSignal : UDINT;					// Diagnostic signal (for readback: This PLC -> Other PLC -> This PLC)
-	TDU_AnglePos:UDINT;
-	TDU_Speed:UDINT;
+	TDU_TestSignal : UDINT;	// Diagnostic signal (for readback: This PLC -> Other PLC -> This PLC)
+	TDU_Byte : ARRAY [0..3] OF BYTE; // Boolean words from TDU PLC (5x 8 Booleans)
+	TDU_Real : ARRAY [0..7] OF UDINT;
 END_STRUCT
 END_TYPE
 ]]></Declaration>
