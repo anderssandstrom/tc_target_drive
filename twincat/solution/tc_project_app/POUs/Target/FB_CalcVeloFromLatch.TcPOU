@@ -23,7 +23,8 @@ VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Function: 
-// Calc velocity from drive latched positions
+// Calc velocity from drive latched positions (latched by timing system).
+// This will result in an average velocity (for each sector at nominal speed) updated at 14Hz
 // Author: Anders Sandström 2022
 
 fLatchedPositionOld:=fLatchedPosition;  // Backup old
@@ -50,11 +51,6 @@ IF (fLatchedPosition-fLatchedPositionOld)<>0 THEN
     END_IF
   END_IF
 
-  (*IF(fLatchedPositionOld > fLatchedPosition) THEN
-	fDistBetweenLastPulses:=(360 - fLatchedPositionOld+fLatchedPosition);
-  ELSE
-	fDistBetweenLastPulses:=fLatchedPosition-fLatchedPositionOld;
-  END_IF*) 
   fLastSectorVelocity:=fDistBetweenLastPulses*GVL_Parameters.nPulseFreqHz*60/360;
   fLastSectorVelocityOld:=fLastSectorVelocity;
 END_IF
@@ -66,6 +62,7 @@ fSpeedActual:=fLastSectorVelocity;
     <LineIds Name="FB_CalcVeloFromLatch">
       <LineId Id="1065" Count="0" />
       <LineId Id="1331" Count="0" />
+      <LineId Id="2496" Count="0" />
       <LineId Id="948" Count="0" />
       <LineId Id="1838" Count="0" />
       <LineId Id="53" Count="1" />
@@ -85,8 +82,7 @@ fSpeedActual:=fLastSectorVelocity;
       <LineId Id="2471" Count="0" />
       <LineId Id="2467" Count="0" />
       <LineId Id="2464" Count="0" />
-      <LineId Id="2466" Count="0" />
-      <LineId Id="56" Count="4" />
+      <LineId Id="60" Count="0" />
       <LineId Id="2476" Count="0" />
       <LineId Id="1096" Count="0" />
       <LineId Id="2258" Count="0" />

@@ -317,9 +317,6 @@
     <Compile Include="POUs\Target\fbIndraDrive.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Target\FB_BrakeTorque.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\Target\FB_ModePhasing.TcPOU">
       <SubType>Code</SubType>
     </Compile>

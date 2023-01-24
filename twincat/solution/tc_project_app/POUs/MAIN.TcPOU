@@ -267,7 +267,7 @@ IF (stHwStatusRot.fActTemp >= GVL_Parameters.nMaxMotorTemperature) THEN
 	  iRotTempertureAlarmCounter:=iRotTempertureAlarmCounter+1; 
 	END_IF
 ELSE
-	iRotTempertureAlarmCounter:=0;
+	iRotTempertureAlarmCounter:=0; // Used as filter for alarm
 END_IF
 
 main.stHWStatusX.bBrakeReleased;
@@ -3311,7 +3311,7 @@ stCommands.fTorqueLimit:=GVL_Parameters.fMaxRotationBipolarTorque; //%
     </Action>
     <Action Name="ACT_5_Steppers" Id="{3a068380-4e98-46e5-9ef4-f9271d802bcf}">
       <Implementation>
-        <ST><![CDATA[// Motion of steppers handled in MAIN_NORMAL_MOTION
+        <ST><![CDATA[// Motion of steppers handled in PRG "MAIN_NORMAL_MOTION"
 ]]></ST>
       </Implementation>
     </Action>

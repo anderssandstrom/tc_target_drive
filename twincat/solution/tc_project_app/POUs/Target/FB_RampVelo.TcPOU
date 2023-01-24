@@ -27,7 +27,7 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Function: Ramp velocity with a defined acceleration.
-// Accelerartion is ramped down when apparching velosity setpoint in order to reduce
+// Accelerartion is ramped down when approaching velocity setpoint in order to reduce
 // overshoot and oscillations..
 // Author: Anders Sandström 20200114
 
