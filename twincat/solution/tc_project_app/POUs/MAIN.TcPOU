@@ -79,8 +79,10 @@ VAR_INPUT
   stHWStatusZ    : ST_HW_STATUS_XYZ;
   stHwStatusRot  : ST_HW_STATUS_ROT;
   stHWStatusDev  : ST_HW_STATUS_DEV;
-  bTestTest:bool:=false;
-END_VAR]]></Declaration>
+  bTestTest:BOOL:=FALSE;
+  bAllowStateTransistion: BOOL;
+END_VAR
+]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Check hardware status
 ACT_1_Hardware();
@@ -3092,12 +3094,25 @@ stCommands.bCmd_ErrorReset:=stHWControlRot.bReset;
 
 stCommands.bCmd_DriveControlledHoming:=FALSE;
 
-// State change
-IF stHWControlRot.eTargetStateCmd <> stHwStatusRot.eTargetState AND NOT stHWControlRot.bexecute AND stStatus.bAxisStandStillStatus THEN
-    // Only allow state change if execute is low and at standstill
+// State change allow chnage from CONST velo to Phase and back
+bAllowStateTransistion:=FALSE;
+
+IF (stHWControlRot.eTargetStateCmd = TARGET_STATE_MACHINE.PHASING OR 
+    stHWControlRot.eTargetStateCmd = TARGET_STATE_MACHINE.CONSTANT_VELOCITY) AND 
+    (stHwStatusRot.eTargetState = TARGET_STATE_MACHINE.PHASING OR 
+    stHwStatusRot.eTargetState = TARGET_STATE_MACHINE.CONSTANT_VELOCITY)
+ THEN
+	bAllowStateTransistion:=TRUE;
+END_IF
+
+// Do not allow to go to POSITION mode while running
+IF stHWControlRot.eTargetStateCmd <> stHwStatusRot.eTargetState AND (NOT 
+    stHWControlRot.bexecute AND 
+    stStatus.bAxisStandStillStatus) OR bAllowStateTransistion THEN
     stHwStatusRot.eTargetState:=stHWControlRot.eTargetStateCmd;
 END_IF
 
+// Ensure valid phase offset
 IF stHWControlRot.fPhaseOffsetMM > GVL_Parameters.fMaxPhaseOffsetMM THEN
 	stHWControlRot.fPhaseOffsetMM :=  GVL_Parameters.fMaxPhaseOffsetMM;
 END_IF
@@ -4741,10 +4756,21 @@ END_IF
       <LineId Id="127" Count="1" />
       <LineId Id="277" Count="0" />
       <LineId Id="274" Count="0" />
+      <LineId Id="393" Count="0" />
+      <LineId Id="397" Count="0" />
+      <LineId Id="392" Count="0" />
+      <LineId Id="398" Count="0" />
+      <LineId Id="401" Count="0" />
+      <LineId Id="400" Count="0" />
+      <LineId Id="399" Count="0" />
+      <LineId Id="394" Count="1" />
+      <LineId Id="404" Count="0" />
+      <LineId Id="402" Count="0" />
       <LineId Id="273" Count="0" />
-      <LineId Id="295" Count="0" />
+      <LineId Id="387" Count="1" />
       <LineId Id="284" Count="0" />
       <LineId Id="276" Count="0" />
+      <LineId Id="403" Count="0" />
       <LineId Id="301" Count="0" />
       <LineId Id="225" Count="0" />
       <LineId Id="229" Count="1" />

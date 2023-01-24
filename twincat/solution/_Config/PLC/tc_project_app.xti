@@ -1989,18 +1989,6 @@ Bit 15]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>GVL.astAxes[2].stInputs.bLimitFwd</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>GVL.astAxes[2].stInputs.bLimitBwd</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>GVL.astAxes[3].Axis.NcToPlc</Name>
-					<Type GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
-				</Var>
-				<Var>
 					<Name>GVL.astAxes[1].stInputs.bLimitBwd</Name>
 					<Type>BOOL</Type>
 				</Var>
@@ -2012,6 +2000,14 @@ Bit 15]]></Comment>
 				<Var>
 					<Name>GVL.astAxes[1].Axis.NcToPlc</Name>
 					<Type GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>GVL.astAxes[2].stInputs.bLimitFwd</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL.astAxes[2].stInputs.bLimitBwd</Name>
+					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL.astAxes[2].stInputs.bHomeSensor</Name>
@@ -2034,6 +2030,10 @@ Bit 15]]></Comment>
 					<Name>GVL.astAxes[3].stInputs.bHomeSensor</Name>
 					<Comment><![CDATA[Reference siganl for homing]]></Comment>
 					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL.astAxes[3].Axis.NcToPlc</Name>
+					<Type GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 				</Var>
 			</Vars>
 			<Vars VarGrpType="2" AreaNo="1">
