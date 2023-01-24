@@ -259,7 +259,7 @@ stHwStatusRot.fActTemp:=fb_s13_EL3214.iAI_4/10.0;
 
 // Motor Temperature Monitoring Interlock (needs to be error for 1 second before trip)
 IF (stHwStatusRot.fActTemp >= GVL_Parameters.nMaxMotorTemperature) THEN
-
+    // Error for 1000 cycles in a row
 	IF iRotTempertureAlarmCounter>1000 THEN
 	  stHWControlRot.bEnable:= FALSE;
 	  stHWControlRot.bExecute:= FALSE;
@@ -269,11 +269,9 @@ IF (stHwStatusRot.fActTemp >= GVL_Parameters.nMaxMotorTemperature) THEN
 	  iRotTempertureAlarmCounter:=iRotTempertureAlarmCounter+1; 
 	END_IF
 ELSE
+	// reset filter
 	iRotTempertureAlarmCounter:=0; // Used as filter for alarm
 END_IF
-
-main.stHWStatusX.bBrakeReleased;
-main.stHWStatusY.bBrakeReleased;
 ]]></ST>
       </Implementation>
     </Action>
@@ -3051,8 +3049,10 @@ main.stHWStatusY.bBrakeReleased;
 // Enable Axis independent of state (Ensure that drive is ready to enable)
 IF stHWControlRot.bEnable THEN
    IF stStatus.bDCBusPresent AND NOT stStatus.bSTOActiveCh1 AND NOT stStatus.bSTOActiveCh2 AND NOT stStatus.bError AND main.stHwStatusRot.bHwStatusOK THEN 
-	   stCommands.bEnableAxis :=stHWControlRot.bEnable;
+	   // Everything is OK, allow enable of drive.
+      stCommands.bEnableAxis :=stHWControlRot.bEnable;
    ELSE
+	   // Something is not right.. STO, hardware...
 	   stCommands.bEnableAxis := FALSE;
 	   stHWControlRot.bExecute := FALSE;
 	   stHwStatusRot.bError:=TRUE;
@@ -3064,7 +3064,7 @@ ELSE
     stCommands.bEnableAxis:=stHWControlRot.bEnable;
 END_IF
 
-// Take down enable if sto
+// Take down enable if STO
 IF stStatus.bSTOActiveCh1 OR stStatus.bSTOActiveCh2 THEN
 	stCommands.bEnableAxis:=FALSE;
 	stHWControlRot.bEnable:=FALSE;
@@ -3073,8 +3073,10 @@ END_IF
 
 IF stHWControlRot.bExecute THEN
   IF stStatus.bAxisEnabled THEN
+	// Axis enabled so execute command
     stCommands.bHaltAxis:=stHWControlRot.bExecute;
   ELSE
+	 // Axis not enabled so reset bExecute and issue an error
 	stHWControlRot.bExecute:=FALSE;
 	stCommands.bHaltAxis:=FALSE;
 	stHwStatusRot.bError:=TRUE;
@@ -3085,16 +3087,19 @@ ELSE
   stCommands.bHaltAxis:=stHWControlRot.bExecute;
 END_IF
 
+// Always reset (probbaly not needed since above if statement)
 IF NOT stCommands.bEnableAxis THEN
   stHWControlRot.bExecute:=FALSE;
 END_IF
 
+// Status to EPICS
 stHwStatusRot.bEnabled:=stStatus.bAxisEnabled;
 stCommands.bCmd_ErrorReset:=stHWControlRot.bReset;
 
+// Do not allow drive controlled homing
 stCommands.bCmd_DriveControlledHoming:=FALSE;
 
-// State change allow chnage from CONST velo to Phase and back
+// State change allow change from CONST velo to Phase and back
 bAllowStateTransistion:=FALSE;
 
 IF (stHWControlRot.eTargetStateCmd = TARGET_STATE_MACHINE.PHASING OR 
@@ -3105,7 +3110,7 @@ IF (stHWControlRot.eTargetStateCmd = TARGET_STATE_MACHINE.PHASING OR
 	bAllowStateTransistion:=TRUE;
 END_IF
 
-// Do not allow to go to POSITION mode while running
+// Do not allow to go to POSITION mode (and other modes) while running
 IF stHWControlRot.eTargetStateCmd <> stHwStatusRot.eTargetState AND (NOT 
     stHWControlRot.bexecute AND 
     stStatus.bAxisStandStillStatus) OR bAllowStateTransistion THEN
@@ -3150,10 +3155,19 @@ IF stStatus.bDriveInParameterMode OR MAIN.fb_s19_IndraDrive.InfoData_State <> 8 
 	stHwStatusRot.sErrorStr:=GVL_ErrorCodes.sErrorNeedHoming;
 END_IF
 
+// Calculate actual velcoity based on latched positions from timing system (distance since last latch divided with 71ms).
+// Only calculate if over 3rpm
 fbCalcVeloLatch(
             fVeloLimit:=3,
 			dLatchedPosition:= dLatchedPosition);
 
+// Run the current requested mode. The modes are:
+//  * CONSTANT_VELOCITY : Run wheel at a constant velocity
+//  * POSITION          : Positions the wheel at a certain angle
+//  * PHASE             : Control phase of wheel (normal "production" state/mode) 
+//  * HOMING            : Runs homing sequence to reference rotational encoder 
+//                        based on encoder ring ref mark. Then apply offset.
+//  * TORQUE            : Apply constant torque. This mode is NOT USED, only for testing.
 CASE stHwStatusRot.eTargetState OF 
 	TARGET_STATE_MACHINE.CONSTANT_VELOCITY:
         stCommands.fCommandAcceleration:=GVL_Parameters.fAccDefaultVel;
@@ -3257,6 +3271,7 @@ CASE stHwStatusRot.eTargetState OF
 	    stHwStatusRot.sErrorStr:=GVL_ErrorCodes.sErrorInvalidState;
 END_CASE
 
+// This code is kept in case a need for applying a feedforward torque is ever needed. Then this is a good example.
 (*IF bApplyTorqueFF THEN
   // add extra torque att startup TEST
   IF stStatus.bAxisEnabled AND stHWControlRot.bExecute(*AND stHWControlRot.bExecute*) THEN
@@ -3280,16 +3295,15 @@ END_CASE
 ELSE
   nAdditiveTorqueSetpoint:=0;
 END_IF*)
+// Force feedforward setpoint to 0 since not used.
 nAdditiveTorqueSetpoint:=0;
 
+// Stop if not bExecute
 IF NOT stHWControlRot.bExecute THEN
 	stCommands.fVelocityCommandValue:=0;
 END_IF
 
-// TODO: Why I put this here?
-//stCommands.eMotionMode:=E_MOTION_MODE.eStop;
-
-// Check maximum velocity
+// Check maximum velocity (Ensure velocity command is not higher than allowed)
 IF stCommands.fCommandVelocity > GVL_Parameters.fMaximumSPeedRpm THEN
   stCommands.fCommandVelocity := GVL_Parameters.fMaximumSPeedRpm;
 END_IF
@@ -3297,7 +3311,8 @@ IF stCommands.fVelocityCommandValue > GVL_Parameters.fMaximumSPeedRpm THEN
   stCommands.fVelocityCommandValue := GVL_Parameters.fMaximumSPeedRpm;
 END_IF
 
-// Rexroth FB
+// Run Rexroth  communication FB.
+// Note: This FB is from rexroth but a few fixes/changes have been added
 fbIndraDrive(
 	AmsNetId:= stAmsNetId, 
 	AdsAddr_Port:= nPort, 
@@ -3320,13 +3335,15 @@ fActVelOldOld:=fActVelOld;
 fActVelOld:=stHwStatusRot.fActVel;
 stHwStatusRot.fActVel:=stStatus.fActualVelocity/10;
 
+// Ensure torque is not higher that allowed
 stCommands.fTorqueLimit:=GVL_Parameters.fMaxRotationBipolarTorque; //%
 ]]></ST>
       </Implementation>
     </Action>
     <Action Name="ACT_5_Steppers" Id="{3a068380-4e98-46e5-9ef4-f9271d802bcf}">
       <Implementation>
-        <ST><![CDATA[// Motion of steppers handled in PRG "MAIN_NORMAL_MOTION"
+        <ST><![CDATA[// NOT USED ANYMORE
+// Motion of steppers handled in PRG "MAIN_NORMAL_MOTION"
 ]]></ST>
       </Implementation>
     </Action>
@@ -3334,7 +3351,7 @@ stCommands.fTorqueLimit:=GVL_Parameters.fMaxRotationBipolarTorque; //%
       <Implementation>
         <ST><![CDATA[// Function: Error handling
 // Author: Anders Sandström 2019
-
+// Check errors of all rotational FB:s
 IF stHwStatusRot.eTargetState = TARGET_STATE_MACHINE.PHASING THEN
   IF fbModePhase.bError AND NOT stHwStatusRot.bError THEN
 	stHwStatusRot.bError:=fbModePhase.bError;
@@ -4710,24 +4727,25 @@ END_IF
       <LineId Id="35" Count="1" />
       <LineId Id="55" Count="0" />
       <LineId Id="53" Count="0" />
-      <LineId Id="44" Count="2" />
+      <LineId Id="44" Count="1" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="46" Count="0" />
       <LineId Id="17" Count="0" />
-      <LineId Id="37" Count="0" />
-      <LineId Id="2" Count="0" />
-      <LineId Id="41" Count="0" />
       <LineId Id="40" Count="0" />
     </LineIds>
     <LineIds Name="MAIN.ACT_4_MainDrive">
       <LineId Id="115" Count="1" />
       <LineId Id="175" Count="2" />
+      <LineId Id="422" Count="0" />
       <LineId Id="180" Count="0" />
+      <LineId Id="420" Count="0" />
       <LineId Id="187" Count="1" />
       <LineId Id="181" Count="0" />
       <LineId Id="183" Count="0" />
       <LineId Id="185" Count="0" />
       <LineId Id="178" Count="0" />
       <LineId Id="189" Count="0" />
-      <LineId Id="192" Count="0" />
+      <LineId Id="421" Count="0" />
       <LineId Id="190" Count="0" />
       <LineId Id="174" Count="0" />
       <LineId Id="382" Count="0" />
@@ -4740,19 +4758,25 @@ END_IF
       <LineId Id="199" Count="0" />
       <LineId Id="186" Count="0" />
       <LineId Id="215" Count="0" />
+      <LineId Id="425" Count="0" />
       <LineId Id="118" Count="0" />
       <LineId Id="211" Count="0" />
+      <LineId Id="423" Count="0" />
       <LineId Id="216" Count="0" />
       <LineId Id="218" Count="0" />
       <LineId Id="384" Count="0" />
       <LineId Id="219" Count="1" />
       <LineId Id="217" Count="0" />
       <LineId Id="208" Count="0" />
-      <LineId Id="212" Count="2" />
+      <LineId Id="212" Count="1" />
+      <LineId Id="424" Count="0" />
+      <LineId Id="214" Count="0" />
       <LineId Id="209" Count="1" />
       <LineId Id="207" Count="0" />
+      <LineId Id="426" Count="0" />
       <LineId Id="206" Count="0" />
       <LineId Id="119" Count="1" />
+      <LineId Id="427" Count="0" />
       <LineId Id="127" Count="1" />
       <LineId Id="277" Count="0" />
       <LineId Id="274" Count="0" />
@@ -4797,9 +4821,16 @@ END_IF
       <LineId Id="328" Count="1" />
       <LineId Id="327" Count="0" />
       <LineId Id="322" Count="0" />
-      <LineId Id="332" Count="1" />
+      <LineId Id="405" Count="0" />
+      <LineId Id="332" Count="0" />
+      <LineId Id="406" Count="0" />
+      <LineId Id="333" Count="0" />
       <LineId Id="337" Count="1" />
+      <LineId Id="407" Count="0" />
       <LineId Id="343" Count="0" />
+      <LineId Id="411" Count="0" />
+      <LineId Id="408" Count="1" />
+      <LineId Id="412" Count="2" />
       <LineId Id="7" Count="1" />
       <LineId Id="152" Count="0" />
       <LineId Id="150" Count="0" />
@@ -4827,6 +4858,7 @@ END_IF
       <LineId Id="194" Count="0" />
       <LineId Id="197" Count="0" />
       <LineId Id="84" Count="0" />
+      <LineId Id="415" Count="0" />
       <LineId Id="240" Count="0" />
       <LineId Id="85" Count="2" />
       <LineId Id="358" Count="0" />
@@ -4844,27 +4876,34 @@ END_IF
       <LineId Id="372" Count="0" />
       <LineId Id="374" Count="0" />
       <LineId Id="90" Count="0" />
+      <LineId Id="416" Count="0" />
       <LineId Id="375" Count="0" />
-      <LineId Id="91" Count="6" />
+      <LineId Id="417" Count="0" />
+      <LineId Id="91" Count="3" />
       <LineId Id="144" Count="0" />
       <LineId Id="139" Count="0" />
       <LineId Id="98" Count="0" />
       <LineId Id="140" Count="1" />
       <LineId Id="147" Count="2" />
       <LineId Id="145" Count="0" />
-      <LineId Id="99" Count="11" />
+      <LineId Id="99" Count="0" />
+      <LineId Id="418" Count="0" />
+      <LineId Id="100" Count="10" />
       <LineId Id="242" Count="2" />
       <LineId Id="247" Count="2" />
       <LineId Id="111" Count="0" />
       <LineId Id="349" Count="0" />
       <LineId Id="346" Count="0" />
       <LineId Id="1" Count="0" />
+      <LineId Id="419" Count="0" />
       <LineId Id="352" Count="0" />
       <LineId Id="302" Count="0" />
       <LineId Id="350" Count="0" />
     </LineIds>
     <LineIds Name="MAIN.ACT_5_Steppers">
-      <LineId Id="1" Count="1" />
+      <LineId Id="1" Count="0" />
+      <LineId Id="3" Count="0" />
+      <LineId Id="2" Count="0" />
     </LineIds>
     <LineIds Name="MAIN.ACT_6_Error">
       <LineId Id="41" Count="0" />
