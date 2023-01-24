@@ -207,8 +207,8 @@
   <widget type="led" version="2.0.0">
     <name>LED_1</name>
     <pv_name>$(PREFIX)$(DEV_NAME)-PhasingAct</pv_name>
-    <x>594</x>
-    <y>130</y>
+    <x>489</x>
+    <y>133</y>
     <width>16</width>
     <height>16</height>
     <off_color>
@@ -725,5 +725,54 @@
       <color red="255" green="0" blue="0">
       </color>
     </needle_color>
+  </widget>
+  <widget type="led" version="2.0.0">
+    <name>LED_2</name>
+    <pv_name>$(PREFIX)$(DEV_NAME)-PhaseOK</pv_name>
+    <x>558</x>
+    <y>133</y>
+    <width>16</width>
+    <height>16</height>
+    <off_color>
+      <color red="0" green="100" blue="0">
+      </color>
+    </off_color>
+    <on_color>
+      <color red="0" green="255" blue="0">
+      </color>
+    </on_color>
+    <foreground_color>
+      <color red="192" green="192" blue="192">
+      </color>
+    </foreground_color>
+    <line_color>
+      <color red="150" green="150" blue="150">
+      </color>
+    </line_color>
+    <actions>
+    </actions>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_25</name>
+    <text>OK:</text>
+    <x>522</x>
+    <y>128</y>
+    <width>103</width>
+    <foreground_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <vertical_alignment>1</vertical_alignment>
+    <wrap_words>false</wrap_words>
+    <actions>
+    </actions>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
   </widget>
 </display>
