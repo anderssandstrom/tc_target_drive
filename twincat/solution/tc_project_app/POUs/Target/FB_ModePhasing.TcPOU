@@ -66,7 +66,7 @@ VAR
   nMissedTimingPulses      : INT:=0;
   nMissedTimingPulsesOld   : INT:=0;
   nMissedTimingPulsesLow   : INT:=0;
-  nMissedTimingPulsesLowold : INT:=0;   
+  nMissedTimingPulsesLowold : INT:=0;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -110,6 +110,7 @@ IF (fLatchedPosition-fLatchedPositionOld)<>0 THEN
   ELSE
 	fDistBetweenLastPulses:=fLatchedPosition-fLatchedPositionOld;
   END_IF
+
   bNewTriggPulse:=TRUE;
   fLastSectorVelocity:=fDistBetweenLastPulses*GVL_Parameters.nPulseFreqHz*60/360;
   nClosestSectorId:= LREAL_TO_INT(fLatchedPosition/10);
@@ -354,11 +355,11 @@ IF nMissedTimingPulsesOld<>nMissedTimingPulses THEN
   sErrorStr:=GVL_ErrorCodes.sErrorNoLatchStr;
 END_IF
 
-IF nMissedTimingPulsesLowOld<>nMissedTimingPulsesLow THEN
+(*IF nMissedTimingPulsesLowOld<>nMissedTimingPulsesLow THEN
   bError:=TRUE;
   nErrorId:=GVL_ErrorCodes.nErrorNoLatchId;
   sErrorStr:=GVL_ErrorCodes.sErrorNoLatchStr;
-END_IF
+END_IF*)
 
 IF bReset THEN
   bError:=FALSE;
@@ -396,6 +397,7 @@ nMissedTimingPulsesLowold:=nMissedTimingPulsesLow;]]></ST>
       <LineId Id="1119" Count="0" />
       <LineId Id="1118" Count="0" />
       <LineId Id="55" Count="5" />
+      <LineId Id="2136" Count="0" />
       <LineId Id="1047" Count="0" />
       <LineId Id="61" Count="0" />
       <LineId Id="1088" Count="0" />
@@ -517,7 +519,7 @@ nMissedTimingPulsesLowold:=nMissedTimingPulsesLow;]]></ST>
       <LineId Id="702" Count="0" />
       <LineId Id="1979" Count="4" />
       <LineId Id="1978" Count="0" />
-      <LineId Id="706" Count="0" />
+      <LineId Id="2131" Count="0" />
       <LineId Id="704" Count="0" />
       <LineId Id="707" Count="0" />
       <LineId Id="709" Count="0" />
