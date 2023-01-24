@@ -2179,48 +2179,6 @@ Bit 15]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>MAIN.fbTemp.AI_RTD_Ch_1_Status</Name>
-					<Comment><![CDATA[Channels]]></Comment>
-					<Type>WORD</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fbTemp.AI_RTD_Ch_1_Value</Name>
-					<Type>INT</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fbTemp.AI_RTD_Ch_2_Status</Name>
-					<Type>WORD</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fbTemp.AI_RTD_Ch_2_Value</Name>
-					<Type>INT</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fbTemp.AI_RTD_Ch_3_Status</Name>
-					<Type>WORD</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fbTemp.AI_RTD_Ch_3_Value</Name>
-					<Type>INT</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fbTemp.AI_RTD_Ch_4_Status</Name>
-					<Type>WORD</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fbTemp.AI_RTD_Ch_4_Value</Name>
-					<Type>INT</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fbTemp.WcState_WcState</Name>
-					<Comment><![CDATA[Terminal status]]></Comment>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>MAIN.fbTemp.InfoData_State</Name>
-					<Type>UINT</Type>
-				</Var>
-				<Var>
 					<Name>MAIN.nSecondRotEncoder</Name>
 					<Type>UDINT</Type>
 				</Var>

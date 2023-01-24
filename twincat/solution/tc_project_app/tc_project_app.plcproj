@@ -311,9 +311,6 @@
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Target\EL3214_old.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\Target\fbIndraDrive.TcPOU">
       <SubType>Code</SubType>
     </Compile>

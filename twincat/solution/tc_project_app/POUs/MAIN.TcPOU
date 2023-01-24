@@ -6,14 +6,12 @@ VAR
 	
 	hmiAxisSelection: INT := 1; //Not possible to use local hmi variables for array indexes
     afbAxes: ARRAY [1..GVL_APP.nAXIS_NUM] OF FB_Axis;
-	
 	stAmsNetId	AT %I*	              : AMSNETID;
 	nPort	AT %I*                    : WORD;
 	nMasterAxisPosition AT %I*        : DINT;
 	nMainDriveMarkPosition AT %I*     : DINT;
 	nAdditiveTorqueSetpoint    AT %Q* : INT;   // Unit 0.1%  (10=1%)
 	dLatchedPosition AT %I*           : DINT;
-    fbTemp                            : EL3214_old;
 	inputDigSens1 AT %I*              : BOOL;
 	inputDigSens2 AT %I*              : BOOL;
 	nSecondRotEncoder AT %I*           :UDINT:=0;
@@ -63,8 +61,6 @@ VAR
 	bPhaseOKSetReset: SR;
 	fActVelOld:LREAL:=0;
 	fActVelOldOld:LREAL:=0;
-	btesttesttest: BOOL;
-	int64_test : LINT;
 	iRotTempertureAlarmCounter:INT:=0;
 	iCounter:INT:=0;
 END_VAR
@@ -79,7 +75,6 @@ VAR_INPUT
   stHWStatusZ    : ST_HW_STATUS_XYZ;
   stHwStatusRot  : ST_HW_STATUS_ROT;
   stHWStatusDev  : ST_HW_STATUS_DEV;
-  bTestTest:BOOL:=FALSE;
   bAllowStateTransistion: BOOL;
 END_VAR
 ]]></Declaration>
@@ -114,10 +109,6 @@ ACT_7_Status();
 
 // Post exe
 eTargetStateOld:=stHwStatusRot.eTargetState;
-
-IF int64_test>0 THEN
-  bTestTest:=FALSE OR btesttesttest;	
-END_IF
 
 iCounter:=iCounter+1;]]></ST>
     </Implementation>
@@ -4615,9 +4606,6 @@ END_IF
       <LineId Id="1939" Count="1" />
       <LineId Id="1942" Count="0" />
       <LineId Id="1864" Count="2" />
-      <LineId Id="1389" Count="0" />
-      <LineId Id="2143" Count="0" />
-      <LineId Id="2234" Count="1" />
       <LineId Id="2328" Count="0" />
       <LineId Id="2327" Count="0" />
     </LineIds>
