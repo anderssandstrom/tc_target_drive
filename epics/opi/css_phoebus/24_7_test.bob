@@ -167,10 +167,10 @@
     <y_axes>
       <y_axis>
         <title>Velcoity [RPM]</title>
-        <autoscale>true</autoscale>
+        <autoscale>false</autoscale>
         <log_scale>false</log_scale>
-        <minimum>-30.0</minimum>
-        <maximum>30.0</maximum>
+        <minimum>20.0</minimum>
+        <maximum>26.0</maximum>
         <show_grid>true</show_grid>
         <visible>true</visible>
       </y_axis>
@@ -178,25 +178,11 @@
     <traces>
       <trace>
         <name>$(traces[0].y_pv)</name>
-        <y_pv>$(PREFIX)$(DEV_NAME)-VelAct</y_pv>
-        <axis>1</axis>
-        <trace_type>1</trace_type>
-        <color>
-          <color red="21" green="21" blue="196">
-          </color>
-        </color>
-        <line_width>2</line_width>
-        <point_type>0</point_type>
-        <point_size>4</point_size>
-        <visible>true</visible>
-      </trace>
-      <trace>
-        <name>$(traces[1].y_pv)</name>
         <y_pv>$(PREFIX)$(DEV_NAME)-VelLastSectorAct</y_pv>
         <axis>1</axis>
         <trace_type>1</trace_type>
         <color>
-          <color red="242" green="26" blue="26">
+          <color name="ERROR" red="252" green="13" blue="27">
           </color>
         </color>
         <line_width>2</line_width>
@@ -267,6 +253,7 @@
       </background_color>
       <actions>
       </actions>
+      <enabled>false</enabled>
       <confirm_message>Are you sure you want to do this?</confirm_message>
     </widget>
     <widget type="label" version="2.0.0">
@@ -543,6 +530,7 @@
       </background_color>
       <actions>
       </actions>
+      <enabled>false</enabled>
       <confirm_message>Are you sure you want to do this?</confirm_message>
     </widget>
     <widget type="label" version="2.0.0">
@@ -595,6 +583,7 @@
       </background_color>
       <actions>
       </actions>
+      <enabled>false</enabled>
       <mode>1</mode>
       <confirm_message>Are you sure you want to do this?</confirm_message>
     </widget>
@@ -699,6 +688,7 @@
       <actions>
       </actions>
       <border_alarm_sensitive>false</border_alarm_sensitive>
+      <enabled>false</enabled>
       <border_color>
         <color red="0" green="128" blue="255">
         </color>
