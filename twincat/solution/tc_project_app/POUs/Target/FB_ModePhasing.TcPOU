@@ -228,11 +228,11 @@ CASE ePhaseType OF
           ELSIF ABS(fPhaseErrorFiltered)>4 THEN
             fDeltaVelo:= 0.003;
           ELSIF ABS(fPhaseErrorFiltered)>1 THEN
-            fDeltaVelo:= 0.003;
+            fDeltaVelo:= 0.0017;
           ELSIF ABS(fPhaseErrorFiltered)>0.5 THEN
-            fDeltaVelo:= 0.002;
+            fDeltaVelo:= 0.0012;
           ELSE
-	        fDeltaVelo:= 0.002;
+	        fDeltaVelo:= 0.001;
           END_IF
         ELSE // neg error
           IF ABS(fPhaseErrorFiltered)>15 THEN  
@@ -244,7 +244,7 @@ CASE ePhaseType OF
           ELSIF ABS(fPhaseErrorFiltered)>0.5 THEN
             fDeltaVelo:= 0.003;
           ELSE
-	        fDeltaVelo:= 0.003;
+	        fDeltaVelo:= 0.0025;
           END_IF	
         END_IF
         nPIDExeSkipCounter:=0;
@@ -281,9 +281,9 @@ CASE ePhaseType OF
       ELSIF ABS(fPhaseErrorFiltered)>1 THEN
         fDeltaVelo:= 0.002;
       ELSIF ABS(fPhaseErrorFiltered)>0.5 THEN
-        fDeltaVelo:= 0.002;
+        fDeltaVelo:= 0.0015;
       ELSE
-        fDeltaVelo:= 0.001;
+        fDeltaVelo:= 0.0015;
       END_IF
     ELSE // neg error
       IF ABS(fPhaseErrorFiltered)>15 THEN  
