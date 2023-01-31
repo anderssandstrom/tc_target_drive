@@ -24,34 +24,6 @@
     <corner_width>10</corner_width>
     <corner_height>10</corner_height>
   </widget>
-  <widget type="symbol" version="2.0.0">
-    <name>Symbol_8</name>
-    <symbols>
-      <symbol>images/LowerShaft3.png</symbol>
-    </symbols>
-    <x>140</x>
-    <y>790</y>
-    <width>80</width>
-    <height>420</height>
-  </widget>
-  <widget type="rectangle" version="2.0.0">
-    <name>MGGrey03-background_3</name>
-    <x>704</x>
-    <y>790</y>
-    <width>943</width>
-    <height>530</height>
-    <line_width>2</line_width>
-    <line_color>
-      <color name="GROUP-BORDER" red="150" green="155" blue="151">
-      </color>
-    </line_color>
-    <background_color>
-      <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
-      </color>
-    </background_color>
-    <corner_width>10</corner_width>
-    <corner_height>10</corner_height>
-  </widget>
   <widget type="rectangle" version="2.0.0">
     <name>title bg</name>
     <class>TITLE-BAR</class>
@@ -91,26 +63,6 @@
     <wrap_words use_class="true">false</wrap_words>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>Label_7</name>
-    <class>HEADER2</class>
-    <text>Target Rotor</text>
-    <x>704</x>
-    <y>790</y>
-    <width>943</width>
-    <height>30</height>
-    <font use_class="true">
-      <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
-      </font>
-    </font>
-    <foreground_color>
-      <color name="GROUP-TEXT" red="25" green="25" blue="25">
-      </color>
-    </foreground_color>
-    <horizontal_alignment>1</horizontal_alignment>
-    <vertical_alignment>1</vertical_alignment>
-    <wrap_words>false</wrap_words>
-  </widget>
-  <widget type="label" version="2.0.0">
     <name>Label_6</name>
     <class>HEADER2</class>
     <text>Target Drive Unit</text>
@@ -139,313 +91,6 @@
     <y>80</y>
     <width>300</width>
     <height>260</height>
-  </widget>
-  <widget type="symbol" version="2.0.0">
-    <name>Symbol_5</name>
-    <symbols>
-      <symbol>TMS/TS_TMS_Chrocodile/ConfocalHead.png</symbol>
-    </symbols>
-    <x>208</x>
-    <y>970</y>
-    <width>170</width>
-    <height>50</height>
-  </widget>
-  <widget type="symbol" version="2.0.0">
-    <name>Symbol_6</name>
-    <symbols>
-      <symbol>TMS/TS_TMS_Chrocodile/ConfocalHead.png</symbol>
-    </symbols>
-    <x>200</x>
-    <y>991</y>
-    <width>170</width>
-    <height>50</height>
-  </widget>
-  <widget type="rectangle" version="2.0.0">
-    <name>MGGrey03-background_5</name>
-    <x>381</x>
-    <y>790</y>
-    <width>304</width>
-    <height>530</height>
-    <line_width>2</line_width>
-    <line_color>
-      <color name="GROUP-BORDER" red="150" green="155" blue="151">
-      </color>
-    </line_color>
-    <background_color>
-      <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
-      </color>
-    </background_color>
-    <corner_width>10</corner_width>
-    <corner_height>10</corner_height>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_8</name>
-    <class>HEADER2</class>
-    <text>Target  Monitoring System</text>
-    <x>378</x>
-    <y>790</y>
-    <width>304</width>
-    <height>30</height>
-    <font use_class="true">
-      <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
-      </font>
-    </font>
-    <foreground_color>
-      <color name="GROUP-TEXT" red="25" green="25" blue="25">
-      </color>
-    </foreground_color>
-    <horizontal_alignment>1</horizontal_alignment>
-    <vertical_alignment>1</vertical_alignment>
-    <wrap_words>false</wrap_words>
-  </widget>
-  <widget type="rectangle" version="2.0.0">
-    <name>Background_10</name>
-    <x>401</x>
-    <y>840</y>
-    <width>261</width>
-    <height>460</height>
-    <line_width>1</line_width>
-    <line_color>
-      <color name="GROUP-BORDER" red="150" green="155" blue="151">
-      </color>
-    </line_color>
-    <background_color>
-      <color name="BACKGROUND" red="220" green="225" blue="221">
-      </color>
-    </background_color>
-    <corner_width>10</corner_width>
-    <corner_height>10</corner_height>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>LB_Header_10</name>
-    <class>HEADER3</class>
-    <text>XY Measurement Instruments</text>
-    <x>401</x>
-    <y>840</y>
-    <width>261</width>
-    <height>37</height>
-    <font use_class="true">
-      <font name="Header 3" family="Source Sans Pro" style="BOLD_ITALIC" size="18.0">
-      </font>
-    </font>
-    <foreground_color use_class="true">
-      <color name="Text" red="25" green="25" blue="25">
-      </color>
-    </foreground_color>
-    <background_color>
-      <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
-      </color>
-    </background_color>
-    <horizontal_alignment>1</horizontal_alignment>
-    <vertical_alignment>1</vertical_alignment>
-  </widget>
-  <widget type="embedded" version="2.0.0">
-    <name>YSV-034a_1</name>
-    <macros>
-      <WIDDesc></WIDDesc>
-      <WIDDev>GU</WIDDev>
-      <WIDDis>Mech</WIDDis>
-      <WIDIndex>102</WIDIndex>
-      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
-    </macros>
-    <file>TMS/TS_TMS_Chrocodile/TS_TMS_Chrocodile_BlockIcon.bob</file>
-    <x>461</x>
-    <y>890</y>
-    <width>150</width>
-    <height>170</height>
-    <resize>2</resize>
-  </widget>
-  <widget type="rectangle" version="2.0.0">
-    <name>Background_11</name>
-    <x>724</x>
-    <y>840</y>
-    <width>890</width>
-    <height>460</height>
-    <line_width>1</line_width>
-    <line_color>
-      <color name="GROUP-BORDER" red="150" green="155" blue="151">
-      </color>
-    </line_color>
-    <background_color>
-      <color name="BACKGROUND" red="220" green="225" blue="221">
-      </color>
-    </background_color>
-    <corner_width>10</corner_width>
-    <corner_height>10</corner_height>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>LB_Header_11</name>
-    <class>HEADER3</class>
-    <text>Horizontal Position (measured at GU-102)</text>
-    <x>724</x>
-    <y>840</y>
-    <width>890</width>
-    <height>37</height>
-    <font use_class="true">
-      <font name="Header 3" family="Source Sans Pro" style="BOLD_ITALIC" size="18.0">
-      </font>
-    </font>
-    <foreground_color use_class="true">
-      <color name="Text" red="25" green="25" blue="25">
-      </color>
-    </foreground_color>
-    <background_color>
-      <color name="GROUP-BACKGROUND" red="200" green="205" blue="201">
-      </color>
-    </background_color>
-    <horizontal_alignment>1</horizontal_alignment>
-    <vertical_alignment>1</vertical_alignment>
-  </widget>
-  <widget type="embedded" version="2.0.0">
-    <name>YSV-034a_2</name>
-    <macros>
-      <WIDDesc></WIDDesc>
-      <WIDDev>GU</WIDDev>
-      <WIDDis>Mech</WIDDis>
-      <WIDIndex>102</WIDIndex>
-      <WIDSecSub>Tgt-TWDS1000</WIDSecSub>
-    </macros>
-    <file>Gauges/XYChartGauge/XYChartGauge_BlockIcon.bob</file>
-    <x>1154</x>
-    <y>900</y>
-    <width>390</width>
-    <height>370</height>
-    <resize>1</resize>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_53</name>
-    <text>[mm]</text>
-    <x>1064</x>
-    <y>910</y>
-    <width>43</width>
-    <height>24</height>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_52</name>
-    <text>[mm]</text>
-    <x>1064</x>
-    <y>940</y>
-    <width>43</width>
-    <height>24</height>
-  </widget>
-  <widget type="textupdate" version="2.0.0">
-    <name>Text Update_19</name>
-    <pv_name>$(PREFIX):$(MECH):CALC110_ThetaY</pv_name>
-    <x>954</x>
-    <y>1182</y>
-  </widget>
-  <widget type="textupdate" version="2.0.0">
-    <name>Text Update_18</name>
-    <pv_name>$(PREFIX):$(MECH):CALC110_ThetaX</pv_name>
-    <x>954</x>
-    <y>1152</y>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_51</name>
-    <text>Tilt Angle Y Plane Calculated</text>
-    <x>744</x>
-    <y>1184</y>
-    <width>200</width>
-    <height>15</height>
-    <horizontal_alignment>2</horizontal_alignment>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_49</name>
-    <text>Tilt Angle X Plane Calculated</text>
-    <x>744</x>
-    <y>1154</y>
-    <width>200</width>
-    <height>15</height>
-    <horizontal_alignment>2</horizontal_alignment>
-  </widget>
-  <widget type="textupdate" version="2.0.0">
-    <name>Text Update_17</name>
-    <pv_name>$(PREFIX):$(MECH):CALC110_YPos</pv_name>
-    <x>954</x>
-    <y>1122</y>
-  </widget>
-  <widget type="textupdate" version="2.0.0">
-    <name>Text Update_16</name>
-    <pv_name>$(PREFIX):$(MECH):CALC110_XPos</pv_name>
-    <x>954</x>
-    <y>1092</y>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_45</name>
-    <text>Calculated Y Position</text>
-    <x>744</x>
-    <y>1124</y>
-    <width>200</width>
-    <height>15</height>
-    <horizontal_alignment>2</horizontal_alignment>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_44</name>
-    <text>Calculated X Position</text>
-    <x>744</x>
-    <y>1094</y>
-    <width>200</width>
-    <height>15</height>
-    <horizontal_alignment>2</horizontal_alignment>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_19</name>
-    <text>[mm]</text>
-    <x>1064</x>
-    <y>993</y>
-    <width>43</width>
-    <height>24</height>
-  </widget>
-  <widget type="textupdate" version="2.0.0">
-    <name>Text Update_9</name>
-    <pv_name>$(PREFIX):Mech-Rotor:DeflectionX</pv_name>
-    <x>954</x>
-    <y>993</y>
-    <precision>2</precision>
-    <show_units>false</show_units>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_18</name>
-    <text>Rotor Deflection X</text>
-    <x>744</x>
-    <y>995</y>
-    <width>200</width>
-    <height>24</height>
-    <horizontal_alignment>2</horizontal_alignment>
-  </widget>
-  <widget type="textupdate" version="2.0.0">
-    <name>Text Update_8</name>
-    <pv_name>$(PREFIX):Mech-Rotor:CALC110_XPos</pv_name>
-    <x>954</x>
-    <y>910</y>
-    <precision>2</precision>
-    <show_units>false</show_units>
-  </widget>
-  <widget type="textupdate" version="2.0.0">
-    <name>Text Update_7</name>
-    <pv_name>$(PREFIX):Mech-Rotor:CALC110_YPos</pv_name>
-    <x>954</x>
-    <y>940</y>
-    <precision>2</precision>
-    <show_units>false</show_units>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_17</name>
-    <text>Y Position</text>
-    <x>744</x>
-    <y>942</y>
-    <width>200</width>
-    <height>24</height>
-    <horizontal_alignment>2</horizontal_alignment>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_16</name>
-    <text>X Position</text>
-    <x>744</x>
-    <y>912</y>
-    <width>200</width>
-    <height>24</height>
-    <horizontal_alignment>2</horizontal_alignment>
   </widget>
   <widget type="group" version="2.0.0">
     <name>Group_TDU_X_Trans</name>
@@ -1080,6 +725,11 @@ widget.setPropertyValue('x', 240+value*40)
         <y>30</y>
         <width>20</width>
         <height>30</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color name="BLACK-BORDER" red="121" green="121" blue="121">
+          </color>
+        </line_color>
         <points>
           <point x="20.0" y="0.0">
           </point>
@@ -1090,11 +740,6 @@ widget.setPropertyValue('x', 240+value*40)
           <point x="0.0" y="30.0">
           </point>
         </points>
-        <line_width>1</line_width>
-        <line_color>
-          <color name="BLACK-BORDER" red="121" green="121" blue="121">
-          </color>
-        </line_color>
       </widget>
       <widget type="polyline" version="2.0.0">
         <name>Polyline_2</name>
@@ -1102,6 +747,11 @@ widget.setPropertyValue('x', 240+value*40)
         <y>30</y>
         <width>20</width>
         <height>30</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color name="BLACK-BORDER" red="121" green="121" blue="121">
+          </color>
+        </line_color>
         <points>
           <point x="0.0" y="0.0">
           </point>
@@ -1112,11 +762,6 @@ widget.setPropertyValue('x', 240+value*40)
           <point x="20.0" y="30.0">
           </point>
         </points>
-        <line_width>1</line_width>
-        <line_color>
-          <color name="BLACK-BORDER" red="121" green="121" blue="121">
-          </color>
-        </line_color>
       </widget>
       <widget type="polyline" version="2.0.0">
         <name>Polyline_3</name>
@@ -1124,17 +769,17 @@ widget.setPropertyValue('x', 240+value*40)
         <y>30</y>
         <width>1</width>
         <height>30</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color name="BLACK-BORDER" red="121" green="121" blue="121">
+          </color>
+        </line_color>
         <points>
           <point x="0.0" y="0.0">
           </point>
           <point x="0.0" y="30.0">
           </point>
         </points>
-        <line_width>1</line_width>
-        <line_color>
-          <color name="BLACK-BORDER" red="121" green="121" blue="121">
-          </color>
-        </line_color>
       </widget>
       <widget type="polyline" version="2.0.0">
         <name>Polyline_4</name>
@@ -1142,17 +787,17 @@ widget.setPropertyValue('x', 240+value*40)
         <y>30</y>
         <width>1</width>
         <height>30</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color name="BLACK-BORDER" red="121" green="121" blue="121">
+          </color>
+        </line_color>
         <points>
           <point x="0.0" y="0.0">
           </point>
           <point x="0.0" y="30.0">
           </point>
         </points>
-        <line_width>1</line_width>
-        <line_color>
-          <color name="BLACK-BORDER" red="121" green="121" blue="121">
-          </color>
-        </line_color>
       </widget>
     </widget>
     <widget type="group" version="2.0.0">
@@ -1913,6 +1558,11 @@ widget.setPropertyValue('x', 240+value*40)
         <y>30</y>
         <width>20</width>
         <height>30</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color name="BLACK-BORDER" red="121" green="121" blue="121">
+          </color>
+        </line_color>
         <points>
           <point x="20.0" y="0.0">
           </point>
@@ -1923,11 +1573,6 @@ widget.setPropertyValue('x', 240+value*40)
           <point x="0.0" y="30.0">
           </point>
         </points>
-        <line_width>1</line_width>
-        <line_color>
-          <color name="BLACK-BORDER" red="121" green="121" blue="121">
-          </color>
-        </line_color>
       </widget>
       <widget type="polyline" version="2.0.0">
         <name>Polyline_7</name>
@@ -1935,6 +1580,11 @@ widget.setPropertyValue('x', 240+value*40)
         <y>30</y>
         <width>20</width>
         <height>30</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color name="BLACK-BORDER" red="121" green="121" blue="121">
+          </color>
+        </line_color>
         <points>
           <point x="0.0" y="0.0">
           </point>
@@ -1945,11 +1595,6 @@ widget.setPropertyValue('x', 240+value*40)
           <point x="20.0" y="30.0">
           </point>
         </points>
-        <line_width>1</line_width>
-        <line_color>
-          <color name="BLACK-BORDER" red="121" green="121" blue="121">
-          </color>
-        </line_color>
       </widget>
       <widget type="polyline" version="2.0.0">
         <name>Polyline_8</name>
@@ -1957,17 +1602,17 @@ widget.setPropertyValue('x', 240+value*40)
         <y>30</y>
         <width>1</width>
         <height>30</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color name="BLACK-BORDER" red="121" green="121" blue="121">
+          </color>
+        </line_color>
         <points>
           <point x="0.0" y="0.0">
           </point>
           <point x="0.0" y="30.0">
           </point>
         </points>
-        <line_width>1</line_width>
-        <line_color>
-          <color name="BLACK-BORDER" red="121" green="121" blue="121">
-          </color>
-        </line_color>
       </widget>
       <widget type="polyline" version="2.0.0">
         <name>Polyline_9</name>
@@ -1975,17 +1620,17 @@ widget.setPropertyValue('x', 240+value*40)
         <y>30</y>
         <width>1</width>
         <height>30</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color name="BLACK-BORDER" red="121" green="121" blue="121">
+          </color>
+        </line_color>
         <points>
           <point x="0.0" y="0.0">
           </point>
           <point x="0.0" y="30.0">
           </point>
         </points>
-        <line_width>1</line_width>
-        <line_color>
-          <color name="BLACK-BORDER" red="121" green="121" blue="121">
-          </color>
-        </line_color>
       </widget>
     </widget>
     <widget type="group" version="2.0.0">

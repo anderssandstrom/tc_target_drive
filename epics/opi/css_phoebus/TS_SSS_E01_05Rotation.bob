@@ -128,8 +128,8 @@
       </rule>
     </rules>
     <limits_from_pv>false</limits_from_pv>
-    <minimum>-2.5</minimum>
-    <maximum>2.5</maximum>
+    <minimum>-3.0</minimum>
+    <maximum>3.0</maximum>
     <needle_color>
       <color red="255" green="0" blue="0">
       </color>
@@ -259,8 +259,7 @@
     <actions>
     </actions>
     <limits_from_pv>false</limits_from_pv>
-    <minimum>-50.0</minimum>
-    <maximum>50.0</maximum>
+    <minimum>-100.0</minimum>
     <needle_color>
       <color red="255" green="0" blue="0">
       </color>
