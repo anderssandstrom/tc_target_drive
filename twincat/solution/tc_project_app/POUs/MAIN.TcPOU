@@ -3070,18 +3070,18 @@ END_IF
 IF iIndraWarningAlarmCounter>=999 AND fbIndraDrive.stAxisStatus.nDiagMessage=-1072816047  THEN
   stHwStatusRot.nErrorId:=GVL_ErrorCodes.nErrorIndraOverHeatPrewarning;
   stHwStatusRot.sErrorStr:=GVL_ErrorCodes.sErrorIndraOverHeatPrewarning;
-  //stHWControlRot.bEnable:=FALSE;
+  stHWControlRot.bEnable:=FALSE;
   stHwStatusRot.bError:=TRUE;
-  //stCommands.bEnableAxis := FALSE;
-  //stHWControlRot.bExecute := FALSE;
-ELSIF iIndraWarningAlarmCounter>=99 THEN
+  stCommands.bEnableAxis := FALSE;
+  stHWControlRot.bExecute := FALSE;
+ELSIF iIndraWarningAlarmCounter>=999 THEN
   //Only warning
   stHwStatusRot.nErrorId:=GVL_ErrorCodes.nErrorIndraWarning;
   stHwStatusRot.sErrorStr:=GVL_ErrorCodes.sErrorIndraWarning;
-  //stHWControlRot.bEnable:=FALSE;
+  stHWControlRot.bEnable:=FALSE;
   stHwStatusRot.bError:=TRUE;
-  //stCommands.bEnableAxis := FALSE;
-  //stHWControlRot.bExecute := FALSE; 
+  stCommands.bEnableAxis := FALSE;
+  stHWControlRot.bExecute := FALSE; 
 END_IF
 
 // Take down enable if STO
