@@ -62,7 +62,9 @@ VAR
 	fActVelOld:LREAL:=0;
 	fActVelOldOld:LREAL:=0;
 	iRotTempertureAlarmCounter:INT:=0;
-	iCounter:INT:=0;
+	iIndraWarningAlarmCounter:INT:=0;
+    iCounter:INT:=0;
+	
 END_VAR
 
 VAR_INPUT
@@ -3055,18 +3057,27 @@ ELSE
     stCommands.bEnableAxis:=stHWControlRot.bEnable;
 END_IF
 
+// filter bWarning otherwsie it will trip on each positive edge of bExecute
+IF fbIndraDrive.stAxisStatus.bWarning  AND iIndraWarningAlarmCounter<100 THEN
+	iIndraWarningAlarmCounter:=iIndraWarningAlarmCounter+1;
+ELSIF NOT fbIndraDrive.stAxisStatus.bWarning THEN
+	iIndraWarningAlarmCounter:=0;	
+END_IF
+
 // Alarm and stop on prewarning
-IF fbIndraDrive.stAxisStatus.bWarning AND fbIndraDrive.stAxisStatus.nDiagMessage=-1072816047 THEN
+IF iIndraWarningAlarmCounter>=99 AND fbIndraDrive.stAxisStatus.nDiagMessage=-1072816047  THEN
   stHwStatusRot.nErrorId:=GVL_ErrorCodes.nErrorIndraOverHeatPrewarning;
   stHwStatusRot.sErrorStr:=GVL_ErrorCodes.sErrorIndraOverHeatPrewarning; 
   stCommands.bEnableAxis := FALSE;
   stHWControlRot.bExecute := FALSE;
-ELSIF  fbIndraDrive.stAxisStatus.bWarning THEN
+ELSIF iIndraWarningAlarmCounter>=99 THEN
+  //Only warning
   stHwStatusRot.nErrorId:=GVL_ErrorCodes.nErrorIndraWarning;
   stHwStatusRot.sErrorStr:=GVL_ErrorCodes.sErrorIndraWarning;
   stCommands.bEnableAxis := FALSE;
   stHWControlRot.bExecute := FALSE; 
 END_IF
+
 // Take down enable if STO
 IF stStatus.bSTOActiveCh1 OR stStatus.bSTOActiveCh2 THEN
 	stCommands.bEnableAxis:=FALSE;
@@ -3393,7 +3404,7 @@ IF stHWControlRot.bReset THEN
   GVL.astAxes[1].stControl.bReset:=NOT(GVL.astAxes[1].stControl.bReset);
   GVL.astAxes[2].stControl.bReset:=NOT(GVL.astAxes[2].stControl.bReset);
   GVL.astAxes[3].stControl.bReset:=NOT(GVL.astAxes[3].stControl.bReset);
-  
+  iIndraWarningAlarmCounter:=0;
 END_IF
 //stHWControlRot.bReset:=FALSE;]]></ST>
       </Implementation>
@@ -4748,13 +4759,21 @@ END_IF
       <LineId Id="421" Count="0" />
       <LineId Id="190" Count="0" />
       <LineId Id="174" Count="0" />
+      <LineId Id="443" Count="1" />
       <LineId Id="441" Count="0" />
+      <LineId Id="445" Count="0" />
+      <LineId Id="447" Count="1" />
+      <LineId Id="446" Count="0" />
+      <LineId Id="450" Count="0" />
       <LineId Id="428" Count="0" />
       <LineId Id="382" Count="0" />
       <LineId Id="431" Count="1" />
       <LineId Id="439" Count="1" />
-      <LineId Id="434" Count="4" />
+      <LineId Id="434" Count="0" />
+      <LineId Id="451" Count="0" />
+      <LineId Id="435" Count="3" />
       <LineId Id="430" Count="0" />
+      <LineId Id="442" Count="0" />
       <LineId Id="377" Count="0" />
       <LineId Id="376" Count="0" />
       <LineId Id="378" Count="0" />
