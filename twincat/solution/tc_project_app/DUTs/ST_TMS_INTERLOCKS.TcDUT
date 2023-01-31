@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+  <DUT Name="ST_TMS_INTERLOCKS" Id="{3751cc1b-9c25-45a7-959e-5a5df6bf8bd6}">
+    <Declaration><![CDATA[TYPE ST_TMS_INTERLOCKS :
+STRUCT
+	TSM_RotIL_XY_OK:BOOL:=FALSE;
+	TSM_RotIL_Z_OK:BOOL:=FALSE;
+	TSM_RotIL_BearTmp_OK:BOOL:=FALSE;
+	TSM_RotIL_Vibr_OK:BOOL:=FALSE;	
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

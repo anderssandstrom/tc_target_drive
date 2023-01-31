@@ -119,8 +119,8 @@ END_VAR
                               <v n="Id">401L</v>
                             </o>
                             <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
+                              <v n="Operand">"main.stTMSInterlocks.TSM_RotIL_XY_OK"</v>
+                              <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -135,8 +135,8 @@ END_VAR
                               <v n="Id">402L</v>
                             </o>
                             <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
+                              <v n="Operand">"main.stTMSInterlocks.TSM_RotIL_Z_OK"</v>
+                              <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -151,8 +151,8 @@ END_VAR
                               <v n="Id">403L</v>
                             </o>
                             <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
+                              <v n="Operand">"main.stTMSInterlocks.TSM_RotIL_BearTmp_OK"</v>
+                              <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -167,8 +167,8 @@ END_VAR
                               <v n="Id">404L</v>
                             </o>
                             <o>
-                              <v n="Operand">""</v>
-                              <n n="Type" />
+                              <v n="Operand">"main.stTMSInterlocks.TSM_RotIL_Vibr_OK"</v>
+                              <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>

@@ -68,15 +68,16 @@ VAR
 END_VAR
 
 VAR_INPUT
-  stHWControlX   : ST_HW_CONTROL_XYZ;
-  stHWControlY   : ST_HW_CONTROL_XYZ;
-  stHWControlZ   : ST_HW_CONTROL_XYZ;
-  stHWControlRot : ST_HW_CONTROL_ROT;
-  stHWStatusX    : ST_HW_STATUS_XYZ;
-  stHWStatusY    : ST_HW_STATUS_XYZ;
-  stHWStatusZ    : ST_HW_STATUS_XYZ;
-  stHwStatusRot  : ST_HW_STATUS_ROT;
-  stHWStatusDev  : ST_HW_STATUS_DEV;
+  stHWControlX       : ST_HW_CONTROL_XYZ;
+  stHWControlY       : ST_HW_CONTROL_XYZ;
+  stHWControlZ       : ST_HW_CONTROL_XYZ;
+  stHWControlRot     : ST_HW_CONTROL_ROT;
+  stHWStatusX        : ST_HW_STATUS_XYZ;
+  stHWStatusY        : ST_HW_STATUS_XYZ;
+  stHWStatusZ        : ST_HW_STATUS_XYZ;
+  stHwStatusRot      : ST_HW_STATUS_ROT;
+  stHWStatusDev      : ST_HW_STATUS_DEV;
+  stTMSInterlocks    : ST_TMS_INTERLOCKS;
   bAllowStateTransistion: BOOL;
 END_VAR
 ]]></Declaration>
