@@ -3055,6 +3055,18 @@ ELSE
     stCommands.bEnableAxis:=stHWControlRot.bEnable;
 END_IF
 
+// Alarm and stop on prewarning
+IF fbIndraDrive.stAxisStatus.bWarning AND fbIndraDrive.stAxisStatus.nDiagMessage=-1072816047 THEN
+  stHwStatusRot.nErrorId:=GVL_ErrorCodes.nErrorIndraOverHeatPrewarning;
+  stHwStatusRot.sErrorStr:=GVL_ErrorCodes.sErrorIndraOverHeatPrewarning; 
+  stCommands.bEnableAxis := FALSE;
+  stHWControlRot.bExecute := FALSE;
+ELSIF  fbIndraDrive.stAxisStatus.bWarning THEN
+  stHwStatusRot.nErrorId:=GVL_ErrorCodes.nErrorIndraWarning;
+  stHwStatusRot.sErrorStr:=GVL_ErrorCodes.sErrorIndraWarning;
+  stCommands.bEnableAxis := FALSE;
+  stHWControlRot.bExecute := FALSE; 
+END_IF
 // Take down enable if STO
 IF stStatus.bSTOActiveCh1 OR stStatus.bSTOActiveCh2 THEN
 	stCommands.bEnableAxis:=FALSE;
@@ -4736,7 +4748,13 @@ END_IF
       <LineId Id="421" Count="0" />
       <LineId Id="190" Count="0" />
       <LineId Id="174" Count="0" />
+      <LineId Id="441" Count="0" />
+      <LineId Id="428" Count="0" />
       <LineId Id="382" Count="0" />
+      <LineId Id="431" Count="1" />
+      <LineId Id="439" Count="1" />
+      <LineId Id="434" Count="4" />
+      <LineId Id="430" Count="0" />
       <LineId Id="377" Count="0" />
       <LineId Id="376" Count="0" />
       <LineId Id="378" Count="0" />

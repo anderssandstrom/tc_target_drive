@@ -38,6 +38,13 @@ VAR_GLOBAL
   // Connection lost or re param, need to be re homed
   nErrorNeedHoming       : UDINT  := 3003;
   sErrorNeedHoming       : STRING := 'INDRA: Drive need homing (re param or lost conenction)';
+  //Indradrive overheat prewarning
+  nErrorIndraOverHeatPrewarning       : UDINT  := 3004;
+  sErrorIndraOverHeatPrewarning       : STRING := 'INDRA: Overheat prewarning';
+  //Indradrive warning
+  nErrorIndraWarning       : UDINT  := 3005;
+  sErrorIndraWarning       : STRING := 'INDRA: Warning';
+  
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
