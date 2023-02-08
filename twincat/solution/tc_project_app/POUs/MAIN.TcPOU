@@ -3076,12 +3076,12 @@ IF iIndraWarningAlarmCounter>=999 AND fbIndraDrive.stAxisStatus.nDiagMessage=-10
   stHWControlRot.bExecute := FALSE;
 ELSIF iIndraWarningAlarmCounter>=999 THEN
   //Only warning
-  stHwStatusRot.nErrorId:=GVL_ErrorCodes.nErrorIndraWarning;
-  stHwStatusRot.sErrorStr:=GVL_ErrorCodes.sErrorIndraWarning;
-  stHWControlRot.bEnable:=FALSE;
-  stHwStatusRot.bError:=TRUE;
-  stCommands.bEnableAxis := FALSE;
-  stHWControlRot.bExecute := FALSE; 
+  //stHwStatusRot.nErrorId:=GVL_ErrorCodes.nErrorIndraWarning;
+  //stHwStatusRot.sErrorStr:=GVL_ErrorCodes.sErrorIndraWarning;
+  //stHWControlRot.bEnable:=FALSE;
+  //stHwStatusRot.bError:=TRUE;
+  //stCommands.bEnableAxis := FALSE;
+  //stHWControlRot.bExecute := FALSE; 
 END_IF
 
 // Take down enable if STO
