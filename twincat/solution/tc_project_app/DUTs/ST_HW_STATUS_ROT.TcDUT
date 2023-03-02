@@ -16,8 +16,6 @@ STRUCT
 	fBrakeActTemp1:LREAL;
 	fBrakeActTemp2:LREAL;
 	fPhaseOffsetActDeg:LREAL;
-	bBrake1TempAlarm:BOOL;
-	bBrake2TempAlarm:BOOL;
 	bEStopOK:BOOL;                       // s2: ch1: emergency stop ok                 Verify: OK   
 	bMainDriveThermalFilterOK:BOOL; // s2: ch2: rf01 termal braking filter OK..   Verify: Q to Markus: Maybe this should be rf02?
 	bFuseMainRotationOK:BOOL;       // s2: ch6: fc01 fuse target wheel motor OK

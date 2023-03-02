@@ -3405,11 +3405,9 @@ IF stHWControlRot.bReset THEN
   stHwStatusRot.bError:=FALSE;
   stHwStatusRot.nErrorId:=GVL_ErrorCodes.nErrorCodeOKId;
   stHwStatusRot.sErrorStr:=GVL_ErrorCodes.nErrorCodeOKStr;
-  stHwStatusRot.bBrake1TempAlarm:=FALSE;
-  stHwStatusRot.bBrake2TempAlarm:=FALSE;
   iIndraWarningAlarmCounter:=0;
 END_IF
-//stHWControlRot.bReset:=FALSE;]]></ST>
+]]></ST>
       </Implementation>
     </Action>
     <Action Name="ACT_7_Status" Id="{137ca732-0038-466a-b75d-dad28eae2c0e}">
@@ -4941,7 +4939,7 @@ END_IF
       <LineId Id="41" Count="0" />
       <LineId Id="2" Count="28" />
       <LineId Id="32" Count="0" />
-      <LineId Id="34" Count="6" />
+      <LineId Id="34" Count="4" />
       <LineId Id="62" Count="0" />
       <LineId Id="1" Count="0" />
       <LineId Id="58" Count="0" />
