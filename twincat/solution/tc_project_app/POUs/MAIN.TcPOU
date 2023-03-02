@@ -3407,9 +3407,6 @@ IF stHWControlRot.bReset THEN
   stHwStatusRot.sErrorStr:=GVL_ErrorCodes.nErrorCodeOKStr;
   stHwStatusRot.bBrake1TempAlarm:=FALSE;
   stHwStatusRot.bBrake2TempAlarm:=FALSE;
-  GVL.astAxes[1].stControl.bReset:=NOT(GVL.astAxes[1].stControl.bReset);
-  GVL.astAxes[2].stControl.bReset:=NOT(GVL.astAxes[2].stControl.bReset);
-  GVL.astAxes[3].stControl.bReset:=NOT(GVL.astAxes[3].stControl.bReset);
   iIndraWarningAlarmCounter:=0;
 END_IF
 //stHWControlRot.bReset:=FALSE;]]></ST>
@@ -4945,7 +4942,7 @@ END_IF
       <LineId Id="2" Count="28" />
       <LineId Id="32" Count="0" />
       <LineId Id="34" Count="6" />
-      <LineId Id="59" Count="3" />
+      <LineId Id="62" Count="0" />
       <LineId Id="1" Count="0" />
       <LineId Id="58" Count="0" />
     </LineIds>
